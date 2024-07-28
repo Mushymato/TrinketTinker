@@ -1,46 +1,28 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Netcode;
 using StardewValley.Companions;
 using StardewValley;
+using TrinketTinker.Model;
 
 
 namespace TrinketTinker.Companions
 {
     public class HoveringCompanion : Companion
     {
+        // TrinketMetadata
+        protected CompanionModel Data { get; set; }
+
+        // State
         private Vector2 extraPosition;
-
         private Vector2 extraPositionMotion;
-
         private Vector2 extraPositionAcceleration;
-
         private int lightID = 301579;
-
-        private float frameRate = 0;
         private float frameTimer = 0;
-
         private int frame = 0;
 
-        public string companionTexture = "";
-
-        public int animLength = 0;
-
-        public bool hasLight = true;
-
-        public int variant = 0;
-
-        public int spriteW = 16;
-
-        public int spriteH = 16;
-
-        public HoveringCompanion(string texturePath)
+        public HoveringCompanion(CompanionModel data)
         {
-            companionTexture = texturePath;
-            Texture2D texture = Game1.content.Load<Texture2D>(companionTexture);
-            animLength = texture.Width / 16;
-            frameRate = 200;
-            extraPosition = Vector2.Zero;
+            Data = data;
         }
 
         // public override void InitNetFields()
@@ -54,16 +36,15 @@ namespace TrinketTinker.Companions
             {
                 return;
             }
-            Texture2D texture = Game1.content.Load<Texture2D>(companionTexture);
+            Texture2D texture = Game1.content.Load<Texture2D>(Data.Texture);
             SpriteEffects effect = direction.Value == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
             b.Draw(
                 texture,
                 Game1.GlobalToLocal(base.Position + base.Owner.drawOffset + new Vector2(0f, (0f - height) * 4f) + extraPosition),
                 new Rectangle(
-                    frame * spriteW,
-                    variant * spriteH,
-                    spriteW, spriteH
+                    frame * Data.Size.X, Data.Variant * Data.Size.Y,
+                    Data.Size.X, Data.Size.Y
                 ),
                 Color.White, 0f, new Vector2(8f, 8f), 4f,
                 effect, _position.Y / 10000f
@@ -87,16 +68,16 @@ namespace TrinketTinker.Companions
             base.Update(time, location);
             height = 32f;
             frameTimer += (float)time.ElapsedGameTime.TotalMilliseconds;
-            if (frameTimer > frameRate)
+            if (frameTimer > Data.FrameDuration)
             {
                 frameTimer = 0f;
                 // extraPositionMotion = new Vector2((Game1.random.NextDouble() < 0.5) ? 0.1f : (-0.1f), -2f);
                 // extraPositionAcceleration = new Vector2(0f, 0.14f);
-                frame = (frame + 1) % animLength;
+                frame = (frame + 1) % Data.AnimationLength;
             }
             // extraPosition += extraPositionMotion;
             // extraPositionMotion += extraPositionAcceleration;
-            if (hasLight && location.Equals(Game1.currentLocation))
+            if (Data.IsLightSource && location.Equals(Game1.currentLocation))
             {
                 Utility.repositionLightSource(lightID, base.Position - new Vector2(0f, height * 4f) + extraPosition);
             }
@@ -105,7 +86,7 @@ namespace TrinketTinker.Companions
         public override void InitializeCompanion(Farmer farmer)
         {
             base.InitializeCompanion(farmer);
-            if (hasLight)
+            if (Data.IsLightSource)
             {
                 lightID = Game1.random.Next();
                 Game1.currentLightSources.Add(new LightSource(1, base.Position, 2f, Color.Black, lightID, LightSource.LightContext.None, 0L));
@@ -115,7 +96,7 @@ namespace TrinketTinker.Companions
         public override void CleanupCompanion()
         {
             base.CleanupCompanion();
-            if (hasLight)
+            if (Data.IsLightSource)
             {
                 Utility.removeLightSource(lightID);
             }
@@ -127,7 +108,7 @@ namespace TrinketTinker.Companions
             extraPosition = Vector2.Zero;
             extraPositionMotion = Vector2.Zero;
             extraPositionAcceleration = Vector2.Zero;
-            if (hasLight)
+            if (Data.IsLightSource)
             {
                 lightID = Game1.random.Next();
                 Game1.currentLightSources.Add(new LightSource(1, base.Position, 2f, Color.Black, lightID, LightSource.LightContext.None, 0L));

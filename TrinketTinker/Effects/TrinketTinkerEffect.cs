@@ -2,41 +2,32 @@ using StardewValley.Objects;
 using StardewValley;
 using StardewValley.Monsters;
 using StardewValley.Companions;
-using Microsoft.VisualBasic;
-using Netcode;
+using TrinketTinker.Model;
 
 namespace TrinketTinker.Effects
 {
     /// <summary>
-    /// Base class for TrinketTinker trinkets, main purpose is to support spawning
-    /// arbiturary companions.
+    /// Base class for TrinketTinker trinkets
+    /// Support spawning arbiturary companions
     /// </summary>
     public class TrinketTinkerEffect : TrinketEffect
     {
-        protected Type? CompanionClass = null;
-        protected string? CompanionTexture = null;
+        protected CompanionModel? CompanionModel;
 
         public TrinketTinkerEffect(Trinket trinket)
             : base(trinket)
         {
-            if (trinket.GetTrinketMetadata("mushymato.TrinketTinker/CompanionClass") is string companionClassStr)
-            {
-                CompanionClass = Type.GetType(companionClassStr);
-                CompanionTexture = trinket.GetTrinketMetadata("mushymato.TrinketTinker/CompanionTexture");
-            }
+            ModEntry.CompanionData.TryGetValue(trinket.ItemId, out CompanionModel);
+            ModEntry.Log($"{CompanionModel}");
         }
 
         public override void Apply(Farmer farmer)
         {
-            if (CompanionClass != null)
+            if (CompanionModel != null)
             {
                 if (Game1.gameMode == 3)
                 {
-                    Companion? newCompanion = (Companion?)Activator.CreateInstance(
-                        CompanionClass,
-                        new object?[] { CompanionTexture }
-                    );
-                    if (newCompanion != null)
+                    if (CompanionModel.TryGetCompanion(out Companion? newCompanion))
                     {
                         _companion = newCompanion;
                         farmer.AddCompanion(_companion);
@@ -51,7 +42,6 @@ namespace TrinketTinker.Effects
             farmer.RemoveCompanion(_companion);
         }
 
-        // void out various functions that should not have been impl in a base class
         public override void OnDamageMonster(Farmer farmer, Monster monster, int damageAmount)
         {
         }

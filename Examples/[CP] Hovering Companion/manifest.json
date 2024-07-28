@@ -8,5 +8,11 @@
     "UpdateKeys": [],
     "ContentPackFor": {
         "UniqueID": "Pathoschild.ContentPatcher"
-    }
+    },
+    "Dependencies": [
+        {
+            "UniqueID": "mushymato.TrinketTinker",
+            "MinimumVersion": "0.1.0"
+        }
+    ]
 }
