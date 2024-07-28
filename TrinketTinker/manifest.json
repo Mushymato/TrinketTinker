@@ -1,0 +1,12 @@
+{
+    "Name": "Trinket Tinker",
+    "Author": "mushymato",
+    "Version": "0.1.0",
+    "MinimumApiVersion": "4.0.0",
+    "MinimumGameVersion": "1.6.0",
+    "Description": "Extends trinket functionality for content patcher",
+    "UniqueID": "mushymato.TrinketTinker",
+    "UpdateKeys": [],
+    "EntryDll": "TrinketTinker.dll",
+    "Dependencies": []
+}

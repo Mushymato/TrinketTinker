@@ -1,0 +1,12 @@
+{
+    "Name": "[CP] Hovering Companion",
+    "Author": "mushymato",
+    "Version": "1.0.0",
+    "Description": "Example trinket that spawns a hovering companion",
+    "UniqueID": "mushymato.TT.Example.Hovering",
+    "MinimumApiVersion": "4.0.0",
+    "UpdateKeys": [],
+    "ContentPackFor": {
+        "UniqueID": "Pathoschild.ContentPatcher"
+    }
+}

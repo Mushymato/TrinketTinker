@@ -1,0 +1,30 @@
+{
+  "Format": "2.3.0",
+  "Changes": [
+    {
+      "Action": "Load",
+      "Target": "Mod/{{ModId}}/Butterflies",
+      "FromFile": "assets/{{TargetWithoutPath}}.png"
+    },
+    {
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "HoveringTrinket": {
+          "ID": "HoveringTrinket",
+          "DisplayName": "Butterflies",
+          "Description": "Hovering Companion Example",
+          "Texture": "Mod/{{ModId}}/Butterflies",
+          "SheetIndex": 0,
+          "TrinketEffectClass": "TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker",
+          "DropsNaturally": false,
+          "CanBeReforged": false,
+          "TrinketMetadata": {
+            "mushymato.TrinketTinker/CompanionClass": "TrinketTinker.Companions.HoveringCompanion, TrinketTinker",
+            "mushymato.TrinketTinker/CompanionTexture": "Mod/{{ModId}}/Butterflies",
+          }
+        }
+      }
+    }
+  ]
+}

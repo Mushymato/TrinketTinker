@@ -1,0 +1,7 @@
+.vscode/
+*/bin/
+*/obj
+notes.txt
+*/config.json
+debug.csproj
+*.xcf
