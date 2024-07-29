@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using StardewValley.Companions;
 using StardewValley;
 using TrinketTinker.Model;
+using Netcode;
+using StardewValley.Network;
 
 
 namespace TrinketTinker.Companions
@@ -10,25 +12,46 @@ namespace TrinketTinker.Companions
     public class HoveringCompanion : Companion
     {
         // TrinketMetadata
-        protected CompanionModel Data { get; set; }
-
+        private readonly NetString Texture = new();
+        private readonly NetPoint Size = new();
+        private readonly NetInt AnimationLength = new();
+        private readonly NetFloat FrameDuration = new();
+        private readonly NetPoint HoverOffset = new();
+        public Vector2 HoverVec => new(HoverOffset.Value.X, -HoverOffset.Value.Y);
+        private readonly NetFloat LightRadius = new();
         // State
-        private Vector2 extraPosition;
-        private Vector2 extraPositionMotion;
-        private Vector2 extraPositionAcceleration;
-        private int lightID = 301579;
-        private float frameTimer = 0;
         private int frame = 0;
+        private float frameTimer = 0;
+        private int lightID = 0;
+
+        public HoveringCompanion()
+        {
+        }
 
         public HoveringCompanion(CompanionModel data)
         {
-            Data = data;
+            Texture.Value = data.Texture;
+            Size.Value = data.Size;
+            AnimationLength.Value = data.AnimationLength;
+            FrameDuration.Value = data.FrameDuration;
+            HoverOffset.Value = data.HoverOffset;
+            LightRadius.Value = data.LightRadius;
+
+            whichVariant.Value = data.Variant;
         }
 
-        // public override void InitNetFields()
-        // {
-        //     base.InitNetFields();
-        // }
+        public override void InitNetFields()
+        {
+            base.InitNetFields();
+            base.NetFields
+                .AddField(Texture, "Texture")
+                .AddField(Size, "Size")
+                .AddField(AnimationLength, "AnimationLength")
+                .AddField(FrameDuration, "FrameDuration")
+                .AddField(HoverOffset, "HoverOffset")
+                .AddField(LightRadius, "LightRadius")
+                ;
+        }
 
         public override void Draw(SpriteBatch b)
         {
@@ -36,15 +59,14 @@ namespace TrinketTinker.Companions
             {
                 return;
             }
-            Texture2D texture = Game1.content.Load<Texture2D>(Data.Texture);
+            Texture2D texture = Game1.content.Load<Texture2D>(Texture.Value);
             SpriteEffects effect = direction.Value == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-
             b.Draw(
                 texture,
-                Game1.GlobalToLocal(base.Position + base.Owner.drawOffset + new Vector2(0f, (0f - height) * 4f) + extraPosition),
+                Game1.GlobalToLocal(base.Position + base.Owner.drawOffset + HoverVec),
                 new Rectangle(
-                    frame * Data.Size.X, Data.Variant * Data.Size.Y,
-                    Data.Size.X, Data.Size.Y
+                    frame * Size.Value.X, whichVariant.Value * Size.Value.Y,
+                    Size.Value.X, Size.Value.Y
                 ),
                 Color.White, 0f, new Vector2(8f, 8f), 4f,
                 effect, _position.Y / 10000f
@@ -52,13 +74,13 @@ namespace TrinketTinker.Companions
 
             b.Draw(
                 Game1.shadowTexture,
-                Game1.GlobalToLocal(base.Position + base.Owner.drawOffset + new Vector2(extraPosition.X, 0f)),
+                Game1.GlobalToLocal(base.Position + base.Owner.drawOffset + new Vector2(HoverVec.X, 0f)),
                 Game1.shadowTexture.Bounds,
                 Color.White, 0f,
                 new Vector2(
-                    Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y),
-                    3f * Utility.Lerp(1f, 0.8f, Math.Min(height, 1f)
+                    Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y
                 ),
+                3f * Utility.Lerp(1f, 0.8f, Math.Min(Math.Abs(HoverVec.Y), 1f)),
                 SpriteEffects.None, (_position.Y - 8f) / 10000f - 2E-06f
             );
         }
@@ -66,37 +88,35 @@ namespace TrinketTinker.Companions
         public override void Update(GameTime time, GameLocation location)
         {
             base.Update(time, location);
-            height = 32f;
             frameTimer += (float)time.ElapsedGameTime.TotalMilliseconds;
-            if (frameTimer > Data.FrameDuration)
+            if (frameTimer > FrameDuration.Value)
             {
                 frameTimer = 0f;
-                // extraPositionMotion = new Vector2((Game1.random.NextDouble() < 0.5) ? 0.1f : (-0.1f), -2f);
-                // extraPositionAcceleration = new Vector2(0f, 0.14f);
-                frame = (frame + 1) % Data.AnimationLength;
+                frame = (frame + 1) % AnimationLength.Value;
             }
-            // extraPosition += extraPositionMotion;
-            // extraPositionMotion += extraPositionAcceleration;
-            if (Data.IsLightSource && location.Equals(Game1.currentLocation))
+            if (LightRadius.Value != 0f && location.Equals(Game1.currentLocation))
             {
-                Utility.repositionLightSource(lightID, base.Position - new Vector2(0f, height * 4f) + extraPosition);
+                Utility.repositionLightSource(lightID, base.Position + HoverVec);
             }
+        }
+
+        private void ApplyLight()
+        {
+            lightID = Game1.random.Next();
+            Game1.currentLightSources.Add(new LightSource(1, base.Position, LightRadius.Value, Color.Black, lightID));
         }
 
         public override void InitializeCompanion(Farmer farmer)
         {
             base.InitializeCompanion(farmer);
-            if (Data.IsLightSource)
-            {
-                lightID = Game1.random.Next();
-                Game1.currentLightSources.Add(new LightSource(1, base.Position, 2f, Color.Black, lightID, LightSource.LightContext.None, 0L));
-            }
+            if (LightRadius.Value != 0f)
+                ApplyLight();
         }
 
         public override void CleanupCompanion()
         {
             base.CleanupCompanion();
-            if (Data.IsLightSource)
+            if (LightRadius.Value != 0f)
             {
                 Utility.removeLightSource(lightID);
             }
@@ -105,14 +125,8 @@ namespace TrinketTinker.Companions
         public override void OnOwnerWarp()
         {
             base.OnOwnerWarp();
-            extraPosition = Vector2.Zero;
-            extraPositionMotion = Vector2.Zero;
-            extraPositionAcceleration = Vector2.Zero;
-            if (Data.IsLightSource)
-            {
-                lightID = Game1.random.Next();
-                Game1.currentLightSources.Add(new LightSource(1, base.Position, 2f, Color.Black, lightID, LightSource.LightContext.None, 0L));
-            }
+            if (LightRadius.Value != 0f)
+                ApplyLight();
         }
 
         public override void Hop(float amount)

@@ -18,7 +18,6 @@ namespace TrinketTinker.Effects
             : base(trinket)
         {
             ModEntry.CompanionData.TryGetValue(trinket.ItemId, out CompanionModel);
-            ModEntry.Log($"{CompanionModel}");
         }
 
         public override void Apply(Farmer farmer)

@@ -3,18 +3,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley.Companions;
 using StardewValley;
+using Netcode;
+
 
 namespace TrinketTinker.Model
 {
     public class CompanionModel
     {
-        //   "ID": "{{ModId}}_ButterflyTrinket1",
-        //   "CompanionClass": "TrinketTinker.Companions.HoveringCompanion, TrinketTinker",
-        //   "Texture": "Mod/{{ModId}}/Butterflies",
-        //   "FrameRate": 24,
-        //   "Variant": 0
-        //   // "SpriteSize": { "X": 16, // width "Y": 16 // height }, // default 16x16
-        //   // "AnimationLength": 4 // derived from texture and sprite size if not given
         public string ID { get; set; } = "";
         public string CompanionClass { get; set; } = "";
         public string Texture { get; set; } = "";
@@ -22,8 +17,9 @@ namespace TrinketTinker.Model
         public int AnimationLength { get; set; } = 0;
         public int FrameRate { get; set; } = 1;
         public float FrameDuration { get; set; } = 0;
+        public Point HoverOffset { get; set; } = Point.Zero;
         public int Variant { get; set; } = 0;
-        public bool IsLightSource = false;
+        public float LightRadius = 0f;
 
         public bool TryGetCompanion([NotNullWhen(true)] out Companion? companion)
         {
@@ -40,7 +36,7 @@ namespace TrinketTinker.Model
             Type? companionCls = Type.GetType(CompanionClass);
             if (companionCls == null)
                 return false;
-            companion = (Companion?)Activator.CreateInstance(companionCls, new object[] { this });
+            companion = (Companion?)Activator.CreateInstance(companionCls, this);
             return companion != null;
         }
 

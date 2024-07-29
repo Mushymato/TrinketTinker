@@ -9,16 +9,23 @@
           "ID": "{{ModId}}_ButterflyTrinket1",
           "CompanionClass": "TrinketTinker.Companions.HoveringCompanion, TrinketTinker",
           "Texture": "Mod/{{ModId}}/Butterflies",
-          "FrameRate": 24,
-          "Variant": 0
-          // "SpriteSize": { "X": 16, // width "Y": 16 // height }, // default 16x16
+          // "Size": { "X": 16, // width "Y": 16 // height }, // default 16x16
+          "FrameRate": 12,
+          "Variant": 0,
+          "LightRadius": 4,
+          "HoverOffset": {
+            "Y": 128
+          }
         },
         "{{ModId}}_ButterflyTrinket2": {
           "ID": "{{ModId}}_ButterflyTrinket2",
           "CompanionClass": "TrinketTinker.Companions.HoveringCompanion, TrinketTinker",
           "Texture": "Mod/{{ModId}}/Butterflies",
-          "FrameRate": 24,
-          "Variant": 1
+          "FrameRate": 12,
+          "Variant": 1,
+          "HoverOffset": {
+            "Y": 128
+          }
         }
       }
     }

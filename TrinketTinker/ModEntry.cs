@@ -21,7 +21,7 @@ namespace TrinketTinker
                 if (_companionData == null)
                 {
                     _companionData = Game1.content.Load<Dictionary<string, CompanionModel>>(CompanionAsset);
-                    Log($"Load {CompanionAsset}, got {_companionData.Count} entries");
+                    LogOnce($"Load {CompanionAsset}, got {_companionData.Count} entries");
                 }
                 return _companionData;
             }
@@ -43,11 +43,10 @@ namespace TrinketTinker
             mon!.Log(msg, level);
         }
 
-        // private static void OnGameLaunched(object? sender, GameLaunchedEventArgs e)
-        // {
-        //     LoadCompanionData();
-        //     Log($"Load {CompanionAsset}, got {CompanionData.Count} entries");
-        // }
+        public static void LogOnce(string msg, LogLevel level = LogLevel.Debug)
+        {
+            mon!.LogOnce(msg, level);
+        }
 
         private static void OnAssetRequested(object? sender, AssetRequestedEventArgs e)
         {
