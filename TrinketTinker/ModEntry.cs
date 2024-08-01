@@ -1,8 +1,6 @@
 ﻿using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
-using StardewValley.Objects;
-using TrinketTinker.Effects;
 using TrinketTinker.Model;
 
 namespace TrinketTinker

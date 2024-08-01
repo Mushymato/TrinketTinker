@@ -7,6 +7,12 @@ using StardewValley;
 
 namespace TrinketTinker.Model
 {
+    public enum MotionMode
+    {
+        Stationary = 0,
+
+        Orbital = 0
+    }
     public class CompanionModel
     {
         public string ID { get; set; } = "";
@@ -16,9 +22,6 @@ namespace TrinketTinker.Model
         public int FramesPerAnimation { get; set; } = 0;
         public int FrameRate { get; set; } = 1;
         public float FrameInterval { get; set; } = 0;
-        public Point HoverOffset { get; set; } = Point.Zero;
-        public int Variant { get; set; } = 0;
-        public float LightRadius = 0f;
 
         public bool TryGetCompanion([NotNullWhen(true)] out Companion? companion)
         {
@@ -37,11 +40,6 @@ namespace TrinketTinker.Model
                 return false;
             companion = (Companion?)Activator.CreateInstance(companionCls, this);
             return companion != null;
-        }
-
-        public override string ToString()
-        {
-            return $"{CompanionClass}: {Texture} Variant {Variant}";
         }
     }
 }

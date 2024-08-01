@@ -1,30 +1,22 @@
 {
   "Changes": [
-    // Edit custom asset for defining a companion separate from trinket effect
+    // Edit Mods/mushymato.TrinketTinker/Companion for defining a companion separate from trinket effect
     {
       "Action": "EditData",
       "Target": "Mods/mushymato.TrinketTinker/Companion",
       "Entries": {
         "{{ModId}}_ButterflyTrinket1": {
           "ID": "{{ModId}}_ButterflyTrinket1",
-          "CompanionClass": "TrinketTinker.Companions.HoveringCompanion, TrinketTinker",
+          "CompanionClass": "TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker",
           "Texture": "Mod/{{ModId}}/Butterflies",
           "FrameRate": 12,
-          "FramesPerAnimation": 4,
-          "LightRadius": 4,
-          "HoverOffset": {
-            "Y": 128
-          },
+          "FramesPerAnimation": 4
         },
         "{{ModId}}_ButterflyTrinket2": {
           "ID": "{{ModId}}_ButterflyTrinket2",
-          "CompanionClass": "TrinketTinker.Companions.HoveringCompanion, TrinketTinker",
+          "CompanionClass": "TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker",
           "Texture": "Mod/{{ModId}}/Butterflies",
-          "FrameRate": 12,
-          "Variant": 1,
-          "HoverOffset": {
-            "Y": 128
-          }
+          "FrameRate": 12
         }
       }
     }
