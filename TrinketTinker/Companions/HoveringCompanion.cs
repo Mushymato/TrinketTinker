@@ -12,16 +12,13 @@ namespace TrinketTinker.Companions
     public class HoveringCompanion : Companion
     {
         // TrinketMetadata
-        private readonly NetString Texture = new();
-        private readonly NetPoint Size = new();
-        private readonly NetInt AnimationLength = new();
-        private readonly NetFloat FrameDuration = new();
+        private readonly NetRef<AnimatedSprite> Sprite = new();
+        private readonly NetFloat Interval = new(100f);
+        private readonly NetInt FramesPerAnimation = new();
         private readonly NetPoint HoverOffset = new();
         public Vector2 HoverVec => new(HoverOffset.Value.X, -HoverOffset.Value.Y);
         private readonly NetFloat LightRadius = new();
         // State
-        private int frame = 0;
-        private float frameTimer = 0;
         private int lightID = 0;
 
         public HoveringCompanion()
@@ -30,27 +27,26 @@ namespace TrinketTinker.Companions
 
         public HoveringCompanion(CompanionModel data)
         {
-            Texture.Value = data.Texture;
-            Size.Value = data.Size;
-            AnimationLength.Value = data.AnimationLength;
-            FrameDuration.Value = data.FrameDuration;
+            whichVariant.Value = data.Variant;
+
+            var animSprite = new AnimatedSprite(data.Texture, 0, data.Size.X, data.Size.Y);
+            Interval.Value = data.FrameInterval;
+            FramesPerAnimation.Value = data.FramesPerAnimation;
+            Sprite.Value = animSprite;
             HoverOffset.Value = data.HoverOffset;
             LightRadius.Value = data.LightRadius;
-
-            whichVariant.Value = data.Variant;
         }
 
         public override void InitNetFields()
         {
             base.InitNetFields();
-            base.NetFields
-                .AddField(Texture, "Texture")
-                .AddField(Size, "Size")
-                .AddField(AnimationLength, "AnimationLength")
-                .AddField(FrameDuration, "FrameDuration")
+            NetFields
+                .AddField(Sprite, "Sprite")
+                .AddField(Interval, "Interval")
+                .AddField(FramesPerAnimation, "FramesPerAnimation")
                 .AddField(HoverOffset, "HoverOffset")
                 .AddField(LightRadius, "LightRadius")
-                ;
+            ;
         }
 
         public override void Draw(SpriteBatch b)
@@ -59,15 +55,11 @@ namespace TrinketTinker.Companions
             {
                 return;
             }
-            Texture2D texture = Game1.content.Load<Texture2D>(Texture.Value);
             SpriteEffects effect = direction.Value == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
             b.Draw(
-                texture,
+                Sprite.Value.Texture,
                 Game1.GlobalToLocal(base.Position + base.Owner.drawOffset + HoverVec),
-                new Rectangle(
-                    frame * Size.Value.X, whichVariant.Value * Size.Value.Y,
-                    Size.Value.X, Size.Value.Y
-                ),
+                Sprite.Value.SourceRect,
                 Color.White, 0f, new Vector2(8f, 8f), 4f,
                 effect, _position.Y / 10000f
             );
@@ -88,11 +80,15 @@ namespace TrinketTinker.Companions
         public override void Update(GameTime time, GameLocation location)
         {
             base.Update(time, location);
-            frameTimer += (float)time.ElapsedGameTime.TotalMilliseconds;
-            if (frameTimer > FrameDuration.Value)
+            ModEntry.LogOnce($"DEBUG: {FramesPerAnimation.Value}, {Interval.Value}");
+            if (Interval.Value > 0)
             {
-                frameTimer = 0f;
-                frame = (frame + 1) % AnimationLength.Value;
+                Sprite.Value.Animate(
+                    time,
+                    whichVariant.Value * FramesPerAnimation.Value,
+                    FramesPerAnimation.Value,
+                    Interval.Value
+                );
             }
             if (LightRadius.Value != 0f && location.Equals(Game1.currentLocation))
             {
