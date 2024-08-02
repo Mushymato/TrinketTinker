@@ -1,8 +1,8 @@
 using StardewValley.Objects;
 using StardewValley;
 using StardewValley.Monsters;
-using StardewValley.Companions;
 using TrinketTinker.Model;
+using TrinketTinker.Companions;
 
 namespace TrinketTinker.Effects
 {
@@ -12,25 +12,28 @@ namespace TrinketTinker.Effects
     /// </summary>
     public class TrinketTinkerEffect : TrinketEffect
     {
-        protected CompanionModel? CompanionModel;
+        protected CompanionData? CompanionData;
 
         public TrinketTinkerEffect(Trinket trinket)
             : base(trinket)
         {
-            ModEntry.CompanionData.TryGetValue(trinket.ItemId, out CompanionModel);
+            ModEntry.CompanionData.TryGetValue(trinket.ItemId, out CompanionData);
         }
 
         public override void Apply(Farmer farmer)
         {
-            if (CompanionModel != null)
+            if (CompanionData != null)
             {
                 if (Game1.gameMode == 3)
                 {
-                    if (CompanionModel.TryGetCompanion(out Companion? newCompanion))
+                    if (CompanionData.CompanionClass != null &&
+                        Type.GetType(CompanionData.CompanionClass) is Type companionCls)
+                        _companion = (TrinketTinkerCompanion?)Activator.CreateInstance(companionCls, _trinket.ItemId);
+                    else
                     {
-                        _companion = newCompanion;
-                        farmer.AddCompanion(_companion);
+                        _companion = new TrinketTinkerCompanion(_trinket.ItemId);
                     }
+                    farmer.AddCompanion(_companion);
                 }
                 base.Apply(farmer);
             }

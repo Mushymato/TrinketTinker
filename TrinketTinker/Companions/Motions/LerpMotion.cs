@@ -1,12 +1,12 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
+using TrinketTinker.Model;
 
 namespace TrinketTinker.Companions.Motions
 {
     public class LerpMotion : Motion
     {
-        public LerpMotion(TrinketTinkerCompanion companion) : base(companion) { }
+        public LerpMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data) { }
         public override void UpdateLocal(GameTime time, GameLocation location)
         {
             // Copied from Companion.Update's IsLocal block
@@ -43,21 +43,7 @@ namespace TrinketTinker.Companions.Motions
                     }
                     c.lerp = 0f;
                     // hopEvent.Fire(1f);
-                    Vector2 posDelta = c.Anchor - c.Position;
-                    if (Math.Abs(posDelta.X) > Math.Abs(posDelta.Y))
-                    {
-                        if (Math.Abs(posDelta.X) > 8f)
-                        {
-                            c.direction.Value = (c.Anchor.X > c.Position.X) ? 1 : 3;
-                        }
-                    }
-                    else
-                    {
-                        if (Math.Abs(posDelta.Y) > 8f)
-                        {
-                            c.direction.Value = (c.Anchor.Y > c.Position.Y) ? 0 : 2;
-                        }
-                    }
+                    UpdateDirection();
                 }
             }
             if (c.lerp >= 0f)
@@ -76,13 +62,6 @@ namespace TrinketTinker.Companions.Motions
                 }
             }
             c.Moving = c.lerp >= 0;
-        }
-
-        public override void UpdateGlobal(GameTime time, GameLocation location)
-        {
-            base.UpdateGlobal(time, location);
-            _drawOffset = c.Owner.drawOffset;
-            _drawOffset.Y -= 128;
         }
     }
 }

@@ -1,23 +1,17 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
+using TrinketTinker.Model;
 
 namespace TrinketTinker.Companions.Motions
 {
     public class StaticMotion : Motion
     {
-        public StaticMotion(TrinketTinkerCompanion companion) : base(companion) { }
+        public StaticMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data) { }
         public override void UpdateLocal(GameTime time, GameLocation location)
         {
             c.lerp = -1;
             c.Moving = false;
             c.Position = c.Owner.Position;
-        }
-
-        public override void UpdateGlobal(GameTime time, GameLocation location)
-        {
-            base.UpdateGlobal(time, location);
-            _drawOffset = new Vector2(0f, -64f);
         }
     }
 }

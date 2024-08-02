@@ -8,15 +8,50 @@
         // ID must match trinket
         "{{ModId}}_ButterflyTrinket": {
           "ID": "{{ModId}}_ButterflyTrinket",
-          "CompanionClass": "TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker",
-          "Texture": "Mods/{{ModId}}/Butterflies",
-          "FrameRate": 12,
+          // "CompanionClass": "TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker",
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/Butterflies2",
+              "Width": 16,
+              "Height": 16
+            },
+            {
+              "Texture": "Mods/{{ModId}}/Butterflies1",
+              "Width": 16,
+              "Height": 16
+            },
+          ],
+          "Motions": {
+            "default": {
+              "MotionClass": "Lerp",
+              "AlwaysMoving": true,
+              "DirectionMode": "LR",
+              "AnimationFrameLength": 4,
+              "Interval": 100,
+              "DrawOffsetY": -128,
+            }
+          }
         },
         "{{ModId}}_DinosaurTrinket": {
           "ID": "{{ModId}}_DinosaurTrinket",
-          "CompanionClass": "TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker",
-          "Texture": "Mods/{{ModId}}/Dinosaur",
-          "FrameInterval": 100,
+          // "CompanionClass": "TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker",
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/Dinosaur",
+              "Width": 16,
+              "Height": 16
+            },
+          ],
+          "Motions": {
+            "default": {
+              "Condition": null,
+              // "Type": "Lerp",
+              "AlwaysMoving": false,
+              "DirectionMode": "UDLR",
+              "AnimationFrameLength": 4,
+              "Interval": 100,
+            }
+          }
         }
       }
     }

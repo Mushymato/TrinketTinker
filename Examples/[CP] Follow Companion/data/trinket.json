@@ -9,7 +9,7 @@
           "ID": "{{ModId}}_ButterflyTrinket",
           "DisplayName": "Butterfly",
           "Description": "Companion Example",
-          "Texture": "Mods/{{ModId}}/Butterflies",
+          "Texture": "Mods/{{ModId}}/Butterflies1",
           "SheetIndex": 0,
           "DropsNaturally": false,
           "CanBeReforged": false,

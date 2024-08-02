@@ -1,8 +1,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StardewValley.Companions;
+using StardewModdingAPI;
 using Netcode;
 using StardewValley;
+using StardewValley.Companions;
 using TrinketTinker.Model;
 using TrinketTinker.Companions.Motions;
 
@@ -12,12 +13,9 @@ namespace TrinketTinker.Companions
     public class TrinketTinkerCompanion : Companion
     {
         // NetFields + Getters
-        protected readonly NetRef<AnimatedSprite> _sprite = new();
-        public AnimatedSprite Sprite => _sprite.Value;
-        protected readonly NetFloat _interval = new(100f);
-        public float Interval => _interval.Value;
-        protected readonly NetInt _framesPerAnimation = new();
-        public int FramesPerAnimation => _framesPerAnimation.Value;
+        protected readonly NetString _id = new("");
+        public string ID => _id.Value;
+        public AnimatedSprite Sprite { get; set; } = new();
         protected readonly NetBool _moving = new(false);
         public bool Moving
         {
@@ -30,8 +28,9 @@ namespace TrinketTinker.Companions
                 _moving.Value = value;
             }
         }
-        protected readonly NetString _currentMotion = new("");
-        public Motion? Motion { get; set; }
+        public CompanionData? Data;
+        public Motion? Motion
+        { get; set; }
         // State
         public Vector2 Anchor
         {
@@ -43,15 +42,17 @@ namespace TrinketTinker.Companions
 
         public TrinketTinkerCompanion() : base()
         {
+            ModEntry.Log($"TrinketTinkerCompanion.ctor(): {ID}");
         }
 
-        public TrinketTinkerCompanion(CompanionModel data)
+        public TrinketTinkerCompanion(string companionId)
         {
-            _sprite.Value = new AnimatedSprite(data.Texture, 0, data.Size.X, data.Size.Y);
-            _interval.Value = data.FrameInterval;
-            _framesPerAnimation.Value = data.FramesPerAnimation;
+            // _sprite.Value = new AnimatedSprite(data.Texture, 0, data.Size.X, data.Size.Y);
+            // _interval.Value = data.FrameInterval;
+            // _framesPerAnimation.Value = data.FramesPerAnimation;
+            _id.Value = companionId;
             _moving.Value = false;
-            _currentMotion.Value = typeof(LerpMotion).AssemblyQualifiedName;
+            whichVariant.Value = 0;
         }
 
         public override void InitializeCompanion(Farmer farmer)
@@ -69,28 +70,37 @@ namespace TrinketTinker.Companions
         {
             base.InitNetFields();
             NetFields
-                .AddField(_sprite, "_sprite")
-                .AddField(_interval, "_interval")
-                .AddField(_framesPerAnimation, "_framesPerAnimation")
+                .AddField(_id, "_id")
                 .AddField(_moving, "_moving")
-                .AddField(_currentMotion, "_motionClass")
+            // .AddField(_currentMotion, "_motionClass")
             ;
-            _moving.fieldChangeEvent += NetSetMoving;
-            _currentMotion.fieldChangeEvent += InitMotion;
+            _id.fieldChangeEvent += InitCompanionData;
+            _moving.fieldChangeEvent += (NetBool field, bool oldValue, bool newValue) => { _moving.Value = newValue; };
         }
 
-        public virtual void NetSetMoving(NetBool field, bool oldValue, bool newValue)
+        private void InitCompanionData(NetString field, string oldValue, string newValue)
         {
-            _moving.Value = newValue;
-        }
-
-        public virtual void InitMotion(NetString field, string oldValue, string newValue)
-        {
-            _currentMotion.Value = newValue;
-            Type? motionCls = Type.GetType(_currentMotion.Value);
-            if (motionCls != null)
+            ModEntry.LogOnce($"InitCompanionData({newValue})");
+            _id.Value = newValue;
+            if (!ModEntry.CompanionData.TryGetValue(_id.Value, out Data))
             {
-                Motion = (Motion?)Activator.CreateInstance(motionCls, this);
+                ModEntry.Log($"Failed to get companion data for ${_id.Value}", LogLevel.Error);
+                return;
+            }
+            VariantData vdata = Data.Variants[whichVariant.Value];
+            Sprite = new AnimatedSprite(vdata.Texture, 0, vdata.Width, vdata.Height);
+
+            // Interval = Data.FrameInterval;
+            // FramesPerAnimation = Data.FramesPerAnimation;
+            MotionData mdata = Data.Motions["default"];
+            if (mdata.MotionClass != null &&
+                Type.GetType($"TrinketTinker.Companions.Motions.{mdata.MotionClass}Motion, TrinketTinker") is Type motionCls)
+            {
+                Motion = (Motion?)Activator.CreateInstance(motionCls, this, mdata);
+            }
+            else
+            {
+                Motion = new LerpMotion(this, mdata);
             }
         }
 
@@ -100,12 +110,13 @@ namespace TrinketTinker.Companions
             {
                 return;
             }
+
             b.Draw(
                 Sprite.Texture,
-                Game1.GlobalToLocal(Position + Motion!.DrawOffset),
+                Game1.GlobalToLocal(Position + Owner.drawOffset + Motion!.DrawOffset),
                 Sprite.SourceRect,
                 Color.White, 0f, new Vector2(8f, 8f), 4f,
-                SpriteEffects.None,
+                (direction.Value == 30) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
                 _position.Y / 10000f
             );
 
@@ -117,7 +128,7 @@ namespace TrinketTinker.Companions
                 new Vector2(
                     Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y
                 ),
-                3f,
+                3f * Utility.Lerp(1f, 0.8f, Math.Min(height, 1f)),
                 SpriteEffects.None, (_position.Y - 8f) / 10000f - 2E-06f
             );
         }

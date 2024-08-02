@@ -11,14 +11,14 @@ namespace TrinketTinker
         public static string ModId { get; set; } = "";
         public static string CompanionAsset => $"Mods/{ModId}/Companion";
 
-        private static Dictionary<string, CompanionModel>? _companionData = null;
-        public static Dictionary<string, CompanionModel> CompanionData
+        private static Dictionary<string, CompanionData>? _companionData = null;
+        public static Dictionary<string, CompanionData> CompanionData
         {
             get
             {
                 if (_companionData == null)
                 {
-                    _companionData = Game1.content.Load<Dictionary<string, CompanionModel>>(CompanionAsset);
+                    _companionData = Game1.content.Load<Dictionary<string, CompanionData>>(CompanionAsset);
                     LogOnce($"Load {CompanionAsset}, got {_companionData.Count} entries");
                 }
                 return _companionData;
@@ -33,7 +33,13 @@ namespace TrinketTinker
 
             // helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.Content.AssetRequested += OnAssetRequested;
-            // helper.Events.Content.AssetReady += OnAssetReady;
+            helper.Events.Content.AssetsInvalidated += OnAssetInvalidated;
+
+            helper.ConsoleCommands.Add(
+                "reload_trinkets",
+                "Invalidate trinkets and companions (but not textures).",
+                ConsoleReloadTrinkets
+            );
         }
 
         public static void Log(string msg, LogLevel level = LogLevel.Debug)
@@ -51,8 +57,22 @@ namespace TrinketTinker
             if (e.Name.IsEquivalentTo(CompanionAsset))
             {
                 _companionData = null;
-                e.LoadFrom(() => new Dictionary<string, CompanionModel>(), AssetLoadPriority.Low);
+                e.LoadFrom(() => new Dictionary<string, CompanionData>(), AssetLoadPriority.Exclusive);
             }
+        }
+
+        private static void OnAssetInvalidated(object? sender, AssetsInvalidatedEventArgs e)
+        {
+            if (e.NamesWithoutLocale.Any(an => an.IsEquivalentTo(CompanionAsset)))
+            {
+                _companionData = null;
+            }
+        }
+
+        private void ConsoleReloadTrinkets(string command, string[] args)
+        {
+            Helper.GameContent.InvalidateCache("Data/Trinkets");
+            Helper.GameContent.InvalidateCache(CompanionAsset);
         }
     }
 }
