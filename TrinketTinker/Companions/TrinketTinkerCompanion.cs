@@ -15,7 +15,8 @@ namespace TrinketTinker.Companions
         protected readonly NetRef<AnimatedSprite> _sprite = new();
         protected readonly NetFloat _interval = new(100f);
         protected readonly NetInt _framesPerAnimation = new();
-        protected readonly NetString _motionClass = new("");
+        protected readonly NetString _currentMotion = new("");
+        protected readonly NetVector2 _drawOffset = new(Vector2.Zero);
 
         public AnimatedSprite Sprite => _sprite.Value;
         public SpriteEffects Orientation
@@ -41,6 +42,7 @@ namespace TrinketTinker.Companions
             }
         }
         public Motion? Motion { get; set; }
+        public float motionTimer = 0;
 
         public TrinketTinkerCompanion() : base()
         {
@@ -51,17 +53,12 @@ namespace TrinketTinker.Companions
             _sprite.Value = new AnimatedSprite(data.Texture, 0, data.Size.X, data.Size.Y);
             _interval.Value = data.FrameInterval;
             _framesPerAnimation.Value = data.FramesPerAnimation;
-            _motionClass.Value = typeof(LinearMotion).AssemblyQualifiedName;
+            _currentMotion.Value = typeof(LerpMotion).AssemblyQualifiedName;
         }
 
         public override void InitializeCompanion(Farmer farmer)
         {
             base.InitializeCompanion(farmer);
-            Type? motionCls = Type.GetType(_motionClass.Value);
-            if (motionCls != null)
-            {
-                Motion = (Motion?)Activator.CreateInstance(motionCls, this);
-            }
         }
 
         public override void CleanupCompanion()
@@ -77,7 +74,19 @@ namespace TrinketTinker.Companions
                 .AddField(_sprite, "_sprite")
                 .AddField(_interval, "_interval")
                 .AddField(_framesPerAnimation, "_framesPerAnimation")
+                .AddField(_currentMotion, "_motionClass")
             ;
+            _currentMotion.fieldChangeEvent += InitMotion;
+        }
+
+        public virtual void InitMotion(NetString field, string oldValue, string newValue)
+        {
+            _currentMotion.Value = newValue;
+            Type? motionCls = Type.GetType(_currentMotion.Value);
+            if (motionCls != null)
+            {
+                Motion = (Motion?)Activator.CreateInstance(motionCls, this);
+            }
         }
 
         public override void Draw(SpriteBatch b)
@@ -88,7 +97,7 @@ namespace TrinketTinker.Companions
             }
             b.Draw(
                 Sprite.Texture,
-                Game1.GlobalToLocal(Position + Owner.drawOffset),
+                Game1.GlobalToLocal(Position + Motion!.DrawOffset),
                 Sprite.SourceRect,
                 Color.White, 0f, new Vector2(8f, 8f), 4f,
                 Orientation, _position.Y / 10000f
@@ -102,77 +111,28 @@ namespace TrinketTinker.Companions
                 new Vector2(
                     Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y
                 ),
-                3f * Utility.Lerp(1f, 0.8f, 1f),
+                3f,
                 SpriteEffects.None, (_position.Y - 8f) / 10000f - 2E-06f
             );
         }
-
-        // public void UpdateLerpPosition(GameTime time, GameLocation location)
-        // {
-        //     // Copied from Companion.Update's IsLocal block
-        //     if (lerp < 0f)
-        //     {
-        //         if ((Anchor - Position).Length() > 768f)
-        //         {
-        //             Utility.addRainbowStarExplosion(location, Position + new Vector2(0f, 0f - height), 1);
-        //             Position = Owner.Position;
-        //             lerp = -1f;
-        //         }
-        //         if ((Anchor - Position).Length() > 80f)
-        //         {
-        //             startPosition = Position;
-        //             float radius = 0.33f;
-        //             endPosition = Anchor + new Vector2(
-        //                 Utility.RandomFloat(-64f, 64f) * radius,
-        //                 Utility.RandomFloat(-64f, 64f) * radius
-        //             );
-        //             if (location.isCollidingPosition(
-        //                     new Rectangle((int)endPosition.X - 8,
-        //                     (int)endPosition.Y - 8, 16, 16),
-        //                     Game1.viewport,
-        //                     isFarmer: false,
-        //                     0,
-        //                     glider: false,
-        //                     null,
-        //                     pathfinding: true,
-        //                     projectile: false,
-        //                     ignoreCharacterRequirement: true
-        //                 ))
-        //             {
-        //                 endPosition = Anchor;
-        //             }
-        //             lerp = 0f;
-        //             // hopEvent.Fire(1f);
-        //             if (Math.Abs(Anchor.X - Position.X) > 8f)
-        //             {
-        //                 _orientation.Value = (Anchor.X > Position.X) ? 1 : 3;
-        //             }
-        //         }
-        //     }
-        //     if (lerp >= 0f)
-        //     {
-        //         lerp += (float)time.ElapsedGameTime.TotalSeconds / 0.4f;
-        //         if (lerp > 1f)
-        //         {
-        //             lerp = 1f;
-        //         }
-        //         float x = Utility.Lerp(startPosition.X, endPosition.X, lerp);
-        //         float y = Utility.Lerp(startPosition.Y, endPosition.Y, lerp);
-        //         Position = new Vector2(x, y);
-        //         if (lerp == 1f)
-        //         {
-        //             lerp = -1f;
-        //         }
-        //     }
-        // }
 
         public override void Update(GameTime time, GameLocation location)
         {
             // if (IsLocal)
             //     UpdateLerpPosition(time, location);
+            motionTimer += (float)time.ElapsedGameTime.TotalMilliseconds;
+            if (motionTimer >= 5000f)
+            {
+                motionTimer = 0f;
+                if (Motion is LerpMotion)
+                    _currentMotion.Value = typeof(StaticMotion).AssemblyQualifiedName;
+                else
+                    _currentMotion.Value = typeof(LerpMotion).AssemblyQualifiedName;
+            }
+
             if (IsLocal)
-                Motion!.Update(time, location);
-            Sprite.Animate(time, 0, FramesPerAnimation, Interval);
+                Motion!.UpdateLocal(time, location);
+            Motion!.UpdateGlobal(time, location);
             // if (LightRadius.Value != 0f && location.Equals(Game1.currentLocation))
             // {
             //     Utility.repositionLightSource(lightID, Position);

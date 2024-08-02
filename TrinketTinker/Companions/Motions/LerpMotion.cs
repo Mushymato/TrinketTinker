@@ -4,10 +4,10 @@ using StardewValley;
 
 namespace TrinketTinker.Companions.Motions
 {
-    public class LinearMotion : Motion
+    public class LerpMotion : Motion
     {
-        public LinearMotion(TrinketTinkerCompanion companion) : base(companion) { }
-        public override void Update(GameTime time, GameLocation location)
+        public LerpMotion(TrinketTinkerCompanion companion) : base(companion) { }
+        public override void UpdateLocal(GameTime time, GameLocation location)
         {
             // Copied from Companion.Update's IsLocal block
             if (c.lerp < 0f)
@@ -66,5 +66,11 @@ namespace TrinketTinker.Companions.Motions
             }
         }
 
+        public override void UpdateGlobal(GameTime time, GameLocation location)
+        {
+            base.UpdateGlobal(time, location);
+            _drawOffset = c.Owner.drawOffset;
+            _drawOffset.Y -= 128;
+        }
     }
 }

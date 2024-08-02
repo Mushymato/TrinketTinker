@@ -5,23 +5,13 @@
       "Action": "EditData",
       "Target": "Data/Trinkets",
       "Entries": {
-        "{{ModId}}_ButterflyTrinket1": {
-          "ID": "{{ModId}}_ButterflyTrinket1",
-          "DisplayName": "Butterfly 1",
-          "Description": "Hovering Companion Example 1",
+        "{{ModId}}_ButterflyTrinket": {
+          "ID": "{{ModId}}_ButterflyTrinket",
+          "DisplayName": "Butterfly",
+          "Description": "Companion Example",
           "Texture": "Mod/{{ModId}}/Butterflies",
           "SheetIndex": 0,
           // Custom trinket effect class required for features of this mod
-          "TrinketEffectClass": "TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker",
-          "DropsNaturally": false,
-          "CanBeReforged": false
-        },
-        "{{ModId}}_ButterflyTrinket2": {
-          "ID": "{{ModId}}_ButterflyTrinket2",
-          "DisplayName": "Butterfly 2",
-          "Description": "Hovering Companion Example 2",
-          "Texture": "Mod/{{ModId}}/Butterflies",
-          "SheetIndex": 4,
           "TrinketEffectClass": "TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker",
           "DropsNaturally": false,
           "CanBeReforged": false

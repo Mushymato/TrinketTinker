@@ -5,18 +5,12 @@
       "Action": "EditData",
       "Target": "Mods/mushymato.TrinketTinker/Companion",
       "Entries": {
-        "{{ModId}}_ButterflyTrinket1": {
-          "ID": "{{ModId}}_ButterflyTrinket1",
+        "{{ModId}}_ButterflyTrinket": {
+          "ID": "{{ModId}}_ButterflyTrinket",
           "CompanionClass": "TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker",
           "Texture": "Mod/{{ModId}}/Butterflies",
-          "FrameRate": 12,
+          // "FrameRate": 12,
           "FramesPerAnimation": 4
-        },
-        "{{ModId}}_ButterflyTrinket2": {
-          "ID": "{{ModId}}_ButterflyTrinket2",
-          "CompanionClass": "TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker",
-          "Texture": "Mod/{{ModId}}/Butterflies",
-          "FrameRate": 12
         }
       }
     }
