@@ -43,9 +43,20 @@ namespace TrinketTinker.Companions.Motions
                     }
                     c.lerp = 0f;
                     // hopEvent.Fire(1f);
-                    if (Math.Abs(c.Anchor.X - c.Position.X) > 8f)
+                    Vector2 posDelta = c.Anchor - c.Position;
+                    if (Math.Abs(posDelta.X) > Math.Abs(posDelta.Y))
                     {
-                        c.direction.Value = (int)((c.Anchor.X > c.Position.X) ? SpriteEffects.None : SpriteEffects.FlipHorizontally);
+                        if (Math.Abs(posDelta.X) > 8f)
+                        {
+                            c.direction.Value = (c.Anchor.X > c.Position.X) ? 1 : 3;
+                        }
+                    }
+                    else
+                    {
+                        if (Math.Abs(posDelta.Y) > 8f)
+                        {
+                            c.direction.Value = (c.Anchor.Y > c.Position.Y) ? 0 : 2;
+                        }
                     }
                 }
             }
@@ -64,6 +75,7 @@ namespace TrinketTinker.Companions.Motions
                     c.lerp = -1f;
                 }
             }
+            c.Moving = c.lerp >= 0;
         }
 
         public override void UpdateGlobal(GameTime time, GameLocation location)

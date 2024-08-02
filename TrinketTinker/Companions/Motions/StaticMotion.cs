@@ -9,6 +9,8 @@ namespace TrinketTinker.Companions.Motions
         public StaticMotion(TrinketTinkerCompanion companion) : base(companion) { }
         public override void UpdateLocal(GameTime time, GameLocation location)
         {
+            c.lerp = -1;
+            c.Moving = false;
             c.Position = c.Owner.Position;
         }
 

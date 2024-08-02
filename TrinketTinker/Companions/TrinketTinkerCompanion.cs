@@ -13,26 +13,25 @@ namespace TrinketTinker.Companions
     {
         // NetFields + Getters
         protected readonly NetRef<AnimatedSprite> _sprite = new();
-        protected readonly NetFloat _interval = new(100f);
-        protected readonly NetInt _framesPerAnimation = new();
-        protected readonly NetString _currentMotion = new("");
-        protected readonly NetVector2 _drawOffset = new(Vector2.Zero);
-
         public AnimatedSprite Sprite => _sprite.Value;
-        public SpriteEffects Orientation
+        protected readonly NetFloat _interval = new(100f);
+        public float Interval => _interval.Value;
+        protected readonly NetInt _framesPerAnimation = new();
+        public int FramesPerAnimation => _framesPerAnimation.Value;
+        protected readonly NetBool _moving = new(false);
+        public bool Moving
         {
             get
             {
-                return (SpriteEffects)direction.Value;
+                return _moving.Value;
             }
             set
             {
-                direction.Value = (int)value;
+                _moving.Value = value;
             }
         }
-
-        public float Interval => _interval.Value;
-        public int FramesPerAnimation => _framesPerAnimation.Value;
+        protected readonly NetString _currentMotion = new("");
+        public Motion? Motion { get; set; }
         // State
         public Vector2 Anchor
         {
@@ -41,8 +40,6 @@ namespace TrinketTinker.Companions
                 return Utility.PointToVector2(this.Owner.GetBoundingBox().Center);
             }
         }
-        public Motion? Motion { get; set; }
-        public float motionTimer = 0;
 
         public TrinketTinkerCompanion() : base()
         {
@@ -53,6 +50,7 @@ namespace TrinketTinker.Companions
             _sprite.Value = new AnimatedSprite(data.Texture, 0, data.Size.X, data.Size.Y);
             _interval.Value = data.FrameInterval;
             _framesPerAnimation.Value = data.FramesPerAnimation;
+            _moving.Value = false;
             _currentMotion.Value = typeof(LerpMotion).AssemblyQualifiedName;
         }
 
@@ -74,9 +72,16 @@ namespace TrinketTinker.Companions
                 .AddField(_sprite, "_sprite")
                 .AddField(_interval, "_interval")
                 .AddField(_framesPerAnimation, "_framesPerAnimation")
+                .AddField(_moving, "_moving")
                 .AddField(_currentMotion, "_motionClass")
             ;
+            _moving.fieldChangeEvent += NetSetMoving;
             _currentMotion.fieldChangeEvent += InitMotion;
+        }
+
+        public virtual void NetSetMoving(NetBool field, bool oldValue, bool newValue)
+        {
+            _moving.Value = newValue;
         }
 
         public virtual void InitMotion(NetString field, string oldValue, string newValue)
@@ -100,7 +105,8 @@ namespace TrinketTinker.Companions
                 Game1.GlobalToLocal(Position + Motion!.DrawOffset),
                 Sprite.SourceRect,
                 Color.White, 0f, new Vector2(8f, 8f), 4f,
-                Orientation, _position.Y / 10000f
+                SpriteEffects.None,
+                _position.Y / 10000f
             );
 
             b.Draw(
@@ -118,25 +124,9 @@ namespace TrinketTinker.Companions
 
         public override void Update(GameTime time, GameLocation location)
         {
-            // if (IsLocal)
-            //     UpdateLerpPosition(time, location);
-            motionTimer += (float)time.ElapsedGameTime.TotalMilliseconds;
-            if (motionTimer >= 5000f)
-            {
-                motionTimer = 0f;
-                if (Motion is LerpMotion)
-                    _currentMotion.Value = typeof(StaticMotion).AssemblyQualifiedName;
-                else
-                    _currentMotion.Value = typeof(LerpMotion).AssemblyQualifiedName;
-            }
-
             if (IsLocal)
                 Motion!.UpdateLocal(time, location);
             Motion!.UpdateGlobal(time, location);
-            // if (LightRadius.Value != 0f && location.Equals(Game1.currentLocation))
-            // {
-            //     Utility.repositionLightSource(lightID, Position);
-            // }
         }
 
         public override void OnOwnerWarp()
