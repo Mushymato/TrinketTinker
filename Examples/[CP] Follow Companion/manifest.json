@@ -1,0 +1,18 @@
+{
+    "Name": "[CP] Follow Companion",
+    "Author": "mushymato",
+    "Version": "1.0.0",
+    "Description": "Companions that follow you around",
+    "UniqueID": "mushymato.TT.Example.Follow",
+    "MinimumApiVersion": "4.0.0",
+    "UpdateKeys": [],
+    "ContentPackFor": {
+        "UniqueID": "Pathoschild.ContentPatcher"
+    },
+    "Dependencies": [
+        {
+            "UniqueID": "mushymato.TrinketTinker",
+            "MinimumVersion": "0.1.0"
+        }
+    ]
+}

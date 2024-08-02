@@ -1,0 +1,27 @@
+{
+  "Format": "2.3.0",
+  "Changes": [
+    // Texture
+    {
+      "Action": "Load",
+      // these butterflies are rearranged from vanilla TileSheets/critters
+      "Target": "Mods/{{ModId}}/Butterflies",
+      "FromFile": "assets/{{TargetWithoutPath}}.png"
+    },
+    {
+      "Action": "Load",
+      // cropped from vanilla Animal/Dinosaur
+      "Target": "Mods/{{ModId}}/Dinosaur",
+      "FromFile": "assets/{{TargetWithoutPath}}.png"
+    },
+    // Trinket and Companion data
+    {
+      "Action": "Include",
+      "FromFile": "data/trinket.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "data/companion.json"
+    },
+  ]
+}

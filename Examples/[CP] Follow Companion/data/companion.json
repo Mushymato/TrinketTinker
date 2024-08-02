@@ -1,0 +1,24 @@
+{
+  "Changes": [
+    // Edit Mods/mushymato.TrinketTinker/Companion for defining a companion separate from trinket effect
+    {
+      "Action": "EditData",
+      "Target": "Mods/mushymato.TrinketTinker/Companion",
+      "Entries": {
+        // ID must match trinket
+        "{{ModId}}_ButterflyTrinket": {
+          "ID": "{{ModId}}_ButterflyTrinket",
+          "CompanionClass": "TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker",
+          "Texture": "Mods/{{ModId}}/Butterflies",
+          "FrameRate": 12,
+        },
+        "{{ModId}}_DinosaurTrinket": {
+          "ID": "{{ModId}}_DinosaurTrinket",
+          "CompanionClass": "TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker",
+          "Texture": "Mods/{{ModId}}/Dinosaur",
+          "FrameInterval": 100,
+        }
+      }
+    }
+  ]
+}
