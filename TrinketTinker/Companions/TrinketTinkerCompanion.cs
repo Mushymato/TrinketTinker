@@ -104,33 +104,14 @@ namespace TrinketTinker.Companions
             }
         }
 
+
         public override void Draw(SpriteBatch b)
         {
             if (Owner == null || Owner.currentLocation == null || (Owner.currentLocation.DisplayName == "Temp" && !Game1.isFestival()))
             {
                 return;
             }
-
-            b.Draw(
-                Sprite.Texture,
-                Game1.GlobalToLocal(Position + Owner.drawOffset + Motion!.DrawOffset),
-                Sprite.SourceRect,
-                Color.White, 0f, new Vector2(8f, 8f), 4f,
-                (direction.Value == 30) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
-                _position.Y / 10000f
-            );
-
-            b.Draw(
-                Game1.shadowTexture,
-                Game1.GlobalToLocal(Position + Owner.drawOffset),
-                Game1.shadowTexture.Bounds,
-                Color.White, 0f,
-                new Vector2(
-                    Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y
-                ),
-                3f * Utility.Lerp(1f, 0.8f, Math.Min(height, 1f)),
-                SpriteEffects.None, (_position.Y - 8f) / 10000f - 2E-06f
-            );
+            Motion!.Draw(b);
         }
 
         public override void Update(GameTime time, GameLocation location)

@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using TrinketTinker.Model;
 
@@ -15,6 +16,10 @@ namespace TrinketTinker.Companions.Motions
             d = data;
             DrawOffset = new Vector2(d.DrawOffsetX, d.DrawOffsetY);
         }
+        public abstract void UpdateLocal(GameTime time, GameLocation location);
+        public abstract void UpdateGlobal(GameTime time, GameLocation location);
+        public abstract void Draw(SpriteBatch b);
+
         protected virtual void UpdateDirection()
         {
             Vector2 posDelta;
@@ -41,20 +46,6 @@ namespace TrinketTinker.Companions.Motions
                 case DirectionMode.None:
                     c.direction.Value = 0;
                     break;
-            }
-        }
-        public abstract void UpdateLocal(GameTime time, GameLocation location);
-        public virtual void UpdateGlobal(GameTime time, GameLocation location)
-        {
-            if (d.AlwaysMoving || c.Moving)
-            {
-                int frameStart = (d.DirectionMode == DirectionMode.UDLR) ? c.direction.Value * d.AnimationFrameLength : 0;
-                frameStart += d.AnimationFrameStart;
-                c.Sprite.Animate(time, frameStart, d.AnimationFrameLength, d.Interval);
-            }
-            else
-            {
-                c.Sprite.faceDirection((d.DirectionMode == DirectionMode.UDLR) ? c.direction.Value : 0);
             }
         }
     }

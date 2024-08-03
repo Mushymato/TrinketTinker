@@ -5,10 +5,10 @@
       "Action": "EditData",
       "Target": "Data/Trinkets",
       "Entries": {
-        "{{ModId}}_ButterflyTrinket": {
-          "ID": "{{ModId}}_ButterflyTrinket",
+        "{{ModId}}_Butterfly": {
+          "ID": "{{ModId}}_Butterfly",
           "DisplayName": "Butterfly",
-          "Description": "Companion Example",
+          "Description": "Companion Example - LR Lerp Motion",
           "Texture": "Mods/{{ModId}}/Butterflies1",
           "SheetIndex": 0,
           "DropsNaturally": false,
@@ -16,12 +16,23 @@
           // Custom trinket effect class required for features of this mod
           "TrinketEffectClass": "TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker"
         },
-        "{{ModId}}_DinosaurTrinket": {
-          "ID": "{{ModId}}_DinosaurTrinket",
+        "{{ModId}}_Dinosaur": {
+          "ID": "{{ModId}}_Dinosaur",
           "DisplayName": "Dinosaur",
-          "Description": "Companion Example",
+          "Description": "Companion Example - UDLR Lerp Motion",
           "Texture": "Mods/{{ModId}}/Dinosaur",
           "SheetIndex": 0,
+          "DropsNaturally": false,
+          "CanBeReforged": false,
+          // Custom trinket effect class required for features of this mod
+          "TrinketEffectClass": "TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker",
+        },
+        "{{ModId}}_BlueBird": {
+          "ID": "{{ModId}}_BlueBird",
+          "DisplayName": "BlueBird",
+          "Description": "Companion Example",
+          "Texture": "Mods/{{ModId}}/BlueBird",
+          "SheetIndex": 3,
           "DropsNaturally": false,
           "CanBeReforged": false,
           // Custom trinket effect class required for features of this mod

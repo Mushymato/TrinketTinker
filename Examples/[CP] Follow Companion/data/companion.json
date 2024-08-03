@@ -6,17 +6,17 @@
       "Target": "Mods/mushymato.TrinketTinker/Companion",
       "Entries": {
         // ID must match trinket
-        "{{ModId}}_ButterflyTrinket": {
-          "ID": "{{ModId}}_ButterflyTrinket",
+        "{{ModId}}_Butterfly": {
+          "ID": "{{ModId}}_Butterfly",
           // "CompanionClass": "TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker",
           "Variants": [
             {
-              "Texture": "Mods/{{ModId}}/Butterflies2",
+              "Texture": "Mods/{{ModId}}/Butterflies1",
               "Width": 16,
               "Height": 16
             },
             {
-              "Texture": "Mods/{{ModId}}/Butterflies1",
+              "Texture": "Mods/{{ModId}}/Butterflies2",
               "Width": 16,
               "Height": 16
             },
@@ -32,8 +32,8 @@
             }
           }
         },
-        "{{ModId}}_DinosaurTrinket": {
-          "ID": "{{ModId}}_DinosaurTrinket",
+        "{{ModId}}_Dinosaur": {
+          "ID": "{{ModId}}_Dinosaur",
           // "CompanionClass": "TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker",
           "Variants": [
             {
@@ -45,11 +45,32 @@
           "Motions": {
             "default": {
               "Condition": null,
-              // "Type": "Lerp",
+              // "MotionClass": "Lerp",
               "AlwaysMoving": false,
               "DirectionMode": "UDLR",
               "AnimationFrameLength": 4,
               "Interval": 100,
+            }
+          }
+        },
+        "{{ModId}}_BlueBird": {
+          "ID": "{{ModId}}_BlueBird",
+          // "CompanionClass": "TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker",
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/BlueBird",
+              "Width": 16,
+              "Height": 16
+            },
+          ],
+          "Motions": {
+            "default": {
+              "Condition": null,
+              "MotionClass": "Static",
+              "AlwaysMoving": false,
+              "AnimationFrameStart": 3,
+              "AnimationFrameLength": 1,
+              "DrawOffsetY": -108,
             }
           }
         }
