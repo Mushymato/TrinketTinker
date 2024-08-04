@@ -1,0 +1,31 @@
+{
+  "Changes": [
+    // Edit Mods/mushymato.TrinketTinker/Companion for defining a companion separate from trinket effect
+    {
+      "Action": "EditData",
+      "Target": "Mods/mushymato.TrinketTinker/Companion",
+      "Entries": {
+        // ID must match trinket
+        "{{ModId}}_Skull": {
+          "ID": "{{ModId}}_Butterfly",
+          // "CompanionClass": "TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker",
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/Skull",
+            }
+          ],
+          "Motions": {
+            "default": {
+              "MotionClass": "Orbit",
+              "AlwaysMoving": false,
+              "DirectionMode": "DRUL",
+              "AnimationFrameLength": 2,
+              "Interval": 100,
+              "OffsetY": -108,
+            }
+          }
+        },
+      }
+    }
+  ]
+}

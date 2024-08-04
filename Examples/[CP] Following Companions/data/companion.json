@@ -23,12 +23,12 @@
           ],
           "Motions": {
             "default": {
-              "MotionClass": "Lerp",
+              "MotionClass": "Hover",
               "AlwaysMoving": true,
-              "DirectionMode": "LR",
+              "DirectionMode": "R",
               "AnimationFrameLength": 4,
-              "Interval": 100,
-              "DrawOffsetY": -128,
+              "Interval": 200,
+              "OffsetY": -128,
             }
           }
         },
@@ -47,7 +47,7 @@
               "Condition": null,
               // "MotionClass": "Lerp",
               "AlwaysMoving": false,
-              "DirectionMode": "UDLR",
+              "DirectionMode": "DRU",
               "AnimationFrameLength": 4,
               "Interval": 100,
             }
@@ -70,10 +70,10 @@
               "AlwaysMoving": false,
               "AnimationFrameStart": 3,
               "AnimationFrameLength": 1,
-              "DrawOffsetY": -108,
+              "OffsetY": -108,
             }
           }
-        }
+        },
       }
     }
   ]

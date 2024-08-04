@@ -1,11 +1,13 @@
 {
-    "Name": "[CP] Follow Companion",
+    "Name": "[CP] Following Companions",
     "Author": "mushymato",
     "Version": "1.0.0",
     "Description": "Companions that follow you around",
-    "UniqueID": "mushymato.TT.Example.Follow",
+    "UniqueID": "mushymato.TT.Follow",
     "MinimumApiVersion": "4.0.0",
-    "UpdateKeys": [],
+    "UpdateKeys": [
+        "Nexus:???"
+    ],
     "ContentPackFor": {
         "UniqueID": "Pathoschild.ContentPatcher"
     },

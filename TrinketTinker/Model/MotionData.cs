@@ -3,8 +3,10 @@ namespace TrinketTinker.Model
     public enum DirectionMode
     {
         None = 0,
-        LR = 1,
-        UDLR = 2
+        R = 1,
+        RL = 2,
+        DRU = 3,
+        DRUL = 4,
     }
     public class MotionData
     {
@@ -14,7 +16,7 @@ namespace TrinketTinker.Model
         public int AnimationFrameStart { get; set; } = 0;
         public int AnimationFrameLength { get; set; } = 4;
         public float Interval { get; set; } = 100f;
-        public float DrawOffsetX { get; set; } = 0f;
-        public float DrawOffsetY { get; set; } = 0f;
+        public float OffsetX { get; set; } = 0f;
+        public float OffsetY { get; set; } = 0f;
     }
 }

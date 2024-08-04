@@ -9,44 +9,76 @@ namespace TrinketTinker.Companions.Motions
     {
         protected readonly TrinketTinkerCompanion c;
         protected readonly MotionData d;
-        public readonly Vector2 DrawOffset;
+        protected Vector2 MotionOffset;
+        protected float frameRate;
         public Motion(TrinketTinkerCompanion companion, MotionData data)
         {
             c = companion;
             d = data;
-            DrawOffset = new Vector2(d.DrawOffsetX, d.DrawOffsetY);
+            MotionOffset = new(d.OffsetX, d.OffsetY);
+            c.Offset = MotionOffset;
+            frameRate = 1000f / d.Interval;
         }
         public abstract void UpdateLocal(GameTime time, GameLocation location);
-        public abstract void UpdateGlobal(GameTime time, GameLocation location);
+        public virtual void UpdateGlobal(GameTime time, GameLocation location)
+        {
+            if (d.AlwaysMoving || c.Moving)
+            {
+                c.Sprite.Animate(time, DirectionFrameStart(), d.AnimationFrameLength, d.Interval);
+            }
+            else
+            {
+                c.Sprite.currentFrame = DirectionFrameStart();
+                c.Sprite.UpdateSourceRect();
+            }
+        }
         public abstract void Draw(SpriteBatch b);
-
         protected virtual void UpdateDirection()
+        {
+            UpdateDirection(c.Position);
+        }
+        protected virtual void UpdateDirection(Vector2 position)
         {
             Vector2 posDelta;
             switch (d.DirectionMode)
             {
-                case DirectionMode.UDLR:
-                    posDelta = c.Anchor - c.Position;
+                case DirectionMode.DRUL:
+                    posDelta = c.Anchor - position;
                     if (Math.Abs(posDelta.X) > Math.Abs(posDelta.Y))
                     {
-                        if (Math.Abs(posDelta.X) > 8f)
-                            c.direction.Value = (c.Anchor.X > c.Position.X) ? 1 : 3;
+                        c.direction.Value = (c.Anchor.X > position.X) ? 2 : 4;
                     }
                     else
                     {
-                        if (Math.Abs(posDelta.Y) > 8f)
-                            c.direction.Value = (c.Anchor.Y > c.Position.Y) ? 2 : 0;
+                        c.direction.Value = (c.Anchor.Y > position.Y) ? 1 : 3;
                     }
                     break;
-                case DirectionMode.LR:
-                    posDelta = c.Anchor - c.Position;
+                case DirectionMode.DRU:
+                    posDelta = c.Anchor - position;
+                    if (Math.Abs(posDelta.X) > Math.Abs(posDelta.Y))
+                    {
+                        c.direction.Value = (c.Anchor.X > position.X) ? 2 : -2;
+                    }
+                    else
+                    {
+                        c.direction.Value = (c.Anchor.Y > position.Y) ? 1 : 3;
+                    }
+                    break;
+                case DirectionMode.R:
+                    posDelta = c.Anchor - position;
                     if (Math.Abs(posDelta.X) > 8f)
-                        c.direction.Value = (c.Anchor.X > c.Position.X) ? 10 : 30;
+                        c.direction.Value = (c.Anchor.X > position.X) ? 1 : -1;
                     break;
                 case DirectionMode.None:
                     c.direction.Value = 0;
                     break;
             }
+        }
+        protected virtual int DirectionFrameStart()
+        {
+            if (d.DirectionMode == DirectionMode.None)
+                return d.AnimationFrameStart;
+            return (Math.Abs(c.direction.Value) - 1) * d.AnimationFrameLength + d.AnimationFrameStart;
         }
     }
 }

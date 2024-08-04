@@ -6,6 +6,7 @@ using StardewValley;
 using StardewValley.Companions;
 using TrinketTinker.Model;
 using TrinketTinker.Companions.Motions;
+using StardewValley.Network;
 
 
 namespace TrinketTinker.Companions
@@ -28,10 +29,22 @@ namespace TrinketTinker.Companions
                 _moving.Value = value;
             }
         }
+        protected readonly NetVector2 _offset = new();
+        public Vector2 Offset
+        {
+            get
+            {
+                return _offset.Value;
+            }
+            set
+            {
+                _offset.Value = value;
+            }
+        }
+        // Derived
         public CompanionData? Data;
         public Motion? Motion
         { get; set; }
-        // State
         public Vector2 Anchor
         {
             get
@@ -72,15 +85,16 @@ namespace TrinketTinker.Companions
             NetFields
                 .AddField(_id, "_id")
                 .AddField(_moving, "_moving")
-            // .AddField(_currentMotion, "_motionClass")
+                .AddField(_offset, "_offset")
             ;
             _id.fieldChangeEvent += InitCompanionData;
             _moving.fieldChangeEvent += (NetBool field, bool oldValue, bool newValue) => { _moving.Value = newValue; };
+            _offset.fieldChangeEvent += (NetVector2 field, Vector2 oldValue, Vector2 newValue) => { _offset.Value = newValue; };
         }
 
         private void InitCompanionData(NetString field, string oldValue, string newValue)
         {
-            ModEntry.LogOnce($"InitCompanionData({newValue})");
+            ModEntry.Log($"InitCompanionData({newValue})");
             _id.Value = newValue;
             if (!ModEntry.CompanionData.TryGetValue(_id.Value, out Data))
             {

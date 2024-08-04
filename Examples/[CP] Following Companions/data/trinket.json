@@ -8,7 +8,7 @@
         "{{ModId}}_Butterfly": {
           "ID": "{{ModId}}_Butterfly",
           "DisplayName": "Butterfly",
-          "Description": "Companion Example - LR Lerp Motion",
+          "Description": "Companion Example - HoverMotion - R",
           "Texture": "Mods/{{ModId}}/Butterflies1",
           "SheetIndex": 0,
           "DropsNaturally": false,
@@ -19,7 +19,7 @@
         "{{ModId}}_Dinosaur": {
           "ID": "{{ModId}}_Dinosaur",
           "DisplayName": "Dinosaur",
-          "Description": "Companion Example - UDLR Lerp Motion",
+          "Description": "Companion Example - LerpMotion - DRU",
           "Texture": "Mods/{{ModId}}/Dinosaur",
           "SheetIndex": 0,
           "DropsNaturally": false,

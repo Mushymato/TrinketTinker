@@ -8,7 +8,10 @@ namespace TrinketTinker.Companions.Motions
     public class LerpMotion : Motion
     {
         private float lerp = -1f;
-        public LerpMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data) { }
+        public LerpMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data)
+        {
+        }
+
         public override void UpdateLocal(GameTime time, GameLocation location)
         {
             // Copied from Companion.Update's IsLocal block
@@ -17,7 +20,7 @@ namespace TrinketTinker.Companions.Motions
                 if ((c.Anchor - c.Position).Length() > 768f)
                 {
                     Utility.addRainbowStarExplosion(location, c.Position, 1);
-                    c.Position = c.Owner.Position;
+                    c.Position = c.Anchor;
                     lerp = -1f;
                 }
                 if ((c.Anchor - c.Position).Length() > 80f)
@@ -45,7 +48,6 @@ namespace TrinketTinker.Companions.Motions
                     }
                     lerp = 0f;
                     // hopEvent.Fire(1f);
-                    UpdateDirection();
                 }
             }
             if (lerp >= 0f)
@@ -58,6 +60,7 @@ namespace TrinketTinker.Companions.Motions
                 float x = Utility.Lerp(c.startPosition.X, c.endPosition.X, lerp);
                 float y = Utility.Lerp(c.startPosition.Y, c.endPosition.Y, lerp);
                 c.Position = new Vector2(x, y);
+                UpdateDirection();
                 if (lerp == 1f)
                 {
                     lerp = -1f;
@@ -65,32 +68,16 @@ namespace TrinketTinker.Companions.Motions
             }
             c.Moving = lerp >= 0;
         }
-
-        public override void UpdateGlobal(GameTime time, GameLocation location)
-        {
-            if (d.AlwaysMoving || c.Moving)
-            {
-                int frameStart = (d.DirectionMode == DirectionMode.UDLR) ? c.direction.Value * d.AnimationFrameLength : 0;
-                frameStart += d.AnimationFrameStart;
-                c.Sprite.Animate(time, frameStart, d.AnimationFrameLength, d.Interval);
-            }
-            else
-            {
-                c.Sprite.faceDirection((d.DirectionMode == DirectionMode.UDLR) ? c.direction.Value : 0);
-            }
-        }
-
         public override void Draw(SpriteBatch b)
         {
             b.Draw(
                 c.Sprite.Texture,
-                Game1.GlobalToLocal(c.Position + c.Owner.drawOffset + DrawOffset),
+                Game1.GlobalToLocal(c.Position + c.Offset + c.Owner.drawOffset),
                 c.Sprite.SourceRect,
                 Color.White, 0f, new Vector2(8f, 8f), 4f,
-                (c.direction.Value == 30) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
+                (c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
                 c.Position.Y / 10000f
             );
-
             b.Draw(
                 Game1.shadowTexture,
                 Game1.GlobalToLocal(c.Position + c.Owner.drawOffset),
@@ -99,8 +86,9 @@ namespace TrinketTinker.Companions.Motions
                 new Vector2(
                     Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y
                 ),
-                3f * Utility.Lerp(1f, 0.8f, Math.Min(Math.Abs(DrawOffset.Y), 1f)),
-                SpriteEffects.None, (c.Position.Y - 8f) / 10000f - 2E-06f
+                4f,
+                SpriteEffects.None,
+                c.Position.Y / 10000f - 2E-06f
             );
         }
     }
