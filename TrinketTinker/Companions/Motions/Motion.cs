@@ -33,6 +33,32 @@ namespace TrinketTinker.Companions.Motions
             }
         }
         public abstract void Draw(SpriteBatch b);
+        protected virtual void DrawWithShadow(SpriteBatch b, float rotation, float layerDepth, Vector2 textureScale, Vector2 shadowScale)
+        {
+            b.Draw(
+                c.Sprite.Texture,
+                Game1.GlobalToLocal(c.Position + c.Offset + c.Owner.drawOffset),
+                c.Sprite.SourceRect,
+                Color.White,
+                rotation,
+                c.SpriteOrigin,
+                textureScale,
+                (c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
+                layerDepth
+            );
+            b.Draw(
+                Game1.shadowTexture,
+                Game1.GlobalToLocal(c.Position + new Vector2(c.Offset.X, 0) + c.Owner.drawOffset),
+                Game1.shadowTexture.Bounds,
+                Color.White, 0f,
+                new Vector2(
+                    Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y
+                ),
+                shadowScale,
+                SpriteEffects.None,
+                layerDepth - 2E-06f
+            );
+        }
         protected virtual void UpdateDirection()
         {
             UpdateDirection(c.Position);

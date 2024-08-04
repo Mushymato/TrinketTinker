@@ -17,6 +17,7 @@ namespace TrinketTinker.Companions
         protected readonly NetString _id = new("");
         public string ID => _id.Value;
         public AnimatedSprite Sprite { get; set; } = new();
+        public Vector2 SpriteOrigin { get; set; } = Vector2.Zero;
         protected readonly NetBool _moving = new(false);
         public bool Moving
         {
@@ -103,6 +104,7 @@ namespace TrinketTinker.Companions
             }
             VariantData vdata = Data.Variants[whichVariant.Value];
             Sprite = new AnimatedSprite(vdata.Texture, 0, vdata.Width, vdata.Height);
+            SpriteOrigin = new Vector2(vdata.Width / 2, vdata.Height / 2);
 
             // Interval = Data.FrameInterval;
             // FramesPerAnimation = Data.FramesPerAnimation;

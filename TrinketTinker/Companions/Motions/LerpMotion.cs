@@ -70,25 +70,11 @@ namespace TrinketTinker.Companions.Motions
         }
         public override void Draw(SpriteBatch b)
         {
-            b.Draw(
-                c.Sprite.Texture,
-                Game1.GlobalToLocal(c.Position + c.Offset + c.Owner.drawOffset),
-                c.Sprite.SourceRect,
-                Color.White, 0f, new Vector2(8f, 8f), 4f,
-                (c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
-                c.Position.Y / 10000f
-            );
-            b.Draw(
-                Game1.shadowTexture,
-                Game1.GlobalToLocal(c.Position + c.Owner.drawOffset),
-                Game1.shadowTexture.Bounds,
-                Color.White, 0f,
-                new Vector2(
-                    Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y
-                ),
-                4f,
-                SpriteEffects.None,
-                c.Position.Y / 10000f - 2E-06f
+            float shadowScale = 3f * Utility.Lerp(1f, 0.8f, Math.Max(1f, -c.Offset.Y / 12));
+            DrawWithShadow(
+                b, 0f, c.Position.Y / 10000f,
+                new Vector2(4f, 4f),
+                new Vector2(shadowScale, shadowScale)
             );
         }
     }

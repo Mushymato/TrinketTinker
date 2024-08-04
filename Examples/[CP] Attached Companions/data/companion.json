@@ -21,7 +21,7 @@
               "DirectionMode": "DRUL",
               "AnimationFrameLength": 2,
               "Interval": 100,
-              "OffsetY": -108,
+              // "OffsetY": -108,
             }
           }
         },

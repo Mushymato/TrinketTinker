@@ -21,30 +21,5 @@ namespace TrinketTinker.Companions.Motions
             if (theta >= 1f)
                 theta = 0f;
         }
-
-        public override void Draw(SpriteBatch b)
-        {
-            float layerDepth = c.Position.Y / 10000f;
-            b.Draw(
-                c.Sprite.Texture,
-                Game1.GlobalToLocal(c.Position + c.Offset + c.Owner.drawOffset),
-                c.Sprite.SourceRect,
-                Color.White, 0f, new Vector2(8f, 8f), 4f,
-                (c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
-                layerDepth
-            );
-            b.Draw(
-                Game1.shadowTexture,
-                Game1.GlobalToLocal(c.Position + c.Owner.drawOffset),
-                Game1.shadowTexture.Bounds,
-                Color.White, 0f,
-                new Vector2(
-                    Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y
-                ),
-                3f * Utility.Lerp(1f, 0.8f, Math.Max(1f, -c.Offset.Y / 12)),
-                SpriteEffects.None,
-                layerDepth - 2E-06f
-            );
-        }
     }
 }
