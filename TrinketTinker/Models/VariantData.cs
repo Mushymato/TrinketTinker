@@ -1,6 +1,6 @@
 using StardewValley;
 
-namespace TrinketTinker.Model
+namespace TrinketTinker.Models
 {
     public class VariantData
     {

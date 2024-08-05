@@ -51,6 +51,12 @@
               "AnimationFrameLength": 4,
               "Interval": 100,
             }
+          },
+          "Abilities": {
+            "default": {
+              "Condition": null,
+              "AbilityClass": "DebugPrint",
+            }
           }
         },
         "{{ModId}}_BlueBird": {

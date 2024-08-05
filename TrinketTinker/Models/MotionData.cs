@@ -1,4 +1,4 @@
-namespace TrinketTinker.Model
+namespace TrinketTinker.Models
 {
     public enum DirectionMode
     {

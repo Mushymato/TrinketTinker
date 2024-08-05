@@ -4,15 +4,15 @@ using StardewModdingAPI;
 using Netcode;
 using StardewValley;
 using StardewValley.Companions;
-using TrinketTinker.Model;
+using TrinketTinker.Models;
 using TrinketTinker.Companions.Motions;
-using StardewValley.Network;
 
 
 namespace TrinketTinker.Companions
 {
     public class TrinketTinkerCompanion : Companion
     {
+        private const string MOTION_FMT = "TrinketTinker.Companions.Motions.{0}Motion, TrinketTinker";
         // NetFields + Getters
         protected readonly NetString _id = new("");
         public string ID => _id.Value;
@@ -109,15 +109,10 @@ namespace TrinketTinker.Companions
             // Interval = Data.FrameInterval;
             // FramesPerAnimation = Data.FramesPerAnimation;
             MotionData mdata = Data.Motions["default"];
-            if (mdata.MotionClass != null &&
-                Type.GetType($"TrinketTinker.Companions.Motions.{mdata.MotionClass}Motion, TrinketTinker") is Type motionCls)
-            {
+            if (ModEntry.TryGetType(mdata.MotionClass, out Type? motionCls, MOTION_FMT))
                 Motion = (Motion?)Activator.CreateInstance(motionCls, this, mdata);
-            }
             else
-            {
                 Motion = new LerpMotion(this, mdata);
-            }
         }
 
 

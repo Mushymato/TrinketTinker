@@ -1,7 +1,13 @@
-﻿using StardewModdingAPI;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
+using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
-using TrinketTinker.Model;
+using TrinketTinker.Companions;
+using TrinketTinker.Companions.Motions;
+using TrinketTinker.Effects;
+using TrinketTinker.Effects.Abilities;
+using TrinketTinker.Models;
 
 namespace TrinketTinker
 {
@@ -36,20 +42,15 @@ namespace TrinketTinker
             helper.Events.Content.AssetsInvalidated += OnAssetInvalidated;
 
             helper.ConsoleCommands.Add(
-                "reload_trinkets",
+                "tt_reload_trinkets",
                 "Invalidate trinkets and companions (but not textures).",
                 ConsoleReloadTrinkets
             );
-        }
-
-        public static void Log(string msg, LogLevel level = LogLevel.Debug)
-        {
-            mon!.Log(msg, level);
-        }
-
-        public static void LogOnce(string msg, LogLevel level = LogLevel.Debug)
-        {
-            mon!.LogOnce(msg, level);
+            helper.ConsoleCommands.Add(
+                "tt_print_types",
+                "Print valid Effect, Companion, Motion, and Ability types.",
+                ConsolePrintTypenames
+            );
         }
 
         private static void OnAssetRequested(object? sender, AssetRequestedEventArgs e)
@@ -73,6 +74,73 @@ namespace TrinketTinker
         {
             Helper.GameContent.InvalidateCache("Data/Trinkets");
             Helper.GameContent.InvalidateCache(CompanionAsset);
+        }
+
+        private void ConsolePrintTypenames(string command, string[] args)
+        {
+            Log("=== TrinketTinkerEffect ===", LogLevel.Info);
+            foreach (TypeInfo typeInfo in typeof(TrinketTinkerEffect).Assembly.DefinedTypes)
+            {
+                if (typeInfo.IsAssignableTo(typeof(TrinketTinkerEffect)) && typeInfo.AssemblyQualifiedName != null)
+                    Log(typeInfo.AssemblyQualifiedName, LogLevel.Info);
+            }
+
+            Log("=== TrinketTinkerCompanion ===", LogLevel.Info);
+            foreach (TypeInfo typeInfo in typeof(TrinketTinkerCompanion).Assembly.DefinedTypes)
+            {
+                if (typeInfo.IsAssignableTo(typeof(TrinketTinkerCompanion)) && typeInfo.AssemblyQualifiedName != null)
+                    Log(typeInfo.AssemblyQualifiedName, LogLevel.Info);
+            }
+
+            Log("=== Motion ===", LogLevel.Info);
+            foreach (TypeInfo typeInfo in typeof(Motion).Assembly.DefinedTypes)
+            {
+                if (typeInfo.IsAssignableTo(typeof(Motion)) && typeInfo.AssemblyQualifiedName != null)
+                    Log(typeInfo.AssemblyQualifiedName, LogLevel.Info);
+            }
+
+            Log("=== Ability ===", LogLevel.Info);
+            foreach (TypeInfo typeInfo in typeof(Ability).Assembly.DefinedTypes)
+            {
+                if (typeInfo.IsAssignableTo(typeof(Ability)) && typeInfo.AssemblyQualifiedName != null)
+                    Log(typeInfo.AssemblyQualifiedName, LogLevel.Info);
+            }
+        }
+
+        public static void Log(string msg, LogLevel level = LogLevel.Debug)
+        {
+            mon!.Log(msg, level);
+        }
+
+        public static void LogOnce(string msg, LogLevel level = LogLevel.Debug)
+        {
+            mon!.LogOnce(msg, level);
+        }
+
+        public static bool TryGetType(string? className, [NotNullWhen(true)] out Type? typ)
+        {
+            typ = null;
+            if (className == null)
+                return false;
+            typ = Type.GetType(className);
+            if (typ != null)
+                return true;
+            return false;
+        }
+
+        public static bool TryGetType(string? className, [NotNullWhen(true)] out Type? typ, string longFormat)
+        {
+            typ = null;
+            if (className == null)
+                return false;
+            string longClassName = string.Format(longFormat, className);
+            typ = Type.GetType(longClassName);
+            if (typ != null)
+                return true;
+            typ = Type.GetType(className);
+            if (typ != null)
+                return true;
+            return false;
         }
     }
 }

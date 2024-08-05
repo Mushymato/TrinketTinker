@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
-using TrinketTinker.Model;
+using TrinketTinker.Models;
 
 namespace TrinketTinker.Companions.Motions
 {
