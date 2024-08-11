@@ -55,7 +55,7 @@
           "Abilities": {
             "default": {
               "Condition": null,
-              "AbilityClass": "DebugPrint",
+              "AbilityClass": "DebugDummy",
             }
           }
         },

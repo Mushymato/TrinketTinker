@@ -23,6 +23,16 @@
               "Interval": 100,
               // "OffsetY": -108,
             }
+          },
+          "Abilities": {
+            "default": {
+              "Condition": null,
+              "AbilityClass": "Buff",
+              "ProcOn": "Footstep",
+              "Args": {
+                "BuffId": 22
+              }
+            }
           }
         },
       }

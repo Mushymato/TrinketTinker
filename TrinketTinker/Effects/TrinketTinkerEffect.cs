@@ -1,9 +1,11 @@
+using Microsoft.Xna.Framework;
 using StardewValley.Objects;
 using StardewValley;
 using StardewValley.Monsters;
 using TrinketTinker.Models;
 using TrinketTinker.Companions;
 using TrinketTinker.Effects.Abilities;
+using StardewModdingAPI;
 
 namespace TrinketTinker.Effects
 {
@@ -15,12 +17,45 @@ namespace TrinketTinker.Effects
     {
         private const string ABILITY_FMT = "TrinketTinker.Effects.Abilities.{0}Ability, TrinketTinker";
         protected CompanionData? Data;
-        protected Dictionary<string, Ability> Abilities = new();
+        protected Dictionary<string, Ability> Abilities;
+        protected Dictionary<ProcOn, List<Ability>> SortedAbilities;
+        private const int UPDATE_PROC_TIMEOUT = 1;
+        private int previousSecond = -1;
 
         public TrinketTinkerEffect(Trinket trinket)
             : base(trinket)
         {
             ModEntry.CompanionData.TryGetValue(trinket.ItemId, out Data);
+            Abilities = new();
+            SortedAbilities = new();
+            foreach (ProcOn actv in Enum.GetValues(typeof(ProcOn)))
+            {
+                SortedAbilities[actv] = new List<Ability>();
+            }
+            if (Data != null)
+            {
+                // Abilities
+                foreach (KeyValuePair<string, AbilityData> kv in Data.Abilities)
+                {
+                    if (ModEntry.TryGetType(kv.Value.AbilityClass, out Type? abilityType, ABILITY_FMT))
+                    {
+                        Ability? ability = (Ability?)Activator.CreateInstance(abilityType, this, kv.Value);
+                        if (ability != null && ability.Valid)
+                        {
+                            Abilities[kv.Key] = ability;
+                            SortedAbilities[kv.Value.ProcOn].Add(ability);
+                        }
+                        else
+                        {
+                            ModEntry.Log($"Skip invalid ability ({kv.Value.AbilityClass} from {trinket.QualifiedItemId})", LogLevel.Trace);
+                        }
+                    }
+                    else
+                    {
+                        ModEntry.Log($"Failed to get type for ability ({kv.Value.AbilityClass} from {trinket.QualifiedItemId})", LogLevel.Trace);
+                    }
+                }
+            }
         }
 
         public override void Apply(Farmer farmer)
@@ -34,24 +69,16 @@ namespace TrinketTinker.Effects
             else
                 _companion = new TrinketTinkerCompanion(_trinket.ItemId);
             farmer.AddCompanion(_companion);
-            // Abilities
-            foreach (KeyValuePair<string, AbilityData> kv in Data.Abilities)
-            {
-                if (ModEntry.TryGetType(kv.Value.AbilityClass, out Type? abilityType, ABILITY_FMT))
-                {
-                    ModEntry.Log($"abiltyType: {abilityType}");
-                    Ability? ability = (Ability?)Activator.CreateInstance(abilityType, this, kv.Value);
-                    if (ability != null)
-                    {
-                        Abilities[kv.Key] = ability;
-                    }
-                }
-            }
 
             // Apply Abilities
             foreach (var ability in Abilities.Values)
             {
-                ability.Apply(farmer);
+                ability.Activate(farmer);
+            }
+            // Proc always on abilities
+            foreach (var ability in SortedAbilities[ProcOn.Always])
+            {
+                ability.Activate(farmer);
             }
         }
 
@@ -61,44 +88,58 @@ namespace TrinketTinker.Effects
 
             foreach (var ability in Abilities.Values)
             {
-                ability.Unapply(farmer);
+                ability.Deactivate(farmer);
             }
         }
-
         public override void OnUse(Farmer farmer)
         {
-            foreach (var ability in Abilities.Values)
+            foreach (var ability in SortedAbilities[ProcOn.Use])
             {
-                ability.OnUse(farmer);
+                ability.Proc(farmer);
             }
         }
         public override void OnFootstep(Farmer farmer)
         {
-            foreach (var ability in Abilities.Values)
+            foreach (var ability in SortedAbilities[ProcOn.Footstep])
             {
-                ability.OnFootstep(farmer);
+                ability.Proc(farmer);
             }
         }
         public override void OnReceiveDamage(Farmer farmer, int damageAmount)
         {
-            foreach (var ability in Abilities.Values)
+            foreach (var ability in SortedAbilities[ProcOn.ReceiveDamage])
             {
-                ability.OnReceiveDamage(farmer, damageAmount);
+                ability.Proc(farmer, damageAmount);
             }
         }
         public override void OnDamageMonster(Farmer farmer, Monster monster, int damageAmount)
         {
+            foreach (var ability in SortedAbilities[ProcOn.DamageMonster])
+            {
+                ability.Proc(farmer, monster, damageAmount);
+            }
+        }
+        public override void Update(Farmer farmer, GameTime time, GameLocation location)
+        {
+            if (time.TotalGameTime.Seconds - previousSecond >= UPDATE_PROC_TIMEOUT)
+            {
+                previousSecond = time.TotalGameTime.Seconds;
+                foreach (var ability in SortedAbilities[ProcOn.SecondElapsed])
+                {
+                    ability.Proc(farmer, time, location);
+                }
+            }
             foreach (var ability in Abilities.Values)
             {
-                ability.OnDamageMonster(farmer, monster, damageAmount);
+                ability.Update(farmer, time, location);
             }
         }
         public override void GenerateRandomStats(Trinket trinket)
         {
-            foreach (var ability in Abilities.Values)
-            {
-                ability.GenerateRandomStats(trinket);
-            }
+            // foreach (var ability in Abilities.Values)
+            // {
+            //     ability.GenerateRandomStats(trinket);
+            // }
         }
     }
 }
