@@ -7,6 +7,7 @@ namespace TrinketTinker.Models
         RL = 2,
         DRU = 3,
         DRUL = 4,
+        Rotate = 5,
     }
     public class MotionData
     {
@@ -18,5 +19,7 @@ namespace TrinketTinker.Models
         public float Interval { get; set; } = 100f;
         public float OffsetX { get; set; } = 0f;
         public float OffsetY { get; set; } = 0f;
+        public float TextureScale { get; set; } = 4f;
+        public float ShadowScale { get; set; } = 3f;
     }
 }

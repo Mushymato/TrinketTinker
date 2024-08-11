@@ -33,14 +33,14 @@ namespace TrinketTinker.Companions.Motions
             }
         }
         public abstract void Draw(SpriteBatch b);
-        protected virtual void DrawWithShadow(SpriteBatch b, float rotation, float layerDepth, Vector2 textureScale, Vector2 shadowScale)
+        protected virtual void DrawWithShadow(SpriteBatch b, float layerDepth, Vector2 textureScale, Vector2 shadowScale)
         {
             b.Draw(
                 c.Sprite.Texture,
                 Game1.GlobalToLocal(c.Position + c.Offset + c.Owner.drawOffset),
                 c.Sprite.SourceRect,
-                Color.White,
-                rotation,
+                c.SpriteColor,
+                c.rotation.Value,
                 c.SpriteOrigin,
                 textureScale,
                 (c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
@@ -50,7 +50,8 @@ namespace TrinketTinker.Companions.Motions
                 Game1.shadowTexture,
                 Game1.GlobalToLocal(c.Position + new Vector2(c.Offset.X, 0) + c.Owner.drawOffset),
                 Game1.shadowTexture.Bounds,
-                Color.White, 0f,
+                Color.White,
+                0f,
                 new Vector2(
                     Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y
                 ),
@@ -59,17 +60,19 @@ namespace TrinketTinker.Companions.Motions
                 layerDepth - 2E-06f
             );
         }
+        // protected virtual void UpdateDirectionRotation(Vector2 position, Vector2 posDelta)
+        // {
+        // }
         protected virtual void UpdateDirection()
         {
             UpdateDirection(c.Position);
         }
         protected virtual void UpdateDirection(Vector2 position)
         {
-            Vector2 posDelta;
+            Vector2 posDelta = c.Anchor - position;
             switch (d.DirectionMode)
             {
                 case DirectionMode.DRUL:
-                    posDelta = c.Anchor - position;
                     if (Math.Abs(posDelta.X) > Math.Abs(posDelta.Y))
                     {
                         c.direction.Value = (c.Anchor.X > position.X) ? 2 : 4;
@@ -80,7 +83,6 @@ namespace TrinketTinker.Companions.Motions
                     }
                     break;
                 case DirectionMode.DRU:
-                    posDelta = c.Anchor - position;
                     if (Math.Abs(posDelta.X) > Math.Abs(posDelta.Y))
                     {
                         c.direction.Value = (c.Anchor.X > position.X) ? 2 : -2;
@@ -91,9 +93,11 @@ namespace TrinketTinker.Companions.Motions
                     }
                     break;
                 case DirectionMode.R:
-                    posDelta = c.Anchor - position;
                     if (Math.Abs(posDelta.X) > 8f)
                         c.direction.Value = (c.Anchor.X > position.X) ? 1 : -1;
+                    break;
+                case DirectionMode.Rotate:
+                    c.rotation.Value = (float)Math.Atan2(posDelta.Y, posDelta.X);
                     break;
                 case DirectionMode.None:
                     c.direction.Value = 0;

@@ -30,8 +30,19 @@
         "{{ModId}}_BlueBird": {
           "ID": "{{ModId}}_BlueBird",
           "DisplayName": "BlueBird",
-          "Description": "Companion Example",
+          "Description": "Companion Example - Static",
           "Texture": "Mods/{{ModId}}/BlueBird",
+          "SheetIndex": 3,
+          "DropsNaturally": false,
+          "CanBeReforged": false,
+          // Custom trinket effect class required for features of this mod
+          "TrinketEffectClass": "TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker",
+        },
+        "{{ModId}}_Junimo": {
+          "ID": "{{ModId}}_Junimo",
+          "DisplayName": "Junimo",
+          "Description": "Companion Example - Color Mask",
+          "Texture": "Mods/{{ModId}}/Junimo",
           "SheetIndex": 3,
           "DropsNaturally": false,
           "CanBeReforged": false,

@@ -5,7 +5,7 @@
     {
       "Action": "Load",
       // Rearranged vanilla textures from TileSheets/critters and Animal/Dinosaur
-      "Target": "Mods/{{ModId}}/Butterflies1, Mods/{{ModId}}/Butterflies2, Mods/{{ModId}}/Dinosaur, Mods/{{ModId}}/BlueBird",
+      "Target": "Mods/{{ModId}}/Butterflies1, Mods/{{ModId}}/Butterflies2, Mods/{{ModId}}/Dinosaur, Mods/{{ModId}}/BlueBird, Mods/{{ModId}}/Junimo",
       "FromFile": "assets/{{TargetWithoutPath}}.png"
     },
     // Trinket and Companion data

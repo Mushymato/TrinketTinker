@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using StardewValley;
 
 namespace TrinketTinker.Models
@@ -7,6 +8,7 @@ namespace TrinketTinker.Models
         public string Texture { get; set; } = "";
         public int Width { get; set; } = 16;
         public int Height { get; set; } = 16;
+        public Color ColorMask { get; set; } = Color.White;
 
         public AnimatedSprite MakeAnimatedSprite()
         {

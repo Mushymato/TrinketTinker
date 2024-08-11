@@ -25,7 +25,7 @@
             "default": {
               "MotionClass": "Hover",
               "AlwaysMoving": true,
-              "DirectionMode": "R",
+              "DirectionMode": "Rotate",
               "AnimationFrameLength": 4,
               "Interval": 200,
               "OffsetY": -128,
@@ -47,7 +47,7 @@
               "Condition": null,
               // "MotionClass": "Lerp",
               "AlwaysMoving": false,
-              "DirectionMode": "DRU",
+              "DirectionMode": "DRUL",
               "AnimationFrameLength": 4,
               "Interval": 100,
             }
@@ -77,6 +77,34 @@
               "AnimationFrameStart": 3,
               "AnimationFrameLength": 1,
               "OffsetY": -108,
+            }
+          }
+        },
+        "{{ModId}}_Junimo": {
+          "ID": "{{ModId}}_Junimo",
+          // "CompanionClass": "TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker",
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/Junimo",
+              "Width": 16,
+              "Height": 16,
+              "ColorMask": {
+                "R": 50,
+                "G": 205,
+                "B": 50,
+                "A": 255
+              }
+            },
+          ],
+          "Motions": {
+            "default": {
+              "Condition": null,
+              // "MotionClass": "Lerp",
+              "AlwaysMoving": true,
+              "DirectionMode": "DRU",
+              "AnimationFrameLength": 8,
+              "Interval": 100,
+              "OffsetY": -16,
             }
           }
         },

@@ -68,12 +68,13 @@ namespace TrinketTinker.Companions.Motions
             }
             c.Moving = lerp >= 0;
         }
+
         public override void Draw(SpriteBatch b)
         {
             float shadowScale = 3f * Utility.Lerp(1f, 0.8f, Math.Max(1f, -c.Offset.Y / 12));
             DrawWithShadow(
-                b, 0f, c.Position.Y / 10000f,
-                new Vector2(4f, 4f),
+                b, c.Position.Y / 10000f,
+                new Vector2(d.TextureScale, d.TextureScale),
                 new Vector2(shadowScale, shadowScale)
             );
         }

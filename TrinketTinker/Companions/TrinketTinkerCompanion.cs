@@ -17,7 +17,6 @@ namespace TrinketTinker.Companions
         protected readonly NetString _id = new("");
         public string ID => _id.Value;
         public AnimatedSprite Sprite { get; set; } = new();
-        public Vector2 SpriteOrigin { get; set; } = Vector2.Zero;
         protected readonly NetBool _moving = new(false);
         public bool Moving
         {
@@ -42,6 +41,7 @@ namespace TrinketTinker.Companions
                 _offset.Value = value;
             }
         }
+        public readonly NetFloat rotation = new(0f);
         // Derived
         public CompanionData? Data;
         public Motion? Motion
@@ -53,6 +53,8 @@ namespace TrinketTinker.Companions
                 return Utility.PointToVector2(this.Owner.GetBoundingBox().Center);
             }
         }
+        public Vector2 SpriteOrigin { get; set; } = Vector2.Zero;
+        public Color SpriteColor => Data?.Variants[whichVariant.Value].ColorMask ?? Color.White;
 
         public TrinketTinkerCompanion() : base()
         {
@@ -87,6 +89,7 @@ namespace TrinketTinker.Companions
                 .AddField(_id, "_id")
                 .AddField(_moving, "_moving")
                 .AddField(_offset, "_offset")
+                .AddField(rotation, "rotation")
             ;
             _id.fieldChangeEvent += InitCompanionData;
             _moving.fieldChangeEvent += (NetBool field, bool oldValue, bool newValue) => { _moving.Value = newValue; };

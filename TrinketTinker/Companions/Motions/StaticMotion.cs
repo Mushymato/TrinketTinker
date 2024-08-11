@@ -29,10 +29,9 @@ namespace TrinketTinker.Companions.Motions
         public override void Draw(SpriteBatch b)
         {
             DrawWithShadow(
-                b, 0f,
-                (c.direction.Value == 3) ? (c.Position.Y / 10000f) : 1f,
-                new Vector2(4f, 4f),
-                new Vector2(3f, 3f)
+                b, (c.direction.Value == 3) ? (c.Position.Y / 10000f) : 1f,
+                new Vector2(d.TextureScale, d.TextureScale),
+                new Vector2(d.ShadowScale, d.ShadowScale)
             );
         }
         protected override void UpdateDirection()

@@ -11,24 +11,26 @@ namespace TrinketTinker.Companions.Motions
 
         public OrbitMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data)
         {
-            MotionOffset.Y -= 32f;
+            MotionOffset.Y -= 64f;
         }
 
         public override void UpdateLocal(GameTime time, GameLocation location)
         {
             base.UpdateLocal(time, location);
             theta += time.ElapsedGameTime.TotalSeconds;
-            c.Offset = MotionOffset + new Vector2(128 * (float)Math.Cos(Math.PI * theta), 64 * (float)Math.Sin(Math.PI * theta));
+            c.Offset = MotionOffset + new Vector2(
+                96 * (float)Math.Cos(Math.PI * theta),
+                40 * (float)Math.Sin(Math.PI * theta)
+            );
             if (theta >= 2f)
                 theta = 0f;
         }
         public override void Draw(SpriteBatch b)
         {
             DrawWithShadow(
-                b, 0f,
-                (c.Position.Y + c.Offset.Y - MotionOffset.Y) / 10000f,
-                new Vector2(4f, 4f),
-                new Vector2(3f, 3f)
+                b, (c.Position.Y + c.Offset.Y - MotionOffset.Y) / 10000f,
+                new Vector2(d.TextureScale, d.TextureScale) * Utility.Lerp(0.96f, 1f, (float)Math.Sin(Math.PI * theta)),
+                new Vector2(d.ShadowScale, d.ShadowScale)
             );
         }
     }
