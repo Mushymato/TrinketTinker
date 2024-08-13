@@ -29,6 +29,7 @@
               "Condition": null,
               "AbilityClass": "Buff",
               "ProcOn": "Footstep",
+              "ProcTimer": 5000,
               "Args": {
                 "BuffId": 22
               }

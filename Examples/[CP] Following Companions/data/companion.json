@@ -106,6 +106,19 @@
               "Interval": 100,
               "OffsetY": -16,
             }
+          },
+          "Abilities": {
+            "default": {
+              "Condition": null,
+              "ProcOn": "Footstep",
+              "ProcTimer": 500,
+              "AbilityClass": "Heal",
+              "Args": {
+                "HealPower": 500,
+                "TargetHealth": true,
+                "TargetStamina": true
+              }
+            }
           }
         },
       }

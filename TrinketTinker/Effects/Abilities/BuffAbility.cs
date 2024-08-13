@@ -1,6 +1,4 @@
-using Microsoft.Xna.Framework;
 using StardewValley;
-using StardewValley.Monsters;
 using TrinketTinker.Models;
 
 namespace TrinketTinker.Effects.Abilities
@@ -11,18 +9,18 @@ namespace TrinketTinker.Effects.Abilities
         public BuffAbility(TrinketTinkerEffect effect, AbilityData data) : base(effect, data)
         {
             Valid = false;
-            if (d.Args.TryGetValue("BuffId", out string? argsBuffId))
+            if (d.TryGetParsed("BuffId", out string? argsBuffId))
             {
                 buffId = argsBuffId;
                 Valid = true;
             }
         }
 
-        protected override bool ApplyOnFarmer(Farmer farmer)
+        protected override bool ApplyEffect(Farmer farmer)
         {
-            ModEntry.Log($"{Name}.ApplyOnFarmer: buffId={buffId}");
+            ModEntry.Log($"{Name}.ApplyEffect: buffId={buffId}");
             farmer.applyBuff(buffId);
-            return base.ApplyOnFarmer(farmer);
+            return base.ApplyEffect(farmer);
         }
     }
 }

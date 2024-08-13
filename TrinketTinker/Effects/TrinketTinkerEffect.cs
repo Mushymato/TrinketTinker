@@ -19,8 +19,6 @@ namespace TrinketTinker.Effects
         protected CompanionData? Data;
         protected Dictionary<string, Ability> Abilities;
         protected Dictionary<ProcOn, List<Ability>> SortedAbilities;
-        private const int UPDATE_PROC_TIMEOUT = 1;
-        private int previousSecond = -1;
 
         public TrinketTinkerEffect(Trinket trinket)
             : base(trinket)
@@ -75,11 +73,6 @@ namespace TrinketTinker.Effects
             {
                 ability.Activate(farmer);
             }
-            // Proc always on abilities
-            foreach (var ability in SortedAbilities[ProcOn.Always])
-            {
-                ability.Activate(farmer);
-            }
         }
 
         public override void Unapply(Farmer farmer)
@@ -121,14 +114,6 @@ namespace TrinketTinker.Effects
         }
         public override void Update(Farmer farmer, GameTime time, GameLocation location)
         {
-            if (time.TotalGameTime.Seconds - previousSecond >= UPDATE_PROC_TIMEOUT)
-            {
-                previousSecond = time.TotalGameTime.Seconds;
-                foreach (var ability in SortedAbilities[ProcOn.SecondElapsed])
-                {
-                    ability.Proc(farmer, time, location);
-                }
-            }
             foreach (var ability in Abilities.Values)
             {
                 ability.Update(farmer, time, location);
