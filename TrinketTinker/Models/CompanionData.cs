@@ -1,5 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-
 namespace TrinketTinker.Models
 {
     public class CompanionData

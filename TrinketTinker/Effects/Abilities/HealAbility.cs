@@ -53,7 +53,6 @@ namespace TrinketTinker.Effects.Abilities
                 if (healed > 0)
                 {
                     farmer.currentLocation.debris.Add(new Debris(healed, farmer.getStandingPosition(), Color.Lime, 1f, farmer));
-                    Game1.playSound("fairy_heal");
                 }
             }
             if (targetStamina)

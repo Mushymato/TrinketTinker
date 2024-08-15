@@ -1,4 +1,3 @@
-using Force.DeepCloner;
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewValley;
@@ -39,6 +38,8 @@ namespace TrinketTinker.Effects.Abilities
 
         protected virtual bool ApplyEffect(Farmer farmer)
         {
+            if (d.ProcSound != null)
+                Game1.playSound(d.ProcSound);
             Allowed = false;
             return true;
         }
@@ -60,7 +61,7 @@ namespace TrinketTinker.Effects.Abilities
             {
                 ModEntry.Log($"{Name}.Activate({farmer})");
                 Active = true;
-                Allowed = true;
+                Allowed = d.ProcOn != ProcOn.Timed;
                 ProcTimer = d.ProcTimer;
             }
             return Active;
@@ -87,6 +88,10 @@ namespace TrinketTinker.Effects.Abilities
         }
         public virtual void Update(Farmer farmer, GameTime time, GameLocation location)
         {
+            if (!Game1.shouldTimePass())
+            {
+                return;
+            }
             if (d.ProcTimer > 0 && !Allowed)
             {
                 ProcTimer -= time.ElapsedGameTime.TotalMilliseconds;

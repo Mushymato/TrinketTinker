@@ -18,6 +18,7 @@ namespace TrinketTinker.Models
         public string? AbilityClass { get; set; } = null;
         public ProcOn ProcOn = new();
         public double ProcTimer { get; set; } = -1;
+        public string? ProcSound { get; set; } = null;
         public string? Condition { get; set; } = null;
         public int DamageThreshold { get; set; } = -1;
         public Dictionary<string, string> Args { get; set; } = new();

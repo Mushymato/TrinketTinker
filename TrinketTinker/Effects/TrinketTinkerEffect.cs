@@ -19,6 +19,17 @@ namespace TrinketTinker.Effects
         protected CompanionData? Data;
         protected Dictionary<string, Ability> Abilities;
         protected Dictionary<ProcOn, List<Ability>> SortedAbilities;
+        public Vector2 CompanionPosition
+        {
+            get
+            {
+                if (_companion is TrinketTinkerCompanion cmp)
+                {
+                    return cmp.Position + cmp.Offset;
+                }
+                return _companion.Position;
+            }
+        }
 
         public TrinketTinkerEffect(Trinket trinket)
             : base(trinket)
