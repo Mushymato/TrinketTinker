@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
@@ -109,17 +110,13 @@ namespace TrinketTinker
 
         public static void Log(string msg, LogLevel level = LogLevel.Debug)
         {
-#if DEBUG
             level = (level == LogLevel.Trace) ? LogLevel.Debug : level;
-#endif
             mon!.Log(msg, level);
         }
 
         public static void LogOnce(string msg, LogLevel level = LogLevel.Debug)
         {
-#if DEBUG
             level = (level == LogLevel.Trace) ? LogLevel.Debug : level;
-#endif
             mon!.LogOnce(msg, level);
         }
 

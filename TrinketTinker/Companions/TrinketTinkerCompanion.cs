@@ -54,11 +54,10 @@ namespace TrinketTinker.Companions
             }
         }
         public Vector2 SpriteOrigin { get; set; } = Vector2.Zero;
-        public Color SpriteColor => Data?.Variants[whichVariant.Value].ColorMask ?? Color.White;
+        public Color SpriteColor => Utility.StringToColor(Data?.Variants[whichVariant.Value].ColorMask) ?? Color.White;
 
         public TrinketTinkerCompanion() : base()
         {
-            ModEntry.Log($"TrinketTinkerCompanion.ctor(): {ID}");
         }
 
         public TrinketTinkerCompanion(string companionId)
@@ -98,7 +97,6 @@ namespace TrinketTinker.Companions
 
         private void InitCompanionData(NetString field, string oldValue, string newValue)
         {
-            ModEntry.Log($"InitCompanionData({newValue})");
             _id.Value = newValue;
             if (!ModEntry.CompanionData.TryGetValue(_id.Value, out Data))
             {

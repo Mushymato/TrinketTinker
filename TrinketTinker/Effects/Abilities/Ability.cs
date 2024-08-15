@@ -59,7 +59,6 @@ namespace TrinketTinker.Effects.Abilities
         {
             if (!Active)
             {
-                ModEntry.Log($"{Name}.Activate({farmer})");
                 Active = true;
                 Allowed = d.ProcOn != ProcOn.Timed;
                 ProcTimer = d.ProcTimer;
@@ -70,7 +69,6 @@ namespace TrinketTinker.Effects.Abilities
         {
             if (Active)
             {
-                ModEntry.Log($"{Name}.Deactivate({farmer})");
                 Active = false;
                 Allowed = false;
                 return true;
@@ -81,7 +79,6 @@ namespace TrinketTinker.Effects.Abilities
         {
             if (CheckFarmer(farmer))
             {
-                ModEntry.Log($"{Name}.Proc({farmer})");
                 return ApplyEffect(farmer);
             }
             return false;
@@ -112,7 +109,6 @@ namespace TrinketTinker.Effects.Abilities
         {
             if (CheckFarmer(farmer) && damageAmount >= d.DamageThreshold)
             {
-                ModEntry.Log($"{Name}.Proc({farmer}, {damageAmount})");
                 return ApplyEffect(farmer, damageAmount);
             }
             return false;
@@ -121,7 +117,6 @@ namespace TrinketTinker.Effects.Abilities
         {
             if (CheckFarmer(farmer) && CheckMonster(monster) && damageAmount >= d.DamageThreshold)
             {
-                ModEntry.Log($"{Name}.Proc({farmer}, {monster}, {damageAmount})");
                 return ApplyEffect(farmer, monster, damageAmount);
             }
             return false;
@@ -130,7 +125,6 @@ namespace TrinketTinker.Effects.Abilities
         {
             if (CheckFarmer(farmer))
             {
-                ModEntry.Log($"{Name}.Proc({farmer}, {time}, {location})");
                 return ApplyEffect(farmer, time, location);
             }
             return false;

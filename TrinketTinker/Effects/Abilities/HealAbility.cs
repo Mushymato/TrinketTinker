@@ -27,9 +27,8 @@ namespace TrinketTinker.Effects.Abilities
             if (targetHealth)
             {
                 int previousHealth = farmer.health;
-                farmer.health = Math.Min(farmer.maxHealth, (int)(farmer.health + farmer.maxHealth * healPower / 1000));
+                farmer.health = Math.Min(farmer.maxHealth, farmer.health + farmer.maxHealth * healPower / 1000);
                 int healed = farmer.health - previousHealth;
-                ModEntry.Log($"{Name}.ApplyEffect: healed {healed}");
                 if (healed > 0)
                 {
                     farmer.currentLocation.debris.Add(new Debris(healed, farmer.getStandingPosition(), Color.Lime, 1f, farmer));
@@ -48,7 +47,7 @@ namespace TrinketTinker.Effects.Abilities
             if (targetHealth)
             {
                 int previousHealth = farmer.health;
-                farmer.health = Math.Min(farmer.maxHealth, (int)(farmer.health + damageAmount * healPower / 1000));
+                farmer.health = Math.Min(farmer.maxHealth, farmer.health + damageAmount * healPower / 1000);
                 int healed = farmer.health - previousHealth;
                 if (healed > 0)
                 {
@@ -59,12 +58,12 @@ namespace TrinketTinker.Effects.Abilities
             {
                 farmer.Stamina = Math.Min(farmer.MaxStamina, farmer.Stamina + farmer.MaxStamina * healPower / 1000);
             }
-            return base.ApplyEffect(farmer);
+            return base.ApplyEffect(farmer, damageAmount);
         }
 
         protected override bool ApplyEffect(Farmer farmer, Monster monster, int damageAmount)
         {
-            return base.ApplyEffect(farmer, damageAmount);
+            return base.ApplyEffect(farmer, monster, damageAmount);
         }
 
     }

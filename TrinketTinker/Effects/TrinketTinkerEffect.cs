@@ -56,12 +56,12 @@ namespace TrinketTinker.Effects
                         }
                         else
                         {
-                            ModEntry.Log($"Skip invalid ability ({kv.Value.AbilityClass} from {trinket.QualifiedItemId})", LogLevel.Trace);
+                            ModEntry.Log($"Skip invalid ability ({kv.Value.AbilityClass} from {trinket.QualifiedItemId})", LogLevel.Warn);
                         }
                     }
                     else
                     {
-                        ModEntry.Log($"Failed to get type for ability ({kv.Value.AbilityClass} from {trinket.QualifiedItemId})", LogLevel.Trace);
+                        ModEntry.Log($"Failed to get type for ability ({kv.Value.AbilityClass} from {trinket.QualifiedItemId})", LogLevel.Warn);
                     }
                 }
             }

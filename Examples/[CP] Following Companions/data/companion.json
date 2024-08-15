@@ -90,18 +90,12 @@
         },
         "{{ModId}}_Junimo": {
           "ID": "{{ModId}}_Junimo",
-          // "CompanionClass": "TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker",
           "Variants": [
             {
               "Texture": "Mods/{{ModId}}/Junimo",
               "Width": 16,
               "Height": 16,
-              "ColorMask": {
-                "R": 50,
-                "G": 205,
-                "B": 50,
-                "A": 255
-              }
+              "ColorMask": "Red"
             },
           ],
           "Motions": {

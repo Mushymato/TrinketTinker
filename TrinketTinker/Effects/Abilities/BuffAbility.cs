@@ -18,7 +18,6 @@ namespace TrinketTinker.Effects.Abilities
 
         protected override bool ApplyEffect(Farmer farmer)
         {
-            ModEntry.Log($"{Name}.ApplyEffect: buffId={buffId}");
             farmer.applyBuff(buffId);
             return base.ApplyEffect(farmer);
         }
