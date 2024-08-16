@@ -89,7 +89,6 @@
           }
         },
         "{{ModId}}_Junimo": {
-          "ID": "{{ModId}}_Junimo",
           "Variants": [
             {
               "Texture": "Mods/{{ModId}}/Junimo",

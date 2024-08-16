@@ -9,16 +9,19 @@ using StardewModdingAPI;
 
 namespace TrinketTinker.Effects
 {
-    /// <summary>
-    /// Base class for TrinketTinker trinkets
-    /// Support spawning arbiturary companions
-    /// </summary>
+    /// <summary>Base class for TrinketTinker trinkets, allows extensible companions with extensible abilities.</summary>
     public class TrinketTinkerEffect : TrinketEffect
     {
-        private const string ABILITY_FMT = "TrinketTinker.Effects.Abilities.{0}Ability, TrinketTinker";
+        /// <summary>Companion data with matching ID</summary>
         protected CompanionData? Data;
+
+        /// <summary>Abilities for this trinket.</summary>
         protected Dictionary<string, Ability> Abilities;
+
+        /// <summary>Abilities, key'd by <see cref="AbilityData.ProcOn"/></summary>
         protected Dictionary<ProcOn, List<Ability>> SortedAbilities;
+
+        /// <summary>Position of companion, including offset if applicable.</summary>
         public Vector2 CompanionPosition
         {
             get
@@ -31,6 +34,8 @@ namespace TrinketTinker.Effects
             }
         }
 
+        /// <summary>Constructor</summary>
+        /// <param name="trinket"></param>
         public TrinketTinkerEffect(Trinket trinket)
             : base(trinket)
         {
@@ -46,7 +51,7 @@ namespace TrinketTinker.Effects
                 // Abilities
                 foreach (KeyValuePair<string, AbilityData> kv in Data.Abilities)
                 {
-                    if (ModEntry.TryGetType(kv.Value.AbilityClass, out Type? abilityType, ABILITY_FMT))
+                    if (ModEntry.TryGetType(kv.Value.AbilityClass, out Type? abilityType, Constants.ABILITY_CLS))
                     {
                         Ability? ability = (Ability?)Activator.CreateInstance(abilityType, this, kv.Value);
                         if (ability != null && ability.Valid)
@@ -67,6 +72,8 @@ namespace TrinketTinker.Effects
             }
         }
 
+        /// <summary>Spawn the companion, and activate all abilities</summary>
+        /// <param name="farmer"></param>
         public override void Apply(Farmer farmer)
         {
             if (Data == null || Game1.gameMode != 3)
@@ -86,6 +93,8 @@ namespace TrinketTinker.Effects
             }
         }
 
+        /// <summary>Remove the companion, and deactivate all abilities</summary>
+        /// <param name="farmer"></param>
         public override void Unapply(Farmer farmer)
         {
             farmer.RemoveCompanion(_companion);
@@ -95,6 +104,9 @@ namespace TrinketTinker.Effects
                 ability.Deactivate(farmer);
             }
         }
+
+        /// <summary>When item is used (???).</summary>
+        /// <param name="farmer"></param>
         public override void OnUse(Farmer farmer)
         {
             foreach (var ability in SortedAbilities[ProcOn.Use])
@@ -102,6 +114,9 @@ namespace TrinketTinker.Effects
                 ability.Proc(farmer);
             }
         }
+
+        /// <summary>When player takes a step (moves).</summary>
+        /// <param name="farmer"></param>
         public override void OnFootstep(Farmer farmer)
         {
             foreach (var ability in SortedAbilities[ProcOn.Footstep])
@@ -109,6 +124,10 @@ namespace TrinketTinker.Effects
                 ability.Proc(farmer);
             }
         }
+
+        /// <summary>When player takes damage.</summary>
+        /// <param name="farmer"></param>
+        /// <param name="damageAmount"></param>
         public override void OnReceiveDamage(Farmer farmer, int damageAmount)
         {
             foreach (var ability in SortedAbilities[ProcOn.ReceiveDamage])
@@ -116,6 +135,11 @@ namespace TrinketTinker.Effects
                 ability.Proc(farmer, damageAmount);
             }
         }
+
+        /// <summary>When player deals damage to a monster.</summary>
+        /// <param name="farmer"></param>
+        /// <param name="monster"></param>
+        /// <param name="damageAmount"></param>
         public override void OnDamageMonster(Farmer farmer, Monster monster, int damageAmount)
         {
             foreach (var ability in SortedAbilities[ProcOn.DamageMonster])
@@ -123,6 +147,11 @@ namespace TrinketTinker.Effects
                 ability.Proc(farmer, monster, damageAmount);
             }
         }
+
+        /// <summary>Update tick</summary>
+        /// <param name="farmer"></param>
+        /// <param name="time"></param>
+        /// <param name="location"></param>
         public override void Update(Farmer farmer, GameTime time, GameLocation location)
         {
             foreach (var ability in Abilities.Values)
@@ -130,6 +159,9 @@ namespace TrinketTinker.Effects
                 ability.Update(farmer, time, location);
             }
         }
+
+        /// <summary>Randomize this trinket's stats through anvil.</summary>
+        /// <param name="trinket"></param>
         public override void GenerateRandomStats(Trinket trinket)
         {
             // foreach (var ability in Abilities.Values)

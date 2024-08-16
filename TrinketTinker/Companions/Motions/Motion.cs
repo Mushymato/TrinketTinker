@@ -5,21 +5,35 @@ using TrinketTinker.Models;
 
 namespace TrinketTinker.Companions.Motions
 {
+    /// <summary>Abstract class, controls drawing and movement of companion</summary>
     public abstract class Motion
     {
+        /// <summary>Companion that owns this motion.</summary>
         protected readonly TrinketTinkerCompanion c;
+        /// <summary>Data for this motion.</summary>
         protected readonly MotionData d;
+        /// <summary>Constant offset, derived from data</summary>
         protected Vector2 MotionOffset;
-        protected float frameRate;
+
+        /// <summary>Constructor</summary>
+        /// <param name="companion"></param>
+        /// <param name="data"></param>
         public Motion(TrinketTinkerCompanion companion, MotionData data)
         {
             c = companion;
             d = data;
             MotionOffset = new(d.OffsetX, d.OffsetY);
             c.Offset = MotionOffset;
-            frameRate = 1000f / d.Interval;
         }
+
+        /// <summary>Update for the client of the player that equipped this trinket, responsible for netfields.</summary>
+        /// <param name="time">Game time</param>
+        /// <param name="location">Current map location</param>
         public abstract void UpdateLocal(GameTime time, GameLocation location);
+
+        /// <summary>Update for all clients, responsible for animation frame.</summary>
+        /// <param name="time">Game time</param>
+        /// <param name="location">Current map location</param>
         public virtual void UpdateGlobal(GameTime time, GameLocation location)
         {
             if (d.AlwaysMoving || c.Moving)
@@ -32,7 +46,16 @@ namespace TrinketTinker.Companions.Motions
                 c.Sprite.UpdateSourceRect();
             }
         }
+
+        /// <summary>Draw the companion.</summary>
+        /// <param name="b">SpriteBatch</param>
         public abstract void Draw(SpriteBatch b);
+
+        /// <summary>Default draw implementation, draws the companion plus a shadow.</summary>
+        /// <param name="b"></param>
+        /// <param name="layerDepth"></param>
+        /// <param name="textureScale"></param>
+        /// <param name="shadowScale"></param>
         protected virtual void DrawWithShadow(SpriteBatch b, float layerDepth, Vector2 textureScale, Vector2 shadowScale)
         {
             b.Draw(
@@ -60,13 +83,15 @@ namespace TrinketTinker.Companions.Motions
                 layerDepth - 2E-06f
             );
         }
-        // protected virtual void UpdateDirectionRotation(Vector2 position, Vector2 posDelta)
-        // {
-        // }
+
+        /// <summary>Update companion facing direction using current position</summary>
         protected virtual void UpdateDirection()
         {
             UpdateDirection(c.Position);
         }
+
+        /// <summary>Update companion facing direction using a direction.</summary>
+        /// <param name="position"></param>
         protected virtual void UpdateDirection(Vector2 position)
         {
             Vector2 posDelta = c.Anchor - position;
@@ -74,23 +99,19 @@ namespace TrinketTinker.Companions.Motions
             {
                 case DirectionMode.DRUL:
                     if (Math.Abs(posDelta.X) > Math.Abs(posDelta.Y))
-                    {
                         c.direction.Value = (c.Anchor.X > position.X) ? 2 : 4;
-                    }
                     else
-                    {
                         c.direction.Value = (c.Anchor.Y > position.Y) ? 1 : 3;
-                    }
                     break;
                 case DirectionMode.DRU:
                     if (Math.Abs(posDelta.X) > Math.Abs(posDelta.Y))
-                    {
                         c.direction.Value = (c.Anchor.X > position.X) ? 2 : -2;
-                    }
                     else
-                    {
                         c.direction.Value = (c.Anchor.Y > position.Y) ? 1 : 3;
-                    }
+                    break;
+                case DirectionMode.RL:
+                    if (Math.Abs(posDelta.X) > 8f)
+                        c.direction.Value = (c.Anchor.X > position.X) ? 1 : 2;
                     break;
                 case DirectionMode.R:
                     if (Math.Abs(posDelta.X) > 8f)
@@ -104,6 +125,9 @@ namespace TrinketTinker.Companions.Motions
                     break;
             }
         }
+
+        /// <summary>First frame of animation, depending on direction.</summary>
+        /// <returns>Frame number</returns>
         protected virtual int DirectionFrameStart()
         {
             if (d.DirectionMode == DirectionMode.None)

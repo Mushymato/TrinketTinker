@@ -34,6 +34,8 @@ namespace TrinketTinker.Companions.Motions
                 new Vector2(d.ShadowScale, d.ShadowScale)
             );
         }
+
+        /// <summary>Update companion facing direction using current position and offset.</summary>
         protected override void UpdateDirection()
         {
             UpdateDirection(c.Position + c.Offset);

@@ -1,25 +1,42 @@
 namespace TrinketTinker.Models
 {
+    /// <summary>Determine how the sprites are interpreted.</summary>
     public enum DirectionMode
     {
-        None = 0,
-        R = 1,
-        RL = 2,
-        DRU = 3,
-        DRUL = 4,
-        Rotate = 5,
+        /// <summary>Direction never changes.</summary>
+        None,
+        /// <summary>Has right animations, flips sprite if going left</summary>
+        R,
+        /// <summary>Has right/left animations, no down/up</summary>
+        RL,
+        /// <summary>Has down/right/up animations, flips the right animation to go left.</summary>
+        DRU,
+        /// <summary>Has down/right/up/left animations</summary>
+        DRUL,
+        /// <summary>Sprite is rotated to angular direction.</summary>
+        Rotate,
     }
     public class MotionData
     {
+        /// <summary>Class name, need to be fully qualified to use a motion not provided by this mod.</summary>
         public string? MotionClass { get; set; } = null;
+        /// <summary>If true, continue animation when not moving.</summary>
         public bool AlwaysMoving { get; set; } = false;
+        /// <summary>Direction mode, determines how sprites should be arranged.</summary>
         public DirectionMode DirectionMode { get; set; } = DirectionMode.None;
+        /// <summary>First frame of the animation.</summary>
         public int AnimationFrameStart { get; set; } = 0;
+        /// <summary>Length of 1 set of movement animation.</summary>
         public int AnimationFrameLength { get; set; } = 4;
+        /// <summary>Miliseconds between frames.</summary>
         public float Interval { get; set; } = 100f;
+        /// <summary>Position offset X.</summary>
         public float OffsetX { get; set; } = 0f;
+        /// <summary>Position offset Y.</summary>
         public float OffsetY { get; set; } = 0f;
+        /// <summary>Base scale to draw texture at.</summary>
         public float TextureScale { get; set; } = 4f;
+        /// <summary>Base scale to draw shadow texture.</summary>
         public float ShadowScale { get; set; } = 3f;
     }
 }

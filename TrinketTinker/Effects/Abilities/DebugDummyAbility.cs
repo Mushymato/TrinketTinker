@@ -5,6 +5,7 @@ using TrinketTinker.Models;
 
 namespace TrinketTinker.Effects.Abilities
 {
+    /// <summary>Prints many logs, doesn't do anything else.</summary>
     public class DebugDummyAbility : Ability
     {
         public DebugDummyAbility(TrinketTinkerEffect effect, AbilityData data) : base(effect, data)

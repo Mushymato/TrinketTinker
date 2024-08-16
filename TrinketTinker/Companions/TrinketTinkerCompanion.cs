@@ -10,14 +10,19 @@ using TrinketTinker.Companions.Motions;
 
 namespace TrinketTinker.Companions
 {
+    /// <summary>Main companion class for trinket tinker.</summary>
     public class TrinketTinkerCompanion : Companion
     {
-        private const string MOTION_FMT = "TrinketTinker.Companions.Motions.{0}Motion, TrinketTinker";
         // NetFields + Getters
+        /// <summary>NetField for <see cref="ID"/></summary>
         protected readonly NetString _id = new("");
+        /// <summary>Companion ID. Companion is (re)loaded when this is changed.</summary>
         public string ID => _id.Value;
+        /// <summary>Animated sprite of companion</summary>
         public AnimatedSprite Sprite { get; set; } = new();
+        /// <summary>NetField for <see cref="Moving"/></summary>
         protected readonly NetBool _moving = new(false);
+        /// <summary>Whether companion is moving</summary>
         public bool Moving
         {
             get
@@ -29,7 +34,9 @@ namespace TrinketTinker.Companions
                 _moving.Value = value;
             }
         }
+        /// <summary>NetField for <see cref="Offset"/></summary>
         protected readonly NetVector2 _offset = new();
+        /// <summary>Offset from companion's position, e.g. if companions are "flying"</summary>
         public Vector2 Offset
         {
             get
@@ -41,46 +48,47 @@ namespace TrinketTinker.Companions
                 _offset.Value = value;
             }
         }
+        /// <summary>Amount of rotation on the sprite, applicable when direction mode is <see cref="DirectionMode.Rotate"/></summary>
         public readonly NetFloat rotation = new(0f);
         // Derived
+        /// <summary>Backing companion data from content.</summary>
         public CompanionData? Data;
-        public Motion? Motion
-        { get; set; }
+        /// <summary>Motion class that controls how the companion moves.</summary>
+        public Motion? Motion { get; set; }
+        /// <summary>Position the companion should follow.</summary>
         public Vector2 Anchor
         {
             get
             {
-                return Utility.PointToVector2(this.Owner.GetBoundingBox().Center);
+                return Utility.PointToVector2(Owner.GetBoundingBox().Center);
             }
         }
+        /// <summary>Middle point of the sprite, based on width and height.</summary>
         public Vector2 SpriteOrigin { get; set; } = Vector2.Zero;
+        /// <summary>Color mask to use on sprite draw.</summary>
         public Color SpriteColor => Utility.StringToColor(Data?.Variants[whichVariant.Value].ColorMask) ?? Color.White;
 
+        /// <summary>Argumentless constructor for netcode deserialization.</summary>
         public TrinketTinkerCompanion() : base()
         {
         }
 
+        /// <summary>Construct new companion using companion ID.</summary>
         public TrinketTinkerCompanion(string companionId)
         {
-            // _sprite.Value = new AnimatedSprite(data.Texture, 0, data.Size.X, data.Size.Y);
-            // _interval.Value = data.FrameInterval;
-            // _framesPerAnimation.Value = data.FramesPerAnimation;
             _id.Value = companionId;
             _moving.Value = false;
             whichVariant.Value = 0;
         }
 
-        public override void InitializeCompanion(Farmer farmer)
-        {
-            base.InitializeCompanion(farmer);
-        }
-
+        /// <summary>Cleanup Motion class.</summary>
         public override void CleanupCompanion()
         {
             base.CleanupCompanion();
             Motion = null;
         }
 
+        /// <summary>Setup net fields.</summary>
         public override void InitNetFields()
         {
             base.InitNetFields();
@@ -95,6 +103,7 @@ namespace TrinketTinker.Companions
             _offset.fieldChangeEvent += (NetVector2 field, Vector2 oldValue, Vector2 newValue) => { _offset.Value = newValue; };
         }
 
+        /// <summary>When <see cref="ID"/> is changed through net event, fetch companion data and build all fields.</summary>
         private void InitCompanionData(NetString field, string oldValue, string newValue)
         {
             _id.Value = newValue;
@@ -107,16 +116,15 @@ namespace TrinketTinker.Companions
             Sprite = new AnimatedSprite(vdata.Texture, 0, vdata.Width, vdata.Height);
             SpriteOrigin = new Vector2(vdata.Width / 2, vdata.Height / 2);
 
-            // Interval = Data.FrameInterval;
-            // FramesPerAnimation = Data.FramesPerAnimation;
             MotionData mdata = Data.Motions["default"];
-            if (ModEntry.TryGetType(mdata.MotionClass, out Type? motionCls, MOTION_FMT))
+            if (ModEntry.TryGetType(mdata.MotionClass, out Type? motionCls, Constants.MOTION_CLS))
                 Motion = (Motion?)Activator.CreateInstance(motionCls, this, mdata);
             else
                 Motion = new LerpMotion(this, mdata);
         }
 
-
+        /// <summary>Draw using <see cref="Motion"/>.</summary>
+        /// <param name="b">SpriteBatch</param>
         public override void Draw(SpriteBatch b)
         {
             if (Owner == null || Owner.currentLocation == null || (Owner.currentLocation.DisplayName == "Temp" && !Game1.isFestival()))
@@ -126,6 +134,13 @@ namespace TrinketTinker.Companions
             Motion!.Draw(b);
         }
 
+        /// <summary>
+        /// Do updates in <see cref="Motion"/>.
+        /// The client of the player with the trinket is responsible for calculating position direction rotation.
+        /// All clients must update animation frame.
+        /// </summary>
+        /// <param name="time">Game time</param>
+        /// <param name="location">Current map location</param>
         public override void Update(GameTime time, GameLocation location)
         {
             if (IsLocal)
@@ -133,12 +148,14 @@ namespace TrinketTinker.Companions
             Motion!.UpdateGlobal(time, location);
         }
 
+        /// <summary>Reset position on warp</summary>
         public override void OnOwnerWarp()
         {
             base.OnOwnerWarp();
             _position.Value = _owner.Value.Position;
         }
 
+        /// <summary>Vanilla hop event handler, blocked.</summary>
         public override void Hop(float amount)
         {
         }
