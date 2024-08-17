@@ -12,7 +12,7 @@ namespace TrinketTinker.Companions.Motions
         {
             c.Moving = c.Position != c.Anchor;
             c.Position = c.Anchor;
-            c.Offset = MotionOffset;
+            c.Offset = motionOffset;
             // UpdateDirection();
             int newDirection = c.Owner.FacingDirection;
             switch (newDirection)

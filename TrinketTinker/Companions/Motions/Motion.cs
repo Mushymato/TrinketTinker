@@ -13,7 +13,9 @@ namespace TrinketTinker.Companions.Motions
         /// <summary>Data for this motion.</summary>
         protected readonly MotionData d;
         /// <summary>Constant offset, derived from data</summary>
-        protected Vector2 MotionOffset;
+        protected Vector2 motionOffset;
+        /// <summary>Should reverse the animation, used for <see cref="LoopMode.PingPong"/></summary>
+        protected bool isReverse = false;
 
         /// <summary>Constructor</summary>
         /// <param name="companion"></param>
@@ -22,8 +24,8 @@ namespace TrinketTinker.Companions.Motions
         {
             c = companion;
             d = data;
-            MotionOffset = new(d.OffsetX, d.OffsetY);
-            c.Offset = MotionOffset;
+            motionOffset = new(d.OffsetX, d.OffsetY);
+            c.Offset = motionOffset;
         }
 
         /// <summary>Update for the client of the player that equipped this trinket, responsible for netfields.</summary>
@@ -38,7 +40,16 @@ namespace TrinketTinker.Companions.Motions
         {
             if (d.AlwaysMoving || c.Moving)
             {
-                c.Sprite.Animate(time, DirectionFrameStart(), d.AnimationFrameLength, d.Interval);
+                int frameStart = DirectionFrameStart();
+                switch (d.LoopMode)
+                {
+                    case LoopMode.PingPong:
+                        isReverse = c.Sprite.AnimatePingPong(time, frameStart, d.AnimationFrameLength, d.Interval, isReverse);
+                        break;
+                    case LoopMode.Standard:
+                        c.Sprite.Animate(time, frameStart, d.AnimationFrameLength, d.Interval);
+                        break;
+                }
             }
             else
             {

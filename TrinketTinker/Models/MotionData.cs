@@ -16,6 +16,15 @@ namespace TrinketTinker.Models
         /// <summary>Sprite is rotated to angular direction.</summary>
         Rotate,
     }
+    /// <summary>Determine how sprites loop.</summary>
+    public enum LoopMode
+    {
+        /// <summary>Loops to start from last frame, e.g. 1 2 3 4 1 2 3 4 1 2 3 4</summary>
+        Standard,
+        /// <summary>Reverse the animation from last frame, e.g. 1 2 3 4 3 2 1 2 3 4</summary>
+        PingPong,
+    }
+    /// <summary>Defines how the companion moves and animates.</summary>
     public class MotionData
     {
         /// <summary>Class name, need to be fully qualified to use a motion not provided by this mod.</summary>
@@ -25,6 +34,7 @@ namespace TrinketTinker.Models
         /// <summary>Direction mode, determines how sprites should be arranged.</summary>
         public DirectionMode DirectionMode { get; set; } = DirectionMode.None;
         /// <summary>First frame of the animation.</summary>
+        public LoopMode LoopMode { get; set; } = LoopMode.Standard;
         public int AnimationFrameStart { get; set; } = 0;
         /// <summary>Length of 1 set of movement animation.</summary>
         public int AnimationFrameLength { get; set; } = 4;
