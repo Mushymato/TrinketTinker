@@ -8,5 +8,10 @@
     "UniqueID": "mushymato.TrinketTinker",
     "UpdateKeys": [],
     "EntryDll": "TrinketTinker.dll",
-    "Dependencies": []
+    "Dependencies": [
+        {
+            "UniqueID": "Pathoschild.ContentPatcher",
+            "MinimumVersion": "2.3.0"
+        }
+    ]
 }

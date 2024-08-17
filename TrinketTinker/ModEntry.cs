@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
+using Microsoft.Xna.Framework.Content;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
@@ -37,7 +38,7 @@ namespace TrinketTinker
             mon = Monitor;
             ModId = ModManifest.UniqueID;
 
-            // helper.Events.GameLoop.GameLaunched += OnGameLaunched;
+            helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.Content.AssetRequested += OnAssetRequested;
             helper.Events.Content.AssetsInvalidated += OnAssetInvalidated;
 
@@ -50,6 +51,20 @@ namespace TrinketTinker
                 "tt_print_types",
                 "Print valid Effect, Companion, Motion, and Ability types.",
                 ConsolePrintTypenames
+            );
+        }
+
+        private void OnGameLaunched(object? sender, GameLaunchedEventArgs e)
+        {
+            Integration.IContentPatcherAPI? CP = Helper.ModRegistry.GetApi<Integration.IContentPatcherAPI>("Pathoschild.ContentPatcher") ??
+                throw new ContentLoadException("Failed to get Content Patcher API");
+            CP.RegisterToken(
+                ModManifest, "EffectClass",
+                () => { return new string[] { typeof(TrinketTinkerEffect).AssemblyQualifiedName ?? "???" }; }
+            );
+            CP.RegisterToken(
+                ModManifest, "Target",
+                () => { return new string[] { TinkerAsset }; }
             );
         }
 

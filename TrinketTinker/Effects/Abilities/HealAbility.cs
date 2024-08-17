@@ -9,11 +9,11 @@ namespace TrinketTinker.Effects.Abilities
     public class HealAbility : Ability
     {
         /// <summary>Healing power, will get divided by 1000 for percent</summary>
-        private readonly int healPower = 0;
+        protected readonly int healPower = 0;
         /// <summary>True if heal should target health</summary>
-        private readonly bool targetHealth = false;
+        protected readonly bool targetHealth = false;
         /// <summary>True if heal should target stamina</summary>
-        private readonly bool targetStamina = false;
+        protected readonly bool targetStamina = false;
         public HealAbility(TrinketTinkerEffect effect, AbilityData data) : base(effect, data)
         {
             Valid = false;

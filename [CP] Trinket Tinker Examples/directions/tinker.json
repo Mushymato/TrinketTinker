@@ -3,7 +3,7 @@
     // Edit Mods/mushymato.TrinketTinker
     {
       "Action": "EditData",
-      "Target": "Mods/mushymato.TrinketTinker/Tinker",
+      "Target": "{{mushymato.TrinketTinker/Target}}",
       "Entries": {
         // ID must match trinket
         "{{ModId}}_DirectionR": {
@@ -82,6 +82,7 @@
             }
           },
           "Abilities": [
+            // level 0
             [
               {
                 // Shoot projectile every 0.5s
@@ -89,6 +90,11 @@
                 "ProcOn": "Timed",
                 "ProcTimer": 500,
                 "AbilityClass": "Projectile",
+                "Args": {
+                  "MinDamage": 10,
+                  "MaxDamage": 100,
+                  "SpriteIndex": 5
+                }
               }
             ]
           ]

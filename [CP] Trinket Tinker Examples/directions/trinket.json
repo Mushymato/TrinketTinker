@@ -14,7 +14,7 @@
           "DropsNaturally": false,
           "CanBeReforged": true,
           // Custom trinket effect class required for features of this mod
-          "TrinketEffectClass": "TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker"
+          "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
         },
         "{{ModId}}_DirectionRotate": {
           "ID": "{{ModId}}_DirectionRotate",
@@ -23,9 +23,9 @@
           "Texture": "Mods/{{ModId}}/rotation",
           "SheetIndex": 1,
           "DropsNaturally": false,
-          "CanBeReforged": true,
+          "CanBeReforged": false,
           // Custom trinket effect class required for features of this mod
-          "TrinketEffectClass": "TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker"
+          "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
         }
       }
     }

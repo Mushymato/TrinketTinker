@@ -41,7 +41,7 @@ namespace TrinketTinker.Models
         public Dictionary<string, string> Args { get; set; } = new();
 
         /// <summary>
-        /// Parse a string argument to expected type.
+        /// Get value from <see cref="Args"/> and try to parse to the expected type.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="key"></param>
@@ -73,7 +73,7 @@ namespace TrinketTinker.Models
         }
 
         /// <summary>
-        /// Get a string, check that it is not null
+        /// Get value from <see cref="Args"/>.
         /// </summary>
         /// <typeparam name="String"></typeparam>
         /// <param name="key"></param>
