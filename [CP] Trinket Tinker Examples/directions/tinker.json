@@ -1,0 +1,98 @@
+{
+  "Changes": [
+    // Edit Mods/mushymato.TrinketTinker
+    {
+      "Action": "EditData",
+      "Target": "Mods/mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        // ID must match trinket
+        "{{ModId}}_DirectionR": {
+          "ID": "{{ModId}}_DirectionR",
+          "MinLevel": 1,
+          "MaxLevel": 2,
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/rotation",
+              "Width": 16,
+              "Height": 16
+            },
+          ],
+          "Motions": {
+            "default": {
+              "MotionClass": "Hover",
+              "AlwaysMoving": true,
+              "DirectionMode": "R",
+              "AnimationFrameLength": 4,
+              "Interval": 200,
+              "OffsetY": -128,
+            }
+          },
+          "Abilities": [
+            // level 1
+            [
+              {
+                // Heal the player a little as they walk outdoors
+                "Condition": "LOCATION_IS_OUTDOORS Target",
+                "ProcOn": "Footstep",
+                "ProcSound": "fairy_heal",
+                "AbilityClass": "Heal",
+                "Args": {
+                  "HealPower": 1,
+                  "TargetHealth": true,
+                  "TargetStamina": true
+                }
+              }
+            ],
+            // level 2
+            [
+              {
+                // Heal the player a little as they walk outdoors
+                "Condition": "LOCATION_IS_OUTDOORS Target",
+                "ProcOn": "Footstep",
+                "ProcSound": "fairy_heal",
+                "AbilityClass": "Heal",
+                "Args": {
+                  "HealPower": 10,
+                  "TargetHealth": true,
+                  "TargetStamina": true
+                }
+              }
+            ]
+          ]
+        },
+        // ID must match trinket
+        "{{ModId}}_DirectionRotate": {
+          "ID": "{{ModId}}_DirectionRotate",
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/rotation",
+              "Width": 16,
+              "Height": 16
+            },
+          ],
+          "Motions": {
+            "default": {
+              "MotionClass": "Hover",
+              "AlwaysMoving": true,
+              "DirectionMode": "Rotate",
+              "AnimationFrameLength": 4,
+              "Interval": 200,
+              "OffsetY": -128,
+            }
+          },
+          "Abilities": [
+            [
+              {
+                // Shoot projectile every 0.5s
+                "Condition": null,
+                "ProcOn": "Timed",
+                "ProcTimer": 500,
+                "AbilityClass": "Projectile",
+              }
+            ]
+          ]
+        },
+      }
+    }
+  ]
+}

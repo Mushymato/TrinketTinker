@@ -26,27 +26,43 @@ namespace TrinketTinker.Effects.Abilities
             }
         }
 
+        /// <summary>Healing formula</summary>
+        /// <param name="maximum"></param>
+        /// <param name="current"></param>
+        /// <param name="relative"></param>
+        /// <returns></returns>
+        private int HealthFormula(int maximum, int current, int relative)
+        {
+            return (int)Math.Ceiling(Math.Min(maximum, current + relative * healPower / 1000.0));
+        }
+
+        private float StaminaFormula(float maximum, float current)
+        {
+            return (float)Math.Ceiling(Math.Min(maximum, current + maximum * healPower / 1000.0));
+        }
+
         /// <summary>Heal % based on max HP/Stamina</summary>
         /// <param name="farmer"></param>
         /// <returns></returns>
         protected override bool ApplyEffect(Farmer farmer)
         {
+            bool playSound = false;
             if (targetHealth)
             {
                 int previousHealth = farmer.health;
-                farmer.health = Math.Min(farmer.maxHealth, farmer.health + farmer.maxHealth * healPower / 1000);
+                farmer.health = HealthFormula(farmer.maxHealth, farmer.health, farmer.maxHealth);
                 int healed = farmer.health - previousHealth;
                 if (healed > 0)
                 {
                     farmer.currentLocation.debris.Add(new Debris(healed, farmer.getStandingPosition(), Color.Lime, 1f, farmer));
-                    Game1.playSound("fairy_heal");
+                    playSound = true;
                 }
             }
             if (targetStamina)
             {
-                farmer.Stamina = Math.Min(farmer.MaxStamina, farmer.Stamina + farmer.MaxStamina * healPower / 1000);
+                farmer.Stamina = StaminaFormula(farmer.MaxStamina, farmer.Stamina);
             }
-            return base.ApplyEffect(farmer);
+            return base.ApplyEffect(farmer) && playSound;
         }
 
         /// <summary>Heal % based on damage taken</summary>
@@ -55,21 +71,23 @@ namespace TrinketTinker.Effects.Abilities
         /// <returns></returns>
         protected override bool ApplyEffect(Farmer farmer, int damageAmount)
         {
+            bool playSound = false;
             if (targetHealth)
             {
                 int previousHealth = farmer.health;
-                farmer.health = Math.Min(farmer.maxHealth, farmer.health + damageAmount * healPower / 1000);
+                farmer.health = HealthFormula(farmer.maxHealth, farmer.health, damageAmount);
                 int healed = farmer.health - previousHealth;
                 if (healed > 0)
                 {
                     farmer.currentLocation.debris.Add(new Debris(healed, farmer.getStandingPosition(), Color.Lime, 1f, farmer));
+                    playSound = true;
                 }
             }
             if (targetStamina)
             {
-                farmer.Stamina = Math.Min(farmer.MaxStamina, farmer.Stamina + farmer.MaxStamina * healPower / 1000);
+                farmer.Stamina = StaminaFormula(farmer.MaxStamina, farmer.Stamina);
             }
-            return base.ApplyEffect(farmer, damageAmount);
+            return base.ApplyEffect(farmer, damageAmount) && playSound;
         }
 
         /// <summary>Heal % based on damage dealt</summary>

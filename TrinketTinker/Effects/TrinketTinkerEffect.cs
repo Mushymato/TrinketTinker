@@ -13,13 +13,15 @@ namespace TrinketTinker.Effects
     public class TrinketTinkerEffect : TrinketEffect
     {
         /// <summary>Companion data with matching ID</summary>
-        protected CompanionData? Data;
+        protected TinkerData? Data;
 
         /// <summary>Abilities for this trinket.</summary>
-        protected Dictionary<string, Ability> Abilities;
+        protected List<List<Ability>> Abilities;
 
         /// <summary>Abilities, key'd by <see cref="AbilityData.ProcOn"/></summary>
-        protected Dictionary<ProcOn, List<Ability>> SortedAbilities;
+        protected List<Dictionary<ProcOn, List<Ability>>> SortedAbilities;
+
+        protected int Level => general_stat_1 - (Data?.MinLevel ?? 0);
 
         /// <summary>Position of companion, including offset if applicable.</summary>
         public Vector2 CompanionPosition
@@ -42,32 +44,39 @@ namespace TrinketTinker.Effects
             ModEntry.CompanionData.TryGetValue(trinket.ItemId, out Data);
             Abilities = new();
             SortedAbilities = new();
-            foreach (ProcOn actv in Enum.GetValues(typeof(ProcOn)))
-            {
-                SortedAbilities[actv] = new List<Ability>();
-            }
             if (Data != null)
             {
                 // Abilities
-                foreach (KeyValuePair<string, AbilityData> kv in Data.Abilities)
+                foreach (List<AbilityData> abList in Data.Abilities)
                 {
-                    if (ModEntry.TryGetType(kv.Value.AbilityClass, out Type? abilityType, Constants.ABILITY_CLS))
+                    List<Ability> lvlAbility = new();
+                    Dictionary<ProcOn, List<Ability>> lvlSorted = new();
+                    foreach (ProcOn actv in Enum.GetValues(typeof(ProcOn)))
                     {
-                        Ability? ability = (Ability?)Activator.CreateInstance(abilityType, this, kv.Value);
-                        if (ability != null && ability.Valid)
+                        lvlSorted[actv] = new List<Ability>();
+                    }
+                    foreach (AbilityData ab in abList)
+                    {
+                        if (ModEntry.TryGetType(ab.AbilityClass, out Type? abilityType, Constants.ABILITY_CLS))
                         {
-                            Abilities[kv.Key] = ability;
-                            SortedAbilities[kv.Value.ProcOn].Add(ability);
+                            Ability? ability = (Ability?)Activator.CreateInstance(abilityType, this, ab);
+                            if (ability != null && ability.Valid)
+                            {
+                                lvlAbility.Add(ability);
+                                lvlSorted[ab.ProcOn].Add(ability);
+                            }
+                            else
+                            {
+                                ModEntry.Log($"Skip invalid ability ({ab.AbilityClass} from {trinket.QualifiedItemId})", LogLevel.Warn);
+                            }
                         }
                         else
                         {
-                            ModEntry.Log($"Skip invalid ability ({kv.Value.AbilityClass} from {trinket.QualifiedItemId})", LogLevel.Warn);
+                            ModEntry.Log($"Failed to get type for ability ({ab.AbilityClass} from {trinket.QualifiedItemId})", LogLevel.Warn);
                         }
                     }
-                    else
-                    {
-                        ModEntry.Log($"Failed to get type for ability ({kv.Value.AbilityClass} from {trinket.QualifiedItemId})", LogLevel.Warn);
-                    }
+                    Abilities.Add(lvlAbility);
+                    SortedAbilities.Add(lvlSorted);
                 }
             }
         }
@@ -87,7 +96,7 @@ namespace TrinketTinker.Effects
             farmer.AddCompanion(_companion);
 
             // Apply Abilities
-            foreach (var ability in Abilities.Values)
+            foreach (var ability in Abilities[Level])
             {
                 ability.Activate(farmer);
             }
@@ -99,7 +108,7 @@ namespace TrinketTinker.Effects
         {
             farmer.RemoveCompanion(_companion);
 
-            foreach (var ability in Abilities.Values)
+            foreach (var ability in Abilities[Level])
             {
                 ability.Deactivate(farmer);
             }
@@ -109,7 +118,7 @@ namespace TrinketTinker.Effects
         /// <param name="farmer"></param>
         public override void OnUse(Farmer farmer)
         {
-            foreach (var ability in SortedAbilities[ProcOn.Use])
+            foreach (var ability in SortedAbilities[Level][ProcOn.Use])
             {
                 ability.Proc(farmer);
             }
@@ -119,7 +128,7 @@ namespace TrinketTinker.Effects
         /// <param name="farmer"></param>
         public override void OnFootstep(Farmer farmer)
         {
-            foreach (var ability in SortedAbilities[ProcOn.Footstep])
+            foreach (var ability in SortedAbilities[Level][ProcOn.Footstep])
             {
                 ability.Proc(farmer);
             }
@@ -130,7 +139,7 @@ namespace TrinketTinker.Effects
         /// <param name="damageAmount"></param>
         public override void OnReceiveDamage(Farmer farmer, int damageAmount)
         {
-            foreach (var ability in SortedAbilities[ProcOn.ReceiveDamage])
+            foreach (var ability in SortedAbilities[Level][ProcOn.ReceiveDamage])
             {
                 ability.Proc(farmer, damageAmount);
             }
@@ -142,7 +151,7 @@ namespace TrinketTinker.Effects
         /// <param name="damageAmount"></param>
         public override void OnDamageMonster(Farmer farmer, Monster monster, int damageAmount)
         {
-            foreach (var ability in SortedAbilities[ProcOn.DamageMonster])
+            foreach (var ability in SortedAbilities[Level][ProcOn.DamageMonster])
             {
                 ability.Proc(farmer, monster, damageAmount);
             }
@@ -154,7 +163,7 @@ namespace TrinketTinker.Effects
         /// <param name="location"></param>
         public override void Update(Farmer farmer, GameTime time, GameLocation location)
         {
-            foreach (var ability in Abilities.Values)
+            foreach (var ability in Abilities[Level])
             {
                 ability.Update(farmer, time, location);
             }
@@ -164,10 +173,13 @@ namespace TrinketTinker.Effects
         /// <param name="trinket"></param>
         public override void GenerateRandomStats(Trinket trinket)
         {
-            // foreach (var ability in Abilities.Values)
-            // {
-            //     ability.GenerateRandomStats(trinket);
-            // }
+            if (Data == null)
+                return;
+            if (Data.MinLevel == Data.MaxLevel)
+                general_stat_1 = Data.MinLevel;
+            Random r = Utility.CreateRandom(trinket.generationSeed.Value);
+            general_stat_1 = r.Next(Data.MinLevel, Data.MaxLevel + 1);
+            trinket.descriptionSubstitutionTemplates.Add(general_stat_1.ToString());
         }
     }
 }

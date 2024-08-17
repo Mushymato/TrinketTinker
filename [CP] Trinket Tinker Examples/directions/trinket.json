@@ -1,0 +1,33 @@
+{
+  "Changes": [
+    // Edit Data/Trinkets 
+    {
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_DirectionR": {
+          "ID": "{{ModId}}_Direction R",
+          "DisplayName": "Trinket Tinker - Direction R",
+          "Description": "Companion with 1 set of movement animation, flips if going left.\nLevel {0}",
+          "Texture": "Mods/{{ModId}}/rotation",
+          "SheetIndex": 0,
+          "DropsNaturally": false,
+          "CanBeReforged": true,
+          // Custom trinket effect class required for features of this mod
+          "TrinketEffectClass": "TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker"
+        },
+        "{{ModId}}_DirectionRotate": {
+          "ID": "{{ModId}}_DirectionRotate",
+          "DisplayName": "Trinket Tinker - Direction Rotate",
+          "Description": "Companion with 1 set of movement animation, rotates to face player.\nLevel {0}",
+          "Texture": "Mods/{{ModId}}/rotation",
+          "SheetIndex": 1,
+          "DropsNaturally": false,
+          "CanBeReforged": true,
+          // Custom trinket effect class required for features of this mod
+          "TrinketEffectClass": "TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker"
+        }
+      }
+    }
+  ]
+}

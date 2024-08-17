@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
@@ -16,17 +15,17 @@ namespace TrinketTinker
     {
         private static IMonitor? mon;
         public static string ModId { get; set; } = "";
-        public static string CompanionAsset => $"Mods/{ModId}/Companion";
+        public static string TinkerAsset => $"Mods/{ModId}/Tinker";
 
-        private static Dictionary<string, CompanionData>? _companionData = null;
-        public static Dictionary<string, CompanionData> CompanionData
+        private static Dictionary<string, TinkerData>? _companionData = null;
+        public static Dictionary<string, TinkerData> CompanionData
         {
             get
             {
                 if (_companionData == null)
                 {
-                    _companionData = Game1.content.Load<Dictionary<string, CompanionData>>(CompanionAsset);
-                    LogOnce($"Load {CompanionAsset}, got {_companionData.Count} entries");
+                    _companionData = Game1.content.Load<Dictionary<string, TinkerData>>(TinkerAsset);
+                    LogOnce($"Load {TinkerAsset}, got {_companionData.Count} entries");
                 }
                 return _companionData;
             }
@@ -56,16 +55,16 @@ namespace TrinketTinker
 
         private static void OnAssetRequested(object? sender, AssetRequestedEventArgs e)
         {
-            if (e.Name.IsEquivalentTo(CompanionAsset))
+            if (e.Name.IsEquivalentTo(TinkerAsset))
             {
                 _companionData = null;
-                e.LoadFrom(() => new Dictionary<string, CompanionData>(), AssetLoadPriority.Exclusive);
+                e.LoadFrom(() => new Dictionary<string, TinkerData>(), AssetLoadPriority.Exclusive);
             }
         }
 
         private static void OnAssetInvalidated(object? sender, AssetsInvalidatedEventArgs e)
         {
-            if (e.NamesWithoutLocale.Any(an => an.IsEquivalentTo(CompanionAsset)))
+            if (e.NamesWithoutLocale.Any(an => an.IsEquivalentTo(TinkerAsset)))
             {
                 _companionData = null;
             }
@@ -74,7 +73,7 @@ namespace TrinketTinker
         private void ConsoleReloadTrinkets(string command, string[] args)
         {
             Helper.GameContent.InvalidateCache("Data/Trinkets");
-            Helper.GameContent.InvalidateCache(CompanionAsset);
+            Helper.GameContent.InvalidateCache(TinkerAsset);
         }
 
         private void ConsolePrintTypenames(string command, string[] args)

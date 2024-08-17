@@ -52,7 +52,7 @@ namespace TrinketTinker.Companions
         public readonly NetFloat rotation = new(0f);
         // Derived
         /// <summary>Backing companion data from content.</summary>
-        public CompanionData? Data;
+        public TinkerData? Data;
         /// <summary>Motion class that controls how the companion moves.</summary>
         public Motion? Motion { get; set; }
         /// <summary>Position the companion should follow.</summary>

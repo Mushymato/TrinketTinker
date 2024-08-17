@@ -61,8 +61,6 @@ namespace TrinketTinker.Effects.Abilities
         /// <returns></returns>
         protected virtual bool ApplyEffect(Farmer farmer)
         {
-            if (d.ProcSound != null)
-                Game1.playSound(d.ProcSound);
             Allowed = false;
             return true;
         }
@@ -162,7 +160,12 @@ namespace TrinketTinker.Effects.Abilities
         {
             if (CheckFarmer(farmer))
             {
-                return ApplyEffect(farmer);
+                if (ApplyEffect(farmer))
+                {
+                    if (d.ProcSound != null)
+                        Game1.playSound(d.ProcSound);
+                    return true;
+                }
             }
             return false;
         }
@@ -181,7 +184,12 @@ namespace TrinketTinker.Effects.Abilities
         {
             if (CheckFarmer(farmer) && damageAmount >= d.DamageThreshold)
             {
-                return ApplyEffect(farmer, damageAmount);
+                if (ApplyEffect(farmer, damageAmount))
+                {
+                    if (d.ProcSound != null)
+                        Game1.playSound(d.ProcSound);
+                    return true;
+                }
             }
             return false;
         }
@@ -194,7 +202,12 @@ namespace TrinketTinker.Effects.Abilities
         {
             if (CheckFarmer(farmer) && CheckMonster(monster) && damageAmount >= d.DamageThreshold)
             {
-                return ApplyEffect(farmer, monster, damageAmount);
+                if (ApplyEffect(farmer, monster, damageAmount))
+                {
+                    if (d.ProcSound != null)
+                        Game1.playSound(d.ProcSound);
+                    return true;
+                }
             }
             return false;
         }
@@ -208,7 +221,12 @@ namespace TrinketTinker.Effects.Abilities
         {
             if (CheckFarmer(farmer, location))
             {
-                return ApplyEffect(farmer, time, location);
+                if (ApplyEffect(farmer, time, location))
+                {
+                    if (d.ProcSound != null)
+                        Game1.playSound(d.ProcSound);
+                    return true;
+                }
             }
             return false;
         }
