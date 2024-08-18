@@ -6,9 +6,9 @@
       "Target": "Data/Trinkets",
       "Entries": {
         "{{ModId}}_DirectionR": {
-          "ID": "{{ModId}}_Direction R",
+          "ID": "{{ModId}}_DirectionR",
           "DisplayName": "Trinket Tinker - Direction R",
-          "Description": "Companion with 1 set of movement animation, flips if going left.\nLevel {0}",
+          "Description": "Companion with 1 set of movement animation for Right that flips when going Left.",
           "Texture": "Mods/{{ModId}}/rotation",
           "SheetIndex": 0,
           "DropsNaturally": false,
@@ -19,12 +19,31 @@
         "{{ModId}}_DirectionRotate": {
           "ID": "{{ModId}}_DirectionRotate",
           "DisplayName": "Trinket Tinker - Direction Rotate",
-          "Description": "Companion with 1 set of movement animation, rotates to face player.\nLevel {0}",
+          "Description": "Companion with 1 set of movement animation for Right, rotates to face player.",
           "Texture": "Mods/{{ModId}}/rotation",
           "SheetIndex": 1,
           "DropsNaturally": false,
           "CanBeReforged": false,
-          // Custom trinket effect class required for features of this mod
+          "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
+        },
+        "{{ModId}}_DirectionDRU": {
+          "ID": "{{ModId}}_DirectionDRU",
+          "DisplayName": "Trinket Tinker - Direction DRU",
+          "Description": "Companion with 3 sets of movement animation in order of Down, Right, Up. Uses flipped version of Right for Left.",
+          "Texture": "Mods/{{ModId}}/drul",
+          "SheetIndex": 2,
+          "DropsNaturally": false,
+          "CanBeReforged": false,
+          "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
+        },
+        "{{ModId}}_DirectionDRUL": {
+          "ID": "{{ModId}}_DirectionDRUL",
+          "DisplayName": "Trinket Tinker - Direction DRUL",
+          "Description": "Companion with 4 sets of movement animation in order of Down, Right, Up, Left.",
+          "Texture": "Mods/{{ModId}}/drul",
+          "SheetIndex": 3,
+          "DropsNaturally": false,
+          "CanBeReforged": false,
           "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
         }
       }

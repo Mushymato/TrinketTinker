@@ -1,10 +1,9 @@
 {
   "Format": "2.3.0",
   "Changes": [
-    // Texture
+    // Sprite Sheets
     {
       "Action": "Load",
-      // Rearranged vanilla textures from TileSheets/critters and Animal/Dinosaur
       "Target": "Mods/{{ModId}}/drul, Mods/{{ModId}}/rotation",
       "FromFile": "sprites/{{TargetWithoutPath}}.png"
     },

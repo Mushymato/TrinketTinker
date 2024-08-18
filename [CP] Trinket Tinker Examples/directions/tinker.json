@@ -5,7 +5,6 @@
       "Action": "EditData",
       "Target": "{{mushymato.TrinketTinker/Target}}",
       "Entries": {
-        // ID must match trinket
         "{{ModId}}_DirectionR": {
           "ID": "{{ModId}}_DirectionR",
           "MinLevel": 1,
@@ -17,6 +16,7 @@
               "Height": 16
             },
           ],
+          // Hover motion: follows player, bobs up and down
           "Motions": {
             "default": {
               "MotionClass": "Hover",
@@ -29,10 +29,9 @@
             }
           },
           "Abilities": [
-            // level 1
+            // level 1: heal 0.1% of max hp while walking outside
             [
               {
-                // Heal the player a little as they walk outdoors
                 "Condition": "LOCATION_IS_OUTDOORS Target",
                 "ProcOn": "Footstep",
                 "ProcSound": "fairy_heal",
@@ -44,7 +43,7 @@
                 }
               }
             ],
-            // level 2
+            // level 2: heal 1% of max hp while walking outside
             [
               {
                 // Heal the player a little as they walk outdoors
@@ -85,15 +84,76 @@
             // level 0
             [
               {
-                // Shoot projectile every 0.5s
-                "Condition": null,
+                // Shoot projectile every 2s
                 "ProcOn": "Timed",
-                "ProcTimer": 500,
+                "ProcTimer": 2000,
                 "AbilityClass": "Projectile",
                 "Args": {
                   "MinDamage": 10,
                   "MaxDamage": 100,
                   "SpriteIndex": 5
+                }
+              }
+            ]
+          ]
+        },
+        // ID must match trinket
+        "{{ModId}}_DirectionDRU": {
+          "ID": "{{ModId}}_DirectionDRU",
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/drul",
+              "Width": 16,
+              "Height": 32
+            },
+          ],
+          "Motions": {
+            "default": {
+              "DirectionMode": "DRU",
+              "AnimationFrameLength": 4,
+              "Interval": 100,
+              "OffsetY": -64,
+            }
+          },
+          "Abilities": [
+            // level 0
+            [
+              {
+                "AbilityClass": "Buff",
+                "ProcOn": "Use",
+                "Args": {
+                  "BuffId": 22
+                }
+              }
+            ]
+          ]
+        },
+        // ID must match trinket
+        "{{ModId}}_DirectionDRUL": {
+          "ID": "{{ModId}}_DirectionDRUL",
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/drul",
+              "Width": 16,
+              "Height": 32
+            },
+          ],
+          "Motions": {
+            "default": {
+              "DirectionMode": "DRUL",
+              "AnimationFrameLength": 4,
+              "Interval": 100,
+              "OffsetY": -64,
+            }
+          },
+          "Abilities": [
+            // level 0
+            [
+              {
+                "AbilityClass": "Buff",
+                "ProcOn": "Use",
+                "Args": {
+                  "BuffId": 22
                 }
               }
             ]

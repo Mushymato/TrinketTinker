@@ -71,11 +71,11 @@ namespace TrinketTinker.Companions.Motions
 
         public override void Draw(SpriteBatch b)
         {
-            float shadowScale = 3f * Utility.Lerp(1f, 0.8f, Math.Max(1f, -c.Offset.Y / 12));
+            // float shadowScale = 3f * Utility.Lerp(1f, 0.8f, Math.Max(1f, -c.Offset.Y / 12));
             DrawWithShadow(
                 b, c.Position.Y / 10000f,
                 new Vector2(d.TextureScale, d.TextureScale),
-                new Vector2(shadowScale, shadowScale)
+                new Vector2(d.ShadowScale, d.ShadowScale)
             );
         }
     }
