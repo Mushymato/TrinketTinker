@@ -48,5 +48,6 @@ namespace TrinketTinker.Models
         public float TextureScale { get; set; } = 4f;
         /// <summary>Base scale to draw shadow texture.</summary>
         public float ShadowScale { get; set; } = 3f;
+        public float LightRadius { get; set; } = 0f;
     }
 }

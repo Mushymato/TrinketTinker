@@ -26,6 +26,7 @@
               "AnimationFrameLength": 4,
               "Interval": 200,
               "OffsetY": -128,
+              "LightRadius": 5,
             }
           },
           "Abilities": [
@@ -120,7 +121,7 @@
             [
               {
                 "AbilityClass": "Buff",
-                "ProcOn": "Use",
+                "ProcOn": "Footstep",
                 "Args": {
                   "BuffId": 22
                 }
@@ -150,11 +151,8 @@
             // level 0
             [
               {
-                "AbilityClass": "Buff",
-                "ProcOn": "Use",
-                "Args": {
-                  "BuffId": 22
-                }
+                "AbilityClass": "DebugDummy",
+                "ProcOn": "ReceiveDamage"
               }
             ]
           ]

@@ -8,8 +8,6 @@ namespace TrinketTinker.Models
     {
         /// <summary>Proc on equip, ignores all conditions.</summary>
         Always,
-        /// <summary>Proc on item use.</summary>
-        Use,
         /// <summary>Proc on walk.</summary>
         Footstep,
         /// <summary>Proc on player damaged.</summary>

@@ -118,16 +118,18 @@ namespace TrinketTinker.Effects
         /// <param name="farmer"></param>
         public override void OnUse(Farmer farmer)
         {
-            foreach (var ability in SortedAbilities[Level][ProcOn.Use])
-            {
-                ability.Proc(farmer);
-            }
+            // foreach (var ability in SortedAbilities[Level][ProcOn.Use])
+            // {
+            //     ability.Proc(farmer);
+            // }
         }
 
         /// <summary>When player takes a step (moves).</summary>
         /// <param name="farmer"></param>
         public override void OnFootstep(Farmer farmer)
         {
+            if (farmer != Game1.player)
+                return;
             foreach (var ability in SortedAbilities[Level][ProcOn.Footstep])
             {
                 ability.Proc(farmer);
@@ -139,6 +141,8 @@ namespace TrinketTinker.Effects
         /// <param name="damageAmount"></param>
         public override void OnReceiveDamage(Farmer farmer, int damageAmount)
         {
+            if (farmer != Game1.player)
+                return;
             foreach (var ability in SortedAbilities[Level][ProcOn.ReceiveDamage])
             {
                 ability.Proc(farmer, damageAmount);
@@ -151,6 +155,8 @@ namespace TrinketTinker.Effects
         /// <param name="damageAmount"></param>
         public override void OnDamageMonster(Farmer farmer, Monster monster, int damageAmount)
         {
+            if (farmer != Game1.player)
+                return;
             foreach (var ability in SortedAbilities[Level][ProcOn.DamageMonster])
             {
                 ability.Proc(farmer, monster, damageAmount);
@@ -163,6 +169,8 @@ namespace TrinketTinker.Effects
         /// <param name="location"></param>
         public override void Update(Farmer farmer, GameTime time, GameLocation location)
         {
+            if (farmer != Game1.player)
+                return;
             foreach (var ability in Abilities[Level])
             {
                 ability.Update(farmer, time, location);

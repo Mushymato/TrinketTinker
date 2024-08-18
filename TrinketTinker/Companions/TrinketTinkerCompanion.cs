@@ -81,11 +81,22 @@ namespace TrinketTinker.Companions
             whichVariant.Value = 0;
         }
 
+        /// <summary>Initialize Motion class.</summary>
+        public override void InitializeCompanion(Farmer farmer)
+        {
+            base.InitializeCompanion(farmer);
+            Motion!.Initialize(farmer);
+        }
+
         /// <summary>Cleanup Motion class.</summary>
         public override void CleanupCompanion()
         {
             base.CleanupCompanion();
-            Motion = null;
+            if (Motion != null)
+            {
+                Motion.Cleanup();
+                Motion = null;
+            }
         }
 
         /// <summary>Setup net fields.</summary>
@@ -153,6 +164,7 @@ namespace TrinketTinker.Companions
         {
             base.OnOwnerWarp();
             _position.Value = _owner.Value.Position;
+            Motion!.OnOwnerWarp();
         }
 
         /// <summary>Vanilla hop event handler, blocked.</summary>

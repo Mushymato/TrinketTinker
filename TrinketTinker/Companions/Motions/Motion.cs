@@ -16,6 +16,8 @@ namespace TrinketTinker.Companions.Motions
         protected Vector2 motionOffset;
         /// <summary>Should reverse the animation, used for <see cref="LoopMode.PingPong"/></summary>
         protected bool isReverse = false;
+        /// <summary>Light source ID for <see cref="LightSource"/></summary>
+        protected int lightID = -1;
 
         /// <summary>Constructor</summary>
         /// <param name="companion"></param>
@@ -26,6 +28,39 @@ namespace TrinketTinker.Companions.Motions
             d = data;
             motionOffset = new(d.OffsetX, d.OffsetY);
             c.Offset = motionOffset;
+        }
+
+        /// <summary>Initialize motion, setup lightsource if needed.</summary>
+        /// <param name="farmer"></param>
+        public virtual void Initialize(Farmer farmer)
+        {
+            if (d.LightRadius > 0)
+            {
+                lightID = Random.Shared.Next();
+                Game1.currentLightSources.Add(new LightSource(1, c.Position + c.Offset, d.LightRadius, Color.Black, lightID, LightSource.LightContext.None, 0L));
+            }
+        }
+
+        /// <summary>Initialize motion, remove lightsource.</summary>
+        /// <param name="farmer"></param>
+        public virtual void Cleanup()
+        {
+            if (lightID > -1)
+            {
+                Utility.removeLightSource(lightID);
+            }
+        }
+
+        /// <summary>Initialize motion, remove lightsource.</summary>
+        /// <param name="farmer"></param>
+        /// 
+        public virtual void OnOwnerWarp()
+        {
+            if (lightID > -1)
+            {
+                lightID = Random.Shared.Next();
+                Game1.currentLightSources.Add(new LightSource(1, c.Position + c.Offset, d.LightRadius, Color.Black, lightID, LightSource.LightContext.None, 0L));
+            }
         }
 
         /// <summary>Update for the client of the player that equipped this trinket, responsible for netfields.</summary>
@@ -56,6 +91,8 @@ namespace TrinketTinker.Companions.Motions
                 c.Sprite.currentFrame = DirectionFrameStart();
                 c.Sprite.UpdateSourceRect();
             }
+            if (lightID > -1 && location.Equals(Game1.currentLocation))
+                Utility.repositionLightSource(lightID, c.Position + c.Offset);
         }
 
         /// <summary>Draw the companion.</summary>
