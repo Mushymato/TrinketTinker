@@ -16,7 +16,7 @@ namespace TrinketTinker.Effects.Abilities
         protected readonly int spriteIndex = 16;
         /// <summary>projectile range</summary>
         protected readonly int range = 500;
-        public ProjectileAbility(TrinketTinkerEffect effect, AbilityData data) : base(effect, data)
+        public ProjectileAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : base(effect, data, lvl)
         {
             if (d.TryGetParsed("MinDamage", out int? minDamageVal) && d.TryGetParsed("MaxDamage", out int? maxDamageVal))
             {
@@ -24,14 +24,11 @@ namespace TrinketTinker.Effects.Abilities
                 maxDamage = (int)maxDamageVal;
                 Valid = true;
             }
-            if (d.TryGetParsed("SpriteIndex", out int? spriteIndexVal))
-            {
-                spriteIndex = (int)spriteIndexVal;
-            }
-            if (d.TryGetParsed("SpriteIndex", out int? rangeVal))
-            {
-                range = (int)rangeVal;
-            }
+            else
+                return;
+
+            spriteIndex = d.GetParsedOrDefault("SpriteIndex", spriteIndex);
+            range = d.GetParsedOrDefault("Range", range);
         }
 
         protected override bool ApplyEffect(Farmer farmer)

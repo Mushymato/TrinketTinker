@@ -8,7 +8,7 @@ namespace TrinketTinker.Effects.Abilities
     {
         /// <summary>Valid buff ID, must be found in Data/Buffs</summary>
         protected readonly string buffId = "";
-        public BuffAbility(TrinketTinkerEffect effect, AbilityData data) : base(effect, data)
+        public BuffAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : base(effect, data, lvl)
         {
             if (d.TryGetParsed("BuffId", out string? argsBuffId) &&
                 DataLoader.Buffs(Game1.content).ContainsKey(argsBuffId))

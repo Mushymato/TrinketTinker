@@ -49,6 +49,7 @@ namespace TrinketTinker
             helper.Events.Content.AssetRequested += OnAssetRequested;
             helper.Events.Content.AssetsInvalidated += OnAssetInvalidated;
 
+#if DEBUG
             // Debug console
             helper.ConsoleCommands.Add(
                 "tt_reload_trinkets",
@@ -60,6 +61,7 @@ namespace TrinketTinker
                 "Print valid Effect, Companion, Motion, and Ability types.",
                 ConsolePrintTypenames
             );
+#endif
         }
 
         private void OnGameLaunched(object? sender, GameLaunchedEventArgs e)

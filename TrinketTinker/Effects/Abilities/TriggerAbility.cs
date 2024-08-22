@@ -9,7 +9,7 @@ namespace TrinketTinker.Effects.Abilities
     public class TriggerAbility : Ability
     {
         public static readonly string TriggerEventName = $"{ModEntry.ModId}_TrinketProc";
-        public TriggerAbility(TrinketTinkerEffect effect, AbilityData data) : base(effect, data)
+        public TriggerAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : base(effect, data, lvl)
         {
             Valid = true;
         }

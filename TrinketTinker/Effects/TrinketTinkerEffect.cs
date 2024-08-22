@@ -47,6 +47,7 @@ namespace TrinketTinker.Effects
             SortedAbilities = new();
             if (Data != null)
             {
+                int lvl = 0;
                 // Abilities
                 foreach (List<AbilityData> abList in Data.Abilities)
                 {
@@ -60,7 +61,7 @@ namespace TrinketTinker.Effects
                     {
                         if (ModEntry.TryGetType(ab.AbilityClass, out Type? abilityType, Constants.ABILITY_CLS))
                         {
-                            Ability? ability = (Ability?)Activator.CreateInstance(abilityType, this, ab);
+                            Ability? ability = (Ability?)Activator.CreateInstance(abilityType, this, ab, lvl);
                             if (ability != null && ability.Valid)
                             {
                                 lvlAbility.Add(ability);
@@ -78,6 +79,7 @@ namespace TrinketTinker.Effects
                     }
                     Abilities.Add(lvlAbility);
                     SortedAbilities.Add(lvlSorted);
+                    lvl++;
                 }
             }
         }
@@ -156,11 +158,18 @@ namespace TrinketTinker.Effects
         /// <param name="damageAmount"></param>
         public override void OnDamageMonster(Farmer farmer, Monster monster, int damageAmount)
         {
-            if (farmer != Game1.player)
+            if (farmer != Game1.player || monster == null)
                 return;
             foreach (var ability in SortedAbilities[Level][ProcOn.DamageMonster])
             {
                 ability.Proc(farmer, monster, damageAmount);
+            }
+            if (monster.Health <= 0)
+            {
+                foreach (var ability in SortedAbilities[Level][ProcOn.SlayMonster])
+                {
+                    ability.Proc(farmer, monster, damageAmount);
+                }
             }
         }
 

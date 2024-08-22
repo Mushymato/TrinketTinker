@@ -5,9 +5,9 @@
       "Action": "EditData",
       "Target": "Data/Trinkets",
       "Entries": {
-        "{{ModId}}_DirectionR": {
-          "ID": "{{ModId}}_DirectionR",
-          "DisplayName": "Trinket Tinker - Direction R",
+        "{{ModId}}_LerpR": {
+          "ID": "{{ModId}}_LerpR",
+          "DisplayName": "Trinket Tinker - Lerp R",
           "Description": "Companion with 1 set of movement animation for Right that flips when going Left.",
           "Texture": "Mods/{{ModId}}/rotation",
           "SheetIndex": 0,
@@ -16,9 +16,9 @@
           // Custom trinket effect class required for features of this mod
           "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
         },
-        "{{ModId}}_DirectionRotate": {
-          "ID": "{{ModId}}_DirectionRotate",
-          "DisplayName": "Trinket Tinker - Direction Rotate",
+        "{{ModId}}_LerpRotate": {
+          "ID": "{{ModId}}_LerpRotate",
+          "DisplayName": "Trinket Tinker - Lerp Rotate",
           "Description": "Companion with 1 set of movement animation for Right, rotates to face player.",
           "Texture": "Mods/{{ModId}}/rotation",
           "SheetIndex": 1,
@@ -26,9 +26,9 @@
           "CanBeReforged": false,
           "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
         },
-        "{{ModId}}_DirectionDRU": {
-          "ID": "{{ModId}}_DirectionDRU",
-          "DisplayName": "Trinket Tinker - Direction DRU",
+        "{{ModId}}_LerpDRU": {
+          "ID": "{{ModId}}_LerpDRU",
+          "DisplayName": "Trinket Tinker - Lerp DRU",
           "Description": "Companion with 3 sets of movement animation in order of Down, Right, Up. Uses flipped version of Right for Left.",
           "Texture": "Mods/{{ModId}}/drul",
           "SheetIndex": 2,
@@ -36,9 +36,9 @@
           "CanBeReforged": false,
           "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
         },
-        "{{ModId}}_DirectionDRUL": {
-          "ID": "{{ModId}}_DirectionDRUL",
-          "DisplayName": "Trinket Tinker - Direction DRUL",
+        "{{ModId}}_LerpDRUL": {
+          "ID": "{{ModId}}_LerpDRUL",
+          "DisplayName": "Trinket Tinker - Lerp DRUL",
           "Description": "Companion with 4 sets of movement animation in order of Down, Right, Up, Left.",
           "Texture": "Mods/{{ModId}}/drul",
           "SheetIndex": 3,

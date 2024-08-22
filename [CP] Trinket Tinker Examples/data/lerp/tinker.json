@@ -5,8 +5,8 @@
       "Action": "EditData",
       "Target": "{{mushymato.TrinketTinker/Target}}",
       "Entries": {
-        "{{ModId}}_DirectionR": {
-          "ID": "{{ModId}}_DirectionR",
+        "{{ModId}}_LerpR": {
+          "ID": "{{ModId}}_LerpR",
           "MinLevel": 1,
           "MaxLevel": 2,
           "Variants": [
@@ -62,8 +62,8 @@
           ]
         },
         // ID must match trinket
-        "{{ModId}}_DirectionRotate": {
-          "ID": "{{ModId}}_DirectionRotate",
+        "{{ModId}}_LerpRotate": {
+          "ID": "{{ModId}}_LerpRotate",
           "Variants": [
             {
               "Texture": "Mods/{{ModId}}/rotation",
@@ -99,8 +99,8 @@
           ]
         },
         // ID must match trinket
-        "{{ModId}}_DirectionDRU": {
-          "ID": "{{ModId}}_DirectionDRU",
+        "{{ModId}}_LerpDRU": {
+          "ID": "{{ModId}}_LerpDRU",
           "Variants": [
             {
               "Texture": "Mods/{{ModId}}/drul",
@@ -110,6 +110,7 @@
           ],
           "Motions": {
             "default": {
+              "MotionClass": "Lerp",
               "DirectionMode": "DRU",
               "AnimationFrameLength": 4,
               "Interval": 100,
@@ -127,8 +128,8 @@
           ]
         },
         // ID must match trinket
-        "{{ModId}}_DirectionDRUL": {
-          "ID": "{{ModId}}_DirectionDRUL",
+        "{{ModId}}_LerpDRUL": {
+          "ID": "{{ModId}}_LerpDRUL",
           "Variants": [
             {
               "Texture": "Mods/{{ModId}}/drul",
@@ -138,6 +139,7 @@
           ],
           "Motions": {
             "default": {
+              "MotionClass": "Lerp",
               "DirectionMode": "DRUL",
               "AnimationFrameLength": 4,
               "Interval": 100,

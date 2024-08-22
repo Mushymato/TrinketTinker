@@ -85,7 +85,7 @@ namespace TrinketTinker.Companions
         public override void InitializeCompanion(Farmer farmer)
         {
             base.InitializeCompanion(farmer);
-            Motion!.Initialize(farmer);
+            Motion?.Initialize(farmer);
         }
 
         /// <summary>Cleanup Motion class.</summary>
@@ -127,11 +127,13 @@ namespace TrinketTinker.Companions
             Sprite = new AnimatedSprite(vdata.Texture, 0, vdata.Width, vdata.Height);
             SpriteOrigin = new Vector2(vdata.Width / 2, vdata.Height / 2);
 
-            MotionData mdata = Data.Motions["default"];
-            if (ModEntry.TryGetType(mdata.MotionClass, out Type? motionCls, Constants.MOTION_CLS))
-                Motion = (Motion?)Activator.CreateInstance(motionCls, this, mdata);
-            else
-                Motion = new LerpMotion(this, mdata);
+            if (Data.Motions.TryGetValue("default", out MotionData? mdata))
+            {
+                if (ModEntry.TryGetType(mdata.MotionClass, out Type? motionCls, Constants.MOTION_CLS))
+                    Motion = (Motion?)Activator.CreateInstance(motionCls, this, mdata);
+                else
+                    Motion = new LerpMotion(this, mdata);
+            }
         }
 
         /// <summary>Draw using <see cref="Motion"/>.</summary>
@@ -139,10 +141,9 @@ namespace TrinketTinker.Companions
         public override void Draw(SpriteBatch b)
         {
             if (Owner == null || Owner.currentLocation == null || (Owner.currentLocation.DisplayName == "Temp" && !Game1.isFestival()))
-            {
                 return;
-            }
-            Motion!.Draw(b);
+
+            Motion?.Draw(b);
         }
 
         /// <summary>
@@ -155,8 +156,13 @@ namespace TrinketTinker.Companions
         public override void Update(GameTime time, GameLocation location)
         {
             if (IsLocal)
-                Motion!.UpdateLocal(time, location);
-            Motion!.UpdateGlobal(time, location);
+            {
+                if (Motion == null)
+                    Position = Anchor;
+                else
+                    Motion?.UpdateLocal(time, location);
+            }
+            Motion?.UpdateGlobal(time, location);
         }
 
         /// <summary>Reset position on warp</summary>
@@ -164,34 +170,13 @@ namespace TrinketTinker.Companions
         {
             base.OnOwnerWarp();
             _position.Value = _owner.Value.Position;
-            Motion!.OnOwnerWarp();
+            Motion?.OnOwnerWarp();
         }
 
-        /// <summary>Vanilla hop event handler, blocked.</summary>
+        /// <summary>Vanilla hop event handler, not using.</summary>
         public override void Hop(float amount)
         {
         }
 
-        // private void ApplyLight()
-        // {
-        //     lightID = Game1.random.Next();
-        //     Game1.currentLightSources.Add(new LightSource(1, Position, LightRadius.Value, Color.Black, lightID));
-        // }
-
-        // public override void InitializeCompanion(Farmer farmer)
-        // {
-        //     InitializeCompanion(farmer);
-        //     if (LightRadius.Value != 0f)
-        //         ApplyLight();
-        // }
-
-        // public override void CleanupCompanion()
-        // {
-        //     CleanupCompanion();
-        //     if (LightRadius.Value != 0f)
-        //     {
-        //         Utility.removeLightSource(lightID);
-        //     }
-        // }
     }
 }

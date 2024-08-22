@@ -14,7 +14,7 @@ namespace TrinketTinker.Effects.Abilities
         protected readonly bool targetHealth = false;
         /// <summary>True if heal should target stamina</summary>
         protected readonly bool targetStamina = false;
-        public HealAbility(TrinketTinkerEffect effect, AbilityData data) : base(effect, data)
+        public HealAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : base(effect, data, lvl)
         {
             Valid = false;
             if (d.TryGetParsed("HealPower", out int? healPowerVal))

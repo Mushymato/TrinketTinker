@@ -27,11 +27,12 @@ namespace TrinketTinker.Effects.Abilities
         /// <summary>Constructor</summary>
         /// <param name="effect"></param>
         /// <param name="data"></param>
-        public Ability(TrinketTinkerEffect effect, AbilityData data)
+        public Ability(TrinketTinkerEffect effect, AbilityData data, int lvl)
         {
             e = effect;
             d = data;
-            Name = data.Name == "" ? GetType().Name : data.Name;
+            string clsName = data.Name == "" ? GetType().Name : data.Name;
+            Name = $"{effect.Trinket.ItemId}:{clsName}[{lvl}]";
             ProcTimer = data.ProcTimer;
         }
 

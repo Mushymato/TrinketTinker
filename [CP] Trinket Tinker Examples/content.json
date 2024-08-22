@@ -7,10 +7,15 @@
       "Target": "Mods/{{ModId}}/drul, Mods/{{ModId}}/rotation",
       "FromFile": "sprites/{{TargetWithoutPath}}.png"
     },
-    // Examples involving companion directions
+    // Examples involving companion directions with follow motions
     {
       "Action": "Include",
-      "FromFile": "directions/trinket.json, directions/tinker.json, directions/triggeraction.json"
+      "FromFile": "data/lerp/trinket.json, data/lerp/tinker.json, data/lerp/triggeraction.json"
+    },
+    // Examples involving companion directions with static motions
+    {
+      "Action": "Include",
+      "FromFile": "data/static/trinket.json, data/static/tinker.json"
     },
   ]
 }

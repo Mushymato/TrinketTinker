@@ -1,0 +1,57 @@
+{
+  "Changes": [
+    // Edit Mods/mushymato.TrinketTinker
+    {
+      "Action": "EditData",
+      "Target": "{{mushymato.TrinketTinker/Target}}",
+      "Entries": {
+        // ID must match trinket
+        "{{ModId}}_StaticDRUL": {
+          "ID": "{{ModId}}_StaticDRUL",
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/drul",
+              "Width": 16,
+              "Height": 32
+            },
+          ],
+          "Motions": {
+            // Orbit around the player in a semi circle
+            "default": {
+              "MotionClass": "Orbit",
+              "AlwaysMoving": true,
+              "DirectionMode": "DRUL",
+              "AnimationFrameLength": 4,
+              "Interval": 100,
+            }
+          },
+          "Abilities": [
+            // level 0
+            [
+              {
+                // Item drop ability 1, drops a gold quality salmon berry every 5 seconds
+                "AbilityClass": "ItemDrop",
+                "ProcOn": "Timer",
+                "ProcTimer": 5000,
+                "Args": {
+                  "ItemId": "(O)296",
+                  "StackSize": 2,
+                  "Quality": 2
+                }
+              },
+              {
+                // Item drop ability 2, produces a random bone item every step
+                "AbilityClass": "ItemDrop",
+                "ProcOn": "Footstep",
+                "Args": {
+                  "ItemQuery": "ALL_ITEMS",
+                  "ItemQueryCondition": "ITEM_CONTEXT_TAG Target bone_item, !ITEM_CONTEXT_TAG Target id_o_881",
+                }
+              }
+            ]
+          ]
+        },
+      }
+    }
+  ]
+}

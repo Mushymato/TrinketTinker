@@ -14,6 +14,8 @@ namespace TrinketTinker.Models
         ReceiveDamage,
         /// <summary>Proc on monster damaged.</summary>
         DamageMonster,
+        /// <summary>Proc on monster slayed.</summary>
+        SlayMonster,
         /// <summary>Proc on timer elapsed.</summary>
         Timer,
         /// <summary>Proc on trigger action.</summary>
@@ -52,7 +54,6 @@ namespace TrinketTinker.Models
             ret = default;
             if (Args.TryGetValue(key, out string? valueStr) && valueStr != null)
             {
-                ret = default;
                 TypeConverter con = TypeDescriptor.GetConverter(typeof(T));
                 if (con != null)
                 {
@@ -70,6 +71,36 @@ namespace TrinketTinker.Models
                 return false;
             }
             return false;
+        }
+
+        /// <summary>
+        /// Get parsed value, or a specified non null default.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
+        public T GetParsedOrDefault<T>(string key, T defaultValue)
+        {
+            T ret = defaultValue;
+            if (Args.TryGetValue(key, out string? valueStr) && valueStr != null)
+            {
+                TypeConverter con = TypeDescriptor.GetConverter(typeof(T));
+                if (con != null)
+                {
+                    try
+                    {
+                        T? parsed = (T?)con.ConvertFromString(valueStr);
+                        if (parsed != null)
+                            return parsed;
+                    }
+                    catch (NotSupportedException)
+                    {
+                        return ret;
+                    }
+                }
+            }
+            return ret;
         }
 
         /// <summary>
