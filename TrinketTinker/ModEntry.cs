@@ -3,6 +3,7 @@ using System.Reflection;
 using Microsoft.Xna.Framework.Content;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
+using StardewValley.Triggers;
 using StardewValley;
 using TrinketTinker.Companions;
 using TrinketTinker.Companions.Motions;
@@ -17,6 +18,7 @@ namespace TrinketTinker
         private static IMonitor? mon;
         public static string ModId { get; set; } = "";
         public static string TinkerAsset => $"Mods/{ModId}/Tinker";
+        public static string TinkerTrigger => $"{ModId}_ABILITY_TRIGGERED";
 
         private static Dictionary<string, TinkerData>? _companionData = null;
         public static Dictionary<string, TinkerData> CompanionData
@@ -38,10 +40,16 @@ namespace TrinketTinker
             mon = Monitor;
             ModId = ModManifest.UniqueID;
 
+            // Add trigger & action
+            TriggerActionManager.RegisterAction(ProcTrinket.TriggerActionName, ProcTrinket.Action);
+            TriggerActionManager.RegisterTrigger(TriggerAbility.TriggerEventName);
+
+            // Events for game launch and custom asset
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.Content.AssetRequested += OnAssetRequested;
             helper.Events.Content.AssetsInvalidated += OnAssetInvalidated;
 
+            // Debug console
             helper.ConsoleCommands.Add(
                 "tt_reload_trinkets",
                 "Invalidate trinkets and companions (but not textures).",
@@ -56,15 +64,24 @@ namespace TrinketTinker
 
         private void OnGameLaunched(object? sender, GameLaunchedEventArgs e)
         {
+            // Add content patcher tokens for various constants
             Integration.IContentPatcherAPI? CP = Helper.ModRegistry.GetApi<Integration.IContentPatcherAPI>("Pathoschild.ContentPatcher") ??
                 throw new ContentLoadException("Failed to get Content Patcher API");
             CP.RegisterToken(
                 ModManifest, "EffectClass",
-                () => { return new string[] { typeof(TrinketTinkerEffect).AssemblyQualifiedName ?? "???" }; }
+                () => { return new string[] { typeof(TrinketTinkerEffect).AssemblyQualifiedName! }; }
             );
             CP.RegisterToken(
                 ModManifest, "Target",
                 () => { return new string[] { TinkerAsset }; }
+            );
+            CP.RegisterToken(
+                ModManifest, "TrinketProc",
+                () => { return new string[] { TriggerAbility.TriggerEventName }; }
+            );
+            CP.RegisterToken(
+                ModManifest, "ProcTrinket",
+                () => { return new string[] { ProcTrinket.TriggerActionName }; }
             );
         }
 

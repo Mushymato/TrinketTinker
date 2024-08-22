@@ -1,5 +1,6 @@
 namespace TrinketTinker.Models
 {
+    /// <summary>Top level data class for <see cref="ModEntry.TinkerAsset"/> entries.</summary>
     public class TinkerData
     {
         /// <summary>Companion name.</summary>

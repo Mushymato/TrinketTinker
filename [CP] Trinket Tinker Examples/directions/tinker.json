@@ -13,7 +13,7 @@
             {
               "Texture": "Mods/{{ModId}}/rotation",
               "Width": 16,
-              "Height": 16
+              "Height": 16,
             },
           ],
           // Hover motion: follows player, bobs up and down
@@ -86,7 +86,7 @@
             [
               {
                 // Shoot projectile every 2s
-                "ProcOn": "Timed",
+                "ProcOn": "Timer",
                 "ProcTimer": 2000,
                 "AbilityClass": "Projectile",
                 "Args": {
@@ -120,11 +120,8 @@
             // level 0
             [
               {
-                "AbilityClass": "Buff",
+                "AbilityClass": "Trigger",
                 "ProcOn": "Footstep",
-                "Args": {
-                  "BuffId": 22
-                }
               }
             ]
           ]
@@ -152,7 +149,7 @@
             [
               {
                 "AbilityClass": "DebugDummy",
-                "ProcOn": "ReceiveDamage"
+                "ProcOn": "Trigger",
               }
             ]
           ]

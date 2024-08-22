@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using StardewValley.Objects;
+using StardewValley.Objects.Trinkets;
 using StardewValley;
 using StardewValley.Monsters;
 using TrinketTinker.Models;
@@ -21,18 +21,19 @@ namespace TrinketTinker.Effects
         /// <summary>Abilities, key'd by <see cref="AbilityData.ProcOn"/></summary>
         protected List<Dictionary<ProcOn, List<Ability>>> SortedAbilities;
 
-        protected int Level => general_stat_1 - (Data?.MinLevel ?? 0);
+        /// <summary>Get adjusted index for <see cref="Abilities"/> and <see cref="SortedAbilities"/></summary>
+        protected int Level => GeneralStat - (Data?.MinLevel ?? 0);
 
         /// <summary>Position of companion, including offset if applicable.</summary>
         public Vector2 CompanionPosition
         {
             get
             {
-                if (_companion is TrinketTinkerCompanion cmp)
+                if (Companion is TrinketTinkerCompanion cmp)
                 {
                     return cmp.Position + cmp.Offset;
                 }
-                return _companion.Position;
+                return Companion.Position;
             }
         }
 
@@ -90,10 +91,10 @@ namespace TrinketTinker.Effects
 
             // Companion
             if (ModEntry.TryGetType(Data.CompanionClass, out Type? companionCls))
-                _companion = (TrinketTinkerCompanion?)Activator.CreateInstance(companionCls, _trinket.ItemId);
+                Companion = (TrinketTinkerCompanion?)Activator.CreateInstance(companionCls, Trinket.ItemId);
             else
-                _companion = new TrinketTinkerCompanion(_trinket.ItemId);
-            farmer.AddCompanion(_companion);
+                Companion = new TrinketTinkerCompanion(Trinket.ItemId);
+            farmer.AddCompanion(Companion);
 
             // Apply Abilities
             foreach (var ability in Abilities[Level])
@@ -106,7 +107,7 @@ namespace TrinketTinker.Effects
         /// <param name="farmer"></param>
         public override void Unapply(Farmer farmer)
         {
-            farmer.RemoveCompanion(_companion);
+            farmer.RemoveCompanion(Companion);
 
             foreach (var ability in Abilities[Level])
             {
@@ -163,6 +164,18 @@ namespace TrinketTinker.Effects
             }
         }
 
+        /// <summary>When the trinket action should run.</summary>
+        /// <param name="farmer"></param>
+        /// <param name="monster"></param>
+        /// <param name="damageAmount"></param>
+        public virtual void OnTrigger(Farmer farmer)
+        {
+            foreach (var ability in SortedAbilities[Level][ProcOn.Trigger])
+            {
+                ability.Proc(farmer);
+            }
+        }
+
         /// <summary>Update tick</summary>
         /// <param name="farmer"></param>
         /// <param name="time"></param>
@@ -179,15 +192,16 @@ namespace TrinketTinker.Effects
 
         /// <summary>Randomize this trinket's stats through anvil.</summary>
         /// <param name="trinket"></param>
-        public override void GenerateRandomStats(Trinket trinket)
+        public override bool GenerateRandomStats(Trinket trinket)
         {
             if (Data == null)
-                return;
+                return false;
             if (Data.MinLevel == Data.MaxLevel)
-                general_stat_1 = Data.MinLevel;
+                GeneralStat = Data.MinLevel;
             Random r = Utility.CreateRandom(trinket.generationSeed.Value);
-            general_stat_1 = r.Next(Data.MinLevel, Data.MaxLevel + 1);
-            trinket.descriptionSubstitutionTemplates.Add(general_stat_1.ToString());
+            GeneralStat = r.Next(Data.MinLevel, Data.MaxLevel + 1);
+            trinket.descriptionSubstitutionTemplates.Add(GeneralStat.ToString());
+            return true;
         }
     }
 }

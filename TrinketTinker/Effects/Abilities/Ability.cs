@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Monsters;
+using StardewValley.Delegates;
 using TrinketTinker.Models;
 
 namespace TrinketTinker.Effects.Abilities
@@ -84,7 +85,7 @@ namespace TrinketTinker.Effects.Abilities
             return ApplyEffect(farmer);
         }
 
-        /// <summary>Apply effect for <see cref="ProcOn.Timed"/> abilities, via <see cref="Update"/>.</summary>
+        /// <summary>Apply effect for <see cref="ProcOn.Timer"/> abilities, via <see cref="Update"/>.</summary>
         /// <param name="farmer"></param>
         /// <param name="time"></param>
         /// <param name="location"></param>
@@ -104,7 +105,7 @@ namespace TrinketTinker.Effects.Abilities
                 if (d.ProcOn == ProcOn.Always)
                     Proc(farmer);
                 Active = true;
-                Allowed = d.ProcOn != ProcOn.Timed;
+                Allowed = d.ProcOn != ProcOn.Timer;
                 ProcTimer = d.ProcTimer;
             }
             return Active;
@@ -142,7 +143,7 @@ namespace TrinketTinker.Effects.Abilities
                 Allowed = ProcTimer <= 0;
                 if (Allowed)
                 {
-                    if (d.ProcOn == ProcOn.Timed)
+                    if (d.ProcOn == ProcOn.Timer)
                         Proc(farmer, time, location);
                     ProcTimer = d.ProcTimer;
                 }
@@ -212,7 +213,7 @@ namespace TrinketTinker.Effects.Abilities
             return false;
         }
 
-        /// <summary>Proc for <see cref="ProcOn.Timed"/> abilities, via <see cref="Update"/>.</summary>
+        /// <summary>Proc for <see cref="ProcOn.Timer"/> abilities, via <see cref="Update"/>.</summary>
         /// <param name="farmer"></param>
         /// <param name="time"></param>
         /// <param name="location"></param>

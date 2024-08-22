@@ -1,0 +1,21 @@
+{
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/TriggerActions",
+      "Entries": {
+        "{{ModId}}_TrinketProc": {
+          // This trigger action listens for the firing 
+          "Id": "{{ModId}}_TrinketProc",
+          "Trigger": "{{mushymato.TrinketTinker/TrinketProc}}",
+          "Condition": null,
+          "HostOnly": false,
+          "Action": "{{mushymato.TrinketTinker/ProcTrinket}}",
+          "Actions": null,
+          "CustomFields": null,
+          "MarkActionApplied": false
+        }
+      }
+    }
+  ]
+}

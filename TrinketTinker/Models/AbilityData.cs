@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace TrinketTinker.Models
 {
-    /// <summary>Defines how an ability can activate.</summary>
+    /// <summary>Defines how an ability can proc (activate).</summary>
     public enum ProcOn
     {
         /// <summary>Proc on equip, ignores all conditions.</summary>
@@ -15,10 +15,12 @@ namespace TrinketTinker.Models
         /// <summary>Proc on monster damaged.</summary>
         DamageMonster,
         /// <summary>Proc on timer elapsed.</summary>
-        Timed,
+        Timer,
+        /// <summary>Proc on trigger action.</summary>
+        Trigger,
     }
 
-    /// <summary>Data for <see cref="Effects.Abilities"/></summary>
+    /// <summary>Data for <see cref="Effects.Abilities"/>, defines game effect that a trinket can provide.</summary>
     public class AbilityData
     {
         /// <summary>Name of this ability.</summary>
@@ -27,9 +29,9 @@ namespace TrinketTinker.Models
         public string? AbilityClass { get; set; } = null;
         /// <summary>Proc on rule</summary>
         public ProcOn ProcOn = new();
-        /// <summary>Timeout for ability procs.</summary>
+        /// <summary>Timeout for ability procs, all types of procs respect this, not just <see cref="ProcOn.Timer"/>.</summary>
         public double ProcTimer { get; set; } = -1;
-        /// <summary>Sound to play on proc</summary>
+        /// <summary>Trigger action to listen to</summary>
         public string? ProcSound { get; set; } = null;
         /// <summary>Condition, see <see cref="StardewValley.GameStateQuery"/></summary>
         public string? Condition { get; set; } = null;

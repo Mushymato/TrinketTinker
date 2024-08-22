@@ -2,6 +2,7 @@ using StardewValley;
 
 namespace TrinketTinker.Models
 {
+    /// <summary>Data for <see cref="Effects.Abilities"/>, holds sprite variations.</summary>
     public class VariantData
     {
         /// <summary>Variant texture name.</summary>

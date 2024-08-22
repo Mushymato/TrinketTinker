@@ -10,7 +10,7 @@
     // Examples involving companion directions
     {
       "Action": "Include",
-      "FromFile": "directions/trinket.json, directions/tinker.json"
+      "FromFile": "directions/trinket.json, directions/tinker.json, directions/triggeraction.json"
     },
   ]
 }

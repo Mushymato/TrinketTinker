@@ -24,7 +24,7 @@ namespace TrinketTinker.Models
         /// <summary>Reverse the animation from last frame, e.g. 1 2 3 4 3 2 1 2 3 4</summary>
         PingPong,
     }
-    /// <summary>Defines how the companion moves and animates.</summary>
+    /// <summary>Data for <see cref="Companions.Motions"/>, defines how a companion moves.</summary>
     public class MotionData
     {
         /// <summary>Class name, need to be fully qualified to use a motion not provided by this mod.</summary>
@@ -48,6 +48,7 @@ namespace TrinketTinker.Models
         public float TextureScale { get; set; } = 4f;
         /// <summary>Base scale to draw shadow texture.</summary>
         public float ShadowScale { get; set; } = 3f;
+        /// <summary>If set, add a light with given radius. Note that the light is only visible to local player, this is same behavior as fairy box.</summary>
         public float LightRadius { get; set; } = 0f;
     }
 }

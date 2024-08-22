@@ -16,8 +16,8 @@ namespace TrinketTinker.Companions.Motions
         protected Vector2 motionOffset;
         /// <summary>Should reverse the animation, used for <see cref="LoopMode.PingPong"/></summary>
         protected bool isReverse = false;
-        /// <summary>Light source ID for <see cref="LightSource"/></summary>
-        protected int lightID = -1;
+        /// <summary>Light source ID, generated if <see cref="d.LightRadius"/> is set.</summary>
+        protected string lightId = "";
 
         /// <summary>Constructor</summary>
         /// <param name="companion"></param>
@@ -36,8 +36,8 @@ namespace TrinketTinker.Companions.Motions
         {
             if (d.LightRadius > 0)
             {
-                lightID = Random.Shared.Next();
-                Game1.currentLightSources.Add(new LightSource(1, c.Position + c.Offset, d.LightRadius, Color.Black, lightID, LightSource.LightContext.None, 0L));
+                lightId = $"{c.ID}_{Game1.random.Next()}";
+                Game1.currentLightSources.Add(lightId, new LightSource(lightId, 1, c.Position + c.Offset, d.LightRadius, Color.Black, LightSource.LightContext.None, 0L));
             }
         }
 
@@ -45,21 +45,20 @@ namespace TrinketTinker.Companions.Motions
         /// <param name="farmer"></param>
         public virtual void Cleanup()
         {
-            if (lightID > -1)
+            if (d.LightRadius > 0)
             {
-                Utility.removeLightSource(lightID);
+                Utility.removeLightSource(lightId);
             }
         }
 
-        /// <summary>Initialize motion, remove lightsource.</summary>
+        /// <summary>Make a new light source on warp.</summary>
         /// <param name="farmer"></param>
         /// 
         public virtual void OnOwnerWarp()
         {
-            if (lightID > -1)
+            if (d.LightRadius > 0)
             {
-                lightID = Random.Shared.Next();
-                Game1.currentLightSources.Add(new LightSource(1, c.Position + c.Offset, d.LightRadius, Color.Black, lightID, LightSource.LightContext.None, 0L));
+                Game1.currentLightSources.Add(lightId, new LightSource(lightId, 1, c.Position + c.Offset, d.LightRadius, Color.Black, LightSource.LightContext.None, 0L));
             }
         }
 
@@ -91,8 +90,8 @@ namespace TrinketTinker.Companions.Motions
                 c.Sprite.currentFrame = DirectionFrameStart();
                 c.Sprite.UpdateSourceRect();
             }
-            if (lightID > -1 && location.Equals(Game1.currentLocation))
-                Utility.repositionLightSource(lightID, c.Position + c.Offset);
+            if (d.LightRadius > 0 && location.Equals(Game1.currentLocation))
+                Utility.repositionLightSource(lightId, c.Position + c.Offset);
         }
 
         /// <summary>Draw the companion.</summary>

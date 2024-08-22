@@ -110,14 +110,14 @@ namespace TrinketTinker.Companions
                 .AddField(rotation, "rotation")
             ;
             _id.fieldChangeEvent += InitCompanionData;
-            _moving.fieldChangeEvent += (NetBool field, bool oldValue, bool newValue) => { _moving.Value = newValue; };
-            _offset.fieldChangeEvent += (NetVector2 field, Vector2 oldValue, Vector2 newValue) => { _offset.Value = newValue; };
+            // _moving.fieldChangeEvent += (NetBool field, bool oldValue, bool newValue) => { _moving.Value = newValue; };
+            // _offset.fieldChangeEvent += (NetVector2 field, Vector2 oldValue, Vector2 newValue) => { _offset.Value = newValue; };
         }
 
         /// <summary>When <see cref="ID"/> is changed through net event, fetch companion data and build all fields.</summary>
         private void InitCompanionData(NetString field, string oldValue, string newValue)
         {
-            _id.Value = newValue;
+            // _id.Value = newValue;
             if (!ModEntry.CompanionData.TryGetValue(_id.Value, out Data))
             {
                 ModEntry.Log($"Failed to get companion data for ${_id.Value}", LogLevel.Error);
