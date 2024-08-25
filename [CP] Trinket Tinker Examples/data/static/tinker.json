@@ -15,16 +15,16 @@
               "Height": 32
             },
           ],
-          "Motions": {
+          "Motions": [
             // Orbit around the player in a semi circle
-            "default": {
+            {
               "MotionClass": "Orbit",
               "AlwaysMoving": true,
               "DirectionMode": "DRUL",
               "AnimationFrameLength": 4,
               "Interval": 100,
             }
-          },
+          ],
           "Abilities": [
             // level 0
             [

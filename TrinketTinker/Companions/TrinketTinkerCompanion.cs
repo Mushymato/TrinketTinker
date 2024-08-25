@@ -128,8 +128,9 @@ namespace TrinketTinker.Companions
             Sprite = new AnimatedSprite(vdata.Texture, 0, vdata.Width, vdata.Height);
             SpriteOrigin = new Vector2(vdata.Width / 2, vdata.Height / 2);
 
-            if (Data.Motions.TryGetValue("default", out MotionData? mdata))
+            if (Data.Motions.Count > 0)
             {
+                MotionData mdata = Data.Motions[0];
                 if (ModEntry.TryGetType(mdata.MotionClass, out Type? motionCls, Constants.MOTION_CLS))
                     Motion = (Motion?)Activator.CreateInstance(motionCls, this, mdata);
                 else

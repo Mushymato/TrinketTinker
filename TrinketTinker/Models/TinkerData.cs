@@ -16,7 +16,7 @@ namespace TrinketTinker.Models
         /// <summary>List of variants</summary>
         public List<VariantData> Variants { get; set; } = new();
         /// <summary>List of motions</summary>
-        public Dictionary<string, MotionData> Motions { get; set; } = new();
+        public List<MotionData> Motions { get; set; } = new();
         /// <summary>List of abilities</summary>
         public List<List<AbilityData>> Abilities { get; set; } = new();
 

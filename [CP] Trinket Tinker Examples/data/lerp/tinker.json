@@ -17,8 +17,8 @@
             },
           ],
           // Hover motion: follows player, bobs up and down
-          "Motions": {
-            "default": {
+          "Motions": [
+            {
               "MotionClass": "Hover",
               "AlwaysMoving": true,
               "DirectionMode": "R",
@@ -27,7 +27,7 @@
               "Interval": 200,
               "LightRadius": 5,
             }
-          },
+          ],
           "Abilities": [
             // level 1: heal 0.1% of max hp while walking outside
             [
@@ -70,15 +70,15 @@
               "Height": 16
             },
           ],
-          "Motions": {
-            "default": {
+          "Motions": [
+            {
               "MotionClass": "Hover",
               "AlwaysMoving": true,
               "DirectionMode": "Rotate",
               "AnimationFrameLength": 4,
               "Interval": 200,
             }
-          },
+          ],
           "Abilities": [
             // level 0
             [
@@ -106,14 +106,14 @@
               "Height": 32
             },
           ],
-          "Motions": {
-            "default": {
+          "Motions": [
+            {
               "MotionClass": "Lerp",
               "DirectionMode": "DRU",
               "AnimationFrameLength": 4,
               "Interval": 100,
             }
-          },
+          ],
           "Abilities": [
             // level 0
             [
@@ -134,14 +134,14 @@
               "Height": 32
             },
           ],
-          "Motions": {
-            "default": {
+          "Motions": [
+            {
               "MotionClass": "Lerp",
               "DirectionMode": "DRUL",
               "AnimationFrameLength": 4,
               "Interval": 100,
             }
-          },
+          ],
           "Abilities": [
             // level 0
             [
