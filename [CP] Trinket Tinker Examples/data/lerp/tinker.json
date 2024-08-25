@@ -19,7 +19,7 @@
           // Hover motion: follows player, bobs up and down
           "Motions": [
             {
-              "MotionClass": "Hover",
+              "MotionClass": "Bounce",
               "AlwaysMoving": true,
               "DirectionMode": "R",
               "LoopMode": "PingPong",

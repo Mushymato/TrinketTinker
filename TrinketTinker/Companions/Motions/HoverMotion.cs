@@ -23,7 +23,7 @@ namespace TrinketTinker.Companions.Motions
         {
             base.UpdateLocal(time, location);
             theta += time.ElapsedGameTime.TotalMilliseconds / (d.Interval * d.AnimationFrameLength);
-            c.Offset = motionOffset + new Vector2(0, 16 * (float)Math.Sin(Math.PI * theta));
+            c.Offset = motionOffset + new Vector2(0, hoverMagnitude * (float)Math.Sin(Math.PI * theta));
             if (theta >= 1f)
                 theta = 0f;
         }

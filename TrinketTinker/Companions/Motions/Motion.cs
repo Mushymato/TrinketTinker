@@ -96,7 +96,6 @@ namespace TrinketTinker.Companions.Motions
 
         /// <summary>Draw the companion.</summary>
         /// <param name="b">SpriteBatch</param>
-
         public virtual void Draw(SpriteBatch b)
         {
             // float shadowScale = 3f * Utility.Lerp(1f, 0.8f, Math.Max(1f, -c.Offset.Y / 12));

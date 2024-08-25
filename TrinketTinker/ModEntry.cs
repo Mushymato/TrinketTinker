@@ -10,6 +10,7 @@ using TrinketTinker.Companions.Motions;
 using TrinketTinker.Effects;
 using TrinketTinker.Effects.Abilities;
 using TrinketTinker.Models;
+using StardewValley.Objects.Trinkets;
 
 namespace TrinketTinker
 {
@@ -85,6 +86,24 @@ namespace TrinketTinker
                 ModManifest, "ProcTrinket",
                 () => { return new string[] { ProcTrinket.TriggerActionName }; }
             );
+
+            // FIXME: spacecore doesn't support trinkets atm, perhaps send PR
+            // Add extra equipment slots
+            // if (Helper.ModRegistry.IsLoaded("spacechase0.SpaceCore") &&
+            //     Helper.ModRegistry.GetApi<Integration.ISpaceCoreApi>("spacechase0.SpaceCore") is Integration.ISpaceCoreApi SC)
+            // {
+            //     foreach (int i in Enumerable.Range(1, 3))
+            //     {
+            //         SC.RegisterEquipmentSlot(
+            //             ModManifest,
+            //             $"{ModId}_ExtraTrinketSlot_{i}",
+            //             (item) => item == null || item is Trinket,
+            //             () => $"Extra Trinket {i}",
+            //             Game1.menuTexture,
+            //             Game1.getSourceRectForStandardTileSheet(Game1.menuTexture, 70)
+            //         );
+            //     }
+            // }
         }
 
         private static void OnAssetRequested(object? sender, AssetRequestedEventArgs e)
