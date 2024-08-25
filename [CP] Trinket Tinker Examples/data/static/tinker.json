@@ -29,10 +29,10 @@
             // level 0
             [
               {
-                // Item drop ability 1, drops a gold quality salmon berry every 5 seconds
+                // Item drop ability 1, drops a gold quality salmon berry every 10 seconds
                 "AbilityClass": "ItemDrop",
                 "ProcOn": "Timer",
-                "ProcTimer": 5000,
+                "ProcTimer": 10000,
                 "Args": {
                   "ItemId": "(O)296",
                   "StackSize": 2,
@@ -40,9 +40,9 @@
                 }
               },
               {
-                // Item drop ability 2, produces a random bone item every step
+                // Item drop ability 2, produces a random bone item when killing any enemy
                 "AbilityClass": "ItemDrop",
-                "ProcOn": "Footstep",
+                "ProcOn": "SlayMonster",
                 "Args": {
                   "ItemQuery": "ALL_ITEMS",
                   "ItemQueryCondition": "ITEM_CONTEXT_TAG Target bone_item, !ITEM_CONTEXT_TAG Target id_o_881",

@@ -4,12 +4,19 @@ using TrinketTinker.Models;
 
 namespace TrinketTinker.Companions.Motions
 {
+    /// <summary>Companion follows the player and bobs up and down</summary>
     public class HoverMotion : LerpMotion
     {
+        /// <summary>trig function input</summary>
         private double theta = 0f;
+
+        protected readonly float hoverMagnitude = 16f;
 
         public HoverMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data)
         {
+            motionOffset.Y -= 128f;
+            c.Offset = motionOffset;
+            hoverMagnitude = d.GetParsedOrDefault("HoverMagnitude", hoverMagnitude);
         }
 
         public override void UpdateLocal(GameTime time, GameLocation location)

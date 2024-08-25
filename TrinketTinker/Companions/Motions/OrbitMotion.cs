@@ -5,13 +5,22 @@ using TrinketTinker.Models;
 
 namespace TrinketTinker.Companions.Motions
 {
+    /// <summary>Companion orbits around a point</summary>
     public class OrbitMotion : StaticMotion
     {
+        /// <summary>trig function input</summary>
         private double theta = 0f;
+        /// <summary>trig function input</summary>
+        protected readonly float radiusX = 96f;
+        /// <summary>trig function input</summary>
+        protected readonly float radiusY = 40f;
 
         public OrbitMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data)
         {
             motionOffset.Y -= 64f;
+            c.Offset = motionOffset;
+            radiusX = d.GetParsedOrDefault("RadiusX", radiusX);
+            radiusY = d.GetParsedOrDefault("RadiusY", radiusY);
         }
 
         public override void UpdateLocal(GameTime time, GameLocation location)
@@ -19,8 +28,8 @@ namespace TrinketTinker.Companions.Motions
             base.UpdateLocal(time, location);
             theta += time.ElapsedGameTime.TotalSeconds;
             c.Offset = motionOffset + new Vector2(
-                96 * (float)Math.Cos(Math.PI * theta),
-                40 * (float)Math.Sin(Math.PI * theta)
+                radiusX * (float)Math.Cos(Math.PI * theta),
+                radiusY * (float)Math.Sin(Math.PI * theta)
             );
             if (theta >= 2f)
                 theta = 0f;

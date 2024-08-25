@@ -25,7 +25,6 @@
               "LoopMode": "PingPong",
               "AnimationFrameLength": 4,
               "Interval": 200,
-              "OffsetY": -128,
               "LightRadius": 5,
             }
           },
@@ -78,7 +77,6 @@
               "DirectionMode": "Rotate",
               "AnimationFrameLength": 4,
               "Interval": 200,
-              "OffsetY": -128,
             }
           },
           "Abilities": [
@@ -114,7 +112,6 @@
               "DirectionMode": "DRU",
               "AnimationFrameLength": 4,
               "Interval": 100,
-              "OffsetY": -64,
             }
           },
           "Abilities": [
@@ -143,7 +140,6 @@
               "DirectionMode": "DRUL",
               "AnimationFrameLength": 4,
               "Interval": 100,
-              "OffsetY": -64,
             }
           },
           "Abilities": [

@@ -1,3 +1,4 @@
+
 namespace TrinketTinker.Models
 {
     /// <summary>Determine how the sprites are interpreted.</summary>
@@ -16,6 +17,7 @@ namespace TrinketTinker.Models
         /// <summary>Sprite is rotated to angular direction.</summary>
         Rotate,
     }
+
     /// <summary>Determine how sprites loop.</summary>
     public enum LoopMode
     {
@@ -24,8 +26,9 @@ namespace TrinketTinker.Models
         /// <summary>Reverse the animation from last frame, e.g. 1 2 3 4 3 2 1 2 3 4</summary>
         PingPong,
     }
+
     /// <summary>Data for <see cref="Companions.Motions"/>, defines how a companion moves.</summary>
-    public class MotionData
+    public class MotionData : HaveArgs
     {
         /// <summary>Class name, need to be fully qualified to use a motion not provided by this mod.</summary>
         public string? MotionClass { get; set; } = null;

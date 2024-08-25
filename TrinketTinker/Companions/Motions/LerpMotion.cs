@@ -1,15 +1,26 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using TrinketTinker.Models;
 
 namespace TrinketTinker.Companions.Motions
 {
+    /// <summary>Companion follows the player, at a distance</summary>
     public class LerpMotion : Motion
     {
+        /// <summary>Variable for how much interpolation happened so far.</summary>
         private float lerp = -1f;
+
+        /// <summary>If the companion is farther than this, start pulling them to the anchor</summary>
+        protected readonly float minDistance = 80f;
+        /// <summary>If the companion is farther than this, teleport instead of lerp</summary>
+        protected readonly float maxDistance = 768f;
+
         public LerpMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data)
         {
+            motionOffset.Y -= c.Sprite.SpriteHeight * 4 / 2;
+            c.Offset = motionOffset;
+            minDistance = d.GetParsedOrDefault("MinDistance", minDistance);
+            maxDistance = d.GetParsedOrDefault("MaxDistance", maxDistance);
         }
 
         public override void UpdateLocal(GameTime time, GameLocation location)
@@ -17,13 +28,14 @@ namespace TrinketTinker.Companions.Motions
             // Copied from Companion.Update's IsLocal block
             if (lerp < 0f)
             {
-                if ((c.Anchor - c.Position).Length() > 768f)
+                float distance = (c.Anchor - c.Position).Length();
+                if (distance > maxDistance)
                 {
                     Utility.addRainbowStarExplosion(location, c.Position, 1);
                     c.Position = c.Anchor;
                     lerp = -1f;
                 }
-                if ((c.Anchor - c.Position).Length() > 80f)
+                if (distance > minDistance)
                 {
                     c.startPosition = c.Position;
                     float radius = 0.33f;
@@ -67,16 +79,6 @@ namespace TrinketTinker.Companions.Motions
                 }
             }
             c.Moving = lerp >= 0;
-        }
-
-        public override void Draw(SpriteBatch b)
-        {
-            // float shadowScale = 3f * Utility.Lerp(1f, 0.8f, Math.Max(1f, -c.Offset.Y / 12));
-            DrawWithShadow(
-                b, c.Position.Y / 10000f,
-                new Vector2(d.TextureScale, d.TextureScale),
-                new Vector2(d.ShadowScale, d.ShadowScale)
-            );
         }
     }
 }

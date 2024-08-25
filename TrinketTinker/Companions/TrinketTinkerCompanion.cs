@@ -6,6 +6,7 @@ using StardewValley;
 using StardewValley.Companions;
 using TrinketTinker.Models;
 using TrinketTinker.Companions.Motions;
+using StardewValley.Network;
 
 
 namespace TrinketTinker.Companions
@@ -35,7 +36,7 @@ namespace TrinketTinker.Companions
             }
         }
         /// <summary>NetField for <see cref="Offset"/></summary>
-        protected readonly NetVector2 _offset = new();
+        protected readonly NetPosition _offset = new();
         /// <summary>Offset from companion's position, e.g. if companions are "flying"</summary>
         public Vector2 Offset
         {
@@ -106,10 +107,10 @@ namespace TrinketTinker.Companions
             NetFields
                 .AddField(_id, "_id")
                 .AddField(_moving, "_moving")
-                .AddField(_offset, "_offset")
                 .AddField(rotation, "rotation")
+                .AddField(_offset.NetFields, "_offset.NetFields")
             ;
-            _id.fieldChangeEvent += InitCompanionData;
+            _id.fieldChangeVisibleEvent += InitCompanionData;
             // _moving.fieldChangeEvent += (NetBool field, bool oldValue, bool newValue) => { _moving.Value = newValue; };
             // _offset.fieldChangeEvent += (NetVector2 field, Vector2 oldValue, Vector2 newValue) => { _offset.Value = newValue; };
         }

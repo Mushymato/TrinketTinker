@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using StardewValley;
 
 namespace TrinketTinker.Models
@@ -16,6 +17,8 @@ namespace TrinketTinker.Models
 
         /// <summary>Draw color mask</summary>
         public string? ColorMask { get; set; }
+
+        public Vector2 Offset { get; set; } = Vector2.Zero;
 
         /// <summary>Create a new <see cref="AnimatedSprite"/></summary>
         /// <returns></returns>

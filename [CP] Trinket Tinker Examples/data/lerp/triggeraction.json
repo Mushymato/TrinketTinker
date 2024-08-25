@@ -5,12 +5,12 @@
       "Target": "Data/TriggerActions",
       "Entries": {
         "{{ModId}}_TrinketProc": {
-          // This trigger action listens for the firing 
+          // This trigger action listens for the firing of a trigger, and proc a given trinket in response
           "Id": "{{ModId}}_TrinketProc",
           "Trigger": "{{mushymato.TrinketTinker/TrinketProc}}",
           "Condition": null,
           "HostOnly": false,
-          "Action": "{{mushymato.TrinketTinker/ProcTrinket}}",
+          "Action": "{{mushymato.TrinketTinker/ProcTrinket}} {{ModId}}_LerpDRUL",
           "Actions": null,
           "CustomFields": null,
           "MarkActionApplied": false
