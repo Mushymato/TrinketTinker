@@ -6,7 +6,7 @@
       "Target": "Data/Trinkets",
       "Entries": {
         "{{ModId}}_LerpR": {
-          "ID": "{{ModId}}_LerpR",
+          "Id": "{{ModId}}_LerpR",
           "DisplayName": "Trinket Tinker - Lerp R",
           "Description": "Companion with 1 set of movement animation for Right that flips when going Left.",
           "Texture": "Mods/{{ModId}}/rotation",
@@ -17,7 +17,7 @@
           "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
         },
         "{{ModId}}_LerpRotate": {
-          "ID": "{{ModId}}_LerpRotate",
+          "Id": "{{ModId}}_LerpRotate",
           "DisplayName": "Trinket Tinker - Lerp Rotate",
           "Description": "Companion with 1 set of movement animation for Right, rotates to face player.",
           "Texture": "Mods/{{ModId}}/rotation",
@@ -27,7 +27,7 @@
           "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
         },
         "{{ModId}}_LerpDRU": {
-          "ID": "{{ModId}}_LerpDRU",
+          "Id": "{{ModId}}_LerpDRU",
           "DisplayName": "Trinket Tinker - Lerp DRU",
           "Description": "Companion with 3 sets of movement animation in order of Down, Right, Up. Uses flipped version of Right for Left.",
           "Texture": "Mods/{{ModId}}/drul",
@@ -37,7 +37,7 @@
           "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
         },
         "{{ModId}}_LerpDRUL": {
-          "ID": "{{ModId}}_LerpDRUL",
+          "Id": "{{ModId}}_LerpDRUL",
           "DisplayName": "Trinket Tinker - Lerp DRUL",
           "Description": "Companion with 4 sets of movement animation in order of Down, Right, Up, Left.",
           "Texture": "Mods/{{ModId}}/drul",

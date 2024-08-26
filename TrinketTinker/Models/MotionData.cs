@@ -27,6 +27,13 @@ namespace TrinketTinker.Models
         PingPong,
     }
 
+    public enum LayerDepth
+    {
+        Behind,
+        Position,
+        InFront,
+    }
+
     /// <summary>Data for <see cref="Companions.Motions"/>, defines how a companion moves.</summary>
     public class MotionData : HaveArgs
     {
@@ -47,6 +54,8 @@ namespace TrinketTinker.Models
         public float OffsetX { get; set; } = 0f;
         /// <summary>Position offset Y.</summary>
         public float OffsetY { get; set; } = 0f;
+        /// <summary></summary>
+        public LayerDepth LayerDepth { get; set; } = LayerDepth.Position;
         /// <summary>Base scale to draw texture at.</summary>
         public float TextureScale { get; set; } = 4f;
         /// <summary>Base scale to draw shadow texture.</summary>

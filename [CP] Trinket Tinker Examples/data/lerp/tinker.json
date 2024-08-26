@@ -6,7 +6,7 @@
       "Target": "{{mushymato.TrinketTinker/Target}}",
       "Entries": {
         "{{ModId}}_LerpR": {
-          "ID": "{{ModId}}_LerpR",
+          "Id": "{{ModId}}_LerpR",
           "MinLevel": 1,
           "MaxLevel": 2,
           "Variants": [
@@ -62,7 +62,7 @@
         },
         // ID must match trinket
         "{{ModId}}_LerpRotate": {
-          "ID": "{{ModId}}_LerpRotate",
+          "Id": "{{ModId}}_LerpRotate",
           "Variants": [
             {
               "Texture": "Mods/{{ModId}}/rotation",
@@ -71,6 +71,7 @@
             },
           ],
           "Motions": [
+            // Rotate towards player
             {
               "MotionClass": "Hover",
               "AlwaysMoving": true,
@@ -98,7 +99,7 @@
         },
         // ID must match trinket
         "{{ModId}}_LerpDRU": {
-          "ID": "{{ModId}}_LerpDRU",
+          "Id": "{{ModId}}_LerpDRU",
           "Variants": [
             {
               "Texture": "Mods/{{ModId}}/drul",
@@ -126,7 +127,7 @@
         },
         // ID must match trinket
         "{{ModId}}_LerpDRUL": {
-          "ID": "{{ModId}}_LerpDRUL",
+          "Id": "{{ModId}}_LerpDRUL",
           "Variants": [
             {
               "Texture": "Mods/{{ModId}}/drul",

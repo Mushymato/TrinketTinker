@@ -13,23 +13,12 @@ namespace TrinketTinker.Companions.Motions
             c.Moving = c.Position != c.Anchor;
             c.Position = c.Anchor;
             c.Offset = motionOffset;
-            // UpdateDirection();
-            int newDirection = c.Owner.FacingDirection;
-            switch (newDirection)
-            {
-                case 0:
-                    newDirection = 2;
-                    break;
-                case 2:
-                    newDirection = 0;
-                    break;
-            }
-            c.direction.Value = newDirection + 1;
+            UpdateDirection();
         }
         public override void Draw(SpriteBatch b)
         {
             DrawWithShadow(
-                b, (c.direction.Value == 3) ? (c.Position.Y / 10000f) : 1f,
+                b, (c.direction.Value == 2) ? (c.Position.Y / 10000f) : 1f,
                 new Vector2(d.TextureScale, d.TextureScale),
                 new Vector2(d.ShadowScale, d.ShadowScale)
             );
@@ -38,7 +27,47 @@ namespace TrinketTinker.Companions.Motions
         /// <summary>Update companion facing direction using current position and offset.</summary>
         protected override void UpdateDirection()
         {
-            UpdateDirection(c.Position + c.Offset);
+            int prevDirection = c.direction.Value;
+            int facingDirection = c.Owner.FacingDirection;
+            switch (d.DirectionMode)
+            {
+                case DirectionMode.DRUL:
+                    c.direction.Value = facingDirection switch
+                    {
+                        0 => 3,
+                        2 => 1,
+                        _ => facingDirection + 1,
+                    };
+                    break;
+                case DirectionMode.DRU:
+                    c.direction.Value = facingDirection switch
+                    {
+                        0 => -1,
+                        2 => 1,
+                        _ => facingDirection + 1,
+                    };
+                    break;
+                case DirectionMode.RL:
+                    c.direction.Value = facingDirection switch
+                    {
+                        0 => 2,
+                        2 => 1,
+                        _ => prevDirection,
+                    };
+                    break;
+                case DirectionMode.R:
+                    c.direction.Value = facingDirection switch
+                    {
+                        0 => -1,
+                        2 => 1,
+                        _ => prevDirection,
+                    };
+                    break;
+                case DirectionMode.Rotate:
+                case DirectionMode.None:
+                    c.direction.Value = 1;
+                    break;
+            }
         }
     }
 }

@@ -15,7 +15,7 @@ namespace TrinketTinker.Companions
     public class TrinketTinkerCompanion : Companion
     {
         // NetFields + Getters
-        /// <summary>NetField for <see cref="ID"/></summary>
+        /// <summary>NetField for <see cref="Id"/></summary>
         protected readonly NetString _id = new("");
         /// <summary>Companion ID. Companion is (re)loaded when this is changed.</summary>
         public string ID => _id.Value;
@@ -67,7 +67,17 @@ namespace TrinketTinker.Companions
         /// <summary>Middle point of the sprite, based on width and height.</summary>
         public Vector2 SpriteOrigin { get; set; } = Vector2.Zero;
         /// <summary>Color mask to use on sprite draw.</summary>
-        public Color SpriteColor => Utility.StringToColor(Data?.Variants[whichVariant.Value].ColorMask) ?? Color.White;
+        public Color SpriteColor
+        {
+            get
+            {
+                if (Data == null)
+                    return Color.White;
+                if (Data?.Variants[whichVariant.Value].ColorMask == Constants.COLOR_PRISMATIC)
+                    return Utility.GetPrismaticColor();
+                return Utility.StringToColor(Data?.Variants[whichVariant.Value].ColorMask) ?? Color.White;
+            }
+        }
 
         /// <summary>Argumentless constructor for netcode deserialization.</summary>
         public TrinketTinkerCompanion() : base()
@@ -75,11 +85,11 @@ namespace TrinketTinker.Companions
         }
 
         /// <summary>Construct new companion using companion ID.</summary>
-        public TrinketTinkerCompanion(string companionId)
+        public TrinketTinkerCompanion(string companionId, int variant)
         {
             _id.Value = companionId;
             _moving.Value = false;
-            whichVariant.Value = 0;
+            whichVariant.Value = variant;
         }
 
         /// <summary>Initialize Motion class.</summary>
@@ -115,7 +125,7 @@ namespace TrinketTinker.Companions
             // _offset.fieldChangeEvent += (NetVector2 field, Vector2 oldValue, Vector2 newValue) => { _offset.Value = newValue; };
         }
 
-        /// <summary>When <see cref="ID"/> is changed through net event, fetch companion data and build all fields.</summary>
+        /// <summary>When <see cref="Id"/> is changed through net event, fetch companion data and build all fields.</summary>
         private void InitCompanionData(NetString field, string oldValue, string newValue)
         {
             // _id.Value = newValue;
@@ -124,6 +134,7 @@ namespace TrinketTinker.Companions
                 ModEntry.Log($"Failed to get companion data for ${_id.Value}", LogLevel.Error);
                 return;
             }
+
             VariantData vdata = Data.Variants[whichVariant.Value];
             Sprite = new AnimatedSprite(vdata.Texture, 0, vdata.Width, vdata.Height);
             SpriteOrigin = new Vector2(vdata.Width / 2, vdata.Height / 2);

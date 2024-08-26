@@ -12,6 +12,7 @@ namespace TrinketTinker.Effects
     /// <summary>Base class for TrinketTinker trinkets, allows extensible companions with extensible abilities.</summary>
     public class TrinketTinkerEffect : TrinketEffect
     {
+        public readonly string ModData_WhichVariant = $"{ModEntry.ModId}/WhichVariant";
         /// <summary>Companion data with matching ID</summary>
         protected TinkerData? Data;
 
@@ -91,12 +92,19 @@ namespace TrinketTinker.Effects
             if (Data == null || Game1.gameMode != 3)
                 return;
 
+            int variant = 0;
+            if (Trinket.modData.TryGetValue(ModData_WhichVariant, out string variantStr))
+                variant = int.Parse(variantStr);
+
             // Companion
             if (ModEntry.TryGetType(Data.CompanionClass, out Type? companionCls))
-                Companion = (TrinketTinkerCompanion?)Activator.CreateInstance(companionCls, Trinket.ItemId);
+                Companion = (TrinketTinkerCompanion?)Activator.CreateInstance(companionCls, Trinket.ItemId, variant);
             else
-                Companion = new TrinketTinkerCompanion(Trinket.ItemId);
+                Companion = new TrinketTinkerCompanion(Trinket.ItemId, variant);
             farmer.AddCompanion(Companion);
+
+            if (farmer != Game1.player || Abilities.Count <= Level)
+                return;
 
             // Apply Abilities
             foreach (var ability in Abilities[Level])
@@ -110,6 +118,9 @@ namespace TrinketTinker.Effects
         public override void Unapply(Farmer farmer)
         {
             farmer.RemoveCompanion(Companion);
+
+            if (farmer != Game1.player || Abilities.Count <= Level)
+                return;
 
             foreach (var ability in Abilities[Level])
             {
@@ -131,7 +142,7 @@ namespace TrinketTinker.Effects
         /// <param name="farmer"></param>
         public override void OnFootstep(Farmer farmer)
         {
-            if (farmer != Game1.player)
+            if (farmer != Game1.player || Abilities.Count <= Level)
                 return;
             foreach (var ability in SortedAbilities[Level][ProcOn.Footstep])
             {
@@ -144,7 +155,7 @@ namespace TrinketTinker.Effects
         /// <param name="damageAmount"></param>
         public override void OnReceiveDamage(Farmer farmer, int damageAmount)
         {
-            if (farmer != Game1.player)
+            if (farmer != Game1.player || Abilities.Count <= Level)
                 return;
             foreach (var ability in SortedAbilities[Level][ProcOn.ReceiveDamage])
             {
@@ -158,7 +169,7 @@ namespace TrinketTinker.Effects
         /// <param name="damageAmount"></param>
         public override void OnDamageMonster(Farmer farmer, Monster monster, int damageAmount)
         {
-            if (farmer != Game1.player || monster == null)
+            if (farmer != Game1.player || Abilities.Count <= Level || monster == null)
                 return;
             foreach (var ability in SortedAbilities[Level][ProcOn.DamageMonster])
             {
@@ -179,6 +190,8 @@ namespace TrinketTinker.Effects
         /// <param name="damageAmount"></param>
         public virtual void OnTrigger(Farmer farmer)
         {
+            if (farmer != Game1.player || Abilities.Count <= Level)
+                return;
             foreach (var ability in SortedAbilities[Level][ProcOn.Trigger])
             {
                 ability.Proc(farmer);
@@ -191,7 +204,7 @@ namespace TrinketTinker.Effects
         /// <param name="location"></param>
         public override void Update(Farmer farmer, GameTime time, GameLocation location)
         {
-            if (farmer != Game1.player)
+            if (farmer != Game1.player || Abilities.Count <= Level)
                 return;
             foreach (var ability in Abilities[Level])
             {
@@ -205,11 +218,22 @@ namespace TrinketTinker.Effects
         {
             if (Data == null)
                 return false;
-            if (Data.MinLevel == Data.MaxLevel)
+            if (Abilities.Count <= 1)
                 GeneralStat = Data.MinLevel;
             Random r = Utility.CreateRandom(trinket.generationSeed.Value);
-            GeneralStat = r.Next(Data.MinLevel, Data.MaxLevel + 1);
+            GeneralStat = r.Next(Data.MinLevel, Data.MinLevel + Abilities.Count);
             trinket.descriptionSubstitutionTemplates.Add(GeneralStat.ToString());
+            return true;
+        }
+
+        /// <summary>Randomize this trinket's variant through trinket colorizer.</summary>
+        /// <param name="trinket"></param>
+        public virtual bool RerollVariant(Trinket trinket)
+        {
+            if (Data == null || Data.Variants.Count <= 1)
+                return false;
+            int nextVariant = Random.Shared.Next(Data.Variants.Count);
+            trinket.modData[ModData_WhichVariant] = nextVariant.ToString();
             return true;
         }
     }

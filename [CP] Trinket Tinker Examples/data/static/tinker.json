@@ -7,7 +7,7 @@
       "Entries": {
         // ID must match trinket
         "{{ModId}}_StaticDRUL": {
-          "ID": "{{ModId}}_StaticDRUL",
+          "Id": "{{ModId}}_StaticDRUL",
           "Variants": [
             {
               "Texture": "Mods/{{ModId}}/drul",
@@ -16,7 +16,7 @@
             },
           ],
           "Motions": [
-            // Orbit around the player in a semi circle
+            // Orbit around the player in a ellipse
             {
               "MotionClass": "Orbit",
               "AlwaysMoving": true,
@@ -50,6 +50,43 @@
               }
             ]
           ]
+        },
+        "{{ModId}}_StatiColorMask": {
+          "Id": "{{ModId}}_StatiColorMask",
+          "Variants": [
+            // Prismatic
+            {
+              "Texture": "Mods/{{ModId}}/rotation-bw",
+              "Width": 16,
+              "Height": 16,
+              "ColorMask": "Prismatic"
+            },
+            // Named color (https://docs.monogame.net/api/Microsoft.Xna.Framework.Color.html)
+            {
+              "Texture": "Mods/{{ModId}}/rotation-bw",
+              "Width": 16,
+              "Height": 16,
+              "ColorMask": "Tomato"
+            },
+            // Hex color
+            {
+              "Texture": "Mods/{{ModId}}/rotation-bw",
+              "Width": 16,
+              "Height": 16,
+              "ColorMask": "#6495ED"
+            },
+          ],
+          "Motions": [
+            // fixed position
+            {
+              "MotionClass": "Static",
+              "AlwaysMoving": false,
+              "DirectionMode": "R",
+              "AnimationFrameLength": 4,
+              "Interval": 200,
+              "LayerDepth": "Behind"
+            }
+          ],
         },
       }
     }

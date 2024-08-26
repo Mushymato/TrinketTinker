@@ -113,6 +113,12 @@ namespace TrinketTinker.Companions.Motions
         /// <param name="shadowScale"></param>
         protected virtual void DrawWithShadow(SpriteBatch b, float layerDepth, Vector2 textureScale, Vector2 shadowScale)
         {
+            layerDepth = d.LayerDepth switch
+            {
+                LayerDepth.Behind => c.Owner.getDrawLayer() - 2 * 2E-06f,
+                LayerDepth.InFront => c.Owner.getDrawLayer() + 2 * 2E-06f,
+                _ => layerDepth,
+            };
             b.Draw(
                 c.Sprite.Texture,
                 Game1.GlobalToLocal(c.Position + c.Offset + c.Owner.drawOffset),
@@ -124,19 +130,22 @@ namespace TrinketTinker.Companions.Motions
                 (c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
                 layerDepth
             );
-            b.Draw(
-                Game1.shadowTexture,
-                Game1.GlobalToLocal(c.Position + new Vector2(c.Offset.X, 0) + c.Owner.drawOffset),
-                Game1.shadowTexture.Bounds,
-                Color.White,
-                0f,
-                new Vector2(
-                    Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y
-                ),
-                shadowScale,
-                SpriteEffects.None,
-                layerDepth - 2E-06f
-            );
+            if (shadowScale.X > 0 || shadowScale.Y > 0)
+            {
+                b.Draw(
+                    Game1.shadowTexture,
+                    Game1.GlobalToLocal(c.Position + new Vector2(c.Offset.X, 0) + c.Owner.drawOffset),
+                    Game1.shadowTexture.Bounds,
+                    Color.White,
+                    0f,
+                    new Vector2(
+                        Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y
+                    ),
+                    shadowScale,
+                    SpriteEffects.None,
+                    layerDepth - 2E-06f
+                );
+            }
         }
 
         /// <summary>Update companion facing direction using current position</summary>
@@ -176,7 +185,7 @@ namespace TrinketTinker.Companions.Motions
                     c.rotation.Value = (float)Math.Atan2(posDelta.Y, posDelta.X);
                     break;
                 case DirectionMode.None:
-                    c.direction.Value = 0;
+                    c.direction.Value = 1;
                     break;
             }
         }

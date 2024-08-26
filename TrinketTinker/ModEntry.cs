@@ -11,6 +11,9 @@ using TrinketTinker.Effects;
 using TrinketTinker.Effects.Abilities;
 using TrinketTinker.Models;
 using StardewValley.Objects.Trinkets;
+using Microsoft.Xna.Framework.Graphics;
+using StardewValley.GameData.BigCraftables;
+using StardewValley.GameData.Machines;
 
 namespace TrinketTinker
 {
@@ -19,7 +22,6 @@ namespace TrinketTinker
         private static IMonitor? mon;
         public static string ModId { get; set; } = "";
         public static string TinkerAsset => $"Mods/{ModId}/Tinker";
-        public static string TinkerTrigger => $"{ModId}_ABILITY_TRIGGERED";
 
         private static Dictionary<string, TinkerData>? _companionData = null;
         public static Dictionary<string, TinkerData> CompanionData
@@ -37,7 +39,7 @@ namespace TrinketTinker
 
         public override void Entry(IModHelper helper)
         {
-            // I18n.Init(helper.Translation);
+            I18n.Init(helper.Translation);
             mon = Monitor;
             ModId = ModManifest.UniqueID;
 
@@ -72,19 +74,19 @@ namespace TrinketTinker
                 throw new ContentLoadException("Failed to get Content Patcher API");
             CP.RegisterToken(
                 ModManifest, "EffectClass",
-                () => { return new string[] { typeof(TrinketTinkerEffect).AssemblyQualifiedName! }; }
+                () => { return [typeof(TrinketTinkerEffect).AssemblyQualifiedName!]; }
             );
             CP.RegisterToken(
                 ModManifest, "Target",
-                () => { return new string[] { TinkerAsset }; }
+                () => { return [TinkerAsset]; }
             );
             CP.RegisterToken(
                 ModManifest, "TrinketProc",
-                () => { return new string[] { TriggerAbility.TriggerEventName }; }
+                () => { return [TriggerAbility.TriggerEventName]; }
             );
             CP.RegisterToken(
                 ModManifest, "ProcTrinket",
-                () => { return new string[] { ProcTrinket.TriggerActionName }; }
+                () => { return [ProcTrinket.TriggerActionName]; }
             );
 
             // FIXME: spacecore doesn't support trinkets atm, perhaps send PR
@@ -108,11 +110,14 @@ namespace TrinketTinker
 
         private static void OnAssetRequested(object? sender, AssetRequestedEventArgs e)
         {
+            // load the custom asset
             if (e.Name.IsEquivalentTo(TinkerAsset))
             {
                 _companionData = null;
                 e.LoadFrom(() => new Dictionary<string, TinkerData>(), AssetLoadPriority.Exclusive);
             }
+            // add a big craftable for recoloring stuff
+            TrinketColorizer.OnAssetRequested(e);
         }
 
         private static void OnAssetInvalidated(object? sender, AssetsInvalidatedEventArgs e)
@@ -160,18 +165,30 @@ namespace TrinketTinker
             }
         }
 
+        /// Static helper functions
+
+        /// <summary>Static SMAPI logger</summary>
+        /// <param name="msg"></param>
+        /// <param name="level"></param>
         public static void Log(string msg, LogLevel level = LogLevel.Debug)
         {
             level = (level == LogLevel.Trace) ? LogLevel.Debug : level;
             mon!.Log(msg, level);
         }
 
+        /// <summary>Static SMAPI logger, only logs the same message once</summary>
+        /// <param name="msg"></param>
+        /// <param name="level"></param>
         public static void LogOnce(string msg, LogLevel level = LogLevel.Debug)
         {
             level = (level == LogLevel.Trace) ? LogLevel.Debug : level;
             mon!.LogOnce(msg, level);
         }
 
+        /// <summary>Get type from a string class name</summary>
+        /// <param name="className"></param>
+        /// <param name="typ"></param>
+        /// <returns></returns>
         public static bool TryGetType(string? className, [NotNullWhen(true)] out Type? typ)
         {
             typ = null;
@@ -183,6 +200,11 @@ namespace TrinketTinker
             return false;
         }
 
+        /// <summary>Get type from a string class name that is possibly in short form.</summary>
+        /// <param name="className"></param>
+        /// <param name="typ"></param>
+        /// <param name="longFormat">Full class name format</param>
+        /// <returns></returns>
         public static bool TryGetType(string? className, [NotNullWhen(true)] out Type? typ, string longFormat)
         {
             typ = null;
