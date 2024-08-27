@@ -7,3 +7,7 @@ debug.csproj
 *.xcf
 TrinketTinkerTest/
 workfiles/
+.config
+
+_site/
+api/

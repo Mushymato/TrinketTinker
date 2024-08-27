@@ -21,7 +21,7 @@ namespace TrinketTinker.Effects.Abilities
         protected bool Active { get; set; }
         /// <summary>True if trinket proc timeout is not set, or elapsed.</summary>
         protected bool Allowed { get; set; }
-        /// <summary>Tracks trinket proc timeout, counts down to 0 and resets to <see cref="d.ProcTimer"/>.</summary>
+        /// <summary>Tracks trinket proc timeout, counts down to 0 and resets to ProcTimer value is set in <see cref="AbilityData"/>.</summary>
         protected double ProcTimer { get; set; } = -1;
 
         /// <summary>Constructor</summary>
@@ -58,7 +58,7 @@ namespace TrinketTinker.Effects.Abilities
             return monster != null;
         }
 
-        /// <summary>Applies ability effect, plays sound if <see cref="d.ProcSound"/> is set.</summary>
+        /// <summary>Applies ability effect, plays sound if ProcSound value is set in <see cref="AbilityData"/>.</summary>
         /// <param name="farmer"></param>
         /// <returns></returns>
         protected virtual bool ApplyEffect(Farmer farmer)
@@ -172,7 +172,7 @@ namespace TrinketTinker.Effects.Abilities
             return false;
         }
 
-        /// <summary>Remove the ability, used if <see cref="d.ProcOn"/> is <see cref="ProcOn.Always"/></summary>
+        /// <summary>Remove the ability, used if ProcOn is <see cref="ProcOn.Always"/></summary>
         /// <param name="farmer"></param>
         protected virtual void UnProc(Farmer farmer)
         {

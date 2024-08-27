@@ -15,7 +15,7 @@ namespace TrinketTinker.Companions
     public class TrinketTinkerCompanion : Companion
     {
         // NetFields + Getters
-        /// <summary>NetField for <see cref="Id"/></summary>
+        /// <summary>NetField for <see cref="ID"/></summary>
         protected readonly NetString _id = new("");
         /// <summary>Companion ID. Companion is (re)loaded when this is changed.</summary>
         public string ID => _id.Value;

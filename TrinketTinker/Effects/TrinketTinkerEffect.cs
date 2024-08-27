@@ -167,7 +167,7 @@ namespace TrinketTinker.Effects
         /// <param name="farmer"></param>
         /// <param name="monster"></param>
         /// <param name="damageAmount"></param>
-        public override void OnDamageMonster(Farmer farmer, Monster monster, int damageAmount)
+        public override void OnDamageMonster(Farmer farmer, Monster monster, int damageAmount, bool isBomb, bool isCriticalHit)
         {
             if (farmer != Game1.player || Abilities.Count <= Level || monster == null)
                 return;

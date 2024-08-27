@@ -5,11 +5,11 @@ using System.ComponentModel;
 namespace TrinketTinker.Models
 #pragma warning restore IDE0130 // Namespace does not match folder structure
 {
-    /// <summary>Provides the <see cref="Args"> property, whose values can be parsed to different types depending on the consumer.</summary>
+    /// <summary>Provides the <see cref="Args"/> property, whose values can be parsed to different types depending on the consumer.</summary>
     public abstract class HaveArgs
     {
         /// <summary>Arbiturary arguments.</summary>
-        public Dictionary<string, string> Args { get; set; } = new();
+        public Dictionary<string, string> Args { get; set; } = [];
 
         /// <summary>
         /// Get value from <see cref="Args"/> and try to parse to the expected type.

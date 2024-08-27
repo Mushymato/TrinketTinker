@@ -16,7 +16,7 @@ namespace TrinketTinker.Companions.Motions
         protected Vector2 motionOffset;
         /// <summary>Should reverse the animation, used for <see cref="LoopMode.PingPong"/></summary>
         protected bool isReverse = false;
-        /// <summary>Light source ID, generated if <see cref="d.LightRadius"/> is set.</summary>
+        /// <summary>Light source ID, generated if LightRadius is set in <see cref="MotionData"/>.</summary>
         protected string lightId = "";
 
         /// <summary>Constructor</summary>
