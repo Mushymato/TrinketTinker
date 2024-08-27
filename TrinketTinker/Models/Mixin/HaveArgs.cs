@@ -1,9 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.ComponentModel;
 
-#pragma warning disable IDE0130 // Namespace does not match folder structure
-namespace TrinketTinker.Models
-#pragma warning restore IDE0130 // Namespace does not match folder structure
+namespace TrinketTinker.Mixin
 {
     /// <summary>Provides the <see cref="Args"/> property, whose values can be parsed to different types depending on the consumer.</summary>
     public abstract class HaveArgs

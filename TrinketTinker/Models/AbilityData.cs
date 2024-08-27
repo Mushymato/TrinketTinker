@@ -23,21 +23,21 @@ namespace TrinketTinker.Models
     }
 
     /// <summary>Data for <see cref="Effects.Abilities"/>, defines game effect that a trinket can provide.</summary>
-    public class AbilityData : HaveArgs
+    public class AbilityData : Mixin.HaveArgs
     {
-        /// <summary>Name of this ability.</summary>
+        /// <summary>Name of this ability. If unset, a name is generatde from class name and trinket ID.</summary>
         public string Name = "";
-        /// <summary>Class name, need to be fully qualified to use an ability not provided by this mod.</summary>
+        /// <summary>Type name of the ability, can use short form that matches <see cref="Constants.ABILITY_CLS"/></summary>
         public string? AbilityClass { get; set; } = null;
-        /// <summary>Proc on rule</summary>
+        /// <summary>Determine when this ability activates.</summary>
         public ProcOn ProcOn = new();
-        /// <summary>Timeout for ability procs, all types of procs respect this, not just <see cref="ProcOn.Timer"/>.</summary>
+        /// <summary>Minimum cooldown time between ability activation, all <see cref="Models.ProcOn"/> values respect this, not just <see cref="ProcOn.Timer"/>.</summary>
         public double ProcTimer { get; set; } = -1;
-        /// <summary>Trigger action to listen to</summary>
+        /// <summary>Sound cue to play on proc.</summary>
         public string? ProcSound { get; set; } = null;
         /// <summary>Condition, see <see cref="StardewValley.GameStateQuery"/></summary>
         public string? Condition { get; set; } = null;
-        /// <summary>Minimum damage dealt or received before proc.</summary>
+        /// <summary>Minimum damage dealt or received before proc, applicable to <see cref="ProcOn.ReceiveDamage"/> and <see cref="ProcOn.DamageMonster"/>.</summary>
         public int DamageThreshold { get; set; } = -1;
     }
 }

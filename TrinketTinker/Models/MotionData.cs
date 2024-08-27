@@ -27,15 +27,19 @@ namespace TrinketTinker.Models
         PingPong,
     }
 
+    /// <summary>Determine the layer depth to use when drawing the companion</summary>
     public enum LayerDepth
     {
+        /// <summary>Draw just behind the farmer.</summary>
         Behind,
+        /// <summary>Draw according to current Y position</summary>
         Position,
+        /// <summary>Draw just in front of the farmer</summary>
         InFront,
     }
 
     /// <summary>Data for <see cref="Companions.Motions"/>, defines how a companion moves.</summary>
-    public class MotionData : HaveArgs
+    public class MotionData : Mixin.HaveArgs
     {
         /// <summary>Class name, need to be fully qualified to use a motion not provided by this mod.</summary>
         public string? MotionClass { get; set; } = null;
@@ -54,13 +58,13 @@ namespace TrinketTinker.Models
         public float OffsetX { get; set; } = 0f;
         /// <summary>Position offset Y.</summary>
         public float OffsetY { get; set; } = 0f;
-        /// <summary></summary>
+        /// <summary>Layer depth mode.</summary>
         public LayerDepth LayerDepth { get; set; } = LayerDepth.Position;
         /// <summary>Base scale to draw texture at.</summary>
         public float TextureScale { get; set; } = 4f;
         /// <summary>Base scale to draw shadow texture.</summary>
         public float ShadowScale { get; set; } = 3f;
-        /// <summary>If set, add a light with given radius. Note that the light is only visible to local player, this is same behavior as fairy box.</summary>
+        /// <summary>If set, add a light with given radius. Note that the light is only visible to local player.</summary>
         public float LightRadius { get; set; } = 0f;
     }
 }

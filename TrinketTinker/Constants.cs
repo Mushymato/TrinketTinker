@@ -11,7 +11,7 @@ namespace TrinketTinker
         /// <summary>String pattern for trinket tinker ability classes</summary>
         internal const string ABILITY_CLS = "TrinketTinker.Effects.Abilities.{0}Ability, TrinketTinker";
 
-        /// <summary>Color name, refers</summary>
+        /// <summary>Special color name for the animated prismatic color mask.</summary>
         internal const string COLOR_PRISMATIC = "Prismatic";
     }
 }
