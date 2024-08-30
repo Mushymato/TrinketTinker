@@ -11,13 +11,12 @@ namespace TrinketTinker.Companions.Motions
         /// <summary>trig function input</summary>
         private double theta = 0f;
 
+        /// <summary>Bounce height</summary>
         protected readonly float maxHeight = 128f;
 
         public BounceMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data)
         {
-            maxHeight = d.GetParsedOrDefault("maxHeight", maxHeight);
-            // motionOffset.Y -= maxHeight;
-            // c.Offset = motionOffset;
+            maxHeight = d.GetParsedOrDefault("MaxHeight", maxHeight);
         }
 
         public override void UpdateLocal(GameTime time, GameLocation location)
@@ -31,16 +30,16 @@ namespace TrinketTinker.Companions.Motions
 
         public override void Draw(SpriteBatch b)
         {
-            float thetaF = (float)(theta / 2.0);
+            float thetaF = (float)Math.Max(Math.Pow(Math.Cos(2 * Math.PI * theta), 5) / 2, 0);
             Vector2 textureScale = new(
-                d.TextureScale - thetaF,
-                d.TextureScale + thetaF
+                d.TextureScale + thetaF,
+                d.TextureScale - thetaF
             );
-            float shadowScale = d.ShadowScale * Utility.Lerp(1f, 0.8f, Math.Max(1f, -c.Offset.Y / 12));
+            // float shadowScale = d.ShadowScale * Utility.Lerp(1f, 0.8f, Math.Max(1f, -c.Offset.Y / 6));
             DrawWithShadow(
                 b, c.Position.Y / 10000f,
                 textureScale,
-                new Vector2(shadowScale, shadowScale)
+                new Vector2(d.ShadowScale, d.ShadowScale)
             );
         }
     }
