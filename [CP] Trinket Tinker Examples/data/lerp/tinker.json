@@ -84,7 +84,7 @@
             // level 0
             [
               {
-                // Shoot projectile every 2s
+                // Shoot damaging projectile every 2s
                 "ProcOn": "Timer",
                 "ProcTimer": 2000,
                 "AbilityClass": "Projectile",

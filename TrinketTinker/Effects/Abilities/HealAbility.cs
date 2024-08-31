@@ -20,8 +20,8 @@ namespace TrinketTinker.Effects.Abilities
             if (d.TryGetParsed("HealPower", out int? healPowerVal))
             {
                 healPower = (int)healPowerVal;
-                targetHealth = d.ContainsKey("TargetHealth");
-                targetStamina = d.ContainsKey("TargetStamina");
+                targetHealth = d.GetParsedOrDefault("TargetHealth", targetHealth);
+                targetStamina = d.GetParsedOrDefault("TargetStamina", targetStamina);
                 Valid = healPowerVal != 0 && (targetHealth || targetStamina);
             }
         }

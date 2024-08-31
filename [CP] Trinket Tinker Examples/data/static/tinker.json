@@ -77,7 +77,7 @@
             },
           ],
           "Motions": [
-            // fixed position
+            // fixed position, always behind the player
             {
               "MotionClass": "Static",
               "AlwaysMoving": false,
@@ -87,6 +87,22 @@
               "LayerDepth": "Behind"
             }
           ],
+          "Abilities": [
+            // level 0
+            [
+              {
+                // Shoot debuff(frozen) projectile every 3s
+                "ProcOn": "Timer",
+                "ProcTimer": 3000,
+                "AbilityClass": "Projectile",
+                "Args": {
+                  "DebuffId": "frozen",
+                  "SpriteIndex": 17,
+                  "Speed": 12,
+                }
+              }
+            ]
+          ]
         },
       }
     }

@@ -134,24 +134,19 @@ namespace TrinketTinker.Effects.Abilities
         /// <param name="location"></param>
         public virtual void Update(Farmer farmer, GameTime time, GameLocation location)
         {
-            if (!Game1.shouldTimePass())
-            {
-                return;
-            }
             if (d.ProcTimer >= Constants.ONE_FRAME && !Allowed)
             {
                 ProcTimer -= time.ElapsedGameTime.TotalMilliseconds;
                 Allowed = ProcTimer <= 0;
-                if (Allowed)
-                {
-                    if (d.ProcOn == ProcOn.Timer)
-                        Proc(farmer, time, location);
-                    ProcTimer = d.ProcTimer;
-                }
             }
             else
             {
                 Allowed = true;
+            }
+            if (d.ProcOn == ProcOn.Timer && Allowed)
+            {
+                Proc(farmer, time, location);
+                ProcTimer = d.ProcTimer;
             }
         }
 
