@@ -1,6 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-using System.ComponentModel;
-
 namespace TrinketTinker.Models
 {
     /// <summary>Defines how an ability can proc (activate).</summary>
@@ -37,7 +34,21 @@ namespace TrinketTinker.Models
         public string? ProcSound { get; set; } = null;
         /// <summary>Condition, see <see cref="StardewValley.GameStateQuery"/></summary>
         public string? Condition { get; set; } = null;
-        /// <summary>Minimum damage dealt or received before proc, applicable to <see cref="ProcOn.ReceiveDamage"/> and <see cref="ProcOn.DamageMonster"/>.</summary>
+        /// <summary>
+        /// Minimum damage dealt or received before proc. <br/>
+        /// Applies to <see cref="ProcOn.ReceiveDamage"/>, <see cref="ProcOn.DamageMonster"/>, and <see cref="ProcOn.SlayMonster"/>.
+        /// </summary>
         public int DamageThreshold { get; set; } = -1;
+        /// <summary>
+        /// Requires the damage be caused by a bomb (true), or not caused by a bomb (false). <br/>
+        /// Applies to <see cref="ProcOn.DamageMonster"/> and <see cref="ProcOn.SlayMonster"/>.
+        /// </summary>
+        public bool? IsBomb { get; set; } = null;
+        /// <summary>
+        /// Requires the damage to be critical hit (true), or not a critical hit (false). <br/>
+        /// Applies to <see cref="ProcOn.DamageMonster"/> and <see cref="ProcOn.SlayMonster"/>.
+        /// </summary>
+        public bool? IsCriticalHit { get; set; } = null;
+
     }
 }

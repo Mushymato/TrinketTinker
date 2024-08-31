@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Monsters;
-using StardewValley.Delegates;
 using TrinketTinker.Models;
 
 namespace TrinketTinker.Effects.Abilities
@@ -81,9 +80,9 @@ namespace TrinketTinker.Effects.Abilities
         /// <param name="monster"></param>
         /// <param name="damageAmount"></param>
         /// <returns></returns>
-        protected virtual bool ApplyEffect(Farmer farmer, Monster monster, int damageAmount)
+        protected virtual bool ApplyEffect(Farmer farmer, Monster monster, int damageAmount, bool isBomb, bool isCriticalHit)
         {
-            return ApplyEffect(farmer);
+            return ApplyEffect(farmer, damageAmount);
         }
 
         /// <summary>Apply effect for <see cref="ProcOn.Timer"/> abilities, via <see cref="Update"/>.</summary>
@@ -195,11 +194,14 @@ namespace TrinketTinker.Effects.Abilities
         /// <param name="farmer"></param>
         /// <param name="damageAmount"></param>
         /// <returns></returns>
-        public virtual bool Proc(Farmer farmer, Monster monster, int damageAmount)
+        public virtual bool Proc(Farmer farmer, Monster monster, int damageAmount, bool isBomb, bool isCriticalHit)
         {
-            if (CheckFarmer(farmer) && CheckMonster(monster) && damageAmount >= d.DamageThreshold)
+            if (CheckFarmer(farmer) && CheckMonster(monster) &&
+                damageAmount >= d.DamageThreshold &&
+                (d.IsBomb ?? isBomb) == isBomb &&
+                (d.IsCriticalHit ?? isCriticalHit) == isCriticalHit)
             {
-                if (ApplyEffect(farmer, monster, damageAmount))
+                if (ApplyEffect(farmer, monster, damageAmount, isBomb, isCriticalHit))
                 {
                     if (d.ProcSound != null)
                         Game1.playSound(d.ProcSound);

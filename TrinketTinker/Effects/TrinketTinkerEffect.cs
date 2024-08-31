@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using StardewValley.Objects.Trinkets;
 using StardewValley;
 using StardewValley.Monsters;
+using StardewValley.Inventories;
 using TrinketTinker.Models;
 using TrinketTinker.Companions;
 using TrinketTinker.Effects.Abilities;
@@ -38,25 +39,27 @@ namespace TrinketTinker.Effects
             }
         }
 
+        public Inventory Items { get; } = [];
+
         /// <summary>Constructor</summary>
         /// <param name="trinket"></param>
         public TrinketTinkerEffect(Trinket trinket)
             : base(trinket)
         {
             ModEntry.CompanionData.TryGetValue(trinket.ItemId, out Data);
-            Abilities = new();
-            SortedAbilities = new();
+            Abilities = [];
+            SortedAbilities = [];
             if (Data != null)
             {
                 int lvl = 0;
                 // Abilities
                 foreach (List<AbilityData> abList in Data.Abilities)
                 {
-                    List<Ability> lvlAbility = new();
+                    List<Ability> lvlAbility = [];
                     Dictionary<ProcOn, List<Ability>> lvlSorted = new();
                     foreach (ProcOn actv in Enum.GetValues(typeof(ProcOn)))
                     {
-                        lvlSorted[actv] = new List<Ability>();
+                        lvlSorted[actv] = [];
                     }
                     foreach (AbilityData ab in abList)
                     {
@@ -128,18 +131,15 @@ namespace TrinketTinker.Effects
             }
         }
 
-        /// <summary>When item is used (???).</summary>
-        /// <param name="farmer"></param>
         public override void OnUse(Farmer farmer)
         {
             // foreach (var ability in SortedAbilities[Level][ProcOn.Use])
             // {
             //     ability.Proc(farmer);
             // }
+            ModEntry.Log($"OnUse {farmer}");
         }
 
-        /// <summary>When player takes a step (moves).</summary>
-        /// <param name="farmer"></param>
         public override void OnFootstep(Farmer farmer)
         {
             if (farmer != Game1.player || Abilities.Count <= Level)
@@ -150,9 +150,6 @@ namespace TrinketTinker.Effects
             }
         }
 
-        /// <summary>When player takes damage.</summary>
-        /// <param name="farmer"></param>
-        /// <param name="damageAmount"></param>
         public override void OnReceiveDamage(Farmer farmer, int damageAmount)
         {
             if (farmer != Game1.player || Abilities.Count <= Level)
@@ -163,28 +160,24 @@ namespace TrinketTinker.Effects
             }
         }
 
-        /// <summary>When player deals damage to a monster.</summary>
-        /// <param name="farmer"></param>
-        /// <param name="monster"></param>
-        /// <param name="damageAmount"></param>
         public override void OnDamageMonster(Farmer farmer, Monster monster, int damageAmount, bool isBomb, bool isCriticalHit)
         {
             if (farmer != Game1.player || Abilities.Count <= Level || monster == null)
                 return;
             foreach (var ability in SortedAbilities[Level][ProcOn.DamageMonster])
             {
-                ability.Proc(farmer, monster, damageAmount);
+                ability.Proc(farmer, monster, damageAmount, isBomb, isCriticalHit);
             }
             if (monster.Health <= 0)
             {
                 foreach (var ability in SortedAbilities[Level][ProcOn.SlayMonster])
                 {
-                    ability.Proc(farmer, monster, damageAmount);
+                    ability.Proc(farmer, monster, damageAmount, isBomb, isCriticalHit);
                 }
             }
         }
 
-        /// <summary>When the trinket action should run.</summary>
+        /// <summary>Handle the trigger (<see cref="ProcTrinket.TriggerActionName"/>).</summary>
         /// <param name="farmer"></param>
         /// <param name="monster"></param>
         /// <param name="damageAmount"></param>
@@ -198,10 +191,6 @@ namespace TrinketTinker.Effects
             }
         }
 
-        /// <summary>Update tick</summary>
-        /// <param name="farmer"></param>
-        /// <param name="time"></param>
-        /// <param name="location"></param>
         public override void Update(Farmer farmer, GameTime time, GameLocation location)
         {
             if (farmer != Game1.player || Abilities.Count <= Level)
@@ -212,8 +201,6 @@ namespace TrinketTinker.Effects
             }
         }
 
-        /// <summary>Randomize this trinket's stats through anvil.</summary>
-        /// <param name="trinket"></param>
         public override bool GenerateRandomStats(Trinket trinket)
         {
             if (Data == null)
@@ -226,7 +213,7 @@ namespace TrinketTinker.Effects
             return true;
         }
 
-        /// <summary>Randomize this trinket's variant through trinket colorizer.</summary>
+        /// <summary>Randomize this trinket's variant through trinket colorizer, return true of the variant is rerolled.</summary>
         /// <param name="trinket"></param>
         public virtual bool RerollVariant(Trinket trinket)
         {

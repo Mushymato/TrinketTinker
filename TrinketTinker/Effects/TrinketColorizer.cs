@@ -6,6 +6,7 @@ using StardewValley.GameData.Machines;
 using StardewValley;
 using StardewValley.Objects.Trinkets;
 using SObject = StardewValley.Object;
+using StardewValley.GameData.Shops;
 
 namespace TrinketTinker.Effects
 {
@@ -24,14 +25,20 @@ namespace TrinketTinker.Effects
             }
             if (e.Name.IsEquivalentTo("Data/BigCraftables"))
             {
-                e.Edit(Edit_BigCraftables, AssetEditPriority.Early);
+                e.Edit(Edit_BigCraftables);
+            }
+            if (e.Name.IsEquivalentTo("Data/Shops"))
+            {
+                e.Edit(Edit_Shops_Blacksmith);
             }
             if (e.Name.IsEquivalentTo("Data/Machines"))
             {
-                e.Edit(Edit_MachineData, AssetEditPriority.Early);
+                e.Edit(Edit_MachineData);
             }
         }
 
+        /// <summary>Add the trinket colorizer big craftable</summary>
+        /// <param name="asset"></param>
         public static void Edit_BigCraftables(IAssetData asset)
         {
             IDictionary<string, BigCraftableData> data = asset.AsDictionary<string, BigCraftableData>().Data;
@@ -52,6 +59,26 @@ namespace TrinketTinker.Effects
             };
         }
 
+        /// <summary>Add colorizer trade-in at clint's</summary>
+        /// <param name="asset"></param>
+        public static void Edit_Shops_Blacksmith(IAssetData asset)
+        {
+            // Prefered to do this instead of crafting recipe since shops have conditions
+            // data[TrinketColorizerId] = $"336 50/UNUSED/{TrinketColorizerId}/true/l 2/";
+            IDictionary<string, ShopData> data = asset.AsDictionary<string, ShopData>().Data;
+            ShopData blacksmith = data["Blacksmith"];
+            blacksmith.Items.Add(new ShopItemData()
+            {
+                Id = TrinketColorizerId,
+                TradeItemId = "(O)336",
+                TradeItemAmount = 50,
+                ItemId = TrinketColorizerId,
+                Condition = "PLAYER_HAS_CRAFTING_RECIPE Current Anvil"
+            });
+        }
+
+        /// <summary>Setup rules for the trinket colorizer</summary>
+        /// <param name="asset"></param>
         public static void Edit_MachineData(IAssetData asset)
         {
             IDictionary<string, MachineData> data = asset.AsDictionary<string, MachineData>().Data;

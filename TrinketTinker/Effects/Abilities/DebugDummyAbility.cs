@@ -23,10 +23,10 @@ namespace TrinketTinker.Effects.Abilities
             ModEntry.Log($"{Name}.ApplyEffect({farmer}, {damageAmount})");
             return base.ApplyEffect(farmer, damageAmount);
         }
-        protected override bool ApplyEffect(Farmer farmer, Monster monster, int damageAmount)
+        protected override bool ApplyEffect(Farmer farmer, Monster monster, int damageAmount, bool isBomb, bool isCriticalHit)
         {
             ModEntry.Log($"{Name}.ApplyEffect({farmer}, {monster}, {damageAmount})");
-            return ApplyEffect(farmer, monster, damageAmount);
+            return ApplyEffect(farmer, monster, damageAmount, isBomb, isCriticalHit);
         }
         protected override bool ApplyEffect(Farmer farmer, GameTime time, GameLocation location)
         {

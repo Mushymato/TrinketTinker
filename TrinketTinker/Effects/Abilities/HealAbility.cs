@@ -89,15 +89,5 @@ namespace TrinketTinker.Effects.Abilities
             }
             return base.ApplyEffect(farmer, damageAmount) && playSound;
         }
-
-        /// <summary>Heal % based on damage dealt</summary>
-        /// <param name="farmer"></param>
-        /// <param name="damageAmount"></param>
-        /// <returns></returns>
-        protected override bool ApplyEffect(Farmer farmer, Monster monster, int damageAmount)
-        {
-            return base.ApplyEffect(farmer, monster, damageAmount);
-        }
-
     }
 }

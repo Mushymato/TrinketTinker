@@ -91,7 +91,8 @@
                 "Args": {
                   "MinDamage": 10,
                   "MaxDamage": 100,
-                  "SpriteIndex": 5
+                  "SpriteIndex": 5,
+                  "IsExplosive": true
                 }
               }
             ]
@@ -147,8 +148,14 @@
             // level 0
             [
               {
-                "AbilityClass": "DebugDummy",
-                "ProcOn": "Trigger",
+                // when damaging a monster with a bomb, heal 100% of the damage
+                "AbilityClass": "Heal",
+                "ProcOn": "DamageMonster",
+                "IsBomb": true,
+                "Args": {
+                  "HealPower": 1000,
+                  "TargetHealth": true,
+                }
               }
             ]
           ]
