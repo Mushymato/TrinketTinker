@@ -5,12 +5,16 @@ using TrinketTinker.Models;
 
 namespace TrinketTinker.Companions.Motions
 {
-    public class StaticMotion : Motion
+    public class StaticMotion(TrinketTinkerCompanion companion, MotionData data) : Motion(companion, data)
     {
-        public StaticMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data) { }
         public override void UpdateLocal(GameTime time, GameLocation location)
         {
             c.Moving = c.Position != c.Anchor;
+            float distance = (c.Anchor - c.Position).Length();
+            if (distance > 64f)
+            {
+                Utility.addRainbowStarExplosion(location, c.Position, 1);
+            }
             c.Position = c.Anchor;
             c.Offset = motionOffset;
             UpdateDirection();

@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
+using StardewValley.Monsters;
 using TrinketTinker.Models;
 
 namespace TrinketTinker.Companions.Motions
@@ -60,6 +61,30 @@ namespace TrinketTinker.Companions.Motions
             {
                 Game1.currentLightSources.Add(lightId, new LightSource(lightId, 1, c.Position + c.Offset, d.LightRadius, Color.Black, LightSource.LightContext.None, 0L));
             }
+        }
+
+        public virtual void UpdateAnchor(GameTime time, GameLocation location)
+        {
+            foreach (AnchorTarget target in d.AnchorTargetPriority)
+            {
+                switch (target)
+                {
+                    case AnchorTarget.Monster:
+                        Monster closest = Utility.findClosestMonsterWithinRange(
+                            location, c.Owner.getStandingPosition(), 384, ignoreUntargetables: true
+                        );
+                        if (closest != null)
+                        {
+                            c.Anchor = Utility.PointToVector2(closest.GetBoundingBox().Center);
+                            return;
+                        }
+                        break;
+                    case AnchorTarget.Owner:
+                        c.Anchor = Utility.PointToVector2(c.Owner.GetBoundingBox().Center);
+                        return;
+                }
+            }
+            c.Anchor = Utility.PointToVector2(c.Owner.GetBoundingBox().Center);
         }
 
         /// <summary>Update for the client of the player that equipped this trinket, responsible for netfields.</summary>

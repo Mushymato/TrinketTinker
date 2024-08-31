@@ -57,13 +57,7 @@ namespace TrinketTinker.Companions
         /// <summary>Motion class that controls how the companion moves.</summary>
         public Motion? Motion { get; set; }
         /// <summary>Position the companion should follow.</summary>
-        public Vector2 Anchor
-        {
-            get
-            {
-                return Utility.PointToVector2(Owner.GetBoundingBox().Center);
-            }
-        }
+        public Vector2 Anchor { get; set; }
         /// <summary>Middle point of the sprite, based on width and height.</summary>
         public Vector2 SpriteOrigin { get; set; } = Vector2.Zero;
         /// <summary>Color mask to use on sprite draw.</summary>
@@ -96,6 +90,7 @@ namespace TrinketTinker.Companions
         public override void InitializeCompanion(Farmer farmer)
         {
             base.InitializeCompanion(farmer);
+            Anchor = Utility.PointToVector2(farmer.GetBoundingBox().Center);
             Motion?.Initialize(farmer);
         }
 
@@ -171,9 +166,14 @@ namespace TrinketTinker.Companions
             if (IsLocal)
             {
                 if (Motion == null)
+                {
                     Position = Anchor;
+                }
                 else
+                {
+                    Motion?.UpdateAnchor(time, location);
                     Motion?.UpdateLocal(time, location);
+                }
             }
             Motion?.UpdateGlobal(time, location);
         }

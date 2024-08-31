@@ -27,6 +27,15 @@ namespace TrinketTinker.Models
         PingPong,
     }
 
+    /// <summary>Which target to anchor (follow/attach) to</summary>
+    public enum AnchorTarget
+    {
+        /// <summary>Anchor to the trinket owner</summary>
+        Owner,
+        /// <summary>Anchor to the nearest monster</summary>
+        Monster,
+    }
+
     /// <summary>Determine the layer depth to use when drawing the companion</summary>
     public enum LayerDepth
     {
@@ -37,6 +46,7 @@ namespace TrinketTinker.Models
         /// <summary>Draw just in front of the farmer</summary>
         InFront,
     }
+
 
     /// <summary>Data for <see cref="Companions.Motions"/>, defines how a companion moves.</summary>
     public class MotionData : Mixin.HaveArgs
@@ -49,6 +59,11 @@ namespace TrinketTinker.Models
         public DirectionMode DirectionMode { get; set; } = DirectionMode.None;
         /// <summary>First frame of the animation.</summary>
         public LoopMode LoopMode { get; set; } = LoopMode.Standard;
+        /// <summary>
+        /// Prefer <see cref="AnchorTarget"/> that comes earlier in the list. <br/>
+        /// Fall back to <see cref="AnchorTarget.Player"/>.
+        /// </summary>
+        public List<AnchorTarget> AnchorTargetPriority { get; set; } = [];
         public int AnimationFrameStart { get; set; } = 0;
         /// <summary>Length of 1 set of movement animation.</summary>
         public int AnimationFrameLength { get; set; } = 4;

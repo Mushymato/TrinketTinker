@@ -140,6 +140,9 @@
             {
               "MotionClass": "Lerp",
               "DirectionMode": "DRUL",
+              "AnchorTargetPriority": [
+                "Monster"
+              ],
               "AnimationFrameLength": 4,
               "Interval": 100,
             }

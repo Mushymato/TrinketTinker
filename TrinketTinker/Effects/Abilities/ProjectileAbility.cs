@@ -121,12 +121,12 @@ namespace TrinketTinker.Effects.Abilities
 
         protected override bool ApplyEffect(Farmer farmer)
         {
-            Monster closest_monster = Utility.findClosestMonsterWithinRange(
+            Monster closest = Utility.findClosestMonsterWithinRange(
                 farmer.currentLocation, e.CompanionPosition, range, ignoreUntargetables: true
             );
-            if (closest_monster != null)
+            if (closest != null)
             {
-                farmer.currentLocation.projectiles.Add(MakeProjectile(farmer, closest_monster));
+                farmer.currentLocation.projectiles.Add(MakeProjectile(farmer, closest));
                 return base.ApplyEffect(farmer);
             }
             return false;
