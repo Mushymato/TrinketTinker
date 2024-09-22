@@ -4,7 +4,7 @@ using TrinketTinker.Models;
 
 namespace TrinketTinker.Companions.Motions
 {
-    /// <summary>Companion follows the player, at a distance</summary>
+    /// <summary>Companion closely follows the anchor, at a distance</summary>
     public class LerpMotion : Motion
     {
         /// <summary>Variable for how much interpolation happened so far.</summary>
@@ -43,18 +43,7 @@ namespace TrinketTinker.Companions.Motions
                         Utility.RandomFloat(-64f, 64f) * radius,
                         Utility.RandomFloat(-64f, 64f) * radius
                     );
-                    if (location.isCollidingPosition(
-                            new Rectangle((int)c.endPosition.X - 8,
-                            (int)c.endPosition.Y - 8, 16, 16),
-                            Game1.viewport,
-                            isFarmer: false,
-                            0,
-                            glider: false,
-                            null,
-                            pathfinding: true,
-                            projectile: false,
-                            ignoreCharacterRequirement: true
-                        ))
+                    if (CheckSpriteCollsion(location, c.endPosition + motionOffset))
                     {
                         c.endPosition = c.Anchor;
                     }
@@ -69,9 +58,8 @@ namespace TrinketTinker.Companions.Motions
                 {
                     lerp = 1f;
                 }
-                float x = Utility.Lerp(c.startPosition.X, c.endPosition.X, lerp);
-                float y = Utility.Lerp(c.startPosition.Y, c.endPosition.Y, lerp);
-                c.Position = new Vector2(x, y);
+                c.NetPosition.X = Utility.Lerp(c.startPosition.X, c.endPosition.X, lerp);
+                c.NetPosition.Y = Utility.Lerp(c.startPosition.Y, c.endPosition.Y, lerp);
                 UpdateDirection();
                 if (lerp == 1f)
                 {

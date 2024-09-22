@@ -27,10 +27,8 @@ namespace TrinketTinker.Companions.Motions
         {
             base.UpdateLocal(time, location);
             theta += time.ElapsedGameTime.TotalSeconds;
-            c.Offset = motionOffset + new Vector2(
-                radiusX * (float)Math.Cos(Math.PI * theta),
-                radiusY * (float)Math.Sin(Math.PI * theta)
-            );
+            c.NetOffset.X = motionOffset.X + radiusX * (float)Math.Cos(Math.PI * theta);
+            c.NetOffset.Y = motionOffset.Y + radiusY * (float)Math.Sin(Math.PI * theta);
             if (theta >= 2f)
                 theta = 0f;
         }

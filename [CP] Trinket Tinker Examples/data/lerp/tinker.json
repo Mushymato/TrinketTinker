@@ -16,11 +16,11 @@
               "Height": 16,
             },
           ],
-          // Hover motion: follows player, bobs up and down
+          // Bounce motion: follows player, bounces around
           "Motions": [
             {
               "MotionClass": "Bounce",
-              "AlwaysMoving": true,
+              "AlwaysMoving": false,
               "DirectionMode": "R",
               "LoopMode": "PingPong",
               "AnimationFrameLength": 4,
@@ -70,6 +70,7 @@
               "Height": 16
             },
           ],
+          // Hover motion: follows player, bobs up and down
           "Motions": [
             // Rotate towards player
             {

@@ -14,14 +14,19 @@ namespace TrinketTinker.Companions.Motions
         /// <summary>Bounce height</summary>
         protected readonly float maxHeight = 128f;
 
+        protected readonly bool squash = false;
+
         public BounceMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data)
         {
             maxHeight = d.GetParsedOrDefault("MaxHeight", maxHeight);
+            squash = d.GetParsedOrDefault("Squash", squash);
         }
 
         public override void UpdateLocal(GameTime time, GameLocation location)
         {
             base.UpdateLocal(time, location);
+            if (theta == 0f && !c.Moving && !d.AlwaysMoving)
+                return;
             theta += time.ElapsedGameTime.TotalMilliseconds / (d.Interval * d.AnimationFrameLength);
             c.Offset = motionOffset + new Vector2(0, -maxHeight * (float)Math.Sin(Math.PI * theta));
             if (theta >= 1f)
@@ -30,7 +35,7 @@ namespace TrinketTinker.Companions.Motions
 
         public override void Draw(SpriteBatch b)
         {
-            float thetaF = (float)Math.Max(Math.Pow(Math.Cos(2 * Math.PI * theta), 5) / 2, 0);
+            float thetaF = squash ? (float)Math.Max(Math.Pow(Math.Cos(2 * Math.PI * theta), 5) / 2, 0) : 0;
             Vector2 textureScale = new(
                 d.TextureScale + thetaF,
                 d.TextureScale - thetaF

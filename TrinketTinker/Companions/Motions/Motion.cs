@@ -223,5 +223,25 @@ namespace TrinketTinker.Companions.Motions
                 return d.AnimationFrameStart;
             return (Math.Abs(c.direction.Value) - 1) * d.AnimationFrameLength + d.AnimationFrameStart;
         }
+
+        protected virtual bool CheckSpriteCollsion(GameLocation location, Vector2 spritePosition)
+        {
+            return location.isCollidingPosition(
+                new Rectangle(
+                    (int)spritePosition.X - c.Sprite.SpriteWidth / 2,
+                    (int)spritePosition.Y - c.Sprite.SpriteHeight / 2,
+                    c.Sprite.SpriteWidth,
+                    c.Sprite.SpriteHeight
+                ),
+                Game1.viewport,
+                isFarmer: false,
+                0,
+                glider: false,
+                null,
+                pathfinding: true,
+                projectile: false,
+                ignoreCharacterRequirement: true
+            );
+        }
     }
 }

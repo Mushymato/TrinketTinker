@@ -49,6 +49,9 @@ namespace TrinketTinker.Companions
                 _offset.Value = value;
             }
         }
+        public NetPosition NetOffset => _offset;
+
+        public NetPosition NetPosition => _position;
         /// <summary>Amount of rotation on the sprite, applicable when direction mode is <see cref="DirectionMode.Rotate"/></summary>
         public readonly NetFloat rotation = new(0f);
         // Derived

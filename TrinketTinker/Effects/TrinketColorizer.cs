@@ -91,7 +91,8 @@ namespace TrinketTinker.Effects
                             new(){
                                 Id = "ItemPlacedInMachine",
                                 Trigger = MachineOutputTrigger.ItemPlacedInMachine,
-                                RequiredCount = 1
+                                RequiredCount = 1,
+                                RequiredTags = ["category_trinket"]
                             }
                         ],
                         OutputItem = [
@@ -107,7 +108,8 @@ namespace TrinketTinker.Effects
                         RequiredCount = 3,
                         InvalidCountMessage = I18n.BC_TrinketColorizer_InvalidCount()
                     }
-                ]
+                ],
+                // InvalidItemMessage
             };
         }
 
