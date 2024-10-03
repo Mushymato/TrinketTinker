@@ -170,7 +170,7 @@ namespace TrinketTinker.Effects.Abilities
             }
         }
 
-        /// <summary>Cleanup ability, if <see cref="d.ProcOn"/> is <see cref="ProcOn.Always"/></summary>
+        /// <summary>Cleanup ability, if is <see cref="ProcOn.Always"/></summary>
         /// <param name="farmer"></param>
         protected virtual void UnProc(Farmer farmer)
         {

@@ -4,5 +4,9 @@ apiRules:
     uidRegex: ^TrinketTinker\.Models
 - include:
     uidRegex: ^TrinketTinker\.Constants
+- include:
+    uidRegex: ^TrinketTinker\.Companions\.Motions
+- include:
+    uidRegex: ^TrinketTinker\.Effects\.Abilities
 - exclude:
     uidRegex: ^TrinketTinker

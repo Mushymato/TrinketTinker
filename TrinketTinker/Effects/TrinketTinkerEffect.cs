@@ -179,7 +179,7 @@ namespace TrinketTinker.Effects
                 });
         }
 
-        /// <summary>Handle the trigger (<see cref="ProcTrinket.TriggerActionName"/>).</summary>
+        /// <summary>Handle the trigger.</summary>
         /// <param name="farmer"></param>
         /// <param name="monster"></param>
         /// <param name="damageAmount"></param>

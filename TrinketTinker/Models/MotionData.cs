@@ -61,7 +61,7 @@ namespace TrinketTinker.Models
         public LoopMode LoopMode { get; set; } = LoopMode.Standard;
         /// <summary>
         /// Prefer <see cref="AnchorTarget"/> that comes earlier in the list. <br/>
-        /// Fall back to <see cref="AnchorTarget.Player"/>.
+        /// Fall back to <see cref="AnchorTarget.Owner"/>.
         /// </summary>
         public List<AnchorTarget> AnchorTargetPriority { get; set; } = [];
         public int AnimationFrameStart { get; set; } = 0;
