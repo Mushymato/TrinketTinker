@@ -2,17 +2,13 @@ using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Monsters;
 using TrinketTinker.Models;
+using TrinketTinker.Models.Mixin;
 
 namespace TrinketTinker.Effects.Abilities
 {
     /// <summary>Prints many logs, doesn't do anything else.</summary>
-    public class DebugDummyAbility : Ability
+    public class DebugDummyAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<NoArgs>(effect, data, lvl)
     {
-        public DebugDummyAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : base(effect, data, lvl)
-        {
-            Valid = true;
-        }
-
         protected override bool ApplyEffect(Farmer farmer)
         {
             ModEntry.Log($"{Name}.ApplyEffect({farmer})");
@@ -33,6 +29,5 @@ namespace TrinketTinker.Effects.Abilities
             ModEntry.Log($"{Name}.ApplyEffect({farmer}, {time}, {location})");
             return ApplyEffect(farmer, time, location);
         }
-
     }
 }

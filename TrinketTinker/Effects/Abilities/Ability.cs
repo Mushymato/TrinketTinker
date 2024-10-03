@@ -1,12 +1,14 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Monsters;
+using TrinketTinker.Companions.Motions;
 using TrinketTinker.Models;
+using TrinketTinker.Models.Mixin;
 
 namespace TrinketTinker.Effects.Abilities
 {
     /// <summary>Abstract class, proc various effects while trinket is equipped.</summary>
-    public abstract class Ability
+    public abstract class Ability<TArgs> : IAbility where TArgs : IArgs
     {
         /// <summary>Companion that owns this ability.</summary>
         protected readonly TrinketTinkerEffect e;
@@ -22,17 +24,29 @@ namespace TrinketTinker.Effects.Abilities
         protected bool Allowed { get; set; }
         /// <summary>Tracks trinket proc timeout, counts down to 0 and resets to ProcTimer value is set in <see cref="AbilityData"/>.</summary>
         protected double ProcTimer { get; set; } = -1;
+        /// <summary>Class dependent arguments for subclasses</summary>
+        protected readonly TArgs args;
 
         /// <summary>Constructor</summary>
         /// <param name="effect"></param>
         /// <param name="data"></param>
-        public Ability(TrinketTinkerEffect effect, AbilityData data, int lvl)
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+        public Ability(TrinketTinkerEffect effect, AbilityData data, int lvl) : base()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
         {
+            args = data.ParseArgs<TArgs>()!;
+            if (args == null || !args.Validate())
+            {
+                Valid = false;
+                return;
+            }
+            Valid = true;
             e = effect;
             d = data;
             string clsName = data.Name == "" ? GetType().Name : data.Name;
             Name = $"{effect.Trinket.ItemId}:{clsName}[{lvl}]";
             ProcTimer = data.ProcTimer;
+
         }
 
         /// <summary>Check condition is valid for farmer's location.</summary>
@@ -57,7 +71,7 @@ namespace TrinketTinker.Effects.Abilities
             return monster != null;
         }
 
-        /// <summary>Applies ability effect, plays sound if ProcSound value is set in <see cref="AbilityData"/>.</summary>
+        /// <summary>Applies ability effect, mark the ability as not allowed until next tick or longer.</summary>
         /// <param name="farmer"></param>
         /// <returns></returns>
         protected virtual bool ApplyEffect(Farmer farmer)

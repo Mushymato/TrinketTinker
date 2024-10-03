@@ -1,29 +1,19 @@
 using StardewValley;
 using TrinketTinker.Models;
+using TrinketTinker.Models.AbilityArgs;
 
 namespace TrinketTinker.Effects.Abilities
 {
     /// <summary>Applies a buff on proc.</summary>
-    public class BuffAbility : Ability
+    public class BuffAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<BuffArgs>(effect, data, lvl)
     {
-        /// <summary>Valid buff ID, must be found in Data/Buffs</summary>
-        protected readonly string buffId = "";
-        public BuffAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : base(effect, data, lvl)
-        {
-            if (d.TryGetParsed("BuffId", out string? argsBuffId) &&
-                DataLoader.Buffs(Game1.content).ContainsKey(argsBuffId))
-            {
-                buffId = argsBuffId;
-                Valid = true;
-            }
-        }
-
         /// <summary>Apply or refreshes the buff.</summary>
         /// <param name="farmer"></param>
         /// <returns></returns>
         protected override bool ApplyEffect(Farmer farmer)
         {
-            farmer.applyBuff(buffId);
+            // Buff(string id, string source = null, string displaySource = null, int duration = -1, Texture2D iconTexture = null, int iconSheetIndex = -1, BuffEffects effects = null, bool? isDebuff = null, string displayName = null, string description = null)
+            farmer.applyBuff(args.BuffId);
             return base.ApplyEffect(farmer);
         }
 
@@ -32,7 +22,7 @@ namespace TrinketTinker.Effects.Abilities
         /// <returns></returns>
         protected override void UnProc(Farmer farmer)
         {
-            farmer.buffs.Remove(buffId);
+            farmer.buffs.Remove(args.BuffId);
         }
 
     }

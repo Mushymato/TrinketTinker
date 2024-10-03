@@ -2,11 +2,12 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using TrinketTinker.Models;
+using TrinketTinker.Models.MotionArgs;
 
 namespace TrinketTinker.Companions.Motions
 {
     /// <summary>Companion follows the player and bobs up and down</summary>
-    public class BounceMotion : LerpMotion
+    public class BounceMotion : BaseLerpMotion<BounceArgs>
     {
         /// <summary>trig function input</summary>
         private double theta = 0f;
@@ -18,8 +19,8 @@ namespace TrinketTinker.Companions.Motions
 
         public BounceMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data)
         {
-            maxHeight = d.GetParsedOrDefault("MaxHeight", maxHeight);
-            squash = d.GetParsedOrDefault("Squash", squash);
+            maxHeight = args?.MaxHeight ?? maxHeight;
+            squash = args?.Squash ?? squash;
         }
 
         public override void UpdateLocal(GameTime time, GameLocation location)

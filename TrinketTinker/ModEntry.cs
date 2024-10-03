@@ -14,6 +14,8 @@ using StardewValley.Objects.Trinkets;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley.GameData.BigCraftables;
 using StardewValley.GameData.Machines;
+using TrinketTinker.Extra;
+using TrinketTinker.Models.Mixin;
 
 namespace TrinketTinker
 {
@@ -151,16 +153,16 @@ namespace TrinketTinker
             }
 
             Log("=== Motion ===", LogLevel.Info);
-            foreach (TypeInfo typeInfo in typeof(Motion).Assembly.DefinedTypes)
+            foreach (TypeInfo typeInfo in typeof(IMotion).Assembly.DefinedTypes)
             {
-                if (typeInfo.IsAssignableTo(typeof(Motion)) && typeInfo.AssemblyQualifiedName != null)
+                if (typeInfo.IsAssignableTo(typeof(IMotion)) && typeInfo.AssemblyQualifiedName != null)
                     Log(typeInfo.AssemblyQualifiedName, LogLevel.Info);
             }
 
             Log("=== Ability ===", LogLevel.Info);
-            foreach (TypeInfo typeInfo in typeof(Ability).Assembly.DefinedTypes)
+            foreach (TypeInfo typeInfo in typeof(IAbility).Assembly.DefinedTypes)
             {
-                if (typeInfo.IsAssignableTo(typeof(Ability)) && typeInfo.AssemblyQualifiedName != null)
+                if (typeInfo.IsAssignableTo(typeof(IAbility)) && typeInfo.AssemblyQualifiedName != null)
                     Log(typeInfo.AssemblyQualifiedName, LogLevel.Info);
             }
         }

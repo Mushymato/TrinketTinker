@@ -1,9 +1,10 @@
 using StardewValley;
 using StardewValley.Delegates;
 using StardewValley.Objects.Trinkets;
+using TrinketTinker.Effects;
 using TrinketTinker.Models;
 
-namespace TrinketTinker.Effects
+namespace TrinketTinker.Extra
 {
     public static class ProcTrinket
     {

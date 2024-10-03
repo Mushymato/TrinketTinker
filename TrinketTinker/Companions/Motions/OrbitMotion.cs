@@ -2,11 +2,12 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using TrinketTinker.Models;
+using TrinketTinker.Models.MotionArgs;
 
 namespace TrinketTinker.Companions.Motions
 {
     /// <summary>Companion orbits around a point</summary>
-    public class OrbitMotion : StaticMotion
+    public class OrbitMotion : StaticMotion<OrbitArgs>
     {
         /// <summary>trig function input</summary>
         private double theta = 0f;
@@ -19,8 +20,8 @@ namespace TrinketTinker.Companions.Motions
         {
             motionOffset.Y -= 64f;
             c.Offset = motionOffset;
-            radiusX = d.GetParsedOrDefault("RadiusX", radiusX);
-            radiusY = d.GetParsedOrDefault("RadiusY", radiusY);
+            radiusX = args?.RadiusX ?? radiusX;
+            radiusY = args?.RadiusY ?? radiusY;
         }
 
         public override void UpdateLocal(GameTime time, GameLocation location)

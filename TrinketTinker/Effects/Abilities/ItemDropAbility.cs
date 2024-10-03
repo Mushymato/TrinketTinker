@@ -1,72 +1,49 @@
 using StardewValley;
 using TrinketTinker.Models;
 using StardewValley.Internal;
+using TrinketTinker.Models.AbilityArgs;
+using Microsoft.Xna.Framework;
 
 namespace TrinketTinker.Effects.Abilities
 {
-    /// <summary>Create item debris on proc.</summary>
-    public class ItemDropAbility : Ability
+    /// <summary>
+    /// Create item debris on proc.
+    /// Accepts spawn item arguments, like those used in shop data, never submits any item to Input.
+    /// </summary>
+    public class ItemDropAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<SpawnItemArgs>(effect, data, lvl)
     {
-        /// <summary>Valid item ID, must not result in error item</summary>
-        protected readonly string? itemId;
-        protected readonly string? itemQuery;
-        protected readonly string? itemQueryCondition;
-        protected readonly int stackSize = 1;
-        protected readonly int quality = 0;
-        public ItemDropAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : base(effect, data, lvl)
+        private bool SpawnItem(ItemQueryContext context)
         {
-            if (d.TryGetParsed("ItemId", out itemId) &&
-                ItemRegistry.GetData(itemId) != null)
+            IList<ItemQueryResult> itemQueryResults = ItemQueryResolver.TryResolve(
+                args, context, ItemQuerySearchMode.RandomOfTypeItem
+            );
+            bool spawned = false;
+            foreach (ItemQueryResult res in itemQueryResults)
             {
-                itemQuery = null;
-                Valid = true;
+                if (res.Item is Item item)
+                {
+                    Game1.createItemDebris(item, e.CompanionPosition, -1);
+                    spawned = true;
+                }
             }
-            else if (d.TryGetParsed("ItemQuery", out itemQuery))
-            {
-                d.TryGetParsed("ItemQueryCondition", out itemQueryCondition);
-                itemId = null;
-                Valid = true;
-            }
-            else
-                return;
-
-            stackSize = d.GetParsedOrDefault("StackSize", stackSize);
-            quality = d.GetParsedOrDefault("Quality", quality);
+            return spawned;
         }
-
-        /// <summary>Create item drop.</summary>
+        /// <summary>Create item drop based on item query results.</summary>
         /// <param name="farmer"></param>
         /// <returns></returns>
         protected override bool ApplyEffect(Farmer farmer)
         {
-            Item dropItem;
-            if (itemId != null)
-            {
-                dropItem = ItemRegistry.Create(itemId, amount: stackSize, quality: quality);
-            }
-            else if (itemQuery != null)
-            {
-                if (ItemQueryResolver.TryResolve(
-                    itemQuery,
-                    new ItemQueryContext(farmer.currentLocation, farmer, Game1.random),
-                    ItemQuerySearchMode.RandomOfTypeItem,
-                    perItemCondition: itemQueryCondition
-                ).FirstOrDefault()?.Item is not Item queryItem)
-                    return false;
-                dropItem = queryItem;
-            }
-            else
-            {
-                ModEntry.Log($"{Name}: Failed to create item drop (itemId={itemId}, itemQuery={itemQuery})");
-                return false;
-            }
+            return SpawnItem(new ItemQueryContext(farmer.currentLocation, farmer, Random.Shared)) && base.ApplyEffect(farmer);
+        }
 
-            Game1.createItemDebris(
-                dropItem,
-                e.CompanionPosition,
-                -1
-            );
-            return base.ApplyEffect(farmer);
+        /// <summary>Apply effect for <see cref="ProcOn.Timer"/> abilities, via <see cref="Update"/>.</summary>
+        /// <param name="farmer"></param>
+        /// <param name="time"></param>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        protected override bool ApplyEffect(Farmer farmer, GameTime time, GameLocation location)
+        {
+            return SpawnItem(new ItemQueryContext(location, farmer, Random.Shared)) && base.ApplyEffect(farmer, time, location);
         }
     }
 }

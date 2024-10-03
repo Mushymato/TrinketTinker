@@ -2,17 +2,17 @@ using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Triggers;
 using TrinketTinker.Models;
+using TrinketTinker.Models.Mixin;
 
 namespace TrinketTinker.Effects.Abilities
 {
-    /// <summary>Raises a trigger (<see cref="TriggerEventName"/>) on proc.</summary>
-    public class TriggerAbility : Ability
+    /// <summary>
+    /// Raises a trigger (<see cref="TriggerEventName"/>) on proc.
+    /// The trinket is given as the target item.
+    /// </summary>
+    public class TriggerAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<NoArgs>(effect, data, lvl)
     {
         public static readonly string TriggerEventName = $"{ModEntry.ModId}_TrinketProc";
-        public TriggerAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : base(effect, data, lvl)
-        {
-            Valid = true;
-        }
 
         protected override bool ApplyEffect(Farmer farmer)
         {

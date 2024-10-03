@@ -35,7 +35,7 @@
                 "ProcTimer": 10000,
                 "Args": {
                   "ItemId": "(O)296",
-                  "StackSize": 2,
+                  "MinStack": 2,
                   "Quality": 2
                 }
               },
@@ -44,8 +44,8 @@
                 "AbilityClass": "ItemDrop",
                 "ProcOn": "SlayMonster",
                 "Args": {
-                  "ItemQuery": "ALL_ITEMS",
-                  "ItemQueryCondition": "ITEM_CONTEXT_TAG Target bone_item, !ITEM_CONTEXT_TAG Target id_o_881",
+                  "ItemId": "ALL_ITEMS (O)",
+                  "PerItemCondition": "ITEM_CONTEXT_TAG Target bone_item, !ITEM_CONTEXT_TAG Target id_o_881"
                 }
               }
             ]

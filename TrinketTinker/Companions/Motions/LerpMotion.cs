@@ -1,11 +1,12 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
 using TrinketTinker.Models;
+using TrinketTinker.Models.MotionArgs;
 
 namespace TrinketTinker.Companions.Motions
 {
-    /// <summary>Companion closely follows the anchor, at a distance</summary>
-    public class LerpMotion : Motion
+    /// <summary>Base version of LerpMotion, for use with inheritance</summary>
+    public class BaseLerpMotion<IArgs> : Motion<IArgs> where IArgs : LerpArgs
     {
         /// <summary>Variable for how much interpolation happened so far.</summary>
         private float lerp = -1f;
@@ -15,12 +16,12 @@ namespace TrinketTinker.Companions.Motions
         /// <summary>If the companion is farther than this, teleport instead of lerp</summary>
         protected readonly float maxDistance = 768f;
 
-        public LerpMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data)
+        public BaseLerpMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data)
         {
             motionOffset.Y -= c.Sprite.SpriteHeight * 4 / 2;
             c.Offset = motionOffset;
-            minDistance = d.GetParsedOrDefault("MinDistance", minDistance);
-            maxDistance = d.GetParsedOrDefault("MaxDistance", maxDistance);
+            minDistance = args?.Min ?? minDistance;
+            maxDistance = args?.Max ?? maxDistance;
         }
 
         public override void UpdateLocal(GameTime time, GameLocation location)
@@ -68,5 +69,12 @@ namespace TrinketTinker.Companions.Motions
             }
             c.Moving = lerp >= 0;
         }
+    }
+
+    /// <summary>Companion closely follows the anchor, at a distance</summary>
+    /// <param name="companion"></param>
+    /// <param name="data"></param>
+    public class LerpMotion(TrinketTinkerCompanion companion, MotionData data) : BaseLerpMotion<BounceArgs>(companion, data)
+    {
     }
 }

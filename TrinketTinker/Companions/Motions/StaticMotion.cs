@@ -2,10 +2,11 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using TrinketTinker.Models;
+using TrinketTinker.Models.MotionArgs;
 
 namespace TrinketTinker.Companions.Motions
 {
-    public class StaticMotion(TrinketTinkerCompanion companion, MotionData data) : Motion(companion, data)
+    public class StaticMotion<IArgs>(TrinketTinkerCompanion companion, MotionData data) : Motion<IArgs>(companion, data) where IArgs : StaticArgs
     {
         public override void UpdateLocal(GameTime time, GameLocation location)
         {

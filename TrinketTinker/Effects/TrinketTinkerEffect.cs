@@ -7,6 +7,7 @@ using TrinketTinker.Models;
 using TrinketTinker.Companions;
 using TrinketTinker.Effects.Abilities;
 using StardewModdingAPI;
+using TrinketTinker.Models.Mixin;
 
 namespace TrinketTinker.Effects
 {
@@ -18,10 +19,10 @@ namespace TrinketTinker.Effects
         protected TinkerData? Data;
 
         /// <summary>Abilities for this trinket.</summary>
-        protected List<List<Ability>> Abilities;
+        protected List<List<IAbility>> Abilities;
 
         /// <summary>Abilities, key'd by <see cref="AbilityData.ProcOn"/></summary>
-        protected List<Dictionary<ProcOn, List<Ability>>> SortedAbilities;
+        protected List<Dictionary<ProcOn, List<IAbility>>> SortedAbilities;
 
         /// <summary>Get adjusted index for <see cref="Abilities"/> and <see cref="SortedAbilities"/></summary>
         protected int Level => GeneralStat - (Data?.MinLevel ?? 0);
@@ -55,8 +56,8 @@ namespace TrinketTinker.Effects
                 // Abilities
                 foreach (List<AbilityData> abList in Data.Abilities)
                 {
-                    List<Ability> lvlAbility = [];
-                    Dictionary<ProcOn, List<Ability>> lvlSorted = new();
+                    List<IAbility> lvlAbility = [];
+                    Dictionary<ProcOn, List<IAbility>> lvlSorted = new();
                     foreach (ProcOn actv in Enum.GetValues(typeof(ProcOn)))
                     {
                         lvlSorted[actv] = [];
@@ -65,7 +66,7 @@ namespace TrinketTinker.Effects
                     {
                         if (ModEntry.TryGetType(ab.AbilityClass, out Type? abilityType, Constants.ABILITY_CLS))
                         {
-                            Ability? ability = (Ability?)Activator.CreateInstance(abilityType, this, ab, lvl);
+                            IAbility? ability = (IAbility?)Activator.CreateInstance(abilityType, this, ab, lvl);
                             if (ability != null && ability.Valid)
                             {
                                 lvlAbility.Add(ability);
@@ -110,7 +111,7 @@ namespace TrinketTinker.Effects
                 return;
 
             // Apply Abilities
-            foreach (var ability in Abilities[Level])
+            foreach (IAbility ability in Abilities[Level])
             {
                 ability.Activate(farmer);
             }
@@ -125,7 +126,7 @@ namespace TrinketTinker.Effects
             if (farmer != Game1.player || Abilities.Count <= Level)
                 return;
 
-            foreach (var ability in Abilities[Level])
+            foreach (IAbility ability in Abilities[Level])
             {
                 ability.Deactivate(farmer);
             }
@@ -133,7 +134,7 @@ namespace TrinketTinker.Effects
 
         public override void OnUse(Farmer farmer)
         {
-            // foreach (var ability in SortedAbilities[Level][ProcOn.Use])
+            // foreach (IAbility ability in SortedAbilities[Level][ProcOn.Use])
             // {
             //     ability.Proc(farmer);
             // }
@@ -144,7 +145,7 @@ namespace TrinketTinker.Effects
         {
             if (farmer != Game1.player || Abilities.Count <= Level)
                 return;
-            foreach (var ability in SortedAbilities[Level][ProcOn.Footstep])
+            foreach (IAbility ability in SortedAbilities[Level][ProcOn.Footstep])
             {
                 ability.Proc(farmer);
             }
@@ -154,7 +155,7 @@ namespace TrinketTinker.Effects
         {
             if (farmer != Game1.player || Abilities.Count <= Level)
                 return;
-            foreach (var ability in SortedAbilities[Level][ProcOn.ReceiveDamage])
+            foreach (IAbility ability in SortedAbilities[Level][ProcOn.ReceiveDamage])
             {
                 ability.Proc(farmer, damageAmount);
             }
@@ -164,13 +165,13 @@ namespace TrinketTinker.Effects
         {
             if (farmer != Game1.player || Abilities.Count <= Level || monster == null)
                 return;
-            foreach (var ability in SortedAbilities[Level][ProcOn.DamageMonster])
+            foreach (IAbility ability in SortedAbilities[Level][ProcOn.DamageMonster])
             {
                 ability.Proc(farmer, monster, damageAmount, isBomb, isCriticalHit);
             }
             if (monster.Health <= 0)
             {
-                foreach (var ability in SortedAbilities[Level][ProcOn.SlayMonster])
+                foreach (IAbility ability in SortedAbilities[Level][ProcOn.SlayMonster])
                 {
                     ability.Proc(farmer, monster, damageAmount, isBomb, isCriticalHit);
                 }
@@ -185,7 +186,7 @@ namespace TrinketTinker.Effects
         {
             if (farmer != Game1.player || Abilities.Count <= Level)
                 return;
-            foreach (var ability in SortedAbilities[Level][ProcOn.Trigger])
+            foreach (IAbility ability in SortedAbilities[Level][ProcOn.Trigger])
             {
                 ability.Proc(farmer);
             }
@@ -195,7 +196,7 @@ namespace TrinketTinker.Effects
         {
             if (farmer != Game1.player || Abilities.Count <= Level)
                 return;
-            foreach (var ability in Abilities[Level])
+            foreach (IAbility ability in Abilities[Level])
             {
                 ability.Update(farmer, time, location);
             }

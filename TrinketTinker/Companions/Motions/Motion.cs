@@ -3,11 +3,12 @@ using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StardewValley.Monsters;
 using TrinketTinker.Models;
+using TrinketTinker.Models.Mixin;
 
 namespace TrinketTinker.Companions.Motions
 {
     /// <summary>Abstract class, controls drawing and movement of companion</summary>
-    public abstract class Motion
+    public abstract class Motion<TArgs> : IMotion where TArgs : IArgs
     {
         /// <summary>Companion that owns this motion.</summary>
         protected readonly TrinketTinkerCompanion c;
@@ -19,12 +20,17 @@ namespace TrinketTinker.Companions.Motions
         protected bool isReverse = false;
         /// <summary>Light source ID, generated if LightRadius is set in <see cref="MotionData"/>.</summary>
         protected string lightId = "";
+        /// <summary>Class dependent arguments for subclasses</summary>
+        protected readonly TArgs? args;
 
         /// <summary>Constructor</summary>
         /// <param name="companion"></param>
         /// <param name="data"></param>
         public Motion(TrinketTinkerCompanion companion, MotionData data)
         {
+            args = data.ParseArgs<TArgs>();
+            if (args != null && !args.Validate())
+                args = default;
             c = companion;
             d = data;
             motionOffset = new(d.OffsetX, d.OffsetY);

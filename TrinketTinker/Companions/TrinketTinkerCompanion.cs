@@ -7,6 +7,7 @@ using StardewValley.Companions;
 using TrinketTinker.Models;
 using TrinketTinker.Companions.Motions;
 using StardewValley.Network;
+using TrinketTinker.Models.Mixin;
 
 
 namespace TrinketTinker.Companions
@@ -58,7 +59,7 @@ namespace TrinketTinker.Companions
         /// <summary>Backing companion data from content.</summary>
         public TinkerData? Data;
         /// <summary>Motion class that controls how the companion moves.</summary>
-        public Motion? Motion { get; set; }
+        public IMotion? Motion { get; set; }
         /// <summary>Position the companion should follow.</summary>
         public Vector2 Anchor { get; set; }
         /// <summary>Middle point of the sprite, based on width and height.</summary>
@@ -141,7 +142,7 @@ namespace TrinketTinker.Companions
             {
                 MotionData mdata = Data.Motions[0];
                 if (ModEntry.TryGetType(mdata.MotionClass, out Type? motionCls, Constants.MOTION_CLS))
-                    Motion = (Motion?)Activator.CreateInstance(motionCls, this, mdata);
+                    Motion = (IMotion?)Activator.CreateInstance(motionCls, this, mdata);
                 else
                     Motion = new LerpMotion(this, mdata);
             }

@@ -18,6 +18,9 @@
     <PackageReference Include="Pathoschild.Stardew.ModTranslationClassBuilder" Version="2.2.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <Reference Include="Newtonsoft.Json" Private="False">
+      <HintPath>$(GamePath)/smapi-internal/Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

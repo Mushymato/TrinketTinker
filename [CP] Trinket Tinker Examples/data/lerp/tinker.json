@@ -35,7 +35,7 @@
                 "Condition": "LOCATION_IS_OUTDOORS Target",
                 "ProcOn": "Footstep",
                 "ProcSound": "fairy_heal",
-                "AbilityClass": "Heal",
+                "AbilityClass": "Health",
                 "Args": {
                   "HealPower": 1,
                   "TargetHealth": true,
@@ -50,7 +50,7 @@
                 "Condition": "LOCATION_IS_OUTDOORS Target",
                 "ProcOn": "Footstep",
                 "ProcSound": "fairy_heal",
-                "AbilityClass": "Heal",
+                "AbilityClass": "Health",
                 "Args": {
                   "HealPower": 10,
                   "TargetHealth": true,
@@ -153,7 +153,7 @@
             [
               {
                 // when damaging a monster with a bomb, heal 100% of the damage
-                "AbilityClass": "Heal",
+                "AbilityClass": "Health",
                 "ProcOn": "DamageMonster",
                 "IsBomb": true,
                 "Args": {

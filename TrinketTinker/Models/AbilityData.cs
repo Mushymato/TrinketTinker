@@ -20,7 +20,7 @@ namespace TrinketTinker.Models
     }
 
     /// <summary>Data for <see cref="Effects.Abilities"/>, defines game effect that a trinket can provide.</summary>
-    public class AbilityData : Mixin.HaveArgs
+    public class AbilityData : Mixin.IHaveArgs
     {
         /// <summary>Name of this ability. If unset, a name is generatde from class name and trinket ID.</summary>
         public string Name = "";
@@ -49,6 +49,5 @@ namespace TrinketTinker.Models
         /// Applies to <see cref="ProcOn.DamageMonster"/> and <see cref="ProcOn.SlayMonster"/>.
         /// </summary>
         public bool? IsCriticalHit { get; set; } = null;
-
     }
 }

@@ -1,11 +1,12 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
 using TrinketTinker.Models;
+using TrinketTinker.Models.MotionArgs;
 
 namespace TrinketTinker.Companions.Motions
 {
     /// <summary>Companion follows the player and bobs up and down</summary>
-    public class HoverMotion : LerpMotion
+    public class HoverMotion : BaseLerpMotion<HoverArgs>
     {
         /// <summary>trig function input</summary>
         private double theta = 0f;
@@ -16,7 +17,7 @@ namespace TrinketTinker.Companions.Motions
         {
             motionOffset.Y -= 128f;
             c.Offset = motionOffset;
-            hoverMagnitude = d.GetParsedOrDefault("HoverMagnitude", hoverMagnitude);
+            hoverMagnitude = args?.Magnitude ?? hoverMagnitude;
         }
 
         public override void UpdateLocal(GameTime time, GameLocation location)
