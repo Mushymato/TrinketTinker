@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
+using TrinketTinker.Effects.Proc;
 using TrinketTinker.Models;
 using TrinketTinker.Models.AbilityArgs;
 
@@ -22,31 +23,22 @@ namespace TrinketTinker.Effects.Abilities
             return (int)Math.Ceiling(Math.Min(maximum, current + relative * args.Percent));
         }
 
-        /// <summary>Heal % based on max HP</summary>
-        /// <param name="farmer"></param>
+        /// <summary>
+        /// Heal the player.
+        /// If a damage amount is given, heal % of that value, otherwise heal % of max health.
+        /// </summary>
+        /// <param name="proc"></param>
         /// <returns></returns>
-        protected override bool ApplyEffect(Farmer farmer)
+        protected override bool ApplyEffect(ProcEventArgs proc)
         {
+            if (proc.Farmer is not Farmer farmer)
+                return false;
             int previousHealth = farmer.health;
-            farmer.health = HealthFormula(farmer.maxHealth, farmer.health, farmer.maxHealth);
+            farmer.health = HealthFormula(farmer.maxHealth, farmer.health, proc.DamageAmount ?? farmer.maxHealth);
             int healed = farmer.health - previousHealth;
             if (healed > 0)
                 farmer.currentLocation.debris.Add(new Debris(healed, farmer.getStandingPosition(), Color.Lime, 1f, farmer));
-            return healed > 0 && base.ApplyEffect(farmer);
-        }
-
-        /// <summary>Heal % based on damage taken</summary>
-        /// <param name="farmer"></param>
-        /// <param name="damageAmount"></param>
-        /// <returns></returns>
-        protected override bool ApplyEffect(Farmer farmer, int damageAmount)
-        {
-            int previousHealth = farmer.health;
-            farmer.health = HealthFormula(farmer.maxHealth, farmer.health, damageAmount);
-            int healed = farmer.health - previousHealth;
-            if (healed > 0)
-                farmer.currentLocation.debris.Add(new Debris(healed, farmer.getStandingPosition(), Color.Lime, 1f, farmer));
-            return healed > 0 && base.ApplyEffect(farmer, damageAmount);
+            return healed > 0 && base.ApplyEffect(proc);
         }
     }
 }

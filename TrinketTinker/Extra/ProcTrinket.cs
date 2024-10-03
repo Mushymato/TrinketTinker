@@ -19,7 +19,7 @@ namespace TrinketTinker.Extra
             {
                 if ((trinketId == null || trinketItem.ItemId == trinketId) &&
                      trinketItem?.GetEffect() is TrinketTinkerEffect effect)
-                    effect.OnTrigger(Game1.player);
+                    effect.OnTrigger(Game1.player, args, context);
             }
             return true;
         }

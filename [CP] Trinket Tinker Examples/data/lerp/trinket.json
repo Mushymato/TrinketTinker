@@ -19,11 +19,11 @@
         "{{ModId}}_LerpRotate": {
           "Id": "{{ModId}}_LerpRotate",
           "DisplayName": "Trinket Tinker - Lerp Rotate",
-          "Description": "Companion with 1 set of movement animation for Right, rotates to face player.",
+          "Description": "Companion with 1 set of movement animation for Right, rotates to face player.\nLevel {0}",
           "Texture": "Mods/{{ModId}}/rotation",
           "SheetIndex": 1,
           "DropsNaturally": false,
-          "CanBeReforged": false,
+          "CanBeReforged": true,
           "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
         },
         "{{ModId}}_LerpDRU": {

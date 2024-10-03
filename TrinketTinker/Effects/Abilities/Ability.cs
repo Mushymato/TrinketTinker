@@ -1,7 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Monsters;
 using TrinketTinker.Companions.Motions;
+using TrinketTinker.Effects.Proc;
 using TrinketTinker.Models;
 using TrinketTinker.Models.Mixin;
 
@@ -49,15 +51,14 @@ namespace TrinketTinker.Effects.Abilities
             string clsName = data.Name == "" ? GetType().Name : data.Name;
             Name = $"{effect.Trinket.ItemId}:{clsName}[{lvl}]";
             ProcTimer = data.ProcTimer;
-
         }
 
         /// <summary>Check condition is valid for farmer's location.</summary>
         /// <param name="farmer"></param>
         /// <returns>True if ability should activate.</returns>
-        protected virtual bool CheckFarmer(Farmer farmer, GameLocation? location = null)
+        protected virtual bool CheckFarmer([NotNullWhen(true)] Farmer? farmer, GameLocation? location = null)
         {
-            return Active && Allowed && (
+            return Active && Allowed && farmer != null && (
                 d.Condition == null ||
                 GameStateQuery.CheckConditions(
                     d.Condition, location ?? farmer.currentLocation,
@@ -74,44 +75,6 @@ namespace TrinketTinker.Effects.Abilities
             return monster != null;
         }
 
-        /// <summary>Applies ability effect, mark the ability as not allowed until next tick or longer.</summary>
-        /// <param name="farmer"></param>
-        /// <returns></returns>
-        protected virtual bool ApplyEffect(Farmer farmer)
-        {
-            Allowed = false;
-            return true;
-        }
-
-        /// <summary>Apply effect for <see cref="TrinketTinkerEffect.OnReceiveDamage"/></summary>
-        /// <param name="farmer"></param>
-        /// <param name="damageAmount"></param>
-        /// <returns></returns>
-        protected virtual bool ApplyEffect(Farmer farmer, int damageAmount)
-        {
-            return ApplyEffect(farmer);
-        }
-
-        /// <summary>Apply effect for <see cref="TrinketTinkerEffect.OnDamageMonster"/></summary>
-        /// <param name="farmer"></param>
-        /// <param name="monster"></param>
-        /// <param name="damageAmount"></param>
-        /// <returns></returns>
-        protected virtual bool ApplyEffect(Farmer farmer, Monster monster, int damageAmount, bool isBomb, bool isCriticalHit)
-        {
-            return ApplyEffect(farmer, damageAmount);
-        }
-
-        /// <summary>Apply effect for <see cref="ProcOn.Timer"/> abilities, via <see cref="Update"/>.</summary>
-        /// <param name="farmer"></param>
-        /// <param name="time"></param>
-        /// <param name="location"></param>
-        /// <returns></returns>
-        protected virtual bool ApplyEffect(Farmer farmer, GameTime time, GameLocation location)
-        {
-            return ApplyEffect(farmer);
-        }
-
         /// <summary>Setup the ability, when trinket is equipped.</summary>
         /// <param name="farmer"></param>
         /// <returns></returns>
@@ -119,11 +82,39 @@ namespace TrinketTinker.Effects.Abilities
         {
             if (!Active)
             {
-                if (d.ProcOn == ProcOn.Always)
-                    Proc(farmer);
                 Active = true;
                 Allowed = d.ProcOn != ProcOn.Timer;
                 ProcTimer = d.ProcTimer;
+
+                switch (d.ProcOn)
+                {
+                    case ProcOn.Always:
+                        HandleProc(null, new(ProcOn.Always)
+                        {
+                            Farmer = farmer
+                        });
+                        break;
+                    case ProcOn.Use:
+                        e.EventUse += HandleProc;
+                        break;
+                    case ProcOn.Footstep:
+                        e.EventFootstep += HandleProc;
+                        break;
+                    case ProcOn.ReceiveDamage:
+                        e.EventReceiveDamage += HandleProc;
+                        break;
+                    case ProcOn.DamageMonster:
+                        e.EventDamageMonster += HandleProc;
+                        break;
+                    case ProcOn.SlayMonster:
+                        e.EventSlayMonster += HandleProc;
+                        break;
+                    case ProcOn.Trigger:
+                        e.EventTrigger += HandleProc;
+                        break;
+                }
+
+                e.EventFootstep += HandleProc;
             }
             return Active;
         }
@@ -135,13 +126,63 @@ namespace TrinketTinker.Effects.Abilities
         {
             if (Active)
             {
-                if (d.ProcOn == ProcOn.Always)
-                    UnProc(farmer);
+
+                switch (d.ProcOn)
+                {
+                    case ProcOn.Always:
+                        UnProc(farmer);
+                        break;
+                    case ProcOn.Use:
+                        e.EventUse -= HandleProc;
+                        break;
+                    case ProcOn.Footstep:
+                        e.EventFootstep -= HandleProc;
+                        break;
+                    case ProcOn.ReceiveDamage:
+                        e.EventReceiveDamage -= HandleProc;
+                        break;
+                    case ProcOn.DamageMonster:
+                        e.EventDamageMonster -= HandleProc;
+                        break;
+                    case ProcOn.SlayMonster:
+                        e.EventSlayMonster -= HandleProc;
+                        break;
+                    case ProcOn.Trigger:
+                        e.EventTrigger -= HandleProc;
+                        break;
+                }
                 Active = false;
                 Allowed = false;
                 return true;
             }
             return false;
+        }
+
+        /// <summary>Handle proc of ability</summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        protected virtual void HandleProc(object? sender, ProcEventArgs args)
+        {
+            if (Active && Allowed && args.Check(d) && ApplyEffect(args))
+            {
+                if (d.ProcSound != null)
+                    Game1.playSound(d.ProcSound);
+            }
+        }
+
+        /// <summary>Cleanup ability, if <see cref="d.ProcOn"/> is <see cref="ProcOn.Always"/></summary>
+        /// <param name="farmer"></param>
+        protected virtual void UnProc(Farmer farmer)
+        {
+        }
+
+        /// <summary>Applies ability effect, mark the ability as not allowed until next tick or longer.</summary>
+        /// <param name="farmer"></param>
+        /// <returns></returns>
+        protected virtual bool ApplyEffect(ProcEventArgs proc)
+        {
+            Allowed = false;
+            return true;
         }
 
         /// <summary>Update on game tick, handles the proc timer.</summary>
@@ -161,90 +202,14 @@ namespace TrinketTinker.Effects.Abilities
             }
             if (d.ProcOn == ProcOn.Timer && Allowed)
             {
-                Proc(farmer, time, location);
+                HandleProc(null, new(ProcOn.Timer)
+                {
+                    Farmer = farmer,
+                    Time = time,
+                    Location = location
+                });
                 ProcTimer = d.ProcTimer;
             }
-        }
-
-        /// <summary>Check conditions then apply effect.</summary>
-        /// <param name="farmer"></param>
-        /// <returns></returns>
-        public virtual bool Proc(Farmer farmer)
-        {
-            if (CheckFarmer(farmer))
-            {
-                if (ApplyEffect(farmer))
-                {
-                    if (d.ProcSound != null)
-                        Game1.playSound(d.ProcSound);
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /// <summary>Remove the ability, used if ProcOn is <see cref="ProcOn.Always"/></summary>
-        /// <param name="farmer"></param>
-        protected virtual void UnProc(Farmer farmer)
-        {
-        }
-
-        /// <summary>Proc for <see cref="TrinketTinkerEffect.OnReceiveDamage"/>.</summary>
-        /// <param name="farmer"></param>
-        /// <param name="damageAmount"></param>
-        /// <returns></returns>
-        public virtual bool Proc(Farmer farmer, int damageAmount)
-        {
-            if (CheckFarmer(farmer) && damageAmount >= d.DamageThreshold)
-            {
-                if (ApplyEffect(farmer, damageAmount))
-                {
-                    if (d.ProcSound != null)
-                        Game1.playSound(d.ProcSound);
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /// <summary>Proc for <see cref="TrinketTinkerEffect.OnDamageMonster"/>.</summary>
-        /// <param name="farmer"></param>
-        /// <param name="damageAmount"></param>
-        /// <returns></returns>
-        public virtual bool Proc(Farmer farmer, Monster monster, int damageAmount, bool isBomb, bool isCriticalHit)
-        {
-            if (CheckFarmer(farmer) && CheckMonster(monster) &&
-                damageAmount >= d.DamageThreshold &&
-                (d.IsBomb ?? isBomb) == isBomb &&
-                (d.IsCriticalHit ?? isCriticalHit) == isCriticalHit)
-            {
-                if (ApplyEffect(farmer, monster, damageAmount, isBomb, isCriticalHit))
-                {
-                    if (d.ProcSound != null)
-                        Game1.playSound(d.ProcSound);
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /// <summary>Proc for <see cref="ProcOn.Timer"/> abilities, via <see cref="Update"/>.</summary>
-        /// <param name="farmer"></param>
-        /// <param name="time"></param>
-        /// <param name="location"></param>
-        /// <returns></returns>
-        public virtual bool Proc(Farmer farmer, GameTime time, GameLocation location)
-        {
-            if (CheckFarmer(farmer, location))
-            {
-                if (ApplyEffect(farmer, time, location))
-                {
-                    if (d.ProcSound != null)
-                        Game1.playSound(d.ProcSound);
-                    return true;
-                }
-            }
-            return false;
         }
     }
 }

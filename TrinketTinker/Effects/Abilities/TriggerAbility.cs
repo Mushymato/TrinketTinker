@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Triggers;
+using TrinketTinker.Effects.Proc;
 using TrinketTinker.Models;
 using TrinketTinker.Models.Mixin;
 
@@ -14,16 +15,13 @@ namespace TrinketTinker.Effects.Abilities
     {
         public static readonly string TriggerEventName = $"{ModEntry.ModId}_TrinketProc";
 
-        protected override bool ApplyEffect(Farmer farmer)
+        /// <summary>Raise the trigger <see cref="TriggerEventName"/></summary>
+        /// <param name="proc"></param>
+        /// <returns></returns>
+        protected override bool ApplyEffect(ProcEventArgs proc)
         {
-            TriggerActionManager.Raise(TriggerEventName, player: farmer, targetItem: e.Trinket);
-            return base.ApplyEffect(farmer);
-        }
-
-        protected override bool ApplyEffect(Farmer farmer, GameTime time, GameLocation location)
-        {
-            TriggerActionManager.Raise(TriggerEventName, location: location, player: farmer, targetItem: e.Trinket);
-            return ApplyEffect(farmer, time, location);
+            TriggerActionManager.Raise(TriggerEventName, player: proc.Farmer, location: proc.Location, targetItem: e.Trinket);
+            return base.ApplyEffect(proc);
         }
 
     }

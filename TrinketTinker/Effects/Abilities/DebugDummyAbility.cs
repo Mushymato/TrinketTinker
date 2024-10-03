@@ -1,6 +1,6 @@
-using Microsoft.Xna.Framework;
-using StardewValley;
-using StardewValley.Monsters;
+using System.Text;
+using StardewModdingAPI;
+using TrinketTinker.Effects.Proc;
 using TrinketTinker.Models;
 using TrinketTinker.Models.Mixin;
 
@@ -9,25 +9,18 @@ namespace TrinketTinker.Effects.Abilities
     /// <summary>Prints many logs, doesn't do anything else.</summary>
     public class DebugDummyAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<NoArgs>(effect, data, lvl)
     {
-        protected override bool ApplyEffect(Farmer farmer)
+        /// <summary>Debug log.</summary>
+        /// <param name="proc"></param>
+        /// <returns></returns>
+        protected override bool ApplyEffect(ProcEventArgs proc)
         {
-            ModEntry.Log($"{Name}.ApplyEffect({farmer})");
-            return base.ApplyEffect(farmer);
-        }
-        protected override bool ApplyEffect(Farmer farmer, int damageAmount)
-        {
-            ModEntry.Log($"{Name}.ApplyEffect({farmer}, {damageAmount})");
-            return base.ApplyEffect(farmer, damageAmount);
-        }
-        protected override bool ApplyEffect(Farmer farmer, Monster monster, int damageAmount, bool isBomb, bool isCriticalHit)
-        {
-            ModEntry.Log($"{Name}.ApplyEffect({farmer}, {monster}, {damageAmount})");
-            return ApplyEffect(farmer, monster, damageAmount, isBomb, isCriticalHit);
-        }
-        protected override bool ApplyEffect(Farmer farmer, GameTime time, GameLocation location)
-        {
-            ModEntry.Log($"{Name}.ApplyEffect({farmer}, {time}, {location})");
-            return ApplyEffect(farmer, time, location);
+            StringBuilder sbld = new();
+            sbld.Append(Name);
+            sbld.Append('(');
+            sbld.Append(proc.ProcOn);
+            sbld.Append(')');
+            ModEntry.Log(sbld.ToString(), LogLevel.Debug);
+            return true;
         }
     }
 }

@@ -102,16 +102,41 @@
             // level 0
             [
               {
-                // Shoot damaging projectile every 2s
-                "ProcOn": "Timer",
-                "ProcTimer": 2000,
-                "AbilityClass": "Projectile",
-                "Args": {
-                  "MinDamage": 10,
-                  "MaxDamage": 100,
-                  "SpriteIndex": 5,
-                  "IsExplosive": true
-                }
+                "ProcOn": "Footstep",
+                "AbilityClass": "DebugDummy",
+              }
+              // {
+              //   // Shoot damaging projectile every 2s
+              //   "ProcOn": "Timer",
+              //   "ProcTimer": 2000,
+              //   "AbilityClass": "Projectile",
+              //   "Args": {
+              //     "MinDamage": 10,
+              //     "MaxDamage": 100,
+              //     "SpriteIndex": 5,
+              //     "IsExplosive": true
+              //   }
+              // }
+            ],
+            // level 1
+            [
+              {
+                "ProcOn": "Footstep",
+                "AbilityClass": "DebugDummy",
+              }
+            ],
+            // level 2
+            [
+              {
+                "ProcOn": "Footstep",
+                "AbilityClass": "DebugDummy",
+              }
+            ],
+            // level 3
+            [
+              {
+                "ProcOn": "Footstep",
+                "AbilityClass": "DebugDummy",
               }
             ]
           ]

@@ -8,6 +8,9 @@ using TrinketTinker.Companions;
 using TrinketTinker.Effects.Abilities;
 using StardewModdingAPI;
 using TrinketTinker.Models.Mixin;
+using TrinketTinker.Effects.Proc;
+using System.Collections.Immutable;
+using StardewValley.Delegates;
 
 namespace TrinketTinker.Effects
 {
@@ -17,15 +20,9 @@ namespace TrinketTinker.Effects
         public readonly string ModData_WhichVariant = $"{ModEntry.ModId}/WhichVariant";
         /// <summary>Companion data with matching ID</summary>
         protected TinkerData? Data;
-
+        private readonly Lazy<ImmutableList<IAbility>> abilities;
         /// <summary>Abilities for this trinket.</summary>
-        protected List<List<IAbility>> Abilities;
-
-        /// <summary>Abilities, key'd by <see cref="AbilityData.ProcOn"/></summary>
-        protected List<Dictionary<ProcOn, List<IAbility>>> SortedAbilities;
-
-        /// <summary>Get adjusted index for <see cref="Abilities"/> and <see cref="SortedAbilities"/></summary>
-        protected int Level => GeneralStat - (Data?.MinLevel ?? 0);
+        protected ImmutableList<IAbility> Abilities => abilities.Value;
 
         /// <summary>Position of companion, including offset if applicable.</summary>
         public Vector2 CompanionPosition
@@ -39,8 +36,12 @@ namespace TrinketTinker.Effects
                 return Companion.Position;
             }
         }
-
-        public Inventory Items { get; } = [];
+        internal event EventHandler<ProcEventArgs>? EventUse;
+        internal event EventHandler<ProcEventArgs>? EventFootstep;
+        internal event EventHandler<ProcEventArgs>? EventReceiveDamage;
+        internal event EventHandler<ProcEventArgs>? EventDamageMonster;
+        internal event EventHandler<ProcEventArgs>? EventSlayMonster;
+        internal event EventHandler<ProcEventArgs>? EventTrigger;
 
         /// <summary>Constructor</summary>
         /// <param name="trinket"></param>
@@ -48,45 +49,45 @@ namespace TrinketTinker.Effects
             : base(trinket)
         {
             ModEntry.CompanionData.TryGetValue(trinket.ItemId, out Data);
-            Abilities = [];
-            SortedAbilities = [];
+            abilities = new(InitAbilities, false);
+        }
+
+        /// <summary>
+        /// Lazy init of abilities, which depend on <see cref="GeneralStat"/> being set
+        /// </summary>
+        /// <returns></returns>
+        private ImmutableList<IAbility> InitAbilities()
+        {
+            List<IAbility> initAblities = [];
             if (Data != null)
             {
-                int lvl = 0;
-                // Abilities
-                foreach (List<AbilityData> abList in Data.Abilities)
+                List<AbilityData> levelAbilities;
+                if (GeneralStat > Data.Abilities.Count)
                 {
-                    List<IAbility> lvlAbility = [];
-                    Dictionary<ProcOn, List<IAbility>> lvlSorted = new();
-                    foreach (ProcOn actv in Enum.GetValues(typeof(ProcOn)))
+                    ModEntry.Log($"No abilities defined for level {GeneralStat}, default to highest level ({Data.Abilities.Count - 1})", LogLevel.Warn);
+                    levelAbilities = Data.Abilities.Last();
+                }
+                else
+                {
+                    levelAbilities = Data.Abilities[GeneralStat];
+                }
+                foreach (AbilityData ab in levelAbilities)
+                {
+                    if (ModEntry.TryGetType(ab.AbilityClass, out Type? abilityType, Constants.ABILITY_CLS))
                     {
-                        lvlSorted[actv] = [];
-                    }
-                    foreach (AbilityData ab in abList)
-                    {
-                        if (ModEntry.TryGetType(ab.AbilityClass, out Type? abilityType, Constants.ABILITY_CLS))
-                        {
-                            IAbility? ability = (IAbility?)Activator.CreateInstance(abilityType, this, ab, lvl);
-                            if (ability != null && ability.Valid)
-                            {
-                                lvlAbility.Add(ability);
-                                lvlSorted[ab.ProcOn].Add(ability);
-                            }
-                            else
-                            {
-                                ModEntry.Log($"Skip invalid ability ({ab.AbilityClass} from {trinket.QualifiedItemId})", LogLevel.Warn);
-                            }
-                        }
+                        IAbility? ability = (IAbility?)Activator.CreateInstance(abilityType, this, ab, GeneralStat);
+                        if (ability != null && ability.Valid)
+                            initAblities.Add(ability);
                         else
-                        {
-                            ModEntry.Log($"Failed to get type for ability ({ab.AbilityClass} from {trinket.QualifiedItemId})", LogLevel.Warn);
-                        }
+                            ModEntry.Log($"Skip invalid ability ({ab.AbilityClass} from {Trinket.QualifiedItemId})", LogLevel.Warn);
                     }
-                    Abilities.Add(lvlAbility);
-                    SortedAbilities.Add(lvlSorted);
-                    lvl++;
+                    else
+                    {
+                        ModEntry.Log($"Failed to get type for ability ({ab.AbilityClass} from {Trinket.QualifiedItemId})", LogLevel.Warn);
+                    }
                 }
             }
+            return initAblities.ToImmutableList();
         }
 
         /// <summary>Spawn the companion, and activate all abilities</summary>
@@ -107,11 +108,11 @@ namespace TrinketTinker.Effects
                 Companion = new TrinketTinkerCompanion(Trinket.ItemId, variant);
             farmer.AddCompanion(Companion);
 
-            if (farmer != Game1.player || Abilities.Count <= Level)
+            // Only activate ability for local player
+            if (Game1.player != farmer)
                 return;
 
-            // Apply Abilities
-            foreach (IAbility ability in Abilities[Level])
+            foreach (IAbility ability in Abilities)
             {
                 ability.Activate(farmer);
             }
@@ -123,10 +124,10 @@ namespace TrinketTinker.Effects
         {
             farmer.RemoveCompanion(Companion);
 
-            if (farmer != Game1.player || Abilities.Count <= Level)
+            if (farmer != Game1.player || Abilities.Count <= GeneralStat)
                 return;
 
-            foreach (IAbility ability in Abilities[Level])
+            foreach (IAbility ability in Abilities)
             {
                 ability.Deactivate(farmer);
             }
@@ -134,83 +135,89 @@ namespace TrinketTinker.Effects
 
         public override void OnUse(Farmer farmer)
         {
-            // foreach (IAbility ability in SortedAbilities[Level][ProcOn.Use])
-            // {
-            //     ability.Proc(farmer);
-            // }
-            ModEntry.Log($"OnUse {farmer}");
+            EventUse?.Invoke(this, new(ProcOn.Use)
+            {
+                Farmer = farmer
+            });
         }
 
         public override void OnFootstep(Farmer farmer)
         {
-            if (farmer != Game1.player || Abilities.Count <= Level)
-                return;
-            foreach (IAbility ability in SortedAbilities[Level][ProcOn.Footstep])
+            EventFootstep?.Invoke(this, new(ProcOn.Footstep)
             {
-                ability.Proc(farmer);
-            }
+                Farmer = farmer
+            });
         }
 
         public override void OnReceiveDamage(Farmer farmer, int damageAmount)
         {
-            if (farmer != Game1.player || Abilities.Count <= Level)
-                return;
-            foreach (IAbility ability in SortedAbilities[Level][ProcOn.ReceiveDamage])
+            EventReceiveDamage?.Invoke(this, new(ProcOn.ReceiveDamage)
             {
-                ability.Proc(farmer, damageAmount);
-            }
+                Farmer = farmer,
+                DamageAmount = damageAmount
+            });
         }
 
         public override void OnDamageMonster(Farmer farmer, Monster monster, int damageAmount, bool isBomb, bool isCriticalHit)
         {
-            if (farmer != Game1.player || Abilities.Count <= Level || monster == null)
-                return;
-            foreach (IAbility ability in SortedAbilities[Level][ProcOn.DamageMonster])
+            EventDamageMonster?.Invoke(this, new(ProcOn.DamageMonster)
             {
-                ability.Proc(farmer, monster, damageAmount, isBomb, isCriticalHit);
-            }
+                Farmer = farmer,
+                Monster = monster,
+                DamageAmount = damageAmount,
+                IsBomb = isBomb,
+                IsCriticalHit = isCriticalHit
+            });
             if (monster.Health <= 0)
-            {
-                foreach (IAbility ability in SortedAbilities[Level][ProcOn.SlayMonster])
+                EventSlayMonster?.Invoke(this, new(ProcOn.SlayMonster)
                 {
-                    ability.Proc(farmer, monster, damageAmount, isBomb, isCriticalHit);
-                }
-            }
+                    Farmer = farmer,
+                    Monster = monster,
+                    DamageAmount = damageAmount,
+                    IsBomb = isBomb,
+                    IsCriticalHit = isCriticalHit
+                });
         }
 
         /// <summary>Handle the trigger (<see cref="ProcTrinket.TriggerActionName"/>).</summary>
         /// <param name="farmer"></param>
         /// <param name="monster"></param>
         /// <param name="damageAmount"></param>
-        public virtual void OnTrigger(Farmer farmer)
+        public virtual void OnTrigger(Farmer farmer, string[] args, TriggerActionContext context)
         {
-            if (farmer != Game1.player || Abilities.Count <= Level)
-                return;
-            foreach (IAbility ability in SortedAbilities[Level][ProcOn.Trigger])
+            EventTrigger?.Invoke(this, new(ProcOn.Trigger)
             {
-                ability.Proc(farmer);
-            }
+                Farmer = farmer,
+                TriggerArgs = args,
+                TriggerContext = context
+            });
         }
 
+        /// <summary>Update every tick. Not an event because this happens for every ability regardless of <see cref="ProcOn"/>.</summary>
+        /// <param name="farmer"></param>
+        /// <param name="time"></param>
+        /// <param name="location"></param>
         public override void Update(Farmer farmer, GameTime time, GameLocation location)
         {
-            if (farmer != Game1.player || Abilities.Count <= Level)
-                return;
-            foreach (IAbility ability in Abilities[Level])
-            {
+            foreach (IAbility ability in Abilities)
                 ability.Update(farmer, time, location);
-            }
         }
 
         public override bool GenerateRandomStats(Trinket trinket)
         {
             if (Data == null)
                 return false;
-            if (Abilities.Count <= 1)
-                GeneralStat = Data.MinLevel;
-            Random r = Utility.CreateRandom(trinket.generationSeed.Value);
-            GeneralStat = r.Next(Data.MinLevel, Data.MinLevel + Abilities.Count);
-            trinket.descriptionSubstitutionTemplates.Add(GeneralStat.ToString());
+            if (Data.Abilities.Count <= 1)
+            {
+                GeneralStat = 0;
+            }
+            else
+            {
+                Random r = Utility.CreateRandom(trinket.generationSeed.Value);
+                GeneralStat = r.Next(Data.Abilities.Count);
+            }
+            trinket.descriptionSubstitutionTemplates.Clear();
+            trinket.descriptionSubstitutionTemplates.Add((Data.MinLevel + GeneralStat).ToString());
             return true;
         }
 
