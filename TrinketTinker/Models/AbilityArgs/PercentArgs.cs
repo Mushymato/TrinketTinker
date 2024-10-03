@@ -6,6 +6,7 @@ namespace TrinketTinker.Models.AbilityArgs
     public class PercentArgs : IArgs
     {
         private int min = 0;
+        /// <summary>Min percent, out of 1000</summary>
         public int Min
         {
             get => min;
@@ -15,6 +16,7 @@ namespace TrinketTinker.Models.AbilityArgs
             }
         }
         private int max = 0;
+        /// <summary>Max percent, out of 1000</summary>
         public int Max
         {
             get => max;
@@ -24,9 +26,13 @@ namespace TrinketTinker.Models.AbilityArgs
             }
         }
 
-        public double MinPercent => min / 1000.0;
-        public double MaxPercent => max / 1000.0;
-        public double Percent => Random.Shared.Next(min, max) / 1000.0;
+        /// <summary>Float min percent</summary>
+        internal double MinPercent => min / 1000.0;
+        /// <summary>Float max percent</summary>
+        internal double MaxPercent => max / 1000.0;
+
+        /// <summary>Random percent between min and max</summary>
+        internal double Percent => Random.Shared.Next(min, max) / 1000.0;
 
         /// <inheritdoc/>
         public bool Validate()

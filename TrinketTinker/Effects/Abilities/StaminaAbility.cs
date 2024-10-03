@@ -22,7 +22,7 @@ namespace TrinketTinker.Effects.Abilities
             farmer.Stamina = StaminaFormula(farmer.MaxStamina, farmer.Stamina);
             float healed = farmer.Stamina - previous;
             if (healed > 0)
-                farmer.currentLocation.debris.Add(new Debris((int)healed, farmer.getStandingPosition(), Color.ForestGreen, 1f, farmer));
+                farmer.currentLocation.debris.Add(new Debris((int)healed, farmer.getStandingPosition(), Color.SeaGreen, 1f, farmer));
             return healed > 0 && base.ApplyEffect(farmer);
         }
     }

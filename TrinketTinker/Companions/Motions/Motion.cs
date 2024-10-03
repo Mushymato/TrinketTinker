@@ -4,6 +4,7 @@ using StardewValley;
 using StardewValley.Monsters;
 using TrinketTinker.Models;
 using TrinketTinker.Models.Mixin;
+using TrinketTinker.Models.MotionArgs;
 
 namespace TrinketTinker.Companions.Motions
 {
@@ -21,16 +22,19 @@ namespace TrinketTinker.Companions.Motions
         /// <summary>Light source ID, generated if LightRadius is set in <see cref="MotionData"/>.</summary>
         protected string lightId = "";
         /// <summary>Class dependent arguments for subclasses</summary>
-        protected readonly TArgs? args;
+        protected readonly TArgs? args = default;
 
         /// <summary>Constructor</summary>
         /// <param name="companion"></param>
         /// <param name="data"></param>
         public Motion(TrinketTinkerCompanion companion, MotionData data)
         {
-            args = data.ParseArgs<TArgs>();
-            if (args != null && !args.Validate())
-                args = default;
+            if (typeof(TArgs) != typeof(NoArgs))
+            {
+                args = data.ParseArgs<TArgs>();
+                if (args != null && !args.Validate())
+                    args = default;
+            }
             c = companion;
             d = data;
             motionOffset = new(d.OffsetX, d.OffsetY);

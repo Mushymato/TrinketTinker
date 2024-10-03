@@ -1,5 +1,3 @@
-using Microsoft.Xna.Framework;
-
 namespace TrinketTinker.Models
 {
     /// <summary>Top level data class for <see cref="ModEntry.TinkerAsset"/> entries.</summary>

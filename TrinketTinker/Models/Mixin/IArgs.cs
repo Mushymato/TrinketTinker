@@ -6,15 +6,16 @@ namespace TrinketTinker.Models.Mixin
     public interface IArgs
     {
         /// <summary>Checks if the given arguments are valid, potentially modify arguments to ensure they are valid</summary>
-        /// <returns></returns>
+        /// <returns>true if valid</returns>
         public bool Validate();
     }
 
     /// <summary>
-    /// No arguments are needed
+    /// No arguments are needed, Args will not be parsed.
     /// </summary>
     public class NoArgs : IArgs
     {
+        /// <inheritdoc/>
         public bool Validate() => true;
     }
 }
