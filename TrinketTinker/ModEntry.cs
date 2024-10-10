@@ -10,12 +10,7 @@ using TrinketTinker.Companions.Motions;
 using TrinketTinker.Effects;
 using TrinketTinker.Effects.Abilities;
 using TrinketTinker.Models;
-using StardewValley.Objects.Trinkets;
-using Microsoft.Xna.Framework.Graphics;
-using StardewValley.GameData.BigCraftables;
-using StardewValley.GameData.Machines;
 using TrinketTinker.Extra;
-using TrinketTinker.Models.Mixin;
 
 namespace TrinketTinker
 {
@@ -56,11 +51,6 @@ namespace TrinketTinker
 
 #if DEBUG
             // Debug console
-            helper.ConsoleCommands.Add(
-                "tt_reload_trinkets",
-                "Invalidate trinkets and companions (but not textures).",
-                ConsoleReloadTrinkets
-            );
             helper.ConsoleCommands.Add(
                 "tt_print_types",
                 "Print valid Effect, Companion, Motion, and Ability types.",
@@ -115,7 +105,6 @@ namespace TrinketTinker
             // load the custom asset
             if (e.Name.IsEquivalentTo(TinkerAsset))
             {
-                _companionData = null;
                 e.LoadFrom(() => new Dictionary<string, TinkerData>(), AssetLoadPriority.Exclusive);
             }
             // add a big craftable for recoloring stuff
@@ -130,40 +119,36 @@ namespace TrinketTinker
             }
         }
 
-        private void ConsoleReloadTrinkets(string command, string[] args)
-        {
-            Helper.GameContent.InvalidateCache("Data/Trinkets");
-            Helper.GameContent.InvalidateCache(TinkerAsset);
-        }
-
         private void ConsolePrintTypenames(string command, string[] args)
         {
             Log("=== TrinketTinkerEffect ===", LogLevel.Info);
             foreach (TypeInfo typeInfo in typeof(TrinketTinkerEffect).Assembly.DefinedTypes)
             {
                 if (typeInfo.IsAssignableTo(typeof(TrinketTinkerEffect)) && typeInfo.AssemblyQualifiedName != null)
-                    Log(typeInfo.AssemblyQualifiedName, LogLevel.Info);
+                    Log(typeInfo.AssemblyQualifiedName);
             }
 
             Log("=== TrinketTinkerCompanion ===", LogLevel.Info);
             foreach (TypeInfo typeInfo in typeof(TrinketTinkerCompanion).Assembly.DefinedTypes)
             {
                 if (typeInfo.IsAssignableTo(typeof(TrinketTinkerCompanion)) && typeInfo.AssemblyQualifiedName != null)
-                    Log(typeInfo.AssemblyQualifiedName, LogLevel.Info);
+                    Log(typeInfo.AssemblyQualifiedName);
             }
 
             Log("=== Motion ===", LogLevel.Info);
+            Log(Constants.MOTION_CLS);
             foreach (TypeInfo typeInfo in typeof(IMotion).Assembly.DefinedTypes)
             {
                 if (typeInfo.IsAssignableTo(typeof(IMotion)) && typeInfo.AssemblyQualifiedName != null)
-                    Log(typeInfo.AssemblyQualifiedName, LogLevel.Info);
+                    Log(typeInfo.AssemblyQualifiedName);
             }
 
             Log("=== Ability ===", LogLevel.Info);
+            Log(Constants.ABILITY_CLS);
             foreach (TypeInfo typeInfo in typeof(IAbility).Assembly.DefinedTypes)
             {
                 if (typeInfo.IsAssignableTo(typeof(IAbility)) && typeInfo.AssemblyQualifiedName != null)
-                    Log(typeInfo.AssemblyQualifiedName, LogLevel.Info);
+                    Log(typeInfo.AssemblyQualifiedName);
             }
         }
 
