@@ -48,6 +48,15 @@ namespace TrinketTinker.Models
     }
 
 
+    public class AnchorTargetData
+    {
+        /// <summary>Targeting mode, see <see cref="AnchorTarget"/>.</summary>
+        public AnchorTarget Mode = AnchorTarget.Owner;
+        /// <summary>Search range, applicable to <see cref="AnchorTarget.Monster"/>.</summary>
+        public int Range = 640;
+    }
+
+
     /// <summary>Data for <see cref="Companions.Motions"/>, defines how a companion moves.</summary>
     public class MotionData : Mixin.IHaveArgs
     {
@@ -60,10 +69,10 @@ namespace TrinketTinker.Models
         /// <summary>First frame of the animation.</summary>
         public LoopMode LoopMode { get; set; } = LoopMode.Standard;
         /// <summary>
-        /// Prefer <see cref="AnchorTarget"/> that comes earlier in the list. <br/>
-        /// Fall back to <see cref="AnchorTarget.Owner"/>.
+        /// Prefer <see cref="AnchorTargetData"/> that comes earlier in the list.
+        /// Defaults to <see cref="AnchorTarget.Owner"/>.
         /// </summary>
-        public List<AnchorTarget> AnchorTargetPriority { get; set; } = [];
+        public List<AnchorTargetData> Anchors { get; set; } = [];
         public int AnimationFrameStart { get; set; } = 0;
         /// <summary>Length of 1 set of movement animation.</summary>
         public int AnimationFrameLength { get; set; } = 4;

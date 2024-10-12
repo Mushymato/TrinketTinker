@@ -26,8 +26,7 @@ namespace TrinketTinker.Companions.Motions
 
         public override void UpdateLocal(GameTime time, GameLocation location)
         {
-            // Copied from Companion.Update's IsLocal block
-            if (lerp < 0f)
+            if (lerp < 0f || AnchorChanged)
             {
                 float distance = (c.Anchor - c.Position).Length();
                 if (distance > maxDistance)
@@ -49,7 +48,6 @@ namespace TrinketTinker.Companions.Motions
                         c.endPosition = c.Anchor;
                     }
                     lerp = 0f;
-                    // hopEvent.Fire(1f);
                 }
             }
             if (lerp >= 0f)

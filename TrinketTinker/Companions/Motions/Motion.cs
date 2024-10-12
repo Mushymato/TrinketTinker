@@ -23,6 +23,12 @@ namespace TrinketTinker.Companions.Motions
         protected string lightId = "";
         /// <summary>Class dependent arguments for subclasses</summary>
         protected readonly TArgs? args = default;
+        /// <summary>The previous anchor target</summary>
+        protected AnchorTarget prevAnchorTarget = AnchorTarget.Owner;
+        /// <summary>The current anchor target</summary>
+        protected AnchorTarget currAnchorTarget = AnchorTarget.Owner;
+        /// <summary>Anchor changed during this tick</summary>s
+        protected bool AnchorChanged => prevAnchorTarget != currAnchorTarget;
 
         /// <summary>Constructor</summary>
         /// <param name="companion"></param>
@@ -75,26 +81,33 @@ namespace TrinketTinker.Companions.Motions
 
         public virtual void UpdateAnchor(GameTime time, GameLocation location)
         {
-            foreach (AnchorTarget target in d.AnchorTargetPriority)
+            prevAnchorTarget = currAnchorTarget;
+            foreach (AnchorTargetData anchor in d.Anchors)
             {
-                switch (target)
+                switch (anchor.Mode)
                 {
                     case AnchorTarget.Monster:
                         Monster closest = Utility.findClosestMonsterWithinRange(
-                            location, c.Owner.getStandingPosition(), 384, ignoreUntargetables: true
+                            location, c.Owner.getStandingPosition(), anchor.Range, ignoreUntargetables: true
                         );
                         if (closest != null)
                         {
+                            currAnchorTarget = AnchorTarget.Monster;
                             c.Anchor = Utility.PointToVector2(closest.GetBoundingBox().Center);
                             return;
                         }
                         break;
                     case AnchorTarget.Owner:
+                        currAnchorTarget = AnchorTarget.Owner;
                         c.Anchor = Utility.PointToVector2(c.Owner.GetBoundingBox().Center);
                         return;
                 }
             }
+            // base case is Owner
+            currAnchorTarget = AnchorTarget.Owner;
             c.Anchor = Utility.PointToVector2(c.Owner.GetBoundingBox().Center);
+            return;
+
         }
 
         /// <summary>Update for the client of the player that equipped this trinket, responsible for netfields.</summary>

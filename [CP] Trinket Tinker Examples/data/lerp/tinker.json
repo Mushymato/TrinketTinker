@@ -164,11 +164,17 @@
             {
               "MotionClass": "Lerp",
               "DirectionMode": "DRUL",
-              "AnchorTargetPriority": [
-                "Monster"
+              "Anchors": [
+                {
+                  "Mode": "Monster",
+                  "Range": 1280
+                }
               ],
               "AnimationFrameLength": 4,
               "Interval": 100,
+              "Args": {
+                "Max": 1280
+              }
             }
           ],
           "Abilities": [
@@ -187,12 +193,11 @@
               {
                 "AbilityClass": "Hitscan",
                 "ProcOn": "Timer",
-                "ProcTimer": 5000,
+                "ProcTimer": 500,
                 "Args": {
-                  "Min": 10,
-                  "Max": 50,
-                  "Knockback": 5,
-                  "Range": 256
+                  "Min": 5,
+                  "Max": 10,
+                  "Range": 128
                 }
               }
             ]
