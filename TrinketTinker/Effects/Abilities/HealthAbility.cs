@@ -20,7 +20,7 @@ namespace TrinketTinker.Effects.Abilities
         /// <returns></returns>
         private int HealthFormula(int maximum, int current, int relative)
         {
-            return (int)Math.Ceiling(Math.Min(maximum, current + relative * args.Percent));
+            return (int)Math.Ceiling(Math.Min(maximum, current + relative * args.Rand));
         }
 
         /// <summary>

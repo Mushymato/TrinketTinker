@@ -2,7 +2,6 @@ using System.Diagnostics.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Monsters;
-using TrinketTinker.Companions.Motions;
 using TrinketTinker.Effects.Proc;
 using TrinketTinker.Models;
 using TrinketTinker.Models.Mixin;

@@ -11,7 +11,7 @@ namespace TrinketTinker.Effects.Abilities
     {
         private float StaminaFormula(float maximum, float current)
         {
-            return (float)Math.Ceiling(Math.Min(maximum, current + maximum * args.Percent));
+            return (float)Math.Ceiling(Math.Min(maximum, current + maximum * args.Rand));
         }
 
         /// <summary>Heal % based on max Stamina</summary>

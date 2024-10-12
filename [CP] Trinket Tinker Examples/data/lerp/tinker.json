@@ -37,8 +37,8 @@
                 "ProcSound": "fairy_heal",
                 "AbilityClass": "Health",
                 "Args": {
-                  "Min": 1,
-                  "Max": 5
+                  "Min": 0.1,
+                  "Max": 0.5
                 }
               },
               {
@@ -46,8 +46,8 @@
                 "ProcOn": "Footstep",
                 "AbilityClass": "Stamina",
                 "Args": {
-                  "Min": 1,
-                  "Max": 5
+                  "Min": 0.1,
+                  "Max": 0.5
                 }
               }
             ],
@@ -60,8 +60,8 @@
                 "ProcSound": "fairy_heal",
                 "AbilityClass": "Health",
                 "Args": {
-                  "Min": 10,
-                  "Max": 20
+                  "Min": 0.1,
+                  "Max": 0.2
                 }
               },
               {
@@ -70,8 +70,8 @@
                 "ProcOn": "Footstep",
                 "AbilityClass": "Stamina",
                 "Args": {
-                  "Min": 10,
-                  "Max": 20
+                  "Min": 0.1,
+                  "Max": 0.2
                 }
               }
             ]
@@ -105,18 +105,6 @@
                 "ProcOn": "Footstep",
                 "AbilityClass": "DebugDummy",
               }
-              // {
-              //   // Shoot damaging projectile every 2s
-              //   "ProcOn": "Timer",
-              //   "ProcTimer": 2000,
-              //   "AbilityClass": "Projectile",
-              //   "Args": {
-              //     "MinDamage": 10,
-              //     "MaxDamage": 100,
-              //     "SpriteIndex": 5,
-              //     "IsExplosive": true
-              //   }
-              // }
             ],
             // level 1
             [
@@ -126,13 +114,6 @@
               }
             ],
             // level 2
-            [
-              {
-                "ProcOn": "Footstep",
-                "AbilityClass": "DebugDummy",
-              }
-            ],
-            // level 3
             [
               {
                 "ProcOn": "Footstep",
@@ -199,7 +180,19 @@
                 "ProcOn": "DamageMonster",
                 "IsBomb": true,
                 "Args": {
-                  "Min": 1000,
+                  "Min": 1,
+                }
+              },
+              // every 5s, damage a monster within 256 pixels of the trinket
+              {
+                "AbilityClass": "Hitscan",
+                "ProcOn": "Timer",
+                "ProcTimer": 5000,
+                "Args": {
+                  "Min": 10,
+                  "Max": 50,
+                  "Knockback": 5,
+                  "Range": 256
                 }
               }
             ]
