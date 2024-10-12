@@ -34,6 +34,20 @@ namespace TrinketTinker.Effects
                 return Companion.Position;
             }
         }
+        public Vector2 CompanionAnchor
+        {
+            get
+            {
+                if (Companion is TrinketTinkerCompanion cmp)
+                {
+                    return cmp.Anchor;
+                }
+                return Companion.Owner.Position;
+            }
+        }
+        /// <summary>Draw layer of owner.</summary>
+        public float CompanionOwnerDrawLayer => Companion.Owner.getDrawLayer();
+
         internal event EventHandler<ProcEventArgs>? EventUse;
         internal event EventHandler<ProcEventArgs>? EventFootstep;
         internal event EventHandler<ProcEventArgs>? EventReceiveDamage;

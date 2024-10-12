@@ -189,7 +189,7 @@
                   "Min": 1,
                 }
               },
-              // every 5s, damage a monster within 256 pixels of the trinket
+              // every 5s, damage a monster within 128 pixels of the trinket
               {
                 "AbilityClass": "Hitscan",
                 "ProcOn": "Timer",
@@ -198,7 +198,33 @@
                   "Min": 5,
                   "Max": 10,
                   "Range": 128
-                }
+                },
+                "ProcTemporarySprites": [
+                  {
+                    "Id": "Default",
+                    "Condition": null,
+                    "Texture": "TileSheets\\animations",
+                    "SourceRect": {
+                      "X": 256,
+                      "Y": 1856,
+                      "Width": 64,
+                      "Height": 128
+                    },
+                    "Interval": 80.0,
+                    "Frames": 6,
+                    "Loops": 999999,
+                    "PositionOffset": "0, -32",
+                    "Flicker": false,
+                    "Flip": false,
+                    "SortOffset": 0.0,
+                    "AlphaFade": 0.005,
+                    "Scale": 0.25,
+                    "ScaleChange": 0.0,
+                    "Rotation": 0.0,
+                    "RotationChange": 0.0,
+                    "Color": "#bfbf00bf"
+                  }
+                ]
               }
             ]
           ]

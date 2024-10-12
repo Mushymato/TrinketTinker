@@ -1,3 +1,5 @@
+using StardewValley.GameData;
+
 namespace TrinketTinker.Models
 {
     /// <summary>Defines how an ability can proc (activate).</summary>
@@ -34,6 +36,8 @@ namespace TrinketTinker.Models
         public double ProcTimer { get; set; } = -1;
         /// <summary>Sound cue to play on proc.</summary>
         public string? ProcSound { get; set; } = null;
+        /// <summary>Temporary animated sprites to spawn on proc.</summary>
+        public List<TemporaryAnimatedSpriteDefinition> ProcTemporarySprites { get; set; } = [];
         /// <summary>Condition, see <see cref="StardewValley.GameStateQuery"/></summary>
         public string? Condition { get; set; } = null;
         /// <summary>

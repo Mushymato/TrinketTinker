@@ -34,7 +34,7 @@ namespace TrinketTinker.Effects.Proc
                     return false;
             }
             if (data.Condition != null)
-                return GameStateQuery.CheckConditions(data.Condition, Location, Farmer, null, null, Random.Shared);
+                return GameStateQuery.CheckConditions(data.Condition, LocationOrCurrent, Farmer, null, null, Random.Shared);
             return true;
         }
     }

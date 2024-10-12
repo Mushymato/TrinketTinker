@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using StardewValley;
+using StardewValley.GameData;
 using StardewValley.Monsters;
 using TrinketTinker.Effects.Proc;
 using TrinketTinker.Models;
@@ -50,28 +51,6 @@ namespace TrinketTinker.Effects.Abilities
             string clsName = data.Name == "" ? GetType().Name : data.Name;
             Name = $"{effect.Trinket.ItemId}:{clsName}[{lvl}]";
             ProcTimer = data.ProcTimer;
-        }
-
-        /// <summary>Check condition is valid for farmer's location.</summary>
-        /// <param name="farmer"></param>
-        /// <returns>True if ability should activate.</returns>
-        protected virtual bool CheckFarmer([NotNullWhen(true)] Farmer? farmer, GameLocation? location = null)
-        {
-            return Active && Allowed && farmer != null && (
-                d.Condition == null ||
-                GameStateQuery.CheckConditions(
-                    d.Condition, location ?? farmer.currentLocation,
-                    farmer, null, null, Random.Shared
-                )
-            );
-        }
-
-        /// <summary>Check monster is valid.</summary>
-        /// <param name="monster"></param>
-        /// <returns>True if ability should activate.</returns>
-        protected virtual bool CheckMonster(Monster monster)
-        {
-            return monster != null;
         }
 
         /// <summary>Setup the ability, when trinket is equipped.</summary>
@@ -166,6 +145,26 @@ namespace TrinketTinker.Effects.Abilities
             {
                 if (d.ProcSound != null)
                     Game1.playSound(d.ProcSound);
+                foreach (TemporaryAnimatedSpriteDefinition temporarySprite in d.ProcTemporarySprites)
+                {
+                    TemporaryAnimatedSprite temporaryAnimatedSprite = new(
+                        temporarySprite.Texture,
+                        temporarySprite.SourceRect,
+                        temporarySprite.Interval,
+                        temporarySprite.Frames,
+                        temporarySprite.Loops,
+                        e.CompanionAnchor + temporarySprite.PositionOffset * 4f,
+                        temporarySprite.Flicker, temporarySprite.Flip,
+                        e.CompanionOwnerDrawLayer + temporarySprite.SortOffset,
+                        temporarySprite.AlphaFade,
+                        Utility.StringToColor(temporarySprite.Color) ?? Color.White,
+                        temporarySprite.Scale * 4f,
+                        temporarySprite.ScaleChange,
+                        temporarySprite.Rotation,
+                        temporarySprite.RotationChange
+                    );
+                    Game1.Multiplayer.broadcastSprites(args.LocationOrCurrent, temporaryAnimatedSprite);
+                }
             }
         }
 
