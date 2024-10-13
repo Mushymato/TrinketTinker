@@ -18,8 +18,8 @@ namespace TrinketTinker.Companions.Motions
                 Utility.addRainbowStarExplosion(location, c.Position, 1);
             }
             c.Position = c.Anchor;
-            c.Offset = motionOffset;
             UpdateDirection();
+            c.Offset = motionOffset;
         }
 
         /// <inheritdoc/>
@@ -50,28 +50,39 @@ namespace TrinketTinker.Companions.Motions
                 case DirectionMode.DRU:
                     c.direction.Value = facingDirection switch
                     {
-                        0 => -1,
+                        0 => 3,
+                        1 => 2,
                         2 => 1,
+                        3 => -2,
                         _ => facingDirection + 1,
                     };
                     break;
                 case DirectionMode.RL:
                     c.direction.Value = facingDirection switch
                     {
-                        0 => 2,
-                        2 => 1,
+                        1 => 1,
+                        3 => 2,
                         _ => prevDirection,
                     };
                     break;
                 case DirectionMode.R:
                     c.direction.Value = facingDirection switch
                     {
-                        0 => -1,
-                        2 => 1,
+                        1 => 1,
+                        3 => -1,
                         _ => prevDirection,
                     };
                     break;
                 case DirectionMode.Rotate:
+                    c.rotation.Value = facingDirection switch
+                    {
+                        0 => -MathF.PI / 2,
+                        1 => 0,
+                        2 => MathF.PI / 2,
+                        3 => MathF.PI,
+                        _ => 0
+                    };
+                    break;
                 case DirectionMode.None:
                     c.direction.Value = 1;
                     break;

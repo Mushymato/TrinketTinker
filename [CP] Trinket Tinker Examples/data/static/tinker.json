@@ -75,7 +75,7 @@
             },
           ],
           "Motions": [
-            // fixed position, always behind the player
+            // fixed position, always underneath the player
             {
               "MotionClass": "Static",
               "AlwaysMoving": false,
@@ -113,20 +113,21 @@
         "{{ModId}}_StaticRelative": {
           "Variants": [
             {
-              "Texture": "Mods/{{ModId}}/rotation",
+              "Texture": "Mods/{{ModId}}/rotation-bw",
               "Width": 16,
-              "Height": 16
+              "Height": 16,
+              "ColorMask": "MonoGameOrange"
             },
           ],
           "Motions": [
-            // Orbit around the player in a ellipse
+            // Put 1/2 tile toward top left of player when facing down, adjusts when player face other directions
             {
               "MotionClass": "Relative",
               "AlwaysMoving": false,
               "DirectionMode": "RL",
               "AnimationFrameLength": 4,
               "Interval": 200,
-              "Offset": "-64,-64"
+              "Offset": "-128,-64"
             }
           ],
           "Abilities": [
