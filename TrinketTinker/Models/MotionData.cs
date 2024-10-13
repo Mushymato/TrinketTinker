@@ -49,7 +49,7 @@ namespace TrinketTinker.Models
         InFront,
     }
 
-    /// <summary>Model for <see cref="Anchors"/></summary>
+    /// <summary>Model defining how companions pick anchor target</summary>
     public class AnchorTargetData
     {
         /// <summary>Targeting mode, see <see cref="AnchorTarget"/>.</summary>
