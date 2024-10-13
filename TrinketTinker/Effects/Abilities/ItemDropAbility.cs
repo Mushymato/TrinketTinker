@@ -27,7 +27,7 @@ namespace TrinketTinker.Effects.Abilities
             {
                 if (res.Item is Item item)
                 {
-                    Game1.createItemDebris(item, e.CompanionPosition, -1);
+                    Game1.createItemDebris(item, e.CompanionPosition ?? context.Player.position.Value, -1);
                     spawned = true;
                 }
             }

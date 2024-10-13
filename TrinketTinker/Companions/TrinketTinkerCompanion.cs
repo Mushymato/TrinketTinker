@@ -128,23 +128,24 @@ namespace TrinketTinker.Companions
         private void InitCompanionData(NetString field, string oldValue, string newValue)
         {
             // _id.Value = newValue;
-            if (!ModEntry.CompanionData.TryGetValue(_id.Value, out Data))
+            if (!ModEntry.TinkerData.TryGetValue(_id.Value, out Data))
             {
                 ModEntry.Log($"Failed to get companion data for ${_id.Value}", LogLevel.Error);
                 return;
             }
 
-            VariantData vdata = Data.Variants[whichVariant.Value];
-            Sprite = new AnimatedSprite(vdata.Texture, 0, vdata.Width, vdata.Height);
-            SpriteOrigin = new Vector2(vdata.Width / 2, vdata.Height / 2);
-
             if (Data.Motions.Count > 0)
             {
+                VariantData vdata = Data.Variants[whichVariant.Value];
+                Sprite = new AnimatedSprite(vdata.Texture, 0, vdata.Width, vdata.Height);
+                SpriteOrigin = new Vector2(vdata.Width / 2, vdata.Height / 2);
                 MotionData mdata = Data.Motions[0];
                 if (ModEntry.TryGetType(mdata.MotionClass, out Type? motionCls, Constants.MOTION_CLS))
                     Motion = (IMotion?)Activator.CreateInstance(motionCls, this, mdata);
                 else
-                    Motion = new LerpMotion(this, mdata);
+                {
+                    ModEntry.LogOnce($"Could not get motion class {mdata.MotionClass}", LogLevel.Error);
+                }
             }
         }
 

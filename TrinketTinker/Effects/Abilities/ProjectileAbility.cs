@@ -1,25 +1,25 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Monsters;
+using TrinketTinker.Effects.Pewpew;
 using TrinketTinker.Effects.Proc;
 using TrinketTinker.Models;
 using TrinketTinker.Models.AbilityArgs;
 
 namespace TrinketTinker.Effects.Abilities
 {
-    public class HitscanAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<DamageArgs>(effect, data, lvl)
+    public class ProjectileAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<ProjectileArgs>(effect, data, lvl)
     {
         protected override bool ApplyEffect(ProcEventArgs proc)
         {
+            Vector2 sourcePosition = e.CompanionPosition ?? proc.Farmer.Position;
             Monster? target = proc.Monster ?? Utility.findClosestMonsterWithinRange(
-                proc.LocationOrCurrent,
-                e.CompanionPosition ?? proc.Farmer.Position,
-                args.Range,
-                ignoreUntargetables: true
+                proc.LocationOrCurrent, sourcePosition, args.Range, ignoreUntargetables: true
             );
             if (target == null)
                 return false;
-            args.DamageMonster(proc, target);
+
+            proc.LocationOrCurrent.projectiles.Add(new TinkerProjectile(args, proc, target, sourcePosition));
             return base.ApplyEffect(proc);
         }
     }

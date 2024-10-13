@@ -21,7 +21,7 @@ namespace TrinketTinker
         public static string TinkerAsset => $"Mods/{ModId}/Tinker";
 
         private static Dictionary<string, TinkerData>? _companionData = null;
-        public static Dictionary<string, TinkerData> CompanionData
+        public static Dictionary<string, TinkerData> TinkerData
         {
             get
             {

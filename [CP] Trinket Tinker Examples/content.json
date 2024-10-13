@@ -4,7 +4,7 @@
     // Sprite Sheets
     {
       "Action": "Load",
-      "Target": "Mods/{{ModId}}/drul, Mods/{{ModId}}/rotation, Mods/{{ModId}}/rotation-bw",
+      "Target": "Mods/{{ModId}}/drul, Mods/{{ModId}}/rotation, Mods/{{ModId}}/rotation-bw, Mods/{{ModId}}/projectile",
       "FromFile": "sprites/{{TargetWithoutPath}}.png"
     },
     // Examples involving companion directions with follow motions

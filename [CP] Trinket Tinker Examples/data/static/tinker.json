@@ -7,7 +7,6 @@
       "Entries": {
         // ID must match trinket
         "{{ModId}}_StaticDRUL": {
-          "Id": "{{ModId}}_StaticDRUL",
           "Variants": [
             {
               "Texture": "Mods/{{ModId}}/drul",
@@ -52,7 +51,6 @@
           ]
         },
         "{{ModId}}_StatiColorMask": {
-          "Id": "{{ModId}}_StatiColorMask",
           "Variants": [
             // Prismatic
             {
@@ -91,14 +89,61 @@
             // level 0
             [
               {
-                // Shoot debuff(frozen) projectile every 3s
+                // Shoot a projectile every 3s
                 "ProcOn": "Timer",
                 "ProcTimer": 3000,
                 "AbilityClass": "Projectile",
                 "Args": {
-                  "DebuffId": "frozen",
-                  "SpriteIndex": 17,
-                  "Speed": 12,
+                  "Min": 5,
+                  "Max": 10,
+                  "Range": 4096,
+                  "CritChance": 0.5,
+                  "CritDamage": 2.0,
+                  "Texture": "Mods/{{ModId}}/projectile",
+                  "SpriteIndex": 1,
+                  "Acceleration": 2,
+                  "MinVelocity": 2,
+                  "MaxVelocity": 24
+                }
+              }
+            ]
+          ]
+        },
+        // ID must match trinket
+        "{{ModId}}_StaticRelative": {
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/rotation",
+              "Width": 16,
+              "Height": 16
+            },
+          ],
+          "Motions": [
+            // Orbit around the player in a ellipse
+            {
+              "MotionClass": "Relative",
+              "AlwaysMoving": false,
+              "DirectionMode": "RL",
+              "AnimationFrameLength": 4,
+              "Interval": 200,
+              "Offset": "-64,-64"
+            }
+          ],
+          "Abilities": [
+            // level 0
+            [
+              {
+                // Shoot a projectile that stuns every 3s
+                "ProcOn": "Timer",
+                "ProcTimer": 3000,
+                "AbilityClass": "Projectile",
+                "Args": {
+                  "StunTime": 500,
+                  "Range": 4096,
+                  "Texture": "Mods/{{ModId}}/projectile",
+                  "SpriteIndex": 0,
+                  "MinVelocity": 12,
+                  "Pierce": 99999,
                 }
               }
             ]

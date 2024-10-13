@@ -7,11 +7,11 @@ using TrinketTinker.Models;
 namespace TrinketTinker.Effects.Proc
 {
     /// <summary>Proc event data</summary>
-    public class ProcEventArgs(ProcOn procOn) : EventArgs
+    public class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
     {
         /// <summary>Kind of proc triggering this event <see cref="ProcOn"/></summary>
         public ProcOn ProcOn => procOn;
-        public Farmer? Farmer { get; set; } = null;
+        public Farmer Farmer => farmer;
         public GameTime? Time { get; set; } = null;
         public GameLocation? Location { get; set; } = null;
         public Monster? Monster { get; set; } = null;

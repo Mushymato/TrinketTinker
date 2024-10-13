@@ -67,10 +67,7 @@ namespace TrinketTinker.Effects.Abilities
                 switch (d.ProcOn)
                 {
                     case ProcOn.Always:
-                        HandleProc(null, new(ProcOn.Always)
-                        {
-                            Farmer = farmer
-                        });
+                        HandleProc(null, new(ProcOn.Always, farmer));
                         break;
                     case ProcOn.Use:
                         e.EventUse += HandleProc;
@@ -153,7 +150,7 @@ namespace TrinketTinker.Effects.Abilities
                         temporarySprite.Interval,
                         temporarySprite.Frames,
                         temporarySprite.Loops,
-                        e.CompanionAnchor + temporarySprite.PositionOffset * 4f,
+                        GetTASPosition() + temporarySprite.PositionOffset * 4f,
                         temporarySprite.Flicker, temporarySprite.Flip,
                         e.CompanionOwnerDrawLayer + temporarySprite.SortOffset,
                         temporarySprite.AlphaFade,
@@ -166,6 +163,11 @@ namespace TrinketTinker.Effects.Abilities
                     Game1.Multiplayer.broadcastSprites(args.LocationOrCurrent, temporaryAnimatedSprite);
                 }
             }
+        }
+
+        protected virtual Vector2 GetTASPosition()
+        {
+            return e.CompanionAnchor;
         }
 
         /// <summary>Cleanup ability, if is <see cref="ProcOn.Always"/></summary>
@@ -200,9 +202,8 @@ namespace TrinketTinker.Effects.Abilities
             }
             if (d.ProcOn == ProcOn.Timer && Allowed)
             {
-                HandleProc(null, new(ProcOn.Timer)
+                HandleProc(null, new(ProcOn.Timer, farmer)
                 {
-                    Farmer = farmer,
                     Time = time,
                     Location = location
                 });

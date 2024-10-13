@@ -7,7 +7,7 @@ using TrinketTinker.Models.MotionArgs;
 namespace TrinketTinker.Companions.Motions
 {
     /// <summary>Companion orbits around a point</summary>
-    public class OrbitMotion : StaticMotion<OrbitArgs>
+    public class OrbitMotion : BaseStaticMotion<OrbitArgs>
     {
         /// <summary>trig function input</summary>
         private double theta = 0f;

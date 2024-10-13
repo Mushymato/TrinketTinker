@@ -23,7 +23,7 @@ namespace TrinketTinker.Effects
         protected ImmutableList<IAbility> Abilities => abilities.Value;
 
         /// <summary>Position of companion, including offset if applicable.</summary>
-        public Vector2 CompanionPosition
+        public Vector2? CompanionPosition
         {
             get
             {
@@ -31,9 +31,10 @@ namespace TrinketTinker.Effects
                 {
                     return cmp.Position + cmp.Offset;
                 }
-                return Companion.Position;
+                return null;
             }
         }
+        /// <summary>Anchor position of companion.</summary>
         public Vector2 CompanionAnchor
         {
             get
@@ -60,7 +61,7 @@ namespace TrinketTinker.Effects
         public TrinketTinkerEffect(Trinket trinket)
             : base(trinket)
         {
-            ModEntry.CompanionData.TryGetValue(trinket.ItemId, out Data);
+            ModEntry.TinkerData.TryGetValue(trinket.ItemId, out Data);
             abilities = new(InitAbilities, false);
         }
 
@@ -147,43 +148,34 @@ namespace TrinketTinker.Effects
 
         public override void OnUse(Farmer farmer)
         {
-            EventUse?.Invoke(this, new(ProcOn.Use)
-            {
-                Farmer = farmer
-            });
+            EventUse?.Invoke(this, new(ProcOn.Use, farmer));
         }
 
         public override void OnFootstep(Farmer farmer)
         {
-            EventFootstep?.Invoke(this, new(ProcOn.Footstep)
-            {
-                Farmer = farmer
-            });
+            EventFootstep?.Invoke(this, new(ProcOn.Footstep, farmer));
         }
 
         public override void OnReceiveDamage(Farmer farmer, int damageAmount)
         {
-            EventReceiveDamage?.Invoke(this, new(ProcOn.ReceiveDamage)
+            EventReceiveDamage?.Invoke(this, new(ProcOn.ReceiveDamage, farmer)
             {
-                Farmer = farmer,
                 DamageAmount = damageAmount
             });
         }
 
         public override void OnDamageMonster(Farmer farmer, Monster monster, int damageAmount, bool isBomb, bool isCriticalHit)
         {
-            EventDamageMonster?.Invoke(this, new(ProcOn.DamageMonster)
+            EventDamageMonster?.Invoke(this, new(ProcOn.DamageMonster, farmer)
             {
-                Farmer = farmer,
                 Monster = monster,
                 DamageAmount = damageAmount,
                 IsBomb = isBomb,
                 IsCriticalHit = isCriticalHit
             });
             if (monster.Health <= 0)
-                EventSlayMonster?.Invoke(this, new(ProcOn.SlayMonster)
+                EventSlayMonster?.Invoke(this, new(ProcOn.SlayMonster, farmer)
                 {
-                    Farmer = farmer,
                     Monster = monster,
                     DamageAmount = damageAmount,
                     IsBomb = isBomb,
@@ -197,9 +189,8 @@ namespace TrinketTinker.Effects
         /// <param name="damageAmount"></param>
         public virtual void OnTrigger(Farmer farmer, string[] args, TriggerActionContext context)
         {
-            EventTrigger?.Invoke(this, new(ProcOn.Trigger)
+            EventTrigger?.Invoke(this, new(ProcOn.Trigger, farmer)
             {
-                Farmer = farmer,
                 TriggerArgs = args,
                 TriggerContext = context
             });

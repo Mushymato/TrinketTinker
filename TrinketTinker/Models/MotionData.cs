@@ -1,4 +1,6 @@
 
+using Microsoft.Xna.Framework;
+
 namespace TrinketTinker.Models
 {
     /// <summary>Determine how the sprites are interpreted.</summary>
@@ -47,7 +49,7 @@ namespace TrinketTinker.Models
         InFront,
     }
 
-
+    /// <summary>Model for <see cref="Anchors"/></summary>
     public class AnchorTargetData
     {
         /// <summary>Targeting mode, see <see cref="AnchorTarget"/>.</summary>
@@ -55,7 +57,6 @@ namespace TrinketTinker.Models
         /// <summary>Search range, applicable to <see cref="AnchorTarget.Monster"/>.</summary>
         public int Range = 640;
     }
-
 
     /// <summary>Data for <see cref="Companions.Motions"/>, defines how a companion moves.</summary>
     public class MotionData : Mixin.IHaveArgs
@@ -78,10 +79,8 @@ namespace TrinketTinker.Models
         public int AnimationFrameLength { get; set; } = 4;
         /// <summary>Miliseconds between frames.</summary>
         public float Interval { get; set; } = 100f;
-        /// <summary>Position offset X.</summary>
-        public float OffsetX { get; set; } = 0f;
-        /// <summary>Position offset Y.</summary>
-        public float OffsetY { get; set; } = 0f;
+        /// <summary>Position offset.</summary>
+        public Vector2 Offset { get; set; } = Vector2.Zero;
         /// <summary>Layer depth mode.</summary>
         public LayerDepth LayerDepth { get; set; } = LayerDepth.Position;
         /// <summary>Base scale to draw texture at.</summary>

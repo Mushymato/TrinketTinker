@@ -6,7 +6,6 @@
       "Target": "{{mushymato.TrinketTinker/Target}}",
       "Entries": {
         "{{ModId}}_LerpR": {
-          "Id": "{{ModId}}_LerpR",
           "MinLevel": 1,
           "MaxLevel": 2,
           "Variants": [
@@ -79,7 +78,6 @@
         },
         // ID must match trinket
         "{{ModId}}_LerpRotate": {
-          "Id": "{{ModId}}_LerpRotate",
           "Variants": [
             {
               "Texture": "Mods/{{ModId}}/rotation",
@@ -124,7 +122,6 @@
         },
         // ID must match trinket
         "{{ModId}}_LerpDRU": {
-          "Id": "{{ModId}}_LerpDRU",
           "Variants": [
             {
               "Texture": "Mods/{{ModId}}/drul",
@@ -152,7 +149,6 @@
         },
         // ID must match trinket
         "{{ModId}}_LerpDRUL": {
-          "Id": "{{ModId}}_LerpDRUL",
           "Variants": [
             {
               "Texture": "Mods/{{ModId}}/drul",
@@ -189,7 +185,7 @@
                   "Min": 1,
                 }
               },
-              // every 5s, damage a monster within 128 pixels of the trinket
+              // every 5s, damage a monster within 128 pixels of the companion
               {
                 "AbilityClass": "Hitscan",
                 "ProcOn": "Timer",
@@ -200,6 +196,7 @@
                   "Range": 128
                 },
                 "ProcTemporarySprites": [
+                  // this structure is identical to the TemporarySprites field in Data/Machine
                   {
                     "Id": "Default",
                     "Condition": null,

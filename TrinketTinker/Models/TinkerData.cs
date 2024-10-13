@@ -8,11 +8,11 @@ namespace TrinketTinker.Models
         /// <summary>Trinket stat minimum level, this added to the internal level value that is based on size of <see cref="Abilities"/></summary>
         public int MinLevel { get; set; } = 1;
         /// <summary>List of variants</summary>
-        public List<VariantData> Variants { get; set; } = new();
+        public List<VariantData> Variants { get; set; } = [];
         /// <summary>List of motions</summary>
-        public List<MotionData> Motions { get; set; } = new();
+        public List<MotionData> Motions { get; set; } = [];
         /// <summary>List of abilities</summary>
-        public List<List<AbilityData>> Abilities { get; set; } = new();
+        public List<List<AbilityData>> Abilities { get; set; } = [];
 
         // TODO: state controllers?
     }

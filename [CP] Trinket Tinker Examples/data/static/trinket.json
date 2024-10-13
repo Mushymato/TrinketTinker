@@ -26,6 +26,16 @@
           // Custom trinket effect class required for features of this mod
           "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
         },
+        "{{ModId}}_StaticRelative": {
+          "Id": "{{ModId}}_StaticRelative",
+          "DisplayName": "Trinket Tinker - Static Relative",
+          "Description": "Static offset that respects player direction.",
+          "Texture": "Mods/{{ModId}}/rotation",
+          "SheetIndex": 2,
+          "DropsNaturally": false,
+          "CanBeReforged": false,
+          "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
+        },
       }
     }
   ]

@@ -6,8 +6,9 @@ using TrinketTinker.Models.MotionArgs;
 
 namespace TrinketTinker.Companions.Motions
 {
-    public class StaticMotion<IArgs>(TrinketTinkerCompanion companion, MotionData data) : Motion<IArgs>(companion, data) where IArgs : StaticArgs
+    public class BaseStaticMotion<IArgs>(TrinketTinkerCompanion companion, MotionData data) : Motion<IArgs>(companion, data) where IArgs : StaticArgs
     {
+        /// <inheritdoc/>
         public override void UpdateLocal(GameTime time, GameLocation location)
         {
             c.Moving = c.Position != c.Anchor;
@@ -20,6 +21,8 @@ namespace TrinketTinker.Companions.Motions
             c.Offset = motionOffset;
             UpdateDirection();
         }
+
+        /// <inheritdoc/>
         public override void Draw(SpriteBatch b)
         {
             DrawWithShadow(
@@ -29,7 +32,7 @@ namespace TrinketTinker.Companions.Motions
             );
         }
 
-        /// <summary>Update companion facing direction using current position and offset.</summary>
+        /// <summary>Update companion facing direction using player facing direction.</summary>
         protected override void UpdateDirection()
         {
             int prevDirection = c.direction.Value;
@@ -74,5 +77,12 @@ namespace TrinketTinker.Companions.Motions
                     break;
             }
         }
+    }
+
+    /// <summary>Companion stays at some </summary>
+    /// <param name="companion"></param>
+    /// <param name="data"></param>
+    public sealed class StaticMotion(TrinketTinkerCompanion companion, MotionData data) : BaseStaticMotion<StaticArgs>(companion, data)
+    {
     }
 }

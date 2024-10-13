@@ -14,7 +14,7 @@ namespace TrinketTinker.Effects.Abilities
         protected override bool ApplyEffect(ProcEventArgs proc)
         {
             // Buff(string id, string source = null, string displaySource = null, int duration = -1, Texture2D iconTexture = null, int iconSheetIndex = -1, BuffEffects effects = null, bool? isDebuff = null, string displayName = null, string description = null)
-            proc.Farmer?.applyBuff(args.BuffId);
+            proc.Farmer.applyBuff(args.BuffId);
             return base.ApplyEffect(proc);
         }
 

@@ -22,7 +22,7 @@ namespace TrinketTinker.Companions.Motions
         /// <summary>Light source ID, generated if LightRadius is set in <see cref="MotionData"/>.</summary>
         protected string lightId = "";
         /// <summary>Class dependent arguments for subclasses</summary>
-        protected readonly TArgs? args = default;
+        protected readonly TArgs args = default!;
         /// <summary>The previous anchor target</summary>
         protected AnchorTarget prevAnchorTarget = AnchorTarget.Owner;
         /// <summary>The current anchor target</summary>
@@ -37,13 +37,14 @@ namespace TrinketTinker.Companions.Motions
         {
             if (typeof(TArgs) != typeof(NoArgs))
             {
-                args = data.ParseArgs<TArgs>();
-                if (args != null && !args.Validate())
-                    args = default;
+                if (data.ParseArgs<TArgs>() is TArgs parsed && parsed.Validate())
+                    args = parsed;
+                else
+                    args = (TArgs)Activator.CreateInstance(typeof(TArgs))!;
             }
             c = companion;
             d = data;
-            motionOffset = new(d.OffsetX, d.OffsetY);
+            motionOffset = new(d.Offset.X, d.Offset.Y);
             c.Offset = motionOffset;
         }
 

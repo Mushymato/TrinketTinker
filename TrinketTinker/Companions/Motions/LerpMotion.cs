@@ -11,17 +11,10 @@ namespace TrinketTinker.Companions.Motions
         /// <summary>Variable for how much interpolation happened so far.</summary>
         private float lerp = -1f;
 
-        /// <summary>If the companion is farther than this, start pulling them to the anchor</summary>
-        protected readonly float minDistance = 80f;
-        /// <summary>If the companion is farther than this, teleport instead of lerp</summary>
-        protected readonly float maxDistance = 768f;
-
         public BaseLerpMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data)
         {
             motionOffset.Y -= c.Sprite.SpriteHeight * 4 / 2;
             c.Offset = motionOffset;
-            minDistance = args?.Min ?? minDistance;
-            maxDistance = args?.Max ?? maxDistance;
         }
 
         public override void UpdateLocal(GameTime time, GameLocation location)
@@ -29,13 +22,13 @@ namespace TrinketTinker.Companions.Motions
             if (lerp < 0f || AnchorChanged)
             {
                 float distance = (c.Anchor - c.Position).Length();
-                if (distance > maxDistance)
+                if (distance > args.Max)
                 {
                     Utility.addRainbowStarExplosion(location, c.Position, 1);
                     c.Position = c.Anchor;
                     lerp = -1f;
                 }
-                if (distance > minDistance)
+                if (distance > args.Min)
                 {
                     c.startPosition = c.Position;
                     float radius = 0.33f;
@@ -72,7 +65,7 @@ namespace TrinketTinker.Companions.Motions
     /// <summary>Companion closely follows the anchor, at a distance</summary>
     /// <param name="companion"></param>
     /// <param name="data"></param>
-    public class LerpMotion(TrinketTinkerCompanion companion, MotionData data) : BaseLerpMotion<BounceArgs>(companion, data)
+    public class LerpMotion(TrinketTinkerCompanion companion, MotionData data) : BaseLerpMotion<LerpArgs>(companion, data)
     {
     }
 }
