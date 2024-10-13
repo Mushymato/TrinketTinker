@@ -3,21 +3,21 @@ using TrinketTinker.Effects.Abilities;
 
 namespace TrinketTinker
 {
-    internal static class Constants
+    public static class Constants
     {
         /// <summary>Float second of 1 frame (60fps), not accurate since it is float, only use for bounds.</summary>
-        internal const float ONE_FRAME = 1000 / 60;
+        public const float ONE_FRAME = 1000 / 60;
 
         /// <summary>Special color name for the animated prismatic color mask.</summary>
-        internal const string COLOR_PRISMATIC = "Prismatic";
+        public const string COLOR_PRISMATIC = "Prismatic";
 
         /// <summary>String pattern for trinket tinker motion classes.</summary>
-        internal static readonly string MOTION_CLS = GetClsPattern(typeof(LerpMotion), "Motion");
+        public static readonly string MOTION_CLS = GetClsPattern(typeof(LerpMotion), "Motion");
 
         /// <summary>String pattern for trinket tinker ability classes</summary>
-        internal static readonly string ABILITY_CLS = GetClsPattern(typeof(BuffAbility), "Ability");
+        public static readonly string ABILITY_CLS = GetClsPattern(typeof(BuffAbility), "Ability");
 
-        static string GetClsPattern(Type cls, string suffix)
+        internal static string GetClsPattern(Type cls, string suffix)
         {
             if (cls.AssemblyQualifiedName is not string clsName)
                 throw new ArgumentException($"Can't get AssemblyQualifiedName from type {cls}");

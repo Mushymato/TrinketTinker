@@ -14,7 +14,7 @@ using TrinketTinker.Extra;
 
 namespace TrinketTinker
 {
-    public class ModEntry : Mod
+    internal sealed class ModEntry : Mod
     {
         private static IMonitor? mon;
         public static string ModId { get; set; } = "";
