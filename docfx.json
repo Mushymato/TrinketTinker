@@ -9,8 +9,8 @@
           ]
         }
       ],
-      "dest": "api"
-      // "filter": "docfx-api-filters.yml"
+      "dest": "api",
+      "filter": "docfx-api-filters.yml"
     }
   ],
   "build": {
