@@ -7,7 +7,7 @@ using TrinketTinker.Models.Mixin;
 namespace TrinketTinker.Effects.Abilities
 {
     /// <summary>Prints many logs, doesn't do anything else.</summary>
-    public class DebugDummyAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<NoArgs>(effect, data, lvl)
+    public sealed class DebugDummyAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<NoArgs>(effect, data, lvl)
     {
         /// <summary>Debug log.</summary>
         /// <param name="proc"></param>

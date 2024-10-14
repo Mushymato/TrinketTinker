@@ -11,7 +11,7 @@ namespace TrinketTinker.Effects.Abilities
     /// For <see cref="ProcOn.DamageMonster"/> and <see cref="ProcOn.ReceiveDamage"/>,
     /// healing is based on damage recieved or dealt instead of percent HP.
     /// </summary>
-    public class HealthAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<PercentArgs>(effect, data, lvl)
+    public sealed class HealthAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<PercentArgs>(effect, data, lvl)
     {
         /// <summary>Healing formula</summary>
         /// <param name="maximum"></param>

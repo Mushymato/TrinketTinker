@@ -5,7 +5,7 @@ using TrinketTinker.Models.Mixin;
 namespace TrinketTinker.Models.AbilityArgs
 {
     /// <summary>Item arguments, accepts everything in SDV item spawn data</summary>
-    public class SpawnItemArgs : GenericSpawnItemData, IArgs
+    public sealed class SpawnItemArgs : GenericSpawnItemData, IArgs
     {
         /// <summary>
         /// How to query the item, by default <see cref="ItemQuerySearchMode.RandomOfTypeItem"/>.

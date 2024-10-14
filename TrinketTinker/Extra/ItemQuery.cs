@@ -11,7 +11,7 @@ namespace TrinketTinker.Extra
         public static readonly string CreateTrinketQuery = $"{ModEntry.ModId}_CREATE_TRINKET";
 
         /// <summary>
-        /// mushymato.TrinketTinker_CREATE_TRINKET <unqualified id> <level>? <variant>?
+        /// mushymato.TrinketTinker_CREATE_TRINKET UnqualifiedId Level? Variant?
         /// Creates a new trinket item. If the trinket has tinker data, set level and variant.
         /// </summary>
         /// <param name="key"></param>

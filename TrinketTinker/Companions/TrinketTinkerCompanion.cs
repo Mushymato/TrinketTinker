@@ -7,7 +7,6 @@ using StardewValley.Companions;
 using TrinketTinker.Models;
 using TrinketTinker.Companions.Motions;
 using StardewValley.Network;
-using TrinketTinker.Models.Mixin;
 
 
 namespace TrinketTinker.Companions

@@ -13,7 +13,7 @@ namespace TrinketTinker.Models.Mixin
     /// <summary>
     /// No arguments are needed, Args will not be parsed.
     /// </summary>
-    public class NoArgs : IArgs
+    public sealed class NoArgs : IArgs
     {
         /// <inheritdoc/>
         public bool Validate() => true;

@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
-using StardewValley.Monsters;
 
 namespace TrinketTinker.Effects.Abilities
 {

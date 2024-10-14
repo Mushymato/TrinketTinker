@@ -3,7 +3,7 @@ using StardewValley;
 
 namespace TrinketTinker
 {
-    internal static class Extensions
+    public static class Extensions
     {
         /// <summary>
         /// Reverse the animation from last frame, e.g. 1 2 3 4 3 2 1 2 3 4.

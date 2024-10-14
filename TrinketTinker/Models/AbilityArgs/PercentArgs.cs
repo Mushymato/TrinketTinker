@@ -3,7 +3,7 @@ using TrinketTinker.Models.Mixin;
 namespace TrinketTinker.Models.AbilityArgs
 {
     /// <summary>Percent arguments</summary>
-    public class PercentArgs : IArgs
+    public sealed class PercentArgs : IArgs
     {
         /// <summary>Min percent, out of 1</summary>
         public double Min { get; set; } = 0;

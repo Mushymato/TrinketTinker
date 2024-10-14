@@ -8,7 +8,7 @@ using TrinketTinker.Models.AbilityArgs;
 
 namespace TrinketTinker.Effects.Abilities
 {
-    public class ProjectileAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<ProjectileArgs>(effect, data, lvl)
+    public sealed class ProjectileAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<ProjectileArgs>(effect, data, lvl)
     {
         protected override bool ApplyEffect(ProcEventArgs proc)
         {

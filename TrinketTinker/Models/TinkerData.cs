@@ -1,7 +1,7 @@
 namespace TrinketTinker.Models
 {
     /// <summary>Top level data class for <see cref="ModEntry.TinkerAsset"/> entries.</summary>
-    public class TinkerData
+    public sealed class TinkerData
     {
         /// <summary>Class name, need to be fully qualified. Will use <see cref="Companions.TrinketTinkerCompanion"/> if not set.</summary>
         public string? CompanionClass { get; set; } = null;

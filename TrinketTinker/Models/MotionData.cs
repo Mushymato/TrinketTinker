@@ -59,7 +59,7 @@ namespace TrinketTinker.Models
     }
 
     /// <summary>Data for <see cref="Companions.Motions"/>, defines how a companion moves.</summary>
-    public class MotionData : Mixin.IHaveArgs
+    public sealed class MotionData : Mixin.IHaveArgs
     {
         /// <summary>Class name, need to be fully qualified to use a motion not provided by this mod.</summary>
         public string? MotionClass { get; set; } = null;

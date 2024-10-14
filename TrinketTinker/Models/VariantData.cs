@@ -4,7 +4,7 @@ using StardewValley;
 namespace TrinketTinker.Models
 {
     /// <summary>Data for <see cref="Effects.Abilities"/>, holds sprite variations.</summary>
-    public class VariantData
+    public sealed class VariantData
     {
         /// <summary>Variant texture content path.</summary>
         public string Texture { get; set; } = "";

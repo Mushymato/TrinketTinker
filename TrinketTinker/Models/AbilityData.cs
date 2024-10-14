@@ -24,7 +24,7 @@ namespace TrinketTinker.Models
     }
 
     /// <summary>Data for <see cref="Effects.Abilities"/>, defines game effect that a trinket can provide.</summary>
-    public class AbilityData : Mixin.IHaveArgs
+    public sealed class AbilityData : Mixin.IHaveArgs
     {
         /// <summary>Name of this ability. If unset, a name is generatde from class name and trinket ID.</summary>
         public string Name = "";

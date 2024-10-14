@@ -12,10 +12,10 @@ namespace TrinketTinker
         public const string COLOR_PRISMATIC = "Prismatic";
 
         /// <summary>String pattern for trinket tinker motion classes.</summary>
-        public static readonly string MOTION_CLS = GetClsPattern(typeof(LerpMotion), "Motion");
+        internal static readonly string MOTION_CLS = GetClsPattern(typeof(LerpMotion), "Motion");
 
         /// <summary>String pattern for trinket tinker ability classes</summary>
-        public static readonly string ABILITY_CLS = GetClsPattern(typeof(BuffAbility), "Ability");
+        internal static readonly string ABILITY_CLS = GetClsPattern(typeof(BuffAbility), "Ability");
 
         internal static string GetClsPattern(Type cls, string suffix)
         {

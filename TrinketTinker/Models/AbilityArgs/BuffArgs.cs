@@ -4,7 +4,7 @@ using TrinketTinker.Models.Mixin;
 namespace TrinketTinker.Models.AbilityArgs
 {
     /// <summary>Buff arguments</summary>
-    public class BuffArgs : IArgs
+    public sealed class BuffArgs : IArgs
     {
         /// <summary>Buff Id, should match something in Data/Buffs</summary>
         public string BuffId { get; set; } = null!;

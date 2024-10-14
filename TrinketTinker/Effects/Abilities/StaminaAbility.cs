@@ -7,7 +7,7 @@ using TrinketTinker.Models.AbilityArgs;
 namespace TrinketTinker.Effects.Abilities
 {
     /// <summary>Recover some percent of stamina.</summary>
-    public class StaminaAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<PercentArgs>(effect, data, lvl)
+    public sealed class StaminaAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<PercentArgs>(effect, data, lvl)
     {
         private float StaminaFormula(float maximum, float current)
         {

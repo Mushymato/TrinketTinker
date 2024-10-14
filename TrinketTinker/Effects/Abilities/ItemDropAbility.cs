@@ -10,7 +10,7 @@ namespace TrinketTinker.Effects.Abilities
     /// Create item debris on proc.
     /// Accepts spawn item arguments, like those used in shop data, never submits any item to Input.
     /// </summary>
-    public class ItemDropAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<SpawnItemArgs>(effect, data, lvl)
+    public sealed class ItemDropAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<SpawnItemArgs>(effect, data, lvl)
     {
         /// <summary>
         /// Do item query, and spawn all items found as debris.

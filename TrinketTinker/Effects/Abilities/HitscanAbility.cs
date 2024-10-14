@@ -1,4 +1,3 @@
-using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Monsters;
 using TrinketTinker.Effects.Proc;
@@ -7,7 +6,7 @@ using TrinketTinker.Models.AbilityArgs;
 
 namespace TrinketTinker.Effects.Abilities
 {
-    public class HitscanAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<DamageArgs>(effect, data, lvl)
+    public sealed class HitscanAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<DamageArgs>(effect, data, lvl)
     {
         protected override bool ApplyEffect(ProcEventArgs proc)
         {

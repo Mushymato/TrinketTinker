@@ -1,7 +1,7 @@
 namespace TrinketTinker.Models.MotionArgs
 {
     /// <summary>Orbit radius</summary>
-    public class OrbitArgs : StaticArgs
+    public sealed class OrbitArgs : StaticArgs
     {
         /// <summary>Orbit radius, horizontal</summary>
         public float RadiusX { get; set; } = -1;

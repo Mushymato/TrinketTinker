@@ -1,7 +1,7 @@
 
 namespace TrinketTinker.Models.AbilityArgs
 {
-    public class ProjectileArgs : DamageArgs
+    public sealed class ProjectileArgs : DamageArgs
     {
         /// <summary>Projectile texture, need to be 16x16</summary>
         public string? Texture { get; set; } = null;
