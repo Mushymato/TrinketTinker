@@ -13,8 +13,6 @@
           "SheetIndex": 0,
           "DropsNaturally": false,
           "CanBeReforged": true,
-          // Custom trinket effect class required for features of this mod
-          "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
         },
         "{{ModId}}_LerpRotate": {
           "Id": "{{ModId}}_LerpRotate",
@@ -24,7 +22,6 @@
           "SheetIndex": 1,
           "DropsNaturally": false,
           "CanBeReforged": true,
-          "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
         },
         "{{ModId}}_LerpDRU": {
           "Id": "{{ModId}}_LerpDRU",
@@ -34,7 +31,6 @@
           "SheetIndex": 2,
           "DropsNaturally": false,
           "CanBeReforged": false,
-          "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
         },
         "{{ModId}}_LerpDRUL": {
           "Id": "{{ModId}}_LerpDRUL",
@@ -44,7 +40,6 @@
           "SheetIndex": 3,
           "DropsNaturally": false,
           "CanBeReforged": false,
-          "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
         }
       }
     }

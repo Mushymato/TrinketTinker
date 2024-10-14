@@ -61,7 +61,7 @@ namespace TrinketTinker.Effects
         public TrinketTinkerEffect(Trinket trinket)
             : base(trinket)
         {
-            ModEntry.TinkerData.TryGetValue(trinket.ItemId, out Data);
+            AssetManager.TinkerData.TryGetValue(trinket.ItemId, out Data);
             abilities = new(InitAbilities, false);
         }
 

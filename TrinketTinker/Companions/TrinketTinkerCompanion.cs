@@ -127,7 +127,7 @@ namespace TrinketTinker.Companions
         private void InitCompanionData(NetString field, string oldValue, string newValue)
         {
             // _id.Value = newValue;
-            if (!ModEntry.TinkerData.TryGetValue(_id.Value, out Data))
+            if (!AssetManager.TinkerData.TryGetValue(_id.Value, out Data))
             {
                 ModEntry.Log($"Failed to get companion data for ${_id.Value}", LogLevel.Error);
                 return;

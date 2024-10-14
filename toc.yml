@@ -1,4 +1,6 @@
-- name: Docs
-  href: docs/
+- name: Trinket
+  href: guide/trinket
+- name: Tinker
+  href: guide/tinker
 - name: API
   href: api/

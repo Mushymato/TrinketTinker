@@ -19,21 +19,7 @@ namespace TrinketTinker
     {
         private static IMonitor? mon;
         public static string ModId { get; set; } = "";
-        public static string TinkerAsset => $"Mods/{ModId}/Tinker";
 
-        private static Dictionary<string, TinkerData>? _companionData = null;
-        public static Dictionary<string, TinkerData> TinkerData
-        {
-            get
-            {
-                if (_companionData == null)
-                {
-                    _companionData = Game1.content.Load<Dictionary<string, TinkerData>>(TinkerAsset);
-                    LogOnce($"Load {TinkerAsset}, got {_companionData.Count} entries");
-                }
-                return _companionData;
-            }
-        }
 
         public override void Entry(IModHelper helper)
         {
@@ -61,13 +47,13 @@ namespace TrinketTinker
             // Add content patcher tokens for various constants
             Integration.IContentPatcherAPI? CP = Helper.ModRegistry.GetApi<Integration.IContentPatcherAPI>("Pathoschild.ContentPatcher") ??
                 throw new ContentLoadException("Failed to get Content Patcher API");
-            CP.RegisterToken(
-                ModManifest, "EffectClass",
-                () => { return [typeof(TrinketTinkerEffect).AssemblyQualifiedName!]; }
-            );
+            // CP.RegisterToken(
+            //     ModManifest, "EffectClass",
+            //     () => { return [typeof(TrinketTinkerEffect).AssemblyQualifiedName!]; }
+            // );
             CP.RegisterToken(
                 ModManifest, "Target",
-                () => { return [TinkerAsset]; }
+                () => { return [AssetManager.TinkerAsset]; }
             );
             CP.RegisterToken(
                 ModManifest, "TrinketProc",
@@ -107,20 +93,14 @@ namespace TrinketTinker
         private static void OnAssetRequested(object? sender, AssetRequestedEventArgs e)
         {
             // load the custom asset
-            if (e.Name.IsEquivalentTo(TinkerAsset))
-            {
-                e.LoadFrom(() => new Dictionary<string, TinkerData>(), AssetLoadPriority.Exclusive);
-            }
+            AssetManager.OnAssetRequested(e);
             // add a big craftable for recoloring stuff
             TrinketColorizer.OnAssetRequested(e);
         }
 
         private static void OnAssetInvalidated(object? sender, AssetsInvalidatedEventArgs e)
         {
-            if (e.NamesWithoutLocale.Any(an => an.IsEquivalentTo(TinkerAsset)))
-            {
-                _companionData = null;
-            }
+            AssetManager.OnAssetInvalidated(e);
         }
 
         private void ConsolePrintTypenames(string command, string[] args)

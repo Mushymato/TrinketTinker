@@ -3,7 +3,7 @@ using StardewModdingAPI;
 namespace TrinketTinker.Integration
 {
     /// <summary>The Content Patcher API which other mods can access.</summary>
-    internal interface IContentPatcherAPI
+    public interface IContentPatcherAPI
     {
         /// <summary>Register a simple token.</summary>
         /// <param name="mod">The manifest of the mod defining the token (see <see cref="Mod.ModManifest"/> in your entry class).</param>

@@ -22,7 +22,9 @@ namespace TrinketTinker.Models.AbilityArgs
         /// <summary>Critical damage</summary>
         public float CritDamage { get; set; } = 0f;
         /// <summary>Stun time in miliseconds</summary>
-        public int StunTime = 0;
+        public int StunTime { get; set; } = 0;
+        /// <summary>Number of hits to perform</summary>
+        public int Hits { get; set; } = 1;
 
         /// <summary>Random percent between min and max</summary>
         public int Rand => Random.Shared.Next(Min, Max);
@@ -47,6 +49,22 @@ namespace TrinketTinker.Models.AbilityArgs
         {
             if (Min > 0)
             {
+                for (int i = 1; i < Hits; i++)
+                {
+                    proc.LocationOrCurrent.damageMonster(
+                        areaOfEffect: target.GetBoundingBox(),
+                        minDamage: Min,
+                        maxDamage: Max,
+                        isBomb: false,
+                        knockBackModifier: Knockback,
+                        addedPrecision: Precision,
+                        critChance: CritChance,
+                        critMultiplier: CritDamage,
+                        triggerMonsterInvincibleTimer: false,
+                        who: proc.Farmer,
+                        isProjectile: false
+                    );
+                }
                 proc.LocationOrCurrent.damageMonster(
                     areaOfEffect: target.GetBoundingBox(),
                     minDamage: Min,

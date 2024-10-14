@@ -103,7 +103,8 @@
                   "SpriteIndex": 1,
                   "Acceleration": 2,
                   "MinVelocity": 2,
-                  "MaxVelocity": 24
+                  "MaxVelocity": 24,
+                  "Hits": 5,
                 }
               }
             ]

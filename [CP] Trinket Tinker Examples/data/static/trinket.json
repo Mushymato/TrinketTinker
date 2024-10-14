@@ -13,7 +13,6 @@
           "SheetIndex": 0,
           "DropsNaturally": false,
           "CanBeReforged": false,
-          "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
         },
         "{{ModId}}_StatiColorMask": {
           "Id": "{{ModId}}_StatiColorMask",
@@ -23,8 +22,6 @@
           "SheetIndex": 1,
           "DropsNaturally": false,
           "CanBeReforged": true,
-          // Custom trinket effect class required for features of this mod
-          "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
         },
         "{{ModId}}_StaticRelative": {
           "Id": "{{ModId}}_StaticRelative",
@@ -34,7 +31,6 @@
           "SheetIndex": 2,
           "DropsNaturally": false,
           "CanBeReforged": false,
-          "TrinketEffectClass": "{{mushymato.TrinketTinker/EffectClass}}"
         },
       }
     }

@@ -24,7 +24,6 @@ namespace TrinketTinker.Effects.Abilities
             );
             if (target == null)
                 return false;
-
             proc.LocationOrCurrent.projectiles.Add(new TinkerProjectile(args, proc, target, sourcePosition));
             return base.ApplyEffect(proc);
         }
