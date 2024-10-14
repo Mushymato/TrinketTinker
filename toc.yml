@@ -1,6 +1,4 @@
 - name: Trinket
-  href: guide/trinket
+  href: guide/trinket/
 - name: Tinker
-  href: guide/tinker
-- name: API
-  href: api/
+  href: guide/tinker/
