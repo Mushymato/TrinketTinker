@@ -13,29 +13,18 @@
       "filter": "docfx-api-filters.yml"
     }
   ],
+  "maxParallelism": 1,
   "build": {
     "content": [
       {
         "files": [
-          "guide/tinker/*.{md,yml}"
-        ]
-      },
-      {
-        "files": [
-          "guide/trinket/*.{md,yml}"
-        ]
-      },
-      {
-        "files": [
-          "api/*"
-        ]
-      },
-      {
-        "files": [
+          "guide/*.{md,yml}",
+          "api/*",
           "toc.yml",
           "index.md",
+          "CHANGELOG.md"
         ]
-      },
+      }
     ],
     "resource": [
       {
@@ -48,8 +37,14 @@
     "output": "_site",
     "template": [
       "default",
-      "modern"
+      "modern",
+      "templates/material"
     ],
+    "fileMetadata": {
+      "_noindex": {
+        "api/*": true
+      }
+    },
     "globalMetadata": {
       "_appName": "TrinketTinker",
       "_appTitle": "TrinketTinker",
@@ -57,6 +52,6 @@
       "_appFaviconPath": "images/favicon.png",
       "_enableSearch": false,
       "pdf": false
-    }
+    },
   }
 }

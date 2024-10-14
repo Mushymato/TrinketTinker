@@ -1,4 +1,4 @@
-- name: Trinket
-  href: trinket/
+- name: Trinkets
+  href: 0-trinkets.md
 - name: Tinker
-  href: tinker/
+  href: 1-tinker.md

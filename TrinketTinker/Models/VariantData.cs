@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Models
 {
@@ -15,7 +16,7 @@ namespace TrinketTinker.Models
         /// <summary>Sprite height</summary>
         public int Height { get; set; } = 16;
 
-        /// <summary>Draw color mask, can use color name from <see cref="Color"/>, hex value, or <see cref="Constants.COLOR_PRISMATIC"/> for animated prismatic effect.</summary>
+        /// <summary>Draw color mask, can use color name from <see cref="Color"/>, hex value, or <see cref="TinkerConst.COLOR_PRISMATIC"/> for animated prismatic effect.</summary>
         public string? ColorMask { get; set; }
 
         /// <summary>Create a new <see cref="AnimatedSprite"/></summary>

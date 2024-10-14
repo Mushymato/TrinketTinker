@@ -3,7 +3,7 @@
     // Edit Mods/mushymato.TrinketTinker
     {
       "Action": "EditData",
-      "Target": "{{mushymato.TrinketTinker/Target}}",
+      "Target": "mushymato.TrinketTinker/Tinker",
       "Entries": {
         // ID must match trinket
         "{{ModId}}_StaticDRUL": {

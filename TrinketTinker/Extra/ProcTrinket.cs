@@ -8,7 +8,7 @@ namespace TrinketTinker.Extra
 {
     public static class ProcTrinket
     {
-        public static readonly string TriggerActionName = $"{ModEntry.ModId}_ProcTrinket";
+        public static readonly string TriggerActionName = $"{ModEntry.ModId}/ProcTrinket";
         /// <summary>Trigger action, proc trinkets that use <see cref="ProcOn.Trigger"/>.</summary>
         public static bool Action(string[] args, TriggerActionContext context, out string error)
         {

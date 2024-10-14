@@ -1,4 +1,6 @@
-- name: Trinket
-  href: guide/trinket/
-- name: Tinker
-  href: guide/tinker/
+- name: Guide
+  href: guide/
+- name: API
+  href: api/
+- name: Changelog
+  href: CHANGELOG.md

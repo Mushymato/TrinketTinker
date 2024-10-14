@@ -12,3 +12,4 @@ workfiles/
 _site/
 api/
 dfx*
+templates/

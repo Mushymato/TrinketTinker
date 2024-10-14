@@ -4,14 +4,13 @@ using Microsoft.Xna.Framework.Content;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley.Triggers;
-using StardewValley;
 using TrinketTinker.Companions;
 using TrinketTinker.Companions.Motions;
 using TrinketTinker.Effects;
 using TrinketTinker.Effects.Abilities;
-using TrinketTinker.Models;
 using TrinketTinker.Extra;
 using StardewValley.Internal;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker
 {
@@ -44,26 +43,6 @@ namespace TrinketTinker
 
         private void OnGameLaunched(object? sender, GameLaunchedEventArgs e)
         {
-            // Add content patcher tokens for various constants
-            Integration.IContentPatcherAPI? CP = Helper.ModRegistry.GetApi<Integration.IContentPatcherAPI>("Pathoschild.ContentPatcher") ??
-                throw new ContentLoadException("Failed to get Content Patcher API");
-            // CP.RegisterToken(
-            //     ModManifest, "EffectClass",
-            //     () => { return [typeof(TrinketTinkerEffect).AssemblyQualifiedName!]; }
-            // );
-            CP.RegisterToken(
-                ModManifest, "Target",
-                () => { return [AssetManager.TinkerAsset]; }
-            );
-            CP.RegisterToken(
-                ModManifest, "TrinketProc",
-                () => { return [TriggerAbility.TriggerEventName]; }
-            );
-            CP.RegisterToken(
-                ModManifest, "ProcTrinket",
-                () => { return [ProcTrinket.TriggerActionName]; }
-            );
-
             // Add trigger & action
             TriggerActionManager.RegisterAction(ProcTrinket.TriggerActionName, ProcTrinket.Action);
             TriggerActionManager.RegisterTrigger(TriggerAbility.TriggerEventName);
@@ -120,7 +99,7 @@ namespace TrinketTinker
             }
 
             Log("=== Motion ===", LogLevel.Info);
-            Log(Constants.MOTION_CLS);
+            Log(TinkerConst.MOTION_CLS);
             foreach (TypeInfo typeInfo in typeof(IMotion).Assembly.DefinedTypes)
             {
                 if (typeInfo.IsAssignableTo(typeof(IMotion)) && typeInfo.AssemblyQualifiedName != null)
@@ -128,7 +107,7 @@ namespace TrinketTinker
             }
 
             Log("=== Ability ===", LogLevel.Info);
-            Log(Constants.ABILITY_CLS);
+            Log(TinkerConst.ABILITY_CLS);
             foreach (TypeInfo typeInfo in typeof(IAbility).Assembly.DefinedTypes)
             {
                 if (typeInfo.IsAssignableTo(typeof(IAbility)) && typeInfo.AssemblyQualifiedName != null)
@@ -154,41 +133,6 @@ namespace TrinketTinker
         {
             level = (level == LogLevel.Trace) ? LogLevel.Debug : level;
             mon!.LogOnce(msg, level);
-        }
-
-        /// <summary>Get type from a string class name</summary>
-        /// <param name="className"></param>
-        /// <param name="typ"></param>
-        /// <returns></returns>
-        public static bool TryGetType(string? className, [NotNullWhen(true)] out Type? typ)
-        {
-            typ = null;
-            if (className == null)
-                return false;
-            typ = Type.GetType(className);
-            if (typ != null)
-                return true;
-            return false;
-        }
-
-        /// <summary>Get type from a string class name that is possibly in short form.</summary>
-        /// <param name="className"></param>
-        /// <param name="typ"></param>
-        /// <param name="longFormat">Full class name format</param>
-        /// <returns></returns>
-        public static bool TryGetType(string? className, [NotNullWhen(true)] out Type? typ, string longFormat)
-        {
-            typ = null;
-            if (className == null)
-                return false;
-            string longClassName = string.Format(longFormat, className);
-            typ = Type.GetType(longClassName);
-            if (typ != null)
-                return true;
-            typ = Type.GetType(className);
-            if (typ != null)
-                return true;
-            return false;
         }
     }
 }

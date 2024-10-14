@@ -1,9 +1,9 @@
 using TrinketTinker.Companions.Motions;
 using TrinketTinker.Effects.Abilities;
 
-namespace TrinketTinker
+namespace TrinketTinker.Wheels
 {
-    public static class Constants
+    public static class TinkerConst
     {
         /// <summary>Float second of 1 frame (60fps), not perfectly accurate since it is float, only use for bounds.</summary>
         public const float ONE_FRAME = 1000f / 60;

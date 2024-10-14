@@ -7,6 +7,7 @@ using StardewValley.Companions;
 using TrinketTinker.Models;
 using TrinketTinker.Companions.Motions;
 using StardewValley.Network;
+using TrinketTinker.Wheels;
 
 
 namespace TrinketTinker.Companions
@@ -70,7 +71,7 @@ namespace TrinketTinker.Companions
             {
                 if (Data == null)
                     return Color.White;
-                if (Data?.Variants[whichVariant.Value].ColorMask == Constants.COLOR_PRISMATIC)
+                if (Data?.Variants[whichVariant.Value].ColorMask == TinkerConst.COLOR_PRISMATIC)
                     return Utility.GetPrismaticColor();
                 return Utility.StringToColor(Data?.Variants[whichVariant.Value].ColorMask) ?? Color.White;
             }
@@ -139,7 +140,7 @@ namespace TrinketTinker.Companions
                 Sprite = new AnimatedSprite(vdata.Texture, 0, vdata.Width, vdata.Height);
                 SpriteOrigin = new Vector2(vdata.Width / 2, vdata.Height / 2);
                 MotionData mdata = Data.Motions[0];
-                if (ModEntry.TryGetType(mdata.MotionClass, out Type? motionCls, Constants.MOTION_CLS))
+                if (Reflect.TryGetType(mdata.MotionClass, out Type? motionCls, TinkerConst.MOTION_CLS))
                     Motion = (IMotion?)Activator.CreateInstance(motionCls, this, mdata);
                 else
                 {

@@ -9,6 +9,7 @@ using StardewModdingAPI;
 using TrinketTinker.Effects.Proc;
 using System.Collections.Immutable;
 using StardewValley.Delegates;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Effects
 {
@@ -86,7 +87,7 @@ namespace TrinketTinker.Effects
                 }
                 foreach (AbilityData ab in levelAbilities)
                 {
-                    if (ModEntry.TryGetType(ab.AbilityClass, out Type? abilityType, Constants.ABILITY_CLS))
+                    if (Reflect.TryGetType(ab.AbilityClass, out Type? abilityType, TinkerConst.ABILITY_CLS))
                     {
                         IAbility? ability = (IAbility?)Activator.CreateInstance(abilityType, this, ab, GeneralStat);
                         if (ability != null && ability.Valid)
@@ -115,7 +116,7 @@ namespace TrinketTinker.Effects
                 variant = int.Parse(variantStr);
 
             // Companion
-            if (ModEntry.TryGetType(Data.CompanionClass, out Type? companionCls))
+            if (Reflect.TryGetType(Data.CompanionClass, out Type? companionCls))
                 Companion = (TrinketTinkerCompanion?)Activator.CreateInstance(companionCls, Trinket.ItemId, variant);
             else
                 Companion = new TrinketTinkerCompanion(Trinket.ItemId, variant);

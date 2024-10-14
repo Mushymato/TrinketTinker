@@ -5,7 +5,7 @@ using StardewValley.GameData;
 using TrinketTinker.Effects;
 using TrinketTinker.Models;
 
-namespace TrinketTinker
+namespace TrinketTinker.Wheels
 {
     /// <summary>
     /// Handles caching of custom asset.

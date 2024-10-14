@@ -4,6 +4,7 @@ using StardewValley.GameData;
 using TrinketTinker.Effects.Proc;
 using TrinketTinker.Models;
 using TrinketTinker.Models.Mixin;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Effects.Abilities
 {
@@ -191,7 +192,7 @@ namespace TrinketTinker.Effects.Abilities
         /// <param name="location"></param>
         public virtual void Update(Farmer farmer, GameTime time, GameLocation location)
         {
-            if (d.ProcTimer >= Constants.ONE_FRAME && !Allowed)
+            if (d.ProcTimer >= TinkerConst.ONE_FRAME && !Allowed)
             {
                 ProcTimer -= time.ElapsedGameTime.TotalMilliseconds;
                 Allowed = ProcTimer <= 0;

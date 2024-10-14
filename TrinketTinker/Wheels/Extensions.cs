@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
 
-namespace TrinketTinker
+namespace TrinketTinker.Wheels
 {
     public static class Extensions
     {

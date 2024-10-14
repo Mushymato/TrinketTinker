@@ -1,12 +1,12 @@
 # Trinkets
 
 > [!NOTE]
-> The following page mainly covers how trinkets are added in vanilla game, regardless of whether TrinketTinker is being used.
-> It is required to add trinkets through this method before extending it with TrinketTinker features.
+> The following page covers how trinkets are added in the base game, regardless of whether TrinketTinker is being used.
+> You must add trinket items like this before you can extend it with trinket tinker data.
 
 Trinkets can be added with by editing `Data/Trinkets`, generally with [content patcher](https://github.com/Pathoschild/StardewMods/tree/stable/ContentPatcher).
 
-## Annotated Example:
+### Annotated Example:
 ```json
 {
   "Changes": [

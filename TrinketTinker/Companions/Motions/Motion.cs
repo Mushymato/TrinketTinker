@@ -4,6 +4,7 @@ using StardewValley;
 using StardewValley.Monsters;
 using TrinketTinker.Models;
 using TrinketTinker.Models.Mixin;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Companions.Motions
 {
