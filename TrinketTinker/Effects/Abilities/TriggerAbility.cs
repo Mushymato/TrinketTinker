@@ -1,5 +1,3 @@
-using Microsoft.Xna.Framework;
-using StardewValley;
 using StardewValley.Triggers;
 using TrinketTinker.Effects.Proc;
 using TrinketTinker.Models;

@@ -9,7 +9,7 @@ namespace TrinketTinker.Effects.Abilities
     /// <summary>Prints many logs, doesn't do anything else.</summary>
     public sealed class DebugDummyAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<NoArgs>(effect, data, lvl)
     {
-        /// <summary>Debug log.</summary>
+        /// <summary>Print debug log.</summary>
         /// <param name="proc"></param>
         /// <returns></returns>
         protected override bool ApplyEffect(ProcEventArgs proc)

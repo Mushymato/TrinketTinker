@@ -16,6 +16,7 @@ namespace TrinketTinker.Companions.Motions
         /// <summary>trig function input</summary>
         protected readonly float radiusY = 40f;
 
+        /// <inheritdoc/>
         public OrbitMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data)
         {
             motionOffset.Y -= 64f;
@@ -24,6 +25,11 @@ namespace TrinketTinker.Companions.Motions
             radiusY = args?.RadiusY ?? radiusY;
         }
 
+        /// <summary>
+        /// Calculates circular motion using cos for x and sin for y
+        /// </summary>
+        /// <param name="time"></param>
+        /// <param name="location"></param>
         public override void UpdateLocal(GameTime time, GameLocation location)
         {
             base.UpdateLocal(time, location);
@@ -33,6 +39,8 @@ namespace TrinketTinker.Companions.Motions
             if (theta >= 2f)
                 theta = 0f;
         }
+
+        /// <inheritdoc/>
         public override void Draw(SpriteBatch b)
         {
             DrawWithShadow(

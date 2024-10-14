@@ -11,12 +11,14 @@ namespace TrinketTinker.Companions.Motions
         /// <summary>trig function input</summary>
         private double theta = 0f;
 
+        /// <inheritdoc/>
         public HoverMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data)
         {
             motionOffset.Y -= 128f;
             c.Offset = motionOffset;
         }
 
+        /// <inheritdoc/>
         public override void UpdateLocal(GameTime time, GameLocation location)
         {
             base.UpdateLocal(time, location);

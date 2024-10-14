@@ -16,7 +16,7 @@ namespace TrinketTinker.Effects.Abilities
         protected readonly AbilityData d;
         /// <summary>Ability name, default to type name.</summary>
         public readonly string Name;
-        /// <summary>True if trinket data produces a valid ability.</summary>
+        /// <inheritdoc/>
         public bool Valid { get; set; } = false;
         /// <summary>True if trinket equiped.</summary>
         protected bool Active { get; set; }
@@ -27,7 +27,7 @@ namespace TrinketTinker.Effects.Abilities
         /// <summary>Class dependent arguments for subclasses</summary>
         protected readonly TArgs args;
 
-        /// <summary>Constructor</summary>
+        /// <summary>Basic constructor, tries to parse arguments as the generic <see cref="IArgs"/> type.</summary>
         /// <param name="effect"></param>
         /// <param name="data"></param>
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
@@ -163,6 +163,8 @@ namespace TrinketTinker.Effects.Abilities
             }
         }
 
+        /// <summary>Get where the on proc <see cref="TemporaryAnimatedSprite"/> should be drawn from.</summary>
+        /// <returns></returns>
         protected virtual Vector2 GetTASPosition()
         {
             return e.CompanionAnchor;

@@ -12,6 +12,7 @@ namespace TrinketTinker.Companions.Motions
         /// <summary>trig function input</summary>
         private double theta = 0f;
 
+        /// <inheritdoc/>
         public override void UpdateLocal(GameTime time, GameLocation location)
         {
             base.UpdateLocal(time, location);
@@ -23,6 +24,7 @@ namespace TrinketTinker.Companions.Motions
                 theta = 0f;
         }
 
+        /// <inheritdoc/>
         public override void Draw(SpriteBatch b)
         {
             float thetaF = args.Squash ? (float)Math.Max(Math.Pow(Math.Cos(2 * Math.PI * theta), 5) / 2, 0) : 0;

@@ -1,8 +1,12 @@
 ### YamlMime:ManagedReference
 apiRules:
-- exclude:
-    uidRegex: ^TrinketTinker
+- include:
+    uidRegex: ^TrinketTinker\.Extensions
 - include:
     uidRegex: ^TrinketTinker\.Models
 - include:
-    uidRegex: ^TrinketTinker\.Constants
+    uidRegex: ^TrinketTinker\.Companions
+- include:
+    uidRegex: ^TrinketTinker\.Effects
+- exclude:
+    uidRegex: ^TrinketTinker

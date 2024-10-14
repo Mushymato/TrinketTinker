@@ -8,6 +8,12 @@ using TrinketTinker.Models.AbilityArgs;
 
 namespace TrinketTinker.Effects.Abilities
 {
+    /// <summary>
+    /// Shoot a projectile that deals damage to monster within range, optionally stun them for a period.
+    /// </summary>
+    /// <param name="effect"></param>
+    /// <param name="data"></param>
+    /// <param name="lvl"></param>
     public sealed class ProjectileAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<ProjectileArgs>(effect, data, lvl)
     {
         protected override bool ApplyEffect(ProcEventArgs proc)

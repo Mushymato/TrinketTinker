@@ -28,7 +28,7 @@ namespace TrinketTinker.Models
     {
         /// <summary>Name of this ability. If unset, a name is generatde from class name and trinket ID.</summary>
         public string Name = "";
-        /// <summary>Type name of the ability, can use short form that matches <see cref="Constants.ABILITY_CLS"/></summary>
+        /// <summary>Type name of the ability, can use short form like "Buff" for buff ability.</summary>
         public string? AbilityClass { get; set; } = null;
         /// <summary>Determine when this ability activates.</summary>
         public ProcOn ProcOn = new();

@@ -10,6 +10,9 @@ using TrinketTinker.Models.AbilityArgs;
 
 namespace TrinketTinker.Effects.Pewpew
 {
+    /// <summary>
+    /// Custom projectile class, can utilize custom texture and deal damage with optional knockback crit/crit damage and stun.
+    /// </summary>
     public class TinkerProjectile : Projectile
     {
 

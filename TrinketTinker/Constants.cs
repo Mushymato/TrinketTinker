@@ -5,8 +5,8 @@ namespace TrinketTinker
 {
     public static class Constants
     {
-        /// <summary>Float second of 1 frame (60fps), not accurate since it is float, only use for bounds.</summary>
-        public const float ONE_FRAME = 1000 / 60;
+        /// <summary>Float second of 1 frame (60fps), not perfectly accurate since it is float, only use for bounds.</summary>
+        public const float ONE_FRAME = 1000f / 60;
 
         /// <summary>Special color name for the animated prismatic color mask.</summary>
         public const string COLOR_PRISMATIC = "Prismatic";

@@ -11,12 +11,14 @@ namespace TrinketTinker.Companions.Motions
         /// <summary>Variable for how much interpolation happened so far.</summary>
         private float lerp = -1f;
 
+        /// <inheritdoc/>
         public BaseLerpMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data)
         {
             motionOffset.Y -= c.Sprite.SpriteHeight * 4 / 2;
             c.Offset = motionOffset;
         }
 
+        /// <inheritdoc/>
         public override void UpdateLocal(GameTime time, GameLocation location)
         {
             if (lerp < 0f || AnchorChanged)

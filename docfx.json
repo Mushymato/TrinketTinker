@@ -10,7 +10,7 @@
         }
       ],
       "dest": "api",
-      // "filter": "docfx-api-filters.yml"
+      "filter": "docfx-api-filters.yml"
     }
   ],
   "build": {
@@ -23,15 +23,12 @@
           "_site/**"
         ]
       },
-      "globalMetadata": {
-        "_appTitle": "My App"
-      }
     ],
     "resource": [
       {
         "files": [
           "images/**"
-        ],
+        ]
       }
     ],
     "output": "_site",
@@ -42,7 +39,10 @@
     "globalMetadata": {
       "_appName": "TrinketTinker",
       "_appTitle": "TrinketTinker",
+      "_appLogoPath": "images/favicon.png",
+      "_appFaviconPath": "images/favicon.png",
       "_enableSearch": true,
+      "_gitUrlPattern": "github",
       "pdf": false
     }
   }

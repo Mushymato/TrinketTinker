@@ -6,23 +6,41 @@ using TrinketTinker.Models;
 
 namespace TrinketTinker.Effects.Proc
 {
-    /// <summary>Proc event data</summary>
+    /// <summary>
+    /// Proc event data.
+    /// Most properties are only set for specific kinds of proc.
+    /// </summary>
     public class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
     {
-        /// <summary>Kind of proc triggering this event <see cref="ProcOn"/></summary>
+        /// <summary>Kind of proc triggering this event</summary>
         public ProcOn ProcOn => procOn;
+        /// <summary>Player who triggered the event</summary>
         public Farmer Farmer => farmer;
+        /// <summary>Game time</summary>
         public GameTime? Time { get; set; } = null;
+        /// <summary>Proc location, one of the backing props of <see cref="LocationOrCurrent"/></summary>
         public GameLocation? Location { get; set; } = null;
+        /// <summary>Target monster</summary>
         public Monster? Monster { get; set; } = null;
+        /// <summary>Damage amount, to monster or to player</summary>
         public int? DamageAmount { get; set; } = null;
+        /// <summary>Whether damage (to monster) was a bomb</summary>
         public bool? IsBomb { get; set; } = null;
+        /// <summary>Whether damage (to monster) was a critical hit</summary>
         public bool? IsCriticalHit { get; set; } = null;
+        /// <summary>Arguments given to trigger action handler.</summary>
         public string[]? TriggerArgs { get; set; } = null;
+        /// <summary>Trigger action context</summary>
         public TriggerActionContext? TriggerContext { get; set; } = null;
-        public GameLocation LocationOrCurrent => Location ?? Farmer?.currentLocation ?? Game1.currentLocation;
+        /// <summary>Get the most valid location of this proc, either the event location or the player's current location</summary>
+        public GameLocation LocationOrCurrent => Location ?? Farmer.currentLocation;
 
-        public bool Check(AbilityData data)
+        /// <summary>
+        /// Validate whether this proc should trigger ability of given data.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        internal bool Check(AbilityData data)
         {
             if (Farmer == null)
                 return false;

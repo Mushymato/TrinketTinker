@@ -6,12 +6,34 @@ namespace TrinketTinker.Companions.Motions
 {
     public interface IMotion
     {
+        /// <summary>Initialize motion, setup lightsource if needed.</summary>
+        /// <param name="farmer"></param>
         void Initialize(Farmer farmer);
+
+        /// <summary>Cleanup motion, remove lightsource.</summary>
+        /// <param name="farmer"></param>
         void Cleanup();
-        void Draw(SpriteBatch b);
-        void OnOwnerWarp();
-        void UpdateAnchor(GameTime time, GameLocation location);
+
+        /// <summary>Update info that should change every tick, for all game instances in multiplayer.</summary>
+        /// <param name="time"></param>
+        /// <param name="location"></param>
         void UpdateGlobal(GameTime time, GameLocation location);
+
+        /// <summary>Update info that should change every tick, for owner only. Netfield changes should happen here.</summary>
+        /// <param name="time"></param>
+        /// <param name="location"></param>
         void UpdateLocal(GameTime time, GameLocation location);
+
+        /// <summary>Draws the companion, for all game instances in multiplayer.</summary>
+        /// <param name="b"></param>
+        void Draw(SpriteBatch b);
+
+        /// <summary>Update light source when owner changes location</summary>
+        void OnOwnerWarp();
+
+        /// <summary>Changes the position of the anchor that the companion moves relative to.</summary>
+        /// <param name="time"></param>
+        /// <param name="location"></param>
+        void UpdateAnchor(GameTime time, GameLocation location);
     }
 }

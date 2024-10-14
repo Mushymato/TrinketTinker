@@ -29,7 +29,7 @@ namespace TrinketTinker.Companions.Motions
         /// <summary>Anchor changed during this tick</summary>s
         protected bool AnchorChanged => prevAnchorTarget != currAnchorTarget;
 
-        /// <summary>Constructor</summary>
+        /// <summary>Basic constructor, tries to parse arguments as the generic <see cref="IArgs"/> type.</summary>
         /// <param name="companion"></param>
         /// <param name="data"></param>
         public Motion(TrinketTinkerCompanion companion, MotionData data)
@@ -47,8 +47,7 @@ namespace TrinketTinker.Companions.Motions
             c.Offset = motionOffset;
         }
 
-        /// <summary>Initialize motion, setup lightsource if needed.</summary>
-        /// <param name="farmer"></param>
+        /// <inheritdoc/>
         public virtual void Initialize(Farmer farmer)
         {
             if (d.LightRadius > 0)
@@ -58,8 +57,7 @@ namespace TrinketTinker.Companions.Motions
             }
         }
 
-        /// <summary>Initialize motion, remove lightsource.</summary>
-        /// <param name="farmer"></param>
+        /// <inheritdoc/>
         public virtual void Cleanup()
         {
             if (d.LightRadius > 0)
@@ -68,9 +66,7 @@ namespace TrinketTinker.Companions.Motions
             }
         }
 
-        /// <summary>Make a new light source on warp.</summary>
-        /// <param name="farmer"></param>
-        /// 
+        /// <inheritdoc/>
         public virtual void OnOwnerWarp()
         {
             if (d.LightRadius > 0)
@@ -79,6 +75,9 @@ namespace TrinketTinker.Companions.Motions
             }
         }
 
+        /// <summary>Changes the position of the anchor that the companion moves relative to, based on <see cref="MotionData.Anchors"/>.</summary>
+        /// <param name="time"></param>
+        /// <param name="location"></param>
         public virtual void UpdateAnchor(GameTime time, GameLocation location)
         {
             prevAnchorTarget = currAnchorTarget;
@@ -110,14 +109,10 @@ namespace TrinketTinker.Companions.Motions
 
         }
 
-        /// <summary>Update for the client of the player that equipped this trinket, responsible for netfields.</summary>
-        /// <param name="time">Game time</param>
-        /// <param name="location">Current map location</param>
+        /// <inheritdoc/>
         public abstract void UpdateLocal(GameTime time, GameLocation location);
 
-        /// <summary>Update for all clients, responsible for animation frame.</summary>
-        /// <param name="time">Game time</param>
-        /// <param name="location">Current map location</param>
+        /// <inheritdoc/>
         public virtual void UpdateGlobal(GameTime time, GameLocation location)
         {
             if (d.AlwaysMoving || c.Moving)
@@ -126,7 +121,7 @@ namespace TrinketTinker.Companions.Motions
                 switch (d.LoopMode)
                 {
                     case LoopMode.PingPong:
-                        isReverse = c.Sprite.AnimatePingPong(time, frameStart, d.AnimationFrameLength, d.Interval, isReverse);
+                        c.Sprite.AnimatePingPong(time, frameStart, d.AnimationFrameLength, d.Interval, ref isReverse);
                         break;
                     case LoopMode.Standard:
                         c.Sprite.Animate(time, frameStart, d.AnimationFrameLength, d.Interval);
@@ -142,8 +137,7 @@ namespace TrinketTinker.Companions.Motions
                 Utility.repositionLightSource(lightId, c.Position + c.Offset);
         }
 
-        /// <summary>Draw the companion.</summary>
-        /// <param name="b">SpriteBatch</param>
+        /// <inheritdoc/>
         public virtual void Draw(SpriteBatch b)
         {
             // float shadowScale = 3f * Utility.Lerp(1f, 0.8f, Math.Max(1f, -c.Offset.Y / 12));
@@ -247,6 +241,10 @@ namespace TrinketTinker.Companions.Motions
             return (Math.Abs(c.direction.Value) - 1) * d.AnimationFrameLength + d.AnimationFrameStart;
         }
 
+        /// <summary>Helper function, check if the sprite collides with anything.</summary>
+        /// <param name="location"></param>
+        /// <param name="spritePosition"></param>
+        /// <returns></returns>
         protected virtual bool CheckSpriteCollsion(GameLocation location, Vector2 spritePosition)
         {
             return location.isCollidingPosition(
