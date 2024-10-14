@@ -11,6 +11,7 @@ using TrinketTinker.Effects;
 using TrinketTinker.Effects.Abilities;
 using TrinketTinker.Models;
 using TrinketTinker.Extra;
+using StardewValley.Internal;
 
 namespace TrinketTinker
 {
@@ -39,10 +40,6 @@ namespace TrinketTinker
             I18n.Init(helper.Translation);
             mon = Monitor;
             ModId = ModManifest.UniqueID;
-
-            // Add trigger & action
-            TriggerActionManager.RegisterAction(ProcTrinket.TriggerActionName, ProcTrinket.Action);
-            TriggerActionManager.RegisterTrigger(TriggerAbility.TriggerEventName);
 
             // Events for game launch and custom asset
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
@@ -80,6 +77,13 @@ namespace TrinketTinker
                 ModManifest, "ProcTrinket",
                 () => { return [ProcTrinket.TriggerActionName]; }
             );
+
+            // Add trigger & action
+            TriggerActionManager.RegisterAction(ProcTrinket.TriggerActionName, ProcTrinket.Action);
+            TriggerActionManager.RegisterTrigger(TriggerAbility.TriggerEventName);
+
+            // Add item query for creating a trinket with specific level and variant
+            ItemQueryResolver.Register(ItemQuery.CreateTrinketQuery, ItemQuery.CreateTrinket);
 
             // FIXME: spacecore doesn't support trinkets atm, perhaps send PR
             // Add extra equipment slots

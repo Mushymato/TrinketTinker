@@ -234,5 +234,13 @@ namespace TrinketTinker.Effects
             trinket.modData[ModData_WhichVariant] = nextVariant.ToString();
             return true;
         }
+
+        public void SetVariant(Trinket trinket, int variant)
+        {
+            if (Data == null || Data.Variants.Count <= variant)
+                return;
+            trinket.modData[ModData_WhichVariant] = variant.ToString();
+            return;
+        }
     }
 }
