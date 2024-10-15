@@ -1,2 +1,2 @@
 
-{"items":[{"name":"Trinket","href":"guide/trinket/trinkets.html","tocHref":"guide/trinket/toc.html","topicHref":"guide/trinket/trinkets.html"},{"name":"Tinker","href":"guide/tinker/tinker.html","tocHref":"guide/tinker/toc.html","topicHref":"guide/tinker/tinker.html"}],"pdf":false}
+{"items":[{"name":"Guide","href":"guide/0-Trinket.html","tocHref":"guide/toc.html","topicHref":"guide/0-Trinket.html"},{"name":"API","href":"api/TrinketTinker.Companions.html","tocHref":"api/toc.html","topicHref":"api/TrinketTinker.Companions.html","topicUid":"TrinketTinker.Companions"}],"pdf":false}

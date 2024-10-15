@@ -7,16 +7,16 @@
       <meta name="title" content="Trinkets | TrinketTinker ">
       
       
-      <link rel="icon" href="../../images/favicon.png">
-      <link rel="stylesheet" href="../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../public/main.css">
-      <meta name="docfx:navrel" content="../../toc.html">
+      <link rel="icon" href="../images/favicon.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
+      <meta name="docfx:rel" content="../">
       
       
-      
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/trinket/trinkets.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/0-Trinket.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -30,7 +30,7 @@
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
 
-      <script type="module" src="./../../public/docfx.min.js"></script>
+      <script type="module" src="./../public/docfx.min.js"></script>
 
       <script>
         const theme = localStorage.getItem('theme') || 'auto'
@@ -43,8 +43,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../index.html">
-            <img id="logo" class="svg" src="../../images/favicon.png" alt="TrinketTinker">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/favicon.png" alt="TrinketTinker">
             TrinketTinker
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,6 +52,10 @@
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
             </div>
           </div>
         </div>
@@ -85,11 +89,11 @@
 
 <div class="NOTE">
 <h5>Note</h5>
-<p>The following page mainly covers how trinkets are added in vanilla game, regardless of whether TrinketTinker is being used.
-It is required to add trinkets through this method before extending it with TrinketTinker features.</p>
+<p>The following page covers how trinkets are added in the base game, regardless of whether TrinketTinker is being used.
+You must add trinket items before you can extend it with trinket tinker data.</p>
 </div>
-<p>Trinkets can be added with by editing <code>Data/Trinkets</code>, generally with <a href="https://github.com/Pathoschild/StardewMods/tree/stable/ContentPatcher">content patcher</a>.</p>
-<h2 id="annotated-example">Annotated Example:</h2>
+<p>Trinkets can be added with by editing <code>Data/Trinkets</code>, generally with <a href="https://github.com/Pathoschild/StardewMods/tree/stable/ContentPatcher">Content Patcher</a>.</p>
+<h2 id="example">Example</h2>
 <pre><code class="lang-json">{
   &quot;Changes&quot;: [
     // Load texture
@@ -108,7 +112,7 @@ It is required to add trinkets through this method before extending it with Trin
           &quot;Id&quot;: &quot;{{ModId}}_MyTrinket&quot;,
           // Display name (with i18n)
           &quot;DisplayName&quot;: &quot;{{i18n:MyTrinket.DisplayName}}&quot;,
-          // Description
+          // Description, can include {0} token for the trinket level
           &quot;Description&quot;: &quot;{{i18n:MyTrinket.Description}}&quot;,
           // Path to asset texture load target
           &quot;Texture&quot;: &quot;Mods/{{ModId}}/MyTrinket&quot;,
@@ -134,7 +138,7 @@ It is required to add trinkets through this method before extending it with Trin
 <h5>Tip</h5>
 <p>Refer to content patcher docs for more details about <a href="https://github.com/Pathoschild/StardewMods/blob/stable/ContentPatcher/docs/author-guide/action-load.md">EditData</a> and <a href="https://github.com/Pathoschild/StardewMods/blob/stable/ContentPatcher/docs/author-guide/action-load.md">Load</a></p>
 </div>
-<h3 id="trinketeffectclass">TrinketEffectClass</h3>
+<h2 id="trinketeffectclass">TrinketEffectClass</h2>
 <p>Game comes with these trinket effect classes:</p>
 <table>
 <thead>
@@ -171,13 +175,9 @@ It is required to add trinkets through this method before extending it with Trin
 </tbody>
 </table>
 <p>The Golden Spur and Basilisk Paw effects are not implemented through an effect class, instead certain parts of game simply checks if the player has a specific trinket equipped.</p>
-<p>When using TrinketTinker, if a trinket has Tinker data provided for a Trinket, the TrinketEffectClass will be forced to <code>TrinketTinker.Effects.TrinketTinkerEffect</code> in order to utilize the features of this class.</p>
 
 </article>
 
-        <div class="contribution d-print-none">
-          <a href="https://github.com/Mushymato/TrinketTinker/blob/main/guide/trinket/trinkets.md/#L1" class="edit-link">Edit this page</a>
-        </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
 
@@ -188,11 +188,12 @@ It is required to add trinkets through this method before extending it with Trin
       </div>
     </main>
 
+    <div class="container-xxl search-results" id="search-results"></div>
 
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+          <a href="https://github.com/Mushymato/TrinketTinker">Source Code</a>
         </div>
       </div>
     </footer>
