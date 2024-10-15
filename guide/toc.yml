@@ -1,4 +1,22 @@
-- name: Trinkets
-  href: 0-trinkets.md
-- name: Tinker
-  href: 1-tinker.md
+- href: 0-Trinket.md
+  name: Trinket
+- href: 1-Tinker.md
+  name: Tinker
+- href: 2-Variant.md
+  name: Variant
+- href: 3-Motion.md
+  items:
+  - href: 3.0-Direction.md
+    name: Direction
+  - href: 3.1-Anchors.md
+    name: Anchors
+  - href: 3.2-Lerp.md
+    name: Lerp
+  name: Motion
+- href: 4-Ability.md
+  items:
+  - href: 4.0-Proc.md
+    name: Proc
+  - href: 4.1-Buff.md
+    name: Buff
+  name: Ability

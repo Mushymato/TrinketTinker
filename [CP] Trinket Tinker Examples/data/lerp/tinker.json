@@ -1,6 +1,6 @@
 {
   "Changes": [
-    // Edit Mods/mushymato.TrinketTinker
+    // Edit mushymato.TrinketTinker
     {
       "Action": "EditData",
       "Target": "mushymato.TrinketTinker/Tinker",

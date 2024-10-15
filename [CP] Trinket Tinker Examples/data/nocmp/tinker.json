@@ -1,0 +1,28 @@
+{
+  "Changes": [
+    // Edit mushymato.TrinketTinker
+    {
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        "{{ModId}}_NoCompanion": {
+          "Abilities": [
+            // when player take damage, apply a speed buff and play a sound
+            // activates once every 10s
+            [
+              {
+                "ProcOn": "ReceiveDamage",
+                "ProcTimer": 10000,
+                "ProcSound": "rooster",
+                "AbilityClass": "Buff",
+                "Args": {
+                  "BuffId": 22
+                }
+              }
+            ],
+          ]
+        },
+      }
+    }
+  ]
+}

@@ -17,5 +17,10 @@
       "Action": "Include",
       "FromFile": "data/static/trinket.json, data/static/tinker.json"
     },
+    // Examples that create a trinket and use abilities, but not companions
+    {
+      "Action": "Include",
+      "FromFile": "data/nocmp/trinket.json, data/nocmp/tinker.json"
+    },
   ]
 }

@@ -26,12 +26,10 @@ namespace TrinketTinker.Models
     /// <summary>Data for <see cref="Effects.Abilities"/>, defines game effect that a trinket can provide.</summary>
     public sealed class AbilityData : Mixin.IHaveArgs
     {
-        /// <summary>Name of this ability. If unset, a name is generatde from class name and trinket ID.</summary>
-        public string Name = "";
         /// <summary>Type name of the ability, can use short form like "Buff" for buff ability.</summary>
         public string? AbilityClass { get; set; } = null;
         /// <summary>Determine when this ability activates.</summary>
-        public ProcOn ProcOn = new();
+        public ProcOn ProcOn { get; set; } = new();
         /// <summary>Minimum cooldown time between ability activation, all <see cref="Models.ProcOn"/> values respect this, not just <see cref="ProcOn.Timer"/>.</summary>
         public double ProcTimer { get; set; } = -1;
         /// <summary>Sound cue to play on proc.</summary>

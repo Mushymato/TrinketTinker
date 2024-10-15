@@ -13,3 +13,4 @@ _site/
 api/
 dfx*
 templates/
+.venv

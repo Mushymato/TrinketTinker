@@ -29,22 +29,18 @@ namespace TrinketTinker.Effects
             get
             {
                 if (Companion is TrinketTinkerCompanion cmp)
-                {
                     return cmp.Position + cmp.Offset;
-                }
                 return null;
             }
         }
         /// <summary>Anchor position of companion.</summary>
-        public Vector2 CompanionAnchor
+        public Vector2? CompanionAnchor
         {
             get
             {
                 if (Companion is TrinketTinkerCompanion cmp)
-                {
                     return cmp.Anchor;
-                }
-                return Companion.Owner.Position;
+                return null;
             }
         }
         /// <summary>Draw layer of owner.</summary>
@@ -116,11 +112,15 @@ namespace TrinketTinker.Effects
                 variant = int.Parse(variantStr);
 
             // Companion
-            if (Reflect.TryGetType(Data.CompanionClass, out Type? companionCls))
-                Companion = (TrinketTinkerCompanion?)Activator.CreateInstance(companionCls, Trinket.ItemId, variant);
-            else
+            if (Data.Variants.Count > 0 && Data.Motions.Count > 0)
+            {
                 Companion = new TrinketTinkerCompanion(Trinket.ItemId, variant);
-            farmer.AddCompanion(Companion);
+                farmer.AddCompanion(Companion);
+            }
+            else
+            {
+                Companion = null;
+            }
 
             // Only activate ability for local player
             if (Game1.player != farmer)
@@ -136,7 +136,8 @@ namespace TrinketTinker.Effects
         /// <param name="farmer"></param>
         public override void Unapply(Farmer farmer)
         {
-            farmer.RemoveCompanion(Companion);
+            if (Companion != null)
+                farmer.RemoveCompanion(Companion);
 
             if (farmer != Game1.player || Abilities.Count <= GeneralStat)
                 return;

@@ -4,9 +4,10 @@
 > The following page covers how trinkets are added in the base game, regardless of whether TrinketTinker is being used.
 > You must add trinket items like this before you can extend it with trinket tinker data.
 
-Trinkets can be added with by editing `Data/Trinkets`, generally with [content patcher](https://github.com/Pathoschild/StardewMods/tree/stable/ContentPatcher).
+Trinkets can be added with by editing `Data/Trinkets`, generally with [Content Patcher](https://github.com/Pathoschild/StardewMods/tree/stable/ContentPatcher).
 
-### Annotated Example:
+## Example
+
 ```json
 {
   "Changes": [
@@ -26,7 +27,7 @@ Trinkets can be added with by editing `Data/Trinkets`, generally with [content p
           "Id": "{{ModId}}_MyTrinket",
           // Display name (with i18n)
           "DisplayName": "{{i18n:MyTrinket.DisplayName}}",
-          // Description
+          // Description, can include {0} token for the trinket level
           "Description": "{{i18n:MyTrinket.Description}}",
           // Path to asset texture load target
           "Texture": "Mods/{{ModId}}/MyTrinket",
@@ -52,7 +53,7 @@ Trinkets can be added with by editing `Data/Trinkets`, generally with [content p
 > [!TIP]
 > Refer to content patcher docs for more details about [EditData](https://github.com/Pathoschild/StardewMods/blob/stable/ContentPatcher/docs/author-guide/action-load.md) and [Load](https://github.com/Pathoschild/StardewMods/blob/stable/ContentPatcher/docs/author-guide/action-load.md)
 
-### TrinketEffectClass
+## TrinketEffectClass
 
 Game comes with these trinket effect classes:
 
@@ -66,5 +67,3 @@ Game comes with these trinket effect classes:
 | StardewValley.Objects.Trinkets.IceOrbTrinketEffect | Shoot an icy orb that freezes the enemy every few seconds |
 
 The Golden Spur and Basilisk Paw effects are not implemented through an effect class, instead certain parts of game simply checks if the player has a specific trinket equipped.
-
-When using TrinketTinker, if a trinket has Tinker data provided for a Trinket, the TrinketEffectClass will be forced to `TrinketTinker.Effects.TrinketTinkerEffect` in order to utilize the features of this class.

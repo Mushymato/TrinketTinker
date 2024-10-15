@@ -1,0 +1,20 @@
+{
+  "Changes": [
+    // Edit Data/Trinkets 
+    {
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_NoCompanion": {
+          "Id": "{{ModId}}_NoCompanion",
+          "DisplayName": "{{ModId}}_NoCompanion",
+          "Description": "Example of using trinket tinker without companions.",
+          "Texture": "TileSheets\\Objects_2",
+          "SheetIndex": 79,
+          "DropsNaturally": false,
+          "CanBeReforged": false
+        },
+      }
+    }
+  ]
+}

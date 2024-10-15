@@ -47,8 +47,7 @@ namespace TrinketTinker.Effects.Abilities
             Valid = true;
             e = effect;
             d = data;
-            string clsName = data.Name == "" ? GetType().Name : data.Name;
-            Name = $"{effect.Trinket.ItemId}:{clsName}[{lvl}]";
+            Name = $"{effect.Trinket.ItemId}:{GetType().Name}[{lvl}]";
             ProcTimer = data.ProcTimer;
         }
 
@@ -87,8 +86,6 @@ namespace TrinketTinker.Effects.Abilities
                         e.EventTrigger += HandleProc;
                         break;
                 }
-
-                e.EventFootstep += HandleProc;
             }
             return Active;
         }
@@ -149,7 +146,7 @@ namespace TrinketTinker.Effects.Abilities
                         temporarySprite.Interval,
                         temporarySprite.Frames,
                         temporarySprite.Loops,
-                        GetTASPosition() + temporarySprite.PositionOffset * 4f,
+                        GetTASPosition(args) + temporarySprite.PositionOffset * 4f,
                         temporarySprite.Flicker, temporarySprite.Flip,
                         e.CompanionOwnerDrawLayer + temporarySprite.SortOffset,
                         temporarySprite.AlphaFade,
@@ -166,9 +163,9 @@ namespace TrinketTinker.Effects.Abilities
 
         /// <summary>Get where the on proc <see cref="TemporaryAnimatedSprite"/> should be drawn from.</summary>
         /// <returns></returns>
-        protected virtual Vector2 GetTASPosition()
+        protected virtual Vector2 GetTASPosition(ProcEventArgs args)
         {
-            return e.CompanionAnchor;
+            return e.CompanionAnchor ?? args.Farmer.Position;
         }
 
         /// <summary>Cleanup ability, if is <see cref="ProcOn.Always"/></summary>

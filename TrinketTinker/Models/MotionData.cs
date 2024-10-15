@@ -62,9 +62,7 @@ namespace TrinketTinker.Models
     public sealed class MotionData : Mixin.IHaveArgs
     {
         /// <summary>Type name of the motion, can use short form like "Hover" for hover motion.</summary>
-        public string? MotionClass { get; set; } = null;
-        /// <summary>If true, continue animation when not moving.</summary>
-        public bool AlwaysMoving { get; set; } = false;
+        public string MotionClass { get; set; } = "Lerp";
         /// <summary>Direction mode, determines how sprites should be arranged.</summary>
         public DirectionMode DirectionMode { get; set; } = DirectionMode.None;
         /// <summary>First frame of the animation.</summary>
@@ -74,6 +72,8 @@ namespace TrinketTinker.Models
         /// Defaults to <see cref="AnchorTarget.Owner"/>.
         /// </summary>
         public List<AnchorTargetData> Anchors { get; set; } = [];
+        /// <summary>If true, continue animation when not moving.</summary>
+        public bool AlwaysMoving { get; set; } = false;
         public int AnimationFrameStart { get; set; } = 0;
         /// <summary>Length of 1 set of movement animation.</summary>
         public int AnimationFrameLength { get; set; } = 4;

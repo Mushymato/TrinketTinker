@@ -50,7 +50,8 @@
       "_appTitle": "TrinketTinker",
       "_appLogoPath": "images/favicon.png",
       "_appFaviconPath": "images/favicon.png",
-      "_enableSearch": false,
+      "_enableSearch": true,
+      "_disableContribution": true,
       "pdf": false
     },
   }
