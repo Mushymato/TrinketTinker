@@ -12,7 +12,7 @@ namespace TrinketTinker.Companions.Motions
         private double theta = 0f;
 
         /// <inheritdoc/>
-        public HoverMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data)
+        public HoverMotion(TrinketTinkerCompanion companion, MotionData data, VariantData vdata) : base(companion, data, vdata)
         {
             motionOffset.Y -= 128f;
             c.Offset = motionOffset;
@@ -22,7 +22,7 @@ namespace TrinketTinker.Companions.Motions
         public override void UpdateLocal(GameTime time, GameLocation location)
         {
             base.UpdateLocal(time, location);
-            theta += time.ElapsedGameTime.TotalMilliseconds / (d.Interval * d.AnimationFrameLength);
+            theta += time.ElapsedGameTime.TotalMilliseconds / (md.Interval * md.AnimationFrameLength);
             c.Offset = motionOffset + new Vector2(0, args.Magnitude * (float)Math.Sin(Math.PI * theta));
             if (theta >= 1f)
                 theta = 0f;

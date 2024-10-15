@@ -13,7 +13,7 @@ namespace TrinketTinker.Companions.Motions
         private double theta = 0f;
 
         /// <inheritdoc/>
-        public OrbitMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data)
+        public OrbitMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata) : base(companion, mdata, vdata)
         {
             motionOffset.Y -= 64f;
             c.Offset = motionOffset;
@@ -39,8 +39,8 @@ namespace TrinketTinker.Companions.Motions
         {
             DrawWithShadow(
                 b, (c.Position.Y + c.Offset.Y - motionOffset.Y) / 10000f,
-                new Vector2(d.TextureScale, d.TextureScale) * Utility.Lerp(0.96f, 1f, (float)Math.Sin(Math.PI * theta)),
-                new Vector2(d.ShadowScale, d.ShadowScale)
+                vd.VecTextureScale * Utility.Lerp(0.96f, 1f, (float)Math.Sin(Math.PI * theta)),
+                vd.VecShadowScale
             );
         }
     }

@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StardewValley.Monsters;
+using TrinketTinker.Companions.Anim;
 using TrinketTinker.Models;
 using TrinketTinker.Models.Mixin;
 using TrinketTinker.Wheels;
@@ -14,7 +15,9 @@ namespace TrinketTinker.Companions.Motions
         /// <summary>Companion that owns this motion.</summary>
         protected readonly TrinketTinkerCompanion c;
         /// <summary>Data for this motion.</summary>
-        protected readonly MotionData d;
+        protected readonly MotionData md;
+        /// <summary>Data for this motion.</summary>
+        protected readonly VariantData vd;
         /// <summary>Constant offset, derived from data</summary>
         protected Vector2 motionOffset;
         /// <summary>Should reverse the animation, used for <see cref="LoopMode.PingPong"/></summary>
@@ -29,51 +32,55 @@ namespace TrinketTinker.Companions.Motions
         protected AnchorTarget currAnchorTarget = AnchorTarget.Owner;
         /// <summary>Anchor changed during this tick</summary>s
         protected bool AnchorChanged => prevAnchorTarget != currAnchorTarget;
+        /// <summary>Companion animation controller</summary>
+        protected readonly CompanionSprite cs;
 
         /// <summary>Basic constructor, tries to parse arguments as the generic <see cref="IArgs"/> type.</summary>
         /// <param name="companion"></param>
-        /// <param name="data"></param>
-        public Motion(TrinketTinkerCompanion companion, MotionData data)
+        /// <param name="mdata"></param>
+        public Motion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata)
         {
             if (typeof(TArgs) != typeof(NoArgs))
             {
-                if (data.ParseArgs<TArgs>() is TArgs parsed && parsed.Validate())
+                if (mdata.ParseArgs<TArgs>() is TArgs parsed && parsed.Validate())
                     args = parsed;
                 else
                     args = (TArgs)Activator.CreateInstance(typeof(TArgs))!;
             }
             c = companion;
-            d = data;
-            motionOffset = new(d.Offset.X, d.Offset.Y);
+            md = mdata;
+            vd = vdata;
+            motionOffset = new(md.Offset.X, md.Offset.Y);
             c.Offset = motionOffset;
+            cs = new CompanionSprite(vdata);
         }
 
         /// <inheritdoc/>
         public virtual void Initialize(Farmer farmer)
         {
-            if (d.LightRadius > 0)
-            {
-                lightId = $"{c.ID}_{Game1.random.Next()}";
-                Game1.currentLightSources.Add(lightId, new LightSource(lightId, 1, c.Position + c.Offset, d.LightRadius, Color.Black, LightSource.LightContext.None, 0L));
-            }
+            // if (vd.LightSource is LightSourceData ldata)
+            // {
+            //     lightId = $"{c.ID}_{Game1.random.Next()}";
+            //     Game1.currentLightSources.Add(lightId, new LightSource(lightId, 1, c.Position + c.Offset, ldata.Radius, Color.Black, LightSource.LightContext.None, 0L));
+            // }
         }
 
         /// <inheritdoc/>
         public virtual void Cleanup()
         {
-            if (d.LightRadius > 0)
-            {
-                Utility.removeLightSource(lightId);
-            }
+            // if (md.LightRadius > 0)
+            // {
+            //     Utility.removeLightSource(lightId);
+            // }
         }
 
         /// <inheritdoc/>
         public virtual void OnOwnerWarp()
         {
-            if (d.LightRadius > 0)
-            {
-                Game1.currentLightSources.Add(lightId, new LightSource(lightId, 1, c.Position + c.Offset, d.LightRadius, Color.Black, LightSource.LightContext.None, 0L));
-            }
+            // if (md.LightRadius > 0)
+            // {
+            //     Game1.currentLightSources.Add(lightId, new LightSource(lightId, 1, c.Position + c.Offset, md.LightRadius, Color.Black, LightSource.LightContext.None, 0L));
+            // }
         }
 
         /// <summary>Changes the position of the anchor that the companion moves relative to, based on <see cref="MotionData.Anchors"/>.</summary>
@@ -82,7 +89,7 @@ namespace TrinketTinker.Companions.Motions
         public virtual void UpdateAnchor(GameTime time, GameLocation location)
         {
             prevAnchorTarget = currAnchorTarget;
-            foreach (AnchorTargetData anchor in d.Anchors)
+            foreach (AnchorTargetData anchor in md.Anchors)
             {
                 switch (anchor.Mode)
                 {
@@ -116,37 +123,32 @@ namespace TrinketTinker.Companions.Motions
         /// <inheritdoc/>
         public virtual void UpdateGlobal(GameTime time, GameLocation location)
         {
-            if (d.AlwaysMoving || c.Moving)
+            if (md.AlwaysMoving || c.Moving)
             {
                 int frameStart = DirectionFrameStart();
-                switch (d.LoopMode)
+                switch (md.LoopMode)
                 {
                     case LoopMode.PingPong:
-                        c.Sprite.AnimatePingPong(time, frameStart, d.AnimationFrameLength, d.Interval, ref isReverse);
+                        cs.AnimatePingPong(time, frameStart, md.AnimationFrameLength, md.Interval, ref isReverse);
                         break;
                     case LoopMode.Standard:
-                        c.Sprite.Animate(time, frameStart, d.AnimationFrameLength, d.Interval);
+                        cs.AnimateStandard(time, frameStart, md.AnimationFrameLength, md.Interval);
                         break;
                 }
             }
             else
             {
-                c.Sprite.currentFrame = DirectionFrameStart();
-                c.Sprite.UpdateSourceRect();
+                cs.SetCurrentFrame(DirectionFrameStart());
             }
-            if (d.LightRadius > 0 && location.Equals(Game1.currentLocation))
-                Utility.repositionLightSource(lightId, c.Position + c.Offset);
+            // if (md.LightRadius > 0 && location.Equals(Game1.currentLocation))
+            //     Utility.repositionLightSource(lightId, c.Position + c.Offset);
         }
 
         /// <inheritdoc/>
         public virtual void Draw(SpriteBatch b)
         {
             // float shadowScale = 3f * Utility.Lerp(1f, 0.8f, Math.Max(1f, -c.Offset.Y / 12));
-            DrawWithShadow(
-                b, c.Position.Y / 10000f,
-                new Vector2(d.TextureScale, d.TextureScale),
-                new Vector2(d.ShadowScale, d.ShadowScale)
-            );
+            DrawWithShadow(b, c.Position.Y / 10000f, vd.VecTextureScale, vd.VecShadowScale);
         }
 
         /// <summary>Default draw implementation, draws the companion plus a shadow.</summary>
@@ -156,19 +158,19 @@ namespace TrinketTinker.Companions.Motions
         /// <param name="shadowScale"></param>
         protected virtual void DrawWithShadow(SpriteBatch b, float layerDepth, Vector2 textureScale, Vector2 shadowScale)
         {
-            layerDepth = d.LayerDepth switch
+            layerDepth = md.LayerDepth switch
             {
                 LayerDepth.Behind => c.Owner.getDrawLayer() - 2 * 2E-06f,
                 LayerDepth.InFront => c.Owner.getDrawLayer() + 2 * 2E-06f,
                 _ => layerDepth,
             };
             b.Draw(
-                c.Sprite.Texture,
+                cs.Texture,
                 Game1.GlobalToLocal(c.Position + c.Offset + c.Owner.drawOffset),
-                c.Sprite.SourceRect,
-                c.SpriteColor,
+                cs.SourceRect,
+                cs.DrawColor,
                 c.rotation.Value,
-                c.SpriteOrigin,
+                cs.Origin,
                 textureScale,
                 (c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
                 layerDepth
@@ -202,7 +204,7 @@ namespace TrinketTinker.Companions.Motions
         protected virtual void UpdateDirection(Vector2 position)
         {
             Vector2 posDelta = c.Anchor - position;
-            switch (d.DirectionMode)
+            switch (md.DirectionMode)
             {
                 case DirectionMode.DRUL:
                     if (Math.Abs(posDelta.X) > Math.Abs(posDelta.Y))
@@ -237,9 +239,9 @@ namespace TrinketTinker.Companions.Motions
         /// <returns>Frame number</returns>
         protected virtual int DirectionFrameStart()
         {
-            if (d.DirectionMode == DirectionMode.Single)
-                return d.AnimationFrameStart;
-            return (Math.Abs(c.direction.Value) - 1) * d.AnimationFrameLength + d.AnimationFrameStart;
+            if (md.DirectionMode == DirectionMode.Single)
+                return md.AnimationFrameStart;
+            return (Math.Abs(c.direction.Value) - 1) * md.AnimationFrameLength + md.AnimationFrameStart;
         }
 
         /// <summary>Helper function, check if the sprite collides with anything.</summary>
@@ -250,10 +252,10 @@ namespace TrinketTinker.Companions.Motions
         {
             return location.isCollidingPosition(
                 new Rectangle(
-                    (int)spritePosition.X - c.Sprite.SpriteWidth / 2,
-                    (int)spritePosition.Y - c.Sprite.SpriteHeight / 2,
-                    c.Sprite.SpriteWidth,
-                    c.Sprite.SpriteHeight
+                    (int)spritePosition.X - vd.Width / 2,
+                    (int)spritePosition.Y - vd.Height / 2,
+                    vd.Width,
+                    vd.Height
                 ),
                 Game1.viewport,
                 isFarmer: false,

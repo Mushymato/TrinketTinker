@@ -58,11 +58,6 @@ namespace TrinketTinker.Models
         public int Range = 640;
     }
 
-    public class LightSourceData
-    {
-
-    }
-
     /// <summary>Data for <see cref="Companions.Motions"/>, defines how a companion moves.</summary>
     public sealed class MotionData : Mixin.IHaveArgs
     {
@@ -88,11 +83,5 @@ namespace TrinketTinker.Models
         public Vector2 Offset { get; set; } = Vector2.Zero;
         /// <summary>Layer depth mode.</summary>
         public LayerDepth LayerDepth { get; set; } = LayerDepth.Position;
-        /// <summary>Base scale to draw texture at.</summary>
-        public float TextureScale { get; set; } = 4f;
-        /// <summary>Base scale to draw shadow texture.</summary>
-        public float ShadowScale { get; set; } = 3f;
-        /// <summary>If set, add a light with given radius. Note that the light is only visible to local player.</summary>
-        public float LightRadius { get; set; } = 0f;
     }
 }

@@ -6,7 +6,8 @@ using TrinketTinker.Models.MotionArgs;
 
 namespace TrinketTinker.Companions.Motions
 {
-    public class BaseStaticMotion<IArgs>(TrinketTinkerCompanion companion, MotionData data) : Motion<IArgs>(companion, data) where IArgs : StaticArgs
+    public class BaseStaticMotion<IArgs>(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata)
+        : Motion<IArgs>(companion, mdata, vdata) where IArgs : StaticArgs
     {
         /// <inheritdoc/>
         public override void UpdateLocal(GameTime time, GameLocation location)
@@ -27,8 +28,8 @@ namespace TrinketTinker.Companions.Motions
         {
             DrawWithShadow(
                 b, (c.direction.Value == 2) ? (c.Position.Y / 10000f) : 1f,
-                new Vector2(d.TextureScale, d.TextureScale),
-                new Vector2(d.ShadowScale, d.ShadowScale)
+                vd.VecTextureScale,
+                vd.VecShadowScale
             );
         }
 
@@ -37,7 +38,7 @@ namespace TrinketTinker.Companions.Motions
         {
             int prevDirection = c.direction.Value;
             int facingDirection = c.Owner.FacingDirection;
-            switch (d.DirectionMode)
+            switch (md.DirectionMode)
             {
                 case DirectionMode.DRUL:
                     c.direction.Value = facingDirection switch
@@ -93,7 +94,7 @@ namespace TrinketTinker.Companions.Motions
     /// <summary>Companion stays at some </summary>
     /// <param name="companion"></param>
     /// <param name="data"></param>
-    public sealed class StaticMotion(TrinketTinkerCompanion companion, MotionData data) : BaseStaticMotion<StaticArgs>(companion, data)
+    public sealed class StaticMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata) : BaseStaticMotion<StaticArgs>(companion, mdata, vdata)
     {
     }
 }

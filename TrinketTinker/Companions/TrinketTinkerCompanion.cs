@@ -21,7 +21,7 @@ namespace TrinketTinker.Companions
         /// <summary>Companion ID. Companion is (re)loaded when this is changed.</summary>
         public string ID => _id.Value;
         /// <summary>Animated sprite of companion</summary>
-        public AnimatedSprite Sprite { get; set; } = new();
+        // public AnimatedSprite Sprite { get; set; } = new();
         /// <summary>NetField for <see cref="Moving"/></summary>
         protected readonly NetBool _moving = new(false);
         /// <summary>Whether companion is moving</summary>
@@ -62,20 +62,6 @@ namespace TrinketTinker.Companions
         public IMotion? Motion { get; set; }
         /// <summary>Position the companion should follow.</summary>
         public Vector2 Anchor { get; set; }
-        /// <summary>Middle point of the sprite, based on width and height.</summary>
-        public Vector2 SpriteOrigin { get; set; } = Vector2.Zero;
-        /// <summary>Color mask to use on sprite draw.</summary>
-        public Color SpriteColor
-        {
-            get
-            {
-                if (Data == null)
-                    return Color.White;
-                if (Data?.Variants[whichVariant.Value].ColorMask == TinkerConst.COLOR_PRISMATIC)
-                    return Utility.GetPrismaticColor();
-                return Utility.StringToColor(Data?.Variants[whichVariant.Value].ColorMask) ?? Color.White;
-            }
-        }
 
         /// <summary>Argumentless constructor for netcode deserialization.</summary>
         public TrinketTinkerCompanion() : base()
@@ -137,11 +123,11 @@ namespace TrinketTinker.Companions
             if (Data.Motions.Count > 0)
             {
                 VariantData vdata = Data.Variants[whichVariant.Value];
-                Sprite = new AnimatedSprite(vdata.Texture, 0, vdata.Width, vdata.Height);
-                SpriteOrigin = new Vector2(vdata.Width / 2, vdata.Height / 2);
+                // Sprite = new AnimatedSprite(vdata.Texture, 0, vdata.Width, vdata.Height);
+                // SpriteOrigin = new Vector2(vdata.Width / 2, vdata.Height / 2);
                 MotionData mdata = Data.Motions[0];
                 if (Reflect.TryGetType(mdata.MotionClass, out Type? motionCls, TinkerConst.MOTION_CLS))
-                    Motion = (IMotion?)Activator.CreateInstance(motionCls, this, mdata);
+                    Motion = (IMotion?)Activator.CreateInstance(motionCls, this, mdata, vdata);
                 else
                 {
                     ModEntry.LogOnce($"Could not get motion class {mdata.MotionClass}", LogLevel.Error);

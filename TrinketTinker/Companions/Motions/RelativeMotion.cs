@@ -5,15 +5,16 @@ using TrinketTinker.Models.MotionArgs;
 
 namespace TrinketTinker.Companions.Motions
 {
-    public sealed class RelativeMotion(TrinketTinkerCompanion companion, MotionData data) : BaseStaticMotion<StaticArgs>(companion, data)
+    public sealed class RelativeMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata)
+        : BaseStaticMotion<StaticArgs>(companion, mdata, vdata)
     {
         /// <inheritdoc/>
         public override void Draw(SpriteBatch b)
         {
             DrawWithShadow(
                 b, c.Owner.FacingDirection == 0 ? 1f : (c.Position.Y / 10000f),
-                new Vector2(d.TextureScale, d.TextureScale),
-                new Vector2(d.ShadowScale, d.ShadowScale)
+                vd.VecTextureScale,
+                vd.VecShadowScale
             );
         }
 
@@ -24,16 +25,16 @@ namespace TrinketTinker.Companions.Motions
             switch (c.Owner.FacingDirection)
             {
                 case 0: // up
-                    motionOffset = new(0, -d.Offset.Y / 2);
+                    motionOffset = new(0, -md.Offset.Y / 2);
                     break;
                 case 1: // right
-                    motionOffset = new(d.Offset.X, d.Offset.Y);
+                    motionOffset = new(md.Offset.X, md.Offset.Y);
                     break;
                 case 2: // down
-                    motionOffset = new(0, d.Offset.Y * 1.5f);
+                    motionOffset = new(0, md.Offset.Y * 1.5f);
                     break;
                 case 3: // left
-                    motionOffset = new(-d.Offset.X, d.Offset.Y);
+                    motionOffset = new(-md.Offset.X, md.Offset.Y);
                     break;
             }
         }

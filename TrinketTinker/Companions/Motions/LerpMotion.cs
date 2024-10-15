@@ -12,9 +12,9 @@ namespace TrinketTinker.Companions.Motions
         private float lerp = -1f;
 
         /// <inheritdoc/>
-        public BaseLerpMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data)
+        public BaseLerpMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata) : base(companion, mdata, vdata)
         {
-            motionOffset.Y -= c.Sprite.SpriteHeight * 4 / 2;
+            motionOffset.Y -= vdata.Height * 4 / 2;
             c.Offset = motionOffset;
         }
 
@@ -67,7 +67,7 @@ namespace TrinketTinker.Companions.Motions
     /// <summary>Companion closely follows the anchor, at a distance</summary>
     /// <param name="companion"></param>
     /// <param name="data"></param>
-    public class LerpMotion(TrinketTinkerCompanion companion, MotionData data) : BaseLerpMotion<LerpArgs>(companion, data)
+    public class LerpMotion(TrinketTinkerCompanion companion, MotionData data, VariantData vdata) : BaseLerpMotion<LerpArgs>(companion, data, vdata)
     {
     }
 }

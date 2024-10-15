@@ -23,8 +23,7 @@
               "DirectionMode": "R",
               "LoopMode": "PingPong",
               "AnimationFrameLength": 4,
-              "Interval": 200,
-              "LightRadius": 5,
+              "Interval": 200
             }
           ],
           "Abilities": [
