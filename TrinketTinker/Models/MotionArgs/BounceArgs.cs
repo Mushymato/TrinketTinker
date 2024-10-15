@@ -4,8 +4,8 @@ namespace TrinketTinker.Models.MotionArgs
     public sealed class BounceArgs : LerpArgs
     {
         /// <summary>Bounce height</summary>
-        public float MaxHeight { get; set; }
+        public float MaxHeight { get; set; } = 128f;
         /// <summary>Deform when hitting the ground</summary>
-        public bool Squash { get; set; }
+        public bool Squash { get; set; } = false;
     }
 }

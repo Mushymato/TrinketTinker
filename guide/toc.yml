@@ -4,16 +4,23 @@
   name: Tinker
 - href: 2-Variant.md
   name: Variant
-- href: 3-Motion.md
+- expanded: true
+  href: 3-Motion.md
   items:
   - href: 3.0-Direction.md
     name: Direction
   - href: 3.1-Anchors.md
     name: Anchors
-  - href: 3.2-Lerp.md
-    name: Lerp
+  - expanded: true
+    items:
+    - href: 3.2.0-Lerp.md
+      name: Lerp
+    - href: 3.2.1-Hover.md
+      name: Hover
+    name: Motion Classes
   name: Motion
-- href: 4-Ability.md
+- expanded: true
+  href: 4-Ability.md
   items:
   - href: 4.0-Proc.md
     name: Proc

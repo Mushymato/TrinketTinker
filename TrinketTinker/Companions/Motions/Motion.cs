@@ -227,7 +227,7 @@ namespace TrinketTinker.Companions.Motions
                 case DirectionMode.Rotate:
                     c.rotation.Value = (float)Math.Atan2(posDelta.Y, posDelta.X);
                     break;
-                case DirectionMode.None:
+                case DirectionMode.Single:
                     c.direction.Value = 1;
                     break;
             }
@@ -237,7 +237,7 @@ namespace TrinketTinker.Companions.Motions
         /// <returns>Frame number</returns>
         protected virtual int DirectionFrameStart()
         {
-            if (d.DirectionMode == DirectionMode.None)
+            if (d.DirectionMode == DirectionMode.Single)
                 return d.AnimationFrameStart;
             return (Math.Abs(c.direction.Value) - 1) * d.AnimationFrameLength + d.AnimationFrameStart;
         }

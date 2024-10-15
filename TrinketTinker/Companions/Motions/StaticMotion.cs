@@ -83,7 +83,7 @@ namespace TrinketTinker.Companions.Motions
                         _ => 0
                     };
                     break;
-                case DirectionMode.None:
+                case DirectionMode.Single:
                     c.direction.Value = 1;
                     break;
             }

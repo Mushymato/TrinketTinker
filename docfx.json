@@ -50,9 +50,13 @@
       "_appTitle": "TrinketTinker",
       "_appLogoPath": "images/favicon.png",
       "_appFaviconPath": "images/favicon.png",
+      "_appFooter": "<a href=\"https://github.com/Mushymato/TrinketTinker\">Source Code</a>",
       "_enableSearch": true,
       "_disableContribution": true,
       "pdf": false
     },
+    "postProcessors": [
+      "ExtractSearchIndex"
+    ],
   }
 }

@@ -2,7 +2,7 @@
 
 > [!NOTE]
 > The following page covers how trinkets are added in the base game, regardless of whether TrinketTinker is being used.
-> You must add trinket items like this before you can extend it with trinket tinker data.
+> You must add trinket items before you can extend it with trinket tinker data.
 
 Trinkets can be added with by editing `Data/Trinkets`, generally with [Content Patcher](https://github.com/Pathoschild/StardewMods/tree/stable/ContentPatcher).
 

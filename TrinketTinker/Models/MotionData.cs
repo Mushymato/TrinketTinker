@@ -7,7 +7,7 @@ namespace TrinketTinker.Models
     public enum DirectionMode
     {
         /// <summary>Direction never changes.</summary>
-        None,
+        Single,
         /// <summary>Has right animations, flips sprite if going left</summary>
         R,
         /// <summary>Has right/left animations, no down/up</summary>
@@ -64,7 +64,7 @@ namespace TrinketTinker.Models
         /// <summary>Type name of the motion, can use short form like "Hover" for hover motion.</summary>
         public string MotionClass { get; set; } = "Lerp";
         /// <summary>Direction mode, determines how sprites should be arranged.</summary>
-        public DirectionMode DirectionMode { get; set; } = DirectionMode.None;
+        public DirectionMode DirectionMode { get; set; } = DirectionMode.Single;
         /// <summary>First frame of the animation.</summary>
         public LoopMode LoopMode { get; set; } = LoopMode.Standard;
         /// <summary>

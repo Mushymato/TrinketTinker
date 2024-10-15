@@ -6,6 +6,7 @@ notes.txt
 debug.csproj
 *.xcf
 TrinketTinkerTest/
+TrinketTinker/manifest.json
 workfiles/
 .config
 

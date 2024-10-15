@@ -11,18 +11,12 @@ namespace TrinketTinker.Companions.Motions
     {
         /// <summary>trig function input</summary>
         private double theta = 0f;
-        /// <summary>trig function input</summary>
-        protected readonly float radiusX = 96f;
-        /// <summary>trig function input</summary>
-        protected readonly float radiusY = 40f;
 
         /// <inheritdoc/>
         public OrbitMotion(TrinketTinkerCompanion companion, MotionData data) : base(companion, data)
         {
             motionOffset.Y -= 64f;
             c.Offset = motionOffset;
-            radiusX = args?.RadiusX ?? radiusX;
-            radiusY = args?.RadiusY ?? radiusY;
         }
 
         /// <summary>
@@ -34,8 +28,8 @@ namespace TrinketTinker.Companions.Motions
         {
             base.UpdateLocal(time, location);
             theta += time.ElapsedGameTime.TotalSeconds;
-            c.NetOffset.X = motionOffset.X + radiusX * (float)Math.Cos(Math.PI * theta);
-            c.NetOffset.Y = motionOffset.Y + radiusY * (float)Math.Sin(Math.PI * theta);
+            c.NetOffset.X = motionOffset.X + args.RadiusX * (float)Math.Cos(Math.PI * theta);
+            c.NetOffset.Y = motionOffset.Y + args.RadiusY * (float)Math.Sin(Math.PI * theta);
             if (theta >= 2f)
                 theta = 0f;
         }
