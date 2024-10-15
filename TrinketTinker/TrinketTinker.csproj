@@ -24,6 +24,9 @@
     <MinimumGameVersion_Behavior>UpdateFull</MinimumGameVersion_Behavior>
     <Dependencies_VersionBehavior>UpdateFull</Dependencies_VersionBehavior>
   </PropertyGroup>
+  <ItemGroup>
+    <SMAPIDependency Include="Pathoschild.ContentPatcher" Required="False" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Leclair.Stardew.ModManifestBuilder" Version="2.3.1" />

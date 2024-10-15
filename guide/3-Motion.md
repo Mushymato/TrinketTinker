@@ -9,7 +9,7 @@ There are 2 main kinds of motion implemented in by this mod.
 
 Each of these have sub types like Hover for Lerp motion that hovers, see the individual pages on the sidebar for details.
 
-The term "anchor" refers to a position that the companion derives it's own position from. By default this is the player, but it can also be other entites like a monster.
+The term "anchor" refers to a position that the companion derives it's own position from. By default this is the player, but it can also be other entities like a monster.
 
 
 ## Structure
