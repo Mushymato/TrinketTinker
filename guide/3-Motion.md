@@ -27,6 +27,6 @@ The term "anchor" refers to a position that the companion derives it's own posit
 | `Offset` | Vector2 | 0, 0 | Constant offset to apply to the companion, on top of the motion. |
 | `LayerDepth` | [LayerDepth](~/api/TrinketTinker.Models.LayerDepth.yml) | Position | Changes draw layer relative to player. <ul><li>Position: Calculate layer based on Y position</li><li>Behind: Always behind the player.</li><li>InFront: Always infront of the player</li></ul> |
 | `TextureScale` | float | 4 | Texture draw scale, default is 4 like most things in the game. |
-| `ShadowScale` | float | 3 | Size of the shadow to draw, set to 0 to disable shadow. |
+| `ShadowScale` | float | 3 | Size of the shadow to draw, 0 to disable shadow. |
 | `LightRadius` | float | 0 | If greater than 0, add a light source with given radius to the companion, similar to fairy. |
 | `Args` | Dictionary | _varies_ | Arguments specific to a motion class, see respective page for details. |

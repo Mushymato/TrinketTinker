@@ -4,7 +4,7 @@ using StardewValley.Objects.Trinkets;
 using TrinketTinker.Effects;
 using TrinketTinker.Models;
 
-namespace TrinketTinker.Extra
+namespace TrinketTinker.Extras
 {
     public static class ProcTrinket
     {

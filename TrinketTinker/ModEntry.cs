@@ -8,7 +8,7 @@ using TrinketTinker.Companions;
 using TrinketTinker.Companions.Motions;
 using TrinketTinker.Effects;
 using TrinketTinker.Effects.Abilities;
-using TrinketTinker.Extra;
+using TrinketTinker.Extras;
 using StardewValley.Internal;
 using TrinketTinker.Wheels;
 

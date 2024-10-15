@@ -4,15 +4,13 @@
   name: Tinker
 - href: 2-Variant.md
   name: Variant
-- expanded: true
-  href: 3-Motion.md
+- href: 3-Motion.md
   items:
   - href: 3.0-Direction.md
     name: Direction
   - href: 3.1-Anchors.md
     name: Anchors
-  - expanded: true
-    items:
+  - items:
     - href: 3.2.000-Lerp.md
       name: Lerp
     - href: 3.2.001-Hover.md
@@ -27,13 +25,11 @@
       name: Relative
     name: Motion Classes
   name: Motion
-- expanded: true
-  href: 4-Ability.md
+- href: 4-Ability.md
   items:
   - href: 4.0-Proc.md
     name: Proc
-  - expanded: true
-    items:
+  - items:
     - href: 4.1.0-DebugDummy.md
       name: DebugDummy
     - href: 4.1.1-Buff.md
@@ -52,5 +48,5 @@
       name: RaiseTrigger
     name: Ability Classes
   name: Ability
-- href: x-example.md
-  name: example
+- href: 5-Extras.md
+  name: Extras

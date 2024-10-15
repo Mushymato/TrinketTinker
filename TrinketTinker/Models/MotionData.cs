@@ -58,6 +58,11 @@ namespace TrinketTinker.Models
         public int Range = 640;
     }
 
+    public class LightSourceData
+    {
+
+    }
+
     /// <summary>Data for <see cref="Companions.Motions"/>, defines how a companion moves.</summary>
     public sealed class MotionData : Mixin.IHaveArgs
     {

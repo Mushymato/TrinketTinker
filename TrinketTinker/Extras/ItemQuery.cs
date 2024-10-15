@@ -4,7 +4,7 @@ using StardewValley.ItemTypeDefinitions;
 using StardewValley.Objects.Trinkets;
 using TrinketTinker.Effects;
 
-namespace TrinketTinker.Extra
+namespace TrinketTinker.Extras
 {
     public static class ItemQuery
     {

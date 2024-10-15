@@ -9,7 +9,7 @@ using SObject = StardewValley.Object;
 using StardewValley.GameData.Shops;
 using TrinketTinker.Effects;
 
-namespace TrinketTinker.Extra
+namespace TrinketTinker.Extras
 {
     public static class TrinketColorizer
     {
