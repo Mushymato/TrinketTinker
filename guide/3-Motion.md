@@ -16,8 +16,8 @@ The term "anchor" refers to a position that the companion derives it's own posit
 
 | Property | Type | Default | Notes |
 | -------- | ---- | ------- | ----- |
-| `MotionClass` | string | Lerp | Type name of the motion class to use, can use short name like `Lerp`. |
-| `DirectionMode` | [DirectionMode](3.0-Direction.md) | None | Determines how the trinket behaves when changing directions and controls what sprites are required. |
+| `MotionClass` | string | Lerp | Type name of the motion class to use, can use short name like `Lerp`.<br>Refer to pages under Motion Classes in the table of contents for details. |
+| `DirectionMode` | [DirectionMode](3.0-Direction.md) | DRUL | Determines how the trinket behaves when changing directions and controls what sprites are required. |
 | `LoopMode` | [LoopMode](~/api/TrinketTinker.Models.LoopMode.yml) | Standard | Control animation playback. <ul><li>Standard: 1 2 3 4 1 2 3 4</li><li>PingPong:  1 2 3 4 3 2 1</li><ul> |
 | `Anchors` | [List\<AnchorTargetData\>](3.1-Anchors.md) | _empty_ | Ordered list of anchors to follow, if not set, fall back to following the player |
 | `AlwaysMoving` | bool | false | By default the companion only animates while the anchor is moving, setting this to true makes the companion animate all the time |

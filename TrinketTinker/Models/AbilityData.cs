@@ -27,9 +27,9 @@ namespace TrinketTinker.Models
     public sealed class AbilityData : Mixin.IHaveArgs
     {
         /// <summary>Type name of the ability, can use short form like "Buff" for buff ability.</summary>
-        public string? AbilityClass { get; set; } = null;
+        public string AbilityClass { get; set; } = "DebugDummy";
         /// <summary>Determine when this ability activates.</summary>
-        public ProcOn ProcOn { get; set; } = new();
+        public ProcOn Proc { get; set; } = ProcOn.Footstep;
         /// <summary>Minimum cooldown time between ability activation, all <see cref="Models.ProcOn"/> values respect this, not just <see cref="ProcOn.Timer"/>.</summary>
         public double ProcTimer { get; set; } = -1;
         /// <summary>Sound cue to play on proc.</summary>

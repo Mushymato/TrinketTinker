@@ -141,7 +141,7 @@
             // level 0
             [
               {
-                "AbilityClass": "Trigger",
+                "AbilityClass": "RaiseTrigger",
                 "ProcOn": "Footstep",
               }
             ]

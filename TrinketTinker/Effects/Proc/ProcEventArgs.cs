@@ -13,7 +13,7 @@ namespace TrinketTinker.Effects.Proc
     public class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
     {
         /// <summary>Kind of proc triggering this event</summary>
-        public ProcOn ProcOn => procOn;
+        public ProcOn Proc => procOn;
         /// <summary>Player who triggered the event</summary>
         public Farmer Farmer => farmer;
         /// <summary>Game time</summary>
@@ -46,7 +46,7 @@ namespace TrinketTinker.Effects.Proc
                 return false;
             if (DamageAmount != null && DamageAmount < data.DamageThreshold)
                 return false;
-            if (ProcOn == ProcOn.SlayMonster || ProcOn == ProcOn.DamageMonster)
+            if (Proc == ProcOn.SlayMonster || Proc == ProcOn.DamageMonster)
             {
                 if (Monster != null || (data.IsBomb ?? IsBomb) == IsBomb || (data.IsCriticalHit ?? IsCriticalHit) == IsCriticalHit)
                     return false;

@@ -17,7 +17,7 @@ namespace TrinketTinker.Effects.Abilities
             StringBuilder sbld = new();
             sbld.Append(Name);
             sbld.Append('(');
-            sbld.Append(proc.ProcOn);
+            sbld.Append(proc.Proc);
             sbld.Append(')');
             ModEntry.Log(sbld.ToString(), LogLevel.Debug);
             return true;

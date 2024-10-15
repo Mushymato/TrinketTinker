@@ -59,10 +59,10 @@ namespace TrinketTinker.Effects.Abilities
             if (!Active)
             {
                 Active = true;
-                Allowed = d.ProcOn != ProcOn.Timer;
+                Allowed = d.Proc != ProcOn.Timer;
                 ProcTimer = d.ProcTimer;
 
-                switch (d.ProcOn)
+                switch (d.Proc)
                 {
                     case ProcOn.Always:
                         HandleProc(null, new(ProcOn.Always, farmer));
@@ -98,7 +98,7 @@ namespace TrinketTinker.Effects.Abilities
             if (Active)
             {
 
-                switch (d.ProcOn)
+                switch (d.Proc)
                 {
                     case ProcOn.Always:
                         UnProc(farmer);
@@ -198,7 +198,7 @@ namespace TrinketTinker.Effects.Abilities
             {
                 Allowed = true;
             }
-            if (d.ProcOn == ProcOn.Timer && Allowed)
+            if (d.ProcTimer > 0 && d.Proc == ProcOn.Timer && Allowed)
             {
                 HandleProc(null, new(ProcOn.Timer, farmer)
                 {

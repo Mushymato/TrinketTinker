@@ -64,7 +64,7 @@ namespace TrinketTinker.Models
         /// <summary>Type name of the motion, can use short form like "Hover" for hover motion.</summary>
         public string MotionClass { get; set; } = "Lerp";
         /// <summary>Direction mode, determines how sprites should be arranged.</summary>
-        public DirectionMode DirectionMode { get; set; } = DirectionMode.Single;
+        public DirectionMode DirectionMode { get; set; } = DirectionMode.DRUL;
         /// <summary>First frame of the animation.</summary>
         public LoopMode LoopMode { get; set; } = LoopMode.Standard;
         /// <summary>

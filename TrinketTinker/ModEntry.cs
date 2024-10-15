@@ -45,7 +45,7 @@ namespace TrinketTinker
         {
             // Add trigger & action
             TriggerActionManager.RegisterAction(ProcTrinket.TriggerActionName, ProcTrinket.Action);
-            TriggerActionManager.RegisterTrigger(TriggerAbility.TriggerEventName);
+            TriggerActionManager.RegisterTrigger(RaiseTriggerAbility.TriggerEventName);
 
             // Add item query for creating a trinket with specific level and variant
             ItemQueryResolver.Register(ItemQuery.CreateTrinketQuery, ItemQuery.CreateTrinket);
