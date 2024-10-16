@@ -140,25 +140,7 @@ namespace TrinketTinker.Effects.Abilities
                     Game1.playSound(d.ProcSound);
 
                 foreach (TemporaryAnimatedSpriteDefinition temporarySprite in d.ProcTemporarySprites)
-                {
-                    TemporaryAnimatedSprite temporaryAnimatedSprite = new(
-                        temporarySprite.Texture,
-                        temporarySprite.SourceRect,
-                        temporarySprite.Interval,
-                        temporarySprite.Frames,
-                        temporarySprite.Loops,
-                        GetTASPosition(args) + temporarySprite.PositionOffset * 4f,
-                        temporarySprite.Flicker, temporarySprite.Flip,
-                        e.CompanionOwnerDrawLayer + temporarySprite.SortOffset,
-                        temporarySprite.AlphaFade,
-                        Utility.StringToColor(temporarySprite.Color) ?? Color.White,
-                        temporarySprite.Scale * 4f,
-                        temporarySprite.ScaleChange,
-                        temporarySprite.Rotation,
-                        temporarySprite.RotationChange
-                    );
-                    Game1.Multiplayer.broadcastSprites(args.LocationOrCurrent, temporaryAnimatedSprite);
-                }
+                    Visuals.BroadcastTAS(temporarySprite, GetTASPosition(args), e.CompanionOwnerDrawLayer, args.LocationOrCurrent);
             }
         }
 

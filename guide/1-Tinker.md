@@ -5,6 +5,9 @@ The key used must match the __unqualified ID__ of the trinket.
 
 When a `mushymato.TrinketTinker/Tinker` entry exists, the `TrinketEffectClass` will be set to `TrinketTinker.Effects.TrinketTinkerEffect` from this mod.
 
+> [!NOTE]
+> Trinkets can be reloaded with `patch reload <content mod id>`, however it must be removed and equipped again to do anything.
+
 ## Structure
 
 | Property | Type | Default | Notes |
@@ -18,5 +21,5 @@ When a `mushymato.TrinketTinker/Tinker` entry exists, the `TrinketEffectClass` w
 
 - Technically all fields here are optional, but in that case there'd be little point to using this framework at all.
 - To display a companion, at least 1 Variant and 1 Motion must be defined.
-- To have the trinket do thins, at least 1 Ability must be defined.
+- To have the trinket do things, at least 1 Ability must be defined.
 - At the moment, there's no reason to have more than 1 Motion, but this may change in the future.

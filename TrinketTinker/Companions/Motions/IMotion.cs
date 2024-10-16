@@ -35,5 +35,7 @@ namespace TrinketTinker.Companions.Motions
         /// <summary>Draws the companion, for all game instances in multiplayer.</summary>
         /// <param name="b"></param>
         void Draw(SpriteBatch b);
+
+        Vector2 GetOffset();
     }
 }

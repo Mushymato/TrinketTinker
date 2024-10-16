@@ -30,7 +30,7 @@ namespace TrinketTinker.Companions
         public IMotion? Motion { get; set; }
         /// <summary>Position the companion should follow.</summary>
         public Vector2 Anchor { get; set; }
-
+        public Vector2 Offset => Motion?.GetOffset() ?? Vector2.Zero;
         /// <summary>Argumentless constructor for netcode deserialization.</summary>
         public TrinketTinkerCompanion() : base()
         {

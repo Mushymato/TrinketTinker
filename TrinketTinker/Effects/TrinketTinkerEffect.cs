@@ -29,7 +29,7 @@ namespace TrinketTinker.Effects
             get
             {
                 if (Companion is TrinketTinkerCompanion cmp)
-                    return cmp.Position;
+                    return cmp.Position + cmp.Offset;
                 return null;
             }
         }

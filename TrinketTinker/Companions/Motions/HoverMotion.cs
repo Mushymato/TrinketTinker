@@ -25,7 +25,7 @@ namespace TrinketTinker.Companions.Motions
 
         /// <summary>Get offset</summary>
         /// <returns></returns>
-        internal override Vector2 GetOffset()
+        public override Vector2 GetOffset()
         {
             return new Vector2(0, args.Magnitude * (float)Math.Sin(Math.PI * theta) - DEFAULT_HEIGHT) + base.GetOffset();
         }

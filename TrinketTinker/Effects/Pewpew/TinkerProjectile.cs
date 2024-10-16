@@ -13,7 +13,7 @@ namespace TrinketTinker.Effects.Pewpew
     /// <summary>
     /// Custom projectile class, can utilize custom texture and deal damage with optional knockback crit/crit damage and stun.
     /// </summary>
-    public class TinkerProjectile : Projectile
+    public sealed class TinkerProjectile : Projectile
     {
         public readonly NetString projectileTexture = new("");
         private Texture2D? loadedProjectileTexture = null;
@@ -115,6 +115,9 @@ namespace TrinketTinker.Effects.Pewpew
             }
         }
 
+        /// <summary>Deal damage to monster.</summary>
+        /// <param name="n"></param>
+        /// <param name="location"></param>
         public override void behaviorOnCollisionWithMonster(NPC n, GameLocation location)
         {
             Farmer playerWhoFiredMe = (theOneWhoFiredMe.Get(location) as Farmer) ?? Game1.player;
@@ -163,7 +166,7 @@ namespace TrinketTinker.Effects.Pewpew
                 }
                 if (!monster.IsInvisible)
                 {
-                    piercesLeft.Value--;
+                    UpdatePiecesLeft(location);
                 }
             }
         }
@@ -171,7 +174,7 @@ namespace TrinketTinker.Effects.Pewpew
         public override void behaviorOnCollisionWithOther(GameLocation location)
         {
             if (!ignoreObjectCollisions.Value)
-                piercesLeft.Value--;
+                UpdatePiecesLeft(location);
         }
 
         public override void behaviorOnCollisionWithPlayer(GameLocation location, Farmer player)
@@ -182,10 +185,10 @@ namespace TrinketTinker.Effects.Pewpew
         {
             t.performUseAction(tileLocation);
             if (!ignoreObjectCollisions.Value)
-                piercesLeft.Value--;
+                UpdatePiecesLeft(location);
         }
 
-        /// <summary>same as basic projectile</summary>
+        /// <summary>Same as basic projectile</summary>
         /// <param name="time"></param>
         public override void updatePosition(GameTime time)
         {
@@ -198,6 +201,23 @@ namespace TrinketTinker.Effects.Pewpew
             }
             position.X += xVelocity.Value;
             position.Y += yVelocity.Value;
+        }
+
+        public void UpdatePiecesLeft(GameLocation location)
+        {
+            piercesLeft.Value--;
+            if (piercesLeft.Value == 0)
+            {
+                Rectangle sourceRect = GetSourceRect();
+                sourceRect.X += 4;
+                sourceRect.Y += 4;
+                sourceRect.Width = 8;
+                sourceRect.Height = 8;
+                Game1.createRadialDebris_MoreNatural(
+                    location, projectileTexture.Value,
+                    sourceRect, 1, (int)position.X + 32, (int)position.Y + 32, 6, (int)(position.Y / 64f) + 1
+                );
+            }
         }
     }
 }

@@ -30,7 +30,7 @@ namespace TrinketTinker.Companions.Motions
         }
 
         /// <inheritdoc/>
-        internal override Vector2 GetOffset()
+        public override Vector2 GetOffset()
         {
             return new Vector2(
                 args.RadiusX * (float)Math.Cos(Math.PI * theta),

@@ -136,17 +136,17 @@
             // level 0
             [
               {
-                // Shoot a projectile that stuns every 3s
+                // Shoot a projectile that stuns for 2s every 5s
                 "Proc": "Timer",
-                "ProcTimer": 3000,
+                "ProcTimer": 5000,
                 "AbilityClass": "Projectile",
                 "Args": {
-                  "StunTime": 500,
+                  "StunTime": 2000,
                   "Range": 4096,
                   "Texture": "Mods/{{ModId}}/projectile",
                   "SpriteIndex": 0,
                   "MinVelocity": 12,
-                  "Pierce": 99999,
+                  "Pierce": 1,
                 }
               }
             ]

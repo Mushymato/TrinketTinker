@@ -171,7 +171,7 @@ namespace TrinketTinker.Companions.Motions
 
         /// <summary>Get offset</summary>
         /// <returns></returns>
-        internal virtual Vector2 GetOffset()
+        public virtual Vector2 GetOffset()
         {
             return md.Offset;
         }

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using TrinketTinker.Models;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Companions.Anim
 {
@@ -27,7 +28,7 @@ namespace TrinketTinker.Companions.Anim
         internal TinkerLightSource(string id, Vector2 position, LightSourceData ldata) : base(id, ldata.Index, position, ldata.Radius)
         {
             ld = ldata;
-            color.Value = VariantData.GetSDVColor(ld.Color, out drawColorIsConstant, invert: true);
+            color.Value = Visuals.GetSDVColor(ld.Color, out drawColorIsConstant, invert: true);
             if (ldata.Texture != null)
                 lightTexture = Game1.content.Load<Texture2D>(ldata.Texture);
         }
@@ -37,7 +38,7 @@ namespace TrinketTinker.Companions.Anim
         {
             if (ld != null && !drawColorIsConstant)
             {
-                color.Value = VariantData.GetSDVColor(ld.Color, out drawColorIsConstant, invert: true);
+                color.Value = Visuals.GetSDVColor(ld.Color, out drawColorIsConstant, invert: true);
             }
             base.Draw(spriteBatch, location, lightMultiplier);
         }

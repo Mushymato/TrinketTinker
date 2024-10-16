@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using TrinketTinker.Models;
 using TrinketTinker.Models.MotionArgs;
 
@@ -11,11 +10,20 @@ namespace TrinketTinker.Companions.Motions
         /// <inheritdoc/>
         protected override float GetPositionalLayerDepth(Vector2 offset)
         {
-            return (c.Owner.FacingDirection == 0) ? (c.Position.Y / 10000f) : 1f;
+            // return (c.Owner.FacingDirection == 0) ? (c.Position.Y / 10000f) : 1f;
+            return c.Owner.FacingDirection switch
+            {
+                // up
+                0 => 1f,
+                // down
+                1 => 0f,
+                // right & left
+                _ => c.Position.Y / 10000f
+            };
         }
 
         /// <inheritdoc/>
-        internal override Vector2 GetOffset()
+        public override Vector2 GetOffset()
         {
             return c.Owner.FacingDirection switch
             {

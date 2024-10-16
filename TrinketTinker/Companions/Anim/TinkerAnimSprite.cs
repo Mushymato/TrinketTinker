@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using TrinketTinker.Models;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Companions.Anim
 {
@@ -28,8 +29,8 @@ namespace TrinketTinker.Companions.Anim
                 if (drawColor != null)
                     return (Color)drawColor;
                 if (!drawColorIsConstant) // cannot keep prismatic color
-                    return VariantData.GetSDVColor(vd.ColorMask, out drawColorIsConstant);
-                drawColor = VariantData.GetSDVColor(vd.ColorMask, out drawColorIsConstant);
+                    return Visuals.GetSDVColor(vd.ColorMask, out drawColorIsConstant);
+                drawColor = Visuals.GetSDVColor(vd.ColorMask, out drawColorIsConstant);
                 return (Color)drawColor;
             }
         }
