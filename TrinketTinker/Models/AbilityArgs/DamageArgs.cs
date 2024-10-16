@@ -32,8 +32,6 @@ namespace TrinketTinker.Models.AbilityArgs
         /// </summary>
         public int ExplodeRadius { get; set; } = 0;
 
-        /// <summary>Random percent between min and max</summary>
-        public int Rand => Random.Shared.Next(Min, Max);
         /// <inheritdoc/>
         public bool Validate()
         {
