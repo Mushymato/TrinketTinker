@@ -9,34 +9,26 @@ namespace TrinketTinker.Companions.Motions
         : BaseStaticMotion<StaticArgs>(companion, mdata, vdata)
     {
         /// <inheritdoc/>
-        public override void Draw(SpriteBatch b)
+        protected override float GetPositionalLayerDepth(Vector2 offset)
         {
-            DrawWithShadow(
-                b, c.Owner.FacingDirection == 0 ? 1f : (c.Position.Y / 10000f),
-                vd.VecTextureScale,
-                vd.VecShadowScale
-            );
+            return (c.Owner.FacingDirection == 0) ? (c.Position.Y / 10000f) : 1f;
         }
 
-        /// <summary>Update companion facing direction using player facing direction, adjust the offset to give illusions of perspective.</summary>
-        protected override void UpdateDirection()
+        /// <inheritdoc/>
+        internal override Vector2 GetOffset()
         {
-            base.UpdateDirection();
-            switch (c.Owner.FacingDirection)
+            return c.Owner.FacingDirection switch
             {
-                case 0: // up
-                    motionOffset = new(0, -md.Offset.Y / 2);
-                    break;
-                case 1: // right
-                    motionOffset = new(md.Offset.X, md.Offset.Y);
-                    break;
-                case 2: // down
-                    motionOffset = new(0, md.Offset.Y * 1.5f);
-                    break;
-                case 3: // left
-                    motionOffset = new(-md.Offset.X, md.Offset.Y);
-                    break;
-            }
+                // up
+                0 => new(0, -md.Offset.Y / 2),
+                // right
+                1 => new(md.Offset.X, md.Offset.Y),
+                // down
+                2 => new(0, md.Offset.Y * 1.5f),
+                // left
+                3 => new(-md.Offset.X, md.Offset.Y),
+                _ => md.Offset,
+            };
         }
     }
 }

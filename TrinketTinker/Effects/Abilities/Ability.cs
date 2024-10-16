@@ -47,7 +47,7 @@ namespace TrinketTinker.Effects.Abilities
             Valid = true;
             e = effect;
             d = data;
-            Name = $"{effect.Trinket.ItemId}:{GetType().Name}[{lvl}]";
+            Name = $"{effect.Trinket.ItemId}:{GetType().Name}_lv{lvl}[{data.Proc}]";
             ProcTimer = data.ProcTimer;
         }
 
@@ -138,6 +138,7 @@ namespace TrinketTinker.Effects.Abilities
             {
                 if (d.ProcSound != null)
                     Game1.playSound(d.ProcSound);
+
                 foreach (TemporaryAnimatedSpriteDefinition temporarySprite in d.ProcTemporarySprites)
                 {
                     TemporaryAnimatedSprite temporaryAnimatedSprite = new(

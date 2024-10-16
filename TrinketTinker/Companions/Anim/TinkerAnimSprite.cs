@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using TrinketTinker.Models;
-using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Companions.Anim
 {
@@ -12,14 +11,16 @@ namespace TrinketTinker.Companions.Anim
     /// Not a net object and must be built independently in each game instance.
     /// Always loops.
     /// </summary>
-    public sealed class CompanionSprite
+    public sealed class TinkerAnimSprite
     {
         private readonly VariantData vd;
         /// <summary>Middle point of the sprite, based on width and height.</summary>
         internal readonly Vector2 Origin;
-        /// <summary>Backing sprite color field.</summary>
+        /// <summary>Backing draw color field.</summary>
         private Color? drawColor = null;
+        /// <summary>If draw color need to update after init.</summary>
         private bool drawColorIsConstant = false;
+        /// <summary>Sprite draw color</summary>
         internal Color DrawColor
         {
             get
@@ -27,8 +28,8 @@ namespace TrinketTinker.Companions.Anim
                 if (drawColor != null)
                     return (Color)drawColor;
                 if (!drawColorIsConstant) // cannot keep prismatic color
-                    return GetSDVColor(vd.ColorMask, out drawColorIsConstant, defaultColor: Color.White);
-                drawColor = GetSDVColor(vd.ColorMask, out drawColorIsConstant, defaultColor: Color.White);
+                    return VariantData.GetSDVColor(vd.ColorMask, out drawColorIsConstant, defaultColor: Color.White);
+                drawColor = VariantData.GetSDVColor(vd.ColorMask, out drawColorIsConstant, defaultColor: Color.White);
                 return (Color)drawColor;
             }
         }
@@ -36,21 +37,6 @@ namespace TrinketTinker.Companions.Anim
         internal Rectangle SourceRect { get; private set; } = Rectangle.Empty;
         private float timer = 0f;
         private int currentFrame = 0;
-
-
-        /// <summary>Get a monogame color from string. Supports <see cref="TinkerConst.COLOR_PRISMATIC"/> for animated color.</summary>
-        /// <param name="color">Color string</param>
-        /// <param name="isConstant">Indicates that this is not animated, no need to update.</param>
-        /// <param name="defaultColor">Fallback color, if not set the fallback is <see cref="Color.White"/>.</param>
-        /// <returns></returns>
-        public static Color GetSDVColor(string? colorStr, out bool isConstant, Color? defaultColor = null)
-        {
-            isConstant = false;
-            if (colorStr == TinkerConst.COLOR_PRISMATIC)
-                return Utility.GetPrismaticColor();
-            isConstant = true;
-            return Utility.StringToColor(colorStr) ?? defaultColor ?? Color.White;
-        }
 
         /// <summary>Calculate the source rectangle for a sprite in an NPC spritesheet.</summary>
         /// <param name="textureWidth">The pixel width of the full spritesheet texture.</param>
@@ -62,7 +48,7 @@ namespace TrinketTinker.Companions.Anim
             return new Rectangle(frame * spriteWidth % textureWidth, frame * spriteWidth / textureWidth * spriteHeight, spriteWidth, spriteHeight);
         }
 
-        public CompanionSprite(VariantData vdata)
+        public TinkerAnimSprite(VariantData vdata)
         {
             vd = vdata;
             Origin = new Vector2(vd.Width / 2, vd.Height / 2);

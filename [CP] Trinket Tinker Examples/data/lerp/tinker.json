@@ -19,7 +19,7 @@
           "Motions": [
             {
               "MotionClass": "Bounce",
-              "AlwaysMoving": false,
+              "AlwaysMoving": true,
               "DirectionMode": "R",
               "LoopMode": "PingPong",
               "AnimationFrameLength": 4,
@@ -31,7 +31,7 @@
             [
               {
                 "Condition": "LOCATION_IS_OUTDOORS Target",
-                "ProcOn": "Footstep",
+                "Proc": "Footstep",
                 "ProcSound": "fairy_heal",
                 "AbilityClass": "Health",
                 "Args": {
@@ -41,7 +41,7 @@
               },
               {
                 "Condition": "LOCATION_IS_OUTDOORS Target",
-                "ProcOn": "Footstep",
+                "Proc": "Footstep",
                 "AbilityClass": "Stamina",
                 "Args": {
                   "Min": 0.1,
@@ -54,7 +54,7 @@
               {
                 // Heal the player a little as they walk outdoors
                 "Condition": "LOCATION_IS_OUTDOORS Target",
-                "ProcOn": "Footstep",
+                "Proc": "Footstep",
                 "ProcSound": "fairy_heal",
                 "AbilityClass": "Health",
                 "Args": {
@@ -65,7 +65,7 @@
               {
                 // Heal the player a little as they walk outdoors
                 "Condition": "LOCATION_IS_OUTDOORS Target",
-                "ProcOn": "Footstep",
+                "Proc": "Footstep",
                 "AbilityClass": "Stamina",
                 "Args": {
                   "Min": 0.1,
@@ -81,7 +81,11 @@
             {
               "Texture": "Mods/{{ModId}}/rotation",
               "Width": 16,
-              "Height": 16
+              "Height": 16,
+              "LightSource": {
+                "Radius": 10,
+                "Color": "#ffff00"
+              }
             },
           ],
           // Hover motion: follows player, bobs up and down
@@ -90,7 +94,13 @@
             {
               "MotionClass": "Hover",
               "AlwaysMoving": true,
-              "DirectionMode": "Rotate",
+              "DirectionRotate": true,
+              "Anchors": [
+                {
+                  "Mode": "Monster",
+                  "Range": 1280
+                }
+              ],
               "AnimationFrameLength": 4,
               "Interval": 200,
             }
@@ -99,22 +109,62 @@
             // level 0
             [
               {
-                "ProcOn": "Footstep",
-                "AbilityClass": "DebugDummy",
+                "AbilityClass": "Buff",
+                "Proc": "DamageMonster",
+                "Args": {
+                  "BuffId": 22
+                }
+              },
+              // every 5s, damage a monster within 128 pixels of the companion
+              {
+                "AbilityClass": "Hitscan",
+                "Proc": "Timer",
+                "ProcTimer": 5000,
+                "Args": {
+                  "Min": 5,
+                  "Max": 10,
+                  "Range": 128
+                },
               }
             ],
             // level 1
             [
               {
-                "ProcOn": "Footstep",
-                "AbilityClass": "DebugDummy",
+                "AbilityClass": "Hitscan",
+                "Proc": "Timer",
+                "ProcTimer": 5000,
+                "Args": {
+                  "Min": 25,
+                  "Max": 50,
+                  "Range": 128
+                }
+              },
+              {
+                "AbilityClass": "Buff",
+                "Proc": "DamageMonster",
+                "Args": {
+                  "BuffId": 22
+                }
               }
             ],
             // level 2
             [
               {
-                "ProcOn": "Footstep",
-                "AbilityClass": "DebugDummy",
+                "AbilityClass": "Hitscan",
+                "Proc": "Timer",
+                "ProcTimer": 5000,
+                "Args": {
+                  "Min": 50,
+                  "Max": 100,
+                  "Range": 128
+                },
+              },
+              {
+                "AbilityClass": "Buff",
+                "Proc": "DamageMonster",
+                "Args": {
+                  "BuffId": 22
+                }
               }
             ]
           ]
@@ -141,7 +191,7 @@
             [
               {
                 "AbilityClass": "RaiseTrigger",
-                "ProcOn": "Footstep",
+                "Proc": "Footstep",
               }
             ]
           ]
@@ -178,7 +228,7 @@
               {
                 // when damaging a monster with a bomb, heal 100% of the damage
                 "AbilityClass": "Health",
-                "ProcOn": "DamageMonster",
+                "Proc": "DamageMonster",
                 "IsBomb": true,
                 "Args": {
                   "Min": 1,
@@ -187,8 +237,8 @@
               // every 5s, damage a monster within 128 pixels of the companion
               {
                 "AbilityClass": "Hitscan",
-                "ProcOn": "Timer",
-                "ProcTimer": 500,
+                "Proc": "Timer",
+                "ProcTimer": 5000,
                 "Args": {
                   "Min": 5,
                   "Max": 10,

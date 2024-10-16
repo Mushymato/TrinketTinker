@@ -5,7 +5,7 @@ using StardewValley.Monsters;
 using TrinketTinker.Companions.Anim;
 using TrinketTinker.Models;
 using TrinketTinker.Models.Mixin;
-using TrinketTinker.Wheels;
+
 
 namespace TrinketTinker.Companions.Motions
 {
@@ -18,8 +18,8 @@ namespace TrinketTinker.Companions.Motions
         protected readonly MotionData md;
         /// <summary>Data for this motion.</summary>
         protected readonly VariantData vd;
-        /// <summary>Constant offset, derived from data</summary>
-        protected Vector2 motionOffset;
+        // /// <summary>Calculated offset, derived from data</summary>
+        // protected Vector2 motionOffset;
         /// <summary>Should reverse the animation, used for <see cref="LoopMode.PingPong"/></summary>
         protected bool isReverse = false;
         /// <summary>Light source ID, generated if LightRadius is set in <see cref="MotionData"/>.</summary>
@@ -33,7 +33,7 @@ namespace TrinketTinker.Companions.Motions
         /// <summary>Anchor changed during this tick</summary>s
         protected bool AnchorChanged => prevAnchorTarget != currAnchorTarget;
         /// <summary>Companion animation controller</summary>
-        protected readonly CompanionSprite cs;
+        protected readonly TinkerAnimSprite cs;
 
         /// <summary>Basic constructor, tries to parse arguments as the generic <see cref="IArgs"/> type.</summary>
         /// <param name="companion"></param>
@@ -50,37 +50,33 @@ namespace TrinketTinker.Companions.Motions
             c = companion;
             md = mdata;
             vd = vdata;
-            motionOffset = new(md.Offset.X, md.Offset.Y);
-            c.Offset = motionOffset;
-            cs = new CompanionSprite(vdata);
+            cs = new TinkerAnimSprite(vdata);
         }
 
         /// <inheritdoc/>
         public virtual void Initialize(Farmer farmer)
         {
-            // if (vd.LightSource is LightSourceData ldata)
-            // {
-            //     lightId = $"{c.ID}_{Game1.random.Next()}";
-            //     Game1.currentLightSources.Add(lightId, new LightSource(lightId, 1, c.Position + c.Offset, ldata.Radius, Color.Black, LightSource.LightContext.None, 0L));
-            // }
+            if (vd.LightSource is LightSourceData ldata)
+            {
+                lightId = $"{farmer.userID}/{c.ID}";
+                Game1.currentLightSources.Add(lightId, new TinkerLightSource(lightId, c.Position + GetOffset(), ldata));
+            }
         }
 
         /// <inheritdoc/>
         public virtual void Cleanup()
         {
-            // if (md.LightRadius > 0)
-            // {
-            //     Utility.removeLightSource(lightId);
-            // }
+            if (vd.LightSource != null)
+                Utility.removeLightSource(lightId);
         }
 
         /// <inheritdoc/>
         public virtual void OnOwnerWarp()
         {
-            // if (md.LightRadius > 0)
-            // {
-            //     Game1.currentLightSources.Add(lightId, new LightSource(lightId, 1, c.Position + c.Offset, md.LightRadius, Color.Black, LightSource.LightContext.None, 0L));
-            // }
+            if (vd.LightSource is LightSourceData ldata)
+            {
+                Game1.currentLightSources.Add(lightId, new TinkerLightSource(lightId, c.Position + GetOffset(), ldata));
+            }
         }
 
         /// <summary>Changes the position of the anchor that the companion moves relative to, based on <see cref="MotionData.Anchors"/>.</summary>
@@ -140,46 +136,74 @@ namespace TrinketTinker.Companions.Motions
             {
                 cs.SetCurrentFrame(DirectionFrameStart());
             }
-            // if (md.LightRadius > 0 && location.Equals(Game1.currentLocation))
-            //     Utility.repositionLightSource(lightId, c.Position + c.Offset);
+            // doesn't work in multiplayer right now, but gonna do it here in case it works one day :)
+            if (vd.LightSource != null && location.Equals(Game1.currentLocation))
+                Utility.repositionLightSource(lightId, c.Position + GetOffset());
+        }
+
+        /// <summary>Get layer depth based on position</summary>
+        /// <returns></returns>
+        protected virtual float GetPositionalLayerDepth(Vector2 offset)
+        {
+            return c.Position.Y / 10000f;
+        }
+
+        /// <summary>Get sprite rotation</summary>
+        /// <returns>Rotation in radians</returns>
+        protected virtual float GetRotation()
+        {
+            return 0f;
+        }
+
+        /// <summary>Get texture draw scale.</summary>
+        /// <returns></returns>
+        protected virtual Vector2 GetTextureScale()
+        {
+            return new(vd.TextureScale, vd.TextureScale);
+        }
+
+        /// <summary>Get shadow draw scale.</summary>
+        /// <returns></returns>
+        protected virtual Vector2 GetShadowScale()
+        {
+            return new(vd.ShadowScale, vd.ShadowScale);
+        }
+
+        /// <summary>Get offset</summary>
+        /// <returns></returns>
+        internal virtual Vector2 GetOffset()
+        {
+            return md.Offset;
         }
 
         /// <inheritdoc/>
         public virtual void Draw(SpriteBatch b)
         {
-            // float shadowScale = 3f * Utility.Lerp(1f, 0.8f, Math.Max(1f, -c.Offset.Y / 12));
-            DrawWithShadow(b, c.Position.Y / 10000f, vd.VecTextureScale, vd.VecShadowScale);
-        }
-
-        /// <summary>Default draw implementation, draws the companion plus a shadow.</summary>
-        /// <param name="b"></param>
-        /// <param name="layerDepth"></param>
-        /// <param name="textureScale"></param>
-        /// <param name="shadowScale"></param>
-        protected virtual void DrawWithShadow(SpriteBatch b, float layerDepth, Vector2 textureScale, Vector2 shadowScale)
-        {
-            layerDepth = md.LayerDepth switch
+            Vector2 offset = GetOffset();
+            float layerDepth = md.LayerDepth switch
             {
                 LayerDepth.Behind => c.Owner.getDrawLayer() - 2 * 2E-06f,
                 LayerDepth.InFront => c.Owner.getDrawLayer() + 2 * 2E-06f,
-                _ => layerDepth,
+                _ => GetPositionalLayerDepth(offset),
             };
             b.Draw(
                 cs.Texture,
-                Game1.GlobalToLocal(c.Position + c.Offset + c.Owner.drawOffset),
+                Game1.GlobalToLocal(c.Position + offset + c.Owner.drawOffset),
                 cs.SourceRect,
                 cs.DrawColor,
-                c.rotation.Value,
+                GetRotation(),
                 cs.Origin,
-                textureScale,
+                GetTextureScale(),
                 (c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
                 layerDepth
             );
+
+            Vector2 shadowScale = GetShadowScale();
             if (shadowScale.X > 0 || shadowScale.Y > 0)
             {
                 b.Draw(
                     Game1.shadowTexture,
-                    Game1.GlobalToLocal(c.Position + new Vector2(c.Offset.X, 0) + c.Owner.drawOffset),
+                    Game1.GlobalToLocal(c.Position + new Vector2(offset.X, 0) + c.Owner.drawOffset),
                     Game1.shadowTexture.Bounds,
                     Color.White,
                     0f,
@@ -193,16 +217,11 @@ namespace TrinketTinker.Companions.Motions
             }
         }
 
-        /// <summary>Update companion facing direction using current position</summary>
-        protected virtual void UpdateDirection()
-        {
-            UpdateDirection(c.Position);
-        }
-
         /// <summary>Update companion facing direction using a direction.</summary>
         /// <param name="position"></param>
-        protected virtual void UpdateDirection(Vector2 position)
+        protected virtual void UpdateDirection()
         {
+            Vector2 position = c.Position;
             Vector2 posDelta = c.Anchor - position;
             switch (md.DirectionMode)
             {
@@ -226,10 +245,7 @@ namespace TrinketTinker.Companions.Motions
                     if (Math.Abs(posDelta.X) > 8f)
                         c.direction.Value = (c.Anchor.X > position.X) ? 1 : -1;
                     break;
-                case DirectionMode.Rotate:
-                    c.rotation.Value = (float)Math.Atan2(posDelta.Y, posDelta.X);
-                    break;
-                case DirectionMode.Single:
+                default:
                     c.direction.Value = 1;
                     break;
             }

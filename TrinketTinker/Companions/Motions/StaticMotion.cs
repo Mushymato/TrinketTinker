@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using TrinketTinker.Models;
 using TrinketTinker.Models.MotionArgs;
@@ -12,7 +11,6 @@ namespace TrinketTinker.Companions.Motions
         /// <inheritdoc/>
         public override void UpdateLocal(GameTime time, GameLocation location)
         {
-            c.Moving = c.Position != c.Anchor;
             float distance = (c.Anchor - c.Position).Length();
             if (distance > 64f)
             {
@@ -20,17 +18,29 @@ namespace TrinketTinker.Companions.Motions
             }
             c.Position = c.Anchor;
             UpdateDirection();
-            c.Offset = motionOffset;
         }
 
         /// <inheritdoc/>
-        public override void Draw(SpriteBatch b)
+        protected override float GetPositionalLayerDepth(Vector2 offset)
         {
-            DrawWithShadow(
-                b, (c.direction.Value == 2) ? (c.Position.Y / 10000f) : 1f,
-                vd.VecTextureScale,
-                vd.VecShadowScale
-            );
+            return (c.direction.Value == 2) ? (c.Position.Y / 10000f) : 1f;
+        }
+
+        /// <inheritdoc/>
+        protected override float GetRotation()
+        {
+            if (md.DirectionRotate)
+            {
+                return c.Owner.FacingDirection switch
+                {
+                    0 => -MathF.PI / 2,
+                    1 => 0,
+                    2 => MathF.PI / 2,
+                    3 => MathF.PI,
+                    _ => 0
+                };
+            }
+            return 0f;
         }
 
         /// <summary>Update companion facing direction using player facing direction.</summary>
@@ -38,56 +48,36 @@ namespace TrinketTinker.Companions.Motions
         {
             int prevDirection = c.direction.Value;
             int facingDirection = c.Owner.FacingDirection;
-            switch (md.DirectionMode)
+            c.direction.Value = md.DirectionMode switch
             {
-                case DirectionMode.DRUL:
-                    c.direction.Value = facingDirection switch
-                    {
-                        0 => 3,
-                        2 => 1,
-                        _ => facingDirection + 1,
-                    };
-                    break;
-                case DirectionMode.DRU:
-                    c.direction.Value = facingDirection switch
-                    {
-                        0 => 3,
-                        1 => 2,
-                        2 => 1,
-                        3 => -2,
-                        _ => facingDirection + 1,
-                    };
-                    break;
-                case DirectionMode.RL:
-                    c.direction.Value = facingDirection switch
-                    {
-                        1 => 1,
-                        3 => 2,
-                        _ => prevDirection,
-                    };
-                    break;
-                case DirectionMode.R:
-                    c.direction.Value = facingDirection switch
-                    {
-                        1 => 1,
-                        3 => -1,
-                        _ => prevDirection,
-                    };
-                    break;
-                case DirectionMode.Rotate:
-                    c.rotation.Value = facingDirection switch
-                    {
-                        0 => -MathF.PI / 2,
-                        1 => 0,
-                        2 => MathF.PI / 2,
-                        3 => MathF.PI,
-                        _ => 0
-                    };
-                    break;
-                case DirectionMode.Single:
-                    c.direction.Value = 1;
-                    break;
-            }
+                DirectionMode.DRUL => facingDirection switch
+                {
+                    0 => 3,
+                    2 => 1,
+                    _ => facingDirection + 1,
+                },
+                DirectionMode.DRU => facingDirection switch
+                {
+                    0 => 3,
+                    1 => 2,
+                    2 => 1,
+                    3 => -2,
+                    _ => facingDirection + 1,
+                },
+                DirectionMode.RL => facingDirection switch
+                {
+                    1 => 1,
+                    3 => 2,
+                    _ => prevDirection,
+                },
+                DirectionMode.R => facingDirection switch
+                {
+                    1 => 1,
+                    3 => -1,
+                    _ => prevDirection,
+                },
+                _ => 1,
+            };
         }
     }
 

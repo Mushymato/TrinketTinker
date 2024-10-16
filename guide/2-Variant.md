@@ -10,6 +10,18 @@ In the base game certain companions such as the frog have different color varian
 | `Width` | int | 16 | Width of 1 sprite on the sprite sheet. |
 | `Height` | int | 16 | Height of 1 sprite on the sprite sheet. |
 | `ColorMask` | Color | _empty_ | The color to apply on draw, for use with grayscale sprites.<br>Aside from RGB and hex values, monogame provides [named colors](https://docs.monogame.net/api/Microsoft.Xna.Framework.Color.html) and this mod provides special value `Prismatic` for an animated color cycle. |
+| `TextureScale` | float | 4 | Texture draw scale, default is 4 like most things in the game. |
+| `ShadowScale` | float | 3 | Size of the shadow to draw, 0 to disable shadow. |
+| `LightSource` | `LightSourceData` | _empty_ | If set, display a light source. This light source is only visible to the owner. |
+
+### LightSourceData
+
+| Property | Type | Default | Notes |
+| -------- | ---- | ------- | ----- |
+| `Radius` | float | 2 | Size of light source. |
+| `Index` | int | 1 | Vanilla light source texture index. |
+| `Texture` | string | 1 | Use a custom light map. |
+| `Color` | string | 1 | Color name, accepts same values as `ColorMask`. Works by subtraction, for example if you want for green light, use magenta. |
 
 ## Notes
 

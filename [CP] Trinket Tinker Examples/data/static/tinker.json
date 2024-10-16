@@ -30,7 +30,7 @@
               {
                 // Item drop ability 1, drops a gold quality salmon berry every 10 seconds
                 "AbilityClass": "ItemDrop",
-                "ProcOn": "Timer",
+                "Proc": "Timer",
                 "ProcTimer": 10000,
                 "Args": {
                   "ItemId": "(O)296",
@@ -41,7 +41,7 @@
               {
                 // Item drop ability 2, produces a random bone item when killing any enemy
                 "AbilityClass": "ItemDrop",
-                "ProcOn": "SlayMonster",
+                "Proc": "SlayMonster",
                 "Args": {
                   "ItemId": "ALL_ITEMS (O)",
                   "PerItemCondition": "ITEM_CONTEXT_TAG Target bone_item, !ITEM_CONTEXT_TAG Target id_o_881"
@@ -90,7 +90,7 @@
             [
               {
                 // Shoot a projectile every 3s
-                "ProcOn": "Timer",
+                "Proc": "Timer",
                 "ProcTimer": 3000,
                 "AbilityClass": "Projectile",
                 "Args": {
@@ -136,7 +136,7 @@
             [
               {
                 // Shoot a projectile that stuns every 3s
-                "ProcOn": "Timer",
+                "Proc": "Timer",
                 "ProcTimer": 3000,
                 "AbilityClass": "Projectile",
                 "Args": {

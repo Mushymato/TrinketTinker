@@ -29,7 +29,7 @@ namespace TrinketTinker.Effects
             get
             {
                 if (Companion is TrinketTinkerCompanion cmp)
-                    return cmp.Position + cmp.Offset;
+                    return cmp.Position;
                 return null;
             }
         }
@@ -198,7 +198,7 @@ namespace TrinketTinker.Effects
             });
         }
 
-        /// <summary>Update every tick. Not an event because this happens for every ability regardless of <see cref="ProcOn"/>.</summary>
+        /// <summary>Update every tick. Not an event because this happens for every ability regardless of <see cref="Proc"/>.</summary>
         /// <param name="farmer"></param>
         /// <param name="time"></param>
         /// <param name="location"></param>

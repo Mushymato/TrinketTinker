@@ -7,7 +7,7 @@
       "Entries": {
         "{{ModId}}_NoCompanion": {
           "Id": "{{ModId}}_NoCompanion",
-          "DisplayName": "{{ModId}}_NoCompanion",
+          "DisplayName": "Trinket Tinker - No Companion",
           "Description": "Example of using trinket tinker without companions.",
           "Texture": "TileSheets\\Objects_2",
           "SheetIndex": 79,

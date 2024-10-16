@@ -8,11 +8,13 @@ namespace TrinketTinker.Models
     public class LightSourceData
     {
         /// <summary>Light radius</summary>
-        public float Radius = 0f;
-        /// <summary>Which vanilla light texture to use</summary>
-        public int TextureIndex = 1;
+        public float Radius = 2f;
+        /// <summary>Use a vanilla texture</summary>
+        public int Index = 1;
+        /// <summary>Optional, use a custom light texture.</summary>
+        public string? Texture { get; set; } = null;
         /// <summary>Light source color</summary>
-        public string? Color { get; set; }
+        public string? Color { get; set; } = null;
     }
 
     /// <summary>Data for <see cref="Effects.Abilities"/>, holds sprite variations.</summary>
@@ -33,14 +35,18 @@ namespace TrinketTinker.Models
         /// <summary>If set, add a light with given radius. Note that the light is only visible to local player.</summary>
         public LightSourceData? LightSource { get; set; } = null;
 
-        /// <summary>Get to vector2 texture scale for draw</summary>
-        internal Vector2 VecShadowScale => new(TextureScale, TextureScale);
-        /// <summary>Get to vector2 shadow scale for draw</summary>
-        internal Vector2 VecTextureScale => new(TextureScale, TextureScale);
-        /// <summary>Create a new <see cref="AnimatedSprite"/></summary>
-        internal AnimatedSprite MakeAnimatedSprite()
+        /// <summary>Get a monogame color from string. Supports <see cref="TinkerConst.COLOR_PRISMATIC"/> for animated color.</summary>
+        /// <param name="color">Color string</param>
+        /// <param name="isConstant">Indicates that this is not animated, no need to update.</param>
+        /// <param name="defaultColor">Fallback color, if not set the fallback is <see cref="Color.White"/>.</param>
+        /// <returns></returns>
+        public static Color GetSDVColor(string? colorStr, out bool isConstant, Color? defaultColor = null)
         {
-            return new AnimatedSprite(Texture, 0, Width, Height);
+            isConstant = false;
+            if (colorStr == TinkerConst.COLOR_PRISMATIC)
+                return Utility.GetPrismaticColor();
+            isConstant = true;
+            return Utility.StringToColor(colorStr) ?? defaultColor ?? Color.White;
         }
     }
 }

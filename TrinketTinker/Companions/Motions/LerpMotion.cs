@@ -6,17 +6,11 @@ using TrinketTinker.Models.MotionArgs;
 namespace TrinketTinker.Companions.Motions
 {
     /// <summary>Base version of LerpMotion, for use with inheritance</summary>
-    public class BaseLerpMotion<IArgs> : Motion<IArgs> where IArgs : LerpArgs
+    /// <inheritdoc/>
+    public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata) : Motion<IArgs>(companion, mdata, vdata) where IArgs : LerpArgs
     {
         /// <summary>Variable for how much interpolation happened so far.</summary>
         private float lerp = -1f;
-
-        /// <inheritdoc/>
-        public BaseLerpMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata) : base(companion, mdata, vdata)
-        {
-            motionOffset.Y -= vdata.Height * 4 / 2;
-            c.Offset = motionOffset;
-        }
 
         /// <inheritdoc/>
         public override void UpdateLocal(GameTime time, GameLocation location)
@@ -38,7 +32,7 @@ namespace TrinketTinker.Companions.Motions
                         Utility.RandomFloat(-64f, 64f) * radius,
                         Utility.RandomFloat(-64f, 64f) * radius
                     );
-                    if (CheckSpriteCollsion(location, c.endPosition + motionOffset))
+                    if (CheckSpriteCollsion(location, c.endPosition + GetOffset()))
                     {
                         c.endPosition = c.Anchor;
                     }
@@ -60,7 +54,23 @@ namespace TrinketTinker.Companions.Motions
                     lerp = -1f;
                 }
             }
-            c.Moving = lerp >= 0;
+        }
+
+        /// <inheritdoc/>
+        internal override Vector2 GetOffset()
+        {
+            return new Vector2(0, -vd.Height * 4 / 2) + base.GetOffset();
+        }
+
+        /// <inheritdoc/>
+        protected override float GetRotation()
+        {
+            if (md.DirectionRotate)
+            {
+                Vector2 posDelta = c.Anchor - c.Position;
+                return (float)Math.Atan2(posDelta.Y, posDelta.X);
+            }
+            return 0f;
         }
     }
 

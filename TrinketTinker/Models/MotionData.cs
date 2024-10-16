@@ -6,7 +6,7 @@ namespace TrinketTinker.Models
     /// <summary>Determine how the sprites are interpreted.</summary>
     public enum DirectionMode
     {
-        /// <summary>Direction never changes.</summary>
+        /// <summary>Direction never changes, animate the.</summary>
         Single,
         /// <summary>Has right animations, flips sprite if going left</summary>
         R,
@@ -16,8 +16,6 @@ namespace TrinketTinker.Models
         DRU,
         /// <summary>Has down/right/up/left animations</summary>
         DRUL,
-        /// <summary>Sprite is rotated to angular direction.</summary>
-        Rotate,
     }
 
     /// <summary>Determine how sprites loop.</summary>
@@ -62,9 +60,11 @@ namespace TrinketTinker.Models
     public sealed class MotionData : Mixin.IHaveArgs
     {
         /// <summary>Type name of the motion, can use short form like "Hover" for hover motion.</summary>
-        public string MotionClass { get; set; } = "Lerp";
+        public string? MotionClass { get; set; } = null;
         /// <summary>Direction mode, determines how sprites should be arranged.</summary>
-        public DirectionMode DirectionMode { get; set; } = DirectionMode.DRUL;
+        public DirectionMode DirectionMode { get; set; } = DirectionMode.Single;
+        /// <summary>Apply sprite rotation depending on direction.</summary>
+        public bool DirectionRotate { get; set; } = false;
         /// <summary>First frame of the animation.</summary>
         public LoopMode LoopMode { get; set; } = LoopMode.Standard;
         /// <summary>

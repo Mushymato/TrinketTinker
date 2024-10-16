@@ -11,12 +11,21 @@
             // activates once every 10s
             [
               {
-                "ProcOn": "ReceiveDamage",
+                "Proc": "ReceiveDamage",
                 "ProcTimer": 10000,
                 "ProcSound": "rooster",
                 "AbilityClass": "Buff",
                 "Args": {
                   "BuffId": 22
+                }
+              },
+              {
+                "Proc": "Timer",
+                "ProcTimer": 5000,
+                "AbilityClass": "Projectile",
+                "Args": {
+                  "Min": 20,
+                  "Max": 50,
                 }
               }
             ],

@@ -20,41 +20,9 @@ namespace TrinketTinker.Companions
         protected readonly NetString _id = new("");
         /// <summary>Companion ID. Companion is (re)loaded when this is changed.</summary>
         public string ID => _id.Value;
-        /// <summary>Animated sprite of companion</summary>
-        // public AnimatedSprite Sprite { get; set; } = new();
-        /// <summary>NetField for <see cref="Moving"/></summary>
-        protected readonly NetBool _moving = new(false);
         /// <summary>Whether companion is moving</summary>
-        public bool Moving
-        {
-            get
-            {
-                return _moving.Value;
-            }
-            set
-            {
-                _moving.Value = value;
-            }
-        }
-        /// <summary>NetField for <see cref="Offset"/></summary>
-        protected readonly NetPosition _offset = new();
-        /// <summary>Offset from companion's position, e.g. if companions are "flying"</summary>
-        public Vector2 Offset
-        {
-            get
-            {
-                return _offset.Value;
-            }
-            set
-            {
-                _offset.Value = value;
-            }
-        }
-        public NetPosition NetOffset => _offset;
-
-        public NetPosition NetPosition => _position;
-        /// <summary>Amount of rotation on the sprite, applicable when direction mode is <see cref="DirectionMode.Rotate"/></summary>
-        public readonly NetFloat rotation = new(0f);
+        public bool Moving => Owner?.position.moving.Value ?? false;
+        internal NetPosition NetPosition => _position;
         // Derived
         /// <summary>Backing companion data from content.</summary>
         public TinkerData? Data;
@@ -72,7 +40,7 @@ namespace TrinketTinker.Companions
         public TrinketTinkerCompanion(string companionId, int variant)
         {
             _id.Value = companionId;
-            _moving.Value = false;
+            // _moving.Value = false;
             whichVariant.Value = variant;
         }
 
@@ -101,9 +69,8 @@ namespace TrinketTinker.Companions
             base.InitNetFields();
             NetFields
                 .AddField(_id, "_id")
-                .AddField(_moving, "_moving")
-                .AddField(rotation, "rotation")
-                .AddField(_offset.NetFields, "_offset.NetFields")
+            // .AddField(_moving, "_moving")
+            // .AddField(_offset.NetFields, "_offset.NetFields")
             ;
             _id.fieldChangeVisibleEvent += InitCompanionData;
             // _moving.fieldChangeEvent += (NetBool field, bool oldValue, bool newValue) => { _moving.Value = newValue; };
@@ -123,11 +90,15 @@ namespace TrinketTinker.Companions
             if (Data.Motions.Count > 0)
             {
                 VariantData vdata = Data.Variants[whichVariant.Value];
-                // Sprite = new AnimatedSprite(vdata.Texture, 0, vdata.Width, vdata.Height);
-                // SpriteOrigin = new Vector2(vdata.Width / 2, vdata.Height / 2);
                 MotionData mdata = Data.Motions[0];
+                if (mdata.MotionClass == null)
+                {
+                    Motion = new LerpMotion(this, mdata, vdata);
+                }
                 if (Reflect.TryGetType(mdata.MotionClass, out Type? motionCls, TinkerConst.MOTION_CLS))
+                {
                     Motion = (IMotion?)Activator.CreateInstance(motionCls, this, mdata, vdata);
+                }
                 else
                 {
                     ModEntry.LogOnce($"Could not get motion class {mdata.MotionClass}", LogLevel.Error);
@@ -154,6 +125,7 @@ namespace TrinketTinker.Companions
         /// <param name="location">Current map location</param>
         public override void Update(GameTime time, GameLocation location)
         {
+            Motion?.UpdateAnchor(time, location);
             if (IsLocal)
             {
                 if (Motion == null)
@@ -162,7 +134,6 @@ namespace TrinketTinker.Companions
                 }
                 else
                 {
-                    Motion?.UpdateAnchor(time, location);
                     Motion?.UpdateLocal(time, location);
                 }
             }
