@@ -15,7 +15,6 @@ namespace TrinketTinker.Effects.Pewpew
     /// </summary>
     public class TinkerProjectile : Projectile
     {
-
         public readonly NetString projectileTexture = new("");
         private Texture2D? loadedProjectileTexture = null;
         public readonly NetInt minDamage = new(0);
@@ -26,6 +25,7 @@ namespace TrinketTinker.Effects.Pewpew
         public readonly NetFloat critMultiplier = new(0f);
         public readonly NetInt stunTime = new(0);
         public readonly NetInt hits = new(0);
+        public readonly NetInt explodeRadius = new(0);
 
         /// <summary>Construct an empty instance.</summary>
         public TinkerProjectile() : base()
@@ -59,6 +59,7 @@ namespace TrinketTinker.Effects.Pewpew
             critMultiplier.Value = args.CritDamage;
             stunTime.Value = args.StunTime;
             hits.Value = args.Hits;
+            explodeRadius.Value = args.ExplodeRadius;
 
             damagesMonsters.Value = true;
         }
@@ -75,8 +76,9 @@ namespace TrinketTinker.Effects.Pewpew
             .AddField(addedPrecision, "addedPrecision")
             .AddField(critChance, "critChance")
             .AddField(critMultiplier, "critMultiplier")
-            .AddField(hits, "hits")
             .AddField(stunTime, "stunTime")
+            .AddField(hits, "hits")
+            .AddField(explodeRadius, "explodeRadius")
             ;
         }
 
@@ -151,7 +153,14 @@ namespace TrinketTinker.Effects.Pewpew
                         isProjectile: true
                     );
                 }
-                monster.stunTime.Value = stunTime.Value;
+                if (stunTime.Value > 0)
+                {
+                    monster.stunTime.Value = stunTime.Value;
+                }
+                if (explodeRadius.Value > 0)
+                {
+                    location.explode(monster.TilePoint.ToVector2(), explodeRadius.Value, playerWhoFiredMe, damage_amount: minDamage.Value);
+                }
                 if (!monster.IsInvisible)
                 {
                     piercesLeft.Value--;

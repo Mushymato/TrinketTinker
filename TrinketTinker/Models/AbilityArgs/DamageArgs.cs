@@ -25,6 +25,12 @@ namespace TrinketTinker.Models.AbilityArgs
         public int StunTime { get; set; } = 0;
         /// <summary>Number of hits to perform</summary>
         public int Hits { get; set; } = 1;
+        /// <summary>
+        /// If this is non-zero, generate a explosion on hit.
+        /// Farmer will take <see cref="Min"/> damage from this.
+        /// Might damage another monster, but the monster that got hit would be in iframe at this point.
+        /// </summary>
+        public int ExplodeRadius { get; set; } = 0;
 
         /// <summary>Random percent between min and max</summary>
         public int Rand => Random.Shared.Next(Min, Max);
@@ -82,6 +88,10 @@ namespace TrinketTinker.Models.AbilityArgs
             if (StunTime > 0)
             {
                 target.stunTime.Value = StunTime;
+            }
+            if (ExplodeRadius > 0)
+            {
+                proc.LocationOrCurrent.explode(target.TilePoint.ToVector2(), ExplodeRadius, proc.Farmer, damage_amount: Min);
             }
         }
     }

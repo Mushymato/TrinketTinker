@@ -35,18 +35,31 @@ namespace TrinketTinker.Models
         /// <summary>If set, add a light with given radius. Note that the light is only visible to local player.</summary>
         public LightSourceData? LightSource { get; set; } = null;
 
-        /// <summary>Get a monogame color from string. Supports <see cref="TinkerConst.COLOR_PRISMATIC"/> for animated color.</summary>
+        /// <summary>
+        /// Get a monogame color from string.
+        /// Supports <see cref="TinkerConst.COLOR_PRISMATIC"/> for animated color.
+        /// The default color is White (#FFFFFF).
+        /// </summary>
         /// <param name="color">Color string</param>
         /// <param name="isConstant">Indicates that this is not animated, no need to update.</param>
-        /// <param name="defaultColor">Fallback color, if not set the fallback is <see cref="Color.White"/>.</param>
+        /// <param name="invert">Invert the RGB components.</param>
         /// <returns></returns>
-        public static Color GetSDVColor(string? colorStr, out bool isConstant, Color? defaultColor = null)
+        public static Color GetSDVColor(string? colorStr, out bool isConstant, bool invert = false)
         {
-            isConstant = false;
+            Color result;
             if (colorStr == TinkerConst.COLOR_PRISMATIC)
-                return Utility.GetPrismaticColor();
-            isConstant = true;
-            return Utility.StringToColor(colorStr) ?? defaultColor ?? Color.White;
+            {
+                isConstant = false;
+                result = Utility.GetPrismaticColor();
+            }
+            else
+            {
+                isConstant = true;
+                result = Utility.StringToColor(colorStr) ?? Color.White;
+            }
+            if (invert)
+                return new Color(result.PackedValue ^ 0x00FFFFFF);
+            return result;
         }
     }
 }

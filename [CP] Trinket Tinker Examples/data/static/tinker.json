@@ -105,6 +105,7 @@
                   "MinVelocity": 2,
                   "MaxVelocity": 24,
                   "Hits": 5,
+                  "ExplodeRadius": 4
                 }
               }
             ]

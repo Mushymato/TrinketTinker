@@ -84,7 +84,8 @@
               "Height": 16,
               "LightSource": {
                 "Radius": 10,
-                "Color": "#ffff00"
+                "Texture": "Mods/{{ModId}}/rotation-bw",
+                "Color": "#00ff00"
               }
             },
           ],
@@ -209,12 +210,12 @@
             {
               "MotionClass": "Lerp",
               "DirectionMode": "DRUL",
-              "Anchors": [
-                {
-                  "Mode": "Monster",
-                  "Range": 1280
-                }
-              ],
+              // "Anchors": [
+              //   {
+              //     "Mode": "Monster",
+              //     "Range": 1280
+              //   }
+              // ],
               "AnimationFrameLength": 4,
               "Interval": 100,
               "Args": {
@@ -234,7 +235,7 @@
                   "Min": 1,
                 }
               },
-              // every 5s, damage a monster within 128 pixels of the companion
+              // every 5s, damage a monster within 128 pixels of the companion, explodes
               {
                 "AbilityClass": "Hitscan",
                 "Proc": "Timer",
@@ -242,7 +243,8 @@
                 "Args": {
                   "Min": 5,
                   "Max": 10,
-                  "Range": 128
+                  "Range": 128,
+                  "ExplodeRadius": 4
                 },
                 "ProcTemporarySprites": [
                   // this structure is identical to the TemporarySprites field in Data/Machine
