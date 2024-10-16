@@ -137,6 +137,6 @@
   "index.html": {
     "href": "index.html",
     "title": "Trinket Tinker - Stardew Valley Trinket Framework | TrinketTinker",
-    "keywords": "Trinket Tinker - Stardew Valley Trinket Framework This is a framework for creating trinkets that can have advanced abilities using just Content Patcher. If you are looking to make mods using this framework, start here. Changelog All notable changes to this project will be documented here. The format is based on Keep a Changelog, and this project adheres to Semantic Versioning. Unreleased Added The yak is being shaved please come back soon."
+    "keywords": "Trinket Tinker - Stardew Valley Trinket Framework This is a framework for creating trinkets that can have advanced abilities using just Content Patcher. If you are looking to make mods using this framework, start here. Credits Documentation generated with Docfx, with docfx-material theme. Changelog All notable changes to this project will be documented here. The format is based on Keep a Changelog, and this project adheres to Semantic Versioning. Unreleased Added The yak is being shaved please come back soon."
   }
 }
