@@ -83,14 +83,24 @@ namespace TrinketTinker.Effects.Pewpew
         }
 
         /// <summary>Get the texture to draw for the projectile.</summary>
-        public Texture2D GetCustomTexture()
+        private Texture2D GetCustomTexture()
         {
-            if (projectileTexture.Value != null)
+            if (loadedProjectileTexture != null)
+                return loadedProjectileTexture;
+            if (projectileTexture.Value != "")
             {
                 loadedProjectileTexture ??= Game1.content.Load<Texture2D>(projectileTexture.Value);
                 return loadedProjectileTexture;
             }
             return projectileSheet;
+        }
+
+        /// <summary>Get the texture name being used.</summary>
+        private string GetCustomTexturePath()
+        {
+            if (loadedProjectileTexture != null)
+                return projectileTexture.Value;
+            return projectileSheetName;
         }
 
         /// <summary>Needed to override this to get custom texture weh</summary>
@@ -214,7 +224,7 @@ namespace TrinketTinker.Effects.Pewpew
                 sourceRect.Width = 8;
                 sourceRect.Height = 8;
                 Game1.createRadialDebris_MoreNatural(
-                    location, projectileTexture.Value,
+                    location, GetCustomTexturePath(),
                     sourceRect, 1, (int)position.X + 32, (int)position.Y + 32, 6, (int)(position.Y / 64f) + 1
                 );
             }

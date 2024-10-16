@@ -11,13 +11,10 @@
             // activates once every 10s
             [
               {
-                "Proc": "ReceiveDamage",
+                "Proc": "Obtain",
                 "ProcTimer": 10000,
                 "ProcSound": "rooster",
-                "AbilityClass": "Buff",
-                "Args": {
-                  "BuffId": 22
-                }
+                "AbilityClass": "DebugDummy"
               },
               {
                 "Proc": "Timer",
@@ -26,6 +23,7 @@
                 "Args": {
                   "Min": 20,
                   "Max": 50,
+                  "Range": 4096,
                 }
               }
             ],

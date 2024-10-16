@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using StardewValley;
 using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Models

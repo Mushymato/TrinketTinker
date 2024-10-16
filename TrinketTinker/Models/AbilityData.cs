@@ -21,6 +21,8 @@ namespace TrinketTinker.Models
         Timer,
         /// <summary>Proc on trigger action.</summary>
         Trigger,
+        /// <summary>Proc on when player obtains an item.</summary>
+        Obtain,
     }
 
     /// <summary>Data for <see cref="Effects.Abilities"/>, defines game effect that a trinket can provide.</summary>
@@ -30,7 +32,7 @@ namespace TrinketTinker.Models
         public string? AbilityClass { get; set; } = null;
         /// <summary>Determine when this ability activates.</summary>
         public ProcOn Proc { get; set; } = ProcOn.Footstep;
-        /// <summary>Minimum cooldown time between ability activation, all <see cref="Models.ProcOn"/> values respect this, not just <see cref="ProcOn.Timer"/>.</summary>
+        /// <summary>Minimum cooldown time between ability activation, all <see cref="ProcOn"/> values respect this, not just <see cref="ProcOn.Timer"/>.</summary>
         public double ProcTimer { get; set; } = -1;
         /// <summary>Sound cue to play on proc.</summary>
         public string? ProcSound { get; set; } = null;

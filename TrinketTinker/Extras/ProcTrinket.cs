@@ -18,7 +18,7 @@ namespace TrinketTinker.Extras
             foreach (Trinket trinketItem in Game1.player.trinketItems)
             {
                 if ((trinketId == null || trinketItem.ItemId == trinketId) &&
-                     trinketItem?.GetEffect() is TrinketTinkerEffect effect)
+                     trinketItem.GetEffect() is TrinketTinkerEffect effect)
                     effect.OnTrigger(Game1.player, args, context);
             }
             return true;

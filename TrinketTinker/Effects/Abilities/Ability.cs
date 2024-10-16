@@ -85,6 +85,9 @@ namespace TrinketTinker.Effects.Abilities
                     case ProcOn.Trigger:
                         e.EventTrigger += HandleProc;
                         break;
+                    case ProcOn.Obtain:
+                        e.EventObtain += HandleProc;
+                        break;
                 }
             }
             return Active;
@@ -97,7 +100,6 @@ namespace TrinketTinker.Effects.Abilities
         {
             if (Active)
             {
-
                 switch (d.Proc)
                 {
                     case ProcOn.Always:
@@ -120,6 +122,9 @@ namespace TrinketTinker.Effects.Abilities
                         break;
                     case ProcOn.Trigger:
                         e.EventTrigger -= HandleProc;
+                        break;
+                    case ProcOn.Obtain:
+                        e.EventObtain -= HandleProc;
                         break;
                 }
                 Active = false;

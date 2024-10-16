@@ -11,6 +11,8 @@ using TrinketTinker.Effects.Abilities;
 using TrinketTinker.Extras;
 using StardewValley.Internal;
 using TrinketTinker.Wheels;
+using StardewValley;
+using StardewValley.Objects.Trinkets;
 
 namespace TrinketTinker
 {
@@ -30,6 +32,8 @@ namespace TrinketTinker
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.Content.AssetRequested += OnAssetRequested;
             helper.Events.Content.AssetsInvalidated += OnAssetInvalidated;
+
+            helper.Events.Player.InventoryChanged += OnPlayerInventoryChanged;
 
 #if DEBUG
             // Debug console
@@ -80,6 +84,23 @@ namespace TrinketTinker
         private static void OnAssetInvalidated(object? sender, AssetsInvalidatedEventArgs e)
         {
             AssetManager.OnAssetInvalidated(e);
+        }
+
+        private static void OnPlayerInventoryChanged(object? sender, InventoryChangedEventArgs e)
+        {
+            if (!e.IsLocalPlayer)
+                return;
+            foreach (Trinket trinketItem in e.Player.trinketItems)
+            {
+                if (trinketItem.GetEffect() is TrinketTinkerEffect effect)
+                {
+                    foreach (Item addedItem in e.Added)
+                    {
+                        if (!addedItem.HasBeenInInventory)
+                            effect.OnObtainItem(e.Player, addedItem);
+                    }
+                }
+            }
         }
 
         private void ConsolePrintTypenames(string command, string[] args)
