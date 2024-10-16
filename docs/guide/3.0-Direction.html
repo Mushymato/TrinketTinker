@@ -90,31 +90,27 @@
 <p>Direction mode determines number of sprites and the required arragements on the sprite sheet. This <strong>only</strong> describes number of sprites required, the sprite width and height is controlled by <a href="2-Variant.html">variants</a>.</p>
 <p>In content patcher, use a string value like <code>&quot;DirectionMode&quot;: &quot;DRUL&quot;</code> to set this value. Internally it is an <a href="../api/TrinketTinker.Models.DirectionMode.html">enum</a>.</p>
 <p>Arrangement charts in this page assumes <code>AnimationFrameLength</code> is 4, but you can have as many frames as desired. There's also no need to adhere to exact row layout as long as you have the correct number of sprites in the left to right &amp; up to down order.</p>
-<h2 id="drul---down-right-up-left">DRUL - Down Right Up Left</h2>
-<p>This mode is similar to NPC and animal sprites in the base game.</p>
-<p><strong>Number of Sprites Required</strong>: 4 x <code>AnimationFrameLength</code> (16 by default)</p>
-<p><img src="../images/sheets/drul.png" alt="Down Right Up Left"></p>
+<h2 id="single">Single</h2>
+<p>Animate the sprite, ignore all changes to direction.
+This is the default value.</p>
+<p><strong>Number of Sprites Required</strong>: <code>AnimationFrameLength</code></p>
+<p><img src="../images/sheets/r.png" alt="Single"></p>
 <h2 id="r---right">R - Right</h2>
-<p>This mode only requires 1 set of animations, there are no up or down sprites, and the sprite is flipped when going left.</p>
+<p>Similar <strong>Single</strong> but the sprite is flipped when going left.</p>
 <p><strong>Number of Sprites Required</strong>: 1 x <code>AnimationFrameLength</code> (4 by default)</p>
 <p><img src="../images/sheets/r.png" alt="Right"></p>
-<h2 id="rotate">Rotate</h2>
-<p>Rather than a facing direction, the sprite rotates to point towards the anchor point, similar bugs &amp; serpents.</p>
-<p>The tip of the point is the right side of the sprite, rather than up.</p>
-<p><strong>Number of Sprites Required</strong>: 1 x <code>AnimationFrameLength</code> (4 by default)</p>
-<p><img src="../images/sheets/r.png" alt="Rotate"></p>
+<h2 id="drul---down-right-up-left">DRUL - Down Right Up Left</h2>
+<p>This mode is similar to NPC and animal sprites in the base game. Four sets of animations are required, one per direction.</p>
+<p><strong>Number of Sprites Required</strong>: 4 x <code>AnimationFrameLength</code> (16 by default)</p>
+<p><img src="../images/sheets/drul.png" alt="Down Right Up Left"></p>
 <h2 id="rl---right-left">RL - Right Left</h2>
-<p>Similar to R, but allows you to supply left facing sprites for asymmetrical companions.</p>
+<p>Similar to <strong>R</strong>, but allows you to supply left facing sprites for asymmetrical companions.</p>
 <p><strong>Number of Sprites Required</strong>: 2 x <code>AnimationFrameLength</code> (8 by default)</p>
 <p><img src="../images/sheets/rl.png" alt="Right Left"></p>
 <h2 id="dru---down-right-up">DRU - Down Right Up</h2>
-<p>Similar to DRUL, but allows you to skip left facing sprites for symmetrical companions.</p>
+<p>Similar to <strong>DRUL</strong>, but allows you to skip left facing sprites for symmetrical companions.</p>
 <p><strong>Number of Sprites Required</strong>: 3 x <code>AnimationFrameLength</code> (12 by default)</p>
 <p><img src="../images/sheets/dru.png" alt="Down Right Up"></p>
-<h2 id="single">Single</h2>
-<p>Draws a single static image, no animations.</p>
-<p><strong>Number of Sprites Required</strong>: 1</p>
-<p><img src="../images/sheets/single.png" alt="Down Right Up Left"></p>
 
 </article>
 

@@ -94,7 +94,7 @@
 <li>Static: the companion stays at a fixed position relative to the anchor.</li>
 </ul>
 <p>Each of these have sub types like Hover for Lerp motion that hovers, see the individual pages on the sidebar for details.</p>
-<p>The term &quot;anchor&quot; refers to a position that the companion derives it's own position from. By default this is the player, but it can also be other entites like a monster.</p>
+<p>The term &quot;anchor&quot; refers to a position that the companion derives it's own position from. By default this is the player, but it can also be other entities like a monster.</p>
 <h2 id="structure">Structure</h2>
 <table>
 <thead>
@@ -110,13 +110,19 @@
 <td><code>MotionClass</code></td>
 <td>string</td>
 <td>Lerp</td>
-<td>Type name of the motion class to use, can use short name like <code>Lerp</code>.<br>Refer to pages under Motion Classes in the table of contents for details.</td>
+<td>Type name of the motion class to use, can use short name like <code>&quot;Lerp&quot;</code>.<br>Refer to pages under Motion Classes in the table of contents for details.</td>
 </tr>
 <tr>
 <td><code>DirectionMode</code></td>
 <td><a href="3.0-Direction.html">DirectionMode</a></td>
-<td>DRUL</td>
+<td>Single</td>
 <td>Determines how the trinket behaves when changing directions and controls what sprites are required.</td>
+</tr>
+<tr>
+<td><code>DirectionRotation</code></td>
+<td>bool</td>
+<td>false</td>
+<td>When true, the sprite will rotate depending on direction, the exact behavior depends the motion class.</td>
 </tr>
 <tr>
 <td><code>LoopMode</code></td>
@@ -165,24 +171,6 @@
 <td><a href="../api/TrinketTinker.Models.LayerDepth.html">LayerDepth</a></td>
 <td>Position</td>
 <td>Changes draw layer relative to player. <ul><li>Position: Calculate layer based on Y position</li><li>Behind: Always behind the player.</li><li>InFront: Always infront of the player</li></ul></td>
-</tr>
-<tr>
-<td><code>TextureScale</code></td>
-<td>float</td>
-<td>4</td>
-<td>Texture draw scale, default is 4 like most things in the game.</td>
-</tr>
-<tr>
-<td><code>ShadowScale</code></td>
-<td>float</td>
-<td>3</td>
-<td>Size of the shadow to draw, set to 0 to disable shadow.</td>
-</tr>
-<tr>
-<td><code>LightRadius</code></td>
-<td>float</td>
-<td>0</td>
-<td>If greater than 0, add a light source with given radius to the companion, similar to fairy.</td>
 </tr>
 <tr>
 <td><code>Args</code></td>

@@ -90,6 +90,10 @@
 <p>To make a trinket use TrinketTinker features, add a new entry to the custom asset <code>mushymato.TrinketTinker/Tinker</code>.
 The key used must match the <strong>unqualified ID</strong> of the trinket.</p>
 <p>When a <code>mushymato.TrinketTinker/Tinker</code> entry exists, the <code>TrinketEffectClass</code> will be set to <code>TrinketTinker.Effects.TrinketTinkerEffect</code> from this mod.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Trinkets can be reloaded with <code>patch reload &lt;content mod id&gt;</code>, however it must be removed and equipped again to do anything.</p>
+</div>
 <h2 id="structure">Structure</h2>
 <table>
 <thead>
@@ -131,7 +135,7 @@ The key used must match the <strong>unqualified ID</strong> of the trinket.</p>
 <ul>
 <li>Technically all fields here are optional, but in that case there'd be little point to using this framework at all.</li>
 <li>To display a companion, at least 1 Variant and 1 Motion must be defined.</li>
-<li>To have the trinket do thins, at least 1 Ability must be defined.</li>
+<li>To have the trinket do things, at least 1 Ability must be defined.</li>
 <li>At the moment, there's no reason to have more than 1 Motion, but this may change in the future.</li>
 </ul>
 

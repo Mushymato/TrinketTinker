@@ -18,8 +18,7 @@
       "DirectionMode": "R",
       "LoopMode": "PingPong",
       "AnimationFrameLength": 4,
-      "Interval": 200,
-      "LightRadius": 5,
+      "Interval": 200
     }
   ],
   "Abilities": [
@@ -27,7 +26,7 @@
     [
       {
         "Condition": "LOCATION_IS_OUTDOORS Target",
-        "ProcOn": "Footstep",
+        "Proc": "Footstep",
         "ProcSound": "fairy_heal",
         "AbilityClass": "Health",
         "Args": {
@@ -37,7 +36,7 @@
       },
       {
         "Condition": "LOCATION_IS_OUTDOORS Target",
-        "ProcOn": "Footstep",
+        "Proc": "Footstep",
         "AbilityClass": "Stamina",
         "Args": {
           "Min": 0.1,
@@ -50,7 +49,7 @@
       {
         // Heal the player a little as they walk outdoors
         "Condition": "LOCATION_IS_OUTDOORS Target",
-        "ProcOn": "Footstep",
+        "Proc": "Footstep",
         "ProcSound": "fairy_heal",
         "AbilityClass": "Health",
         "Args": {
@@ -61,7 +60,7 @@
       {
         // Heal the player a little as they walk outdoors
         "Condition": "LOCATION_IS_OUTDOORS Target",
-        "ProcOn": "Footstep",
+        "Proc": "Footstep",
         "AbilityClass": "Stamina",
         "Args": {
           "Min": 0.1,

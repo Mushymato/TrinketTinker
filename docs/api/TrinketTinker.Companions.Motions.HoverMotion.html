@@ -89,7 +89,7 @@
 
 
   <h1 id="TrinketTinker_Companions_Motions_HoverMotion" data-uid="TrinketTinker.Companions.Motions.HoverMotion" class="text-break">
-Class HoverMotion  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/HoverMotion.cs/#L9"><i class="bi bi-code-slash"></i></a>
+Class HoverMotion  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/HoverMotion.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -130,6 +130,9 @@ Class HoverMotion  <a class="header-action link-secondary" title="View source" h
     <dt>Inherited Members</dt>
     <dd>
     <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.BaseLerpMotion-1.html#TrinketTinker_Companions_Motions_BaseLerpMotion_1_UpdateLocal_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_">BaseLerpMotion&lt;HoverArgs&gt;.UpdateLocal(GameTime, GameLocation)</a>
+    </div>
+    <div>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_Initialize_StardewValley_Farmer_">Motion&lt;HoverArgs&gt;.Initialize(Farmer)</a>
     </div>
     <div>
@@ -140,9 +143,6 @@ Class HoverMotion  <a class="header-action link-secondary" title="View source" h
     </div>
     <div>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_UpdateAnchor_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_">Motion&lt;HoverArgs&gt;.UpdateAnchor(GameTime, GameLocation)</a>
-    </div>
-    <div>
-      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_UpdateGlobal_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_">Motion&lt;HoverArgs&gt;.UpdateGlobal(GameTime, GameLocation)</a>
     </div>
     <div>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_">Motion&lt;HoverArgs&gt;.Draw(SpriteBatch)</a>
@@ -178,17 +178,17 @@ Class HoverMotion  <a class="header-action link-secondary" title="View source" h
 
   <a id="TrinketTinker_Companions_Motions_HoverMotion__ctor_" data-uid="TrinketTinker.Companions.Motions.HoverMotion.#ctor*"></a>
 
-  <h3 id="TrinketTinker_Companions_Motions_HoverMotion__ctor_TrinketTinker_Companions_TrinketTinkerCompanion_TrinketTinker_Models_MotionData_" data-uid="TrinketTinker.Companions.Motions.HoverMotion.#ctor(TrinketTinker.Companions.TrinketTinkerCompanion,TrinketTinker.Models.MotionData)">
-  HoverMotion(TrinketTinkerCompanion, MotionData)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/HoverMotion.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TrinketTinker_Companions_Motions_HoverMotion__ctor_TrinketTinker_Companions_TrinketTinkerCompanion_TrinketTinker_Models_MotionData_TrinketTinker_Models_VariantData_" data-uid="TrinketTinker.Companions.Motions.HoverMotion.#ctor(TrinketTinker.Companions.TrinketTinkerCompanion,TrinketTinker.Models.MotionData,TrinketTinker.Models.VariantData)">
+  HoverMotion(TrinketTinkerCompanion, MotionData, VariantData)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/HoverMotion.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Basic constructor, tries to parse arguments as the generic <a class="xref" href="TrinketTinker.Models.Mixin.IArgs.html">IArgs</a> type.</p>
+  <div class="markdown level1 summary"><p>Companion follows the player and bobs up and down</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public HoverMotion(TrinketTinkerCompanion companion, MotionData data)</code></pre>
+    <pre><code class="lang-csharp hljs">public HoverMotion(TrinketTinkerCompanion companion, MotionData data, VariantData vdata)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -196,6 +196,8 @@ Class HoverMotion  <a class="header-action link-secondary" title="View source" h
     <dt><code>companion</code> <a class="xref" href="TrinketTinker.Companions.TrinketTinkerCompanion.html">TrinketTinkerCompanion</a></dt>
     <dd></dd>
     <dt><code>data</code> <a class="xref" href="TrinketTinker.Models.MotionData.html">MotionData</a></dt>
+    <dd></dd>
+    <dt><code>vdata</code> <a class="xref" href="TrinketTinker.Models.VariantData.html">VariantData</a></dt>
     <dd></dd>
   </dl>
 
@@ -214,19 +216,19 @@ Class HoverMotion  <a class="header-action link-secondary" title="View source" h
 </h2>
 
 
-  <a id="TrinketTinker_Companions_Motions_HoverMotion_UpdateLocal_" data-uid="TrinketTinker.Companions.Motions.HoverMotion.UpdateLocal*"></a>
+  <a id="TrinketTinker_Companions_Motions_HoverMotion_UpdateGlobal_" data-uid="TrinketTinker.Companions.Motions.HoverMotion.UpdateGlobal*"></a>
 
-  <h3 id="TrinketTinker_Companions_Motions_HoverMotion_UpdateLocal_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Companions.Motions.HoverMotion.UpdateLocal(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
-  UpdateLocal(GameTime, GameLocation)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/HoverMotion.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TrinketTinker_Companions_Motions_HoverMotion_UpdateGlobal_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Companions.Motions.HoverMotion.UpdateGlobal(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
+  UpdateGlobal(GameTime, GameLocation)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/HoverMotion.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Update info that should change every tick, for owner only. Netfield changes should happen here.</p>
+  <div class="markdown level1 summary"><p>Update info that should change every tick, for all game instances in multiplayer.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void UpdateLocal(GameTime time, GameLocation location)</code></pre>
+    <pre><code class="lang-csharp hljs">public override void UpdateGlobal(GameTime time, GameLocation location)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>

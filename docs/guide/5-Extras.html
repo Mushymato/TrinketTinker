@@ -2,21 +2,21 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Enum LoopMode | TrinketTinker </title>
+      <title>Extras | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Enum LoopMode | TrinketTinker ">
+      <meta name="title" content="Extras | TrinketTinker ">
       
-      <meta name="description" content="Determine how sprites loop.">
+      
       <link rel="icon" href="../images/favicon.png">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
-      <meta name="searchOption" content="noindex">
+      
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/new/main/apiSpec/new?filename=TrinketTinker_Models_LoopMode.md&amp;value=---%0Auid%3A%20TrinketTinker.Models.LoopMode%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/5-Extras.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -39,7 +39,7 @@
 
   </head>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
@@ -84,52 +84,24 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="TrinketTinker.Models.LoopMode">
+        <article data-uid="">
+<h1 id="extras">Extras</h1>
 
-
-
-
-  <h1 id="TrinketTinker_Models_LoopMode" data-uid="TrinketTinker.Models.LoopMode" class="text-break">
-Enum LoopMode  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L22"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="TrinketTinker.html">TrinketTinker</a>.<a class="xref" href="TrinketTinker.Models.html">Models</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>TrinketTinker.dll</dd></dl>
-  </div>
-
-  <div class="markdown summary"><p>Determine how sprites loop.</p>
-</div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public enum LoopMode</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-  <h2 id="fields">Fields
-</h2>
-  <dl class="parameters">
-    <dt id="TrinketTinker_Models_LoopMode_PingPong"><code>PingPong = 1</code></dt>
-    <dd><p>Reverse the animation from last frame, e.g. 1 2 3 4 3 2 1 2 3 4</p>
-</dd>
-    <dt id="TrinketTinker_Models_LoopMode_Standard"><code>Standard = 0</code></dt>
-    <dd><p>Loops to start from last frame, e.g. 1 2 3 4 1 2 3 4 1 2 3 4</p>
-</dd>
-  </dl>
-
-
+<p>TrinketTinker provides a few extra supporting features.</p>
+<h2 id="item-query-mushymatotrinkettinker_create_trinket">Item Query: mushymato.TrinketTinker_CREATE_TRINKET</h2>
+<pre><code>mushymato.TrinketTinker_CREATE_TRINKET &lt;trinket id&gt; [level] [variant]
+</code></pre>
+<p>Creates a new trinket item. If the trinket has tinker data, set level and variant.
+Useful for producing a trinket at specified level/variant.</p>
+<h2 id="machine-trinket-colorizer-trinket-colorizer">Machine: Trinket Colorizer <img src="../images/favicon.png" alt="Trinket Colorizer"></h2>
+<p>A new machine that can be purchased from <a href="https://stardewvalleywiki.com/Blacksmith">the Blacksmith</a> for 50 <a href="https://stardewvalleywiki.com/Gold_Bar">Gold Bars</a> once the <a href="https://stardewvalleywiki.com/Anvil">Anvil</a> recipe is obtained.</p>
+<p>Consumes 3 <a href="https://stardewvalleywiki.com/Star_Shards">Star Shards</a> to reroll the variant on a TrinketTinker trinket, no effect on vanilla trinkets.</p>
+<p>The Trinket Colorizer is just a normal machine with qualified id <code>(BC)mushymato.TrinketTinker_TrinketColorizer</code>, mods are free to add their own machine rules.</p>
 
 </article>
 
 
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
 
       </div>
 

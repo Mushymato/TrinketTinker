@@ -123,6 +123,61 @@
 <td><em>empty</em></td>
 <td>The color to apply on draw, for use with grayscale sprites.<br>Aside from RGB and hex values, monogame provides <a href="https://docs.monogame.net/api/Microsoft.Xna.Framework.Color.html">named colors</a> and this mod provides special value <code>Prismatic</code> for an animated color cycle.</td>
 </tr>
+<tr>
+<td><code>TextureScale</code></td>
+<td>float</td>
+<td>4</td>
+<td>Texture draw scale, default is 4 like most things in the game.</td>
+</tr>
+<tr>
+<td><code>ShadowScale</code></td>
+<td>float</td>
+<td>3</td>
+<td>Size of the shadow to draw, 0 to disable shadow.</td>
+</tr>
+<tr>
+<td><code>LightSource</code></td>
+<td><code>LightSourceData</code></td>
+<td><em>empty</em></td>
+<td>If set, display a light source. This light source is only visible to the owner.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="lightsourcedata">LightSourceData</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Radius</code></td>
+<td>float</td>
+<td>2</td>
+<td>Size of light source.</td>
+</tr>
+<tr>
+<td><code>Index</code></td>
+<td>int</td>
+<td>1</td>
+<td>Vanilla light source texture index.</td>
+</tr>
+<tr>
+<td><code>Texture</code></td>
+<td>string</td>
+<td>1</td>
+<td>Custom light map, must be loaded into game content.</td>
+</tr>
+<tr>
+<td><code>Color</code></td>
+<td>string</td>
+<td>1</td>
+<td>Light color name, accepts same values as <code>ColorMask</code>.</td>
+</tr>
 </tbody>
 </table>
 <h2 id="notes">Notes</h2>

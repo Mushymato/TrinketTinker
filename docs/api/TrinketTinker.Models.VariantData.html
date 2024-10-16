@@ -89,7 +89,7 @@
 
 
   <h1 id="TrinketTinker_Models_VariantData" data-uid="TrinketTinker.Models.VariantData" class="text-break">
-Class VariantData  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L8"><i class="bi bi-code-slash"></i></a>
+Class VariantData  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -154,7 +154,7 @@ Class VariantData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TrinketTinker_Models_VariantData_ColorMask" data-uid="TrinketTinker.Models.VariantData.ColorMask">
   ColorMask
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draw color mask, can use color name from <span class="xref">Microsoft.Xna.Framework.Color</span>, hex value, or <a class="xref" href="TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_COLOR_PRISMATIC">COLOR_PRISMATIC</a> for animated prismatic effect.</p>
@@ -186,7 +186,7 @@ Class VariantData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TrinketTinker_Models_VariantData_Height" data-uid="TrinketTinker.Models.VariantData.Height">
   Height
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sprite height</p>
@@ -214,11 +214,75 @@ Class VariantData  <a class="header-action link-secondary" title="View source" h
 
 
 
+  <a id="TrinketTinker_Models_VariantData_LightSource_" data-uid="TrinketTinker.Models.VariantData.LightSource*"></a>
+
+  <h3 id="TrinketTinker_Models_VariantData_LightSource" data-uid="TrinketTinker.Models.VariantData.LightSource">
+  LightSource
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>If set, add a light with given radius. Note that the light is only visible to local player.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LightSourceData? LightSource { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TrinketTinker.Models.LightSourceData.html">LightSourceData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Models_VariantData_ShadowScale_" data-uid="TrinketTinker.Models.VariantData.ShadowScale*"></a>
+
+  <h3 id="TrinketTinker_Models_VariantData_ShadowScale" data-uid="TrinketTinker.Models.VariantData.ShadowScale">
+  ShadowScale
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Base scale to draw shadow texture.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float ShadowScale { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Models_VariantData_Texture_" data-uid="TrinketTinker.Models.VariantData.Texture*"></a>
 
   <h3 id="TrinketTinker_Models_VariantData_Texture" data-uid="TrinketTinker.Models.VariantData.Texture">
   Texture
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Variant texture content path.</p>
@@ -246,11 +310,43 @@ Class VariantData  <a class="header-action link-secondary" title="View source" h
 
 
 
+  <a id="TrinketTinker_Models_VariantData_TextureScale_" data-uid="TrinketTinker.Models.VariantData.TextureScale*"></a>
+
+  <h3 id="TrinketTinker_Models_VariantData_TextureScale" data-uid="TrinketTinker.Models.VariantData.TextureScale">
+  TextureScale
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Base scale to draw texture at.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float TextureScale { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Models_VariantData_Width_" data-uid="TrinketTinker.Models.VariantData.Width*"></a>
 
   <h3 id="TrinketTinker_Models_VariantData_Width" data-uid="TrinketTinker.Models.VariantData.Width">
   Width
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sprite width</p>
@@ -270,6 +366,53 @@ Class VariantData  <a class="header-action link-secondary" title="View source" h
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="TrinketTinker_Models_VariantData_GetSDVColor_" data-uid="TrinketTinker.Models.VariantData.GetSDVColor*"></a>
+
+  <h3 id="TrinketTinker_Models_VariantData_GetSDVColor_System_String_System_Boolean__System_Nullable_Microsoft_Xna_Framework_Color__" data-uid="TrinketTinker.Models.VariantData.GetSDVColor(System.String,System.Boolean@,System.Nullable{Microsoft.Xna.Framework.Color})">
+  GetSDVColor(string?, out bool, Color?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a monogame color from string. Supports <a class="xref" href="TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_COLOR_PRISMATIC">COLOR_PRISMATIC</a> for animated color.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color GetSDVColor(string? colorStr, out bool isConstant, Color? defaultColor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>colorStr</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>isConstant</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Indicates that this is not animated, no need to update.</p>
+</dd>
+    <dt><code>defaultColor</code> <span class="xref">Color</span>?</dt>
+    <dd><p>Fallback color, if not set the fallback is <span class="xref">Microsoft.Xna.Framework.Color.White</span>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
 
 
 
