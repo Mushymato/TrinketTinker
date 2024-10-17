@@ -61,7 +61,6 @@ namespace TrinketTinker.Effects.Abilities
                 Active = true;
                 Allowed = d.Proc != ProcOn.Timer;
                 ProcTimer = d.ProcTimer;
-
                 switch (d.Proc)
                 {
                     case ProcOn.Always:
@@ -85,9 +84,10 @@ namespace TrinketTinker.Effects.Abilities
                     case ProcOn.Trigger:
                         e.EventTrigger += HandleProc;
                         break;
-                    case ProcOn.Obtain:
-                        e.EventObtain += HandleProc;
+                    case ProcOn.Warped:
+                        e.EventPlayerWarped += HandleProc;
                         break;
+                        // remember to add to Deactivate too
                 }
             }
             return Active;
@@ -123,9 +123,10 @@ namespace TrinketTinker.Effects.Abilities
                     case ProcOn.Trigger:
                         e.EventTrigger -= HandleProc;
                         break;
-                    case ProcOn.Obtain:
-                        e.EventObtain -= HandleProc;
+                    case ProcOn.Warped:
+                        e.EventPlayerWarped += HandleProc;
                         break;
+                        // remember to add to Activate too
                 }
                 Active = false;
                 Allowed = false;

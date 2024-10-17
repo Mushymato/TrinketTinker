@@ -33,7 +33,7 @@ namespace TrinketTinker
             helper.Events.Content.AssetRequested += OnAssetRequested;
             helper.Events.Content.AssetsInvalidated += OnAssetInvalidated;
 
-            helper.Events.Player.InventoryChanged += OnPlayerInventoryChanged;
+            helper.Events.Player.Warped += OnPlayerWarped;
 
 #if DEBUG
             // Debug console
@@ -86,7 +86,7 @@ namespace TrinketTinker
             AssetManager.OnAssetInvalidated(e);
         }
 
-        private static void OnPlayerInventoryChanged(object? sender, InventoryChangedEventArgs e)
+        private static void OnPlayerWarped(object? sender, WarpedEventArgs e)
         {
             if (!e.IsLocalPlayer)
                 return;
@@ -94,11 +94,7 @@ namespace TrinketTinker
             {
                 if (trinketItem.GetEffect() is TrinketTinkerEffect effect)
                 {
-                    foreach (Item addedItem in e.Added)
-                    {
-                        if (!addedItem.HasBeenInInventory)
-                            effect.OnObtainItem(e.Player, addedItem);
-                    }
+                    effect.OnPlayerWarped(e.Player, e.NewLocation);
                 }
             }
         }

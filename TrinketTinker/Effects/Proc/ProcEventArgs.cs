@@ -32,8 +32,6 @@ namespace TrinketTinker.Effects.Proc
         public string[]? TriggerArgs { get; set; } = null;
         /// <summary>Trigger action context</summary>
         public TriggerActionContext? TriggerContext { get; set; } = null;
-        /// <summary>Item newly added to inventory.</summary>
-        public Item? Obtained { get; set; } = null;
 
         /// <summary>Get the most valid location of this proc, either the event location or the player's current location</summary>
         public GameLocation LocationOrCurrent => Location ?? Farmer.currentLocation;
@@ -55,7 +53,7 @@ namespace TrinketTinker.Effects.Proc
                     return false;
             }
             if (data.Condition != null)
-                return GameStateQuery.CheckConditions(data.Condition, LocationOrCurrent, Farmer, Obtained, null, Random.Shared);
+                return GameStateQuery.CheckConditions(data.Condition, LocationOrCurrent, Farmer, null, null, Random.Shared);
             return true;
         }
     }

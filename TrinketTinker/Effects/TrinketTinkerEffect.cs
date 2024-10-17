@@ -52,7 +52,7 @@ namespace TrinketTinker.Effects
         internal event EventHandler<ProcEventArgs>? EventDamageMonster;
         internal event EventHandler<ProcEventArgs>? EventSlayMonster;
         internal event EventHandler<ProcEventArgs>? EventTrigger;
-        internal event EventHandler<ProcEventArgs>? EventObtain;
+        internal event EventHandler<ProcEventArgs>? EventPlayerWarped;
 
         /// <summary>Constructor</summary>
         /// <param name="trinket"></param>
@@ -199,12 +199,11 @@ namespace TrinketTinker.Effects
             });
         }
 
-        /// <summary>Invoked when inventory changes.</summary>
-        /// <param name="farmer"></param>
-        public virtual void OnObtainItem(Farmer farmer, Item addedItem)
+        public virtual void OnPlayerWarped(Farmer farmer, GameLocation location)
         {
-            EventObtain?.Invoke(this, new(ProcOn.Obtain, farmer) { Obtained = addedItem });
+            EventPlayerWarped?.Invoke(this, new(ProcOn.Warped, farmer));
         }
+
 
         /// <summary>Update every tick. Not an event because this happens for every ability regardless of <see cref="Proc"/>.</summary>
         /// <param name="farmer"></param>

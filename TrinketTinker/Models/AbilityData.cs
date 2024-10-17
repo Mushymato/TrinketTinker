@@ -21,8 +21,8 @@ namespace TrinketTinker.Models
         Timer,
         /// <summary>Proc on trigger action.</summary>
         Trigger,
-        /// <summary>Proc on when player obtains an item.</summary>
-        Obtain,
+        /// <summary>Proc on when player changes map.</summary>
+        Warped,
     }
 
     /// <summary>Data for <see cref="Effects.Abilities"/>, defines game effect that a trinket can provide.</summary>

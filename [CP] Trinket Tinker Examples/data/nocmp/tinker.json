@@ -11,7 +11,7 @@
             // activates once every 10s
             [
               {
-                "Proc": "Obtain",
+                "Proc": "Warped",
                 "ProcTimer": 10000,
                 "ProcSound": "rooster",
                 "AbilityClass": "DebugDummy"
