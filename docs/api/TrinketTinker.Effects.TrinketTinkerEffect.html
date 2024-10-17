@@ -167,7 +167,7 @@ Class TrinketTinkerEffect  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Effects_TrinketTinkerEffect__ctor_StardewValley_Objects_Trinkets_Trinket_" data-uid="TrinketTinker.Effects.TrinketTinkerEffect.#ctor(StardewValley.Objects.Trinkets.Trinket)">
   TrinketTinkerEffect(Trinket)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Constructor</p>
@@ -400,7 +400,7 @@ Class TrinketTinkerEffect  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Effects_TrinketTinkerEffect_Apply_StardewValley_Farmer_" data-uid="TrinketTinker.Effects.TrinketTinkerEffect.Apply(StardewValley.Farmer)">
   Apply(Farmer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L106"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn the companion, and activate all abilities</p>
@@ -432,7 +432,7 @@ Class TrinketTinkerEffect  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Effects_TrinketTinkerEffect_GenerateRandomStats_StardewValley_Objects_Trinkets_Trinket_" data-uid="TrinketTinker.Effects.TrinketTinkerEffect.GenerateRandomStats(StardewValley.Objects.Trinkets.Trinket)">
   GenerateRandomStats(Trinket)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L211"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L218"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Re-roll the trinket stats if applicable.</p>
@@ -473,7 +473,7 @@ Class TrinketTinkerEffect  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Effects_TrinketTinkerEffect_OnDamageMonster_StardewValley_Farmer_StardewValley_Monsters_Monster_System_Int32_System_Boolean_System_Boolean_" data-uid="TrinketTinker.Effects.TrinketTinkerEffect.OnDamageMonster(StardewValley.Farmer,StardewValley.Monsters.Monster,System.Int32,System.Boolean,System.Boolean)">
   OnDamageMonster(Farmer, Monster, int, bool, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L169"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L170"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Handle the player dealing damage to a monster.</p>
@@ -518,7 +518,7 @@ Class TrinketTinkerEffect  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Effects_TrinketTinkerEffect_OnFootstep_StardewValley_Farmer_" data-uid="TrinketTinker.Effects.TrinketTinkerEffect.OnFootstep(StardewValley.Farmer)">
   OnFootstep(Farmer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L156"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L157"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Handle the player having taken a step.</p>
@@ -547,11 +547,44 @@ Class TrinketTinkerEffect  <a class="header-action link-secondary" title="View s
 
 
 
+  <a id="TrinketTinker_Effects_TrinketTinkerEffect_OnPlayerWarped_" data-uid="TrinketTinker.Effects.TrinketTinkerEffect.OnPlayerWarped*"></a>
+
+  <h3 id="TrinketTinker_Effects_TrinketTinkerEffect_OnPlayerWarped_StardewValley_Farmer_StardewValley_GameLocation_" data-uid="TrinketTinker.Effects.TrinketTinkerEffect.OnPlayerWarped(StardewValley.Farmer,StardewValley.GameLocation)">
+  OnPlayerWarped(Farmer, GameLocation)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L202"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnPlayerWarped(Farmer farmer, GameLocation location)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>farmer</code> <span class="xref">Farmer</span></dt>
+    <dd></dd>
+    <dt><code>location</code> <span class="xref">GameLocation</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Effects_TrinketTinkerEffect_OnReceiveDamage_" data-uid="TrinketTinker.Effects.TrinketTinkerEffect.OnReceiveDamage*"></a>
 
   <h3 id="TrinketTinker_Effects_TrinketTinkerEffect_OnReceiveDamage_StardewValley_Farmer_System_Int32_" data-uid="TrinketTinker.Effects.TrinketTinkerEffect.OnReceiveDamage(StardewValley.Farmer,System.Int32)">
   OnReceiveDamage(Farmer, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L161"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L162"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Handle the player having received damage.</p>
@@ -587,7 +620,7 @@ Class TrinketTinkerEffect  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Effects_TrinketTinkerEffect_OnTrigger_StardewValley_Farmer_System_String___StardewValley_Delegates_TriggerActionContext_" data-uid="TrinketTinker.Effects.TrinketTinkerEffect.OnTrigger(StardewValley.Farmer,System.String[],StardewValley.Delegates.TriggerActionContext)">
   OnTrigger(Farmer, string[], TriggerActionContext)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L192"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L193"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Handle the trigger.</p>
@@ -623,7 +656,7 @@ Class TrinketTinkerEffect  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Effects_TrinketTinkerEffect_OnUse_StardewValley_Farmer_" data-uid="TrinketTinker.Effects.TrinketTinkerEffect.OnUse(StardewValley.Farmer)">
   OnUse(Farmer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L151"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L152"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Handle the player performing a use action on the trinket.</p>
@@ -656,7 +689,7 @@ Class TrinketTinkerEffect  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Effects_TrinketTinkerEffect_RerollVariant_StardewValley_Objects_Trinkets_Trinket_" data-uid="TrinketTinker.Effects.TrinketTinkerEffect.RerollVariant(StardewValley.Objects.Trinkets.Trinket)">
   RerollVariant(Trinket)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L231"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L238"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Randomize this trinket's variant through trinket colorizer, return true of the variant is rerolled.</p>
@@ -693,7 +726,7 @@ Class TrinketTinkerEffect  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Effects_TrinketTinkerEffect_SetVariant_StardewValley_Objects_Trinkets_Trinket_System_Int32_" data-uid="TrinketTinker.Effects.TrinketTinkerEffect.SetVariant(StardewValley.Objects.Trinkets.Trinket,System.Int32)">
   SetVariant(Trinket, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L240"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L247"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -726,7 +759,7 @@ Class TrinketTinkerEffect  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Effects_TrinketTinkerEffect_Unapply_StardewValley_Farmer_" data-uid="TrinketTinker.Effects.TrinketTinkerEffect.Unapply(StardewValley.Farmer)">
   Unapply(Farmer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L138"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Remove the companion, and deactivate all abilities</p>
@@ -758,7 +791,7 @@ Class TrinketTinkerEffect  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Effects_TrinketTinkerEffect_Update_StardewValley_Farmer_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Effects.TrinketTinkerEffect.Update(StardewValley.Farmer,Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
   Update(Farmer, GameTime, GameLocation)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L205"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/TrinketTinkerEffect.cs/#L212"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Update every tick. Not an event because this happens for every ability regardless of <a class="xref" href="TrinketTinker.Effects.Proc.html">TrinketTinker.Effects.Proc</a>.</p>
