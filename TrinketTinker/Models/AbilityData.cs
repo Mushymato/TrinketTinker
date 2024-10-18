@@ -30,6 +30,8 @@ namespace TrinketTinker.Models
     {
         /// <summary>Type name of the ability, can use short form like "Buff" for buff ability.</summary>
         public string? AbilityClass { get; set; } = null;
+        /// <summary>String description of what this ability does, will be passed to trinket item description and replace {1}</summary>
+        public string? Description { get; set; } = null;
         /// <summary>Determine when this ability activates.</summary>
         public ProcOn Proc { get; set; } = ProcOn.Footstep;
         /// <summary>Minimum cooldown time between ability activation, all <see cref="ProcOn"/> values respect this, not just <see cref="ProcOn.Timer"/>.</summary>

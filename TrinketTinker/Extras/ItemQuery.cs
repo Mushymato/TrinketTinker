@@ -37,7 +37,7 @@ namespace TrinketTinker.Extras
                 Trinket trinket = (Trinket)trinketDataDefinition.CreateItem(trinketData);
                 if (trinket.GetEffect() is TrinketTinkerEffect effect)
                 {
-                    effect.GeneralStat = level;
+                    effect.SetLevel(trinket, level);
                     effect.SetVariant(trinket, variant);
                 }
                 return [new ItemQueryResult(trinket)];

@@ -84,10 +84,8 @@ namespace TrinketTinker.Effects
                 }
                 foreach (AbilityData ab in levelAbilities)
                 {
-                    ModEntry.Log(ab.AbilityClass ?? "No ability");
                     if (Reflect.TryGetType(ab.AbilityClass, out Type? abilityType, TinkerConst.ABILITY_CLS))
                     {
-                        ModEntry.Log(abilityType?.ToString() ?? "none");
                         IAbility? ability = (IAbility?)Activator.CreateInstance(abilityType, this, ab, GeneralStat);
                         if (ability != null && ability.Valid)
                             initAblities.Add(ability);
@@ -222,16 +220,9 @@ namespace TrinketTinker.Effects
             if (Data == null)
                 return false;
             if (Data.Abilities.Count <= 1)
-            {
-                GeneralStat = 0;
-            }
+                SetLevel(trinket, 0);
             else
-            {
-                Random r = Utility.CreateRandom(trinket.generationSeed.Value);
-                GeneralStat = r.Next(Data.Abilities.Count);
-            }
-            trinket.descriptionSubstitutionTemplates.Clear();
-            trinket.descriptionSubstitutionTemplates.Add((Data.MinLevel + GeneralStat).ToString());
+                SetLevel(trinket, Utility.CreateRandom(trinket.generationSeed.Value).Next(Data.Abilities.Count));
             return true;
         }
 
@@ -241,11 +232,27 @@ namespace TrinketTinker.Effects
         {
             if (Data == null || Data.Variants.Count <= 1)
                 return false;
-            int nextVariant = Random.Shared.Next(Data.Variants.Count);
-            trinket.modData[ModData_WhichVariant] = nextVariant.ToString();
+            SetVariant(trinket, Random.Shared.Next(Data.Variants.Count));
             return true;
         }
 
+        /// <summary>Set level</summary>
+        /// <param name="trinket"></param>
+        /// <param name="generalStat"></param>
+        public void SetLevel(Trinket trinket, int generalStat)
+        {
+            if (Data == null || Data.Abilities.Count <= generalStat)
+                return;
+            GeneralStat = generalStat;
+            trinket.descriptionSubstitutionTemplates.Clear();
+            trinket.descriptionSubstitutionTemplates.Add((Data.MinLevel + GeneralStat).ToString());
+            trinket.descriptionSubstitutionTemplates.Add(string.Join('\n', Data.Abilities[GeneralStat].Select((ab) => ab.Description)));
+            return;
+        }
+
+        /// <summary>Set trinket variant</summary>
+        /// <param name="trinket"></param>
+        /// <param name="variant"></param>
         public void SetVariant(Trinket trinket, int variant)
         {
             if (Data == null || Data.Variants.Count <= variant)

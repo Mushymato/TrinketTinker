@@ -92,7 +92,7 @@ namespace TrinketTinker
                 return;
             foreach (Trinket trinketItem in e.Player.trinketItems)
             {
-                if (trinketItem.GetEffect() is TrinketTinkerEffect effect)
+                if (trinketItem != null && trinketItem.GetEffect() is TrinketTinkerEffect effect)
                 {
                     effect.OnPlayerWarped(e.Player, e.NewLocation);
                 }
