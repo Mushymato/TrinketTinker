@@ -46,6 +46,10 @@
       name: Projectile
     - href: 4.1.7-RaiseTrigger.md
       name: RaiseTrigger
+    - href: 4.1.8-Action.md
+      name: Action
+    - href: 4.1.9-HoeDirt.md
+      name: HoeDirt
     name: Ability Classes
   name: Ability
 - href: 5-Extras.md
