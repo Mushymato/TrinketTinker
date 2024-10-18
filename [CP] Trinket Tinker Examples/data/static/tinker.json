@@ -28,6 +28,12 @@
             // level 0
             [
               {
+                "AbilityClass": "ToolUse",
+              }
+            ],
+            // level 1
+            [
+              {
                 // Item drop ability 1, drops a gold quality salmon berry every 10 seconds
                 "AbilityClass": "ItemDrop",
                 "Proc": "Timer",
