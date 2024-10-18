@@ -5,9 +5,9 @@ using TrinketTinker.Models.Mixin;
 namespace TrinketTinker.Models.AbilityArgs
 {
     /// <summary>Args for picking a random tile within range</summary>
-    public class HoedirtArgs : TileArgs
+    public class HoeDirtArgs : TileArgs
     {
         /// <summary>Water the new hoedirt</summary>
-        public bool Watering = true;
+        public bool Watering = false;
     }
 }
