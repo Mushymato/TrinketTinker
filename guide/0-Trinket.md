@@ -27,7 +27,7 @@ Trinkets can be added with by editing `Data/Trinkets`, generally with [Content P
           "Id": "{{ModId}}_MyTrinket",
           // Display name (with i18n)
           "DisplayName": "{{i18n:MyTrinket.DisplayName}}",
-          // Description, can include {0} token for the trinket level
+          // Description, can include {0} token for the trinket level and {1} for ability descriptions
           "Description": "{{i18n:MyTrinket.Description}}",
           // Path to asset texture load target
           "Texture": "Mods/{{ModId}}/MyTrinket",

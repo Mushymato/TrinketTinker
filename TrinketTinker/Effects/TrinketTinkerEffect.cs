@@ -246,7 +246,11 @@ namespace TrinketTinker.Effects
             GeneralStat = generalStat;
             trinket.descriptionSubstitutionTemplates.Clear();
             trinket.descriptionSubstitutionTemplates.Add((Data.MinLevel + GeneralStat).ToString());
-            trinket.descriptionSubstitutionTemplates.Add(string.Join('\n', Data.Abilities[GeneralStat].Select((ab) => ab.Description)));
+            trinket.descriptionSubstitutionTemplates.Add(string.Join('\n',
+                Data.Abilities[GeneralStat]
+                    .Where((ab) => ab.Description != null)
+                    .Select((ab) => ab.Description)
+            ));
             return;
         }
 
