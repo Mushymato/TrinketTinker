@@ -84,8 +84,10 @@ namespace TrinketTinker.Effects
                 }
                 foreach (AbilityData ab in levelAbilities)
                 {
+                    ModEntry.Log(ab.AbilityClass ?? "No ability");
                     if (Reflect.TryGetType(ab.AbilityClass, out Type? abilityType, TinkerConst.ABILITY_CLS))
                     {
+                        ModEntry.Log(abilityType?.ToString() ?? "none");
                         IAbility? ability = (IAbility?)Activator.CreateInstance(abilityType, this, ab, GeneralStat);
                         if (ability != null && ability.Valid)
                             initAblities.Add(ability);

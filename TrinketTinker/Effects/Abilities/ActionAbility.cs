@@ -6,9 +6,7 @@ using TrinketTinker.Models.AbilityArgs;
 
 namespace TrinketTinker.Effects.Abilities
 {
-    /// <summary>
-    /// Call a registered (trigger) action.
-    /// </summary>
+    /// <summary>Call a registered (trigger) action.</summary>
     public sealed class ActionAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<ActionArgs>(effect, data, lvl)
     {
         /// <summary>Parse and call the action</summary>
