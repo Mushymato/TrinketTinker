@@ -8,6 +8,7 @@ using StardewValley.Objects.Trinkets;
 using SObject = StardewValley.Object;
 using StardewValley.GameData.Shops;
 using TrinketTinker.Effects;
+using Force.DeepCloner;
 
 namespace TrinketTinker.Extras
 {
@@ -78,7 +79,7 @@ namespace TrinketTinker.Extras
             });
         }
 
-        /// <summary>Setup rules for the trinket colorizer</summary>
+        /// <summary>Setup rules for the trinket colorizer, add custom rule for anvil</summary>
         /// <param name="asset"></param>
         public static void Edit_MachineData(IAssetData asset)
         {
@@ -87,10 +88,10 @@ namespace TrinketTinker.Extras
             {
                 OutputRules = [
                     new(){
-                        Id = "Default",
+                        Id = $"{ModEntry.ModId}_Default",
                         Triggers = [
                             new(){
-                                Id = "ItemPlacedInMachine",
+                                Id = $"{ModEntry.ModId}_ItemPlacedInMachine",
                                 Trigger = MachineOutputTrigger.ItemPlacedInMachine,
                                 RequiredCount = 1,
                                 RequiredTags = ["category_trinket"]
@@ -112,11 +113,28 @@ namespace TrinketTinker.Extras
                 ],
                 // InvalidItemMessage
             };
+            if (data.TryGetValue("(BC)Anvil", out MachineData? anvilData))
+            {
+                MachineOutputRule newRule = anvilData.OutputRules.First().DeepClone();
+                newRule.Id = $"{ModEntry.ModId}_Default";
+                newRule.Triggers = [
+                    new(){
+                        Id = $"{ModEntry.ModId}_ItemPlacedInMachine",
+                        Trigger = MachineOutputTrigger.ItemPlacedInMachine,
+                        RequiredCount = 1,
+                        RequiredTags = ["category_trinket"]
+                    }
+                ];
+                newRule.OutputItem = [
+                    new(){
+                        OutputMethod = $"{typeof(TrinketColorizer).AssemblyQualifiedName}:{nameof(OutputTinkerAnvil)}"
+                    }
+                ];
+                anvilData.OutputRules.Insert(0, newRule);
+            }
         }
 
-        /// <summary>
-        /// Change trinket color
-        /// </summary>
+        /// <summary>Change trinket variant.</summary>
         /// <param name="machine"></param>
         /// <param name="inputItem"></param>
         /// <param name="probe"></param>
@@ -138,10 +156,61 @@ namespace TrinketTinker.Extras
                 return null;
             }
 
+            int previous = 0;
+            if (inputItem.modData.TryGetValue(TrinketTinkerEffect.ModData_Variant, out string? previousStr))
+                if (!int.TryParse(previousStr, out previous))
+                    previous = 0;
             Trinket output = (Trinket)inputItem.getOne();
             if (output.GetEffect() is not TrinketTinkerEffect effect)
                 return null;
-            if (!effect.RerollVariant(output))
+            if (!effect.RerollVariant(output, previous))
+            {
+                if (!probe)
+                {
+                    player?.doEmote(40);
+                }
+                return null;
+            }
+
+            if (!probe)
+            {
+                Game1.currentLocation.playSound("metal_tap");
+                DelayedAction.playSoundAfterDelay("metal_tap", 250);
+                DelayedAction.playSoundAfterDelay("metal_tap", 500);
+            }
+            overrideMinutesUntilReady = 10;
+            return output;
+        }
+
+        /// <summary>Change trinket level.</summary>
+        /// <param name="machine"></param>
+        /// <param name="inputItem"></param>
+        /// <param name="probe"></param>
+        /// <param name="outputData"></param>
+        /// <param name="player"></param>
+        /// <param name="overrideMinutesUntilReady"></param>
+        /// <returns></returns>
+        public static Item? OutputTinkerAnvil(SObject machine, Item inputItem, bool probe, MachineItemOutput outputData, Farmer player, out int? overrideMinutesUntilReady)
+        {
+            Console.WriteLine("OutputTinkerAnvil");
+            overrideMinutesUntilReady = null;
+            if (inputItem is not Trinket t)
+                return null;
+            if (!t.GetTrinketData().CanBeReforged)
+            {
+                if (!probe)
+                {
+                    Game1.showRedMessage(Game1.content.LoadString("Strings\\1_6_Strings:Anvil_wrongtrinket"));
+                }
+                return null;
+            }
+
+            if (((Trinket)inputItem).GetEffect() is not TrinketTinkerEffect effect1)
+                return null;
+            Trinket output = (Trinket)inputItem.getOne();
+            if (output.GetEffect() is not TrinketTinkerEffect effect2)
+                return null;
+            if (!effect2.RerollLevel(output, effect1.GeneralStat))
             {
                 if (!probe)
                 {

@@ -43,10 +43,9 @@
           ],
           "Motion": {
             "MotionClass": "Orbit",
-            "AlwaysMoving": true,
-            "DirectionMode": "DRU",
+            "AlwaysMoving": false,
+            "DirectionMode": "DRUL",
             "FrameLength": 2,
-            "Interval": 100,
           },
           "Abilities": [
             // level 2

@@ -7,5 +7,5 @@
     "Bat.DisplayName": "Whispy Batwing",
     "Bat.Description": "Ghostly wings from a ghastly bat, slippery.\n\nLv.{0}: {1}",
     "Bat.AbilityDescription.1": "When you land a critical hit, recover 13 HP and 13 Energy.",
-    "Bat.AbilityDescription.2": "When you land a critical hit, recover 13% of the damage dealt as HP and Energy.",
+    "Bat.AbilityDescription.2": "When you land a critical hit, recover 13% of the damage dealt as HP and Energy, can only activate once per 2s.",
 }

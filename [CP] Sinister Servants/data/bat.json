@@ -28,7 +28,6 @@
       "Target": "mushymato.TrinketTinker/Tinker",
       "Entries": {
         "{{ModId}}_Bat": {
-          "MinLevel": 10,
           "Variants": [
             {
               "Texture": "Mods/{{ModId}}/bat_1"
@@ -97,17 +96,19 @@
                 "AbilityClass": "Health",
                 "Description": "{{i18n:Bat.AbilityDescription.2}}",
                 "Proc": "DamageMonster",
+                "ProcTimer": 2000,
                 "IsCriticalHit": true,
                 "Args": {
-                  "Min": 13
+                  "Min": 0.13
                 },
               },
               {
                 "AbilityClass": "Stamina",
                 "Proc": "DamageMonster",
+                "ProcTimer": 2000,
                 "IsCriticalHit": true,
                 "Args": {
-                  "Min": 13
+                  "Min": 0.13
                 },
               }
             ],

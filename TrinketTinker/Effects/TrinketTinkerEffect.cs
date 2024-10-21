@@ -16,7 +16,9 @@ namespace TrinketTinker.Effects
     /// <summary>Base class for TrinketTinker trinkets, allows extensible companions with extensible abilities.</summary>
     public class TrinketTinkerEffect : TrinketEffect
     {
-        public readonly string ModData_WhichVariant = $"{ModEntry.ModId}/WhichVariant";
+        public static readonly string ModData_Variant = $"{ModEntry.ModId}/Variant";
+        public static readonly string ModData_Level = $"{ModEntry.ModId}/Level";
+
         /// <summary>Companion data with matching ID</summary>
         protected TinkerData? Data;
         private readonly Lazy<ImmutableList<IAbility>> abilities;
@@ -45,6 +47,10 @@ namespace TrinketTinker.Effects
         }
         /// <summary>Draw layer of owner.</summary>
         public float CompanionOwnerDrawLayer => Companion.Owner.getDrawLayer();
+        /// <summary>Number of ability levels</summary>
+        public int MaxLevel => Data?.Abilities.Count ?? 0;
+        /// <summary>Number of variant levels</summary>
+        public int MaxVariant => Data?.Variants.Count ?? 0;
 
         internal event EventHandler<ProcEventArgs>? EventFootstep;
         internal event EventHandler<ProcEventArgs>? EventReceiveDamage;
@@ -108,7 +114,7 @@ namespace TrinketTinker.Effects
                 return;
 
             int variant = 0;
-            if (Trinket.modData.TryGetValue(ModData_WhichVariant, out string variantStr))
+            if (Trinket.modData.TryGetValue(ModData_Variant, out string variantStr))
                 variant = int.Parse(variantStr);
 
             // Companion
@@ -214,7 +220,27 @@ namespace TrinketTinker.Effects
                 ability.Update(farmer, time, location);
         }
 
+        /// <summary>
+        /// For some reason random stats here get rolled again whenever the sprite is reloaded, prefer not to do that.
+        /// </summary>
+        /// <param name="trinket"></param>
+        /// <returns></returns>
         public override bool GenerateRandomStats(Trinket trinket)
+        {
+            if (trinket.modData.TryGetValue(ModData_Level, out string levelStr) && int.TryParse(levelStr, out int level))
+                SetLevel(trinket, level);
+            else
+                SetLevel(trinket, 0);
+            return false;
+        }
+
+        /// <summary>
+        /// Randomize this trinket's ability level through anvil, return true if the level is rerolled.
+        /// Will not roll the same level.
+        /// </summary>
+        /// <param name="trinket"></param>
+        /// <returns></returns>
+        public virtual bool RerollLevel(Trinket trinket, int previous)
         {
             if (Data == null)
                 return false;
@@ -223,17 +249,26 @@ namespace TrinketTinker.Effects
                 SetLevel(trinket, 0);
                 return false;
             }
-            SetLevel(trinket, Utility.CreateRandom(trinket.generationSeed.Value).Next(Data.Abilities.Count));
+            int newStat = Random.Shared.Next(Data.Abilities.Count - 1);
+            if (newStat >= previous)
+                newStat++;
+            SetLevel(trinket, newStat);
             return true;
         }
 
-        /// <summary>Randomize this trinket's variant through trinket colorizer, return true of the variant is rerolled.</summary>
+        /// <summary>
+        /// Randomize this trinket's variant through trinket colorizer, return true if the variant is rerolled.
+        /// Will not roll the same variant.
+        /// </summary>
         /// <param name="trinket"></param>
-        public virtual bool RerollVariant(Trinket trinket)
+        public virtual bool RerollVariant(Trinket trinket, int previous)
         {
             if (Data == null || Data.Variants.Count <= 1)
                 return false;
-            SetVariant(trinket, Random.Shared.Next(Data.Variants.Count));
+            int newVariant = Random.Shared.Next(Data.Variants.Count - 1);
+            if (newVariant >= previous)
+                newVariant++;
+            SetVariant(trinket, newVariant);
             return true;
         }
 
@@ -242,9 +277,12 @@ namespace TrinketTinker.Effects
         /// <param name="generalStat"></param>
         public void SetLevel(Trinket trinket, int generalStat)
         {
-            if (Data == null || Data.Abilities.Count <= generalStat)
+            if (Data == null)
                 return;
+            if (generalStat >= Data.Abilities.Count)
+                generalStat = 0;
             GeneralStat = generalStat;
+            trinket.modData[ModData_Level] = GeneralStat.ToString();
             trinket.descriptionSubstitutionTemplates.Clear();
             trinket.descriptionSubstitutionTemplates.Add((Data.MinLevel + GeneralStat).ToString());
             trinket.descriptionSubstitutionTemplates.Add(string.Join('\n',
@@ -260,9 +298,11 @@ namespace TrinketTinker.Effects
         /// <param name="variant"></param>
         public void SetVariant(Trinket trinket, int variant)
         {
-            if (Data == null || Data.Variants.Count <= variant)
+            if (Data == null)
                 return;
-            trinket.modData[ModData_WhichVariant] = variant.ToString();
+            if (variant >= Data.Variants.Count)
+                variant = 0;
+            trinket.modData[ModData_Variant] = variant.ToString();
             return;
         }
     }
