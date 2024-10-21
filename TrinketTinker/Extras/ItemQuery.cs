@@ -11,11 +11,21 @@ namespace TrinketTinker.Extras
         public static readonly string CreateTrinketQuery = $"{ModEntry.ModId}_CREATE_TRINKET";
         private const string RANDOM = "R";
 
+        /// <summary>
+        /// Get a int value from argument at index.
+        /// If argument at index is <see cref="RANDOM"/>, get a random value between 0 and <see cref="maxValue"/>
+        /// </summary>
+        /// <param name="array"></param>
+        /// <param name="index"></param>
+        /// <param name="maxValue"></param>
+        /// <param name="context"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         private static bool TryGetOptionalOrRandom(string[] array, int index, int maxValue, ItemQueryContext context, out int value)
         {
             if (array.Length > index && array[index] == RANDOM)
             {
-                value = context.Random.Next(maxValue);
+                value = (context.Random ?? Random.Shared).Next(maxValue);
                 return true;
             }
             return ArgUtility.TryGetOptionalInt(array, index, out value, out string? _);
