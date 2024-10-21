@@ -24,11 +24,7 @@
           },
           "Abilities": [
             // level 0
-            [
-              {
-                "AbilityClass": "ToolUse",
-              }
-            ],
+            [],
             // level 1
             [
               {

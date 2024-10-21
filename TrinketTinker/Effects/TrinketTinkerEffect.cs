@@ -46,7 +46,6 @@ namespace TrinketTinker.Effects
         /// <summary>Draw layer of owner.</summary>
         public float CompanionOwnerDrawLayer => Companion.Owner.getDrawLayer();
 
-        internal event EventHandler<ProcEventArgs>? EventUse;
         internal event EventHandler<ProcEventArgs>? EventFootstep;
         internal event EventHandler<ProcEventArgs>? EventReceiveDamage;
         internal event EventHandler<ProcEventArgs>? EventDamageMonster;
@@ -151,7 +150,7 @@ namespace TrinketTinker.Effects
 
         public override void OnUse(Farmer farmer)
         {
-            EventUse?.Invoke(this, new(ProcOn.Use, farmer));
+            // EventUse?.Invoke(this, new(ProcOn.Use, farmer));
         }
 
         public override void OnFootstep(Farmer farmer)

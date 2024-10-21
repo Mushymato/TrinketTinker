@@ -66,9 +66,6 @@ namespace TrinketTinker.Effects.Abilities
                     case ProcOn.Always:
                         HandleProc(null, new(ProcOn.Always, farmer));
                         break;
-                    case ProcOn.Use:
-                        e.EventUse += HandleProc;
-                        break;
                     case ProcOn.Footstep:
                         e.EventFootstep += HandleProc;
                         break;
@@ -104,9 +101,6 @@ namespace TrinketTinker.Effects.Abilities
                 {
                     case ProcOn.Always:
                         UnProc(farmer);
-                        break;
-                    case ProcOn.Use:
-                        e.EventUse -= HandleProc;
                         break;
                     case ProcOn.Footstep:
                         e.EventFootstep -= HandleProc;
