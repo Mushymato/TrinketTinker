@@ -19,7 +19,7 @@
             "MotionClass": "Orbit",
             "AlwaysMoving": true,
             "DirectionMode": "DRUL",
-            "AnimationFrameLength": 4,
+            "FrameLength": 4,
             "Interval": 100,
           },
           "Abilities": [
@@ -79,7 +79,7 @@
             "MotionClass": "Static",
             "AlwaysMoving": false,
             "DirectionMode": "R",
-            "AnimationFrameLength": 4,
+            "FrameLength": 4,
             "Interval": 200,
             "LayerDepth": "Behind"
           },
@@ -124,7 +124,7 @@
             "MotionClass": "Relative",
             "AlwaysMoving": false,
             "DirectionMode": "RL",
-            "AnimationFrameLength": 4,
+            "FrameLength": 4,
             "Interval": 200,
             "Offset": "-128,-64"
           },

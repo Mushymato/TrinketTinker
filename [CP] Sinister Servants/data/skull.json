@@ -45,7 +45,7 @@
             "MotionClass": "Orbit",
             "AlwaysMoving": true,
             "DirectionMode": "DRU",
-            "AnimationFrameLength": 2,
+            "FrameLength": 2,
             "Interval": 100,
           },
           "Abilities": [

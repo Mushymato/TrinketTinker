@@ -21,7 +21,7 @@
             "AlwaysMoving": true,
             "DirectionMode": "R",
             "LoopMode": "PingPong",
-            "AnimationFrameLength": 4,
+            "FrameLength": 4,
             "Interval": 200
           },
           "Abilities": [
@@ -100,7 +100,7 @@
                 "Range": 1280
               }
             ],
-            "AnimationFrameLength": 4,
+            "FrameLength": 4,
             "Interval": 200,
           },
           "Abilities": [
@@ -179,7 +179,7 @@
           "Motion": {
             "MotionClass": "Lerp",
             "DirectionMode": "DRU",
-            "AnimationFrameLength": 4,
+            "FrameLength": 4,
             "Interval": 100,
           },
           "Abilities": [
@@ -210,7 +210,7 @@
             //     "Range": 1280
             //   }
             // ],
-            "AnimationFrameLength": 4,
+            "FrameLength": 4,
             "Interval": 100,
             "Args": {
               "Max": 1280

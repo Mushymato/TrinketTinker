@@ -151,7 +151,7 @@ namespace TrinketTinker.Companions.Motions
             }
             else if (md.AlwaysMoving || c.Moving)
             {
-                cs.Animate(md.LoopMode, time, DirectionFrameStart(), md.AnimationFrameLength, md.Interval);
+                cs.Animate(md.LoopMode, time, DirectionFrameStart(), md.FrameLength, md.Interval);
             }
             else
             {
@@ -289,8 +289,8 @@ namespace TrinketTinker.Companions.Motions
         protected virtual int DirectionFrameStart()
         {
             if (md.DirectionMode == DirectionMode.Single)
-                return md.AnimationFrameStart;
-            return (Math.Abs(c.direction.Value) - 1) * md.AnimationFrameLength + md.AnimationFrameStart;
+                return md.FrameStart;
+            return (Math.Abs(c.direction.Value) - 1) * md.FrameLength + md.FrameStart;
         }
 
         /// <summary>Helper function, check if the sprite collides with anything.</summary>

@@ -87,9 +87,9 @@ namespace TrinketTinker.Models
         /// <summary>If true, continue the moving animation when not owner is not moving.</summary>
         public bool AlwaysMoving { get; set; } = false;
         /// <summary>First frame of the animation.</summary>
-        public int AnimationFrameStart { get; set; } = 0;
+        public int FrameStart { get; set; } = 0;
         /// <summary>Length of 1 set of movement animation.</summary>
-        public int AnimationFrameLength { get; set; } = 4;
+        public int FrameLength { get; set; } = 4;
         /// <summary>Miliseconds between frames.</summary>
         public float Interval { get; set; } = 100f;
         /// <summary>Position offset.</summary>

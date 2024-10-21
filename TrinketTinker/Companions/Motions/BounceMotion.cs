@@ -16,7 +16,7 @@ namespace TrinketTinker.Companions.Motions
         {
             if (theta == 0f && !c.Moving && !md.AlwaysMoving)
                 return;
-            theta += time.ElapsedGameTime.TotalMilliseconds / (md.Interval * md.AnimationFrameLength);
+            theta += time.ElapsedGameTime.TotalMilliseconds / (md.Interval * md.FrameLength);
             if (theta >= 1f)
                 theta = 0f;
             base.UpdateGlobal(time, location);
