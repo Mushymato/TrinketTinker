@@ -1,0 +1,11 @@
+{
+    "Skull.DisplayName": "Polished Cranium",
+    "Skull.Description": "A polished skull from some creature, it's cold to the touch.\n\nLv.{0}: {1}",
+    "Skull.AbilityDescription.1": "Summon a haunted skull companion that deals 20-30 damage to any enemies that get close.",
+    "Skull.AbilityDescription.2": "Summon a haunted skull companion that deals 30-40 damage to any enemies that get close.",
+    "Skull.AbilityDescription.3": "Summon a haunted skull companion that deals 40-50 damage to any enemies that get close.",
+    "Bat.DisplayName": "Whispy Batwing",
+    "Bat.Description": "Ghostly wings from a ghastly bat, slippery.\n\nLv.{0}: {1}",
+    "Bat.AbilityDescription.1": "When you land a critical hit, recover 13 HP and 13 Energy.",
+    "Bat.AbilityDescription.2": "When you land a critical hit, recover 13% of the damage dealt as HP and Energy.",
+}

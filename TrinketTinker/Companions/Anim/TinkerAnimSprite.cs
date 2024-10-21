@@ -38,6 +38,7 @@ namespace TrinketTinker.Companions.Anim
         internal Rectangle SourceRect { get; private set; } = Rectangle.Empty;
         private float timer = 0f;
         private int currentFrame = 0;
+        private bool isReverse = false;
 
         /// <summary>Calculate the source rectangle for a sprite in an NPC spritesheet.</summary>
         /// <param name="textureWidth">The pixel width of the full spritesheet texture.</param>
@@ -71,6 +72,8 @@ namespace TrinketTinker.Companions.Anim
             // }
         }
 
+        /// <summary>Set sprite to specific frame</summary>
+        /// <param name="frame"></param>
         internal void SetCurrentFrame(int frame)
         {
             if (frame != currentFrame)
@@ -80,7 +83,50 @@ namespace TrinketTinker.Companions.Anim
             }
         }
 
-        internal void AnimateStandard(GameTime gameTime, int startFrame, int numberOfFrames, float interval)
+        /// <summary>
+        /// Convenience method for calling AnimateStandard or AnimatePingPong with <see cref="AnimClipData"/>
+        /// </summary>
+        /// <param name="time">current game time</param>
+        /// <param name="clip">animation clip object</param>
+        /// <param name="interval">default miliseconds between frames, if the clip did not set one</param>
+        internal bool AnimateClip(GameTime time, AnimClipData clip, float interval)
+        {
+            return Animate(
+                clip.LoopMode, time,
+                clip.FrameStart, clip.FrameLength,
+                clip.Interval ?? interval
+            );
+        }
+
+        /// <summary>
+        /// Convenience method for calling AnimateStandard or AnimatePingPong
+        /// </summary>
+        /// <param name="loopMode">which frame pattern to use</param>
+        /// <param name="time">current game time</param>
+        /// <param name="startFrame">initial frame</param>
+        /// <param name="numberOfFrames">length of animation</param>
+        /// <param name="interval">miliseconds between frames</param>
+        /// <returns>True if animation reached last frame</returns>
+        internal bool Animate(LoopMode loopMode, GameTime time, int startFrame, int numberOfFrames, float interval)
+        {
+            return loopMode switch
+            {
+                LoopMode.PingPong => AnimatePingPong(time, startFrame, numberOfFrames, interval),
+                LoopMode.Standard => AnimateStandard(time, startFrame, numberOfFrames, interval),
+                _ => false,
+            };
+        }
+
+        /// <summary>
+        /// Standard looping animation, e.g. 1 2 3 4 1 2 3 4.
+        /// Return true whenever animation reaches last frame.
+        /// </summary>
+        /// <param name="gameTime">game time object from update</param>
+        /// <param name="startFrame">initial frame</param>
+        /// <param name="numberOfFrames">length of animation</param>
+        /// <param name="interval">miliseconds between frames</param>
+        /// <returns>True if animation reached last frame</returns>
+        internal bool AnimateStandard(GameTime gameTime, int startFrame, int numberOfFrames, float interval)
         {
             if (currentFrame >= startFrame + numberOfFrames || currentFrame < startFrame)
             {
@@ -95,22 +141,23 @@ namespace TrinketTinker.Companions.Anim
                 {
                     currentFrame = startFrame;
                     UpdateSourceRect();
+                    return true;
                 }
             }
             UpdateSourceRect();
+            return false;
         }
 
         /// <summary>
         /// Reverse the animation from last frame, e.g. 1 2 3 4 3 2 1 2 3 4.
-        /// Ignores <see cref="AnimatedSprite.loop"/>.
+        /// Return true when animation return to first frame.
         /// </summary>
-        /// <param name="s">animated sprite</param>
         /// <param name="gameTime">game time object from update</param>
         /// <param name="startFrame">initial frame</param>
         /// <param name="numberOfFrames">length of animation</param>
-        /// <param name="interval">milisecond interval between frames</param>
-        /// <param name="isReverse">flag for whether animation is going forward or backwards, will be updated in this method.</param>
-        public void AnimatePingPong(GameTime gameTime, int startFrame, int numberOfFrames, float interval, ref bool isReverse)
+        /// <param name="interval">miliseconds between frames</param>
+        /// <returns>True if animation reached last frame</returns>
+        public bool AnimatePingPong(GameTime gameTime, int startFrame, int numberOfFrames, float interval)
         {
             int lastFrame;
             int step;
@@ -136,9 +183,13 @@ namespace TrinketTinker.Companions.Anim
                 if (currentFrame == lastFrame)
                 {
                     isReverse = !isReverse;
+                    // when frame reach lastFrame and isReverse had been true, 1 cycle is completed
+                    // invert isReverse again to obtain true (and false in the case where only half of the cycle is done)
+                    return !isReverse;
                 }
             }
             UpdateSourceRect();
+            return false;
         }
     }
 }

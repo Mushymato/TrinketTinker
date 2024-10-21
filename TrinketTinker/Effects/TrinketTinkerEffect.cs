@@ -220,9 +220,11 @@ namespace TrinketTinker.Effects
             if (Data == null)
                 return false;
             if (Data.Abilities.Count <= 1)
+            {
                 SetLevel(trinket, 0);
-            else
-                SetLevel(trinket, Utility.CreateRandom(trinket.generationSeed.Value).Next(Data.Abilities.Count));
+                return false;
+            }
+            SetLevel(trinket, Utility.CreateRandom(trinket.generationSeed.Value).Next(Data.Abilities.Count));
             return true;
         }
 

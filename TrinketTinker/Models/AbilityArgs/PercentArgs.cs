@@ -2,16 +2,32 @@ using TrinketTinker.Models.Mixin;
 
 namespace TrinketTinker.Models.AbilityArgs
 {
-    /// <summary>Percent arguments</summary>
-    public sealed class PercentArgs : IArgs
+    public enum ValueMode
     {
-        /// <summary>Min percent, out of 1</summary>
+        True,
+        Percent,
+    }
+    /// <summary>Generic range argument</summary>
+    public sealed class RangeArgs : IArgs
+    {
+        /// <summary>Determine how to interpret the value</summary>
+        public ValueMode ValueMode { get; set; } = ValueMode.Percent;
+        /// <summary>Min, out of 1</summary>
         public double Min { get; set; } = 0;
-        /// <summary>Max percent, out of 1</summary>
+        /// <summary>Max, out of 1</summary>
         public double Max { get; set; } = 0;
 
-        /// <summary>Random percent between min and max</summary>
-        public double Rand => Random.Shared.NextDouble() * (Max - Min);
+        /// <summary>Random value between min and max</summary>
+        public double Rand(double maxValue)
+        {
+            double randValue = Min + (Random.Shared.NextDouble() * (Max - Min));
+            return ValueMode switch
+            {
+                ValueMode.True => randValue,
+                ValueMode.Percent => maxValue * randValue,
+                _ => throw new NotImplementedException()
+            };
+        }
 
         /// <inheritdoc/>
         public bool Validate()

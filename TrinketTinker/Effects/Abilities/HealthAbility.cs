@@ -11,18 +11,8 @@ namespace TrinketTinker.Effects.Abilities
     /// For <see cref="ProcOn.DamageMonster"/> and <see cref="ProcOn.ReceiveDamage"/>,
     /// healing is based on damage recieved or dealt instead of percent HP.
     /// </summary>
-    public sealed class HealthAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<PercentArgs>(effect, data, lvl)
+    public sealed class HealthAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<RangeArgs>(effect, data, lvl)
     {
-        /// <summary>Healing formula</summary>
-        /// <param name="maximum"></param>
-        /// <param name="current"></param>
-        /// <param name="relative"></param>
-        /// <returns></returns>
-        private int HealthFormula(int maximum, int current, int relative)
-        {
-            return (int)Math.Ceiling(Math.Min(maximum, current + relative * args.Rand));
-        }
-
         /// <summary>
         /// Heal the player.
         /// If a damage amount is given, heal % of that value, otherwise heal % of max health.
@@ -31,14 +21,15 @@ namespace TrinketTinker.Effects.Abilities
         /// <returns></returns>
         protected override bool ApplyEffect(ProcEventArgs proc)
         {
-            if (proc.Farmer is not Farmer farmer)
+            if (proc.Farmer.health >= proc.Farmer.maxHealth)
                 return false;
-            int previousHealth = farmer.health;
-            farmer.health = HealthFormula(farmer.maxHealth, farmer.health, proc.DamageAmount ?? farmer.maxHealth);
-            int healed = farmer.health - previousHealth;
-            if (healed > 0)
-                farmer.currentLocation.debris.Add(new Debris(healed, farmer.getStandingPosition(), Color.Lime, 1f, farmer));
-            return healed > 0 && base.ApplyEffect(proc);
+            int healed = (int)Math.Ceiling(Math.Min(
+                proc.Farmer.maxHealth - proc.Farmer.health,
+                args.Rand(proc.DamageAmount ?? proc.Farmer.maxHealth)
+            ));
+            proc.Farmer.health += healed;
+            proc.Farmer.currentLocation.debris.Add(new Debris(healed, proc.Farmer.getStandingPosition(), Color.Lime, 1f, proc.Farmer));
+            return base.ApplyEffect(proc);
         }
     }
 }

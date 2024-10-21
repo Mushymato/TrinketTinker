@@ -1,0 +1,20 @@
+{
+    "Name": "[CP] Sinister Servants",
+    "Author": "mushymato",
+    "Version": "1.0.0",
+    "Description": "Spirit's Eve themed trinkets",
+    "UniqueID": "mushymato.SinisterServants",
+    "MinimumApiVersion": "4.0.0",
+    "UpdateKeys": [
+        "Nexus:???"
+    ],
+    "ContentPackFor": {
+        "UniqueID": "Pathoschild.ContentPatcher"
+    },
+    "Dependencies": [
+        {
+            "UniqueID": "mushymato.TrinketTinker",
+            "MinimumVersion": "0.1.0"
+        }
+    ]
+}

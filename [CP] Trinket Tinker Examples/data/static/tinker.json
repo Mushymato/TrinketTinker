@@ -14,16 +14,14 @@
               "Height": 32
             },
           ],
-          "Motions": [
-            // Orbit around the player in a ellipse
-            {
-              "MotionClass": "Orbit",
-              "AlwaysMoving": true,
-              "DirectionMode": "DRUL",
-              "AnimationFrameLength": 4,
-              "Interval": 100,
-            }
-          ],
+          // Orbit around the player in a ellipse
+          "Motion": {
+            "MotionClass": "Orbit",
+            "AlwaysMoving": true,
+            "DirectionMode": "DRUL",
+            "AnimationFrameLength": 4,
+            "Interval": 100,
+          },
           "Abilities": [
             // level 0
             [
@@ -80,17 +78,15 @@
               "ColorMask": "#6495ED"
             },
           ],
-          "Motions": [
-            // fixed position, always underneath the player
-            {
-              "MotionClass": "Static",
-              "AlwaysMoving": false,
-              "DirectionMode": "R",
-              "AnimationFrameLength": 4,
-              "Interval": 200,
-              "LayerDepth": "Behind"
-            }
-          ],
+          // fixed position, always underneath the player
+          "Motion": {
+            "MotionClass": "Static",
+            "AlwaysMoving": false,
+            "DirectionMode": "R",
+            "AnimationFrameLength": 4,
+            "Interval": 200,
+            "LayerDepth": "Behind"
+          },
           "Abilities": [
             // level 0
             [
@@ -127,17 +123,15 @@
               "ColorMask": "MonoGameOrange"
             },
           ],
-          "Motions": [
-            // Put 1/2 tile toward top left of player when facing down, adjusts when player face other directions
-            {
-              "MotionClass": "Relative",
-              "AlwaysMoving": false,
-              "DirectionMode": "RL",
-              "AnimationFrameLength": 4,
-              "Interval": 200,
-              "Offset": "-128,-64"
-            }
-          ],
+          // Put 1/2 tile toward top left of player when facing down, adjusts when player face other directions
+          "Motion": {
+            "MotionClass": "Relative",
+            "AlwaysMoving": false,
+            "DirectionMode": "RL",
+            "AnimationFrameLength": 4,
+            "Interval": 200,
+            "Offset": "-128,-64"
+          },
           "Abilities": [
             // level 0
             [

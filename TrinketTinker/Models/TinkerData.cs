@@ -9,6 +9,16 @@ namespace TrinketTinker.Models
         public List<VariantData> Variants { get; set; } = [];
         /// <summary>List of motions</summary>
         public List<MotionData> Motions { get; set; } = [];
+        /// <summary>Shim for case of just 1 motion</summary>
+        public MotionData? Motion
+        {
+            get => Motions.FirstOrDefault();
+            set
+            {
+                if (value != null)
+                    Motions.Insert(0, value);
+            }
+        }
         /// <summary>List of abilities</summary>
         public List<List<AbilityData>> Abilities { get; set; } = [];
 

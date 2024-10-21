@@ -16,16 +16,14 @@
             },
           ],
           // Bounce motion: follows player, bounces around
-          "Motions": [
-            {
-              "MotionClass": "Bounce",
-              "AlwaysMoving": true,
-              "DirectionMode": "R",
-              "LoopMode": "PingPong",
-              "AnimationFrameLength": 4,
-              "Interval": 200
-            }
-          ],
+          "Motion": {
+            "MotionClass": "Bounce",
+            "AlwaysMoving": true,
+            "DirectionMode": "R",
+            "LoopMode": "PingPong",
+            "AnimationFrameLength": 4,
+            "Interval": 200
+          },
           "Abilities": [
             // level 1: heal 0.1~.5% of max hp and stamina while walking outside
             [
@@ -90,22 +88,21 @@
             },
           ],
           // Hover motion: follows player, bobs up and down
-          "Motions": [
-            // Rotate towards player
-            {
-              "MotionClass": "Hover",
-              "AlwaysMoving": true,
-              "DirectionRotate": true,
-              "Anchors": [
-                {
-                  "Mode": "Monster",
-                  "Range": 1280
-                }
-              ],
-              "AnimationFrameLength": 4,
-              "Interval": 200,
-            }
-          ],
+          "Motion":
+          // Rotate towards player
+          {
+            "MotionClass": "Hover",
+            "AlwaysMoving": true,
+            "DirectionRotate": true,
+            "Anchors": [
+              {
+                "Mode": "Monster",
+                "Range": 1280
+              }
+            ],
+            "AnimationFrameLength": 4,
+            "Interval": 200,
+          },
           "Abilities": [
             // level 0
             [
@@ -179,14 +176,12 @@
               "Height": 32
             },
           ],
-          "Motions": [
-            {
-              "MotionClass": "Lerp",
-              "DirectionMode": "DRU",
-              "AnimationFrameLength": 4,
-              "Interval": 100,
-            }
-          ],
+          "Motion": {
+            "MotionClass": "Lerp",
+            "DirectionMode": "DRU",
+            "AnimationFrameLength": 4,
+            "Interval": 100,
+          },
           "Abilities": [
             // level 0
             [
@@ -206,23 +201,21 @@
               "Height": 32
             },
           ],
-          "Motions": [
-            {
-              "MotionClass": "Lerp",
-              "DirectionMode": "DRUL",
-              // "Anchors": [
-              //   {
-              //     "Mode": "Monster",
-              //     "Range": 1280
-              //   }
-              // ],
-              "AnimationFrameLength": 4,
-              "Interval": 100,
-              "Args": {
-                "Max": 1280
-              }
+          "Motion": {
+            "MotionClass": "Lerp",
+            "DirectionMode": "DRUL",
+            // "Anchors": [
+            //   {
+            //     "Mode": "Monster",
+            //     "Range": 1280
+            //   }
+            // ],
+            "AnimationFrameLength": 4,
+            "Interval": 100,
+            "Args": {
+              "Max": 1280
             }
-          ],
+          },
           "Abilities": [
             // level 0
             [

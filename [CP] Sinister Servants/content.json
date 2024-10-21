@@ -1,0 +1,13 @@
+{
+  "Format": "2.3.0",
+  "Changes": [
+    {
+      "Action": "Include",
+      "FromFile": "data/skull.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "data/bat.json"
+    },
+  ]
+}

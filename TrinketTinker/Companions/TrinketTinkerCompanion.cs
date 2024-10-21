@@ -20,8 +20,10 @@ namespace TrinketTinker.Companions
         protected readonly NetString _id = new("");
         /// <summary>Companion ID. Companion is (re)loaded when this is changed.</summary>
         public string ID => _id.Value;
+        /// <summary>Owner position, for detecting moving</summary>
+        private Vector2? prevOwnerPosition;
         /// <summary>Whether companion is moving</summary>
-        public bool Moving => Owner?.position.moving.Value ?? false;
+        public bool Moving { get; set; } = false;
         internal NetPosition NetPosition => _position;
         // Derived
         /// <summary>Backing companion data from content.</summary>
@@ -30,7 +32,34 @@ namespace TrinketTinker.Companions
         public IMotion? Motion { get; set; }
         /// <summary>Position the companion should follow.</summary>
         public Vector2 Anchor { get; set; }
+        /// <summary>Current motion offset</summary>
         public Vector2 Offset => Motion?.GetOffset() ?? Vector2.Zero;
+
+        /// <summary>NetString key of oneshot clip</summary>
+        private readonly NetString _oneshotKey = new(null);
+        /// <summary>Getter and setter for oneshot key</summary>
+        public string? OneshotKey
+        {
+            get => _oneshotKey.Value;
+            set
+            {
+                if (Motion != null && value != _oneshotKey.Value)
+                    _oneshotKey.Value = value;
+            }
+        }
+        /// <summary>String key of override clip</summary>
+        private readonly NetString _overrideKey = new(null);
+        /// <summary>Getter and setter for override key</summary>
+        public string? OverrideKey
+        {
+            get => _overrideKey.Value;
+            set
+            {
+                if (Motion != null && value != _overrideKey.Value)
+                    _overrideKey.Value = value;
+            }
+        }
+
         /// <summary>Argumentless constructor for netcode deserialization.</summary>
         public TrinketTinkerCompanion() : base()
         {
@@ -39,9 +68,9 @@ namespace TrinketTinker.Companions
         /// <summary>Construct new companion using companion ID.</summary>
         public TrinketTinkerCompanion(string companionId, int variant)
         {
-            _id.Value = companionId;
             // _moving.Value = false;
             whichVariant.Value = variant;
+            _id.Value = companionId;
         }
 
         /// <summary>Initialize Motion class.</summary>
@@ -69,12 +98,12 @@ namespace TrinketTinker.Companions
             base.InitNetFields();
             NetFields
                 .AddField(_id, "_id")
-            // .AddField(_moving, "_moving")
-            // .AddField(_offset.NetFields, "_offset.NetFields")
+                .AddField(_oneshotKey, "_oneshotKey")
+                .AddField(_overrideKey, "_overrideKey")
             ;
             _id.fieldChangeVisibleEvent += InitCompanionData;
-            // _moving.fieldChangeEvent += (NetBool field, bool oldValue, bool newValue) => { _moving.Value = newValue; };
-            // _offset.fieldChangeEvent += (NetVector2 field, Vector2 oldValue, Vector2 newValue) => { _offset.Value = newValue; };
+            _oneshotKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) => Motion?.SetOneshotClip(newValue);
+            _overrideKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) => Motion?.SetOverrideClip(newValue);
         }
 
         /// <summary>When <see cref="Id"/> is changed through net event, fetch companion data and build all fields.</summary>
@@ -125,6 +154,8 @@ namespace TrinketTinker.Companions
         /// <param name="location">Current map location</param>
         public override void Update(GameTime time, GameLocation location)
         {
+            Moving = prevOwnerPosition != OwnerPosition;
+            prevOwnerPosition = OwnerPosition;
             Motion?.UpdateAnchor(time, location);
             if (IsLocal)
             {
@@ -138,6 +169,7 @@ namespace TrinketTinker.Companions
                 }
             }
             Motion?.UpdateGlobal(time, location);
+            Motion?.UpdateLightSource(time, location);
         }
 
         /// <summary>Reset position on warp</summary>

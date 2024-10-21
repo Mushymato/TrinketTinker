@@ -37,10 +37,6 @@ namespace TrinketTinker.Models.AbilityArgs
         internal IEnumerable<Vector2> IterateRandomTiles(GameLocation location, Vector2 position)
         {
             List<Vector2> tiles = GetTilesInRange(location, position);
-            foreach (var t in tiles)
-            {
-                Console.WriteLine(t);
-            }
             if (tiles.Count > 0)
             {
                 int count = Count > tiles.Count ? tiles.Count : Count;

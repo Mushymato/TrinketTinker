@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Netcode;
 using StardewValley;
 using StardewValley.Monsters;
 using TrinketTinker.Companions.Anim;
@@ -18,10 +19,6 @@ namespace TrinketTinker.Companions.Motions
         protected readonly MotionData md;
         /// <summary>Data for this motion.</summary>
         protected readonly VariantData vd;
-        // /// <summary>Calculated offset, derived from data</summary>
-        // protected Vector2 motionOffset;
-        /// <summary>Should reverse the animation, used for <see cref="LoopMode.PingPong"/></summary>
-        protected bool isReverse = false;
         /// <summary>Light source ID, generated if LightRadius is set in <see cref="MotionData"/>.</summary>
         protected string lightId = "";
         /// <summary>Class dependent arguments for subclasses</summary>
@@ -34,6 +31,10 @@ namespace TrinketTinker.Companions.Motions
         protected bool AnchorChanged => prevAnchorTarget != currAnchorTarget;
         /// <summary>Companion animation controller</summary>
         protected readonly TinkerAnimSprite cs;
+        /// <summary>NetString, key of next oneshotClip to set</summary>
+        private AnimClipData? oneshotClip = null;
+        /// <summary>NetString, key of next oneshotClip to set</summary>
+        private AnimClipData? overrideClip = null;
 
         /// <summary>Basic constructor, tries to parse arguments as the generic <see cref="IArgs"/> type.</summary>
         /// <param name="companion"></param>
@@ -51,6 +52,24 @@ namespace TrinketTinker.Companions.Motions
             md = mdata;
             vd = vdata;
             cs = new TinkerAnimSprite(vdata);
+        }
+
+        /// <inheritdoc/>
+        public void SetOneshotClip(string? clipKey)
+        {
+            if (clipKey == null)
+                overrideClip = null;
+            else
+                md.AnimClips.TryGetValue(clipKey, out oneshotClip);
+        }
+
+        /// <inheritdoc/>
+        public void SetOverrideClip(string? clipKey)
+        {
+            if (clipKey == null)
+                overrideClip = null;
+            else
+                md.AnimClips.TryGetValue(clipKey, out overrideClip);
         }
 
         /// <inheritdoc/>
@@ -119,24 +138,38 @@ namespace TrinketTinker.Companions.Motions
         /// <inheritdoc/>
         public virtual void UpdateGlobal(GameTime time, GameLocation location)
         {
-            if (md.AlwaysMoving || c.Moving)
+            if (oneshotClip != null)
             {
-                int frameStart = DirectionFrameStart();
-                switch (md.LoopMode)
+                if (cs.AnimateClip(time, oneshotClip, md.Interval))
                 {
-                    case LoopMode.PingPong:
-                        cs.AnimatePingPong(time, frameStart, md.AnimationFrameLength, md.Interval, ref isReverse);
-                        break;
-                    case LoopMode.Standard:
-                        cs.AnimateStandard(time, frameStart, md.AnimationFrameLength, md.Interval);
-                        break;
+                    oneshotClip = null;
                 }
+            }
+            else if (overrideClip != null)
+            {
+                cs.AnimateClip(time, overrideClip, md.Interval);
+            }
+            else if (md.AlwaysMoving || c.Moving)
+            {
+                cs.Animate(md.LoopMode, time, DirectionFrameStart(), md.AnimationFrameLength, md.Interval);
             }
             else
             {
-                cs.SetCurrentFrame(DirectionFrameStart());
+                if (md.IdleAnim != null)
+                {
+                    cs.AnimateClip(time, md.IdleAnim, md.Interval);
+                }
+                else
+                {
+                    cs.SetCurrentFrame(DirectionFrameStart());
+                }
             }
-            // doesn't work in multiplayer right now, but gonna do it here in case it works one day :)
+        }
+
+        /// <inheritdoc/>
+        public virtual void UpdateLightSource(GameTime time, GameLocation location)
+        {
+            // doesn't work in multiplayer right now
             if (vd.LightSource != null && location.Equals(Game1.currentLocation))
                 Utility.repositionLightSource(lightId, c.Position + GetOffset());
         }
@@ -264,7 +297,7 @@ namespace TrinketTinker.Companions.Motions
         /// <param name="location"></param>
         /// <param name="spritePosition"></param>
         /// <returns></returns>
-        protected virtual bool CheckSpriteCollsion(GameLocation location, Vector2 spritePosition)
+        protected virtual bool CheckSpriteCollision(GameLocation location, Vector2 spritePosition)
         {
             return location.isCollidingPosition(
                 new Rectangle(

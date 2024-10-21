@@ -10,7 +10,7 @@ namespace TrinketTinker.Companions.Motions
     public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata) : Motion<IArgs>(companion, mdata, vdata) where IArgs : LerpArgs
     {
         /// <summary>Variable for how much interpolation happened so far.</summary>
-        private float lerp = -1f;
+        protected float lerp = -1f;
 
         /// <inheritdoc/>
         public override void UpdateLocal(GameTime time, GameLocation location)
@@ -32,7 +32,7 @@ namespace TrinketTinker.Companions.Motions
                         Utility.RandomFloat(-64f, 64f) * radius,
                         Utility.RandomFloat(-64f, 64f) * radius
                     );
-                    if (CheckSpriteCollsion(location, c.endPosition + GetOffset()))
+                    if (CheckSpriteCollision(location, c.endPosition + GetOffset()))
                     {
                         c.endPosition = c.Anchor;
                     }

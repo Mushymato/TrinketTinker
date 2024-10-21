@@ -1,0 +1,102 @@
+{
+  "Changes": [
+    {
+      "LogName": "Skull: Sprites",
+      "Action": "Load",
+      "Target": "Mods/{{ModId}}/skull_t, Mods/{{ModId}}/skull_1, Mods/{{ModId}}/skull_2",
+      "FromFile": "assets/{{TargetWithoutPath}}.png"
+    },
+    {
+      "LogName": "Skull: Trinkets",
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_Skull": {
+          "Id": "{{ModId}}_Skull",
+          "DisplayName": "{{i18n:Skull.DisplayName}}",
+          "Description": "{{i18n:Skull.Description}}",
+          "Texture": "Mods/{{ModId}}/skull_t",
+          "SheetIndex": 0,
+          "DropsNaturally": false,
+          "CanBeReforged": true
+        },
+      }
+    },
+    {
+      "LogName": "Skull: Tinker",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        "{{ModId}}_Skull": {
+          "MinLevel": 2,
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/skull_1",
+              "Width": 16,
+              "Height": 16
+            },
+            {
+              "Texture": "Mods/{{ModId}}/skull_2",
+              "Width": 16,
+              "Height": 16
+            },
+          ],
+          "Motion": {
+            "MotionClass": "Orbit",
+            "AlwaysMoving": true,
+            "DirectionMode": "DRU",
+            "AnimationFrameLength": 2,
+            "Interval": 100,
+          },
+          "Abilities": [
+            // level 2
+            [
+              {
+                "AbilityClass": "Hitscan",
+                "Description": "{{i18n:Skull.AbilityDescription.1}}",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "Args": {
+                  "Min": 20,
+                  "Max": 30,
+                  "Knockback": 1,
+                  "Range": 128
+                },
+              }
+            ],
+            // level 3
+            [
+              {
+                "AbilityClass": "Hitscan",
+                "Description": "{{i18n:Skull.AbilityDescription.2}}",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "Args": {
+                  "Min": 30,
+                  "Max": 40,
+                  "Knockback": 1,
+                  "Range": 128
+                },
+              },
+            ],
+            // level 4
+            [
+              {
+                "AbilityClass": "Hitscan",
+                "Description": "{{i18n:Skull.AbilityDescription.3}}",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "Args": {
+                  "Min": 40,
+                  "Max": 50,
+                  "Knockback": 1,
+                  "Range": 128
+                },
+              },
+            ]
+          ]
+        },
+      }
+    }
+  ]
+}

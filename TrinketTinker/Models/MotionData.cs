@@ -55,6 +55,19 @@ namespace TrinketTinker.Models
         public int Range = 640;
     }
 
+    /// <summary>Model for additional animation</summary>
+    public class AnimClipData
+    {
+        /// <summary>Anim clip frame start</summary>
+        public int FrameStart { get; set; } = 0;
+        /// <summary>Anim clip frame length</summary>
+        public int FrameLength { get; set; } = 1;
+        /// <summary>Anim clip loop mode</summary>
+        public LoopMode LoopMode { get; set; } = LoopMode.Standard;
+        /// <summary>Anim clip interval, fall back to <see cref="MotionData.Interval"/> if not set.</summary>
+        public float? Interval { get; set; } = null;
+    }
+
     /// <summary>Data for <see cref="Companions.Motions"/>, defines how a companion moves.</summary>
     public sealed class MotionData : Mixin.IHaveArgs
     {
@@ -64,15 +77,16 @@ namespace TrinketTinker.Models
         public DirectionMode DirectionMode { get; set; } = DirectionMode.Single;
         /// <summary>Apply sprite rotation depending on direction.</summary>
         public bool DirectionRotate { get; set; } = false;
-        /// <summary>First frame of the animation.</summary>
+        /// <summary>Animation looping mode.</summary>
         public LoopMode LoopMode { get; set; } = LoopMode.Standard;
         /// <summary>
         /// Prefer <see cref="AnchorTargetData"/> that comes earlier in the list.
         /// Defaults to <see cref="AnchorTarget.Owner"/>.
         /// </summary>
         public List<AnchorTargetData> Anchors { get; set; } = [];
-        /// <summary>If true, continue animation when not moving.</summary>
+        /// <summary>If true, continue the moving animation when not owner is not moving.</summary>
         public bool AlwaysMoving { get; set; } = false;
+        /// <summary>First frame of the animation.</summary>
         public int AnimationFrameStart { get; set; } = 0;
         /// <summary>Length of 1 set of movement animation.</summary>
         public int AnimationFrameLength { get; set; } = 4;
@@ -82,5 +96,12 @@ namespace TrinketTinker.Models
         public Vector2 Offset { get; set; } = Vector2.Zero;
         /// <summary>Layer depth mode.</summary>
         public LayerDepth LayerDepth { get; set; } = LayerDepth.Position;
+        /// <summary>
+        /// Repository of anim clips that can be shown in place of the default movement anim.
+        /// Must live on the same sprite sheet specified by variant data.
+        /// </summary>
+        public Dictionary<string, AnimClipData> AnimClips = [];
+        /// <summary>Special idle animation, for when always moving is false and player is still.</summary>
+        public AnimClipData? IdleAnim => AnimClips.GetValueOrDefault("Idle");
     }
 }
