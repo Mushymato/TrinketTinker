@@ -18,6 +18,12 @@ namespace TrinketTinker
 {
     internal sealed class ModEntry : Mod
     {
+#if DEBUG
+        private const LogLevel DEFAULT_LOG_LEVEL = LogLevel.Debug;
+#else
+        private const LogLevel DEFAULT_LOG_LEVEL = LogLevel.Trace;
+#endif
+
         private static IMonitor? mon;
         public static string ModId { get; set; } = "";
 
@@ -137,16 +143,15 @@ namespace TrinketTinker
         /// <summary>Static SMAPI logger</summary>
         /// <param name="msg"></param>
         /// <param name="level"></param>
-        public static void Log(string msg, LogLevel level = LogLevel.Debug)
+        public static void Log(string msg, LogLevel level = DEFAULT_LOG_LEVEL)
         {
-            level = (level == LogLevel.Trace) ? LogLevel.Debug : level;
             mon!.Log(msg, level);
         }
 
         /// <summary>Static SMAPI logger, only logs the same message once</summary>
         /// <param name="msg"></param>
         /// <param name="level"></param>
-        public static void LogOnce(string msg, LogLevel level = LogLevel.Debug)
+        public static void LogOnce(string msg, LogLevel level = DEFAULT_LOG_LEVEL)
         {
             level = (level == LogLevel.Trace) ? LogLevel.Debug : level;
             mon!.LogOnce(msg, level);

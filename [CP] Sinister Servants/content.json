@@ -1,6 +1,7 @@
 {
   "Format": "2.3.0",
   "Changes": [
+    // trinkets
     {
       "Action": "Include",
       "FromFile": "data/skull.json"
@@ -8,6 +9,11 @@
     {
       "Action": "Include",
       "FromFile": "data/bat.json"
+    },
+    // shop
+    {
+      "Action": "Include",
+      "FromFile": "data/angry_roger_shop.json"
     },
   ]
 }

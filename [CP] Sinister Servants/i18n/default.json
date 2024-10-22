@@ -1,4 +1,5 @@
 {
+    // trinkets
     "Skull.DisplayName": "Polished Cranium",
     "Skull.Description": "A polished skull from some creature, it's cold to the touch.\n\nLv.{0}: {1}",
     "Skull.AbilityDescription.1": "Summon a haunted skull companion that deals 20-30 damage to any enemies that get close.",
@@ -8,4 +9,8 @@
     "Bat.Description": "Ghostly wings from a ghastly bat, slippery.\n\nLv.{0}: {1}",
     "Bat.AbilityDescription.1": "When you land a critical hit, recover 13 HP and 13 Energy.",
     "Bat.AbilityDescription.2": "When you land a critical hit, recover 13% of the damage dealt as HP and Energy, can only activate once per 2s.",
+    // shop
+    "AngryRoger.Name": "Angry Roger",
+    "AngryRoger.Dialog.1": "Bring to me the flesh and spirit of the damned~~~",
+    "AngryRoger.Dialog.2": "OooooOOOooOoOOoooo~~~",
 }

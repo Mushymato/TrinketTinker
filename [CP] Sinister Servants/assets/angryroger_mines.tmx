@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="2" height="2" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="9">
+ <properties>
+  <property name="AmbientLight" value="80 80 40"/>
+  <property name="ViewportFollowPlayer" type="bool" value="true"/>
+  <property name="Warp" value="18 14 Mountain 54 5 67 18 Mountain 103 17"/>
+ </properties>
+ <tileset firstgid="1" name="paths" tilewidth="16" tileheight="16" tilecount="0" columns="4">
+  <image source="paths" width="64" height="256"/>
+ </tileset>
+ <tileset firstgid="1" name="untitled tile sheet" tilewidth="16" tileheight="16" tilecount="0" columns="16">
+  <image source="Mines/mine" width="256" height="288"/>
+ </tileset>
+ <tileset firstgid="1" name="z_angryroger" tilewidth="16" tileheight="16" tilecount="80" columns="8">
+  <image source="angryroger" width="128" height="160"/>
+  <tile id="0">
+   <animation>
+    <frame tileid="0" duration="200"/>
+    <frame tileid="2" duration="200"/>
+    <frame tileid="4" duration="200"/>
+    <frame tileid="6" duration="200"/>
+   </animation>
+  </tile>
+  <tile id="1">
+   <animation>
+    <frame tileid="1" duration="200"/>
+    <frame tileid="3" duration="200"/>
+    <frame tileid="5" duration="200"/>
+    <frame tileid="7" duration="200"/>
+   </animation>
+  </tile>
+  <tile id="8">
+   <animation>
+    <frame tileid="8" duration="200"/>
+    <frame tileid="10" duration="200"/>
+    <frame tileid="12" duration="200"/>
+    <frame tileid="14" duration="200"/>
+   </animation>
+  </tile>
+  <tile id="9">
+   <animation>
+    <frame tileid="9" duration="200"/>
+    <frame tileid="11" duration="200"/>
+    <frame tileid="13" duration="200"/>
+    <frame tileid="15" duration="200"/>
+   </animation>
+  </tile>
+ </tileset>
+ <layer id="1" name="Back" width="2" height="2">
+  <data encoding="csv">
+0,0,
+0,0
+</data>
+ </layer>
+ <layer id="2" name="Buildings" width="2" height="2">
+  <data encoding="csv">
+0,0,
+0,0
+</data>
+ </layer>
+ <layer id="3" name="Front" width="2" height="2">
+  <data encoding="csv">
+0,0,
+0,0
+</data>
+ </layer>
+ <layer id="9" name="AlwaysFront" width="2" height="2">
+  <data encoding="csv">
+1,2,
+9,10
+</data>
+ </layer>
+ <layer id="4" name="Paths" width="2" height="2">
+  <data encoding="csv">
+0,0,
+0,0
+</data>
+ </layer>
+ <objectgroup id="5" name="Back"/>
+ <objectgroup id="6" name="Buildings">
+  <object id="6" x="0" y="0" width="32" height="32">
+   <properties>
+    <property name="Action" value="OpenShop mushymato.SinisterServants_AngryRogerShop"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="7" name="Front"/>
+ <objectgroup id="8" name="Paths"/>
+</map>

@@ -19,15 +19,7 @@ namespace TrinketTinker.Wheels
         {
             get
             {
-                if (_companionData == null)
-                {
-                    _companionData = Game1.content.Load<Dictionary<string, TinkerData>>(TinkerAsset);
-#if DEBUG
-                    ModEntry.Log($"Loaded {TinkerAsset}, got {_companionData.Count} entries");
-#else
-                    ModEntry.LogOnce($"Loaded {TinkerAsset}, got {_companionData.Count} entries");
-#endif
-                }
+                _companionData ??= Game1.content.Load<Dictionary<string, TinkerData>>(TinkerAsset);
                 return _companionData;
             }
         }

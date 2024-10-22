@@ -1,0 +1,122 @@
+{
+  "Changes": [
+    {
+      "LogName": "Angry Roger: Sprites",
+      "Action": "Load",
+      "Target": "Mods/{{ModId}}/angryroger_p, Mods/{{ModId}}/angryroger",
+      "FromFile": "assets/{{TargetWithoutPath}}.png"
+    },
+    {
+      "LogName": "Angry Roger: Map Edit",
+      "Action": "EditMap",
+      "Target": "Maps/Mine",
+      "FromFile": "assets/angryroger_mines.tmx",
+      "PatchMode": "Overlay",
+      "ToArea": {
+        "X": 71,
+        "Y": 6,
+        "Width": 2,
+        "Height": 2
+      },
+      "MapTiles": [
+        {
+          "Position": {
+            "X": 71,
+            "Y": 6
+          },
+          "Layer": "Buildings",
+          "SetProperties": {
+            "Action": "OpenShop {{ModId}}_AngryRogerShop"
+          },
+        },
+        {
+          "Position": {
+            "X": 72,
+            "Y": 6
+          },
+          "Layer": "Buildings",
+          "SetProperties": {
+            "Action": "OpenShop {{ModId}}_AngryRogerShop"
+          },
+        },
+        {
+          "Position": {
+            "X": 71,
+            "Y": 7
+          },
+          "Layer": "Buildings",
+          "SetProperties": {
+            "Action": "OpenShop {{ModId}}_AngryRogerShop"
+          },
+        },
+        {
+          "Position": {
+            "X": 72,
+            "Y": 7
+          },
+          "Layer": "Buildings",
+          "SetProperties": {
+            "Action": "OpenShop {{ModId}}_AngryRogerShop"
+          },
+        },
+      ],
+      "When": {
+        "HasCraftingRecipe": "Anvil"
+      }
+    },
+    {
+      // debug shop mushymato.SinisterServants_AngryRogerShop
+      "LogName": "Angry Roger: Shop",
+      "Action": "EditData",
+      "Target": "Data/Shops",
+      "Entries": {
+        "{{ModId}}_AngryRogerShop": {
+          "Currency": 0,
+          "StackSizeVisibility": null,
+          "OpenSound": null,
+          "PurchaseSound": null,
+          "PurchaseRepeatSound": null,
+          "PriceModifiers": null,
+          "PriceModifierMode": "Stack",
+          "Owners": [
+            {
+              // "Id": "{{ModId}}_AngryRoger",
+              // "Name": "{{i18n:AngryRoger.Name}}"
+              "Id": "AnyOrNone",
+              "Name": "AnyOrNone",
+              "Portrait": "Mods/{{ModId}}/angryroger_p",
+              "Dialogues": [
+                {
+                  "Id": "Default",
+                  "RandomDialogue": [
+                    "{{i18n:AngryRoger.Dialog.1}}",
+                    "{{i18n:AngryRoger.Dialog.2}}",
+                  ]
+                }
+              ],
+              "RandomizeDialogueOnOpen": true,
+            }
+          ],
+          "SalableItemTags": [
+            "category_monster_loot",
+            "category_trinket"
+          ],
+          "Items": [
+            {
+              "Id": "(TR){{ModId}}_Skull",
+              "TradeItemId": "(O)881",
+              "TradeItemAmount": 100,
+              "ItemId": "{{ModId}}_Skull",
+            },
+            {
+              "Id": "(TR){{ModId}}_Bat",
+              "TradeItemId": "(O)767",
+              "TradeItemAmount": 200,
+              "ItemId": "(TR){{ModId}}_Bat",
+            }
+          ],
+        },
+      }
+    },
+  ]
+}
