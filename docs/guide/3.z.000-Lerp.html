@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Orbit | TrinketTinker </title>
+      <title>Lerp | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Orbit | TrinketTinker ">
+      <meta name="title" content="Lerp | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/3.2.102-Relative.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/3.z.000-Lerp.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,12 +85,35 @@
         </div>
 
         <article data-uid="">
-<h1 id="orbit">Orbit</h1>
+<h1 id="lerp">Lerp</h1>
 
-<p>Alters the offset depending on the direction, to give illusion that the trinket is attached to the player.</p>
-<p>Not very useful until you set <a href="3-Motion.html">an offset</a></p>
-<h2 id="args"><a href="../api/TrinketTinker.Models.MotionArgs.OrbitArgs.html">Args</a></h2>
-<p>No extra arguments.</p>
+<p>The Companion follows the anchor at a distance. They will move as fast as they need to in order to stay within the desired distance.</p>
+<p>When <code>DirectionRotation</code> is true, the companion rotate and point the right side of their sprite towards the anchor.</p>
+<h2 id="args"><a href="../api/TrinketTinker.Models.MotionArgs.LerpArgs.html">Args</a></h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Min</code></td>
+<td>float</td>
+<td>80</td>
+<td>Min distance from anchor, the companion does not move until they are this far from the anchor.</td>
+</tr>
+<tr>
+<td><code>Max</code></td>
+<td>float</td>
+<td>640</td>
+<td>Max distance from anchor, if the companion is farther away than this, teleport.</td>
+</tr>
+</tbody>
+</table>
 
 </article>
 

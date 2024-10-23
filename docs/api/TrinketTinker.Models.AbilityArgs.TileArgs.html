@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class TinkerData | TrinketTinker </title>
+      <title>Class TileArgs | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class TinkerData | TrinketTinker ">
+      <meta name="title" content="Class TileArgs | TrinketTinker ">
       
-      <meta name="description" content="Top level data class for Tinker.">
+      <meta name="description" content="Args for picking a random tile within range">
       <link rel="icon" href="../images/favicon.png">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/new/main/apiSpec/new?filename=TrinketTinker_Models_TinkerData.md&amp;value=---%0Auid%3A%20TrinketTinker.Models.TinkerData%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/new/main/apiSpec/new?filename=TrinketTinker_Models_AbilityArgs_TileArgs.md&amp;value=---%0Auid%3A%20TrinketTinker.Models.AbilityArgs.TileArgs%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,25 +84,25 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="TrinketTinker.Models.TinkerData">
+        <article data-uid="TrinketTinker.Models.AbilityArgs.TileArgs">
 
 
 
-  <h1 id="TrinketTinker_Models_TinkerData" data-uid="TrinketTinker.Models.TinkerData" class="text-break">
-Class TinkerData  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L4"><i class="bi bi-code-slash"></i></a>
+  <h1 id="TrinketTinker_Models_AbilityArgs_TileArgs" data-uid="TrinketTinker.Models.AbilityArgs.TileArgs" class="text-break">
+Class TileArgs  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/TileArgs.cs/#L8"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="TrinketTinker.html">TrinketTinker</a>.<a class="xref" href="TrinketTinker.Models.html">Models</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="TrinketTinker.html">TrinketTinker</a>.<a class="xref" href="TrinketTinker.Models.html">Models</a>.<a class="xref" href="TrinketTinker.Models.AbilityArgs.html">AbilityArgs</a></dd></dl>
   <dl><dt>Assembly</dt><dd>TrinketTinker.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Top level data class for Tinker.</p>
+  <div class="markdown summary"><p>Args for picking a random tile within range</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class TinkerData</code></pre>
+    <pre><code class="lang-csharp hljs">public class TileArgs : IArgs</code></pre>
   </div>
 
 
@@ -112,11 +112,23 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">TinkerData</span></div>
+      <div><span class="xref">TileArgs</span></div>
     </dd>
   </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="TrinketTinker.Models.Mixin.IArgs.html">IArgs</a></div>
+    </dd>
+  </dl>
 
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="TrinketTinker.Models.AbilityArgs.HoeDirtArgs.html">HoeDirtArgs</a></div>
+    </dd>
+  </dl>
 
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
@@ -132,6 +144,9 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
@@ -150,51 +165,19 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
 </h2>
 
 
-  <a id="TrinketTinker_Models_TinkerData_Abilities_" data-uid="TrinketTinker.Models.TinkerData.Abilities*"></a>
+  <a id="TrinketTinker_Models_AbilityArgs_TileArgs_Count_" data-uid="TrinketTinker.Models.AbilityArgs.TileArgs.Count*"></a>
 
-  <h3 id="TrinketTinker_Models_TinkerData_Abilities" data-uid="TrinketTinker.Models.TinkerData.Abilities">
-  Abilities
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TrinketTinker_Models_AbilityArgs_TileArgs_Count" data-uid="TrinketTinker.Models.AbilityArgs.TileArgs.Count">
+  Count
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/TileArgs.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>List of abilities</p>
+  <div class="markdown level1 summary"><p>Number of tiles to affect at a time</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;List&lt;AbilityData&gt;&gt; Abilities { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="TrinketTinker.Models.AbilityData.html">AbilityData</a>&gt;&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="TrinketTinker_Models_TinkerData_MinLevel_" data-uid="TrinketTinker.Models.TinkerData.MinLevel*"></a>
-
-  <h3 id="TrinketTinker_Models_TinkerData_MinLevel" data-uid="TrinketTinker.Models.TinkerData.MinLevel">
-  MinLevel
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L7"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Trinket stat minimum level, this added to the internal level value that is based on size of <a class="xref" href="TrinketTinker.Models.TinkerData.html#TrinketTinker_Models_TinkerData_Abilities">Abilities</a></p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int MinLevel { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public int Count { get; set; }</code></pre>
   </div>
 
 
@@ -214,19 +197,19 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
 
 
 
-  <a id="TrinketTinker_Models_TinkerData_Motion_" data-uid="TrinketTinker.Models.TinkerData.Motion*"></a>
+  <a id="TrinketTinker_Models_AbilityArgs_TileArgs_Range_" data-uid="TrinketTinker.Models.AbilityArgs.TileArgs.Range*"></a>
 
-  <h3 id="TrinketTinker_Models_TinkerData_Motion" data-uid="TrinketTinker.Models.TinkerData.Motion">
-  Motion
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TrinketTinker_Models_AbilityArgs_TileArgs_Range" data-uid="TrinketTinker.Models.AbilityArgs.TileArgs.Range">
+  Range
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/TileArgs.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Shim for case of just 1 motion</p>
+  <div class="markdown level1 summary"><p>Tile range radius, e.g. range 1 = 3x3, results in a square</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public MotionData? Motion { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public int Range { get; set; }</code></pre>
   </div>
 
 
@@ -235,7 +218,7 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="TrinketTinker.Models.MotionData.html">MotionData</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 
@@ -246,62 +229,35 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
 
 
 
-  <a id="TrinketTinker_Models_TinkerData_Motions_" data-uid="TrinketTinker.Models.TinkerData.Motions*"></a>
+  <h2 class="section" id="methods">Methods
+</h2>
 
-  <h3 id="TrinketTinker_Models_TinkerData_Motions" data-uid="TrinketTinker.Models.TinkerData.Motions">
-  Motions
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L11"><i class="bi bi-code-slash"></i></a>
+
+  <a id="TrinketTinker_Models_AbilityArgs_TileArgs_Validate_" data-uid="TrinketTinker.Models.AbilityArgs.TileArgs.Validate*"></a>
+
+  <h3 id="TrinketTinker_Models_AbilityArgs_TileArgs_Validate" data-uid="TrinketTinker.Models.AbilityArgs.TileArgs.Validate">
+  Validate()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/TileArgs.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>List of motions</p>
+  <div class="markdown level1 summary"><p>Checks if the given arguments are valid, potentially modify arguments to ensure they are valid</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;MotionData&gt; Motions { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool Validate()</code></pre>
   </div>
 
 
-
-
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="TrinketTinker.Models.MotionData.html">MotionData</a>&gt;</dt>
-    <dd></dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true if valid</p>
+</dd>
   </dl>
 
 
 
-
-
-
-
-
-  <a id="TrinketTinker_Models_TinkerData_Variants_" data-uid="TrinketTinker.Models.TinkerData.Variants*"></a>
-
-  <h3 id="TrinketTinker_Models_TinkerData_Variants" data-uid="TrinketTinker.Models.TinkerData.Variants">
-  Variants
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L9"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>List of variants</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;VariantData&gt; Variants { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="TrinketTinker.Models.VariantData.html">VariantData</a>&gt;</dt>
-    <dd></dd>
-  </dl>
 
 
 

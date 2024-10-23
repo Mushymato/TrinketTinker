@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Namespace TrinketTinker.Models | TrinketTinker </title>
+      <title>Buff | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Namespace TrinketTinker.Models | TrinketTinker ">
+      <meta name="title" content="Buff | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -12,11 +12,11 @@
       <link rel="stylesheet" href="../public/main.css">
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
-      <meta name="searchOption" content="noindex">
+      
       <meta name="docfx:rel" content="../">
       
       
-      
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/4.z.01-Buff.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -39,7 +39,7 @@
 
   </head>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
@@ -84,84 +84,34 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="TrinketTinker.Models">
+        <article data-uid="">
+<h1 id="buff">Buff</h1>
 
-  <h1 id="TrinketTinker_Models" data-uid="TrinketTinker.Models" class="text-break">Namespace TrinketTinker.Models</h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
-
-    <h3 id="classes">
-Classes
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Models.AbilityData.html">AbilityData</a></dt>
-      <dd><p>Data for <a class="xref" href="TrinketTinker.Effects.Abilities.html">TrinketTinker.Effects.Abilities</a>, defines game effect that a trinket can provide.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Models.AnchorTargetData.html">AnchorTargetData</a></dt>
-      <dd><p>Model defining how companions pick anchor target</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Models.AnimClipData.html">AnimClipData</a></dt>
-      <dd><p>Model for additional animation</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Models.LightSourceData.html">LightSourceData</a></dt>
-      <dd><p>Data for light source on the companion.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Models.MotionData.html">MotionData</a></dt>
-      <dd><p>Data for <a class="xref" href="TrinketTinker.Companions.Motions.html">TrinketTinker.Companions.Motions</a>, defines how a companion moves.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Models.TinkerData.html">TinkerData</a></dt>
-      <dd><p>Top level data class for Tinker.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Models.VariantData.html">VariantData</a></dt>
-      <dd><p>Data for <a class="xref" href="TrinketTinker.Effects.Abilities.html">TrinketTinker.Effects.Abilities</a>, holds sprite variations.</p>
-</dd>
-    </dl>
-    <h3 id="enums">
-Enums
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Models.AnchorTarget.html">AnchorTarget</a></dt>
-      <dd><p>Which target to anchor (follow/attach) to</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Models.DirectionMode.html">DirectionMode</a></dt>
-      <dd><p>Determine how the sprites are interpreted.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Models.LayerDepth.html">LayerDepth</a></dt>
-      <dd><p>Determine the layer depth to use when drawing the companion</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Models.LoopMode.html">LoopMode</a></dt>
-      <dd><p>Determine how sprites loop.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Models.ProcOn.html">ProcOn</a></dt>
-      <dd><p>Defines how an ability can proc (activate).</p>
-</dd>
-    </dl>
-
+<p>Applies a <a href="https://stardewvalleywiki.com/Modding:Buffs">buff</a> to the player. Must be a buff registered in <code>Data/Buffs</code>, no support for inline buffs.</p>
+<h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.BuffArgs.html">Args</a></h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BuffId</code></td>
+<td>float</td>
+<td>0</td>
+<td>String id of buff to apply.</td>
+</tr>
+</tbody>
+</table>
 
 </article>
 
 
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
 
       </div>
 

@@ -151,9 +151,6 @@ Class BaseLerpMotion&lt;IArgs&gt;  <a class="header-action link-secondary" title
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_vd">Motion&lt;IArgs&gt;.vd</a>
     </div>
     <div>
-      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_isReverse">Motion&lt;IArgs&gt;.isReverse</a>
-    </div>
-    <div>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_lightId">Motion&lt;IArgs&gt;.lightId</a>
     </div>
     <div>
@@ -172,6 +169,12 @@ Class BaseLerpMotion&lt;IArgs&gt;  <a class="header-action link-secondary" title
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_cs">Motion&lt;IArgs&gt;.cs</a>
     </div>
     <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetOneshotClip_System_String_">Motion&lt;IArgs&gt;.SetOneshotClip(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetOverrideClip_System_String_">Motion&lt;IArgs&gt;.SetOverrideClip(string)</a>
+    </div>
+    <div>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_Initialize_StardewValley_Farmer_">Motion&lt;IArgs&gt;.Initialize(Farmer)</a>
     </div>
     <div>
@@ -185,6 +188,12 @@ Class BaseLerpMotion&lt;IArgs&gt;  <a class="header-action link-secondary" title
     </div>
     <div>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_UpdateGlobal_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_">Motion&lt;IArgs&gt;.UpdateGlobal(GameTime, GameLocation)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_GetMoving">Motion&lt;IArgs&gt;.GetMoving()</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_UpdateLightSource_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_">Motion&lt;IArgs&gt;.UpdateLightSource(GameTime, GameLocation)</a>
     </div>
     <div>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_GetPositionalLayerDepth_Microsoft_Xna_Framework_Vector2_">Motion&lt;IArgs&gt;.GetPositionalLayerDepth(Vector2)</a>
@@ -205,7 +214,7 @@ Class BaseLerpMotion&lt;IArgs&gt;  <a class="header-action link-secondary" title
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_DirectionFrameStart">Motion&lt;IArgs&gt;.DirectionFrameStart()</a>
     </div>
     <div>
-      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_CheckSpriteCollsion_StardewValley_GameLocation_Microsoft_Xna_Framework_Vector2_">Motion&lt;IArgs&gt;.CheckSpriteCollsion(GameLocation, Vector2)</a>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_CheckSpriteCollision_StardewValley_GameLocation_Microsoft_Xna_Framework_Vector2_">Motion&lt;IArgs&gt;.CheckSpriteCollision(GameLocation, Vector2)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -275,6 +284,41 @@ Class BaseLerpMotion&lt;IArgs&gt;  <a class="header-action link-secondary" title
 
 
 
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="TrinketTinker_Companions_Motions_BaseLerpMotion_1_lerp" data-uid="TrinketTinker.Companions.Motions.BaseLerpMotion`1.lerp">
+  lerp
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/LerpMotion.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Variable for how much interpolation happened so far.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected float lerp</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -283,7 +327,7 @@ Class BaseLerpMotion&lt;IArgs&gt;  <a class="header-action link-secondary" title
 
   <h3 id="TrinketTinker_Companions_Motions_BaseLerpMotion_1_GetOffset" data-uid="TrinketTinker.Companions.Motions.BaseLerpMotion`1.GetOffset">
   GetOffset()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/LerpMotion.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/LerpMotion.cs/#L64"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get offset</p>
@@ -315,7 +359,7 @@ Class BaseLerpMotion&lt;IArgs&gt;  <a class="header-action link-secondary" title
 
   <h3 id="TrinketTinker_Companions_Motions_BaseLerpMotion_1_GetRotation" data-uid="TrinketTinker.Companions.Motions.BaseLerpMotion`1.GetRotation">
   GetRotation()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/LerpMotion.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/LerpMotion.cs/#L70"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get sprite rotation</p>

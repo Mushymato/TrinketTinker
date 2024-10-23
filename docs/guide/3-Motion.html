@@ -132,7 +132,7 @@
 </tr>
 <tr>
 <td><code>Anchors</code></td>
-<td><a href="3.1-Anchors.html">List&lt;AnchorTargetData&gt;</a></td>
+<td>List&lt;<a href="3.1-Anchors.html">AnchorTargetData</a>&gt;</td>
 <td><em>empty</em></td>
 <td>Ordered list of anchors to follow, if not set, fall back to following the player</td>
 </tr>
@@ -143,13 +143,13 @@
 <td>By default the companion only animates while the anchor is moving, setting this to true makes the companion animate all the time</td>
 </tr>
 <tr>
-<td><code>AnimationFrameStart</code></td>
+<td><code>FrameStart</code></td>
 <td>int</td>
 <td>0</td>
-<td>First frame/sprite index of the directional animations, set this if you want to put multiple companions on 1 file</td>
+<td>First frame/sprite index of the directional animations, set this if you want to put multiple companions on 1 file.</td>
 </tr>
 <tr>
-<td><code>AnimationFrameLength</code></td>
+<td><code>FrameLength</code></td>
 <td>int</td>
 <td>4</td>
 <td>Length of each cycle for directional animations.</td>
@@ -171,6 +171,12 @@
 <td><a href="../api/TrinketTinker.Models.LayerDepth.html">LayerDepth</a></td>
 <td>Position</td>
 <td>Changes draw layer relative to player. <ul><li>Position: Calculate layer based on Y position</li><li>Behind: Always behind the player.</li><li>InFront: Always infront of the player</li></ul></td>
+</tr>
+<tr>
+<td><code>AnimClips</code></td>
+<td>Dictionary&lt;string, [AnimClipData](3.2-Animation Clips.md)&gt;</td>
+<td><em>empty</em></td>
+<td>Named anim clips that can play over the movement animation</td>
 </tr>
 <tr>
 <td><code>Args</code></td>

@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class AnchorTargetData | TrinketTinker </title>
+      <title>Class HoeDirtAbility | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class AnchorTargetData | TrinketTinker ">
+      <meta name="title" content="Class HoeDirtAbility | TrinketTinker ">
       
-      <meta name="description" content="Model defining how companions pick anchor target">
+      <meta name="description" content="Hoe dirt around the companion">
       <link rel="icon" href="../images/favicon.png">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/new/main/apiSpec/new?filename=TrinketTinker_Models_AnchorTargetData.md&amp;value=---%0Auid%3A%20TrinketTinker.Models.AnchorTargetData%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/new/main/apiSpec/new?filename=TrinketTinker_Effects_Abilities_HoeDirtAbility.md&amp;value=---%0Auid%3A%20TrinketTinker.Effects.Abilities.HoeDirtAbility%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,25 +84,25 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="TrinketTinker.Models.AnchorTargetData">
+        <article data-uid="TrinketTinker.Effects.Abilities.HoeDirtAbility">
 
 
 
-  <h1 id="TrinketTinker_Models_AnchorTargetData" data-uid="TrinketTinker.Models.AnchorTargetData" class="text-break">
-Class AnchorTargetData  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  <h1 id="TrinketTinker_Effects_Abilities_HoeDirtAbility" data-uid="TrinketTinker.Effects.Abilities.HoeDirtAbility" class="text-break">
+Class HoeDirtAbility  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HoeDirtAbility.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="TrinketTinker.html">TrinketTinker</a>.<a class="xref" href="TrinketTinker.Models.html">Models</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="TrinketTinker.html">TrinketTinker</a>.<a class="xref" href="TrinketTinker.Effects.html">Effects</a>.<a class="xref" href="TrinketTinker.Effects.Abilities.html">Abilities</a></dd></dl>
   <dl><dt>Assembly</dt><dd>TrinketTinker.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Model defining how companions pick anchor target</p>
+  <div class="markdown summary"><p>Hoe dirt around the companion</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AnchorTargetData</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class HoeDirtAbility : Ability&lt;TileArgs&gt;, IAbility</code></pre>
   </div>
 
 
@@ -112,15 +112,37 @@ Class AnchorTargetData  <a class="header-action link-secondary" title="View sour
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">AnchorTargetData</span></div>
+      <div><a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html">Ability</a>&lt;<a class="xref" href="TrinketTinker.Models.AbilityArgs.TileArgs.html">TileArgs</a>&gt;</div>
+      <div><span class="xref">HoeDirtAbility</span></div>
     </dd>
   </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="TrinketTinker.Effects.Abilities.IAbility.html">IAbility</a></div>
+    </dd>
+  </dl>
 
 
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Name">Ability&lt;TileArgs&gt;.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Valid">Ability&lt;TileArgs&gt;.Valid</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Activate_StardewValley_Farmer_">Ability&lt;TileArgs&gt;.Activate(Farmer)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Deactivate_StardewValley_Farmer_">Ability&lt;TileArgs&gt;.Deactivate(Farmer)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Update_StardewValley_Farmer_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_">Ability&lt;TileArgs&gt;.Update(Farmer, GameTime, GameLocation)</a>
+    </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -132,9 +154,6 @@ Class AnchorTargetData  <a class="header-action link-secondary" title="View sour
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
@@ -149,30 +168,32 @@ Class AnchorTargetData  <a class="header-action link-secondary" title="View sour
 
 
 
-  <h2 class="section" id="fields">Fields
+  <h2 class="section" id="constructors">Constructors
 </h2>
 
 
+  <a id="TrinketTinker_Effects_Abilities_HoeDirtAbility__ctor_" data-uid="TrinketTinker.Effects.Abilities.HoeDirtAbility.#ctor*"></a>
 
-  <h3 id="TrinketTinker_Models_AnchorTargetData_Mode" data-uid="TrinketTinker.Models.AnchorTargetData.Mode">
-  Mode
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TrinketTinker_Effects_Abilities_HoeDirtAbility__ctor_TrinketTinker_Effects_TrinketTinkerEffect_TrinketTinker_Models_AbilityData_System_Int32_" data-uid="TrinketTinker.Effects.Abilities.HoeDirtAbility.#ctor(TrinketTinker.Effects.TrinketTinkerEffect,TrinketTinker.Models.AbilityData,System.Int32)">
+  HoeDirtAbility(TrinketTinkerEffect, AbilityData, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HoeDirtAbility.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Targeting mode, see <a class="xref" href="TrinketTinker.Models.AnchorTarget.html">AnchorTarget</a>.</p>
+  <div class="markdown level1 summary"><p>Hoe dirt around the companion</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AnchorTarget Mode</code></pre>
+    <pre><code class="lang-csharp hljs">public HoeDirtAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)</code></pre>
   </div>
 
-
-
-
-  <h4 class="section">Field Value</h4>
+  <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="TrinketTinker.Models.AnchorTarget.html">AnchorTarget</a></dt>
+    <dt><code>effect</code> <a class="xref" href="TrinketTinker.Effects.TrinketTinkerEffect.html">TrinketTinkerEffect</a></dt>
+    <dd></dd>
+    <dt><code>data</code> <a class="xref" href="TrinketTinker.Models.AbilityData.html">AbilityData</a></dt>
+    <dd></dd>
+    <dt><code>lvl</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 
@@ -185,27 +206,40 @@ Class AnchorTargetData  <a class="header-action link-secondary" title="View sour
 
 
 
-  <h3 id="TrinketTinker_Models_AnchorTargetData_Range" data-uid="TrinketTinker.Models.AnchorTargetData.Range">
-  Range
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L60"><i class="bi bi-code-slash"></i></a>
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="TrinketTinker_Effects_Abilities_HoeDirtAbility_ApplyEffect_" data-uid="TrinketTinker.Effects.Abilities.HoeDirtAbility.ApplyEffect*"></a>
+
+  <h3 id="TrinketTinker_Effects_Abilities_HoeDirtAbility_ApplyEffect_TrinketTinker_Effects_Proc_ProcEventArgs_" data-uid="TrinketTinker.Effects.Abilities.HoeDirtAbility.ApplyEffect(TrinketTinker.Effects.Proc.ProcEventArgs)">
+  ApplyEffect(ProcEventArgs)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HoeDirtAbility.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Search range, applicable to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#TrinketTinker_Models_AnchorTarget_Monster">Monster</a>.</p>
+  <div class="markdown level1 summary"><p>Hoe random amounts of dirt within range</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Range</code></pre>
+    <pre><code class="lang-csharp hljs">protected override bool ApplyEffect(ProcEventArgs proc)</code></pre>
   </div>
 
-
-
-
-  <h4 class="section">Field Value</h4>
+  <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>proc</code> <a class="xref" href="TrinketTinker.Effects.Proc.ProcEventArgs.html">ProcEventArgs</a></dt>
     <dd></dd>
   </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
 
 
 

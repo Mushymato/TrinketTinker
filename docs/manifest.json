@@ -182,6 +182,26 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Effects.Abilities.ActionAbility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Effects.Abilities.ActionAbility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Effects.Abilities.BaseHarvestAbility-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Effects.Abilities.BaseHarvestAbility-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Effects.Abilities.BuffAbility.yml",
       "output": {
         ".html": {
@@ -202,6 +222,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Effects.Abilities.HarvestForageAbility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Effects.Abilities.HarvestForageAbility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Effects.Abilities.HealthAbility.yml",
       "output": {
         ".html": {
@@ -216,6 +246,16 @@
       "output": {
         ".html": {
           "relative_path": "api/TrinketTinker.Effects.Abilities.HitscanAbility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Effects.Abilities.HoeDirtAbility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Effects.Abilities.HoeDirtAbility.html"
         }
       },
       "version": ""
@@ -342,6 +382,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.AbilityArgs.ActionArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.AbilityArgs.ActionArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Models.AbilityArgs.BuffArgs.yml",
       "output": {
         ".html": {
@@ -362,10 +412,10 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TrinketTinker.Models.AbilityArgs.PercentArgs.yml",
+      "source_relative_path": "api/TrinketTinker.Models.AbilityArgs.HoeDirtArgs.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TrinketTinker.Models.AbilityArgs.PercentArgs.html"
+          "relative_path": "api/TrinketTinker.Models.AbilityArgs.HoeDirtArgs.html"
         }
       },
       "version": ""
@@ -382,10 +432,40 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.AbilityArgs.RangeArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.AbilityArgs.RangeArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Models.AbilityArgs.SpawnItemArgs.yml",
       "output": {
         ".html": {
           "relative_path": "api/TrinketTinker.Models.AbilityArgs.SpawnItemArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.AbilityArgs.TileArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.AbilityArgs.TileArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.AbilityArgs.ValueMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.AbilityArgs.ValueMode.html"
         }
       },
       "version": ""
@@ -426,6 +506,16 @@
       "output": {
         ".html": {
           "relative_path": "api/TrinketTinker.Models.AnchorTargetData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.AnimClipData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.AnimClipData.html"
         }
       },
       "version": ""
@@ -695,70 +785,80 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/3.2-Motion Classes.md",
+      "source_relative_path": "guide/3.2-Animation Clips.md",
       "output": {
         ".html": {
-          "relative_path": "guide/3.2-Motion Classes.html"
+          "relative_path": "guide/3.2-Animation Clips.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/3.2.000-Lerp.md",
+      "source_relative_path": "guide/3.z-Motion Classes.md",
       "output": {
         ".html": {
-          "relative_path": "guide/3.2.000-Lerp.html"
+          "relative_path": "guide/3.z-Motion Classes.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/3.2.001-Hover.md",
+      "source_relative_path": "guide/3.z.000-Lerp.md",
       "output": {
         ".html": {
-          "relative_path": "guide/3.2.001-Hover.html"
+          "relative_path": "guide/3.z.000-Lerp.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/3.2.002-Bounce.md",
+      "source_relative_path": "guide/3.z.001-Hover.md",
       "output": {
         ".html": {
-          "relative_path": "guide/3.2.002-Bounce.html"
+          "relative_path": "guide/3.z.001-Hover.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/3.2.100-Static.md",
+      "source_relative_path": "guide/3.z.002-Bounce.md",
       "output": {
         ".html": {
-          "relative_path": "guide/3.2.100-Static.html"
+          "relative_path": "guide/3.z.002-Bounce.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/3.2.101-Orbit.md",
+      "source_relative_path": "guide/3.z.100-Static.md",
       "output": {
         ".html": {
-          "relative_path": "guide/3.2.101-Orbit.html"
+          "relative_path": "guide/3.z.100-Static.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/3.2.102-Relative.md",
+      "source_relative_path": "guide/3.z.101-Orbit.md",
       "output": {
         ".html": {
-          "relative_path": "guide/3.2.102-Relative.html"
+          "relative_path": "guide/3.z.101-Orbit.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/3.z.102-Relative.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/3.z.102-Relative.html"
         }
       },
       "version": ""
@@ -785,90 +885,120 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.1-Ability Classes.md",
+      "source_relative_path": "guide/4.z-Ability Classes.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.1-Ability Classes.html"
+          "relative_path": "guide/4.z-Ability Classes.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.1.0-DebugDummy.md",
+      "source_relative_path": "guide/4.z.0-DebugDummy.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.1.0-DebugDummy.html"
+          "relative_path": "guide/4.z.0-DebugDummy.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.1.1-Buff.md",
+      "source_relative_path": "guide/4.z.01-Buff.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.1.1-Buff.html"
+          "relative_path": "guide/4.z.01-Buff.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.1.2-Health.md",
+      "source_relative_path": "guide/4.z.02-Health.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.1.2-Health.html"
+          "relative_path": "guide/4.z.02-Health.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.1.3-Stamina.md",
+      "source_relative_path": "guide/4.z.03-Stamina.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.1.3-Stamina.html"
+          "relative_path": "guide/4.z.03-Stamina.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.1.4-ItemDrop.md",
+      "source_relative_path": "guide/4.z.04-ItemDrop.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.1.4-ItemDrop.html"
+          "relative_path": "guide/4.z.04-ItemDrop.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.1.5-Hitscan.md",
+      "source_relative_path": "guide/4.z.05-Hitscan.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.1.5-Hitscan.html"
+          "relative_path": "guide/4.z.05-Hitscan.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.1.6-Projectile.md",
+      "source_relative_path": "guide/4.z.06-Projectile.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.1.6-Projectile.html"
+          "relative_path": "guide/4.z.06-Projectile.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.1.7-RaiseTrigger.md",
+      "source_relative_path": "guide/4.z.07-RaiseTrigger.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.1.7-RaiseTrigger.html"
+          "relative_path": "guide/4.z.07-RaiseTrigger.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/4.z.08-Action.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/4.z.08-Action.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/4.z.09-HoeDirt.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/4.z.09-HoeDirt.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/4.z.10-HarvestForage.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/4.z.10-HarvestForage.html"
         }
       },
       "version": ""
@@ -879,16 +1009,6 @@
       "output": {
         ".html": {
           "relative_path": "guide/5-Extras.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "guide/tmp.json",
-      "output": {
-        "resource": {
-          "relative_path": "guide/tmp.json"
         }
       },
       "version": ""

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Static | TrinketTinker </title>
+      <title>Hitscan | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Static | TrinketTinker ">
+      <meta name="title" content="Hitscan | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/3.2.100-Static.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/4.z.05-Hitscan.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,12 +85,82 @@
         </div>
 
         <article data-uid="">
-<h1 id="static">Static</h1>
+<h1 id="hitscan">Hitscan</h1>
 
-<p>Companion animates according to direction rules, but otherwise does not move.</p>
-<p>When <code>DirectionRotation</code> is true, the companion points the right side of their sprite towards the owner's facing direction.</p>
-<h2 id="args"><a href="../api/TrinketTinker.Models.MotionArgs.StaticArgs.html">Args</a></h2>
-<p>No extra arguments.</p>
+<p>Do damage to a monster within range, can roll criticals and apply stun/knockback.</p>
+<h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.DamageArgs.html">Args</a></h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Min</code></td>
+<td>int</td>
+<td>0</td>
+<td>Minimum damage dealt.</td>
+</tr>
+<tr>
+<td><code>Max</code></td>
+<td>int</td>
+<td>0</td>
+<td>Maximum damage dealt.</td>
+</tr>
+<tr>
+<td><code>Range</code></td>
+<td>int</td>
+<td>64</td>
+<td>Pixel range for finding monster to target.</td>
+</tr>
+<tr>
+<td><code>Knockback</code></td>
+<td>float</td>
+<td>0</td>
+<td>Knockback modifier in %.</td>
+</tr>
+<tr>
+<td><code>Precision</code></td>
+<td>int</td>
+<td>0</td>
+<td>Precision, doesn't do much unless monster has dodge rate.</td>
+</tr>
+<tr>
+<td><code>CritChance</code></td>
+<td>float</td>
+<td>0</td>
+<td>Chance to roll a critical hit.</td>
+</tr>
+<tr>
+<td><code>CritDamage</code></td>
+<td>float</td>
+<td>0</td>
+<td>Modifier to critical hit damage.</td>
+</tr>
+<tr>
+<td><code>StunTime</code></td>
+<td>int</td>
+<td>0</td>
+<td>Milisecond time to stun the enemy.</td>
+</tr>
+<tr>
+<td><code>Hits</code></td>
+<td>int</td>
+<td>0</td>
+<td>Number of hits to apply at once, monster will only get iframes after the final hit.</td>
+</tr>
+<tr>
+<td><code>ExplodeRadius</code></td>
+<td>int</td>
+<td>0</td>
+<td>Generate a explosion with this radius on hit, farmer will take damage from it.<br>Might damage another monster, but the monster that got hit would be in iframe at this point.</td>
+</tr>
+</tbody>
+</table>
 
 </article>
 

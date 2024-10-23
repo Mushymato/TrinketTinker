@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Lerp | TrinketTinker </title>
+      <title>Projectile | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Lerp | TrinketTinker ">
+      <meta name="title" content="Projectile | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/3.2.000-Lerp.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/4.z.06-Projectile.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,11 +85,12 @@
         </div>
 
         <article data-uid="">
-<h1 id="lerp">Lerp</h1>
+<h1 id="projectile">Projectile</h1>
 
-<p>The Companion follows the anchor at a distance. They will move as fast as they need to in order to stay within the desired distance.</p>
-<p>When <code>DirectionRotation</code> is true, the companion rotate and point the right side of their sprite towards the anchor.</p>
-<h2 id="args"><a href="../api/TrinketTinker.Models.MotionArgs.LerpArgs.html">Args</a></h2>
+<p>Do damage to a monster within range using a projectile.
+Can roll criticals and apply stun/knockback.</p>
+<p>Uses a custom <a href="../api/TrinketTinker.Effects.Pewpew.TinkerProjectile.html">projectile class</a> that accepts custom projectile texture.</p>
+<h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.ProjectileArgs.html">Args</a></h2>
 <table>
 <thead>
 <tr>
@@ -101,19 +102,62 @@
 </thead>
 <tbody>
 <tr>
-<td><code>Min</code></td>
-<td>float</td>
-<td>80</td>
-<td>Min distance from anchor, the companion does not move until they are this far from the anchor.</td>
+<td><code>Texture</code></td>
+<td>string</td>
+<td><code>TileSheets/Projectiles</code></td>
+<td>Path to custom texture.</td>
 </tr>
 <tr>
-<td><code>Max</code></td>
+<td><code>SpriteIndex</code></td>
+<td>int</td>
+<td>0</td>
+<td>Sprite index of projectile.</td>
+</tr>
+<tr>
+<td><code>TailCount</code></td>
+<td>int</td>
+<td>0</td>
+<td>Number of echo/trail sprites to draw.</td>
+</tr>
+<tr>
+<td><code>MinVelocity</code></td>
 <td>float</td>
-<td>640</td>
-<td>Max distance from anchor, if the companion is farther away than this, teleport.</td>
+<td>12</td>
+<td>Starting projectile velocity.</td>
+</tr>
+<tr>
+<td><code>MaxVelocity</code></td>
+<td>float</td>
+<td>-1</td>
+<td>Maximum projectile velocity.</td>
+</tr>
+<tr>
+<td><code>Acceleration</code></td>
+<td>float</td>
+<td>1</td>
+<td>Velocity increase per tick.</td>
+</tr>
+<tr>
+<td><code>Pierce</code></td>
+<td>int</td>
+<td>1</td>
+<td>Number of enemies the projectile can pass throgh before it is destroyed.</td>
+</tr>
+<tr>
+<td><code>IgnoreObjectCollisions</code></td>
+<td>bool</td>
+<td>false</td>
+<td>Allow projectile to pass through object/terrain.</td>
+</tr>
+<tr>
+<td><code>IgnoreLocationCollisions</code></td>
+<td>bool</td>
+<td>0</td>
+<td>Allow projectile to pass through walls.</td>
 </tr>
 </tbody>
 </table>
+<p>*and all arguments of <a href="4.z.05-Hitscan.html">Hitscan</a></p>
 
 </article>
 

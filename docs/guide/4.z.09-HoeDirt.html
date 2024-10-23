@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Hitscan | TrinketTinker </title>
+      <title>HoeDirt | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Hitscan | TrinketTinker ">
+      <meta name="title" content="HoeDirt | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/4.1.5-Hitscan.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/4.z.09-HoeDirt.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,10 +85,10 @@
         </div>
 
         <article data-uid="">
-<h1 id="hitscan">Hitscan</h1>
+<h1 id="hoedirt">HoeDirt</h1>
 
-<p>Do damage to a monster within range, can roll criticals and apply stun/knockback.</p>
-<h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.DamageArgs.html">Args</a></h2>
+<p>Create tilled soil in random tiles around the companion.</p>
+<h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.HoeDirtArgs.html">Args</a></h2>
 <table>
 <thead>
 <tr>
@@ -100,70 +100,22 @@
 </thead>
 <tbody>
 <tr>
-<td>Min</td>
+<td><code>Range</code></td>
 <td>int</td>
-<td>0</td>
-<td>Minimum damage dealt.</td>
+<td>1</td>
+<td>Tile radius around companion, 0 for the tile the companion is on, 1 for 3x3, 2 for 5x5, and so on.</td>
 </tr>
 <tr>
-<td>Max</td>
+<td><code>Count</code></td>
 <td>int</td>
-<td>0</td>
-<td>Maximum damage dealt.</td>
+<td>1</td>
+<td>Number of tiles to randomly choose each time.</td>
 </tr>
 <tr>
-<td>Range</td>
-<td>int</td>
-<td>64</td>
-<td>Pixel range for finding monster to target.</td>
-</tr>
-<tr>
-<td>Knockback</td>
-<td>float</td>
-<td>0</td>
-<td>Knockback modifier in %.</td>
-</tr>
-<tr>
-<td>Precision</td>
-<td>int</td>
-<td>0</td>
-<td>Precision, doesn't do much unless monster has dodge rate.</td>
-</tr>
-<tr>
-<td>CritChance</td>
-<td>float</td>
-<td>0</td>
-<td>Chance to roll a critical hit.</td>
-</tr>
-<tr>
-<td>CritDamage</td>
-<td>float</td>
-<td>0</td>
-<td>Modifier to critical hit damage.</td>
-</tr>
-<tr>
-<td>StunTime</td>
-<td>int</td>
-<td>0</td>
-<td>Milisecond time to stun the enemy.</td>
-</tr>
-<tr>
-<td>Hits</td>
-<td>int</td>
-<td>0</td>
-<td>Number of hits to apply at once, monster will only get iframes after the final hit.</td>
-</tr>
-<tr>
-<td>Hits</td>
-<td>int</td>
-<td>0</td>
-<td>Number of hits to apply at once, monster will only get iframes after the final hit.</td>
-</tr>
-<tr>
-<td>ExplodeRadius</td>
-<td>int</td>
-<td>0</td>
-<td>Generate a explosion with this radius on hit, farmer will take damage from it.<br>Might damage another monster, but the monster that got hit would be in iframe at this point.</td>
+<td><code>Watering</code></td>
+<td>bool</td>
+<td>false</td>
+<td>Water the newly hoed dirt, will not water existing dirt.</td>
 </tr>
 </tbody>
 </table>

@@ -125,9 +125,9 @@ The key used must match the <strong>unqualified ID</strong> of the trinket.</p>
 </tr>
 <tr>
 <td><code>Abilities</code></td>
-<td><a href="4-Ability.html">List&lt;AbilityData&gt;</a></td>
+<td><a href="4-Ability.html">List&lt;List&lt;AbilityData&gt;&gt;</a></td>
 <td><em>empty</em></td>
-<td>Defines what effects are activated, and when.</td>
+<td>Defines what effects are activated, and when. Each list in the list of lists represents 1 ability level.</td>
 </tr>
 </tbody>
 </table>
@@ -135,8 +135,9 @@ The key used must match the <strong>unqualified ID</strong> of the trinket.</p>
 <ul>
 <li>Technically all fields here are optional, but in that case there'd be little point to using this framework at all.</li>
 <li>To display a companion, at least 1 Variant and 1 Motion must be defined.</li>
-<li>To have the trinket do things, at least 1 Ability must be defined.</li>
+<li>To have the trinket do things, at least 1 list of abilities must be defined.</li>
 <li>At the moment, there's no reason to have more than 1 Motion, but this may change in the future.</li>
+<li>Trinkets are created with a random level, rather than the minimum level.</li>
 </ul>
 
 </article>

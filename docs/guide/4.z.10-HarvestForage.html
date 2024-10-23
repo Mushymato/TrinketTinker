@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Hover | TrinketTinker </title>
+      <title>HarvestForage | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Hover | TrinketTinker ">
+      <meta name="title" content="HarvestForage | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/3.2.001-Hover.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/4.z.10-HarvestForage.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,12 +85,10 @@
         </div>
 
         <article data-uid="">
-<h1 id="hover">Hover</h1>
+<h1 id="harvestforage">HarvestForage</h1>
 
-<p>Like <a href="3.2.000-Lerp.html">Lerp</a> motion, but the companion is drawn some distance away from their shadow, making them seem like they are hovering.</p>
-<p>They also do a little bit of periodic bobbing motion.</p>
-<p>The offset can be controlled with <a href="3-Motion.html">motion offset</a>.</p>
-<h2 id="args"><a href="../api/TrinketTinker.Models.MotionArgs.HoverArgs.html">Args</a></h2>
+<p>Harvest nearby forage, professions and exp applies. Best used with <a href="3.1-Anchors.html">AnchorMode.Forage</a>.</p>
+<h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.TileArgs.html">Args</a></h2>
 <table>
 <thead>
 <tr>
@@ -102,14 +100,19 @@
 </thead>
 <tbody>
 <tr>
-<td>Magnitude</td>
-<td>float</td>
-<td>0</td>
-<td>Amount of up and down bobbing.</td>
+<td><code>Range</code></td>
+<td>int</td>
+<td>1</td>
+<td>Tile radius around companion, 0 for the tile the companion is on, 1 for 3x3, 2 for 5x5, and so on.</td>
+</tr>
+<tr>
+<td><code>Count</code></td>
+<td>int</td>
+<td>1</td>
+<td>Number of forage to harvest each time.</td>
 </tr>
 </tbody>
 </table>
-<p>*and all arguments of <a href="3.2.000-Lerp.html">Lerp</a></p>
 
 </article>
 

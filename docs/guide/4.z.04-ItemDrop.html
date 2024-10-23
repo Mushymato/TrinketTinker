@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Health | TrinketTinker </title>
+      <title>ItemDrop | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Health | TrinketTinker ">
+      <meta name="title" content="ItemDrop | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/4.1.2-Health.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/4.z.04-ItemDrop.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,10 +85,10 @@
         </div>
 
         <article data-uid="">
-<h1 id="health">Health</h1>
+<h1 id="itemdrop">ItemDrop</h1>
 
-<p>Recover some percent of HP.</p>
-<h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.PercentArgs.html">Args</a></h2>
+<p>Drops an item, picked with item query.</p>
+<h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.SpawnItemArgs.html">Args</a></h2>
 <table>
 <thead>
 <tr>
@@ -100,19 +100,14 @@
 </thead>
 <tbody>
 <tr>
-<td>Min</td>
-<td>double</td>
-<td>0</td>
-<td>Minimum percent.</td>
-</tr>
-<tr>
-<td>Max</td>
-<td>double</td>
-<td>0</td>
-<td>Minimum percent.</td>
+<td><code>SearchMode</code></td>
+<td>ItemQuerySearchMode</td>
+<td>RandomOfTypeItem</td>
+<td>Determine how the final item is picked from results.</td>
 </tr>
 </tbody>
 </table>
+<p>*Also accepts all members of GenericSpawnItemData, which is the usual <a href="https://stardewvalleywiki.com/Modding:Item_queries#Item_spawn_fields">item spawn fields</a> minus <code>Condition</code>. Use the <code>Condition</code> field on <a href="4-Ability.html">ability</a> instead.</p>
 
 </article>
 
