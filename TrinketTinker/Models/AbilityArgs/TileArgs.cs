@@ -18,8 +18,8 @@ namespace TrinketTinker.Models.AbilityArgs
         /// <returns></returns>
         internal List<Vector2> GetTilesInRange(GameLocation location, Vector2 position)
         {
-            int x = (int)MathF.Round(position.X / 64);
-            int y = (int)MathF.Round(position.Y / 64);
+            int x = (int)MathF.Round(position.X / Game1.tileSize);
+            int y = (int)MathF.Round(position.Y / Game1.tileSize);
             if (Range == 0)
                 return [new(x, y)];
             List<Vector2> result = [];

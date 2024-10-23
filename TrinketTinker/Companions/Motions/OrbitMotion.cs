@@ -34,14 +34,14 @@ namespace TrinketTinker.Companions.Motions
         {
             return new Vector2(
                 args.RadiusX * (float)Math.Cos(Math.PI * theta),
-                args.RadiusY * (float)Math.Sin(Math.PI * theta) - 64f
+                args.RadiusY * (float)Math.Sin(Math.PI * theta) - Game1.tileSize
             ) + base.GetOffset();
         }
 
         /// <inheritdoc/>
         protected override float GetPositionalLayerDepth(Vector2 offset)
         {
-            return (c.Position.Y + offset.Y + 64f - md.Offset.Y) / 10000f;
+            return (c.Position.Y + offset.Y + Game1.tileSize - md.Offset.Y) / 10000f;
         }
 
         /// <inheritdoc/>

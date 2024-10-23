@@ -176,7 +176,7 @@ namespace TrinketTinker.Effects.Pewpew
                 }
                 if (!monster.IsInvisible)
                 {
-                    UpdatePiecesLeft(location);
+                    UpdatePiercesLeft(location);
                 }
             }
         }
@@ -184,7 +184,7 @@ namespace TrinketTinker.Effects.Pewpew
         public override void behaviorOnCollisionWithOther(GameLocation location)
         {
             if (!ignoreObjectCollisions.Value)
-                UpdatePiecesLeft(location);
+                UpdatePiercesLeft(location);
         }
 
         public override void behaviorOnCollisionWithPlayer(GameLocation location, Farmer player)
@@ -195,7 +195,7 @@ namespace TrinketTinker.Effects.Pewpew
         {
             t.performUseAction(tileLocation);
             if (!ignoreObjectCollisions.Value)
-                UpdatePiecesLeft(location);
+                UpdatePiercesLeft(location);
         }
 
         /// <summary>Same as basic projectile</summary>
@@ -213,7 +213,7 @@ namespace TrinketTinker.Effects.Pewpew
             position.Y += yVelocity.Value;
         }
 
-        public void UpdatePiecesLeft(GameLocation location)
+        public void UpdatePiercesLeft(GameLocation location)
         {
             piercesLeft.Value--;
             if (piercesLeft.Value == 0)
@@ -225,7 +225,7 @@ namespace TrinketTinker.Effects.Pewpew
                 sourceRect.Height = 8;
                 Game1.createRadialDebris_MoreNatural(
                     location, GetCustomTexturePath(),
-                    sourceRect, 1, (int)position.X + 32, (int)position.Y + 32, 6, (int)(position.Y / 64f) + 1
+                    sourceRect, 1, (int)position.X + 32, (int)position.Y + 32, 6, (int)(position.Y / Game1.tileSize) + 1
                 );
             }
         }

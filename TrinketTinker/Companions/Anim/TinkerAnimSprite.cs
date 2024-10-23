@@ -79,6 +79,7 @@ namespace TrinketTinker.Companions.Anim
             if (frame != currentFrame)
             {
                 currentFrame = frame;
+                isReverse = false;
                 UpdateSourceRect();
             }
         }
@@ -109,6 +110,11 @@ namespace TrinketTinker.Companions.Anim
         /// <returns>True if animation reached last frame</returns>
         internal bool Animate(LoopMode loopMode, GameTime time, int startFrame, int numberOfFrames, float interval)
         {
+            if (numberOfFrames == 1)
+            {
+                SetCurrentFrame(startFrame);
+                return true;
+            }
             return loopMode switch
             {
                 LoopMode.PingPong => AnimatePingPong(time, startFrame, numberOfFrames, interval),
@@ -165,15 +171,16 @@ namespace TrinketTinker.Companions.Anim
             {
                 lastFrame = startFrame;
                 step = -1;
+                if (currentFrame < lastFrame || currentFrame > startFrame)
+                    currentFrame = startFrame + Math.Abs(currentFrame) % numberOfFrames;
             }
             else
             {
                 lastFrame = startFrame + numberOfFrames - 1;
                 step = 1;
+                if (currentFrame > lastFrame || currentFrame < startFrame)
+                    currentFrame = startFrame + Math.Abs(currentFrame) % numberOfFrames;
             }
-
-            if (currentFrame >= startFrame + numberOfFrames || currentFrame < startFrame)
-                currentFrame = startFrame + currentFrame % numberOfFrames;
 
             timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             if (timer > interval)

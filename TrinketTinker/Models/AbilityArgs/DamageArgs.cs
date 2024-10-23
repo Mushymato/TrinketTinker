@@ -1,3 +1,4 @@
+using StardewValley;
 using StardewValley.Monsters;
 using TrinketTinker.Effects.Proc;
 using TrinketTinker.Models.Mixin;
@@ -12,7 +13,7 @@ namespace TrinketTinker.Models.AbilityArgs
         /// <summary>Max damage, out of 1</summary>
         public int Max { get; set; } = 0;
         /// <summary>Pixel range for finding monsters</summary>
-        public int Range { get; set; } = 64;
+        public int Range { get; set; } = Game1.tileSize;
         /// <summary>Knockback modifier</summary>
         public float Knockback { get; set; } = 0f;
         /// <summary>Precision modifier</summary>

@@ -24,7 +24,7 @@ namespace TrinketTinker.Companions.Motions
             {
                 if (perching)
                 {
-                    if (c.Moving)
+                    if (c.OwnerMoving)
                     {
                         perching = false;
                         perchingTimer = 0f;

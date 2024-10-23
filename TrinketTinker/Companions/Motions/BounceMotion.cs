@@ -14,7 +14,7 @@ namespace TrinketTinker.Companions.Motions
         /// <inheritdoc/>
         public override void UpdateGlobal(GameTime time, GameLocation location)
         {
-            if (theta == 0f && !c.Moving && !md.AlwaysMoving)
+            if (theta == 0f && !c.OwnerMoving && !md.AlwaysMoving)
                 return;
             theta += time.ElapsedGameTime.TotalMilliseconds / (md.Interval * md.FrameLength);
             if (theta >= 1f)

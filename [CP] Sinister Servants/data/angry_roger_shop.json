@@ -62,7 +62,8 @@
       ],
       "When": {
         "HasCraftingRecipe": "Anvil"
-      }
+      },
+      "Priority": "Late"
     },
     {
       // debug shop mushymato.SinisterServants_AngryRogerShop

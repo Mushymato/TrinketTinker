@@ -12,7 +12,7 @@ namespace TrinketTinker.Companions.Motions
         public override void UpdateLocal(GameTime time, GameLocation location)
         {
             float distance = (c.Anchor - c.Position).Length();
-            if (distance > 64f)
+            if (distance > Game1.tileSize)
             {
                 Utility.addRainbowStarExplosion(location, c.Position, 1);
             }

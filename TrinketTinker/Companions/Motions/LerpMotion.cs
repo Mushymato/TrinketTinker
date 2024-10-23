@@ -15,6 +15,10 @@ namespace TrinketTinker.Companions.Motions
         /// <inheritdoc/>
         public override void UpdateLocal(GameTime time, GameLocation location)
         {
+            if (args.MoveSync && !c.OwnerMoving)
+            {
+                return;
+            }
             if (lerp < 0f || AnchorChanged)
             {
                 float distance = (c.Anchor - c.Position).Length();
@@ -29,8 +33,8 @@ namespace TrinketTinker.Companions.Motions
                     c.startPosition = c.Position;
                     float radius = 0.33f;
                     c.endPosition = c.Anchor + new Vector2(
-                        Utility.RandomFloat(-64f, 64f) * radius,
-                        Utility.RandomFloat(-64f, 64f) * radius
+                        Utility.RandomFloat(-Game1.tileSize, Game1.tileSize) * radius,
+                        Utility.RandomFloat(-Game1.tileSize, Game1.tileSize) * radius
                     );
                     if (CheckSpriteCollision(location, c.endPosition + GetOffset()))
                     {

@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using StardewValley;
 
 namespace TrinketTinker.Models
 {
@@ -52,7 +53,7 @@ namespace TrinketTinker.Models
         /// <summary>Targeting mode, see <see cref="AnchorTarget"/>.</summary>
         public AnchorTarget Mode = AnchorTarget.Owner;
         /// <summary>Search range, applicable to <see cref="AnchorTarget.Monster"/>.</summary>
-        public int Range = 640;
+        public int Range = Game1.tileSize * 10;
     }
 
     /// <summary>Model for additional animation</summary>

@@ -149,7 +149,7 @@ namespace TrinketTinker.Companions.Motions
             {
                 cs.AnimateClip(time, overrideClip, md.Interval);
             }
-            else if (md.AlwaysMoving || c.Moving)
+            else if (md.AlwaysMoving || GetMoving())
             {
                 cs.Animate(md.LoopMode, time, DirectionFrameStart(), md.FrameLength, md.Interval);
             }
@@ -164,6 +164,13 @@ namespace TrinketTinker.Companions.Motions
                     cs.SetCurrentFrame(DirectionFrameStart());
                 }
             }
+        }
+
+        /// <summary>Moving flag used for basis of anim</summary>
+        /// <returns></returns>
+        protected virtual bool GetMoving()
+        {
+            return c.OwnerMoving;
         }
 
         /// <inheritdoc/>

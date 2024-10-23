@@ -20,16 +20,20 @@ namespace TrinketTinker.Companions
         protected readonly NetString _id = new("");
         /// <summary>Companion ID. Companion is (re)loaded when this is changed.</summary>
         public string ID => _id.Value;
-        /// <summary>Owner position, for detecting moving</summary>
+        /// <summary>Owner position in prev tick, for detecting moving</summary>
         private Vector2? prevOwnerPosition;
+        /// <summary>Whether owner is moving</summary>
+        public bool OwnerMoving { get; private set; } = false;
+        /// <summary>Companion position in prev tick, for detecting moving</summary>
+        private Vector2? prevPosition;
         /// <summary>Whether companion is moving</summary>
-        public bool Moving { get; set; } = false;
+        public bool CompanionMoving { get; private set; } = false;
         internal NetPosition NetPosition => _position;
         // Derived
         /// <summary>Backing companion data from content.</summary>
         public TinkerData? Data;
         /// <summary>Motion class that controls how the companion moves.</summary>
-        public IMotion? Motion { get; set; }
+        public IMotion? Motion { get; private set; }
         /// <summary>Position the companion should follow.</summary>
         public Vector2 Anchor { get; set; }
         /// <summary>Current motion offset</summary>
@@ -154,8 +158,10 @@ namespace TrinketTinker.Companions
         /// <param name="location">Current map location</param>
         public override void Update(GameTime time, GameLocation location)
         {
-            Moving = prevOwnerPosition != OwnerPosition;
+            OwnerMoving = prevOwnerPosition != OwnerPosition;
+            CompanionMoving = prevPosition != Position;
             prevOwnerPosition = OwnerPosition;
+            prevPosition = Position;
             Motion?.UpdateAnchor(time, location);
             if (IsLocal)
             {
