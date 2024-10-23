@@ -27,5 +27,5 @@ The term "anchor" refers to a position that the companion derives it's own posit
 | `Interval` | float | 100 | Milisecond Interval between animation frames. |
 | `Offset` | Vector2 | 0, 0 | Constant offset to apply to the companion, on top of the motion. |
 | `LayerDepth` | [LayerDepth](~/api/TrinketTinker.Models.LayerDepth.yml) | Position | Changes draw layer relative to player. <ul><li>Position: Calculate layer based on Y position</li><li>Behind: Always behind the player.</li><li>InFront: Always infront of the player</li></ul> |
-| `AnimClips` | Dictionary\<string, [AnimClipData](3.2-Anchors.md)\> | _empty_ | Named anim clips that can play over the movement animation |
+| `AnimClips` | Dictionary\<string, [AnimClipData](3.2-Animation Clips.md)\> | _empty_ | Named anim clips that can play over the movement animation |
 | `Args` | Dictionary | _varies_ | Arguments specific to a motion class, see respective page for details. |
