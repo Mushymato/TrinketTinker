@@ -12,9 +12,9 @@
     "Bat.AbilityDescription.1": "When you land a critical hit, recover 13 HP and 13 Energy.",
     "Bat.AbilityDescription.2": "When you land a critical hit, recover 13% of the damage dealt as HP and Energy, can only activate once per 2s.",
     // Stick
-    "Stick.DisplayName": "Stick",
-    "Stick.Description": "A stick.\n\n{1}",
-    "Stick.AbilityDescription.1": "Harvests nearby forage automatically.",
+    "Stick.DisplayName": "Sticc",
+    "Stick.Description": "A stick?\n\n{1}",
+    "Stick.AbilityDescription.1": "Harvests nearby forage for you.",
     // Shop
     "AngryRoger.Name": "Angry Roger",
     "AngryRoger.Dialog.1": "Bring to me the flesh and spirit of the damned~~~",

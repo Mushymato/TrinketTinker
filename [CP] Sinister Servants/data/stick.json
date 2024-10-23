@@ -1,0 +1,79 @@
+{
+  "Changes": [
+    {
+      "LogName": "Stick: Sprites",
+      "Action": "Load",
+      "Target": "Mods/{{ModId}}/stick_1, Mods/{{ModId}}/stick_t",
+      "FromFile": "assets/{{TargetWithoutPath}}.png"
+    },
+    {
+      "LogName": "Stick: Trinkets",
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_Stick": {
+          "Id": "{{ModId}}_Stick",
+          "DisplayName": "{{i18n:Stick.DisplayName}}",
+          "Description": "{{i18n:Stick.Description}}",
+          "Texture": "Mods/{{ModId}}/stick_t",
+          "SheetIndex": 0,
+          "DropsNaturally": false,
+          "CanBeReforged": true
+        },
+      }
+    },
+    {
+      "LogName": "Stick: Tinker",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        "{{ModId}}_Stick": {
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/stick_1",
+              "Width": 16,
+              "Height": 19,
+              "ShadowScale": 0
+            },
+          ],
+          "Motion": {
+            "MotionClass": "Lerp",
+            "DirectionMode": "R",
+            "FrameLength": 3,
+            "Anchors": [
+              {
+                "Mode": "Forage",
+                "Range": 320
+              }
+            ],
+            "AnimClips": {
+              "Idle": {
+                "FrameStart": 3,
+                "FrameLength": 1
+              },
+            },
+            "Args": {
+              "Min": 128,
+              "MoveSync": true
+            }
+          },
+          "Abilities": [
+            // level 1
+            [
+              {
+                "AbilityClass": "Harvest",
+                "Description": "{{i18n:Stick.AbilityDescription.1}}",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "Args": {
+                  "Range": 1,
+                  "Count": 9,
+                },
+              }
+            ],
+          ]
+        },
+      }
+    }
+  ]
+}

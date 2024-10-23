@@ -6,6 +6,7 @@ using StardewValley.Monsters;
 using TrinketTinker.Companions.Anim;
 using TrinketTinker.Models;
 using TrinketTinker.Models.Mixin;
+using TrinketTinker.Wheels;
 
 
 namespace TrinketTinker.Companions.Motions
@@ -104,19 +105,36 @@ namespace TrinketTinker.Companions.Motions
         public virtual void UpdateAnchor(GameTime time, GameLocation location)
         {
             prevAnchorTarget = currAnchorTarget;
+            var originPoint = c.Owner.getStandingPosition();
             foreach (AnchorTargetData anchor in md.Anchors)
             {
+                Func<SObject, bool>? objMatch = null;
                 switch (anchor.Mode)
                 {
                     case AnchorTarget.Monster:
-                        Monster closest = Utility.findClosestMonsterWithinRange(
-                            location, c.Owner.getStandingPosition(), anchor.Range, ignoreUntargetables: true
-                        );
-                        if (closest != null)
                         {
-                            currAnchorTarget = AnchorTarget.Monster;
-                            c.Anchor = Utility.PointToVector2(closest.GetBoundingBox().Center);
-                            return;
+                            Monster closest = Utility.findClosestMonsterWithinRange(
+                                location, originPoint, anchor.Range, ignoreUntargetables: true
+                            );
+                            if (closest != null)
+                            {
+                                currAnchorTarget = AnchorTarget.Monster;
+                                c.Anchor = Utility.PointToVector2(closest.GetBoundingBox().Center);
+                                return;
+                            }
+                        }
+                        break;
+                    case AnchorTarget.Forage:
+                        objMatch = (obj) => obj.isForage();
+                        goto case AnchorTarget.Object;
+                    case AnchorTarget.Object:
+                        {
+                            if (Seek.ClosestMatchingObject(location, originPoint, anchor.Range, objMatch) is SObject closest)
+                            {
+                                currAnchorTarget = AnchorTarget.Forage;
+                                c.Anchor = Utility.PointToVector2(closest.GetBoundingBox().Center);
+                                return;
+                            }
                         }
                         break;
                     case AnchorTarget.Owner:

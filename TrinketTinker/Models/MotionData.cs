@@ -34,6 +34,10 @@ namespace TrinketTinker.Models
         Owner,
         /// <summary>Anchor to the nearest monster</summary>
         Monster,
+        /// <summary>Anchor to the nearest placed object</summary>
+        Object,
+        /// <summary>Anchor to the nearest forage object</summary>
+        Forage,
     }
 
     /// <summary>Determine the layer depth to use when drawing the companion</summary>

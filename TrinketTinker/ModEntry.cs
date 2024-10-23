@@ -1,18 +1,17 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿global using SObject = StardewValley.Object;
 using System.Reflection;
-using Microsoft.Xna.Framework.Content;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
+using StardewValley.Objects.Trinkets;
 using StardewValley.Triggers;
+using StardewValley.Internal;
 using TrinketTinker.Companions;
 using TrinketTinker.Companions.Motions;
 using TrinketTinker.Effects;
 using TrinketTinker.Effects.Abilities;
 using TrinketTinker.Extras;
-using StardewValley.Internal;
 using TrinketTinker.Wheels;
 using StardewValley;
-using StardewValley.Objects.Trinkets;
 
 namespace TrinketTinker
 {
@@ -38,15 +37,21 @@ namespace TrinketTinker
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.Content.AssetRequested += OnAssetRequested;
             helper.Events.Content.AssetsInvalidated += OnAssetInvalidated;
-
+            // Events for abilities
             helper.Events.Player.Warped += OnPlayerWarped;
 
 #if DEBUG
-            // Debug console
+            // Print all types
             helper.ConsoleCommands.Add(
                 "tt_print_types",
                 "Print valid Effect, Companion, Motion, and Ability types.",
                 ConsolePrintTypenames
+            );
+            // Spawn a bunch of forage around the player
+            helper.ConsoleCommands.Add(
+                "tt_spawn_forage",
+                "Spawn forage for testing.",
+                ConsoleSpawnForage
             );
 #endif
         }
@@ -100,11 +105,12 @@ namespace TrinketTinker
             {
                 if (trinketItem != null && trinketItem.GetEffect() is TrinketTinkerEffect effect)
                 {
-                    effect.OnPlayerWarped(e.Player, e.NewLocation);
+                    effect.OnPlayerWarped(e.Player, e.OldLocation, e.NewLocation);
                 }
             }
         }
 
+#if DEBUG
         private void ConsolePrintTypenames(string command, string[] args)
         {
             Log("=== TrinketTinkerEffect ===", LogLevel.Info);
@@ -137,6 +143,14 @@ namespace TrinketTinker
                     Log(typeInfo.AssemblyQualifiedName);
             }
         }
+
+        private void ConsoleSpawnForage(string command, string[] args)
+        {
+            if (!Context.IsWorldReady)
+                return;
+            Game1.player.currentLocation.spawnObjects();
+        }
+#endif
 
         /// Static helper functions
 

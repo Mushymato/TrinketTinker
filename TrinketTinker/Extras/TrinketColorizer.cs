@@ -5,7 +5,6 @@ using StardewValley.GameData.BigCraftables;
 using StardewValley.GameData.Machines;
 using StardewValley;
 using StardewValley.Objects.Trinkets;
-using SObject = StardewValley.Object;
 using StardewValley.GameData.Shops;
 using TrinketTinker.Effects;
 using Force.DeepCloner;
@@ -192,7 +191,6 @@ namespace TrinketTinker.Extras
         /// <returns></returns>
         public static Item? OutputTinkerAnvil(SObject machine, Item inputItem, bool probe, MachineItemOutput outputData, Farmer player, out int? overrideMinutesUntilReady)
         {
-            Console.WriteLine("OutputTinkerAnvil");
             overrideMinutesUntilReady = null;
             if (inputItem is not Trinket t)
                 return null;

@@ -106,7 +106,7 @@
             {
               "Id": "(TR){{ModId}}_Skull",
               "TradeItemId": "(O)881",
-              "TradeItemAmount": 100,
+              "TradeItemAmount": 200,
               "ItemId": "{{ModId}}_Skull",
             },
             {
@@ -114,6 +114,12 @@
               "TradeItemId": "(O)767",
               "TradeItemAmount": 200,
               "ItemId": "(TR){{ModId}}_Bat",
+            },
+            {
+              "Id": "(TR){{ModId}}_Stick",
+              "TradeItemId": "(O)388",
+              "TradeItemAmount": 999,
+              "ItemId": "(TR){{ModId}}_Stick",
             }
           ],
         },

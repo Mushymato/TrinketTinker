@@ -134,6 +134,7 @@ namespace TrinketTinker.Companions.Anim
         /// <returns>True if animation reached last frame</returns>
         internal bool AnimateStandard(GameTime gameTime, int startFrame, int numberOfFrames, float interval)
         {
+            isReverse = false;
             if (currentFrame >= startFrame + numberOfFrames || currentFrame < startFrame)
             {
                 currentFrame = startFrame + currentFrame % numberOfFrames;

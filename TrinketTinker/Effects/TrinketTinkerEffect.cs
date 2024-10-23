@@ -204,7 +204,7 @@ namespace TrinketTinker.Effects
             });
         }
 
-        public virtual void OnPlayerWarped(Farmer farmer, GameLocation location)
+        public virtual void OnPlayerWarped(Farmer farmer, GameLocation oldLocation, GameLocation newLocation)
         {
             EventPlayerWarped?.Invoke(this, new(ProcOn.Warped, farmer));
         }
