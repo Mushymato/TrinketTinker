@@ -10,18 +10,20 @@
     name: Direction
   - href: 3.1-Anchors.md
     name: Anchors
+  - href: 3.2-Animation Clips.md
+    name: Animation Clips
   - items:
-    - href: 3.2.000-Lerp.md
+    - href: 3.z.000-Lerp.md
       name: Lerp
-    - href: 3.2.001-Hover.md
+    - href: 3.z.001-Hover.md
       name: Hover
-    - href: 3.2.002-Bounce.md
+    - href: 3.z.002-Bounce.md
       name: Bounce
-    - href: 3.2.100-Static.md
+    - href: 3.z.100-Static.md
       name: Static
-    - href: 3.2.101-Orbit.md
+    - href: 3.z.101-Orbit.md
       name: Orbit
-    - href: 3.2.102-Relative.md
+    - href: 3.z.102-Relative.md
       name: Relative
     name: Motion Classes
   name: Motion
@@ -30,26 +32,28 @@
   - href: 4.0-Proc.md
     name: Proc
   - items:
-    - href: 4.1.0-DebugDummy.md
+    - href: 4.z.0-DebugDummy.md
       name: DebugDummy
-    - href: 4.1.1-Buff.md
+    - href: 4.z.01-Buff.md
       name: Buff
-    - href: 4.1.2-Health.md
+    - href: 4.z.02-Health.md
       name: Health
-    - href: 4.1.3-Stamina.md
+    - href: 4.z.03-Stamina.md
       name: Stamina
-    - href: 4.1.4-ItemDrop.md
+    - href: 4.z.04-ItemDrop.md
       name: ItemDrop
-    - href: 4.1.5-Hitscan.md
+    - href: 4.z.05-Hitscan.md
       name: Hitscan
-    - href: 4.1.6-Projectile.md
+    - href: 4.z.06-Projectile.md
       name: Projectile
-    - href: 4.1.7-RaiseTrigger.md
+    - href: 4.z.07-RaiseTrigger.md
       name: RaiseTrigger
-    - href: 4.1.8-Action.md
+    - href: 4.z.08-Action.md
       name: Action
-    - href: 4.1.9-HoeDirt.md
+    - href: 4.z.09-HoeDirt.md
       name: HoeDirt
+    - href: 4.z.10-HarvestForage.md
+      name: HarvestForage
     name: Ability Classes
   name: Ability
 - href: 5-Extras.md
