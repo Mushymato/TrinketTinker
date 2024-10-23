@@ -61,13 +61,13 @@
             // level 1
             [
               {
-                "AbilityClass": "Harvest",
+                "AbilityClass": "HarvestForage",
                 "Description": "{{i18n:Stick.AbilityDescription.1}}",
                 "Proc": "Timer",
-                "ProcTimer": 1000,
+                "ProcTimer": 250,
+                "ProcSound": "harvest",
                 "Args": {
                   "Range": 1,
-                  "Count": 9,
                 },
               }
             ],

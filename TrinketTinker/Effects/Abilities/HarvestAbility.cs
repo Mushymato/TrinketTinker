@@ -7,14 +7,55 @@ using TrinketTinker.Models.AbilityArgs;
 namespace TrinketTinker.Effects.Abilities
 {
     /// <summary>Harvest terrain features</summary>
-    public sealed class HarvestAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<TileArgs>(effect, data, lvl)
+    public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<TArgs>(effect, data, lvl) where TArgs : TileArgs
     {
-        private static bool DoHarvest(GameLocation location, Farmer farmer, SObject obj)
+        /// <summary>Check that tile has object</summary>
+        /// <param name="location"></param>
+        /// <param name="tile"></param>
+        /// <returns></returns>
+        protected virtual bool ProbeTile(GameLocation location, Vector2 tile)
+        {
+            return location.objects.ContainsKey(tile);
+        }
+
+        /// <summary>Harvest given object</summary>
+        /// <param name="location"></param>
+        /// <param name="farmer"></param>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        protected abstract bool DoHarvest(GameLocation location, Farmer farmer, SObject obj);
+
+        /// <summary>Harvest forage or crops within range</summary>
+        /// <param name="proc"></param>
+        /// <returns></returns>
+        protected override bool ApplyEffect(ProcEventArgs proc)
+        {
+            bool gotForage = false;
+            foreach (Vector2 tile in args.IterateRandomTiles(proc.LocationOrCurrent, e.CompanionPosition ?? proc.Farmer.Position, ProbeTile))
+            {
+                if (proc.LocationOrCurrent.objects.TryGetValue(tile, out SObject obj) && DoHarvest(proc.LocationOrCurrent, proc.Farmer, obj))
+                {
+                    proc.LocationOrCurrent.objects.Remove(tile);
+                    gotForage = true;
+                }
+            }
+            return gotForage && base.ApplyEffect(proc);
+        }
+    }
+
+    /// <summary>Harvest forage</summary>
+    public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData data, int level) : BaseHarvestAbility<TileArgs>(effect, data, level)
+    {
+        /// <inheritdocs/>
+        protected override bool ProbeTile(GameLocation location, Vector2 tile)
+        {
+            return base.ProbeTile(location, tile) && location.objects[tile].isForage();
+        }
+
+        protected override bool DoHarvest(GameLocation location, Farmer farmer, SObject obj)
         {
             if (obj.isForage() && !obj.questItem.Value && farmer.couldInventoryAcceptThisItem(obj))
             {
-                location.localSound("pickUpItem");
-                DelayedAction.playSoundAfterDelay("coin", 300);
                 obj.Quality = location.GetHarvestSpawnedObjectQuality(
                     farmer, obj.isForage(), obj.TileLocation,
                     Random.Shared
@@ -39,26 +80,6 @@ namespace TrinketTinker.Effects.Abilities
                 return true;
             }
             return false;
-        }
-
-        /// <summary>Harvest forage or crops within range</summary>
-        /// <param name="proc"></param>
-        /// <returns></returns>
-        protected override bool ApplyEffect(ProcEventArgs proc)
-        {
-            bool gotForage = false;
-            foreach (Vector2 tile in args.GetTilesInRange(proc.LocationOrCurrent, e.CompanionPosition ?? proc.Farmer.Position))
-            {
-                // if (proc.LocationOrCurrent.objects.TryGetValue(tile, out SObject obj) && obj.isForage())
-                // {
-                //     proc.LocationOrCurrent.checkAction(new xTile.Dimensions.Location((int)tile.X, (int)tile.Y), Game1.viewport, proc.Farmer);
-                // }
-                if (proc.LocationOrCurrent.objects.TryGetValue(tile, out SObject obj) && DoHarvest(proc.LocationOrCurrent, proc.Farmer, obj))
-                {
-                    proc.LocationOrCurrent.objects.Remove(tile);
-                }
-            }
-            return gotForage && base.ApplyEffect(proc);
         }
     }
 }

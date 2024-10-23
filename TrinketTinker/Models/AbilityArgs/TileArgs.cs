@@ -34,20 +34,21 @@ namespace TrinketTinker.Models.AbilityArgs
         /// <param name="location"></param>
         /// <param name="position"></param>
         /// <returns></returns>
-        internal IEnumerable<Vector2> IterateRandomTiles(GameLocation location, Vector2 position)
+        internal IEnumerable<Vector2> IterateRandomTiles(GameLocation location, Vector2 position, Func<GameLocation, Vector2, bool>? match = null)
         {
             List<Vector2> tiles = GetTilesInRange(location, position);
             if (tiles.Count > 0)
             {
                 int count = Count > tiles.Count ? tiles.Count : Count;
                 List<int> dedupe = Enumerable.Range(0, tiles.Count).ToList();
-                while (count > 0)
+                while (dedupe.Count > 0 && count > 0)
                 {
                     int randIdx = Random.Shared.Next(dedupe.Count);
                     int rand = dedupe[randIdx];
                     dedupe.RemoveAt(randIdx);
                     var tile = tiles.ElementAt(rand);
-                    // args.Tool.DoFunction(proc.LocationOrCurrent, tile.Item1, tile.Item2, 1, proc.Farmer);
+                    if (match != null && !match(location, tile))
+                        continue;
                     yield return tile;
                     count--;
                 }
