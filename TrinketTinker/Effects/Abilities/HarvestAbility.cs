@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
+using StardewValley.TerrainFeatures;
 using TrinketTinker.Effects.Proc;
 using TrinketTinker.Models;
 using TrinketTinker.Models.AbilityArgs;
@@ -13,33 +14,26 @@ namespace TrinketTinker.Effects.Abilities
         /// <param name="location"></param>
         /// <param name="tile"></param>
         /// <returns></returns>
-        protected virtual bool ProbeTile(GameLocation location, Vector2 tile)
-        {
-            return location.objects.ContainsKey(tile);
-        }
+        protected abstract bool ProbeTile(GameLocation location, Vector2 tile);
 
         /// <summary>Harvest given object</summary>
         /// <param name="location"></param>
         /// <param name="farmer"></param>
         /// <param name="obj"></param>
         /// <returns></returns>
-        protected abstract bool DoHarvest(GameLocation location, Farmer farmer, SObject obj);
+        protected abstract bool DoHarvest(GameLocation location, Farmer farmer, Vector2 tile);
 
         /// <summary>Harvest forage or crops within range</summary>
         /// <param name="proc"></param>
         /// <returns></returns>
         protected override bool ApplyEffect(ProcEventArgs proc)
         {
-            bool gotForage = false;
+            bool harvested = false;
             foreach (Vector2 tile in args.IterateRandomTiles(proc.LocationOrCurrent, e.CompanionPosition ?? proc.Farmer.Position, ProbeTile))
             {
-                if (proc.LocationOrCurrent.objects.TryGetValue(tile, out SObject obj) && DoHarvest(proc.LocationOrCurrent, proc.Farmer, obj))
-                {
-                    proc.LocationOrCurrent.objects.Remove(tile);
-                    gotForage = true;
-                }
+                harvested = DoHarvest(proc.LocationOrCurrent, proc.Farmer, tile) || harvested;
             }
-            return gotForage && base.ApplyEffect(proc);
+            return harvested && base.ApplyEffect(proc);
         }
     }
 
@@ -49,12 +43,13 @@ namespace TrinketTinker.Effects.Abilities
         /// <inheritdocs/>
         protected override bool ProbeTile(GameLocation location, Vector2 tile)
         {
-            return base.ProbeTile(location, tile) && location.objects[tile].isForage();
+            return location.objects.TryGetValue(tile, out SObject obj) && obj.isForage();
         }
 
-        protected override bool DoHarvest(GameLocation location, Farmer farmer, SObject obj)
+        /// <inheritdocs/>
+        protected override bool DoHarvest(GameLocation location, Farmer farmer, Vector2 tile)
         {
-            if (obj.isForage() && !obj.questItem.Value && farmer.couldInventoryAcceptThisItem(obj))
+            if (location.objects.TryGetValue(tile, out SObject obj) && obj.isForage() && !obj.questItem.Value && farmer.couldInventoryAcceptThisItem(obj))
             {
                 obj.Quality = location.GetHarvestSpawnedObjectQuality(
                     farmer, obj.isForage(), obj.TileLocation,
@@ -77,9 +72,43 @@ namespace TrinketTinker.Effects.Abilities
                     farmer.gainExperience(0, 5);
                 }
                 Game1.stats.ItemsForaged++;
+                location.objects.Remove(tile);
                 return true;
             }
             return false;
+        }
+    }
+
+    /// <summary>Harvest (destroy) stone</summary>
+    public sealed class HarvestDebrisAbility(TrinketTinkerEffect effect, AbilityData data, int level) : BaseHarvestAbility<TileArgs>(effect, data, level)
+    {
+        /// <inheritdocs/>
+        protected override bool ProbeTile(GameLocation location, Vector2 tile)
+        {
+            return location.objects.TryGetValue(tile, out var obj) && obj.IsBreakableStone();
+        }
+
+        /// <inheritdocs/>
+        protected override bool DoHarvest(GameLocation location, Farmer farmer, Vector2 tile)
+        {
+            if (!location.objects.TryGetValue(tile, out SObject obj))
+                return false;
+            void OnDebrisAdded(Debris debris)
+            {
+                location.debris.Remove(debris);
+                debris.collect(farmer);
+            };
+            location.debris.OnValueAdded += OnDebrisAdded;
+            location.destroyObject(tile, farmer);
+            location.debris.OnValueAdded -= OnDebrisAdded;
+            // stone break TAS, from Pickaxe.cs
+            TemporaryAnimatedSprite temporaryAnimatedSprite = (ItemRegistry.GetDataOrErrorItem(obj.QualifiedItemId).TextureName == "Maps\\springobjects" && obj.ParentSheetIndex < 200 && !Game1.objectData.ContainsKey((obj.ParentSheetIndex + 1).ToString()) && obj.QualifiedItemId != "(O)25") ? new TemporaryAnimatedSprite(obj.ParentSheetIndex + 1, 300f, 1, 2, new Vector2(tile.X - tile.X % Game1.tileSize, tile.Y - tile.Y % Game1.tileSize), flicker: true, obj.Flipped)
+            {
+                alphaFade = 0.01f
+            } : new TemporaryAnimatedSprite(47, tile * Game1.tileSize, Color.Gray, 10, flipped: false, 80f);
+            Game1.Multiplayer.broadcastSprites(location, temporaryAnimatedSprite);
+
+            return true;
         }
     }
 }

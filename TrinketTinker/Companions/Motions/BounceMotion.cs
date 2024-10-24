@@ -16,7 +16,7 @@ namespace TrinketTinker.Companions.Motions
         {
             if (theta == 0f && !c.OwnerMoving && !md.AlwaysMoving)
                 return;
-            theta += time.ElapsedGameTime.TotalMilliseconds / (md.Interval * md.FrameLength);
+            theta += time.ElapsedGameTime.TotalMilliseconds / args.Period;
             if (theta >= 1f)
                 theta = 0f;
             base.UpdateGlobal(time, location);
@@ -25,18 +25,20 @@ namespace TrinketTinker.Companions.Motions
         /// <inheritdoc/>
         public override Vector2 GetOffset()
         {
-            return new Vector2(0, -args.MaxHeight * (float)Math.Sin(Math.PI * theta)) + base.GetOffset();
+            Vector2 baseOffset = base.GetOffset();
+            return new Vector2(baseOffset.X, -args.MaxHeight * (float)Math.Sin(Math.PI * theta));
         }
 
         /// <inheritdoc/>
         protected override Vector2 GetTextureScale()
         {
-            if (args.Squash)
+            if (args.Squash > 0f)
             {
-                float thetaF = (float)Math.Max(Math.Pow(Math.Cos(2 * Math.PI * theta), 5) / 2, 0);
+                float thetaF = (float)Math.Max(Math.Pow(Math.Cos(2 * Math.PI * theta), 5) / 2, 0) * args.Squash;
+                Vector2 baseTxScale = base.GetTextureScale();
                 return new(
-                    vd.TextureScale + thetaF,
-                    vd.TextureScale - thetaF
+                    baseTxScale.X + thetaF,
+                    baseTxScale.Y - thetaF
                 );
             }
             return base.GetTextureScale();
@@ -45,7 +47,7 @@ namespace TrinketTinker.Companions.Motions
         /// <inheritdoc/>
         protected override Vector2 GetShadowScale()
         {
-            return Utility.Lerp(1f, 0.8f, Math.Max(1f, -GetOffset().Y / 6)) * base.GetShadowScale();
+            return MathF.Max(0f, Utility.Lerp(1.0f, 0.8f, (float)Math.Sin(Math.PI * theta))) * base.GetShadowScale();
         }
     }
 }

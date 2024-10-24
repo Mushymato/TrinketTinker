@@ -1,0 +1,76 @@
+{
+  "Changes": [
+    {
+      "LogName": "DustSpirit: Sprites",
+      "Action": "Load",
+      "Target": "Mods/{{ModId}}/dustspirit_1, Mods/{{ModId}}/dustspirit_t",
+      "FromFile": "assets/{{TargetWithoutPath}}.png"
+    },
+    {
+      "LogName": "DustSpirit: Trinkets",
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_DustSpirit": {
+          "Id": "{{ModId}}_DustSpirit",
+          "DisplayName": "{{i18n:DustSpirit.DisplayName}}",
+          "Description": "{{i18n:DustSpirit.Description}}",
+          "Texture": "Mods/{{ModId}}/dustspirit_t",
+          "SheetIndex": 0,
+          "DropsNaturally": false,
+          "CanBeReforged": true
+        },
+      }
+    },
+    {
+      "LogName": "DustSpirit: Tinker",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        "{{ModId}}_DustSpirit": {
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/dustspirit_1",
+              "Width": 16,
+              "Height": 16
+            },
+          ],
+          "Motion": {
+            "MotionClass": "Bounce",
+            "DirectionMode": "R",
+            "FrameLength": 4,
+            "AlwaysMoving": true,
+            // "Anchors": [
+            //   {
+            //     "Mode": "Forage",
+            //     "Range": 320
+            //   }
+            // ],
+            // "Args": {
+            //   "Min": 128
+            // }
+            "Args": {
+              "Squash": 2,
+              "Jitter": 64
+            }
+          },
+          "Abilities": [
+            // level 1
+            [
+              {
+                "AbilityClass": "HarvestDebris",
+                "Description": "{{i18n:DustSpirit.AbilityDescription.1}}",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "ProcSound": "dustMeep",
+                "Args": {
+                  "Range": 1,
+                },
+              }
+            ],
+          ]
+        },
+      }
+    }
+  ]
+}

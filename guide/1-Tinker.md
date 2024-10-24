@@ -14,6 +14,7 @@ When a `mushymato.TrinketTinker/Tinker` entry exists, the `TrinketEffectClass` w
 | -------- | ---- | ------- | ----- |
 | `MinLevel` | int | 1 | Changes the level value that will replace `{0}` in `DisplayName`. |
 | `Variants` | [List\<VariantData\>](2-Variant.md) | _empty_ | Defines the sprites of the companion. |
+| `Motion` | [MotionData](3-Motion.md) | _empty_ | Defines how the companion moves, setting this is shortcut for having a single item in `Motions`. |
 | `Motions` | [List\<MotionData\>](3-Motion.md) | _empty_ | Defines how the companion moves. |
 | `Abilities` | [List\<List\<AbilityData\>\>](4-Ability.md) | _empty_ | Defines what effects are activated, and when. Each list in the list of lists represents 1 ability level. |
 

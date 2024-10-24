@@ -11,6 +11,8 @@ namespace TrinketTinker.Models.MotionArgs
         public float Max { get; set; } = 768f;
         /// <summary>Stop moving as soon as the player stops moving.</summary>
         public bool MoveSync { get; set; } = false;
+        /// <summary>While within the minimum range, randomly move around a little bit.</summary>
+        public float Jitter { get; set; } = 0f;
         /// <inheritdoc/>
         public bool Validate() => Min < Max;
     }

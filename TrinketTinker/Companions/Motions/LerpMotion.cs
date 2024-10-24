@@ -28,18 +28,28 @@ namespace TrinketTinker.Companions.Motions
                     c.Position = c.Anchor;
                     lerp = -1f;
                 }
-                if (distance > args.Min)
+                else if (distance > args.Min)
                 {
                     c.startPosition = c.Position;
-                    float radius = 0.33f;
-                    c.endPosition = c.Anchor + new Vector2(
-                        Utility.RandomFloat(-Game1.tileSize, Game1.tileSize) * radius,
-                        Utility.RandomFloat(-Game1.tileSize, Game1.tileSize) * radius
+                    c.endPosition = c.Anchor;
+                    // float radius = 0.5f;
+                    c.endPosition = c.Anchor + 0.5f * new Vector2(
+                        Utility.RandomFloat(-args.Jitter, args.Jitter),
+                        Utility.RandomFloat(-args.Jitter, args.Jitter)
                     );
-                    if (CheckSpriteCollision(location, c.endPosition + GetOffset()))
-                    {
-                        c.endPosition = c.Anchor;
-                    }
+                    // if (CheckSpriteCollision(location, c.endPosition + GetOffset()))
+                    // {
+                    //     c.endPosition = c.Anchor;
+                    // }
+                    lerp = 0f;
+                }
+                else if (args.Jitter > 0f)
+                {
+                    c.startPosition = c.Position;
+                    c.endPosition = c.Anchor + new Vector2(
+                        Utility.RandomFloat(-args.Jitter, args.Jitter),
+                        Utility.RandomFloat(-args.Jitter, args.Jitter)
+                    );
                     lerp = 0f;
                 }
             }

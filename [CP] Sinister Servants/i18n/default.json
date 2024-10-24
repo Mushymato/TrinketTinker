@@ -15,6 +15,10 @@
     "Stick.DisplayName": "Sticc",
     "Stick.Description": "A stick?\n\n{1}",
     "Stick.AbilityDescription.1": "Harvests nearby forage for you.",
+    // Dust Spirit
+    "DustSpirit.DisplayName": "Fuzzy Coal",
+    "DustSpirit.Description": "It's looking at you.",
+    "DustSpirit.AbilityDescription.1": "Destroy nearby rocks, twigs, and weeds.",
     // Shop
     "AngryRoger.Name": "Angry Roger",
     "AngryRoger.Dialog.1": "Bring to me the flesh and spirit of the damned~~~",
