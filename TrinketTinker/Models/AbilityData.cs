@@ -5,8 +5,10 @@ namespace TrinketTinker.Models
     /// <summary>Defines how an ability can proc (activate).</summary>
     public enum ProcOn
     {
-        /// <summary>Proc on equip, ignores all conditions.</summary>
+        /// <summary>Proc on equip, ignore conditions.</summary>
         Always,
+        /// <summary>Proc when the first ability on the level procs</summary>
+        Sync,
         /// <summary>Proc on walk.</summary>
         Footstep,
         /// <summary>Proc on player damaged.</summary>
@@ -34,6 +36,8 @@ namespace TrinketTinker.Models
         public ProcOn Proc { get; set; } = ProcOn.Footstep;
         /// <summary>Minimum cooldown time between ability activation, all <see cref="ProcOn"/> values respect this, not just <see cref="ProcOn.Timer"/>.</summary>
         public double ProcTimer { get; set; } = -1;
+        /// <summary>For <see cref="ProcOn.Sync"/></summary>
+        public int ProcSyncIndex { get; set; } = 0;
         /// <summary>Sound cue to play on proc.</summary>
         public string? ProcSound { get; set; } = null;
         /// <summary>Temporary animated sprites to spawn on proc.</summary>

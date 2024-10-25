@@ -23,7 +23,7 @@ namespace TrinketTinker.Effects
         protected TinkerData? Data;
         private readonly Lazy<ImmutableList<IAbility>> abilities;
         /// <summary>Abilities for this trinket.</summary>
-        protected ImmutableList<IAbility> Abilities => abilities.Value;
+        internal ImmutableList<IAbility> Abilities => abilities.Value;
 
         /// <summary>Position of companion, including offset if applicable.</summary>
         public Vector2? CompanionPosition
@@ -303,6 +303,8 @@ namespace TrinketTinker.Effects
             if (variant >= Data.Variants.Count)
                 variant = 0;
             trinket.modData[ModData_Variant] = variant.ToString();
+            if (Data.Variants[variant].TrinketSpriteIndex > 0)
+                trinket.ParentSheetIndex = Data.Variants[variant].TrinketSpriteIndex;
             return;
         }
     }

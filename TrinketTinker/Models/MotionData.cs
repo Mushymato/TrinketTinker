@@ -101,6 +101,10 @@ namespace TrinketTinker.Models
         public Vector2 Offset { get; set; } = Vector2.Zero;
         /// <summary>Layer depth mode.</summary>
         public LayerDepth LayerDepth { get; set; } = LayerDepth.Position;
+        /// <summary>Number of times to repeat the draw.</summary>
+        public float RepeatCount { get; set; } = 0;
+        /// <summary>Number of miliseconds between repeats.</summary>
+        public float RepeatInternval { get; set; } = 1000;
         /// <summary>
         /// Repository of anim clips that can be shown in place of the default movement anim.
         /// Must live on the same sprite sheet specified by variant data.

@@ -21,7 +21,7 @@ namespace TrinketTinker.Effects.Abilities
         /// <summary>Removes the buff.</summary>
         /// <param name="farmer"></param>
         /// <returns></returns>
-        protected override void UnProc(Farmer farmer)
+        protected override void CleanupEffect(Farmer farmer)
         {
             farmer.buffs.Remove(args.BuffId);
         }

@@ -18,7 +18,9 @@ namespace TrinketTinker.Effects.Abilities
         /// <summary>Ability name, default to type name.</summary>
         public readonly string Name;
         /// <inheritdoc/>
-        public bool Valid { get; set; } = false;
+        public bool Valid { get; protected set; } = false;
+        /// <inheritdoc/>
+        public event EventHandler<ProcEventArgs>? EventAbilityProc;
         /// <summary>True if trinket equiped.</summary>
         protected bool Active { get; set; }
         /// <summary>True if trinket proc timeout is not set, or elapsed.</summary>
@@ -64,7 +66,12 @@ namespace TrinketTinker.Effects.Abilities
                 switch (d.Proc)
                 {
                     case ProcOn.Always:
-                        HandleProc(null, new(ProcOn.Always, farmer));
+                        ApplyEffect(new(ProcOn.Always, farmer));
+                        break;
+                    case ProcOn.Sync:
+                        if (e.Abilities[d.ProcSyncIndex] == this)
+                            throw new ArgumentException("Cannot use " + ProcOn.Sync.ToString() + " with self-referencing index " + d.ProcSyncIndex.ToString());
+                        e.Abilities[d.ProcSyncIndex].EventAbilityProc += HandleProc;
                         break;
                     case ProcOn.Footstep:
                         e.EventFootstep += HandleProc;
@@ -100,7 +107,10 @@ namespace TrinketTinker.Effects.Abilities
                 switch (d.Proc)
                 {
                     case ProcOn.Always:
-                        UnProc(farmer);
+                        CleanupEffect(farmer);
+                        break;
+                    case ProcOn.Sync:
+                        e.Abilities[d.ProcSyncIndex].EventAbilityProc -= HandleProc;
                         break;
                     case ProcOn.Footstep:
                         e.EventFootstep -= HandleProc;
@@ -141,6 +151,8 @@ namespace TrinketTinker.Effects.Abilities
 
                 foreach (TemporaryAnimatedSpriteDefinition temporarySprite in d.ProcTemporarySprites)
                     Visuals.BroadcastTAS(temporarySprite, GetTASPosition(args), e.CompanionOwnerDrawLayer, args.LocationOrCurrent);
+
+                EventAbilityProc?.Invoke(sender, args);
             }
         }
 
@@ -151,9 +163,9 @@ namespace TrinketTinker.Effects.Abilities
             return e.CompanionAnchor ?? args.Farmer.Position;
         }
 
-        /// <summary>Cleanup ability, if is <see cref="ProcOn.Always"/></summary>
+        /// <summary>Cleanup ability when trinket is unequipped, if is <see cref="ProcOn.Always"/></summary>
         /// <param name="farmer"></param>
-        protected virtual void UnProc(Farmer farmer)
+        protected virtual void CleanupEffect(Farmer farmer)
         {
         }
 

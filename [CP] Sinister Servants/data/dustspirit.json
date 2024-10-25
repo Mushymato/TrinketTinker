@@ -1,4 +1,5 @@
 {
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
   "Changes": [
     {
       "LogName": "DustSpirit: Sprites",
@@ -23,6 +24,31 @@
       }
     },
     {
+      "LogName": "DustSpirit: Buff",
+      "Action": "EditData",
+      "Target": "Data/Buffs",
+      "Entries": {
+        "{{ModId}}_DustSpirit_Buff_Lv1": {
+          "DisplayName": "{{i18n:DustSpirit.DisplayName}}",
+          "Duration": 10000,
+          "IconTexture": "Mods/{{ModId}}/dustspirit_t",
+          "IconSpriteIndex": 1,
+          "Effects": {
+            "Attack": 20.0,
+          },
+        },
+        "{{ModId}}_DustSpirit_Buff_Lv2": {
+          "DisplayName": "{{i18n:DustSpirit.DisplayName}}",
+          "Duration": 2000,
+          "IconTexture": "Mods/{{ModId}}/dustspirit_t",
+          "IconSpriteIndex": 1,
+          "Effects": {
+            "Attack": 5.0,
+          },
+        }
+      }
+    },
+    {
       "LogName": "DustSpirit: Tinker",
       "Action": "EditData",
       "Target": "mushymato.TrinketTinker/Tinker",
@@ -39,16 +65,9 @@
             "MotionClass": "Bounce",
             "DirectionMode": "R",
             "FrameLength": 4,
+            "RepeatCount": 2,
+            "RepeatInterval": 750,
             "AlwaysMoving": true,
-            // "Anchors": [
-            //   {
-            //     "Mode": "Forage",
-            //     "Range": 320
-            //   }
-            // ],
-            // "Args": {
-            //   "Min": 128
-            // }
             "Args": {
               "Squash": 2,
               "Jitter": 64
@@ -61,11 +80,38 @@
                 "AbilityClass": "HarvestDebris",
                 "Description": "{{i18n:DustSpirit.AbilityDescription.1}}",
                 "Proc": "Timer",
+                "ProcTimer": 10000,
+                "ProcSound": "dustMeep",
+                "Args": {
+                  "Range": 1,
+                },
+              },
+              {
+                "AbilityClass": "Buff",
+                "Proc": "Sync",
+                "Args": {
+                  "BuffId": "{{ModId}}_DustSpirit_Buff_Lv1"
+                }
+              }
+            ],
+            // level 2
+            [
+              {
+                "AbilityClass": "HarvestDebris",
+                "Description": "{{i18n:DustSpirit.AbilityDescription.2}}",
+                "Proc": "Timer",
                 "ProcTimer": 1000,
                 "ProcSound": "dustMeep",
                 "Args": {
                   "Range": 1,
                 },
+              },
+              {
+                "AbilityClass": "Buff",
+                "Proc": "Sync",
+                "Args": {
+                  "BuffId": "{{ModId}}_DustSpirit_Buff_Lv2"
+                }
               }
             ],
           ]

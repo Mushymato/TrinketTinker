@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Netcode;
 using StardewValley;
 using StardewValley.Monsters;
 using TrinketTinker.Companions.Anim;
@@ -36,6 +35,8 @@ namespace TrinketTinker.Companions.Motions
         private AnimClipData? oneshotClip = null;
         /// <summary>NetString, key of next oneshotClip to set</summary>
         private AnimClipData? overrideClip = null;
+        /// <summary>Heap of frames to draw, after the initial one.</summary>
+        private readonly PriorityQueue<DrawSnapshot, long> drawSnapshotQueue = new();
 
         /// <summary>Basic constructor, tries to parse arguments as the generic <see cref="IArgs"/> type.</summary>
         /// <param name="companion"></param>
@@ -86,6 +87,7 @@ namespace TrinketTinker.Companions.Motions
         /// <inheritdoc/>
         public virtual void Cleanup()
         {
+            drawSnapshotQueue.Clear();
             if (vd.LightSource != null)
                 Utility.removeLightSource(lightId);
         }
@@ -93,6 +95,7 @@ namespace TrinketTinker.Companions.Motions
         /// <inheritdoc/>
         public virtual void OnOwnerWarp()
         {
+            drawSnapshotQueue.Clear();
             if (vd.LightSource is LightSourceData ldata)
             {
                 Game1.currentLightSources.Add(lightId, new TinkerLightSource(lightId, c.Position + GetOffset(), ldata));
@@ -237,6 +240,12 @@ namespace TrinketTinker.Companions.Motions
         /// <inheritdoc/>
         public virtual void Draw(SpriteBatch b)
         {
+            while (drawSnapshotQueue.TryPeek(out DrawSnapshot? _, out long priority) &&
+                   Game1.currentGameTime.TotalGameTime.Ticks >= priority)
+            {
+                drawSnapshotQueue.Dequeue().DoDraw(b);
+            }
+
             Vector2 offset = GetOffset();
             float layerDepth = md.LayerDepth switch
             {
@@ -256,21 +265,51 @@ namespace TrinketTinker.Companions.Motions
                 layerDepth
             );
 
+            DrawSnapshot snapshot = new()
+            {
+                texture = cs.Texture,
+                position = Game1.GlobalToLocal(c.Position + offset + c.Owner.drawOffset),
+                sourceRect = cs.SourceRect,
+                drawColor = cs.DrawColor,
+                rotation = GetRotation(),
+                origin = cs.Origin,
+                textureScale = GetTextureScale(),
+                effects = (c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
+                layerDepth = layerDepth
+            };
+            snapshot.DoDraw(b);
+            EnqueueDrawSnapshots(snapshot);
+
             Vector2 shadowScale = GetShadowScale();
             if (shadowScale.X > 0 || shadowScale.Y > 0)
             {
-                b.Draw(
-                    Game1.shadowTexture,
-                    Game1.GlobalToLocal(c.Position + new Vector2(offset.X, 0) + c.Owner.drawOffset),
-                    Game1.shadowTexture.Bounds,
-                    Color.White,
-                    0f,
-                    new Vector2(
+                DrawSnapshot shadowSnapshot = new()
+                {
+                    texture = Game1.shadowTexture,
+                    position = Game1.GlobalToLocal(c.Position + new Vector2(offset.X, 0) + c.Owner.drawOffset),
+                    sourceRect = Game1.shadowTexture.Bounds,
+                    drawColor = Color.White,
+                    rotation = 0f,
+                    origin = new Vector2(
                         Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y
                     ),
-                    shadowScale,
-                    SpriteEffects.None,
-                    layerDepth - 2E-06f
+                    textureScale = shadowScale,
+                    effects = SpriteEffects.None,
+                    layerDepth = layerDepth - 2E-06f
+                };
+                shadowSnapshot.DoDraw(b);
+                EnqueueDrawSnapshots(shadowSnapshot);
+            }
+        }
+
+        private void EnqueueDrawSnapshots(DrawSnapshot snapshot)
+        {
+            for (int i = 1; i <= md.RepeatCount; i++)
+            {
+                drawSnapshotQueue.Enqueue(
+                    snapshot,
+                    Game1.currentGameTime.TotalGameTime.Ticks +
+                    TimeSpan.FromMilliseconds(md.RepeatInternval * i).Ticks
                 );
             }
         }

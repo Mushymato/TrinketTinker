@@ -170,6 +170,7 @@ namespace TrinketTinker.Extras
                 }
                 return null;
             }
+            Console.WriteLine(output.ParentSheetIndex);
 
             if (!probe)
             {

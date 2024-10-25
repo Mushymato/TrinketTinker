@@ -33,5 +33,7 @@ namespace TrinketTinker.Models
         public float ShadowScale { get; set; } = 3f;
         /// <summary>If set, add a light with given radius. Note that the light is only visible to local player.</summary>
         public LightSourceData? LightSource { get; set; } = null;
+        /// <summary>Sprite index of the item icon.</summary>
+        public int TrinketSpriteIndex { get; set; } = -1;
     }
 }

@@ -43,7 +43,7 @@ namespace TrinketTinker.Companions.Motions
                     // }
                     lerp = 0f;
                 }
-                else if (args.Jitter > 0f)
+                else if (md.AlwaysMoving && args.Jitter > 0f)
                 {
                     c.startPosition = c.Position;
                     c.endPosition = c.Anchor + new Vector2(

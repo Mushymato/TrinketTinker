@@ -1,12 +1,14 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
+using TrinketTinker.Effects.Proc;
 
 namespace TrinketTinker.Effects.Abilities
 {
     public interface IAbility
     {
-        /// <summary>Mark the new ability as valid, if false after constructor the ability is discarded</summary>
+        /// <summary>Mark the new ability as valid, if this is false after constructor, the ability is discarded</summary>
         bool Valid { get; }
+        event EventHandler<ProcEventArgs>? EventAbilityProc;
 
         /// <summary>Activate the ability by registering events.</summary>
         /// <param name="farmer"></param>
