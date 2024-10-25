@@ -1898,57 +1898,57 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.Abilities.DebugDummyAbility.ApplyEffect
   nameWithType: DebugDummyAbility.ApplyEffect
-- uid: TrinketTinker.Effects.Abilities.HarvestDebrisAbility
-  name: HarvestDebrisAbility
-  href: api/TrinketTinker.Effects.Abilities.HarvestDebrisAbility.html
-  commentId: T:TrinketTinker.Effects.Abilities.HarvestDebrisAbility
-  fullName: TrinketTinker.Effects.Abilities.HarvestDebrisAbility
-  nameWithType: HarvestDebrisAbility
-- uid: TrinketTinker.Effects.Abilities.HarvestDebrisAbility.#ctor(TrinketTinker.Effects.TrinketTinkerEffect,TrinketTinker.Models.AbilityData,System.Int32)
-  name: HarvestDebrisAbility(TrinketTinkerEffect, AbilityData, int)
-  href: api/TrinketTinker.Effects.Abilities.HarvestDebrisAbility.html#TrinketTinker_Effects_Abilities_HarvestDebrisAbility__ctor_TrinketTinker_Effects_TrinketTinkerEffect_TrinketTinker_Models_AbilityData_System_Int32_
-  commentId: M:TrinketTinker.Effects.Abilities.HarvestDebrisAbility.#ctor(TrinketTinker.Effects.TrinketTinkerEffect,TrinketTinker.Models.AbilityData,System.Int32)
+- uid: TrinketTinker.Effects.Abilities.HarvestCropAbility
+  name: HarvestCropAbility
+  href: api/TrinketTinker.Effects.Abilities.HarvestCropAbility.html
+  commentId: T:TrinketTinker.Effects.Abilities.HarvestCropAbility
+  fullName: TrinketTinker.Effects.Abilities.HarvestCropAbility
+  nameWithType: HarvestCropAbility
+- uid: TrinketTinker.Effects.Abilities.HarvestCropAbility.#ctor(TrinketTinker.Effects.TrinketTinkerEffect,TrinketTinker.Models.AbilityData,System.Int32)
+  name: HarvestCropAbility(TrinketTinkerEffect, AbilityData, int)
+  href: api/TrinketTinker.Effects.Abilities.HarvestCropAbility.html#TrinketTinker_Effects_Abilities_HarvestCropAbility__ctor_TrinketTinker_Effects_TrinketTinkerEffect_TrinketTinker_Models_AbilityData_System_Int32_
+  commentId: M:TrinketTinker.Effects.Abilities.HarvestCropAbility.#ctor(TrinketTinker.Effects.TrinketTinkerEffect,TrinketTinker.Models.AbilityData,System.Int32)
   name.vb: New(TrinketTinkerEffect, AbilityData, Integer)
-  fullName: TrinketTinker.Effects.Abilities.HarvestDebrisAbility.HarvestDebrisAbility(TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker.Models.AbilityData, int)
-  fullName.vb: TrinketTinker.Effects.Abilities.HarvestDebrisAbility.New(TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker.Models.AbilityData, Integer)
-  nameWithType: HarvestDebrisAbility.HarvestDebrisAbility(TrinketTinkerEffect, AbilityData, int)
-  nameWithType.vb: HarvestDebrisAbility.New(TrinketTinkerEffect, AbilityData, Integer)
-- uid: TrinketTinker.Effects.Abilities.HarvestDebrisAbility.#ctor*
-  name: HarvestDebrisAbility
-  href: api/TrinketTinker.Effects.Abilities.HarvestDebrisAbility.html#TrinketTinker_Effects_Abilities_HarvestDebrisAbility__ctor_
-  commentId: Overload:TrinketTinker.Effects.Abilities.HarvestDebrisAbility.#ctor
+  fullName: TrinketTinker.Effects.Abilities.HarvestCropAbility.HarvestCropAbility(TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker.Models.AbilityData, int)
+  fullName.vb: TrinketTinker.Effects.Abilities.HarvestCropAbility.New(TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker.Models.AbilityData, Integer)
+  nameWithType: HarvestCropAbility.HarvestCropAbility(TrinketTinkerEffect, AbilityData, int)
+  nameWithType.vb: HarvestCropAbility.New(TrinketTinkerEffect, AbilityData, Integer)
+- uid: TrinketTinker.Effects.Abilities.HarvestCropAbility.#ctor*
+  name: HarvestCropAbility
+  href: api/TrinketTinker.Effects.Abilities.HarvestCropAbility.html#TrinketTinker_Effects_Abilities_HarvestCropAbility__ctor_
+  commentId: Overload:TrinketTinker.Effects.Abilities.HarvestCropAbility.#ctor
   isSpec: "True"
   name.vb: New
-  fullName: TrinketTinker.Effects.Abilities.HarvestDebrisAbility.HarvestDebrisAbility
-  fullName.vb: TrinketTinker.Effects.Abilities.HarvestDebrisAbility.New
-  nameWithType: HarvestDebrisAbility.HarvestDebrisAbility
-  nameWithType.vb: HarvestDebrisAbility.New
-- uid: TrinketTinker.Effects.Abilities.HarvestDebrisAbility.DoHarvest(StardewValley.GameLocation,StardewValley.Farmer,Microsoft.Xna.Framework.Vector2)
+  fullName: TrinketTinker.Effects.Abilities.HarvestCropAbility.HarvestCropAbility
+  fullName.vb: TrinketTinker.Effects.Abilities.HarvestCropAbility.New
+  nameWithType: HarvestCropAbility.HarvestCropAbility
+  nameWithType.vb: HarvestCropAbility.New
+- uid: TrinketTinker.Effects.Abilities.HarvestCropAbility.DoHarvest(StardewValley.GameLocation,StardewValley.Farmer,Microsoft.Xna.Framework.Vector2)
   name: DoHarvest(GameLocation, Farmer, Vector2)
-  href: api/TrinketTinker.Effects.Abilities.HarvestDebrisAbility.html#TrinketTinker_Effects_Abilities_HarvestDebrisAbility_DoHarvest_StardewValley_GameLocation_StardewValley_Farmer_Microsoft_Xna_Framework_Vector2_
-  commentId: M:TrinketTinker.Effects.Abilities.HarvestDebrisAbility.DoHarvest(StardewValley.GameLocation,StardewValley.Farmer,Microsoft.Xna.Framework.Vector2)
-  fullName: TrinketTinker.Effects.Abilities.HarvestDebrisAbility.DoHarvest(StardewValley.GameLocation, StardewValley.Farmer, Microsoft.Xna.Framework.Vector2)
-  nameWithType: HarvestDebrisAbility.DoHarvest(GameLocation, Farmer, Vector2)
-- uid: TrinketTinker.Effects.Abilities.HarvestDebrisAbility.DoHarvest*
+  href: api/TrinketTinker.Effects.Abilities.HarvestCropAbility.html#TrinketTinker_Effects_Abilities_HarvestCropAbility_DoHarvest_StardewValley_GameLocation_StardewValley_Farmer_Microsoft_Xna_Framework_Vector2_
+  commentId: M:TrinketTinker.Effects.Abilities.HarvestCropAbility.DoHarvest(StardewValley.GameLocation,StardewValley.Farmer,Microsoft.Xna.Framework.Vector2)
+  fullName: TrinketTinker.Effects.Abilities.HarvestCropAbility.DoHarvest(StardewValley.GameLocation, StardewValley.Farmer, Microsoft.Xna.Framework.Vector2)
+  nameWithType: HarvestCropAbility.DoHarvest(GameLocation, Farmer, Vector2)
+- uid: TrinketTinker.Effects.Abilities.HarvestCropAbility.DoHarvest*
   name: DoHarvest
-  href: api/TrinketTinker.Effects.Abilities.HarvestDebrisAbility.html#TrinketTinker_Effects_Abilities_HarvestDebrisAbility_DoHarvest_
-  commentId: Overload:TrinketTinker.Effects.Abilities.HarvestDebrisAbility.DoHarvest
+  href: api/TrinketTinker.Effects.Abilities.HarvestCropAbility.html#TrinketTinker_Effects_Abilities_HarvestCropAbility_DoHarvest_
+  commentId: Overload:TrinketTinker.Effects.Abilities.HarvestCropAbility.DoHarvest
   isSpec: "True"
-  fullName: TrinketTinker.Effects.Abilities.HarvestDebrisAbility.DoHarvest
-  nameWithType: HarvestDebrisAbility.DoHarvest
-- uid: TrinketTinker.Effects.Abilities.HarvestDebrisAbility.ProbeTile(StardewValley.GameLocation,Microsoft.Xna.Framework.Vector2)
+  fullName: TrinketTinker.Effects.Abilities.HarvestCropAbility.DoHarvest
+  nameWithType: HarvestCropAbility.DoHarvest
+- uid: TrinketTinker.Effects.Abilities.HarvestCropAbility.ProbeTile(StardewValley.GameLocation,Microsoft.Xna.Framework.Vector2)
   name: ProbeTile(GameLocation, Vector2)
-  href: api/TrinketTinker.Effects.Abilities.HarvestDebrisAbility.html#TrinketTinker_Effects_Abilities_HarvestDebrisAbility_ProbeTile_StardewValley_GameLocation_Microsoft_Xna_Framework_Vector2_
-  commentId: M:TrinketTinker.Effects.Abilities.HarvestDebrisAbility.ProbeTile(StardewValley.GameLocation,Microsoft.Xna.Framework.Vector2)
-  fullName: TrinketTinker.Effects.Abilities.HarvestDebrisAbility.ProbeTile(StardewValley.GameLocation, Microsoft.Xna.Framework.Vector2)
-  nameWithType: HarvestDebrisAbility.ProbeTile(GameLocation, Vector2)
-- uid: TrinketTinker.Effects.Abilities.HarvestDebrisAbility.ProbeTile*
+  href: api/TrinketTinker.Effects.Abilities.HarvestCropAbility.html#TrinketTinker_Effects_Abilities_HarvestCropAbility_ProbeTile_StardewValley_GameLocation_Microsoft_Xna_Framework_Vector2_
+  commentId: M:TrinketTinker.Effects.Abilities.HarvestCropAbility.ProbeTile(StardewValley.GameLocation,Microsoft.Xna.Framework.Vector2)
+  fullName: TrinketTinker.Effects.Abilities.HarvestCropAbility.ProbeTile(StardewValley.GameLocation, Microsoft.Xna.Framework.Vector2)
+  nameWithType: HarvestCropAbility.ProbeTile(GameLocation, Vector2)
+- uid: TrinketTinker.Effects.Abilities.HarvestCropAbility.ProbeTile*
   name: ProbeTile
-  href: api/TrinketTinker.Effects.Abilities.HarvestDebrisAbility.html#TrinketTinker_Effects_Abilities_HarvestDebrisAbility_ProbeTile_
-  commentId: Overload:TrinketTinker.Effects.Abilities.HarvestDebrisAbility.ProbeTile
+  href: api/TrinketTinker.Effects.Abilities.HarvestCropAbility.html#TrinketTinker_Effects_Abilities_HarvestCropAbility_ProbeTile_
+  commentId: Overload:TrinketTinker.Effects.Abilities.HarvestCropAbility.ProbeTile
   isSpec: "True"
-  fullName: TrinketTinker.Effects.Abilities.HarvestDebrisAbility.ProbeTile
-  nameWithType: HarvestDebrisAbility.ProbeTile
+  fullName: TrinketTinker.Effects.Abilities.HarvestCropAbility.ProbeTile
+  nameWithType: HarvestCropAbility.ProbeTile
 - uid: TrinketTinker.Effects.Abilities.HarvestForageAbility
   name: HarvestForageAbility
   href: api/TrinketTinker.Effects.Abilities.HarvestForageAbility.html
@@ -2000,6 +2000,57 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.Abilities.HarvestForageAbility.ProbeTile
   nameWithType: HarvestForageAbility.ProbeTile
+- uid: TrinketTinker.Effects.Abilities.HarvestStoneAbility
+  name: HarvestStoneAbility
+  href: api/TrinketTinker.Effects.Abilities.HarvestStoneAbility.html
+  commentId: T:TrinketTinker.Effects.Abilities.HarvestStoneAbility
+  fullName: TrinketTinker.Effects.Abilities.HarvestStoneAbility
+  nameWithType: HarvestStoneAbility
+- uid: TrinketTinker.Effects.Abilities.HarvestStoneAbility.#ctor(TrinketTinker.Effects.TrinketTinkerEffect,TrinketTinker.Models.AbilityData,System.Int32)
+  name: HarvestStoneAbility(TrinketTinkerEffect, AbilityData, int)
+  href: api/TrinketTinker.Effects.Abilities.HarvestStoneAbility.html#TrinketTinker_Effects_Abilities_HarvestStoneAbility__ctor_TrinketTinker_Effects_TrinketTinkerEffect_TrinketTinker_Models_AbilityData_System_Int32_
+  commentId: M:TrinketTinker.Effects.Abilities.HarvestStoneAbility.#ctor(TrinketTinker.Effects.TrinketTinkerEffect,TrinketTinker.Models.AbilityData,System.Int32)
+  name.vb: New(TrinketTinkerEffect, AbilityData, Integer)
+  fullName: TrinketTinker.Effects.Abilities.HarvestStoneAbility.HarvestStoneAbility(TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker.Models.AbilityData, int)
+  fullName.vb: TrinketTinker.Effects.Abilities.HarvestStoneAbility.New(TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker.Models.AbilityData, Integer)
+  nameWithType: HarvestStoneAbility.HarvestStoneAbility(TrinketTinkerEffect, AbilityData, int)
+  nameWithType.vb: HarvestStoneAbility.New(TrinketTinkerEffect, AbilityData, Integer)
+- uid: TrinketTinker.Effects.Abilities.HarvestStoneAbility.#ctor*
+  name: HarvestStoneAbility
+  href: api/TrinketTinker.Effects.Abilities.HarvestStoneAbility.html#TrinketTinker_Effects_Abilities_HarvestStoneAbility__ctor_
+  commentId: Overload:TrinketTinker.Effects.Abilities.HarvestStoneAbility.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TrinketTinker.Effects.Abilities.HarvestStoneAbility.HarvestStoneAbility
+  fullName.vb: TrinketTinker.Effects.Abilities.HarvestStoneAbility.New
+  nameWithType: HarvestStoneAbility.HarvestStoneAbility
+  nameWithType.vb: HarvestStoneAbility.New
+- uid: TrinketTinker.Effects.Abilities.HarvestStoneAbility.DoHarvest(StardewValley.GameLocation,StardewValley.Farmer,Microsoft.Xna.Framework.Vector2)
+  name: DoHarvest(GameLocation, Farmer, Vector2)
+  href: api/TrinketTinker.Effects.Abilities.HarvestStoneAbility.html#TrinketTinker_Effects_Abilities_HarvestStoneAbility_DoHarvest_StardewValley_GameLocation_StardewValley_Farmer_Microsoft_Xna_Framework_Vector2_
+  commentId: M:TrinketTinker.Effects.Abilities.HarvestStoneAbility.DoHarvest(StardewValley.GameLocation,StardewValley.Farmer,Microsoft.Xna.Framework.Vector2)
+  fullName: TrinketTinker.Effects.Abilities.HarvestStoneAbility.DoHarvest(StardewValley.GameLocation, StardewValley.Farmer, Microsoft.Xna.Framework.Vector2)
+  nameWithType: HarvestStoneAbility.DoHarvest(GameLocation, Farmer, Vector2)
+- uid: TrinketTinker.Effects.Abilities.HarvestStoneAbility.DoHarvest*
+  name: DoHarvest
+  href: api/TrinketTinker.Effects.Abilities.HarvestStoneAbility.html#TrinketTinker_Effects_Abilities_HarvestStoneAbility_DoHarvest_
+  commentId: Overload:TrinketTinker.Effects.Abilities.HarvestStoneAbility.DoHarvest
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.HarvestStoneAbility.DoHarvest
+  nameWithType: HarvestStoneAbility.DoHarvest
+- uid: TrinketTinker.Effects.Abilities.HarvestStoneAbility.ProbeTile(StardewValley.GameLocation,Microsoft.Xna.Framework.Vector2)
+  name: ProbeTile(GameLocation, Vector2)
+  href: api/TrinketTinker.Effects.Abilities.HarvestStoneAbility.html#TrinketTinker_Effects_Abilities_HarvestStoneAbility_ProbeTile_StardewValley_GameLocation_Microsoft_Xna_Framework_Vector2_
+  commentId: M:TrinketTinker.Effects.Abilities.HarvestStoneAbility.ProbeTile(StardewValley.GameLocation,Microsoft.Xna.Framework.Vector2)
+  fullName: TrinketTinker.Effects.Abilities.HarvestStoneAbility.ProbeTile(StardewValley.GameLocation, Microsoft.Xna.Framework.Vector2)
+  nameWithType: HarvestStoneAbility.ProbeTile(GameLocation, Vector2)
+- uid: TrinketTinker.Effects.Abilities.HarvestStoneAbility.ProbeTile*
+  name: ProbeTile
+  href: api/TrinketTinker.Effects.Abilities.HarvestStoneAbility.html#TrinketTinker_Effects_Abilities_HarvestStoneAbility_ProbeTile_
+  commentId: Overload:TrinketTinker.Effects.Abilities.HarvestStoneAbility.ProbeTile
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.HarvestStoneAbility.ProbeTile
+  nameWithType: HarvestStoneAbility.ProbeTile
 - uid: TrinketTinker.Effects.Abilities.HealthAbility
   name: HealthAbility
   href: api/TrinketTinker.Effects.Abilities.HealthAbility.html
@@ -3548,18 +3599,18 @@ references:
   commentId: T:TrinketTinker.Models.AbilityArgs.ValueMode
   fullName: TrinketTinker.Models.AbilityArgs.ValueMode
   nameWithType: ValueMode
+- uid: TrinketTinker.Models.AbilityArgs.ValueMode.Number
+  name: Number
+  href: api/TrinketTinker.Models.AbilityArgs.ValueMode.html#TrinketTinker_Models_AbilityArgs_ValueMode_Number
+  commentId: F:TrinketTinker.Models.AbilityArgs.ValueMode.Number
+  fullName: TrinketTinker.Models.AbilityArgs.ValueMode.Number
+  nameWithType: ValueMode.Number
 - uid: TrinketTinker.Models.AbilityArgs.ValueMode.Percent
   name: Percent
   href: api/TrinketTinker.Models.AbilityArgs.ValueMode.html#TrinketTinker_Models_AbilityArgs_ValueMode_Percent
   commentId: F:TrinketTinker.Models.AbilityArgs.ValueMode.Percent
   fullName: TrinketTinker.Models.AbilityArgs.ValueMode.Percent
   nameWithType: ValueMode.Percent
-- uid: TrinketTinker.Models.AbilityArgs.ValueMode.True
-  name: "True"
-  href: api/TrinketTinker.Models.AbilityArgs.ValueMode.html#TrinketTinker_Models_AbilityArgs_ValueMode_True
-  commentId: F:TrinketTinker.Models.AbilityArgs.ValueMode.True
-  fullName: TrinketTinker.Models.AbilityArgs.ValueMode.True
-  nameWithType: ValueMode.True
 - uid: TrinketTinker.Models.AbilityData
   name: AbilityData
   href: api/TrinketTinker.Models.AbilityData.html
@@ -3715,6 +3766,12 @@ references:
   commentId: T:TrinketTinker.Models.AnchorTarget
   fullName: TrinketTinker.Models.AnchorTarget
   nameWithType: AnchorTarget
+- uid: TrinketTinker.Models.AnchorTarget.Crop
+  name: Crop
+  href: api/TrinketTinker.Models.AnchorTarget.html#TrinketTinker_Models_AnchorTarget_Crop
+  commentId: F:TrinketTinker.Models.AnchorTarget.Crop
+  fullName: TrinketTinker.Models.AnchorTarget.Crop
+  nameWithType: AnchorTarget.Crop
 - uid: TrinketTinker.Models.AnchorTarget.Forage
   name: Forage
   href: api/TrinketTinker.Models.AnchorTarget.html#TrinketTinker_Models_AnchorTarget_Forage
@@ -3739,6 +3796,18 @@ references:
   commentId: F:TrinketTinker.Models.AnchorTarget.Owner
   fullName: TrinketTinker.Models.AnchorTarget.Owner
   nameWithType: AnchorTarget.Owner
+- uid: TrinketTinker.Models.AnchorTarget.Stone
+  name: Stone
+  href: api/TrinketTinker.Models.AnchorTarget.html#TrinketTinker_Models_AnchorTarget_Stone
+  commentId: F:TrinketTinker.Models.AnchorTarget.Stone
+  fullName: TrinketTinker.Models.AnchorTarget.Stone
+  nameWithType: AnchorTarget.Stone
+- uid: TrinketTinker.Models.AnchorTarget.TerrainFeature
+  name: TerrainFeature
+  href: api/TrinketTinker.Models.AnchorTarget.html#TrinketTinker_Models_AnchorTarget_TerrainFeature
+  commentId: F:TrinketTinker.Models.AnchorTarget.TerrainFeature
+  fullName: TrinketTinker.Models.AnchorTarget.TerrainFeature
+  nameWithType: AnchorTarget.TerrainFeature
 - uid: TrinketTinker.Models.AnchorTargetData
   name: AnchorTargetData
   href: api/TrinketTinker.Models.AnchorTargetData.html

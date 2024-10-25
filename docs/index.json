@@ -32,7 +32,7 @@
   "guide/3.1-Anchors.html": {
     "href": "guide/3.1-Anchors.html",
     "title": "Anchor Mode | TrinketTinker",
-    "keywords": "Anchor Mode A companion's motion is relative to another entity's position, generally the player. Anchors consist of a list of AnchorTargetData The order matters as companion will try for anchors in order, and stop once a valid one is found. When none of the anchors are valid, fallback to Owner. Structure Property Type Default Notes Mode AnchorTarget Owner Anchor target, described below. Range int 640 Search range in pixels. Monster Anchor to nearest monster within range. Forage Anchor to nearest forageable item within range. Object Anchor to nearest object within range. Owner Anchor to the player who equipped the trinket. Range has no effect."
+    "keywords": "Anchor Mode A companion's motion is relative to another entity's position, generally the player. Anchors consist of a list of AnchorTargetData The order matters as companion will try for anchors in order, and stop once a valid one is found. When none of the anchors are valid, fallback to Owner. Structure Property Type Default Notes Mode AnchorTarget Owner Anchor target, described below. Range int 640 Search range in pixels, only switch anchor when the target is less than this far from owner. Monster Anchor to nearest monster. Forage Anchor to nearest forageable item. Object Anchor to nearest object. Crop Anchor to nearest non-garden pot harvestable crop. TerrainFeature Anchor to nearest terrain feature. Owner Anchor to the player who equipped the trinket. Range has no effect."
   },
   "guide/3.2-Animation Clips.html": {
     "href": "guide/3.2-Animation Clips.html",
@@ -139,10 +139,20 @@
     "title": "HoeDirt | TrinketTinker",
     "keywords": "HoeDirt Create tilled soil in random tiles around the companion. Args Property Type Default Notes Range int 1 Tile radius around companion, 0 for the tile the companion is on, 1 for 3x3, 2 for 5x5, and so on. Count int 1 Number of tiles to randomly choose each time. Watering bool false Water the newly hoed dirt, will not water existing dirt."
   },
+  "guide/4.z.10-HarvestCrop.html": {
+    "href": "guide/4.z.10-HarvestCrop.html",
+    "title": "HarvestStone | TrinketTinker",
+    "keywords": "HarvestStone Harvest nearby crops, professions and exp applies. Will not harvest crops in a pot. Can use with AnchorMode.Crop to make companion seek out crops. Args Property Type Default Notes Range int 1 Tile radius around companion, 0 for the tile the companion is on, 1 for 3x3, 2 for 5x5, and so on. Count int 1 Number of stone to break each time."
+  },
   "guide/4.z.10-HarvestForage.html": {
     "href": "guide/4.z.10-HarvestForage.html",
     "title": "HarvestForage | TrinketTinker",
-    "keywords": "HarvestForage Harvest nearby forage, professions and exp applies. Best used with AnchorMode.Forage. Args Property Type Default Notes Range int 1 Tile radius around companion, 0 for the tile the companion is on, 1 for 3x3, 2 for 5x5, and so on. Count int 1 Number of forage to harvest each time."
+    "keywords": "HarvestForage Harvest nearby forage, professions and exp applies. Can use with AnchorMode.Forage to make companion seek out forage. Args Property Type Default Notes Range int 1 Tile radius around companion, 0 for the tile the companion is on, 1 for 3x3, 2 for 5x5, and so on. Count int 1 Number of forage to harvest each time."
+  },
+  "guide/4.z.10-HarvestStone.html": {
+    "href": "guide/4.z.10-HarvestStone.html",
+    "title": "HarvestStone | TrinketTinker",
+    "keywords": "HarvestStone Break nearby stones and ores, professions and exp don't apply. Can use with AnchorMode.Forage to make companion seek out forage. Args Property Type Default Notes Range int 1 Tile radius around companion, 0 for the tile the companion is on, 1 for 3x3, 2 for 5x5, and so on. Count int 1 Number of stone to break each time."
   },
   "guide/5-Extras.html": {
     "href": "guide/5-Extras.html",

@@ -112,16 +112,20 @@ When none of the anchors are valid, fallback to <code>Owner</code>.</p>
 <td><code>Range</code></td>
 <td>int</td>
 <td>640</td>
-<td>Search range in pixels.</td>
+<td>Search range in pixels, only switch anchor when the target is less than this far from owner.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="monster">Monster</h3>
-<p>Anchor to nearest monster within range.</p>
+<p>Anchor to nearest monster.</p>
 <h3 id="forage">Forage</h3>
-<p>Anchor to nearest forageable item within range.</p>
+<p>Anchor to nearest forageable item.</p>
 <h3 id="object">Object</h3>
-<p>Anchor to nearest object within range.</p>
+<p>Anchor to nearest object.</p>
+<h3 id="crop">Crop</h3>
+<p>Anchor to nearest non-garden pot harvestable crop.</p>
+<h3 id="terrainfeature">TerrainFeature</h3>
+<p>Anchor to nearest terrain feature.</p>
 <h3 id="owner">Owner</h3>
 <p>Anchor to the player who equipped the trinket. Range has no effect.</p>
 

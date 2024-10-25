@@ -222,10 +222,10 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TrinketTinker.Effects.Abilities.HarvestDebrisAbility.yml",
+      "source_relative_path": "api/TrinketTinker.Effects.Abilities.HarvestCropAbility.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TrinketTinker.Effects.Abilities.HarvestDebrisAbility.html"
+          "relative_path": "api/TrinketTinker.Effects.Abilities.HarvestCropAbility.html"
         }
       },
       "version": ""
@@ -236,6 +236,16 @@
       "output": {
         ".html": {
           "relative_path": "api/TrinketTinker.Effects.Abilities.HarvestForageAbility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Effects.Abilities.HarvestStoneAbility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Effects.Abilities.HarvestStoneAbility.html"
         }
       },
       "version": ""
@@ -1005,10 +1015,30 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "guide/4.z.10-HarvestCrop.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/4.z.10-HarvestCrop.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "guide/4.z.10-HarvestForage.md",
       "output": {
         ".html": {
           "relative_path": "guide/4.z.10-HarvestForage.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/4.z.10-HarvestStone.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/4.z.10-HarvestStone.html"
         }
       },
       "version": ""
