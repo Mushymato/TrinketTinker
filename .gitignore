@@ -11,6 +11,7 @@ workfiles/
 .config
 
 _site/
+docs/
 api/
 dfx*
 templates/

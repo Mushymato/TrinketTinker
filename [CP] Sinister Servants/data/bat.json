@@ -83,7 +83,7 @@
                 "Proc": "DamageMonster",
                 "IsCriticalHit": true,
                 "Args": {
-                  "Mode": "True",
+                  "ValueMode": "Number",
                   "Min": 13
                 },
               },
@@ -92,7 +92,7 @@
                 "Proc": "DamageMonster",
                 "IsCriticalHit": true,
                 "Args": {
-                  "Mode": "True",
+                  "ValueMode": "Number",
                   "Min": 13
                 },
               }

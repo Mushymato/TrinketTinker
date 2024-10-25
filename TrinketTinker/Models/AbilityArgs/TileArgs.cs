@@ -58,7 +58,7 @@ namespace TrinketTinker.Models.AbilityArgs
         /// <inheritdoc/>
         public bool Validate()
         {
-            return Range > 0 && Count > 0;
+            return Range >= 0 && Count > 0;
         }
     }
 }

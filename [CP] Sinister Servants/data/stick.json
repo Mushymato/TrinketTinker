@@ -45,16 +45,20 @@
               {
                 "Mode": "Forage",
                 "Range": 320
-              }
+              },
+              {
+                "Mode": "Crop",
+                "Range": 240
+              },
             ],
             "AnimClips": {
-              "Idle": {
+              "Idle.0": {
                 "FrameStart": 3,
                 "FrameLength": 1
               },
             },
             "Args": {
-              "Min": 128,
+              "Min": 32,
               "MoveSync": true
             }
           },
@@ -72,11 +76,29 @@
                 },
               },
               {
+                "AbilityClass": "HarvestCrop",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "ProcSound": "harvest",
+                "Args": {
+                  "Range": 0,
+                },
+              },
+              {
                 "AbilityClass": "Health",
                 "Proc": "Sync",
                 "Args": {
-                  "Min": 0.1,
-                  "Max": 0.2
+                  "ValueMode": "Number",
+                  "Min": 7
+                }
+              },
+              {
+                "AbilityClass": "Stamina",
+                "Proc": "Sync",
+                "ProcSyncIndex": 1,
+                "Args": {
+                  "ValueMode": "Number",
+                  "Min": 7
                 }
               }
             ],

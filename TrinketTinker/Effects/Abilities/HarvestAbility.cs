@@ -4,6 +4,7 @@ using StardewValley.TerrainFeatures;
 using TrinketTinker.Effects.Proc;
 using TrinketTinker.Models;
 using TrinketTinker.Models.AbilityArgs;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Effects.Abilities
 {
@@ -80,7 +81,7 @@ namespace TrinketTinker.Effects.Abilities
     }
 
     /// <summary>Harvest (destroy) stone</summary>
-    public sealed class HarvestDebrisAbility(TrinketTinkerEffect effect, AbilityData data, int level) : BaseHarvestAbility<TileArgs>(effect, data, level)
+    public sealed class HarvestStoneAbility(TrinketTinkerEffect effect, AbilityData data, int level) : BaseHarvestAbility<TileArgs>(effect, data, level)
     {
         /// <inheritdocs/>
         protected override bool ProbeTile(GameLocation location, Vector2 tile)
@@ -95,8 +96,12 @@ namespace TrinketTinker.Effects.Abilities
                 return false;
             void OnDebrisAdded(Debris debris)
             {
-                location.debris.Remove(debris);
-                debris.collect(farmer);
+                if (debris.debrisType.Value == Debris.DebrisType.OBJECT ||
+                    debris.debrisType.Value != Debris.DebrisType.ARCHAEOLOGY)
+                {
+                    location.debris.Remove(debris);
+                    debris.collect(farmer);
+                }
             };
             location.debris.OnValueAdded += OnDebrisAdded;
             location.destroyObject(tile, farmer);
@@ -109,6 +114,45 @@ namespace TrinketTinker.Effects.Abilities
             Game1.Multiplayer.broadcastSprites(location, temporaryAnimatedSprite);
 
             return true;
+        }
+    }
+
+    /// <summary>Harvest (destroy) stone</summary>
+    public sealed class HarvestCropAbility(TrinketTinkerEffect effect, AbilityData data, int level) : BaseHarvestAbility<TileArgs>(effect, data, level)
+    {
+        /// <inheritdocs/>
+        protected override bool ProbeTile(GameLocation location, Vector2 tile)
+        {
+            return location.terrainFeatures.TryGetValue(tile, out TerrainFeature feature) &&
+                feature is HoeDirt dirt &&
+                dirt.crop != null &&
+                dirt.crop.CanHarvest();
+        }
+
+        /// <inheritdocs/>
+        protected override bool DoHarvest(GameLocation location, Farmer farmer, Vector2 tile)
+        {
+            if (!(location.terrainFeatures.TryGetValue(tile, out TerrainFeature feature) && feature is HoeDirt dirt))
+                return false;
+            bool harvested = false;
+            void OnDebrisAdded(Debris debris)
+            {
+                if (debris.debrisType.Value == Debris.DebrisType.OBJECT ||
+                    debris.debrisType.Value != Debris.DebrisType.ARCHAEOLOGY)
+                {
+                    location.debris.Remove(debris);
+                    debris.collect(farmer);
+                    harvested = true;
+                }
+            };
+            location.debris.OnValueAdded += OnDebrisAdded;
+            if (dirt.crop.harvest((int)tile.X, (int)tile.Y, dirt, null, true))
+            {
+                dirt.destroyCrop(true);
+            }
+            location.debris.OnValueAdded -= OnDebrisAdded;
+
+            return harvested;
         }
     }
 }

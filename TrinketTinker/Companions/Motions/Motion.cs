@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StardewValley.Monsters;
+using StardewValley.TerrainFeatures;
 using TrinketTinker.Companions.Anim;
 using TrinketTinker.Models;
 using TrinketTinker.Models.Mixin;
@@ -112,6 +113,7 @@ namespace TrinketTinker.Companions.Motions
             foreach (AnchorTargetData anchor in md.Anchors)
             {
                 Func<SObject, bool>? objMatch = null;
+                Func<TerrainFeature, bool>? terrainMatch = null;
                 switch (anchor.Mode)
                 {
                     case AnchorTarget.Monster:
@@ -130,12 +132,28 @@ namespace TrinketTinker.Companions.Motions
                     case AnchorTarget.Forage:
                         objMatch = (obj) => obj.isForage();
                         goto case AnchorTarget.Object;
+                    case AnchorTarget.Stone:
+                        objMatch = (obj) => obj.IsBreakableStone();
+                        goto case AnchorTarget.Object;
                     case AnchorTarget.Object:
                         {
                             if (Seek.ClosestMatchingObject(location, originPoint, anchor.Range, objMatch) is SObject closest)
                             {
-                                currAnchorTarget = AnchorTarget.Forage;
-                                c.Anchor = Utility.PointToVector2(closest.GetBoundingBox().Center);
+                                currAnchorTarget = anchor.Mode;
+                                c.Anchor = Utility.PointToVector2(closest.GetBoundingBox().Center) - Vector2.One;
+                                return;
+                            }
+                        }
+                        break;
+                    case AnchorTarget.Crop:
+                        terrainMatch = (terrain) => terrain is HoeDirt dirt && dirt.crop != null && dirt.crop.CanHarvest();
+                        goto case AnchorTarget.TerrainFeature;
+                    case AnchorTarget.TerrainFeature:
+                        {
+                            if (Seek.ClosestMatchingTerrainFeature(location, originPoint, anchor.Range, terrainMatch) is TerrainFeature closest)
+                            {
+                                currAnchorTarget = anchor.Mode;
+                                c.Anchor = closest.Tile * Game1.tileSize + new Vector2(Game1.tileSize / 2, Game1.tileSize / 2) - Vector2.One;
                                 return;
                             }
                         }

@@ -38,6 +38,12 @@ namespace TrinketTinker.Models
         Object,
         /// <summary>Anchor to the nearest forage object</summary>
         Forage,
+        /// <summary>Anchor to the nearest breakable stone</summary>
+        Stone,
+        /// <summary>Anchor to the nearest crop</summary>
+        Crop,
+        /// <summary>Anchor to the nearest terrain feature</summary>
+        TerrainFeature
     }
 
     /// <summary>Determine the layer depth to use when drawing the companion</summary>

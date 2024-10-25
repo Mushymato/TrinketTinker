@@ -77,7 +77,7 @@
             // level 1
             [
               {
-                "AbilityClass": "HarvestDebris",
+                "AbilityClass": "HarvestStone",
                 "Description": "{{i18n:DustSpirit.AbilityDescription.1}}",
                 "Proc": "Timer",
                 "ProcTimer": 10000,
@@ -97,7 +97,7 @@
             // level 2
             [
               {
-                "AbilityClass": "HarvestDebris",
+                "AbilityClass": "HarvestStone",
                 "Description": "{{i18n:DustSpirit.AbilityDescription.2}}",
                 "Proc": "Timer",
                 "ProcTimer": 1000,

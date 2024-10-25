@@ -4,7 +4,7 @@ namespace TrinketTinker.Models.AbilityArgs
 {
     public enum ValueMode
     {
-        True,
+        Number,
         Percent,
     }
     /// <summary>Generic range argument</summary>
@@ -23,7 +23,7 @@ namespace TrinketTinker.Models.AbilityArgs
             double randValue = Min + (Random.Shared.NextDouble() * (Max - Min));
             return ValueMode switch
             {
-                ValueMode.True => randValue,
+                ValueMode.Number => randValue,
                 ValueMode.Percent => maxValue * randValue,
                 _ => throw new NotImplementedException()
             };
