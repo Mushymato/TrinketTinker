@@ -87,8 +87,7 @@
         <article data-uid="">
 <h1 id="lerp">Lerp</h1>
 
-<p>The Companion follows the anchor at a distance. They will move as fast as they need to in order to stay within the desired distance.</p>
-<p>When <code>DirectionRotation</code> is true, the companion rotate and point the right side of their sprite towards the anchor.</p>
+<p>The companion follows the anchor at a distance. They will move as fast as they need to in order to stay within the desired distance.</p>
 <h2 id="args"><a href="../api/TrinketTinker.Models.MotionArgs.LerpArgs.html">Args</a></h2>
 <table>
 <thead>
@@ -111,6 +110,18 @@
 <td>float</td>
 <td>640</td>
 <td>Max distance from anchor, if the companion is farther away than this, teleport.</td>
+</tr>
+<tr>
+<td><code>MoveSync</code></td>
+<td>bool</td>
+<td>false</td>
+<td>When true, only allow companion to move when the player moves.</td>
+</tr>
+<tr>
+<td><code>Jitter</code></td>
+<td>float</td>
+<td>0f</td>
+<td>Add randomness to movement, if greater than 0 and <code>AlwaysMoving</code> is true, the companion will randomly move around the anchor while within minimum range.</td>
 </tr>
 </tbody>
 </table>

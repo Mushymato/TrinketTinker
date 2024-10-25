@@ -89,7 +89,7 @@
 
 
   <h1 id="TrinketTinker_Effects_Abilities_IAbility" data-uid="TrinketTinker.Effects.Abilities.IAbility" class="text-break">
-Interface IAbility  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L6"><i class="bi bi-code-slash"></i></a>
+Interface IAbility  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L7"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -124,10 +124,10 @@ Interface IAbility  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="TrinketTinker_Effects_Abilities_IAbility_Valid" data-uid="TrinketTinker.Effects.Abilities.IAbility.Valid">
   Valid
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Mark the new ability as valid, if false after constructor the ability is discarded</p>
+  <div class="markdown level1 summary"><p>Mark the new ability as valid, if this is false after constructor, the ability is discarded</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -160,7 +160,7 @@ Interface IAbility  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="TrinketTinker_Effects_Abilities_IAbility_Activate_StardewValley_Farmer_" data-uid="TrinketTinker.Effects.Abilities.IAbility.Activate(StardewValley.Farmer)">
   Activate(Farmer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Activate the ability by registering events.</p>
@@ -197,7 +197,7 @@ Interface IAbility  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="TrinketTinker_Effects_Abilities_IAbility_Deactivate_StardewValley_Farmer_" data-uid="TrinketTinker.Effects.Abilities.IAbility.Deactivate(StardewValley.Farmer)">
   Deactivate(Farmer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Deactivate the ability by unregistering events.</p>
@@ -234,7 +234,7 @@ Interface IAbility  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="TrinketTinker_Effects_Abilities_IAbility_Update_StardewValley_Farmer_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Effects.Abilities.IAbility.Update(StardewValley.Farmer,Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
   Update(Farmer, GameTime, GameLocation)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Perform update every tick.</p>
@@ -259,6 +259,40 @@ Interface IAbility  <a class="header-action link-secondary" title="View source" 
 
 
 
+
+
+
+
+
+
+
+  <h2 class="section" id="events">Events
+</h2>
+
+
+
+  <h3 id="TrinketTinker_Effects_Abilities_IAbility_EventAbilityProc" data-uid="TrinketTinker.Effects.Abilities.IAbility.EventAbilityProc">
+  EventAbilityProc
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event EventHandler&lt;ProcEventArgs&gt;? EventAbilityProc</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventhandler-1">EventHandler</a>&lt;<a class="xref" href="TrinketTinker.Effects.Proc.ProcEventArgs.html">ProcEventArgs</a>&gt;</dt>
+    <dd></dd>
+  </dl>
 
 
 

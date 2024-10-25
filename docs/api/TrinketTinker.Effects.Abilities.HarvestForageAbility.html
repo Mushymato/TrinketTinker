@@ -89,7 +89,7 @@
 
 
   <h1 id="TrinketTinker_Effects_Abilities_HarvestForageAbility" data-uid="TrinketTinker.Effects.Abilities.HarvestForageAbility" class="text-break">
-Class HarvestForageAbility  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HarvestAbility.cs/#L47"><i class="bi bi-code-slash"></i></a>
+Class HarvestForageAbility  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HarvestAbility.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -136,6 +136,9 @@ Class HarvestForageAbility  <a class="header-action link-secondary" title="View 
       <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Valid">Ability&lt;TileArgs&gt;.Valid</a>
     </div>
     <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_EventAbilityProc">Ability&lt;TileArgs&gt;.EventAbilityProc</a>
+    </div>
+    <div>
       <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Activate_StardewValley_Farmer_">Ability&lt;TileArgs&gt;.Activate(Farmer)</a>
     </div>
     <div>
@@ -177,7 +180,7 @@ Class HarvestForageAbility  <a class="header-action link-secondary" title="View 
 
   <h3 id="TrinketTinker_Effects_Abilities_HarvestForageAbility__ctor_TrinketTinker_Effects_TrinketTinkerEffect_TrinketTinker_Models_AbilityData_System_Int32_" data-uid="TrinketTinker.Effects.Abilities.HarvestForageAbility.#ctor(TrinketTinker.Effects.TrinketTinkerEffect,TrinketTinker.Models.AbilityData,System.Int32)">
   HarvestForageAbility(TrinketTinkerEffect, AbilityData, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HarvestAbility.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HarvestAbility.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Harvest forage</p>
@@ -215,17 +218,16 @@ Class HarvestForageAbility  <a class="header-action link-secondary" title="View 
 
   <a id="TrinketTinker_Effects_Abilities_HarvestForageAbility_DoHarvest_" data-uid="TrinketTinker.Effects.Abilities.HarvestForageAbility.DoHarvest*"></a>
 
-  <h3 id="TrinketTinker_Effects_Abilities_HarvestForageAbility_DoHarvest_StardewValley_GameLocation_StardewValley_Farmer_StardewValley_Object_" data-uid="TrinketTinker.Effects.Abilities.HarvestForageAbility.DoHarvest(StardewValley.GameLocation,StardewValley.Farmer,StardewValley.Object)">
-  DoHarvest(GameLocation, Farmer, Object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HarvestAbility.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TrinketTinker_Effects_Abilities_HarvestForageAbility_DoHarvest_StardewValley_GameLocation_StardewValley_Farmer_Microsoft_Xna_Framework_Vector2_" data-uid="TrinketTinker.Effects.Abilities.HarvestForageAbility.DoHarvest(StardewValley.GameLocation,StardewValley.Farmer,Microsoft.Xna.Framework.Vector2)">
+  DoHarvest(GameLocation, Farmer, Vector2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HarvestAbility.cs/#L50"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Harvest given object</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override bool DoHarvest(GameLocation location, Farmer farmer, Object obj)</code></pre>
+    <pre><code class="lang-csharp hljs">protected override bool DoHarvest(GameLocation location, Farmer farmer, Vector2 tile)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -234,7 +236,7 @@ Class HarvestForageAbility  <a class="header-action link-secondary" title="View 
     <dd></dd>
     <dt><code>farmer</code> <span class="xref">Farmer</span></dt>
     <dd></dd>
-    <dt><code>obj</code> <span class="xref">Object</span></dt>
+    <dt><code>tile</code> <span class="xref">Vector2</span></dt>
     <dd></dd>
   </dl>
 
@@ -258,7 +260,7 @@ Class HarvestForageAbility  <a class="header-action link-secondary" title="View 
 
   <h3 id="TrinketTinker_Effects_Abilities_HarvestForageAbility_ProbeTile_StardewValley_GameLocation_Microsoft_Xna_Framework_Vector2_" data-uid="TrinketTinker.Effects.Abilities.HarvestForageAbility.ProbeTile(StardewValley.GameLocation,Microsoft.Xna.Framework.Vector2)">
   ProbeTile(GameLocation, Vector2)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HarvestAbility.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HarvestAbility.cs/#L44"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>

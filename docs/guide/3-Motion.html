@@ -140,7 +140,7 @@
 <td><code>AlwaysMoving</code></td>
 <td>bool</td>
 <td>false</td>
-<td>By default the companion only animates while the anchor is moving, setting this to true makes the companion animate all the time</td>
+<td>By default the companion only animates while the player is moving, setting this to true makes the companion continue their animation.</td>
 </tr>
 <tr>
 <td><code>FrameStart</code></td>
@@ -173,10 +173,22 @@
 <td>Changes draw layer relative to player. <ul><li>Position: Calculate layer based on Y position</li><li>Behind: Always behind the player.</li><li>InFront: Always infront of the player</li></ul></td>
 </tr>
 <tr>
+<td><code>RepeatCount</code></td>
+<td>int</td>
+<td>0</td>
+<td>Number of additional repeat draws to do, to make 1 companion appear to be multiple.</td>
+</tr>
+<tr>
+<td><code>RepeatInternval</code></td>
+<td>int</td>
+<td>1000</td>
+<td>Miliseconds between repeat draws.</td>
+</tr>
+<tr>
 <td><code>AnimClips</code></td>
 <td>Dictionary&lt;string, [AnimClipData](3.2-Animation Clips.md)&gt;</td>
 <td><em>empty</em></td>
-<td>Named anim clips that can play over the movement animation</td>
+<td>Named anim clips that can play over the movement animation.</td>
 </tr>
 <tr>
 <td><code>Args</code></td>
@@ -186,6 +198,10 @@
 </tr>
 </tbody>
 </table>
+<h3 id="animation">Animation</h3>
+<p>The default animation behavior for a companion is to animate while the player is moving according to <a href="3.0-Direction.html">direction mode</a>, and display static first frame when player is still.</p>
+<p>To use a special animation while player is still, add an <code>AnimClip</code> named <code>&quot;Idle.0&quot;</code>. If the idle animation should change according to direction, add <code>&quot;Idle.X&quot;</code> where <code>&quot;X&quot;</code> is a number between 1 to 4, depending on how many directions are available for the chosen <code>DirectionMode</code>.</p>
+<p>To have the directional animation continue regardless of player motion, set <code>AlwaysMoving</code> to true.</p>
 
 </article>
 

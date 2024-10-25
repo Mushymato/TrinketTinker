@@ -184,7 +184,7 @@ Class Ability&lt;TArgs&gt;  <a class="header-action link-secondary" title="View 
 
   <h3 id="TrinketTinker_Effects_Abilities_Ability_1__ctor_TrinketTinker_Effects_TrinketTinkerEffect_TrinketTinker_Models_AbilityData_System_Int32_" data-uid="TrinketTinker.Effects.Abilities.Ability`1.#ctor(TrinketTinker.Effects.TrinketTinkerEffect,TrinketTinker.Models.AbilityData,System.Int32)">
   Ability(TrinketTinkerEffect, AbilityData, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Basic constructor, tries to parse arguments as the generic <a class="xref" href="TrinketTinker.Models.Mixin.IArgs.html">IArgs</a> type.</p>
@@ -254,7 +254,7 @@ Class Ability&lt;TArgs&gt;  <a class="header-action link-secondary" title="View 
 
   <h3 id="TrinketTinker_Effects_Abilities_Ability_1_args" data-uid="TrinketTinker.Effects.Abilities.Ability`1.args">
   args
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Class dependent arguments for subclasses</p>
@@ -352,7 +352,7 @@ Class Ability&lt;TArgs&gt;  <a class="header-action link-secondary" title="View 
 
   <h3 id="TrinketTinker_Effects_Abilities_Ability_1_Active" data-uid="TrinketTinker.Effects.Abilities.Ability`1.Active">
   Active
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>True if trinket equiped.</p>
@@ -384,7 +384,7 @@ Class Ability&lt;TArgs&gt;  <a class="header-action link-secondary" title="View 
 
   <h3 id="TrinketTinker_Effects_Abilities_Ability_1_Allowed" data-uid="TrinketTinker.Effects.Abilities.Ability`1.Allowed">
   Allowed
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>True if trinket proc timeout is not set, or elapsed.</p>
@@ -416,7 +416,7 @@ Class Ability&lt;TArgs&gt;  <a class="header-action link-secondary" title="View 
 
   <h3 id="TrinketTinker_Effects_Abilities_Ability_1_ProcTimer" data-uid="TrinketTinker.Effects.Abilities.Ability`1.ProcTimer">
   ProcTimer
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Tracks trinket proc timeout, counts down to 0 and resets to ProcTimer value is set in <a class="xref" href="TrinketTinker.Models.AbilityData.html">AbilityData</a>.</p>
@@ -451,12 +451,12 @@ Class Ability&lt;TArgs&gt;  <a class="header-action link-secondary" title="View 
   <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Mark the new ability as valid, if false after constructor the ability is discarded</p>
+  <div class="markdown level1 summary"><p>Mark the new ability as valid, if this is false after constructor, the ability is discarded</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Valid { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool Valid { get; protected set; }</code></pre>
   </div>
 
 
@@ -484,7 +484,7 @@ Class Ability&lt;TArgs&gt;  <a class="header-action link-secondary" title="View 
 
   <h3 id="TrinketTinker_Effects_Abilities_Ability_1_Activate_StardewValley_Farmer_" data-uid="TrinketTinker.Effects.Abilities.Ability`1.Activate(StardewValley.Farmer)">
   Activate(Farmer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Setup the ability, when trinket is equipped.</p>
@@ -521,7 +521,7 @@ Class Ability&lt;TArgs&gt;  <a class="header-action link-secondary" title="View 
 
   <h3 id="TrinketTinker_Effects_Abilities_Ability_1_ApplyEffect_TrinketTinker_Effects_Proc_ProcEventArgs_" data-uid="TrinketTinker.Effects.Abilities.Ability`1.ApplyEffect(TrinketTinker.Effects.Proc.ProcEventArgs)">
   ApplyEffect(ProcEventArgs)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L163"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L175"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Applies ability effect, mark the ability as not allowed until next tick or longer.</p>
@@ -554,11 +554,43 @@ Class Ability&lt;TArgs&gt;  <a class="header-action link-secondary" title="View 
 
 
 
+  <a id="TrinketTinker_Effects_Abilities_Ability_1_CleanupEffect_" data-uid="TrinketTinker.Effects.Abilities.Ability`1.CleanupEffect*"></a>
+
+  <h3 id="TrinketTinker_Effects_Abilities_Ability_1_CleanupEffect_StardewValley_Farmer_" data-uid="TrinketTinker.Effects.Abilities.Ability`1.CleanupEffect(StardewValley.Farmer)">
+  CleanupEffect(Farmer)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L168"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Cleanup ability when trinket is unequipped, if is <a class="xref" href="TrinketTinker.Models.ProcOn.html#TrinketTinker_Models_ProcOn_Always">Always</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void CleanupEffect(Farmer farmer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>farmer</code> <span class="xref">Farmer</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Effects_Abilities_Ability_1_Deactivate_" data-uid="TrinketTinker.Effects.Abilities.Ability`1.Deactivate*"></a>
 
   <h3 id="TrinketTinker_Effects_Abilities_Ability_1_Deactivate_StardewValley_Farmer_" data-uid="TrinketTinker.Effects.Abilities.Ability`1.Deactivate(StardewValley.Farmer)">
   Deactivate(Farmer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L103"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Teardown the ability, when trinket is removed.</p>
@@ -595,7 +627,7 @@ Class Ability&lt;TArgs&gt;  <a class="header-action link-secondary" title="View 
 
   <h3 id="TrinketTinker_Effects_Abilities_Ability_1_GetTASPosition_TrinketTinker_Effects_Proc_ProcEventArgs_" data-uid="TrinketTinker.Effects.Abilities.Ability`1.GetTASPosition(TrinketTinker.Effects.Proc.ProcEventArgs)">
   GetTASPosition(ProcEventArgs)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L161"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get where the on proc <span class="xref">StardewValley.TemporaryAnimatedSprite</span> should be drawn from.</p>
@@ -632,7 +664,7 @@ Class Ability&lt;TArgs&gt;  <a class="header-action link-secondary" title="View 
 
   <h3 id="TrinketTinker_Effects_Abilities_Ability_1_HandleProc_System_Object_TrinketTinker_Effects_Proc_ProcEventArgs_" data-uid="TrinketTinker.Effects.Abilities.Ability`1.HandleProc(System.Object,TrinketTinker.Effects.Proc.ProcEventArgs)">
   HandleProc(object?, ProcEventArgs)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L135"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L145"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Handle proc of ability</p>
@@ -662,43 +694,11 @@ Class Ability&lt;TArgs&gt;  <a class="header-action link-secondary" title="View 
 
 
 
-  <a id="TrinketTinker_Effects_Abilities_Ability_1_UnProc_" data-uid="TrinketTinker.Effects.Abilities.Ability`1.UnProc*"></a>
-
-  <h3 id="TrinketTinker_Effects_Abilities_Ability_1_UnProc_StardewValley_Farmer_" data-uid="TrinketTinker.Effects.Abilities.Ability`1.UnProc(StardewValley.Farmer)">
-  UnProc(Farmer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L156"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Cleanup ability, if is <a class="xref" href="TrinketTinker.Models.ProcOn.html#TrinketTinker_Models_ProcOn_Always">Always</a></p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void UnProc(Farmer farmer)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>farmer</code> <span class="xref">Farmer</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
   <a id="TrinketTinker_Effects_Abilities_Ability_1_Update_" data-uid="TrinketTinker.Effects.Abilities.Ability`1.Update*"></a>
 
   <h3 id="TrinketTinker_Effects_Abilities_Ability_1_Update_StardewValley_Farmer_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Effects.Abilities.Ability`1.Update(StardewValley.Farmer,Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
   Update(Farmer, GameTime, GameLocation)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L185"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Update on game tick, handles the proc timer.</p>
@@ -723,6 +723,40 @@ Class Ability&lt;TArgs&gt;  <a class="header-action link-secondary" title="View 
 
 
 
+
+
+
+
+
+
+
+  <h2 class="section" id="events">Events
+</h2>
+
+
+
+  <h3 id="TrinketTinker_Effects_Abilities_Ability_1_EventAbilityProc" data-uid="TrinketTinker.Effects.Abilities.Ability`1.EventAbilityProc">
+  EventAbilityProc
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/Ability.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;ProcEventArgs&gt;? EventAbilityProc</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventhandler-1">EventHandler</a>&lt;<a class="xref" href="TrinketTinker.Effects.Proc.ProcEventArgs.html">ProcEventArgs</a>&gt;</dt>
+    <dd></dd>
+  </dl>
 
 
 

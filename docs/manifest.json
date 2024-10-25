@@ -222,6 +222,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Effects.Abilities.HarvestDebrisAbility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Effects.Abilities.HarvestDebrisAbility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Effects.Abilities.HarvestForageAbility.yml",
       "output": {
         ".html": {
