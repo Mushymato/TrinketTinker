@@ -176,9 +176,9 @@ namespace TrinketTinker.Companions.Motions
             }
             else
             {
-                if (md.IdleAnim != null)
+                if (md.GetIdleAnim(c.direction.Value) is AnimClipData idleAnim)
                 {
-                    cs.AnimateClip(time, md.IdleAnim, md.Interval);
+                    cs.AnimateClip(time, idleAnim, md.Interval);
                 }
                 else
                 {

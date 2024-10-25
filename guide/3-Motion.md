@@ -27,6 +27,8 @@ The term "anchor" refers to a position that the companion derives it's own posit
 | `Interval` | float | 100 | Milisecond Interval between animation frames. |
 | `Offset` | Vector2 | 0, 0 | Constant offset to apply to the companion, on top of the motion. |
 | `LayerDepth` | [LayerDepth](~/api/TrinketTinker.Models.LayerDepth.yml) | Position | Changes draw layer relative to player. <ul><li>Position: Calculate layer based on Y position</li><li>Behind: Always behind the player.</li><li>InFront: Always infront of the player</li></ul> |
+| `RepeatCount` | int | 0 | Number of additional repeat draws to do, to make 1 companion appear to be multiple. |
+| `RepeatInternval` | int | 1000 | Miliseconds between repeat draws. |
 | `AnimClips` | Dictionary\<string, [AnimClipData](3.2-Animation Clips.md)\> | _empty_ | Named anim clips that can play over the movement animation. |
 | `Args` | Dictionary | _varies_ | Arguments specific to a motion class, see respective page for details. |
 
@@ -34,6 +36,6 @@ The term "anchor" refers to a position that the companion derives it's own posit
 
 The default animation behavior for a companion is to animate while the player is moving according to [direction mode](3.0-Direction.md), and display static first frame when player is still.
 
-To use a special animation while player is still, add an `AnimClip` named `"Idle"`.
+To use a special animation while player is still, add an `AnimClip` named `"Idle.0"`. If the idle animation should change according to direction, add `"Idle.X"` where `"X"` is a number between 1 to 4, depending on how many directions are available for the chosen `DirectionMode`.
 
 To have the directional animation continue regardless of player motion, set `AlwaysMoving` to true.

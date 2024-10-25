@@ -110,7 +110,14 @@ namespace TrinketTinker.Models
         /// Must live on the same sprite sheet specified by variant data.
         /// </summary>
         public Dictionary<string, AnimClipData> AnimClips = [];
-        /// <summary>Special idle animation, for when always moving is false and player is still.</summary>
-        public AnimClipData? IdleAnim => AnimClips.GetValueOrDefault("Idle");
+
+        public AnimClipData? GetIdleAnim(int direction)
+        {
+            if (AnimClips.TryGetValue($"Idle.{MathF.Abs(direction)}", out AnimClipData? idle))
+                return idle;
+            if (AnimClips.TryGetValue($"Idle.0", out idle))
+                return idle;
+            return null;
+        }
     }
 }
