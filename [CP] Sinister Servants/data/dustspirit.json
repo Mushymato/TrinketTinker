@@ -76,16 +76,16 @@
           "Abilities": [
             // level 1
             [
-              // {
-              //   "AbilityClass": "HarvestDebris",
-              //   "Description": "{{i18n:DustSpirit.AbilityDescription.1}}",
-              //   "Proc": "Timer",
-              //   "ProcTimer": 10000,
-              //   "ProcSound": "dustMeep",
-              //   "Args": {
-              //     "Range": 1,
-              //   },
-              // },
+              {
+                "AbilityClass": "HarvestDebris",
+                "Description": "{{i18n:DustSpirit.AbilityDescription.1}}",
+                "Proc": "Timer",
+                "ProcTimer": 10000,
+                "ProcSound": "dustMeep",
+                "Args": {
+                  "Range": 1,
+                },
+              },
               {
                 "AbilityClass": "Buff",
                 "Proc": "Sync",
