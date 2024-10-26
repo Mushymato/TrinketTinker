@@ -61,10 +61,7 @@ namespace TrinketTinker.Companions.Motions
             if (lerp >= 0f)
             {
                 lerp += (float)(time.ElapsedGameTime.TotalMilliseconds / args.Rate);
-                if (lerp > 1f)
-                {
-                    lerp = 1f;
-                }
+                lerp = MathF.Min(1f, lerp);
                 c.NetPosition.X = Utility.Lerp(c.startPosition.X, c.endPosition.X, lerp);
                 c.NetPosition.Y = Utility.Lerp(c.startPosition.Y, c.endPosition.Y, lerp);
                 UpdateDirection();
@@ -92,6 +89,7 @@ namespace TrinketTinker.Companions.Motions
             return 0f;
         }
 
+#if DEBUG
         public override void Draw(SpriteBatch b)
         {
             Vector2 localStartPos = Game1.GlobalToLocal(c.startPosition);
@@ -116,6 +114,7 @@ namespace TrinketTinker.Companions.Motions
             );
             base.Draw(b);
         }
+#endif
 
         /// <inheritdoc/>
         public override void OnOwnerWarp()

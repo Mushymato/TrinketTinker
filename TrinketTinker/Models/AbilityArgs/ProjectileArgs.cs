@@ -7,8 +7,11 @@ namespace TrinketTinker.Models.AbilityArgs
         public string? Texture { get; set; } = null;
         /// <summary>Projectile texture sprite index</summary>
         public int SpriteIndex { get; set; } = 0;
+        public int SpriteWidth { get; set; } = 16;
+        public int SpriteHeight { get; set; } = 16;
         /// <summary>Number of trailing sprites to draw</summary>
-        public int TailCount { get; set; } = 0;
+        public int TailCount
+        { get; set; } = 0;
         /// <summary>Initial velocity for projectile</summary>
         public float MinVelocity { get; set; } = 12;
         /// <summary>Maximum velocity or -1 if not capped</summary>

@@ -127,6 +127,12 @@
               "TradeItemId": "(O)382",
               "TradeItemAmount": 300,
               "ItemId": "(TR){{ModId}}_DustSpirit",
+            },
+            {
+              "Id": "(TR){{ModId}}_Spider",
+              "TradeItemId": "(O)769",
+              "TradeItemAmount": 200,
+              "ItemId": "(TR){{ModId}}_Spider",
             }
           ],
         },

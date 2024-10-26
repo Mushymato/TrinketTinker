@@ -81,6 +81,9 @@
                 "AbilityClass": "Health",
                 "Description": "{{i18n:Bat.AbilityDescription.1}}",
                 "Proc": "DamageMonster",
+                "ProcTAS": [
+                  "{{ModId}}_BatHealed"
+                ],
                 "IsCriticalHit": true,
                 "Args": {
                   "ValueMode": "Number",
@@ -89,8 +92,7 @@
               },
               {
                 "AbilityClass": "Stamina",
-                "Proc": "DamageMonster",
-                "IsCriticalHit": true,
+                "Proc": "Sync",
                 "Args": {
                   "ValueMode": "Number",
                   "Min": 13
@@ -104,6 +106,9 @@
                 "Description": "{{i18n:Bat.AbilityDescription.2}}",
                 "Proc": "DamageMonster",
                 "ProcTimer": 2000,
+                "ProcTAS": [
+                  "{{ModId}}_BatHealed"
+                ],
                 "IsCriticalHit": true,
                 "Args": {
                   "Min": 0.13
@@ -111,9 +116,7 @@
               },
               {
                 "AbilityClass": "Stamina",
-                "Proc": "DamageMonster",
-                "ProcTimer": 2000,
-                "IsCriticalHit": true,
+                "Proc": "Sync",
                 "Args": {
                   "Min": 0.13
                 },
@@ -122,6 +125,36 @@
           ]
         },
       }
-    }
+    },
+    {
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/TAS",
+      "Entries": {
+        "{{ModId}}_BatHealed": {
+          "Id": "{{ModId}}_BatHealed",
+          // "Condition": null,
+          "Texture": "TileSheets/animations",
+          "SourceRect": {
+            "X": 0,
+            "Y": 640,
+            "Width": 64,
+            "Height": 64
+          },
+          "Interval": 100,
+          "Frames": 8,
+          "Loops": 4,
+          // "PositionOffset": "0, -32",
+          // "Flicker": false,
+          // "Flip": false,
+          // "SortOffset": 0.0,
+          // "AlphaFade": 0.005,
+          "Scale": 0.25,
+          // "ScaleChange": 0.0,
+          // "Rotation": 0.0,
+          // "RotationChange": 0.0,
+          "Color": "Red"
+        }
+      }
+    },
   ]
 }

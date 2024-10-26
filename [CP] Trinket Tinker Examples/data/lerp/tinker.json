@@ -1,6 +1,38 @@
 {
   "Changes": [
-    // Edit mushymato.TrinketTinker
+    // Edit mushymato.TrinketTinker/TAS
+    {
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/TAS",
+      "Entries": {
+        // this structure is identical to the TemporarySprites field in Data/Machine
+        "{{ModId}}_KegTAS": {
+          "Id": "Default",
+          "Condition": null,
+          "Texture": "TileSheets\\animations",
+          "SourceRect": {
+            "X": 256,
+            "Y": 1856,
+            "Width": 64,
+            "Height": 128
+          },
+          "Interval": 80.0,
+          "Frames": 6,
+          "Loops": 999999,
+          "PositionOffset": "0, -32",
+          "Flicker": false,
+          "Flip": false,
+          "SortOffset": 0.0,
+          "AlphaFade": 0.005,
+          "Scale": 0.25,
+          "ScaleChange": 0.0,
+          "Rotation": 0.0,
+          "RotationChange": 0.0,
+          "Color": "#bfbf00bf"
+        }
+      }
+    },
+    // Edit mushymato.TrinketTinker/Tinker
     {
       "Action": "EditData",
       "Target": "mushymato.TrinketTinker/Tinker",
@@ -241,30 +273,7 @@
                 },
                 "ProcTemporarySprites": [
                   // this structure is identical to the TemporarySprites field in Data/Machine
-                  {
-                    "Id": "Default",
-                    "Condition": null,
-                    "Texture": "TileSheets\\animations",
-                    "SourceRect": {
-                      "X": 256,
-                      "Y": 1856,
-                      "Width": 64,
-                      "Height": 128
-                    },
-                    "Interval": 80.0,
-                    "Frames": 6,
-                    "Loops": 999999,
-                    "PositionOffset": "0, -32",
-                    "Flicker": false,
-                    "Flip": false,
-                    "SortOffset": 0.0,
-                    "AlphaFade": 0.005,
-                    "Scale": 0.25,
-                    "ScaleChange": 0.0,
-                    "Rotation": 0.0,
-                    "RotationChange": 0.0,
-                    "Color": "#bfbf00bf"
-                  }
+                  "{{ModId}}_KegTAS"
                 ]
               }
             ]

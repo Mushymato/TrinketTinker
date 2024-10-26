@@ -141,26 +141,29 @@ namespace TrinketTinker.Effects.Abilities
 
         /// <summary>Handle proc of ability</summary>
         /// <param name="sender"></param>
-        /// <param name="args"></param>
-        protected virtual void HandleProc(object? sender, ProcEventArgs args)
+        /// <param name="proc"></param>
+        protected virtual void HandleProc(object? sender, ProcEventArgs proc)
         {
-            if (Active && Allowed && args.Check(d) && ApplyEffect(args))
+            if (Active && Allowed && proc.Check(d) && ApplyEffect(proc))
             {
                 if (d.ProcSound != null)
                     Game1.playSound(d.ProcSound);
 
-                foreach (TemporaryAnimatedSpriteDefinition temporarySprite in d.ProcTemporarySprites)
-                    Visuals.BroadcastTAS(temporarySprite, GetTASPosition(args), e.CompanionOwnerDrawLayer, args.LocationOrCurrent);
+                // foreach (TemporaryAnimatedSpriteDefinition temporarySprite in d.ProcTemporarySprites)
+                //     Visuals.BroadcastTAS(temporarySprite, GetTASPosition(proc), e.CompanionOwnerDrawLayer, proc.LocationOrCurrent);
+                Vector2 tasPos = GetTASPosition(proc);
+                foreach (TemporaryAnimatedSpriteDefinition tas in d.ProcTASDef)
+                    Visuals.BroadcastTAS(tas, tasPos, e.CompanionOwnerDrawLayer, proc.LocationOrCurrent);
 
-                EventAbilityProc?.Invoke(sender, args);
+                EventAbilityProc?.Invoke(sender, proc);
             }
         }
 
         /// <summary>Get where the on proc <see cref="TemporaryAnimatedSprite"/> should be drawn from.</summary>
         /// <returns></returns>
-        protected virtual Vector2 GetTASPosition(ProcEventArgs args)
+        protected virtual Vector2 GetTASPosition(ProcEventArgs proc)
         {
-            return e.CompanionAnchor ?? args.Farmer.Position;
+            return e.CompanionPosition ?? e.CompanionAnchor ?? proc.Farmer.Position;
         }
 
         /// <summary>Cleanup ability when trinket is unequipped, if is <see cref="ProcOn.Always"/></summary>

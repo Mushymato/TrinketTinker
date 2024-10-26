@@ -2,7 +2,7 @@ using TrinketTinker.Models.Mixin;
 
 namespace TrinketTinker.Models.MotionArgs
 {
-    /// <summary>Minimum and maximum float</summary>
+    /// <summary>Lerp args</summary>
     public class LerpArgs : IArgs
     {
         /// <summary>Min distance from anchor, the companion does not move until they are this far from the anchor.</summary>
@@ -14,7 +14,7 @@ namespace TrinketTinker.Models.MotionArgs
         /// <summary>Pause between lerp retargeting, in ms</summary>
         public float Pause { get; set; } = 0f;
         /// <summary>Stop moving as soon as the player stops moving.</summary>
-        public bool MoveSync { get; set; } = true;
+        public bool MoveSync { get; set; } = false;
         /// <summary>While within the minimum range, randomly move around a little bit.</summary>
         public float Jitter { get; set; } = 0f;
         /// <inheritdoc/>

@@ -15,17 +15,19 @@ namespace TrinketTinker.Effects.Pewpew
     /// </summary>
     public sealed class TinkerProjectile : Projectile
     {
-        public readonly NetString projectileTexture = new("");
+        internal readonly NetString projectileTexture = new("");
         private Texture2D? loadedProjectileTexture = null;
-        public readonly NetInt minDamage = new(0);
-        public readonly NetInt maxDamage = new(0);
-        public readonly NetFloat knockBackModifier = new(0f);
-        public readonly NetInt addedPrecision = new(0);
-        public readonly NetFloat critChance = new(0f);
-        public readonly NetFloat critMultiplier = new(0f);
-        public readonly NetInt stunTime = new(0);
-        public readonly NetInt hits = new(0);
-        public readonly NetInt explodeRadius = new(0);
+        internal readonly NetInt projectileSpriteWidth = new(16);
+        internal readonly NetInt projectileSpriteHeight = new(16);
+        internal readonly NetInt minDamage = new(0);
+        internal readonly NetInt maxDamage = new(0);
+        internal readonly NetFloat knockBackModifier = new(0f);
+        internal readonly NetInt addedPrecision = new(0);
+        internal readonly NetFloat critChance = new(0f);
+        internal readonly NetFloat critMultiplier = new(0f);
+        internal readonly NetInt stunTime = new(0);
+        internal readonly NetInt hits = new(0);
+        internal readonly NetInt explodeRadius = new(0);
 
         /// <summary>Construct an empty instance.</summary>
         public TinkerProjectile() : base()
@@ -37,6 +39,8 @@ namespace TrinketTinker.Effects.Pewpew
             if (args.Texture != null)
                 projectileTexture.Value = args.Texture;
             currentTileSheetIndex.Value = args.SpriteIndex;
+            projectileSpriteWidth.Value = args.SpriteWidth;
+            projectileSpriteHeight.Value = args.SpriteHeight;
 
             Vector2 velocity = Utility.getVelocityTowardPoint(sourcePosition, target.getStandingPosition(), args.MinVelocity);
             xVelocity.Value = velocity.X;
@@ -70,6 +74,8 @@ namespace TrinketTinker.Effects.Pewpew
             base.InitNetFields();
             NetFields
             .AddField(projectileTexture, "projectileTexture")
+            .AddField(projectileSpriteWidth, "projectileSpriteWidth")
+            .AddField(projectileSpriteHeight, "projectileSpriteHeight")
             .AddField(minDamage, "minDamage")
             .AddField(maxDamage, "maxDamage")
             .AddField(knockBackModifier, "knockBackModifier")
@@ -102,6 +108,17 @@ namespace TrinketTinker.Effects.Pewpew
                 return projectileTexture.Value;
             return projectileSheetName;
         }
+        /// <summary>Get the texture to draw for the projectile.</summary>
+        private Rectangle GetCustomSourceRect(Texture2D texture)
+        {
+            return Game1.getSourceRectForStandardTileSheet(
+                texture,
+                currentTileSheetIndex.Value,
+                projectileSpriteWidth.Value,
+                projectileSpriteHeight.Value
+            );
+        }
+
 
         /// <summary>Needed to override this to get custom texture weh</summary>
         /// <param name="b"></param>
@@ -109,7 +126,7 @@ namespace TrinketTinker.Effects.Pewpew
         {
             float scale = 4f * localScale;
             Texture2D texture = GetCustomTexture();
-            Rectangle sourceRect = GetSourceRect();
+            Rectangle sourceRect = GetCustomSourceRect(texture);
             Vector2 value = position.Value;
             b.Draw(texture, Game1.GlobalToLocal(Game1.viewport, value + new Vector2(0f, 0f - height.Value) + new Vector2(32f, 32f)), sourceRect, color.Value * alpha.Value, rotation, new Vector2(8f, 8f), scale, SpriteEffects.None, (value.Y + 96f) / 10000f);
             if (height.Value > 0f)

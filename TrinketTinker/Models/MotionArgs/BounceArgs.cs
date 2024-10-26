@@ -1,7 +1,7 @@
 namespace TrinketTinker.Models.MotionArgs
 {
-    /// <summary>Minimum and maximum float</summary>
-    public sealed class JumpArgs : LerpArgs
+    /// <summary>Bounce args</summary>
+    public sealed class BounceArgs : LerpArgs
     {
         /// <summary>Bounce height</summary>
         public float MaxHeight { get; set; } = 96f;

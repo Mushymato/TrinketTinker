@@ -1,6 +1,6 @@
 namespace TrinketTinker.Models.MotionArgs
 {
-    /// <summary>Orbit radius</summary>
+    /// <summary>Orbit args</summary>
     public sealed class OrbitArgs : StaticArgs
     {
         /// <summary>Orbit radius, horizontal</summary>

@@ -1,4 +1,6 @@
+using System.Collections.Immutable;
 using StardewValley.GameData;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Models
 {
@@ -40,8 +42,14 @@ namespace TrinketTinker.Models
         public int ProcSyncIndex { get; set; } = 0;
         /// <summary>Sound cue to play on proc.</summary>
         public string? ProcSound { get; set; } = null;
-        /// <summary>Temporary animated sprites to spawn on proc.</summary>
-        public List<TemporaryAnimatedSpriteDefinition> ProcTemporarySprites { get; set; } = [];
+        /// <summary>Temporary animated sprite to spawn on proc, each item is the id of an entry in the TAS asset.</summary>
+        public List<string> ProcTAS { get; set; } = [];
+        /// <summary>Mapped ProcTASDef.</summary>
+        internal ImmutableList<TemporaryAnimatedSpriteDefinition> ProcTASDef => ProcTAS
+                .Where(AssetManager.TASData.ContainsKey)
+                .Select((id) => AssetManager.TASData[id])
+                .ToImmutableList();
+
         /// <summary>Condition, see <see cref="StardewValley.GameStateQuery"/></summary>
         public string? Condition { get; set; } = null;
         /// <summary>

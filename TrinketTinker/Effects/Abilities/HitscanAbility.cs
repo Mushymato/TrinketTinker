@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Monsters;
 using TrinketTinker.Effects.Proc;
@@ -14,18 +15,26 @@ namespace TrinketTinker.Effects.Abilities
     /// <param name="lvl"></param>
     public sealed class HitscanAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<DamageArgs>(effect, data, lvl)
     {
+        /// <inheritdoc/>
         protected override bool ApplyEffect(ProcEventArgs proc)
         {
             Monster? target = proc.Monster ?? Utility.findClosestMonsterWithinRange(
                 proc.LocationOrCurrent,
                 e.CompanionPosition ?? proc.Farmer.Position,
-                args.Range,
+                base.args.Range,
                 ignoreUntargetables: true
             );
             if (target == null)
                 return false;
-            args.DamageMonster(proc, target);
+            proc.Monster = target;
+            base.args.DamageMonster(proc, target);
             return base.ApplyEffect(proc);
+        }
+
+        /// <inheritdoc/>
+        protected override Vector2 GetTASPosition(ProcEventArgs proc)
+        {
+            return proc.Monster!.getStandingPosition();
         }
     }
 }

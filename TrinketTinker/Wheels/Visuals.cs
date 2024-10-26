@@ -56,6 +56,11 @@ namespace TrinketTinker.Wheels
             Game1.Multiplayer.broadcastSprites(location, temporaryAnimatedSprite);
         }
 
+        /// <summary>Quadratic ease out function</summary>
+        /// <param name="a">Starting value</param>
+        /// <param name="b">Ending value</param>
+        /// <param name="t">Progress</param>
+        /// <returns></returns>
         public static float EaseOut(float a, float b, float t)
         {
             return a + (1 - MathF.Pow(1 - t, 2)) * (b - a);
