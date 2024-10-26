@@ -9,6 +9,10 @@ namespace TrinketTinker.Models.MotionArgs
         public float Min { get; set; } = 80f;
         /// <summary>Max distance from anchor, if the companion is farther away than this, teleport.</summary>
         public float Max { get; set; } = 768f;
+        /// <summary>Lerp rate in miliseconds</summary>
+        public float Rate { get; set; } = 400f;
+        /// <summary>Pause between lerp retargeting, in ms</summary>
+        public float Pause { get; set; } = 0f;
         /// <summary>Stop moving as soon as the player stops moving.</summary>
         public bool MoveSync { get; set; } = true;
         /// <summary>While within the minimum range, randomly move around a little bit.</summary>

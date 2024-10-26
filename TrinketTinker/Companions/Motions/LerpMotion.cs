@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using TrinketTinker.Models;
 using TrinketTinker.Models.MotionArgs;
@@ -11,16 +12,20 @@ namespace TrinketTinker.Companions.Motions
     {
         /// <summary>Variable for how much interpolation happened so far.</summary>
         protected float lerp = -1f;
+        private double pauseTimer = 0;
 
         /// <inheritdoc/>
         public override void UpdateLocal(GameTime time, GameLocation location)
         {
             if (args.MoveSync && !c.OwnerMoving)
-            {
                 return;
-            }
+
             if (lerp < 0f || AnchorChanged)
             {
+                pauseTimer += time.ElapsedGameTime.TotalMilliseconds;
+                if (pauseTimer < args.Pause)
+                    return;
+                pauseTimer = 0f;
                 float distance = (c.Anchor - c.Position).Length();
                 if (distance > args.Max)
                 {
@@ -55,7 +60,7 @@ namespace TrinketTinker.Companions.Motions
             }
             if (lerp >= 0f)
             {
-                lerp += (float)time.ElapsedGameTime.TotalSeconds / 0.4f;
+                lerp += (float)(time.ElapsedGameTime.TotalMilliseconds / args.Rate);
                 if (lerp > 1f)
                 {
                     lerp = 1f;
@@ -87,6 +92,30 @@ namespace TrinketTinker.Companions.Motions
             return 0f;
         }
 
+        public override void Draw(SpriteBatch b)
+        {
+            Vector2 localStartPos = Game1.GlobalToLocal(c.startPosition);
+            b.Draw(
+                Game1.staminaRect,
+                new Rectangle((int)localStartPos.X, (int)localStartPos.Y, 16, 16),
+                Game1.staminaRect.Bounds,
+                Color.Red,
+                0f, Vector2.Zero,
+                SpriteEffects.None,
+                1f
+            );
+            Vector2 localEndPos = Game1.GlobalToLocal(c.endPosition);
+            b.Draw(
+                Game1.staminaRect,
+                new Rectangle((int)localEndPos.X, (int)localEndPos.Y, 16, 16),
+                Game1.staminaRect.Bounds,
+                Color.Blue,
+                0f, Vector2.Zero,
+                SpriteEffects.None,
+                1f
+            );
+            base.Draw(b);
+        }
 
         /// <inheritdoc/>
         public override void OnOwnerWarp()

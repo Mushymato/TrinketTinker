@@ -38,25 +38,27 @@
             },
           ],
           "Motion": {
-            "MotionClass": "Bounce",
+            "MotionClass": "Hop",
             "DirectionMode": "R",
             "FrameStart": 0,
             "FrameLength": 2,
-            "Interval": 200,
+            "Interval": 150,
             "AnimClips": {
               "Idle.0": {
                 "FrameStart": 0,
                 "FrameLength": 2
               },
-              "Bounce": {
+              "Jump": {
                 "FrameStart": 2,
                 "FrameLength": 1
               }
             },
             "Args": {
-              "Period": 600,
-              "Pause": 400,
-              "MoveSync": true,
+              "Min": 256,
+              "Rate": 600,
+              "Pause": 300,
+              "MaxHeight": 128,
+              "MoveSync": false,
             }
           },
           "Abilities": [

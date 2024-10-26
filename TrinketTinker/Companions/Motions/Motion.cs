@@ -263,7 +263,6 @@ namespace TrinketTinker.Companions.Motions
             {
                 drawSnapshotQueue.Dequeue().DoDraw(b);
             }
-
             Vector2 offset = GetOffset();
             float layerDepth = md.LayerDepth switch
             {
@@ -271,17 +270,6 @@ namespace TrinketTinker.Companions.Motions
                 LayerDepth.InFront => c.Owner.getDrawLayer() + 2 * 2E-06f,
                 _ => GetPositionalLayerDepth(offset),
             };
-            b.Draw(
-                cs.Texture,
-                Game1.GlobalToLocal(c.Position + offset + c.Owner.drawOffset),
-                cs.SourceRect,
-                cs.DrawColor,
-                GetRotation(),
-                cs.Origin,
-                GetTextureScale(),
-                (c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
-                layerDepth
-            );
 
             DrawSnapshot snapshot = new()
             {

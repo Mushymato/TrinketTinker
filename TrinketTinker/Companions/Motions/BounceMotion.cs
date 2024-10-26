@@ -6,38 +6,28 @@ using TrinketTinker.Models.MotionArgs;
 namespace TrinketTinker.Companions.Motions
 {
     /// <summary>Companion follows the player and bobs up and down</summary>
-    public sealed class BounceMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata) : BaseLerpMotion<BounceArgs>(companion, mdata, vdata)
+    public sealed class BounceMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata) : BaseLerpMotion<JumpArgs>(companion, mdata, vdata)
     {
-        private const string BOUNCE = "Bounce";
+        /// <summary>Jump anim clip key</summary>
+        private const string JUMP = "Jump";
         /// <summary>trig function input</summary>
         private double theta = 0f;
-        private double pauseTimer = 0f;
 
         /// <inheritdoc/>
         public override void UpdateGlobal(GameTime time, GameLocation location)
         {
-            pauseTimer += time.ElapsedGameTime.TotalMilliseconds;
-            if (theta != 0f || (GetMoving() && pauseTimer > args.Pause))
+            if (theta != 0f || GetMoving())
             {
-                pauseTimer = 0f;
                 theta += time.ElapsedGameTime.TotalMilliseconds / args.Period;
                 if (theta >= 1f)
                     theta = 0f;
-                c.OverrideKey = BOUNCE;
+                c.OverrideKey = JUMP;
             }
             else
             {
                 c.OverrideKey = null;
             }
             base.UpdateGlobal(time, location);
-        }
-
-        /// <inheritdoc/>
-        public override void UpdateLocal(GameTime time, GameLocation location)
-        {
-            if (theta == 0f && args.Pause > 0)
-                return;
-            base.UpdateLocal(time, location);
         }
 
         /// <inheritdoc/>

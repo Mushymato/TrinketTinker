@@ -1,10 +1,6 @@
 using Microsoft.Xna.Framework;
-using StardewModdingAPI;
-using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.GameData;
-using TrinketTinker.Effects;
-using TrinketTinker.Models;
 
 namespace TrinketTinker.Wheels
 {
@@ -58,7 +54,11 @@ namespace TrinketTinker.Wheels
                 temporarySprite.RotationChange
             );
             Game1.Multiplayer.broadcastSprites(location, temporaryAnimatedSprite);
+        }
 
+        public static float EaseOut(float a, float b, float t)
+        {
+            return a + (1 - MathF.Pow(1 - t, 2)) * (b - a);
         }
     }
 }

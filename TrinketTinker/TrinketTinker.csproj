@@ -39,4 +39,9 @@
     </Reference>
   </ItemGroup>
 
+  <PropertyGroup>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+
+
 </Project>
