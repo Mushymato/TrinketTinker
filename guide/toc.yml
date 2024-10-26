@@ -19,6 +19,8 @@
       name: Hover
     - href: 3.z.002-Bounce.md
       name: Bounce
+    - href: 3.z.003-Hop.md
+      name: Hop
     - href: 3.z.100-Static.md
       name: Static
     - href: 3.z.101-Orbit.md
