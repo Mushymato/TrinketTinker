@@ -1,28 +1,34 @@
 {
-    "$schema": "https://smapi.io/schemas/i18n.json",
-    // Trinkets
-    // Skull
-    "Skull.DisplayName": "Polished Cranium",
-    "Skull.Description": "A polished skull from some creature, it's cold to the touch.\n\nLv.{0}: {1}",
-    "Skull.AbilityDescription.1": "Summon a haunted skull; deals 20-30 damage to any enemies that get close.",
-    "Skull.AbilityDescription.2": "Summon a haunted skull; that deals 30-40 damage to any enemies that get close.",
-    "Skull.AbilityDescription.3": "Summon a haunted skull; that deals 40-50 damage to any enemies that get close.",
-    // Bat
-    "Bat.DisplayName": "Leathery Wing",
-    "Bat.Description": "A colorful wing from a ghastly bat.\n\nLv.{0}: {1}",
-    "Bat.AbilityDescription.1": "Summon a bat; when you land a critical hit, recover 13 HP and 13 Energy.",
-    "Bat.AbilityDescription.2": "Summon a bat; when you land a critical hit, recover 13% of the damage dealt as HP and Energy, can only activate once per 2s.",
-    // Stick
-    "Stick.DisplayName": "Sticc",
-    "Stick.Description": "A stick?\n\n{1}",
-    "Stick.AbilityDescription.1": "Summon a stickbug; harvests nearby forage and heal 10%~20% HP.",
-    // Dust Spirit
-    "DustSpirit.DisplayName": "Fuzzy Coal",
-    "DustSpirit.Description": "It's looking at you.\n\nLv.{0}: {1}",
-    "DustSpirit.AbilityDescription.1": "Summon 3 dust spirits; every 10s, break nearby rocks and grant +20 attack.",
-    "DustSpirit.AbilityDescription.2": "Summon 3 dust spirits; every 2s, break nearby rocks and grant +5 attack.",
-    // Shop
-    "AngryRoger.Name": "Angry Roger",
-    "AngryRoger.Dialog.1": "Bring to me the flesh and spirit of the damned~~~",
-    "AngryRoger.Dialog.2": "OooooOOOooOoOOoooo~~~",
+  "$schema": "https://smapi.io/schemas/i18n.json",
+  // Trinkets
+  // Skull
+  "Skull.DisplayName": "Polished Cranium",
+  "Skull.Description": "A polished skull from some creature, it's cold to the touch.\n\nLv.{0}: {1}",
+  "Skull.AbilityDescription.1": "Summon a haunted skull; deals 20-30 damage to any enemies that get close.",
+  "Skull.AbilityDescription.2": "Summon a haunted skull; that deals 30-40 damage to any enemies that get close.",
+  "Skull.AbilityDescription.3": "Summon a haunted skull; that deals 40-50 damage to any enemies that get close.",
+  // Bat
+  "Bat.DisplayName": "Leathery Wing",
+  "Bat.Description": "A colorful wing from a ghastly bat.\n\nLv.{0}: {1}",
+  "Bat.AbilityDescription.1": "Summon a bat; when you land a critical hit, recover 13 HP and 13 Energy.",
+  "Bat.AbilityDescription.2": "Summon a bat; when you land a critical hit, recover 13% of the damage dealt as HP and Energy, can only activate once per 2s.",
+  // Stick
+  "Stick.DisplayName": "Sticc",
+  "Stick.Description": "A stick?\n\n{1}",
+  "Stick.AbilityDescription.1": "Summon a stickbug; harvests nearby forage and heal 10%~20% HP.",
+  // Dust Spirit
+  "DustSpirit.DisplayName": "Fuzzy Coal",
+  "DustSpirit.Description": "It's looking at you.\n\nLv.{0}: {1}",
+  "DustSpirit.AbilityDescription.1": "Summon 3 dust spirits; every 10s, break nearby rocks and grant +20 attack.",
+  "DustSpirit.AbilityDescription.2": "Summon 3 dust spirits; every 2s, break nearby rocks and grant +5 attack.",
+  // Spider
+  "Spider.DisplayName": "Tiny Spider",
+  "Spider.Description": "A tiny plastic spider on some decorative webbing, scuttles around sometimes.\n\nLv.{0}: {1}",
+  "Spider.AbilityDescription.1": "Summon a hopping spider; shoots a web that immobilize enemies for 3s every 10s.",
+  "Spider.AbilityDescription.2": "Summon a hopping spider; shoots a web that immobilize enemies for 4s every 9s.",
+  "Spider.AbilityDescription.3": "Summon a hopping spider; shoots a web that immobilize enemies for 5s every 8s.",
+  // Shop
+  "AngryRoger.Name": "Angry Roger",
+  "AngryRoger.Dialog.1": "Bring to me the flesh and spirit of the damned~~~",
+  "AngryRoger.Dialog.2": "OooooOOOooOoOOoooo~~~",
 }

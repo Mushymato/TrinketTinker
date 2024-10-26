@@ -86,6 +86,15 @@ namespace TrinketTinker.Companions.Motions
             }
             return 0f;
         }
+
+
+        /// <inheritdoc/>
+        public override void OnOwnerWarp()
+        {
+            lerp = -1f;
+            base.OnOwnerWarp();
+        }
+
     }
 
     /// <summary>Companion closely follows the anchor, at a distance</summary>

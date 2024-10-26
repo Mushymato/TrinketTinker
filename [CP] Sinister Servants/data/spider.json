@@ -1,0 +1,122 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "LogName": "Spider: Sprites",
+      "Action": "Load",
+      "Target": "Mods/{{ModId}}/spider_1, Mods/{{ModId}}/spider_t, Mods/{{ModId}}/spider_p",
+      "FromFile": "assets/{{TargetWithoutPath}}.png"
+    },
+    {
+      "LogName": "Spider: Trinkets",
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_Spider": {
+          "Id": "{{ModId}}_Spider",
+          "DisplayName": "{{i18n:Spider.DisplayName}}",
+          "Description": "{{i18n:Spider.Description}}",
+          "Texture": "Mods/{{ModId}}/spider_t",
+          "SheetIndex": 0,
+          "DropsNaturally": false,
+          "CanBeReforged": true
+        },
+      }
+    },
+    {
+      "LogName": "Spider: Tinker",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        "{{ModId}}_Spider": {
+          "MinLevel": 3,
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/spider_1",
+              "Width": 20,
+              "Height": 16
+            },
+          ],
+          "Motion": {
+            "MotionClass": "Bounce",
+            "DirectionMode": "R",
+            "FrameStart": 0,
+            "FrameLength": 2,
+            "Interval": 200,
+            "AnimClips": {
+              "Idle.0": {
+                "FrameStart": 0,
+                "FrameLength": 2
+              },
+              "Bounce": {
+                "FrameStart": 2,
+                "FrameLength": 1
+              }
+            },
+            "Args": {
+              "Period": 600,
+              "Pause": 400,
+              "MoveSync": true,
+            }
+          },
+          "Abilities": [
+            // level 3
+            [
+              {
+                "Proc": "Timer",
+                "Description": "{{i18n:Spider.AbilityDescription.1}}",
+                "ProcTimer": 10000,
+                "AbilityClass": "Projectile",
+                "Args": {
+                  "StunTime": 3000,
+                  "Range": 4096,
+                  "Texture": "Mods/{{ModId}}/spider_p",
+                  "SpriteIndex": 0,
+                  "Acceleration": 2,
+                  "MinVelocity": 2,
+                  "MaxVelocity": 24
+                }
+              }
+            ],
+            // level 4
+            [
+              {
+                "Proc": "Timer",
+                "Description": "{{i18n:Spider.AbilityDescription.2}}",
+                "ProcTimer": 9000,
+                "AbilityClass": "Projectile",
+                "Args": {
+                  "StunTime": 4000,
+                  "Range": 4096,
+                  "Texture": "Mods/{{ModId}}/spider_p",
+                  "SpriteIndex": 0,
+                  "Acceleration": 2,
+                  "MinVelocity": 2,
+                  "MaxVelocity": 24
+                }
+              }
+            ],
+            // level 5
+            [
+              {
+                "Proc": "Timer",
+                "Description": "{{i18n:Spider.AbilityDescription.1}}",
+                "ProcTimer": 8000,
+                "AbilityClass": "Projectile",
+                "Args": {
+                  "StunTime": 5000,
+                  "Range": 4096,
+                  "Texture": "Mods/{{ModId}}/spider_p",
+                  "SpriteIndex": 0,
+                  "Acceleration": 2,
+                  "MinVelocity": 2,
+                  "MaxVelocity": 24
+                }
+              }
+            ]
+          ]
+        },
+      }
+    }
+  ]
+}

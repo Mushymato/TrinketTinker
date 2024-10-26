@@ -121,7 +121,7 @@ namespace TrinketTinker.Models
         {
             if (AnimClips.TryGetValue($"Idle.{MathF.Abs(direction)}", out AnimClipData? idle))
                 return idle;
-            if (AnimClips.TryGetValue($"Idle.0", out idle))
+            if (AnimClips.TryGetValue("Idle.0", out idle))
                 return idle;
             return null;
         }

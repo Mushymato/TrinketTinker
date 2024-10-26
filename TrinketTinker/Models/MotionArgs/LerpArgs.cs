@@ -10,7 +10,7 @@ namespace TrinketTinker.Models.MotionArgs
         /// <summary>Max distance from anchor, if the companion is farther away than this, teleport.</summary>
         public float Max { get; set; } = 768f;
         /// <summary>Stop moving as soon as the player stops moving.</summary>
-        public bool MoveSync { get; set; } = false;
+        public bool MoveSync { get; set; } = true;
         /// <summary>While within the minimum range, randomly move around a little bit.</summary>
         public float Jitter { get; set; } = 0f;
         /// <inheritdoc/>

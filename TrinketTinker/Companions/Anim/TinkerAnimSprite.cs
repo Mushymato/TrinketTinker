@@ -37,7 +37,7 @@ namespace TrinketTinker.Companions.Anim
         internal readonly Texture2D Texture;
         internal Rectangle SourceRect { get; private set; } = Rectangle.Empty;
         private float timer = 0f;
-        private int currentFrame = 0;
+        internal int currentFrame = 0;
         private bool isReverse = false;
 
         /// <summary>Calculate the source rectangle for a sprite in an NPC spritesheet.</summary>

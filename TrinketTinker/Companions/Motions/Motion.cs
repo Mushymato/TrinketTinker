@@ -188,7 +188,7 @@ namespace TrinketTinker.Companions.Motions
             {
                 cs.AnimateClip(time, overrideClip, md.Interval);
             }
-            else if (md.AlwaysMoving || GetMoving())
+            else if (GetMoving())
             {
                 cs.Animate(md.LoopMode, time, DirectionFrameStart(), md.FrameLength, md.Interval);
             }
@@ -209,7 +209,7 @@ namespace TrinketTinker.Companions.Motions
         /// <returns></returns>
         protected virtual bool GetMoving()
         {
-            return c.OwnerMoving;
+            return md.AlwaysMoving || c.OwnerMoving;
         }
 
         /// <inheritdoc/>

@@ -70,7 +70,8 @@
             "AlwaysMoving": true,
             "Args": {
               "Squash": 2,
-              "Jitter": 64
+              "Jitter": 64,
+              "MoveSync": false
             }
           },
           "Abilities": [
