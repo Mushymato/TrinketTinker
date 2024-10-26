@@ -87,7 +87,9 @@
         <article data-uid="">
 <h1 id="bounce">Bounce</h1>
 
-<p>Like <a href="3.z.000-Lerp.html">Lerp</a> motion, but the companion bounces up and down.</p>
+<p>Like <a href="3.z.000-Lerp.html">Lerp</a> motion, but the companion bounces up and down periodically.</p>
+<p>To have the companion show an alternate animation while bouncing, set a <code>&quot;Jump&quot;</code> <a href="3.2-Animation%20Clips.html">animation clip</a> with the desired frame start, frame length, etc.</p>
+<p>The difference between Bounce and <a href="3.z.003-Hop.html">Hop</a> is that bounce calculates bounces independent of lerp start and end, it also provides squashing for deforming the sprite when hitting the ground.</p>
 <h2 id="args"><a href="../api/TrinketTinker.Models.MotionArgs.BounceArgs.html">Args</a></h2>
 <table>
 <thead>
@@ -102,7 +104,7 @@
 <tr>
 <td><code>MaxHeight</code></td>
 <td>float</td>
-<td>128</td>
+<td>96</td>
 <td>Height of bounce.</td>
 </tr>
 <tr>
@@ -110,6 +112,12 @@
 <td>bool</td>
 <td>true</td>
 <td>Companion sprite squishes a bit when hitting the ground.</td>
+</tr>
+<tr>
+<td><code>Period</code></td>
+<td>float</td>
+<td>800</td>
+<td>Length of each bounce in miliseconds.</td>
 </tr>
 </tbody>
 </table>

@@ -138,6 +138,23 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.BaseLerpMotion(Of IArgs).GetRotation
   nameWithType: BaseLerpMotion<IArgs>.GetRotation
   nameWithType.vb: BaseLerpMotion(Of IArgs).GetRotation
+- uid: TrinketTinker.Companions.Motions.BaseLerpMotion`1.OnOwnerWarp
+  name: OnOwnerWarp()
+  href: api/TrinketTinker.Companions.Motions.BaseLerpMotion-1.html#TrinketTinker_Companions_Motions_BaseLerpMotion_1_OnOwnerWarp
+  commentId: M:TrinketTinker.Companions.Motions.BaseLerpMotion`1.OnOwnerWarp
+  fullName: TrinketTinker.Companions.Motions.BaseLerpMotion<IArgs>.OnOwnerWarp()
+  fullName.vb: TrinketTinker.Companions.Motions.BaseLerpMotion(Of IArgs).OnOwnerWarp()
+  nameWithType: BaseLerpMotion<IArgs>.OnOwnerWarp()
+  nameWithType.vb: BaseLerpMotion(Of IArgs).OnOwnerWarp()
+- uid: TrinketTinker.Companions.Motions.BaseLerpMotion`1.OnOwnerWarp*
+  name: OnOwnerWarp
+  href: api/TrinketTinker.Companions.Motions.BaseLerpMotion-1.html#TrinketTinker_Companions_Motions_BaseLerpMotion_1_OnOwnerWarp_
+  commentId: Overload:TrinketTinker.Companions.Motions.BaseLerpMotion`1.OnOwnerWarp
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.BaseLerpMotion<IArgs>.OnOwnerWarp
+  fullName.vb: TrinketTinker.Companions.Motions.BaseLerpMotion(Of IArgs).OnOwnerWarp
+  nameWithType: BaseLerpMotion<IArgs>.OnOwnerWarp
+  nameWithType.vb: BaseLerpMotion(Of IArgs).OnOwnerWarp
 - uid: TrinketTinker.Companions.Motions.BaseLerpMotion`1.UpdateLocal(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)
   name: UpdateLocal(GameTime, GameLocation)
   href: api/TrinketTinker.Companions.Motions.BaseLerpMotion-1.html#TrinketTinker_Companions_Motions_BaseLerpMotion_1_UpdateLocal_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_
@@ -336,6 +353,70 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Companions.Motions.BounceMotion.UpdateGlobal
   nameWithType: BounceMotion.UpdateGlobal
+- uid: TrinketTinker.Companions.Motions.HopMotion
+  name: HopMotion
+  href: api/TrinketTinker.Companions.Motions.HopMotion.html
+  commentId: T:TrinketTinker.Companions.Motions.HopMotion
+  fullName: TrinketTinker.Companions.Motions.HopMotion
+  nameWithType: HopMotion
+- uid: TrinketTinker.Companions.Motions.HopMotion.#ctor(TrinketTinker.Companions.TrinketTinkerCompanion,TrinketTinker.Models.MotionData,TrinketTinker.Models.VariantData)
+  name: HopMotion(TrinketTinkerCompanion, MotionData, VariantData)
+  href: api/TrinketTinker.Companions.Motions.HopMotion.html#TrinketTinker_Companions_Motions_HopMotion__ctor_TrinketTinker_Companions_TrinketTinkerCompanion_TrinketTinker_Models_MotionData_TrinketTinker_Models_VariantData_
+  commentId: M:TrinketTinker.Companions.Motions.HopMotion.#ctor(TrinketTinker.Companions.TrinketTinkerCompanion,TrinketTinker.Models.MotionData,TrinketTinker.Models.VariantData)
+  name.vb: New(TrinketTinkerCompanion, MotionData, VariantData)
+  fullName: TrinketTinker.Companions.Motions.HopMotion.HopMotion(TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker.Models.MotionData, TrinketTinker.Models.VariantData)
+  fullName.vb: TrinketTinker.Companions.Motions.HopMotion.New(TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker.Models.MotionData, TrinketTinker.Models.VariantData)
+  nameWithType: HopMotion.HopMotion(TrinketTinkerCompanion, MotionData, VariantData)
+  nameWithType.vb: HopMotion.New(TrinketTinkerCompanion, MotionData, VariantData)
+- uid: TrinketTinker.Companions.Motions.HopMotion.#ctor*
+  name: HopMotion
+  href: api/TrinketTinker.Companions.Motions.HopMotion.html#TrinketTinker_Companions_Motions_HopMotion__ctor_
+  commentId: Overload:TrinketTinker.Companions.Motions.HopMotion.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TrinketTinker.Companions.Motions.HopMotion.HopMotion
+  fullName.vb: TrinketTinker.Companions.Motions.HopMotion.New
+  nameWithType: HopMotion.HopMotion
+  nameWithType.vb: HopMotion.New
+- uid: TrinketTinker.Companions.Motions.HopMotion.GetOffset
+  name: GetOffset()
+  href: api/TrinketTinker.Companions.Motions.HopMotion.html#TrinketTinker_Companions_Motions_HopMotion_GetOffset
+  commentId: M:TrinketTinker.Companions.Motions.HopMotion.GetOffset
+  fullName: TrinketTinker.Companions.Motions.HopMotion.GetOffset()
+  nameWithType: HopMotion.GetOffset()
+- uid: TrinketTinker.Companions.Motions.HopMotion.GetOffset*
+  name: GetOffset
+  href: api/TrinketTinker.Companions.Motions.HopMotion.html#TrinketTinker_Companions_Motions_HopMotion_GetOffset_
+  commentId: Overload:TrinketTinker.Companions.Motions.HopMotion.GetOffset
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.HopMotion.GetOffset
+  nameWithType: HopMotion.GetOffset
+- uid: TrinketTinker.Companions.Motions.HopMotion.GetShadowScale
+  name: GetShadowScale()
+  href: api/TrinketTinker.Companions.Motions.HopMotion.html#TrinketTinker_Companions_Motions_HopMotion_GetShadowScale
+  commentId: M:TrinketTinker.Companions.Motions.HopMotion.GetShadowScale
+  fullName: TrinketTinker.Companions.Motions.HopMotion.GetShadowScale()
+  nameWithType: HopMotion.GetShadowScale()
+- uid: TrinketTinker.Companions.Motions.HopMotion.GetShadowScale*
+  name: GetShadowScale
+  href: api/TrinketTinker.Companions.Motions.HopMotion.html#TrinketTinker_Companions_Motions_HopMotion_GetShadowScale_
+  commentId: Overload:TrinketTinker.Companions.Motions.HopMotion.GetShadowScale
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.HopMotion.GetShadowScale
+  nameWithType: HopMotion.GetShadowScale
+- uid: TrinketTinker.Companions.Motions.HopMotion.UpdateGlobal(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)
+  name: UpdateGlobal(GameTime, GameLocation)
+  href: api/TrinketTinker.Companions.Motions.HopMotion.html#TrinketTinker_Companions_Motions_HopMotion_UpdateGlobal_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_
+  commentId: M:TrinketTinker.Companions.Motions.HopMotion.UpdateGlobal(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)
+  fullName: TrinketTinker.Companions.Motions.HopMotion.UpdateGlobal(Microsoft.Xna.Framework.GameTime, StardewValley.GameLocation)
+  nameWithType: HopMotion.UpdateGlobal(GameTime, GameLocation)
+- uid: TrinketTinker.Companions.Motions.HopMotion.UpdateGlobal*
+  name: UpdateGlobal
+  href: api/TrinketTinker.Companions.Motions.HopMotion.html#TrinketTinker_Companions_Motions_HopMotion_UpdateGlobal_
+  commentId: Overload:TrinketTinker.Companions.Motions.HopMotion.UpdateGlobal
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.HopMotion.UpdateGlobal
+  nameWithType: HopMotion.UpdateGlobal
 - uid: TrinketTinker.Companions.Motions.HoverMotion
   name: HoverMotion
   href: api/TrinketTinker.Companions.Motions.HoverMotion.html
@@ -2127,6 +2208,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.Abilities.HitscanAbility.ApplyEffect
   nameWithType: HitscanAbility.ApplyEffect
+- uid: TrinketTinker.Effects.Abilities.HitscanAbility.GetTASPosition(TrinketTinker.Effects.Proc.ProcEventArgs)
+  name: GetTASPosition(ProcEventArgs)
+  href: api/TrinketTinker.Effects.Abilities.HitscanAbility.html#TrinketTinker_Effects_Abilities_HitscanAbility_GetTASPosition_TrinketTinker_Effects_Proc_ProcEventArgs_
+  commentId: M:TrinketTinker.Effects.Abilities.HitscanAbility.GetTASPosition(TrinketTinker.Effects.Proc.ProcEventArgs)
+  fullName: TrinketTinker.Effects.Abilities.HitscanAbility.GetTASPosition(TrinketTinker.Effects.Proc.ProcEventArgs)
+  nameWithType: HitscanAbility.GetTASPosition(ProcEventArgs)
+- uid: TrinketTinker.Effects.Abilities.HitscanAbility.GetTASPosition*
+  name: GetTASPosition
+  href: api/TrinketTinker.Effects.Abilities.HitscanAbility.html#TrinketTinker_Effects_Abilities_HitscanAbility_GetTASPosition_
+  commentId: Overload:TrinketTinker.Effects.Abilities.HitscanAbility.GetTASPosition
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.HitscanAbility.GetTASPosition
+  nameWithType: HitscanAbility.GetTASPosition
 - uid: TrinketTinker.Effects.Abilities.HoeDirtAbility
   name: HoeDirtAbility
   href: api/TrinketTinker.Effects.Abilities.HoeDirtAbility.html
@@ -2453,12 +2547,6 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.Pewpew.TinkerProjectile.UpdatePiercesLeft
   nameWithType: TinkerProjectile.UpdatePiercesLeft
-- uid: TrinketTinker.Effects.Pewpew.TinkerProjectile.addedPrecision
-  name: addedPrecision
-  href: api/TrinketTinker.Effects.Pewpew.TinkerProjectile.html#TrinketTinker_Effects_Pewpew_TinkerProjectile_addedPrecision
-  commentId: F:TrinketTinker.Effects.Pewpew.TinkerProjectile.addedPrecision
-  fullName: TrinketTinker.Effects.Pewpew.TinkerProjectile.addedPrecision
-  nameWithType: TinkerProjectile.addedPrecision
 - uid: TrinketTinker.Effects.Pewpew.TinkerProjectile.behaviorOnCollisionWithMonster(StardewValley.NPC,StardewValley.GameLocation)
   name: behaviorOnCollisionWithMonster(NPC, GameLocation)
   href: api/TrinketTinker.Effects.Pewpew.TinkerProjectile.html#TrinketTinker_Effects_Pewpew_TinkerProjectile_behaviorOnCollisionWithMonster_StardewValley_NPC_StardewValley_GameLocation_
@@ -2511,18 +2599,6 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.Pewpew.TinkerProjectile.behaviorOnCollisionWithTerrainFeature
   nameWithType: TinkerProjectile.behaviorOnCollisionWithTerrainFeature
-- uid: TrinketTinker.Effects.Pewpew.TinkerProjectile.critChance
-  name: critChance
-  href: api/TrinketTinker.Effects.Pewpew.TinkerProjectile.html#TrinketTinker_Effects_Pewpew_TinkerProjectile_critChance
-  commentId: F:TrinketTinker.Effects.Pewpew.TinkerProjectile.critChance
-  fullName: TrinketTinker.Effects.Pewpew.TinkerProjectile.critChance
-  nameWithType: TinkerProjectile.critChance
-- uid: TrinketTinker.Effects.Pewpew.TinkerProjectile.critMultiplier
-  name: critMultiplier
-  href: api/TrinketTinker.Effects.Pewpew.TinkerProjectile.html#TrinketTinker_Effects_Pewpew_TinkerProjectile_critMultiplier
-  commentId: F:TrinketTinker.Effects.Pewpew.TinkerProjectile.critMultiplier
-  fullName: TrinketTinker.Effects.Pewpew.TinkerProjectile.critMultiplier
-  nameWithType: TinkerProjectile.critMultiplier
 - uid: TrinketTinker.Effects.Pewpew.TinkerProjectile.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
   name: draw(SpriteBatch)
   href: api/TrinketTinker.Effects.Pewpew.TinkerProjectile.html#TrinketTinker_Effects_Pewpew_TinkerProjectile_draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_
@@ -2536,48 +2612,6 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.Pewpew.TinkerProjectile.draw
   nameWithType: TinkerProjectile.draw
-- uid: TrinketTinker.Effects.Pewpew.TinkerProjectile.explodeRadius
-  name: explodeRadius
-  href: api/TrinketTinker.Effects.Pewpew.TinkerProjectile.html#TrinketTinker_Effects_Pewpew_TinkerProjectile_explodeRadius
-  commentId: F:TrinketTinker.Effects.Pewpew.TinkerProjectile.explodeRadius
-  fullName: TrinketTinker.Effects.Pewpew.TinkerProjectile.explodeRadius
-  nameWithType: TinkerProjectile.explodeRadius
-- uid: TrinketTinker.Effects.Pewpew.TinkerProjectile.hits
-  name: hits
-  href: api/TrinketTinker.Effects.Pewpew.TinkerProjectile.html#TrinketTinker_Effects_Pewpew_TinkerProjectile_hits
-  commentId: F:TrinketTinker.Effects.Pewpew.TinkerProjectile.hits
-  fullName: TrinketTinker.Effects.Pewpew.TinkerProjectile.hits
-  nameWithType: TinkerProjectile.hits
-- uid: TrinketTinker.Effects.Pewpew.TinkerProjectile.knockBackModifier
-  name: knockBackModifier
-  href: api/TrinketTinker.Effects.Pewpew.TinkerProjectile.html#TrinketTinker_Effects_Pewpew_TinkerProjectile_knockBackModifier
-  commentId: F:TrinketTinker.Effects.Pewpew.TinkerProjectile.knockBackModifier
-  fullName: TrinketTinker.Effects.Pewpew.TinkerProjectile.knockBackModifier
-  nameWithType: TinkerProjectile.knockBackModifier
-- uid: TrinketTinker.Effects.Pewpew.TinkerProjectile.maxDamage
-  name: maxDamage
-  href: api/TrinketTinker.Effects.Pewpew.TinkerProjectile.html#TrinketTinker_Effects_Pewpew_TinkerProjectile_maxDamage
-  commentId: F:TrinketTinker.Effects.Pewpew.TinkerProjectile.maxDamage
-  fullName: TrinketTinker.Effects.Pewpew.TinkerProjectile.maxDamage
-  nameWithType: TinkerProjectile.maxDamage
-- uid: TrinketTinker.Effects.Pewpew.TinkerProjectile.minDamage
-  name: minDamage
-  href: api/TrinketTinker.Effects.Pewpew.TinkerProjectile.html#TrinketTinker_Effects_Pewpew_TinkerProjectile_minDamage
-  commentId: F:TrinketTinker.Effects.Pewpew.TinkerProjectile.minDamage
-  fullName: TrinketTinker.Effects.Pewpew.TinkerProjectile.minDamage
-  nameWithType: TinkerProjectile.minDamage
-- uid: TrinketTinker.Effects.Pewpew.TinkerProjectile.projectileTexture
-  name: projectileTexture
-  href: api/TrinketTinker.Effects.Pewpew.TinkerProjectile.html#TrinketTinker_Effects_Pewpew_TinkerProjectile_projectileTexture
-  commentId: F:TrinketTinker.Effects.Pewpew.TinkerProjectile.projectileTexture
-  fullName: TrinketTinker.Effects.Pewpew.TinkerProjectile.projectileTexture
-  nameWithType: TinkerProjectile.projectileTexture
-- uid: TrinketTinker.Effects.Pewpew.TinkerProjectile.stunTime
-  name: stunTime
-  href: api/TrinketTinker.Effects.Pewpew.TinkerProjectile.html#TrinketTinker_Effects_Pewpew_TinkerProjectile_stunTime
-  commentId: F:TrinketTinker.Effects.Pewpew.TinkerProjectile.stunTime
-  fullName: TrinketTinker.Effects.Pewpew.TinkerProjectile.stunTime
-  nameWithType: TinkerProjectile.stunTime
 - uid: TrinketTinker.Effects.Pewpew.TinkerProjectile.updatePosition(Microsoft.Xna.Framework.GameTime)
   name: updatePosition(GameTime)
   href: api/TrinketTinker.Effects.Pewpew.TinkerProjectile.html#TrinketTinker_Effects_Pewpew_TinkerProjectile_updatePosition_Microsoft_Xna_Framework_GameTime_
@@ -3403,6 +3437,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AbilityArgs.ProjectileArgs.Pierce
   nameWithType: ProjectileArgs.Pierce
+- uid: TrinketTinker.Models.AbilityArgs.ProjectileArgs.SpriteHeight
+  name: SpriteHeight
+  href: api/TrinketTinker.Models.AbilityArgs.ProjectileArgs.html#TrinketTinker_Models_AbilityArgs_ProjectileArgs_SpriteHeight
+  commentId: P:TrinketTinker.Models.AbilityArgs.ProjectileArgs.SpriteHeight
+  fullName: TrinketTinker.Models.AbilityArgs.ProjectileArgs.SpriteHeight
+  nameWithType: ProjectileArgs.SpriteHeight
+- uid: TrinketTinker.Models.AbilityArgs.ProjectileArgs.SpriteHeight*
+  name: SpriteHeight
+  href: api/TrinketTinker.Models.AbilityArgs.ProjectileArgs.html#TrinketTinker_Models_AbilityArgs_ProjectileArgs_SpriteHeight_
+  commentId: Overload:TrinketTinker.Models.AbilityArgs.ProjectileArgs.SpriteHeight
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityArgs.ProjectileArgs.SpriteHeight
+  nameWithType: ProjectileArgs.SpriteHeight
 - uid: TrinketTinker.Models.AbilityArgs.ProjectileArgs.SpriteIndex
   name: SpriteIndex
   href: api/TrinketTinker.Models.AbilityArgs.ProjectileArgs.html#TrinketTinker_Models_AbilityArgs_ProjectileArgs_SpriteIndex
@@ -3416,6 +3463,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AbilityArgs.ProjectileArgs.SpriteIndex
   nameWithType: ProjectileArgs.SpriteIndex
+- uid: TrinketTinker.Models.AbilityArgs.ProjectileArgs.SpriteWidth
+  name: SpriteWidth
+  href: api/TrinketTinker.Models.AbilityArgs.ProjectileArgs.html#TrinketTinker_Models_AbilityArgs_ProjectileArgs_SpriteWidth
+  commentId: P:TrinketTinker.Models.AbilityArgs.ProjectileArgs.SpriteWidth
+  fullName: TrinketTinker.Models.AbilityArgs.ProjectileArgs.SpriteWidth
+  nameWithType: ProjectileArgs.SpriteWidth
+- uid: TrinketTinker.Models.AbilityArgs.ProjectileArgs.SpriteWidth*
+  name: SpriteWidth
+  href: api/TrinketTinker.Models.AbilityArgs.ProjectileArgs.html#TrinketTinker_Models_AbilityArgs_ProjectileArgs_SpriteWidth_
+  commentId: Overload:TrinketTinker.Models.AbilityArgs.ProjectileArgs.SpriteWidth
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityArgs.ProjectileArgs.SpriteWidth
+  nameWithType: ProjectileArgs.SpriteWidth
 - uid: TrinketTinker.Models.AbilityArgs.ProjectileArgs.TailCount
   name: TailCount
   href: api/TrinketTinker.Models.AbilityArgs.ProjectileArgs.html#TrinketTinker_Models_AbilityArgs_ProjectileArgs_TailCount
@@ -3734,19 +3794,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AbilityData.ProcSyncIndex
   nameWithType: AbilityData.ProcSyncIndex
-- uid: TrinketTinker.Models.AbilityData.ProcTemporarySprites
-  name: ProcTemporarySprites
-  href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcTemporarySprites
-  commentId: P:TrinketTinker.Models.AbilityData.ProcTemporarySprites
-  fullName: TrinketTinker.Models.AbilityData.ProcTemporarySprites
-  nameWithType: AbilityData.ProcTemporarySprites
-- uid: TrinketTinker.Models.AbilityData.ProcTemporarySprites*
-  name: ProcTemporarySprites
-  href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcTemporarySprites_
-  commentId: Overload:TrinketTinker.Models.AbilityData.ProcTemporarySprites
+- uid: TrinketTinker.Models.AbilityData.ProcTAS
+  name: ProcTAS
+  href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcTAS
+  commentId: P:TrinketTinker.Models.AbilityData.ProcTAS
+  fullName: TrinketTinker.Models.AbilityData.ProcTAS
+  nameWithType: AbilityData.ProcTAS
+- uid: TrinketTinker.Models.AbilityData.ProcTAS*
+  name: ProcTAS
+  href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcTAS_
+  commentId: Overload:TrinketTinker.Models.AbilityData.ProcTAS
   isSpec: "True"
-  fullName: TrinketTinker.Models.AbilityData.ProcTemporarySprites
-  nameWithType: AbilityData.ProcTemporarySprites
+  fullName: TrinketTinker.Models.AbilityData.ProcTAS
+  nameWithType: AbilityData.ProcTAS
 - uid: TrinketTinker.Models.AbilityData.ProcTimer
   name: ProcTimer
   href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcTimer
@@ -4120,6 +4180,25 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.MotionArgs.BounceArgs.Squash
   nameWithType: BounceArgs.Squash
+- uid: TrinketTinker.Models.MotionArgs.HopArgs
+  name: HopArgs
+  href: api/TrinketTinker.Models.MotionArgs.HopArgs.html
+  commentId: T:TrinketTinker.Models.MotionArgs.HopArgs
+  fullName: TrinketTinker.Models.MotionArgs.HopArgs
+  nameWithType: HopArgs
+- uid: TrinketTinker.Models.MotionArgs.HopArgs.MaxHeight
+  name: MaxHeight
+  href: api/TrinketTinker.Models.MotionArgs.HopArgs.html#TrinketTinker_Models_MotionArgs_HopArgs_MaxHeight
+  commentId: P:TrinketTinker.Models.MotionArgs.HopArgs.MaxHeight
+  fullName: TrinketTinker.Models.MotionArgs.HopArgs.MaxHeight
+  nameWithType: HopArgs.MaxHeight
+- uid: TrinketTinker.Models.MotionArgs.HopArgs.MaxHeight*
+  name: MaxHeight
+  href: api/TrinketTinker.Models.MotionArgs.HopArgs.html#TrinketTinker_Models_MotionArgs_HopArgs_MaxHeight_
+  commentId: Overload:TrinketTinker.Models.MotionArgs.HopArgs.MaxHeight
+  isSpec: "True"
+  fullName: TrinketTinker.Models.MotionArgs.HopArgs.MaxHeight
+  nameWithType: HopArgs.MaxHeight
 - uid: TrinketTinker.Models.MotionArgs.HoverArgs
   name: HoverArgs
   href: api/TrinketTinker.Models.MotionArgs.HoverArgs.html
@@ -4236,6 +4315,32 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.MotionArgs.LerpArgs.MoveSync
   nameWithType: LerpArgs.MoveSync
+- uid: TrinketTinker.Models.MotionArgs.LerpArgs.Pause
+  name: Pause
+  href: api/TrinketTinker.Models.MotionArgs.LerpArgs.html#TrinketTinker_Models_MotionArgs_LerpArgs_Pause
+  commentId: P:TrinketTinker.Models.MotionArgs.LerpArgs.Pause
+  fullName: TrinketTinker.Models.MotionArgs.LerpArgs.Pause
+  nameWithType: LerpArgs.Pause
+- uid: TrinketTinker.Models.MotionArgs.LerpArgs.Pause*
+  name: Pause
+  href: api/TrinketTinker.Models.MotionArgs.LerpArgs.html#TrinketTinker_Models_MotionArgs_LerpArgs_Pause_
+  commentId: Overload:TrinketTinker.Models.MotionArgs.LerpArgs.Pause
+  isSpec: "True"
+  fullName: TrinketTinker.Models.MotionArgs.LerpArgs.Pause
+  nameWithType: LerpArgs.Pause
+- uid: TrinketTinker.Models.MotionArgs.LerpArgs.Rate
+  name: Rate
+  href: api/TrinketTinker.Models.MotionArgs.LerpArgs.html#TrinketTinker_Models_MotionArgs_LerpArgs_Rate
+  commentId: P:TrinketTinker.Models.MotionArgs.LerpArgs.Rate
+  fullName: TrinketTinker.Models.MotionArgs.LerpArgs.Rate
+  nameWithType: LerpArgs.Rate
+- uid: TrinketTinker.Models.MotionArgs.LerpArgs.Rate*
+  name: Rate
+  href: api/TrinketTinker.Models.MotionArgs.LerpArgs.html#TrinketTinker_Models_MotionArgs_LerpArgs_Rate_
+  commentId: Overload:TrinketTinker.Models.MotionArgs.LerpArgs.Rate
+  isSpec: "True"
+  fullName: TrinketTinker.Models.MotionArgs.LerpArgs.Rate
+  nameWithType: LerpArgs.Rate
 - uid: TrinketTinker.Models.MotionArgs.LerpArgs.Validate
   name: Validate()
   href: api/TrinketTinker.Models.MotionArgs.LerpArgs.html#TrinketTinker_Models_MotionArgs_LerpArgs_Validate

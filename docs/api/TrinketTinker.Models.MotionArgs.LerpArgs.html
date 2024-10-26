@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class LerpArgs | TrinketTinker ">
       
-      <meta name="description" content="Minimum and maximum float">
+      <meta name="description" content="Lerp args">
       <link rel="icon" href="../images/favicon.png">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,7 +97,7 @@ Class LerpArgs  <a class="header-action link-secondary" title="View source" href
   <dl><dt>Assembly</dt><dd>TrinketTinker.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Minimum and maximum float</p>
+  <div class="markdown summary"><p>Lerp args</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -127,6 +127,7 @@ Class LerpArgs  <a class="header-action link-secondary" title="View source" href
     <dt>Derived</dt>
     <dd>
       <div><a class="xref" href="TrinketTinker.Models.MotionArgs.BounceArgs.html">BounceArgs</a></div>
+      <div><a class="xref" href="TrinketTinker.Models.MotionArgs.HopArgs.html">HopArgs</a></div>
       <div><a class="xref" href="TrinketTinker.Models.MotionArgs.HoverArgs.html">HoverArgs</a></div>
     </dd>
   </dl>
@@ -170,7 +171,7 @@ Class LerpArgs  <a class="header-action link-secondary" title="View source" href
 
   <h3 id="TrinketTinker_Models_MotionArgs_LerpArgs_Jitter" data-uid="TrinketTinker.Models.MotionArgs.LerpArgs.Jitter">
   Jitter
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionArgs/LerpArgs.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionArgs/LerpArgs.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>While within the minimum range, randomly move around a little bit.</p>
@@ -266,7 +267,7 @@ Class LerpArgs  <a class="header-action link-secondary" title="View source" href
 
   <h3 id="TrinketTinker_Models_MotionArgs_LerpArgs_MoveSync" data-uid="TrinketTinker.Models.MotionArgs.LerpArgs.MoveSync">
   MoveSync
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionArgs/LerpArgs.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionArgs/LerpArgs.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Stop moving as soon as the player stops moving.</p>
@@ -294,6 +295,70 @@ Class LerpArgs  <a class="header-action link-secondary" title="View source" href
 
 
 
+  <a id="TrinketTinker_Models_MotionArgs_LerpArgs_Pause_" data-uid="TrinketTinker.Models.MotionArgs.LerpArgs.Pause*"></a>
+
+  <h3 id="TrinketTinker_Models_MotionArgs_LerpArgs_Pause" data-uid="TrinketTinker.Models.MotionArgs.LerpArgs.Pause">
+  Pause
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionArgs/LerpArgs.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pause between lerp retargeting, in ms</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float Pause { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Models_MotionArgs_LerpArgs_Rate_" data-uid="TrinketTinker.Models.MotionArgs.LerpArgs.Rate*"></a>
+
+  <h3 id="TrinketTinker_Models_MotionArgs_LerpArgs_Rate" data-uid="TrinketTinker.Models.MotionArgs.LerpArgs.Rate">
+  Rate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionArgs/LerpArgs.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Lerp rate in miliseconds</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float Rate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -302,7 +367,7 @@ Class LerpArgs  <a class="header-action link-secondary" title="View source" href
 
   <h3 id="TrinketTinker_Models_MotionArgs_LerpArgs_Validate" data-uid="TrinketTinker.Models.MotionArgs.LerpArgs.Validate">
   Validate()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionArgs/LerpArgs.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionArgs/LerpArgs.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if the given arguments are valid, potentially modify arguments to ensure they are valid</p>

@@ -88,6 +88,20 @@
 <h1 id="lerp">Lerp</h1>
 
 <p>The companion follows the anchor at a distance. They will move as fast as they need to in order to stay within the desired distance.</p>
+<p>Lerp motion operate by this logic, using a <code>lerp</code> variable between 0 and 1.</p>
+<ol>
+<li>If the companion is too far (&gt;<code>Max</code>) from the anchor position, teleport to the anchor.</li>
+<li>If the companion is far enough (&gt;<code>Min</code>) from the anchor position,
+<ul>
+<li>Record companion current position as start.</li>
+<li>Pick an end position based on the anchor.</li>
+<li>Enter lerping state.</li>
+</ul>
+</li>
+<li>When start and end positions are set, increase <code>lerp</code> by value relative to elapsed game time, then calculate companion position with <code>start + (end - start) * lerp</code>.</li>
+<li>Once <code>lerp</code> reach 1 (and thus the companion reached the end position), exit lerping state.</li>
+<li>This completes 1 lerp step, and the companion will try to initiate new lerp state in the next game update tick.</li>
+</ol>
 <h2 id="args"><a href="../api/TrinketTinker.Models.MotionArgs.LerpArgs.html">Args</a></h2>
 <table>
 <thead>
@@ -110,6 +124,18 @@
 <td>float</td>
 <td>640</td>
 <td>Max distance from anchor, if the companion is farther away than this, teleport.</td>
+</tr>
+<tr>
+<td><code>Rate</code></td>
+<td>float</td>
+<td>400</td>
+<td>Miliseconds needed to complete 1 lerp, higher number makes companion take larger but slower lerp steps.</td>
+</tr>
+<tr>
+<td><code>Pause</code></td>
+<td>float</td>
+<td>0</td>
+<td>Pause between picking next position to lerp to.</td>
 </tr>
 <tr>
 <td><code>MoveSync</code></td>

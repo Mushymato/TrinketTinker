@@ -89,7 +89,7 @@
 
 
   <h1 id="TrinketTinker_Effects_Abilities_HitscanAbility" data-uid="TrinketTinker.Effects.Abilities.HitscanAbility" class="text-break">
-Class HitscanAbility  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HitscanAbility.cs/#L15"><i class="bi bi-code-slash"></i></a>
+Class HitscanAbility  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HitscanAbility.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -179,7 +179,7 @@ Class HitscanAbility  <a class="header-action link-secondary" title="View source
 
   <h3 id="TrinketTinker_Effects_Abilities_HitscanAbility__ctor_TrinketTinker_Effects_TrinketTinkerEffect_TrinketTinker_Models_AbilityData_System_Int32_" data-uid="TrinketTinker.Effects.Abilities.HitscanAbility.#ctor(TrinketTinker.Effects.TrinketTinkerEffect,TrinketTinker.Models.AbilityData,System.Int32)">
   HitscanAbility(TrinketTinkerEffect, AbilityData, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HitscanAbility.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HitscanAbility.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Deal damage to monster within range, optionally stun them for a period.</p>
@@ -219,7 +219,7 @@ Class HitscanAbility  <a class="header-action link-secondary" title="View source
 
   <h3 id="TrinketTinker_Effects_Abilities_HitscanAbility_ApplyEffect_TrinketTinker_Effects_Proc_ProcEventArgs_" data-uid="TrinketTinker.Effects.Abilities.HitscanAbility.ApplyEffect(TrinketTinker.Effects.Proc.ProcEventArgs)">
   ApplyEffect(ProcEventArgs)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HitscanAbility.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HitscanAbility.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Applies ability effect, mark the ability as not allowed until next tick or longer.</p>
@@ -239,6 +239,43 @@ Class HitscanAbility  <a class="header-action link-secondary" title="View source
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Effects_Abilities_HitscanAbility_GetTASPosition_" data-uid="TrinketTinker.Effects.Abilities.HitscanAbility.GetTASPosition*"></a>
+
+  <h3 id="TrinketTinker_Effects_Abilities_HitscanAbility_GetTASPosition_TrinketTinker_Effects_Proc_ProcEventArgs_" data-uid="TrinketTinker.Effects.Abilities.HitscanAbility.GetTASPosition(TrinketTinker.Effects.Proc.ProcEventArgs)">
+  GetTASPosition(ProcEventArgs)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HitscanAbility.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get where the on proc <span class="xref">StardewValley.TemporaryAnimatedSprite</span> should be drawn from.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override Vector2 GetTASPosition(ProcEventArgs proc)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>proc</code> <a class="xref" href="TrinketTinker.Effects.Proc.ProcEventArgs.html">ProcEventArgs</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector2</span></dt>
     <dd></dd>
   </dl>
 

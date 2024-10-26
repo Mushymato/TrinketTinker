@@ -72,6 +72,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Companions.Motions.HopMotion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Companions.Motions.HopMotion.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Companions.Motions.HoverMotion.yml",
       "output": {
         ".html": {
@@ -632,6 +642,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.MotionArgs.HopArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.MotionArgs.HopArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Models.MotionArgs.HoverArgs.yml",
       "output": {
         ".html": {
@@ -849,6 +869,16 @@
       "output": {
         ".html": {
           "relative_path": "guide/3.z.002-Bounce.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/3.z.003-Hop.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/3.z.003-Hop.html"
         }
       },
       "version": ""

@@ -47,7 +47,7 @@
   "guide/3.z.000-Lerp.html": {
     "href": "guide/3.z.000-Lerp.html",
     "title": "Lerp | TrinketTinker",
-    "keywords": "Lerp The companion follows the anchor at a distance. They will move as fast as they need to in order to stay within the desired distance. Args Property Type Default Notes Min float 80 Min distance from anchor, the companion does not move until they are this far from the anchor. Max float 640 Max distance from anchor, if the companion is farther away than this, teleport. MoveSync bool false When true, only allow companion to move when the player moves. Jitter float 0f Add randomness to movement, if greater than 0 and AlwaysMoving is true, the companion will randomly move around the anchor while within minimum range."
+    "keywords": "Lerp The companion follows the anchor at a distance. They will move as fast as they need to in order to stay within the desired distance. Lerp motion operate by this logic, using a lerp variable between 0 and 1. If the companion is too far (>Max) from the anchor position, teleport to the anchor. If the companion is far enough (>Min) from the anchor position, Record companion current position as start. Pick an end position based on the anchor. Enter lerping state. When start and end positions are set, increase lerp by value relative to elapsed game time, then calculate companion position with start + (end - start) * lerp. Once lerp reach 1 (and thus the companion reached the end position), exit lerping state. This completes 1 lerp step, and the companion will try to initiate new lerp state in the next game update tick. Args Property Type Default Notes Min float 80 Min distance from anchor, the companion does not move until they are this far from the anchor. Max float 640 Max distance from anchor, if the companion is farther away than this, teleport. Rate float 400 Miliseconds needed to complete 1 lerp, higher number makes companion take larger but slower lerp steps. Pause float 0 Pause between picking next position to lerp to. MoveSync bool false When true, only allow companion to move when the player moves. Jitter float 0f Add randomness to movement, if greater than 0 and AlwaysMoving is true, the companion will randomly move around the anchor while within minimum range."
   },
   "guide/3.z.001-Hover.html": {
     "href": "guide/3.z.001-Hover.html",
@@ -57,7 +57,12 @@
   "guide/3.z.002-Bounce.html": {
     "href": "guide/3.z.002-Bounce.html",
     "title": "Bounce | TrinketTinker",
-    "keywords": "Bounce Like Lerp motion, but the companion bounces up and down. Args Property Type Default Notes MaxHeight float 128 Height of bounce. Squash bool true Companion sprite squishes a bit when hitting the ground. *and all arguments of Lerp"
+    "keywords": "Bounce Like Lerp motion, but the companion bounces up and down periodically. To have the companion show an alternate animation while bouncing, set a \"Jump\" animation clip with the desired frame start, frame length, etc. The difference between Bounce and Hop is that bounce calculates bounces independent of lerp start and end, it also provides squashing for deforming the sprite when hitting the ground. Args Property Type Default Notes MaxHeight float 96 Height of bounce. Squash bool true Companion sprite squishes a bit when hitting the ground. Period float 800 Length of each bounce in miliseconds. *and all arguments of Lerp"
+  },
+  "guide/3.z.003-Hop.html": {
+    "href": "guide/3.z.003-Hop.html",
+    "title": "Bounce | TrinketTinker",
+    "keywords": "Bounce Like Lerp motion, but the companion leaps from point to point, following the start and end positions set by lerp. To have the companion show an alternate animation while bouncing, set a \"Jump\" animation clip with the desired frame start, frame length, etc. The difference between Hop and Bounce is that hop is synchronized with lerp start and end positions. Args Property Type Default Notes MaxHeight float 128 Height of bounce. *and all arguments of Lerp"
   },
   "guide/3.z.100-Static.html": {
     "href": "guide/3.z.100-Static.html",
