@@ -28,7 +28,7 @@ namespace TrinketTinker.Companions.Motions
                     {
                         perching = false;
                         perchingTimer = 0f;
-                        lerp = -1f;
+                        Lerp = -1f;
                         c.OverrideKey = null;
                     }
                 }
@@ -40,12 +40,12 @@ namespace TrinketTinker.Companions.Motions
                         perching = true;
                         c.startPosition = c.Position;
                         c.endPosition = c.OwnerPosition + args.PerchingOffset;
-                        lerp = 0f;
+                        Lerp = 0f;
                     }
                 }
             }
             base.UpdateLocal(time, location);
-            if (perching && lerp < 0f)
+            if (perching && Lerp < 0f)
             {
                 c.OverrideKey = PERCHING;
             }

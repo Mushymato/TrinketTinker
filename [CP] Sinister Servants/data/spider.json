@@ -71,6 +71,7 @@
                 "AbilityClass": "Projectile",
                 "Args": {
                   "StunTime": 3000,
+                  "StunTAS": "{{ModId}}_SpiderWeb",
                   "Range": 4096,
                   "Texture": "Mods/{{ModId}}/spider_p",
                   "SpriteIndex": 0,
@@ -89,6 +90,7 @@
                 "AbilityClass": "Projectile",
                 "Args": {
                   "StunTime": 4000,
+                  "StunTAS": "{{ModId}}_SpiderWeb",
                   "Range": 4096,
                   "Texture": "Mods/{{ModId}}/spider_p",
                   "SpriteIndex": 0,
@@ -107,9 +109,12 @@
                 "AbilityClass": "Projectile",
                 "Args": {
                   "StunTime": 5000,
+                  "StunTAS": "{{ModId}}_SpiderWeb",
                   "Range": 4096,
                   "Texture": "Mods/{{ModId}}/spider_p",
                   "SpriteIndex": 0,
+                  "SpriteWidth": 18,
+                  "SprideHeight": 15,
                   "Acceleration": 2,
                   "MinVelocity": 2,
                   "MaxVelocity": 24
@@ -119,6 +124,24 @@
           ]
         },
       }
-    }
+    },
+    {
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/TAS",
+      "Entries": {
+        "{{ModId}}_SpiderWeb": {
+          "Id": "{{ModId}}_SpiderWeb",
+          "Texture": "Mods/{{ModId}}/spider_p",
+          "SourceRect": {
+            "X": 0,
+            "Y": 0,
+            "Width": 18,
+            "Height": 15
+          },
+          "Frames": 1,
+          "PositionOffset": "-9,-7"
+        },
+      }
+    },
   ]
 }

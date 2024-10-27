@@ -16,9 +16,9 @@ namespace TrinketTinker.Companions.Motions
         /// <inheritdoc/>
         public override void UpdateGlobal(GameTime time, GameLocation location)
         {
-            if (lerp > 0f)
+            if (Lerp > 0f)
             {
-                height = Visuals.EaseOut(0f, args.MaxHeight, 2 * ((lerp > 0.5f) ? 1f - lerp : lerp));
+                height = Visuals.EaseOut(0f, args.MaxHeight, 2 * ((Lerp > 0.5f) ? 1f - Lerp : Lerp));
                 c.OverrideKey = JUMP;
             }
             else

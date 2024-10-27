@@ -7,6 +7,7 @@ using StardewValley.Projectiles;
 using StardewValley.TerrainFeatures;
 using TrinketTinker.Effects.Proc;
 using TrinketTinker.Models.AbilityArgs;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Effects.Pewpew
 {
@@ -28,6 +29,7 @@ namespace TrinketTinker.Effects.Pewpew
         internal readonly NetInt stunTime = new(0);
         internal readonly NetInt hits = new(0);
         internal readonly NetInt explodeRadius = new(0);
+        internal readonly NetString stunTAS = new(null);
 
         /// <summary>Construct an empty instance.</summary>
         public TinkerProjectile() : base()
@@ -45,7 +47,7 @@ namespace TrinketTinker.Effects.Pewpew
             Vector2 velocity = Utility.getVelocityTowardPoint(sourcePosition, target.getStandingPosition(), args.MinVelocity);
             xVelocity.Value = velocity.X;
             yVelocity.Value = velocity.Y;
-            startingRotation.Value = (float)Math.Atan2(velocity.Y, velocity.X);
+            startingRotation.Value = args.RotateToTarget ? (float)Math.Atan2(velocity.Y, velocity.X) : 0f;
             acceleration.Value = Utility.getVelocityTowardPoint(sourcePosition, target.getStandingPosition(), args.Acceleration);
             maxVelocity.Value = args.MaxVelocity;
             position.Value = sourcePosition;
@@ -62,6 +64,7 @@ namespace TrinketTinker.Effects.Pewpew
             critChance.Value = args.CritChance;
             critMultiplier.Value = args.CritDamage;
             stunTime.Value = args.StunTime;
+            stunTAS.Value = args.StunTAS;
             hits.Value = args.Hits;
             explodeRadius.Value = args.ExplodeRadius;
 
@@ -83,6 +86,7 @@ namespace TrinketTinker.Effects.Pewpew
             .AddField(critChance, "critChance")
             .AddField(critMultiplier, "critMultiplier")
             .AddField(stunTime, "stunTime")
+            .AddField(stunTAS, "stunTAS")
             .AddField(hits, "hits")
             .AddField(explodeRadius, "explodeRadius")
             ;
@@ -186,6 +190,15 @@ namespace TrinketTinker.Effects.Pewpew
                 if (stunTime.Value > 0)
                 {
                     monster.stunTime.Value = stunTime.Value;
+                    if (stunTAS.Value != null)
+                    {
+                        Vector2 pos = monster.getStandingPosition();
+                        Visuals.BroadcastTAS(
+                            stunTAS.Value, pos, (pos.Y + 96f) / 10000f, location,
+                            duration: stunTime.Value,
+                            rotation: rotation
+                        );
+                    }
                 }
                 if (explodeRadius.Value > 0)
                 {

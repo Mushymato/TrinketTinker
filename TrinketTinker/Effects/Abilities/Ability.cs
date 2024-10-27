@@ -149,11 +149,7 @@ namespace TrinketTinker.Effects.Abilities
                 if (d.ProcSound != null)
                     Game1.playSound(d.ProcSound);
 
-                // foreach (TemporaryAnimatedSpriteDefinition temporarySprite in d.ProcTemporarySprites)
-                //     Visuals.BroadcastTAS(temporarySprite, GetTASPosition(proc), e.CompanionOwnerDrawLayer, proc.LocationOrCurrent);
-                Vector2 tasPos = GetTASPosition(proc);
-                foreach (TemporaryAnimatedSpriteDefinition tas in d.ProcTASDef)
-                    Visuals.BroadcastTAS(tas, tasPos, e.CompanionOwnerDrawLayer, proc.LocationOrCurrent);
+                Visuals.BroadcastTASList(d.ProcTAS, GetTASPosition(proc), e.CompanionOwnerDrawLayer, proc.LocationOrCurrent);
 
                 EventAbilityProc?.Invoke(sender, proc);
             }

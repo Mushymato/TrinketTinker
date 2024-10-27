@@ -132,7 +132,6 @@
       "Entries": {
         "{{ModId}}_BatHealed": {
           "Id": "{{ModId}}_BatHealed",
-          // "Condition": null,
           "Texture": "TileSheets/animations",
           "SourceRect": {
             "X": 0,
@@ -143,15 +142,7 @@
           "Interval": 100,
           "Frames": 8,
           "Loops": 4,
-          // "PositionOffset": "0, -32",
-          // "Flicker": false,
-          // "Flip": false,
-          // "SortOffset": 0.0,
-          // "AlphaFade": 0.005,
           "Scale": 0.25,
-          // "ScaleChange": 0.0,
-          // "Rotation": 0.0,
-          // "RotationChange": 0.0,
           "Color": "Red"
         }
       }

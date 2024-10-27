@@ -58,13 +58,16 @@
                 "Description": "{{i18n:Skull.AbilityDescription.1}}",
                 "Proc": "Timer",
                 "ProcTimer": 1000,
+                "ProcTAS": [
+                  "{{ModId}}_SkullHit"
+                ],
                 "Args": {
                   "Min": 20,
                   "Max": 30,
                   "Knockback": 1,
                   "Range": 128
                 },
-              }
+              },
             ],
             // level 3
             [
@@ -73,6 +76,9 @@
                 "Description": "{{i18n:Skull.AbilityDescription.2}}",
                 "Proc": "Timer",
                 "ProcTimer": 1000,
+                "ProcTAS": [
+                  "{{ModId}}_SkullHit"
+                ],
                 "Args": {
                   "Min": 30,
                   "Max": 40,
@@ -88,6 +94,9 @@
                 "Description": "{{i18n:Skull.AbilityDescription.3}}",
                 "Proc": "Timer",
                 "ProcTimer": 1000,
+                "ProcTAS": [
+                  "{{ModId}}_SkullHit"
+                ],
                 "Args": {
                   "Min": 40,
                   "Max": 50,
@@ -99,6 +108,27 @@
           ]
         },
       }
-    }
+    },
+    {
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/TAS",
+      "Entries": {
+        "{{ModId}}_SkullHit": {
+          "Id": "{{ModId}}_SkullHit",
+          "Texture": "TileSheets/Projectiles",
+          "SourceRect": {
+            "X": 64,
+            "Y": 0,
+            "Width": 16,
+            "Height": 16
+          },
+          "Interval": 20,
+          "Frames": 1,
+          "Loops": 20,
+          "AlphaFade": 0.01,
+          "RotationChange": 0.2,
+        }
+      }
+    },
   ]
 }

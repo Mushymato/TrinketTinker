@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Monsters;
 using StardewValley.TerrainFeatures;
@@ -258,10 +259,13 @@ namespace TrinketTinker.Companions.Motions
         /// <inheritdoc/>
         public virtual void Draw(SpriteBatch b)
         {
-            while (drawSnapshotQueue.TryPeek(out DrawSnapshot? _, out long priority) &&
-                   Game1.currentGameTime.TotalGameTime.Ticks >= priority)
+            if (!Game1.HostPaused)
             {
-                drawSnapshotQueue.Dequeue().DoDraw(b);
+                while (drawSnapshotQueue.TryPeek(out DrawSnapshot? _, out long priority) &&
+                       Game1.currentGameTime.TotalGameTime.Ticks >= priority)
+                {
+                    drawSnapshotQueue.Dequeue().DoDraw(b);
+                }
             }
             Vector2 offset = GetOffset();
             float layerDepth = md.LayerDepth switch
@@ -310,6 +314,8 @@ namespace TrinketTinker.Companions.Motions
 
         private void EnqueueDrawSnapshots(DrawSnapshot snapshot)
         {
+            if (Game1.HostPaused)
+                return;
             for (int i = 1; i <= md.RepeatCount; i++)
             {
                 drawSnapshotQueue.Enqueue(

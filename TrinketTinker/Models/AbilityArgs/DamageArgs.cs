@@ -1,7 +1,9 @@
+using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Monsters;
 using TrinketTinker.Effects.Proc;
 using TrinketTinker.Models.Mixin;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Models.AbilityArgs
 {
@@ -24,6 +26,12 @@ namespace TrinketTinker.Models.AbilityArgs
         public float CritDamage { get; set; } = 0f;
         /// <summary>Stun time in miliseconds</summary>
         public int StunTime { get; set; } = 0;
+        /// <summary>
+        /// Temporary sprite to display while an enemy is stunned, must be defined in <see cref="mushymato.TrinketTinker/TAS"/>.
+        /// Loop will be overwritten by the stun time.
+        /// Rotation will be overwritten if this is used for a projectile.
+        /// </summary>
+        public string? StunTAS { get; set; } = null;
         /// <summary>Number of hits to perform</summary>
         public int Hits { get; set; } = 1;
         /// <summary>
@@ -87,6 +95,13 @@ namespace TrinketTinker.Models.AbilityArgs
             if (StunTime > 0)
             {
                 target.stunTime.Value = StunTime;
+                if (StunTAS != null)
+                {
+                    Vector2 pos = target.getStandingPosition();
+                    float drawLayer = pos.Y / 10000f + 2E-06f;
+                    if (!Visuals.BroadcastTAS(StunTAS, pos, drawLayer, target.currentLocation, duration: StunTime))
+                        StunTAS = null;
+                }
             }
             if (ExplodeRadius > 0)
             {

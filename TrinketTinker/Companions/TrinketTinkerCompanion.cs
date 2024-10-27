@@ -29,6 +29,12 @@ namespace TrinketTinker.Companions
         /// <summary>Whether companion is moving</summary>
         public bool CompanionMoving { get; private set; } = false;
         internal NetPosition NetPosition => _position;
+        private readonly NetFloat _netLerp = new NetFloat(-1f).Interpolated(true, false);
+        internal float Lerp
+        {
+            get => _netLerp.Value;
+            set => _netLerp.Value = value;
+        }
         // Derived
         /// <summary>Backing companion data from content.</summary>
         public TinkerData? Data;
@@ -104,6 +110,7 @@ namespace TrinketTinker.Companions
                 .AddField(_id, "_id")
                 .AddField(_oneshotKey, "_oneshotKey")
                 .AddField(_overrideKey, "_overrideKey")
+                .AddField(_netLerp, "_netLerp")
             ;
             _id.fieldChangeVisibleEvent += InitCompanionData;
             _oneshotKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) => Motion?.SetOneshotClip(newValue);

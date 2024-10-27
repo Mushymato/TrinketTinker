@@ -11,7 +11,11 @@ namespace TrinketTinker.Companions.Motions
     public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata) : Motion<IArgs>(companion, mdata, vdata) where IArgs : LerpArgs
     {
         /// <summary>Variable for how much interpolation happened so far.</summary>
-        protected float lerp = -1f;
+        protected float Lerp
+        {
+            get => c.Lerp;
+            set => c.Lerp = value;
+        }
         private double pauseTimer = 0;
 
         /// <inheritdoc/>
@@ -20,7 +24,7 @@ namespace TrinketTinker.Companions.Motions
             if (args.MoveSync && !c.OwnerMoving)
                 return;
 
-            if (lerp < 0f || AnchorChanged)
+            if (Lerp < 0f || AnchorChanged)
             {
                 pauseTimer += time.ElapsedGameTime.TotalMilliseconds;
                 if (pauseTimer < args.Pause)
@@ -31,7 +35,7 @@ namespace TrinketTinker.Companions.Motions
                 {
                     Utility.addRainbowStarExplosion(location, c.Position, 1);
                     c.Position = c.Anchor;
-                    lerp = -1f;
+                    Lerp = -1f;
                 }
                 else if (distance > args.Min)
                 {
@@ -46,7 +50,7 @@ namespace TrinketTinker.Companions.Motions
                     // {
                     //     c.endPosition = c.Anchor;
                     // }
-                    lerp = 0f;
+                    Lerp = 0f;
                 }
                 else if (md.AlwaysMoving && args.Jitter > 0f)
                 {
@@ -55,19 +59,19 @@ namespace TrinketTinker.Companions.Motions
                         Utility.RandomFloat(-args.Jitter, args.Jitter),
                         Utility.RandomFloat(-args.Jitter, args.Jitter)
                     );
-                    lerp = 0f;
+                    Lerp = 0f;
                 }
             }
-            if (lerp >= 0f)
+            if (Lerp >= 0f)
             {
-                lerp += (float)(time.ElapsedGameTime.TotalMilliseconds / args.Rate);
-                lerp = MathF.Min(1f, lerp);
-                c.NetPosition.X = Utility.Lerp(c.startPosition.X, c.endPosition.X, lerp);
-                c.NetPosition.Y = Utility.Lerp(c.startPosition.Y, c.endPosition.Y, lerp);
+                Lerp += (float)(time.ElapsedGameTime.TotalMilliseconds / args.Rate);
+                Lerp = MathF.Min(1f, Lerp);
+                c.NetPosition.X = Utility.Lerp(c.startPosition.X, c.endPosition.X, Lerp);
+                c.NetPosition.Y = Utility.Lerp(c.startPosition.Y, c.endPosition.Y, Lerp);
                 UpdateDirection();
-                if (lerp == 1f)
+                if (Lerp == 1f)
                 {
-                    lerp = -1f;
+                    Lerp = -1f;
                 }
             }
         }
@@ -89,37 +93,37 @@ namespace TrinketTinker.Companions.Motions
             return 0f;
         }
 
-#if DEBUG
-        public override void Draw(SpriteBatch b)
-        {
-            Vector2 localStartPos = Game1.GlobalToLocal(c.startPosition);
-            b.Draw(
-                Game1.staminaRect,
-                new Rectangle((int)localStartPos.X, (int)localStartPos.Y, 16, 16),
-                Game1.staminaRect.Bounds,
-                Color.Red,
-                0f, Vector2.Zero,
-                SpriteEffects.None,
-                1f
-            );
-            Vector2 localEndPos = Game1.GlobalToLocal(c.endPosition);
-            b.Draw(
-                Game1.staminaRect,
-                new Rectangle((int)localEndPos.X, (int)localEndPos.Y, 16, 16),
-                Game1.staminaRect.Bounds,
-                Color.Blue,
-                0f, Vector2.Zero,
-                SpriteEffects.None,
-                1f
-            );
-            base.Draw(b);
-        }
-#endif
+        // #if DEBUG
+        //         public override void Draw(SpriteBatch b)
+        //         {
+        //             Vector2 localStartPos = Game1.GlobalToLocal(c.startPosition);
+        //             b.Draw(
+        //                 Game1.staminaRect,
+        //                 new Rectangle((int)localStartPos.X, (int)localStartPos.Y, 16, 16),
+        //                 Game1.staminaRect.Bounds,
+        //                 Color.Red,
+        //                 0f, Vector2.Zero,
+        //                 SpriteEffects.None,
+        //                 1f
+        //             );
+        //             Vector2 localEndPos = Game1.GlobalToLocal(c.endPosition);
+        //             b.Draw(
+        //                 Game1.staminaRect,
+        //                 new Rectangle((int)localEndPos.X, (int)localEndPos.Y, 16, 16),
+        //                 Game1.staminaRect.Bounds,
+        //                 Color.Blue,
+        //                 0f, Vector2.Zero,
+        //                 SpriteEffects.None,
+        //                 1f
+        //             );
+        //             base.Draw(b);
+        //         }
+        // #endif
 
         /// <inheritdoc/>
         public override void OnOwnerWarp()
         {
-            lerp = -1f;
+            Lerp = -1f;
             base.OnOwnerWarp();
         }
 

@@ -44,12 +44,6 @@ namespace TrinketTinker.Models
         public string? ProcSound { get; set; } = null;
         /// <summary>Temporary animated sprite to spawn on proc, each item is the id of an entry in the TAS asset.</summary>
         public List<string> ProcTAS { get; set; } = [];
-        /// <summary>Mapped ProcTASDef.</summary>
-        internal ImmutableList<TemporaryAnimatedSpriteDefinition> ProcTASDef => ProcTAS
-                .Where(AssetManager.TASData.ContainsKey)
-                .Select((id) => AssetManager.TASData[id])
-                .ToImmutableList();
-
         /// <summary>Condition, see <see cref="StardewValley.GameStateQuery"/></summary>
         public string? Condition { get; set; } = null;
         /// <summary>

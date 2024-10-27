@@ -10,7 +10,7 @@
         }
       ],
       "dest": "api",
-      "filter": "docfx-api-filters.yml"
+      // "filter": "docfx-api-filters.yml"
     }
   ],
   "maxParallelism": 1,
