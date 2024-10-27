@@ -156,7 +156,7 @@ Always loops.</p>
 
   <h3 id="TrinketTinker_Companions_Anim_TinkerAnimSprite__ctor_TrinketTinker_Models_VariantData_" data-uid="TrinketTinker.Companions.Anim.TinkerAnimSprite.#ctor(TrinketTinker.Models.VariantData)">
   TinkerAnimSprite(VariantData)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Anim/TinkerAnimSprite.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Anim/TinkerAnimSprite.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -191,7 +191,7 @@ Always loops.</p>
 
   <h3 id="TrinketTinker_Companions_Anim_TinkerAnimSprite_AnimatePingPong_Microsoft_Xna_Framework_GameTime_System_Int32_System_Int32_System_Single_" data-uid="TrinketTinker.Companions.Anim.TinkerAnimSprite.AnimatePingPong(Microsoft.Xna.Framework.GameTime,System.Int32,System.Int32,System.Single)">
   AnimatePingPong(GameTime, int, int, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Anim/TinkerAnimSprite.cs/#L167"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Anim/TinkerAnimSprite.cs/#L160"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Reverse the animation from last frame, e.g. 1 2 3 4 3 2 1 2 3 4.
@@ -238,32 +238,23 @@ Return true when animation return to first frame.</p>
 
   <a id="TrinketTinker_Companions_Anim_TinkerAnimSprite_GetSourceRect_" data-uid="TrinketTinker.Companions.Anim.TinkerAnimSprite.GetSourceRect*"></a>
 
-  <h3 id="TrinketTinker_Companions_Anim_TinkerAnimSprite_GetSourceRect_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="TrinketTinker.Companions.Anim.TinkerAnimSprite.GetSourceRect(System.Int32,System.Int32,System.Int32,System.Int32)">
-  GetSourceRect(int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Anim/TinkerAnimSprite.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TrinketTinker_Companions_Anim_TinkerAnimSprite_GetSourceRect_System_Int32_" data-uid="TrinketTinker.Companions.Anim.TinkerAnimSprite.GetSourceRect(System.Int32)">
+  GetSourceRect(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Anim/TinkerAnimSprite.cs/#L54"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Calculate the source rectangle for a sprite in an NPC spritesheet.</p>
+  <div class="markdown level1 summary"><p>Get source rect corresponding to a particular frame.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Rectangle GetSourceRect(int textureWidth, int spriteWidth, int spriteHeight, int frame)</code></pre>
+    <pre><code class="lang-csharp hljs">public Rectangle GetSourceRect(int frame)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>textureWidth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The pixel width of the full spritesheet texture.</p>
-</dd>
-    <dt><code>spriteWidth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The pixel width of each sprite.</p>
-</dd>
-    <dt><code>spriteHeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The pixel height of each sprite.</p>
-</dd>
     <dt><code>frame</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The frame index, starting at 0 for the top-left corner.</p>
+    <dd><p>Frame, or sprite index</p>
 </dd>
   </dl>
 

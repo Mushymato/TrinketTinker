@@ -54,15 +54,15 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Companions.Anim.TinkerAnimSprite.AnimatePingPong
   nameWithType: TinkerAnimSprite.AnimatePingPong
-- uid: TrinketTinker.Companions.Anim.TinkerAnimSprite.GetSourceRect(System.Int32,System.Int32,System.Int32,System.Int32)
-  name: GetSourceRect(int, int, int, int)
-  href: api/TrinketTinker.Companions.Anim.TinkerAnimSprite.html#TrinketTinker_Companions_Anim_TinkerAnimSprite_GetSourceRect_System_Int32_System_Int32_System_Int32_System_Int32_
-  commentId: M:TrinketTinker.Companions.Anim.TinkerAnimSprite.GetSourceRect(System.Int32,System.Int32,System.Int32,System.Int32)
-  name.vb: GetSourceRect(Integer, Integer, Integer, Integer)
-  fullName: TrinketTinker.Companions.Anim.TinkerAnimSprite.GetSourceRect(int, int, int, int)
-  fullName.vb: TrinketTinker.Companions.Anim.TinkerAnimSprite.GetSourceRect(Integer, Integer, Integer, Integer)
-  nameWithType: TinkerAnimSprite.GetSourceRect(int, int, int, int)
-  nameWithType.vb: TinkerAnimSprite.GetSourceRect(Integer, Integer, Integer, Integer)
+- uid: TrinketTinker.Companions.Anim.TinkerAnimSprite.GetSourceRect(System.Int32)
+  name: GetSourceRect(int)
+  href: api/TrinketTinker.Companions.Anim.TinkerAnimSprite.html#TrinketTinker_Companions_Anim_TinkerAnimSprite_GetSourceRect_System_Int32_
+  commentId: M:TrinketTinker.Companions.Anim.TinkerAnimSprite.GetSourceRect(System.Int32)
+  name.vb: GetSourceRect(Integer)
+  fullName: TrinketTinker.Companions.Anim.TinkerAnimSprite.GetSourceRect(int)
+  fullName.vb: TrinketTinker.Companions.Anim.TinkerAnimSprite.GetSourceRect(Integer)
+  nameWithType: TinkerAnimSprite.GetSourceRect(int)
+  nameWithType.vb: TinkerAnimSprite.GetSourceRect(Integer)
 - uid: TrinketTinker.Companions.Anim.TinkerAnimSprite.GetSourceRect*
   name: GetSourceRect
   href: api/TrinketTinker.Companions.Anim.TinkerAnimSprite.html#TrinketTinker_Companions_Anim_TinkerAnimSprite_GetSourceRect_
@@ -138,6 +138,23 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.BaseLerpMotion(Of IArgs).GetRotation
   nameWithType: BaseLerpMotion<IArgs>.GetRotation
   nameWithType.vb: BaseLerpMotion(Of IArgs).GetRotation
+- uid: TrinketTinker.Companions.Motions.BaseLerpMotion`1.Lerp
+  name: Lerp
+  href: api/TrinketTinker.Companions.Motions.BaseLerpMotion-1.html#TrinketTinker_Companions_Motions_BaseLerpMotion_1_Lerp
+  commentId: P:TrinketTinker.Companions.Motions.BaseLerpMotion`1.Lerp
+  fullName: TrinketTinker.Companions.Motions.BaseLerpMotion<IArgs>.Lerp
+  fullName.vb: TrinketTinker.Companions.Motions.BaseLerpMotion(Of IArgs).Lerp
+  nameWithType: BaseLerpMotion<IArgs>.Lerp
+  nameWithType.vb: BaseLerpMotion(Of IArgs).Lerp
+- uid: TrinketTinker.Companions.Motions.BaseLerpMotion`1.Lerp*
+  name: Lerp
+  href: api/TrinketTinker.Companions.Motions.BaseLerpMotion-1.html#TrinketTinker_Companions_Motions_BaseLerpMotion_1_Lerp_
+  commentId: Overload:TrinketTinker.Companions.Motions.BaseLerpMotion`1.Lerp
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.BaseLerpMotion<IArgs>.Lerp
+  fullName.vb: TrinketTinker.Companions.Motions.BaseLerpMotion(Of IArgs).Lerp
+  nameWithType: BaseLerpMotion<IArgs>.Lerp
+  nameWithType.vb: BaseLerpMotion(Of IArgs).Lerp
 - uid: TrinketTinker.Companions.Motions.BaseLerpMotion`1.OnOwnerWarp
   name: OnOwnerWarp()
   href: api/TrinketTinker.Companions.Motions.BaseLerpMotion-1.html#TrinketTinker_Companions_Motions_BaseLerpMotion_1_OnOwnerWarp
@@ -172,14 +189,6 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.BaseLerpMotion(Of IArgs).UpdateLocal
   nameWithType: BaseLerpMotion<IArgs>.UpdateLocal
   nameWithType.vb: BaseLerpMotion(Of IArgs).UpdateLocal
-- uid: TrinketTinker.Companions.Motions.BaseLerpMotion`1.lerp
-  name: lerp
-  href: api/TrinketTinker.Companions.Motions.BaseLerpMotion-1.html#TrinketTinker_Companions_Motions_BaseLerpMotion_1_lerp
-  commentId: F:TrinketTinker.Companions.Motions.BaseLerpMotion`1.lerp
-  fullName: TrinketTinker.Companions.Motions.BaseLerpMotion<IArgs>.lerp
-  fullName.vb: TrinketTinker.Companions.Motions.BaseLerpMotion(Of IArgs).lerp
-  nameWithType: BaseLerpMotion<IArgs>.lerp
-  nameWithType.vb: BaseLerpMotion(Of IArgs).lerp
 - uid: TrinketTinker.Companions.Motions.BaseStaticMotion`1
   name: BaseStaticMotion<IArgs>
   href: api/TrinketTinker.Companions.Motions.BaseStaticMotion-1.html
@@ -3110,6 +3119,203 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.TrinketTinkerEffect.Update
   nameWithType: TrinketTinkerEffect.Update
+- uid: TrinketTinker.Extras
+  name: TrinketTinker.Extras
+  href: api/TrinketTinker.Extras.html
+  commentId: N:TrinketTinker.Extras
+  fullName: TrinketTinker.Extras
+  nameWithType: TrinketTinker.Extras
+- uid: TrinketTinker.Extras.ItemQuery
+  name: ItemQuery
+  href: api/TrinketTinker.Extras.ItemQuery.html
+  commentId: T:TrinketTinker.Extras.ItemQuery
+  fullName: TrinketTinker.Extras.ItemQuery
+  nameWithType: ItemQuery
+- uid: TrinketTinker.Extras.ItemQuery.CreateTrinket(System.String,System.String,StardewValley.Internal.ItemQueryContext,System.Boolean,System.Collections.Generic.HashSet{System.String},System.Action{System.String,System.String})
+  name: CreateTrinket(string, string, ItemQueryContext, bool, HashSet<string>, Action<string, string>)
+  href: api/TrinketTinker.Extras.ItemQuery.html#TrinketTinker_Extras_ItemQuery_CreateTrinket_System_String_System_String_StardewValley_Internal_ItemQueryContext_System_Boolean_System_Collections_Generic_HashSet_System_String__System_Action_System_String_System_String__
+  commentId: M:TrinketTinker.Extras.ItemQuery.CreateTrinket(System.String,System.String,StardewValley.Internal.ItemQueryContext,System.Boolean,System.Collections.Generic.HashSet{System.String},System.Action{System.String,System.String})
+  name.vb: CreateTrinket(String, String, ItemQueryContext, Boolean, HashSet(Of String), Action(Of String, String))
+  fullName: TrinketTinker.Extras.ItemQuery.CreateTrinket(string, string, StardewValley.Internal.ItemQueryContext, bool, System.Collections.Generic.HashSet<string>, System.Action<string, string>)
+  fullName.vb: TrinketTinker.Extras.ItemQuery.CreateTrinket(String, String, StardewValley.Internal.ItemQueryContext, Boolean, System.Collections.Generic.HashSet(Of String), System.Action(Of String, String))
+  nameWithType: ItemQuery.CreateTrinket(string, string, ItemQueryContext, bool, HashSet<string>, Action<string, string>)
+  nameWithType.vb: ItemQuery.CreateTrinket(String, String, ItemQueryContext, Boolean, HashSet(Of String), Action(Of String, String))
+- uid: TrinketTinker.Extras.ItemQuery.CreateTrinket*
+  name: CreateTrinket
+  href: api/TrinketTinker.Extras.ItemQuery.html#TrinketTinker_Extras_ItemQuery_CreateTrinket_
+  commentId: Overload:TrinketTinker.Extras.ItemQuery.CreateTrinket
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.ItemQuery.CreateTrinket
+  nameWithType: ItemQuery.CreateTrinket
+- uid: TrinketTinker.Extras.ItemQuery.CreateTrinketQuery
+  name: CreateTrinketQuery
+  href: api/TrinketTinker.Extras.ItemQuery.html#TrinketTinker_Extras_ItemQuery_CreateTrinketQuery
+  commentId: F:TrinketTinker.Extras.ItemQuery.CreateTrinketQuery
+  fullName: TrinketTinker.Extras.ItemQuery.CreateTrinketQuery
+  nameWithType: ItemQuery.CreateTrinketQuery
+- uid: TrinketTinker.Extras.ProcTrinket
+  name: ProcTrinket
+  href: api/TrinketTinker.Extras.ProcTrinket.html
+  commentId: T:TrinketTinker.Extras.ProcTrinket
+  fullName: TrinketTinker.Extras.ProcTrinket
+  nameWithType: ProcTrinket
+- uid: TrinketTinker.Extras.ProcTrinket.Action(System.String[],StardewValley.Delegates.TriggerActionContext,System.String@)
+  name: Action(string[], TriggerActionContext, out string)
+  href: api/TrinketTinker.Extras.ProcTrinket.html#TrinketTinker_Extras_ProcTrinket_Action_System_String___StardewValley_Delegates_TriggerActionContext_System_String__
+  commentId: M:TrinketTinker.Extras.ProcTrinket.Action(System.String[],StardewValley.Delegates.TriggerActionContext,System.String@)
+  name.vb: Action(String(), TriggerActionContext, String)
+  fullName: TrinketTinker.Extras.ProcTrinket.Action(string[], StardewValley.Delegates.TriggerActionContext, out string)
+  fullName.vb: TrinketTinker.Extras.ProcTrinket.Action(String(), StardewValley.Delegates.TriggerActionContext, String)
+  nameWithType: ProcTrinket.Action(string[], TriggerActionContext, out string)
+  nameWithType.vb: ProcTrinket.Action(String(), TriggerActionContext, String)
+- uid: TrinketTinker.Extras.ProcTrinket.Action*
+  name: Action
+  href: api/TrinketTinker.Extras.ProcTrinket.html#TrinketTinker_Extras_ProcTrinket_Action_
+  commentId: Overload:TrinketTinker.Extras.ProcTrinket.Action
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.ProcTrinket.Action
+  nameWithType: ProcTrinket.Action
+- uid: TrinketTinker.Extras.ProcTrinket.TriggerActionName
+  name: TriggerActionName
+  href: api/TrinketTinker.Extras.ProcTrinket.html#TrinketTinker_Extras_ProcTrinket_TriggerActionName
+  commentId: F:TrinketTinker.Extras.ProcTrinket.TriggerActionName
+  fullName: TrinketTinker.Extras.ProcTrinket.TriggerActionName
+  nameWithType: ProcTrinket.TriggerActionName
+- uid: TrinketTinker.Extras.TrinketColorizer
+  name: TrinketColorizer
+  href: api/TrinketTinker.Extras.TrinketColorizer.html
+  commentId: T:TrinketTinker.Extras.TrinketColorizer
+  fullName: TrinketTinker.Extras.TrinketColorizer
+  nameWithType: TrinketColorizer
+- uid: TrinketTinker.Extras.TrinketColorizer.Edit_BigCraftables(StardewModdingAPI.IAssetData)
+  name: Edit_BigCraftables(IAssetData)
+  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_Edit_BigCraftables_StardewModdingAPI_IAssetData_
+  commentId: M:TrinketTinker.Extras.TrinketColorizer.Edit_BigCraftables(StardewModdingAPI.IAssetData)
+  fullName: TrinketTinker.Extras.TrinketColorizer.Edit_BigCraftables(StardewModdingAPI.IAssetData)
+  nameWithType: TrinketColorizer.Edit_BigCraftables(IAssetData)
+- uid: TrinketTinker.Extras.TrinketColorizer.Edit_BigCraftables*
+  name: Edit_BigCraftables
+  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_Edit_BigCraftables_
+  commentId: Overload:TrinketTinker.Extras.TrinketColorizer.Edit_BigCraftables
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.TrinketColorizer.Edit_BigCraftables
+  nameWithType: TrinketColorizer.Edit_BigCraftables
+- uid: TrinketTinker.Extras.TrinketColorizer.Edit_MachineData(StardewModdingAPI.IAssetData)
+  name: Edit_MachineData(IAssetData)
+  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_Edit_MachineData_StardewModdingAPI_IAssetData_
+  commentId: M:TrinketTinker.Extras.TrinketColorizer.Edit_MachineData(StardewModdingAPI.IAssetData)
+  fullName: TrinketTinker.Extras.TrinketColorizer.Edit_MachineData(StardewModdingAPI.IAssetData)
+  nameWithType: TrinketColorizer.Edit_MachineData(IAssetData)
+- uid: TrinketTinker.Extras.TrinketColorizer.Edit_MachineData*
+  name: Edit_MachineData
+  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_Edit_MachineData_
+  commentId: Overload:TrinketTinker.Extras.TrinketColorizer.Edit_MachineData
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.TrinketColorizer.Edit_MachineData
+  nameWithType: TrinketColorizer.Edit_MachineData
+- uid: TrinketTinker.Extras.TrinketColorizer.Edit_Shops_Blacksmith(StardewModdingAPI.IAssetData)
+  name: Edit_Shops_Blacksmith(IAssetData)
+  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_Edit_Shops_Blacksmith_StardewModdingAPI_IAssetData_
+  commentId: M:TrinketTinker.Extras.TrinketColorizer.Edit_Shops_Blacksmith(StardewModdingAPI.IAssetData)
+  fullName: TrinketTinker.Extras.TrinketColorizer.Edit_Shops_Blacksmith(StardewModdingAPI.IAssetData)
+  nameWithType: TrinketColorizer.Edit_Shops_Blacksmith(IAssetData)
+- uid: TrinketTinker.Extras.TrinketColorizer.Edit_Shops_Blacksmith*
+  name: Edit_Shops_Blacksmith
+  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_Edit_Shops_Blacksmith_
+  commentId: Overload:TrinketTinker.Extras.TrinketColorizer.Edit_Shops_Blacksmith
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.TrinketColorizer.Edit_Shops_Blacksmith
+  nameWithType: TrinketColorizer.Edit_Shops_Blacksmith
+- uid: TrinketTinker.Extras.TrinketColorizer.OnAssetRequested(StardewModdingAPI.Events.AssetRequestedEventArgs)
+  name: OnAssetRequested(AssetRequestedEventArgs)
+  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_OnAssetRequested_StardewModdingAPI_Events_AssetRequestedEventArgs_
+  commentId: M:TrinketTinker.Extras.TrinketColorizer.OnAssetRequested(StardewModdingAPI.Events.AssetRequestedEventArgs)
+  fullName: TrinketTinker.Extras.TrinketColorizer.OnAssetRequested(StardewModdingAPI.Events.AssetRequestedEventArgs)
+  nameWithType: TrinketColorizer.OnAssetRequested(AssetRequestedEventArgs)
+- uid: TrinketTinker.Extras.TrinketColorizer.OnAssetRequested*
+  name: OnAssetRequested
+  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_OnAssetRequested_
+  commentId: Overload:TrinketTinker.Extras.TrinketColorizer.OnAssetRequested
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.TrinketColorizer.OnAssetRequested
+  nameWithType: TrinketColorizer.OnAssetRequested
+- uid: TrinketTinker.Extras.TrinketColorizer.OutputTinkerAnvil(StardewValley.Object,StardewValley.Item,System.Boolean,StardewValley.GameData.Machines.MachineItemOutput,StardewValley.Farmer,System.Nullable{System.Int32}@)
+  name: OutputTinkerAnvil(Object, Item, bool, MachineItemOutput, Farmer, out int?)
+  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_OutputTinkerAnvil_StardewValley_Object_StardewValley_Item_System_Boolean_StardewValley_GameData_Machines_MachineItemOutput_StardewValley_Farmer_System_Nullable_System_Int32___
+  commentId: M:TrinketTinker.Extras.TrinketColorizer.OutputTinkerAnvil(StardewValley.Object,StardewValley.Item,System.Boolean,StardewValley.GameData.Machines.MachineItemOutput,StardewValley.Farmer,System.Nullable{System.Int32}@)
+  name.vb: OutputTinkerAnvil(Object, Item, Boolean, MachineItemOutput, Farmer, Integer?)
+  fullName: TrinketTinker.Extras.TrinketColorizer.OutputTinkerAnvil(StardewValley.Object, StardewValley.Item, bool, StardewValley.GameData.Machines.MachineItemOutput, StardewValley.Farmer, out int?)
+  fullName.vb: TrinketTinker.Extras.TrinketColorizer.OutputTinkerAnvil(StardewValley.Object, StardewValley.Item, Boolean, StardewValley.GameData.Machines.MachineItemOutput, StardewValley.Farmer, Integer?)
+  nameWithType: TrinketColorizer.OutputTinkerAnvil(Object, Item, bool, MachineItemOutput, Farmer, out int?)
+  nameWithType.vb: TrinketColorizer.OutputTinkerAnvil(Object, Item, Boolean, MachineItemOutput, Farmer, Integer?)
+- uid: TrinketTinker.Extras.TrinketColorizer.OutputTinkerAnvil*
+  name: OutputTinkerAnvil
+  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_OutputTinkerAnvil_
+  commentId: Overload:TrinketTinker.Extras.TrinketColorizer.OutputTinkerAnvil
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.TrinketColorizer.OutputTinkerAnvil
+  nameWithType: TrinketColorizer.OutputTinkerAnvil
+- uid: TrinketTinker.Extras.TrinketColorizer.OutputTrinketColorizer(StardewValley.Object,StardewValley.Item,System.Boolean,StardewValley.GameData.Machines.MachineItemOutput,StardewValley.Farmer,System.Nullable{System.Int32}@)
+  name: OutputTrinketColorizer(Object, Item, bool, MachineItemOutput, Farmer, out int?)
+  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_OutputTrinketColorizer_StardewValley_Object_StardewValley_Item_System_Boolean_StardewValley_GameData_Machines_MachineItemOutput_StardewValley_Farmer_System_Nullable_System_Int32___
+  commentId: M:TrinketTinker.Extras.TrinketColorizer.OutputTrinketColorizer(StardewValley.Object,StardewValley.Item,System.Boolean,StardewValley.GameData.Machines.MachineItemOutput,StardewValley.Farmer,System.Nullable{System.Int32}@)
+  name.vb: OutputTrinketColorizer(Object, Item, Boolean, MachineItemOutput, Farmer, Integer?)
+  fullName: TrinketTinker.Extras.TrinketColorizer.OutputTrinketColorizer(StardewValley.Object, StardewValley.Item, bool, StardewValley.GameData.Machines.MachineItemOutput, StardewValley.Farmer, out int?)
+  fullName.vb: TrinketTinker.Extras.TrinketColorizer.OutputTrinketColorizer(StardewValley.Object, StardewValley.Item, Boolean, StardewValley.GameData.Machines.MachineItemOutput, StardewValley.Farmer, Integer?)
+  nameWithType: TrinketColorizer.OutputTrinketColorizer(Object, Item, bool, MachineItemOutput, Farmer, out int?)
+  nameWithType.vb: TrinketColorizer.OutputTrinketColorizer(Object, Item, Boolean, MachineItemOutput, Farmer, Integer?)
+- uid: TrinketTinker.Extras.TrinketColorizer.OutputTrinketColorizer*
+  name: OutputTrinketColorizer
+  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_OutputTrinketColorizer_
+  commentId: Overload:TrinketTinker.Extras.TrinketColorizer.OutputTrinketColorizer
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.TrinketColorizer.OutputTrinketColorizer
+  nameWithType: TrinketColorizer.OutputTrinketColorizer
+- uid: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerId
+  name: TrinketColorizerId
+  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_TrinketColorizerId
+  commentId: P:TrinketTinker.Extras.TrinketColorizer.TrinketColorizerId
+  fullName: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerId
+  nameWithType: TrinketColorizer.TrinketColorizerId
+- uid: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerId*
+  name: TrinketColorizerId
+  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_TrinketColorizerId_
+  commentId: Overload:TrinketTinker.Extras.TrinketColorizer.TrinketColorizerId
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerId
+  nameWithType: TrinketColorizer.TrinketColorizerId
+- uid: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerQId
+  name: TrinketColorizerQId
+  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_TrinketColorizerQId
+  commentId: P:TrinketTinker.Extras.TrinketColorizer.TrinketColorizerQId
+  fullName: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerQId
+  nameWithType: TrinketColorizer.TrinketColorizerQId
+- uid: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerQId*
+  name: TrinketColorizerQId
+  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_TrinketColorizerQId_
+  commentId: Overload:TrinketTinker.Extras.TrinketColorizer.TrinketColorizerQId
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerQId
+  nameWithType: TrinketColorizer.TrinketColorizerQId
+- uid: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerTexture
+  name: TrinketColorizerTexture
+  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_TrinketColorizerTexture
+  commentId: P:TrinketTinker.Extras.TrinketColorizer.TrinketColorizerTexture
+  fullName: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerTexture
+  nameWithType: TrinketColorizer.TrinketColorizerTexture
+- uid: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerTexture*
+  name: TrinketColorizerTexture
+  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_TrinketColorizerTexture_
+  commentId: Overload:TrinketTinker.Extras.TrinketColorizer.TrinketColorizerTexture
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerTexture
+  nameWithType: TrinketColorizer.TrinketColorizerTexture
+- uid: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerTextureFile
+  name: TrinketColorizerTextureFile
+  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_TrinketColorizerTextureFile
+  commentId: F:TrinketTinker.Extras.TrinketColorizer.TrinketColorizerTextureFile
+  fullName: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerTextureFile
+  nameWithType: TrinketColorizer.TrinketColorizerTextureFile
 - uid: TrinketTinker.Models
   name: TrinketTinker.Models
   href: api/TrinketTinker.Models.html
@@ -3315,6 +3521,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.Range
   nameWithType: DamageArgs.Range
+- uid: TrinketTinker.Models.AbilityArgs.DamageArgs.StunTAS
+  name: StunTAS
+  href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_StunTAS
+  commentId: P:TrinketTinker.Models.AbilityArgs.DamageArgs.StunTAS
+  fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.StunTAS
+  nameWithType: DamageArgs.StunTAS
+- uid: TrinketTinker.Models.AbilityArgs.DamageArgs.StunTAS*
+  name: StunTAS
+  href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_StunTAS_
+  commentId: Overload:TrinketTinker.Models.AbilityArgs.DamageArgs.StunTAS
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.StunTAS
+  nameWithType: DamageArgs.StunTAS
 - uid: TrinketTinker.Models.AbilityArgs.DamageArgs.StunTime
   name: StunTime
   href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_StunTime
@@ -3437,6 +3656,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AbilityArgs.ProjectileArgs.Pierce
   nameWithType: ProjectileArgs.Pierce
+- uid: TrinketTinker.Models.AbilityArgs.ProjectileArgs.RotateToTarget
+  name: RotateToTarget
+  href: api/TrinketTinker.Models.AbilityArgs.ProjectileArgs.html#TrinketTinker_Models_AbilityArgs_ProjectileArgs_RotateToTarget
+  commentId: P:TrinketTinker.Models.AbilityArgs.ProjectileArgs.RotateToTarget
+  fullName: TrinketTinker.Models.AbilityArgs.ProjectileArgs.RotateToTarget
+  nameWithType: ProjectileArgs.RotateToTarget
+- uid: TrinketTinker.Models.AbilityArgs.ProjectileArgs.RotateToTarget*
+  name: RotateToTarget
+  href: api/TrinketTinker.Models.AbilityArgs.ProjectileArgs.html#TrinketTinker_Models_AbilityArgs_ProjectileArgs_RotateToTarget_
+  commentId: Overload:TrinketTinker.Models.AbilityArgs.ProjectileArgs.RotateToTarget
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityArgs.ProjectileArgs.RotateToTarget
+  nameWithType: ProjectileArgs.RotateToTarget
 - uid: TrinketTinker.Models.AbilityArgs.ProjectileArgs.SpriteHeight
   name: SpriteHeight
   href: api/TrinketTinker.Models.AbilityArgs.ProjectileArgs.html#TrinketTinker_Models_AbilityArgs_ProjectileArgs_SpriteHeight
@@ -4524,6 +4756,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.MotionData.GetIdleAnim
   nameWithType: MotionData.GetIdleAnim
+- uid: TrinketTinker.Models.MotionData.HideDuringEvents
+  name: HideDuringEvents
+  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_HideDuringEvents
+  commentId: P:TrinketTinker.Models.MotionData.HideDuringEvents
+  fullName: TrinketTinker.Models.MotionData.HideDuringEvents
+  nameWithType: MotionData.HideDuringEvents
+- uid: TrinketTinker.Models.MotionData.HideDuringEvents*
+  name: HideDuringEvents
+  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_HideDuringEvents_
+  commentId: Overload:TrinketTinker.Models.MotionData.HideDuringEvents
+  isSpec: "True"
+  fullName: TrinketTinker.Models.MotionData.HideDuringEvents
+  nameWithType: MotionData.HideDuringEvents
 - uid: TrinketTinker.Models.MotionData.Interval
   name: Interval
   href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_Interval
@@ -4615,6 +4860,45 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.MotionData.RepeatInternval
   nameWithType: MotionData.RepeatInternval
+- uid: TrinketTinker.Models.MotionData.Segment
+  name: Segment
+  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_Segment
+  commentId: P:TrinketTinker.Models.MotionData.Segment
+  fullName: TrinketTinker.Models.MotionData.Segment
+  nameWithType: MotionData.Segment
+- uid: TrinketTinker.Models.MotionData.Segment*
+  name: Segment
+  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_Segment_
+  commentId: Overload:TrinketTinker.Models.MotionData.Segment
+  isSpec: "True"
+  fullName: TrinketTinker.Models.MotionData.Segment
+  nameWithType: MotionData.Segment
+- uid: TrinketTinker.Models.MotionData.SegmentInterval
+  name: SegmentInterval
+  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_SegmentInterval
+  commentId: P:TrinketTinker.Models.MotionData.SegmentInterval
+  fullName: TrinketTinker.Models.MotionData.SegmentInterval
+  nameWithType: MotionData.SegmentInterval
+- uid: TrinketTinker.Models.MotionData.SegmentInterval*
+  name: SegmentInterval
+  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_SegmentInterval_
+  commentId: Overload:TrinketTinker.Models.MotionData.SegmentInterval
+  isSpec: "True"
+  fullName: TrinketTinker.Models.MotionData.SegmentInterval
+  nameWithType: MotionData.SegmentInterval
+- uid: TrinketTinker.Models.MotionData.SegmentLength
+  name: SegmentLength
+  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_SegmentLength
+  commentId: P:TrinketTinker.Models.MotionData.SegmentLength
+  fullName: TrinketTinker.Models.MotionData.SegmentLength
+  nameWithType: MotionData.SegmentLength
+- uid: TrinketTinker.Models.MotionData.SegmentLength*
+  name: SegmentLength
+  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_SegmentLength_
+  commentId: Overload:TrinketTinker.Models.MotionData.SegmentLength
+  isSpec: "True"
+  fullName: TrinketTinker.Models.MotionData.SegmentLength
+  nameWithType: MotionData.SegmentLength
 - uid: TrinketTinker.Models.ProcOn
   name: ProcOn
   href: api/TrinketTinker.Models.ProcOn.html
@@ -4856,3 +5140,27 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.VariantData.Width
   nameWithType: VariantData.Width
+- uid: TrinketTinker.Wheels
+  name: TrinketTinker.Wheels
+  href: api/TrinketTinker.Wheels.html
+  commentId: N:TrinketTinker.Wheels
+  fullName: TrinketTinker.Wheels
+  nameWithType: TrinketTinker.Wheels
+- uid: TrinketTinker.Wheels.TinkerConst
+  name: TinkerConst
+  href: api/TrinketTinker.Wheels.TinkerConst.html
+  commentId: T:TrinketTinker.Wheels.TinkerConst
+  fullName: TrinketTinker.Wheels.TinkerConst
+  nameWithType: TinkerConst
+- uid: TrinketTinker.Wheels.TinkerConst.COLOR_PRISMATIC
+  name: COLOR_PRISMATIC
+  href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_COLOR_PRISMATIC
+  commentId: F:TrinketTinker.Wheels.TinkerConst.COLOR_PRISMATIC
+  fullName: TrinketTinker.Wheels.TinkerConst.COLOR_PRISMATIC
+  nameWithType: TinkerConst.COLOR_PRISMATIC
+- uid: TrinketTinker.Wheels.TinkerConst.ONE_FRAME
+  name: ONE_FRAME
+  href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_ONE_FRAME
+  commentId: F:TrinketTinker.Wheels.TinkerConst.ONE_FRAME
+  fullName: TrinketTinker.Wheels.TinkerConst.ONE_FRAME
+  nameWithType: TinkerConst.ONE_FRAME

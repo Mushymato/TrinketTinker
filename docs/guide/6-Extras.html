@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Ability | TrinketTinker </title>
+      <title>Extras | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Ability | TrinketTinker ">
+      <meta name="title" content="Extras | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/4-Ability.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/6-Extras.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,122 +85,19 @@
         </div>
 
         <article data-uid="">
-<h1 id="ability">Ability</h1>
+<h1 id="extras">Extras</h1>
 
-<p>Ability describes the effects that occur when you equip the trinket, like getting healed, or attacking an enemy.</p>
-<p>An ability is primarily defined by <code>AbilityClass</code> (what it does) and <code>Proc</code> (when does it activate).</p>
-<h2 id="structure">Structure</h2>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Default</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>AbilityClass</code></td>
-<td>string</td>
-<td>DebugDummy</td>
-<td>Type name of the motion class to use, can use short name like <code>Buff</code>. <br>Refer to page titles under &quot;Ability Classes&quot; in the table of contents for details.</td>
-</tr>
-<tr>
-<td><code>Description</code></td>
-<td>string</td>
-<td><em>empty</em></td>
-<td>String of the ability, will be used to substitute <code>&quot;{1}&quot;</code> in a <a href="0-Trinket.html">trinket's</a> description.</td>
-</tr>
-<tr>
-<td><code>Proc</code></td>
-<td><a href="4.0-Proc.html">ProcOn</a></td>
-<td>Footstep</td>
-<td>Make ability activate when something happens.</td>
-</tr>
-<tr>
-<td><code>ProcTimer</code></td>
-<td>double</td>
-<td>-1</td>
-<td>After an ability proc, prevent further activations for this amount of time.</td>
-</tr>
-<tr>
-<td><code>ProcSound</code></td>
-<td>string</td>
-<td><em>empty</em></td>
-<td>Play a sound cue when ability procs (<a href="https://stardewvalleywiki.com/Modding:Audio">details</a>)</td>
-</tr>
-<tr>
-<td><code>ProcTAS</code></td>
-<td><code>List&lt;string&gt;</code></td>
-<td><em>empty</em></td>
-<td>String Id of <a href="5-TAS.html">temporary animated sprites</a> to show when the ability activates.</td>
-</tr>
-<tr>
-<td><code>Condition</code></td>
-<td>string</td>
-<td><em>empty</em></td>
-<td>A <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state query</a> that must pass before proc.</td>
-</tr>
-<tr>
-<td><code>DamageThreshold</code></td>
-<td>int</td>
-<td>-1</td>
-<td>Must receive or deal this much damage before proc.<br>For ReceiveDamage &amp; DamageMonster</td>
-</tr>
-<tr>
-<td><code>IsBomb</code></td>
-<td>bool?</td>
-<td><em>empty</em></td>
-<td>Must deal damage with(true)/not with(false) a bomb.<br>For DamageMonster &amp; SlayMonster,</td>
-</tr>
-<tr>
-<td><code>IsCriticalHit</code></td>
-<td>bool?</td>
-<td><em>empty</em></td>
-<td>Must (true)/must not(false) deal a critical hit.<br></td>
-</tr>
-<tr>
-<td><code>Args</code></td>
-<td>Dictionary</td>
-<td><em>varies</em></td>
-<td>Arguments specific to an ability class, see respective page for details.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="note">Note</h2>
-<ul>
-<li>Abilities are internally 0-indexed, but the displayed minimum ability can be changed in <a href="1-Tinker.html">TinkerData</a></li>
-<li>When there are multiple abilities per level and a description for each, they will be joined with new line before passed to description template.</li>
-<li>Example of how description template works:
-<pre><code class="lang-json">// Trinket
-&quot;Description&quot;: &quot;My trinket {0}:\n{1}&quot;
-// Tinker
-&quot;MinLevel&quot;: 2
-// Tinker Abilities
-[
-    [   // rest of ability omitted
-        {&quot;Description&quot;: &quot;first ability A&quot;, ...},
-        {&quot;Description&quot;: &quot;second ability B&quot;, ...}
-    ],
-    [   // rest of ability omitted
-        {&quot;Description&quot;: &quot;first ability C&quot;, ...},
-        {&quot;Description&quot;: &quot;second ability D&quot;, ...}
-    ]
-]
+<p>TrinketTinker provides a few extra supporting features.</p>
+<h2 id="item-query-mushymatotrinkettinker_create_trinket">Item Query: mushymato.TrinketTinker_CREATE_TRINKET</h2>
+<pre><code>mushymato.TrinketTinker_CREATE_TRINKET &lt;trinket id&gt; [level] [variant]
 </code></pre>
-Description when trinket has internal level 0:
-<pre><code>My trinket 2:
-first ability A
-second ability B
-</code></pre>
-Description when trinket has internal level 1:
-<pre><code>My trinket 3:
-first ability C
-second ability D
-</code></pre>
-</li>
-</ul>
+<p>Creates a new trinket item. If the trinket has tinker data, set level and variant.
+Useful for producing a trinket at specified level/variant.</p>
+<h2 id="machine-trinket-colorizer-trinket-colorizer">Machine: Trinket Colorizer <img src="../images/favicon.png" alt="Trinket Colorizer"></h2>
+<p>A new machine that can be purchased from <a href="https://stardewvalleywiki.com/Blacksmith">the Blacksmith</a> for 50 <a href="https://stardewvalleywiki.com/Gold_Bar">Gold Bars</a> once the <a href="https://stardewvalleywiki.com/Anvil">Anvil</a> recipe is obtained.</p>
+<p>Consumes 3 <a href="https://stardewvalleywiki.com/Star_Shards">Star Shards</a> to reroll the variant on a TrinketTinker trinket, no effect on vanilla trinkets.</p>
+<p>The Trinket Colorizer is just a normal machine with qualified id <code>(BC)mushymato.TrinketTinker_TrinketColorizer</code>, mods are free to add their own machine rules.</p>
+<p>By default, the colorizer will never roll the same variant twice in a row. Anvils have similar rule applied to them, for TrinketTinker trinkets only.</p>
 
 </article>
 

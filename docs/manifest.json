@@ -412,6 +412,46 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Extras.ItemQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Extras.ItemQuery.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Extras.ProcTrinket.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Extras.ProcTrinket.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Extras.TrinketColorizer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Extras.TrinketColorizer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Extras.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Extras.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Models.AbilityArgs.ActionArgs.yml",
       "output": {
         ".html": {
@@ -751,6 +791,26 @@
       "version": ""
     },
     {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Wheels.TinkerConst.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Wheels.TinkerConst.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Wheels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Wheels.html"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "api/toc.yml",
       "output": {
@@ -1075,10 +1135,20 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/5-Extras.md",
+      "source_relative_path": "guide/5-TAS.md",
       "output": {
         ".html": {
-          "relative_path": "guide/5-Extras.html"
+          "relative_path": "guide/5-TAS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/6-Extras.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/6-Extras.html"
         }
       },
       "version": ""
