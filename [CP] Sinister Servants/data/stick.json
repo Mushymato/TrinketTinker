@@ -76,6 +76,48 @@
                 },
               },
               {
+                "AbilityClass": "Health",
+                "Proc": "Sync",
+                "Args": {
+                  "ValueMode": "Number",
+                  "Min": 44
+                }
+              },
+            ],
+            // level 2
+            [
+              {
+                "AbilityClass": "HarvestCrop",
+                "Description": "{{i18n:Stick.AbilityDescription.2}}",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "ProcSound": "harvest",
+                "Args": {
+                  "Range": 0,
+                },
+              },
+              {
+                "AbilityClass": "Stamina",
+                "Proc": "Sync",
+                "Args": {
+                  "ValueMode": "Number",
+                  "Min": 44
+                }
+              }
+            ],
+            // level 3
+            [
+              {
+                "AbilityClass": "HarvestForage",
+                "Description": "{{i18n:Stick.AbilityDescription.3}}",
+                "Proc": "Timer",
+                "ProcTimer": 250,
+                "ProcSound": "harvest",
+                "Args": {
+                  "Range": 1,
+                },
+              },
+              {
                 "AbilityClass": "HarvestCrop",
                 "Proc": "Timer",
                 "ProcTimer": 1000,
@@ -89,7 +131,7 @@
                 "Proc": "Sync",
                 "Args": {
                   "ValueMode": "Number",
-                  "Min": 7
+                  "Min": 44
                 }
               },
               {
@@ -98,7 +140,7 @@
                 "ProcSyncIndex": 1,
                 "Args": {
                   "ValueMode": "Number",
-                  "Min": 7
+                  "Min": 44
                 }
               }
             ],

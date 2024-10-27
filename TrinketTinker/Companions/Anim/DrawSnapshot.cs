@@ -1,12 +1,14 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using StardewValley;
 
 namespace TrinketTinker.Companions.Anim
 {
     internal sealed class DrawSnapshot
     {
         internal Texture2D texture = null!;
-        internal Vector2 position;
+        internal Vector2? position = null;
+        internal Vector2? globalPosition = null;
         internal Rectangle sourceRect;
         internal Color drawColor;
         internal float rotation;
@@ -19,7 +21,7 @@ namespace TrinketTinker.Companions.Anim
         {
             b.Draw(
                 texture,
-                position,
+                position ?? Game1.GlobalToLocal((Vector2)globalPosition!),
                 sourceRect,
                 drawColor,
                 rotation,

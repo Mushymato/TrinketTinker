@@ -107,10 +107,31 @@ namespace TrinketTinker.Models
         public Vector2 Offset { get; set; } = Vector2.Zero;
         /// <summary>Layer depth mode.</summary>
         public LayerDepth LayerDepth { get; set; } = LayerDepth.Position;
+        /// <summary>Hide the companion during events.</summary>
+        public bool HideDuringEvents { get; set; } = false;
         /// <summary>Number of times to repeat the draw.</summary>
         public float RepeatCount { get; set; } = 0;
         /// <summary>Number of miliseconds between repeats.</summary>
         public float RepeatInternval { get; set; } = 1000;
+        /// <summary>
+        /// Draw segments, requiring additional sets of sprites for the segment(s).<br/>
+        /// Example with <see cref="Segment"/> = 3 <see cref="DirectionMode"/> = <see cref="DirectionMode.R"/> and <see cref="FrameLength"/> = 4, requiring sprites for "segment 1", "segment 2", and "tail".
+        /// <list type="bullet">
+        /// <item>The initial "head" need 4 frames, taking up frames 0 to 3.</item>
+        /// <item>"segment 1" need 4 frames, taking up frames 4 to 7.</item>
+        /// <item>"segment 2" need 4 frames, taking up frames 8 to 11.</item>
+        /// <item>Finally, the "tail" need 4 frames, taking up frames 12 to 16.</item>
+        /// </list>
+        /// Spritesheet needs a total of 16 frames.
+        /// </summary>
+        public int Segment { get; set; } = 0;
+        /// <summary>
+        /// Number of times to draw each middle segment, multiple segments will be drawn in alternating pattern.
+        /// If this is 5 and there were 3 segments (so <see cref="Segment"/> is 4), the total number of segments drawn will be 15.
+        /// </summary>
+        public int SegmentLength { get; set; } = 3;
+        /// <summary>Draw interval between segments.</summary>
+        public float SegmentInterval { get; set; } = 200;
         /// <summary>
         /// Repository of anim clips that can be shown in place of the default movement anim.
         /// Must live on the same sprite sheet specified by variant data.

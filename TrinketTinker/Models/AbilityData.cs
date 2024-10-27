@@ -42,7 +42,7 @@ namespace TrinketTinker.Models
         public int ProcSyncIndex { get; set; } = 0;
         /// <summary>Sound cue to play on proc.</summary>
         public string? ProcSound { get; set; } = null;
-        /// <summary>Temporary animated sprite to spawn on proc, each item is the id of an entry in the TAS asset.</summary>
+        /// <summary>Temporary animated sprite to spawn on proc, each item is the id of an entry in the mushymato.TrinketTinker/TAS asset.</summary>
         public List<string> ProcTAS { get; set; } = [];
         /// <summary>Condition, see <see cref="StardewValley.GameStateQuery"/></summary>
         public string? Condition { get; set; } = null;

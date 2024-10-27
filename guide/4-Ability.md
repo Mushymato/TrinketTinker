@@ -13,7 +13,7 @@ An ability is primarily defined by `AbilityClass` (what it does) and `Proc` (whe
 | `Proc` | [ProcOn](4.0-Proc.md) | Footstep | Make ability activate when something happens. |
 | `ProcTimer` | double | -1 | After an ability proc, prevent further activations for this amount of time. |
 | `ProcSound` | string | _empty_ | Play a sound cue when ability procs ([details](https://stardewvalleywiki.com/Modding:Audio)) |
-| `ProcTAS` | `List<string>` | _empty_ | String Id of [temporary animated sprites](5-TAS) to show when the ability activates. |
+| `ProcTAS` | `List<string>` | _empty_ | String Id of [temporary animated sprites](5-TAS.md) to show when the ability activates. |
 | `Condition` | string | _empty_ | A [game state query](https://stardewvalleywiki.com/Modding:Game_state_queries) that must pass before proc. |
 | `DamageThreshold` | int | -1 | Must receive or deal this much damage before proc.<br>For ReceiveDamage & DamageMonster |
 | `IsBomb` | bool? | _empty_ | Must deal damage with(true)/not with(false) a bomb.<br>For DamageMonster & SlayMonster, |

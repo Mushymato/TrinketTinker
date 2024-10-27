@@ -58,5 +58,7 @@
       name: HarvestForage
     name: Ability Classes
   name: Ability
-- href: 5-Extras.md
+- href: 5-TAS.md
+  name: TAS
+- href: 6-Extras.md
   name: Extras

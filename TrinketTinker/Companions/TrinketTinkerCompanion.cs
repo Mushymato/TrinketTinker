@@ -152,6 +152,8 @@ namespace TrinketTinker.Companions
         {
             if (Owner == null || Owner.currentLocation == null || (Owner.currentLocation.DisplayName == "Temp" && !Game1.isFestival()))
                 return;
+            if (!Visuals.ShouldDraw())
+                return;
 
             Motion?.Draw(b);
         }

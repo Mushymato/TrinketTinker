@@ -4,6 +4,8 @@ using TrinketTinker.Models.MotionArgs;
 
 namespace TrinketTinker.Companions.Motions
 {
+    /// <summary>Companion's offset is adjusted depending on player facing direction</summary>
+    /// <inheritdoc/>
     public sealed class RelativeMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata)
         : BaseStaticMotion<StaticArgs>(companion, mdata, vdata)
     {

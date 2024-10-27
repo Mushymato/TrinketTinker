@@ -40,16 +40,6 @@ namespace TrinketTinker.Companions.Anim
         internal int currentFrame = 0;
         private bool isReverse = false;
 
-        /// <summary>Calculate the source rectangle for a sprite in an NPC spritesheet.</summary>
-        /// <param name="textureWidth">The pixel width of the full spritesheet texture.</param>
-        /// <param name="spriteWidth">The pixel width of each sprite.</param>
-        /// <param name="spriteHeight">The pixel height of each sprite.</param>
-        /// <param name="frame">The frame index, starting at 0 for the top-left corner.</param>
-        public static Rectangle GetSourceRect(int textureWidth, int spriteWidth, int spriteHeight, int frame)
-        {
-            return new Rectangle(frame * spriteWidth % textureWidth, frame * spriteWidth / textureWidth * spriteHeight, spriteWidth, spriteHeight);
-        }
-
         public TinkerAnimSprite(VariantData vdata)
         {
             vd = vdata;
@@ -58,18 +48,21 @@ namespace TrinketTinker.Companions.Anim
             UpdateSourceRect();
         }
 
+        /// <summary>Get source rect corresponding to a particular frame.</summary>
+        /// <param name="frame">Frame, or sprite index</param>
+        /// <returns></returns>
+        public Rectangle GetSourceRect(int frame)
+        {
+            return new Rectangle(
+                frame * vd.Width % Texture.Width,
+                frame * vd.Width / Texture.Width * vd.Height,
+                vd.Width, vd.Height
+            );
+        }
+
         private void UpdateSourceRect()
         {
-            int s_w = vd.Width;
-            int s_h = vd.Height;
-            int t_w = Texture.Width;
-            // int t_h = Texture.Height;
-            SourceRect = GetSourceRect(t_w, s_w, s_h, currentFrame);
-            // if (SourceRect.Right > t_w || SourceRect.Bottom > t_h)
-            // {
-            //     currentFrame = 0;
-            //     SourceRect = GetSourceRect(t_w, s_w, s_h, currentFrame);
-            // }
+            SourceRect = GetSourceRect(currentFrame);
         }
 
         /// <summary>Set sprite to specific frame</summary>

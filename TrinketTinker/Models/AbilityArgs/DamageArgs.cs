@@ -27,7 +27,7 @@ namespace TrinketTinker.Models.AbilityArgs
         /// <summary>Stun time in miliseconds</summary>
         public int StunTime { get; set; } = 0;
         /// <summary>
-        /// Temporary sprite to display while an enemy is stunned, must be defined in <see cref="mushymato.TrinketTinker/TAS"/>.
+        /// Temporary sprite to display while an enemy is stunned, must be defined in mushymato.TrinketTinker/TAS.
         /// Loop will be overwritten by the stun time.
         /// Rotation will be overwritten if this is used for a projectile.
         /// </summary>

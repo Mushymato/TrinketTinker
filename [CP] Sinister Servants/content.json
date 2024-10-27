@@ -23,6 +23,10 @@
       "Action": "Include",
       "FromFile": "data/spider.json"
     },
+    {
+      "Action": "Include",
+      "FromFile": "data/snek.json"
+    },
     // shop
     {
       "Action": "Include",

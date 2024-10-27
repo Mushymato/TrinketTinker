@@ -4,18 +4,20 @@
   // Skull
   "Skull.DisplayName": "Polished Cranium",
   "Skull.Description": "A polished skull from some creature, it's cold to the touch.\n\nLv.{0}: {1}",
-  "Skull.AbilityDescription.1": "Summon a haunted skull; deals 20-30 damage to any enemies that get close.",
-  "Skull.AbilityDescription.2": "Summon a haunted skull; that deals 30-40 damage to any enemies that get close.",
-  "Skull.AbilityDescription.3": "Summon a haunted skull; that deals 40-50 damage to any enemies that get close.",
+  "Skull.AbilityDescription.1": "Summon a haunted skull; deal 20-30 damage to nearby enemies.",
+  "Skull.AbilityDescription.2": "Summon a haunted skull; deal 30-40 damage to nearby enemies.",
+  "Skull.AbilityDescription.3": "Summon a haunted skull; deal 40-50 damage to nearby enemies.",
   // Bat
   "Bat.DisplayName": "Leathery Wing",
   "Bat.Description": "A colorful wing from a ghastly bat.\n\nLv.{0}: {1}",
-  "Bat.AbilityDescription.1": "Summon a bat; when you land a critical hit, recover 13 HP and 13 Energy.",
-  "Bat.AbilityDescription.2": "Summon a bat; when you land a critical hit, recover 13% of the damage dealt as HP and Energy, can only activate once per 2s.",
+  "Bat.AbilityDescription.1": "Summon a bat; on critical hit, recover 13 HP and 13 Energy.",
+  "Bat.AbilityDescription.2": "Summon a bat; on critical hit, recover 13% of the damage dealt as HP and Energy.",
   // Stick
   "Stick.DisplayName": "Sticc",
   "Stick.Description": "A stick?\n\n{1}",
-  "Stick.AbilityDescription.1": "Summon a stickbug; harvests nearby forage and heal 10%~20% HP.",
+  "Stick.AbilityDescription.1": "Summon a stickbug; harvest nearby forage, recover 44 HP on success.",
+  "Stick.AbilityDescription.2": "Summon a stickbug; harvest nearby crops, recover 44 Energy on success.",
+  "Stick.AbilityDescription.3": "Summon a stickbug; harvest nearby forage and crops, recover 44 HP and Energy on success.",
   // Dust Spirit
   "DustSpirit.DisplayName": "Fuzzy Coal",
   "DustSpirit.Description": "It's looking at you.\n\nLv.{0}: {1}",
@@ -27,6 +29,12 @@
   "Spider.AbilityDescription.1": "Summon a hopping spider; shoots a web that immobilize enemies for 3s every 10s.",
   "Spider.AbilityDescription.2": "Summon a hopping spider; shoots a web that immobilize enemies for 4s every 9s.",
   "Spider.AbilityDescription.3": "Summon a hopping spider; shoots a web that immobilize enemies for 5s every 8s.",
+  // Snek
+  "Snek.DisplayName": "Jug of Iridium Milk",
+  "Snek.Description": "Emits indescribable aroma, attract iridium snakes.",
+  "Snek.AbilityDescription.1": "snek.",
+  "Snek.AbilityDescription.2": "snek.",
+  "Snek.AbilityDescription.3": "snek.",
   // Shop
   "AngryRoger.Name": "Angry Roger",
   "AngryRoger.Dialog.1": "Bring to me the flesh and spirit of the damned ~~~",

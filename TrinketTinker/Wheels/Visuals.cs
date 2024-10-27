@@ -41,7 +41,8 @@ namespace TrinketTinker.Wheels
         /// <param name="position">origin of TAS</param>
         /// <param name="drawLayer">base draw layer</param>
         /// <param name="location">sprite broadcast location</param>
-        /// <param name="duration">duration override</param>
+        /// <param name="duration"></param>
+        /// <param name="rotation"></param>
         public static void BroadcastTAS(TemporaryAnimatedSpriteDefinition tasDef, Vector2 position, float drawLayer, GameLocation location,
                                         float? duration = null, float? rotation = null)
         {
@@ -64,6 +65,14 @@ namespace TrinketTinker.Wheels
             Game1.Multiplayer.broadcastSprites(location, temporaryAnimatedSprite);
         }
 
+        /// <summary>Broadcast TAS using the string id</summary>
+        /// <param name="tasId"></param>
+        /// <param name="position"></param>
+        /// <param name="drawLayer"></param>
+        /// <param name="location"></param>
+        /// <param name="duration"></param>
+        /// <param name="rotation"></param>
+        /// <returns></returns>
         public static bool BroadcastTAS(string tasId, Vector2 position, float drawLayer, GameLocation location,
                                         float? duration = null, float? rotation = null)
         {
@@ -80,7 +89,8 @@ namespace TrinketTinker.Wheels
         /// <param name="tasIds"></param>
         /// <param name="position"></param>
         /// <param name="drawLayer"></param>
-        /// <param name="location"></param>
+        /// <param name="duration"></param>
+        /// <param name="rotation"></param>
         public static void BroadcastTASList(List<string> tasIds, Vector2 position, float drawLayer, GameLocation location,
                                             float? duration = null, float? rotation = null)
         {
@@ -112,6 +122,13 @@ namespace TrinketTinker.Wheels
         public static float EaseOut(float a, float b, float t)
         {
             return a + (1 - MathF.Pow(1 - t, 2)) * (b - a);
+        }
+
+        /// <summary>Stop drawing companions while game is paused. Doesn't seem to do anything though?</summary>
+        /// <returns></returns>
+        public static bool ShouldDraw()
+        {
+            return !(Game1.paused || Game1.HostPaused);
         }
     }
 }

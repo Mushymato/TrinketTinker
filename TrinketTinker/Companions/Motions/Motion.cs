@@ -1,3 +1,4 @@
+using Force.DeepCloner;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
@@ -39,6 +40,7 @@ namespace TrinketTinker.Companions.Motions
         private AnimClipData? overrideClip = null;
         /// <summary>Heap of frames to draw, after the initial one.</summary>
         private readonly PriorityQueue<DrawSnapshot, long> drawSnapshotQueue = new();
+        private readonly int totalFrames = 1;
 
         /// <summary>Basic constructor, tries to parse arguments as the generic <see cref="IArgs"/> type.</summary>
         /// <param name="companion"></param>
@@ -56,6 +58,16 @@ namespace TrinketTinker.Companions.Motions
             md = mdata;
             vd = vdata;
             cs = new TinkerAnimSprite(vdata);
+
+            totalFrames = md.DirectionMode switch
+            {
+                DirectionMode.Single => md.FrameLength,
+                DirectionMode.R => md.FrameLength,
+                DirectionMode.RL => md.FrameLength * 2,
+                DirectionMode.DRU => md.FrameLength * 3,
+                DirectionMode.DRUL => md.FrameLength * 4,
+                _ => throw new NotImplementedException(),
+            };
         }
 
         /// <inheritdoc/>
@@ -169,7 +181,6 @@ namespace TrinketTinker.Companions.Motions
             currAnchorTarget = AnchorTarget.Owner;
             c.Anchor = Utility.PointToVector2(c.Owner.GetBoundingBox().Center);
             return;
-
         }
 
         /// <inheritdoc/>
@@ -259,14 +270,15 @@ namespace TrinketTinker.Companions.Motions
         /// <inheritdoc/>
         public virtual void Draw(SpriteBatch b)
         {
-            if (!Game1.HostPaused)
+            if (md.HideDuringEvents && Game1.eventUp)
+                return;
+
+            while (drawSnapshotQueue.TryPeek(out DrawSnapshot? _, out long priority) &&
+                   Game1.currentGameTime.TotalGameTime.Ticks >= priority)
             {
-                while (drawSnapshotQueue.TryPeek(out DrawSnapshot? _, out long priority) &&
-                       Game1.currentGameTime.TotalGameTime.Ticks >= priority)
-                {
-                    drawSnapshotQueue.Dequeue().DoDraw(b);
-                }
+                drawSnapshotQueue.Dequeue().DoDraw(b);
             }
+
             Vector2 offset = GetOffset();
             float layerDepth = md.LayerDepth switch
             {
@@ -279,6 +291,7 @@ namespace TrinketTinker.Companions.Motions
             {
                 texture = cs.Texture,
                 position = Game1.GlobalToLocal(c.Position + offset + c.Owner.drawOffset),
+                globalPosition = c.Position + offset + c.Owner.drawOffset,
                 sourceRect = cs.SourceRect,
                 drawColor = cs.DrawColor,
                 rotation = GetRotation(),
@@ -288,34 +301,41 @@ namespace TrinketTinker.Companions.Motions
                 layerDepth = layerDepth
             };
             snapshot.DoDraw(b);
-            EnqueueDrawSnapshots(snapshot);
+            EnqueueRepeatDraws(snapshot);
 
-            Vector2 shadowScale = GetShadowScale();
-            if (shadowScale.X > 0 || shadowScale.Y > 0)
+            if (md.Segment > 0)
             {
-                DrawSnapshot shadowSnapshot = new()
+                EnqueueSegmentDraws(snapshot);
+            }
+            else
+            {
+                Vector2 shadowScale = GetShadowScale();
+                if (shadowScale.X > 0 || shadowScale.Y > 0)
                 {
-                    texture = Game1.shadowTexture,
-                    position = Game1.GlobalToLocal(c.Position + new Vector2(offset.X, 0) + c.Owner.drawOffset),
-                    sourceRect = Game1.shadowTexture.Bounds,
-                    drawColor = Color.White,
-                    rotation = 0f,
-                    origin = new Vector2(
-                        Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y
-                    ),
-                    textureScale = shadowScale,
-                    effects = SpriteEffects.None,
-                    layerDepth = layerDepth - 2E-06f
-                };
-                shadowSnapshot.DoDraw(b);
-                EnqueueDrawSnapshots(shadowSnapshot);
+                    DrawSnapshot shadowSnapshot = new()
+                    {
+                        texture = Game1.shadowTexture,
+                        position = Game1.GlobalToLocal(c.Position + new Vector2(offset.X, 0) + c.Owner.drawOffset),
+                        sourceRect = Game1.shadowTexture.Bounds,
+                        drawColor = Color.White,
+                        rotation = 0f,
+                        origin = new Vector2(
+                            Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y
+                        ),
+                        textureScale = shadowScale,
+                        effects = SpriteEffects.None,
+                        layerDepth = layerDepth - 2E-06f
+                    };
+                    shadowSnapshot.DoDraw(b);
+                    EnqueueRepeatDraws(shadowSnapshot);
+                }
             }
         }
 
-        private void EnqueueDrawSnapshots(DrawSnapshot snapshot)
+        /// <summary>Queue up repeats of the current draw.</summary>
+        /// <param name="snapshot"></param>
+        private void EnqueueRepeatDraws(DrawSnapshot snapshot)
         {
-            if (Game1.HostPaused)
-                return;
             for (int i = 1; i <= md.RepeatCount; i++)
             {
                 drawSnapshotQueue.Enqueue(
@@ -324,6 +344,36 @@ namespace TrinketTinker.Companions.Motions
                     TimeSpan.FromMilliseconds(md.RepeatInternval * i).Ticks
                 );
             }
+        }
+        /// <summary>Queue up draws of extra segments.</summary>
+        /// <param name="snapshot"></param>
+        private void EnqueueSegmentDraws(DrawSnapshot snapshot)
+        {
+            // middle segments
+            DrawSnapshot segmentSnapshot;
+            for (int seg = 1; seg < md.Segment; seg++)
+            {
+                segmentSnapshot = snapshot.ShallowClone();
+                segmentSnapshot.position = null;
+                segmentSnapshot.sourceRect = cs.GetSourceRect(cs.currentFrame + seg * totalFrames);
+                for (int i = 1; i <= md.SegmentLength; i++)
+                {
+                    drawSnapshotQueue.Enqueue(
+                        segmentSnapshot,
+                        Game1.currentGameTime.TotalGameTime.Ticks +
+                        TimeSpan.FromMilliseconds(md.SegmentInterval * seg * i).Ticks
+                    );
+                }
+            }
+            // tail
+            segmentSnapshot = snapshot.ShallowClone();
+            segmentSnapshot.position = null;
+            segmentSnapshot.sourceRect = cs.GetSourceRect(cs.currentFrame + md.Segment * totalFrames);
+            drawSnapshotQueue.Enqueue(
+                segmentSnapshot,
+                Game1.currentGameTime.TotalGameTime.Ticks +
+                TimeSpan.FromMilliseconds(md.SegmentInterval * ((md.Segment - 1) * md.SegmentLength + 1)).Ticks
+            );
         }
 
         /// <summary>Update companion facing direction using a direction.</summary>

@@ -5,6 +5,10 @@ using TrinketTinker.Models.MotionArgs;
 
 namespace TrinketTinker.Companions.Motions
 {
+    /// <summary>Companion stays at some static offset from anchor.</summary>
+    /// <param name="companion"></param>
+    /// <param name="mdata"></param>
+    /// <param name="vdata"></param>
     public class BaseStaticMotion<IArgs>(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata)
         : Motion<IArgs>(companion, mdata, vdata) where IArgs : StaticArgs
     {
@@ -81,9 +85,7 @@ namespace TrinketTinker.Companions.Motions
         }
     }
 
-    /// <summary>Companion stays at some </summary>
-    /// <param name="companion"></param>
-    /// <param name="data"></param>
+    /// <inheritdoc/>
     public sealed class StaticMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata) : BaseStaticMotion<StaticArgs>(companion, mdata, vdata)
     {
     }

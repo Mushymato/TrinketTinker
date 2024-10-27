@@ -1,0 +1,61 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "LogName": "Snek: Sprites",
+      "Action": "Load",
+      "Target": "Mods/{{ModId}}/snek_1",
+      "FromFile": "assets/{{TargetWithoutPath}}.png"
+    },
+    {
+      "LogName": "Snek: Trinkets",
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_Snek": {
+          "Id": "{{ModId}}_Snek",
+          "DisplayName": "{{i18n:Snek.DisplayName}}",
+          "Description": "{{i18n:Snek.Description}}",
+          "Texture": "Maps/springobjects",
+          "SheetIndex": 803,
+          "DropsNaturally": false,
+          "CanBeReforged": true
+        },
+      }
+    },
+    {
+      "LogName": "Snek: Tinker",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        "{{ModId}}_Snek": {
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/snek_1",
+              "Width": 16,
+              "Height": 8,
+            },
+          ],
+          "Motion": {
+            "MotionClass": "Orbit",
+            "DirectionMode": "Single",
+            "DirectionRotate": true,
+            "FrameLength": 3,
+            "Segment": 2,
+          },
+          "Abilities": [
+            [
+              {
+                "AbilityClass": "Buff",
+                "Proc": "DamageMonster",
+                "Args": {
+                  "BuffId": 22
+                }
+              }
+            ]
+          ]
+        },
+      }
+    }
+  ]
+}

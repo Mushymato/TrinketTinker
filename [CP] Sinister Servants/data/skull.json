@@ -64,7 +64,7 @@
                 "Args": {
                   "Min": 20,
                   "Max": 30,
-                  "Knockback": 1,
+                  "Knockback": 2,
                   "Range": 128
                 },
               },
@@ -82,7 +82,7 @@
                 "Args": {
                   "Min": 30,
                   "Max": 40,
-                  "Knockback": 1,
+                  "Knockback": 2,
                   "Range": 128
                 },
               },
@@ -100,7 +100,7 @@
                 "Args": {
                   "Min": 40,
                   "Max": 50,
-                  "Knockback": 1,
+                  "Knockback": 2,
                   "Range": 128
                 },
               },
