@@ -290,8 +290,7 @@ namespace TrinketTinker.Companions.Motions
             DrawSnapshot snapshot = new()
             {
                 texture = cs.Texture,
-                position = Game1.GlobalToLocal(c.Position + offset + c.Owner.drawOffset),
-                globalPosition = c.Position + offset + c.Owner.drawOffset,
+                position = c.Position + offset + c.Owner.drawOffset,
                 sourceRect = cs.SourceRect,
                 drawColor = cs.DrawColor,
                 rotation = GetRotation(),
@@ -301,80 +300,100 @@ namespace TrinketTinker.Companions.Motions
                 layerDepth = layerDepth
             };
             snapshot.DoDraw(b);
-            EnqueueRepeatDraws(snapshot);
+            EnqueueRepeatDraws(snapshot, false);
 
-            if (md.Segment > 0)
+            Vector2 shadowScale = GetShadowScale();
+            if (shadowScale.X > 0 || shadowScale.Y > 0)
             {
-                EnqueueSegmentDraws(snapshot);
-            }
-            else
-            {
-                Vector2 shadowScale = GetShadowScale();
-                if (shadowScale.X > 0 || shadowScale.Y > 0)
+                DrawSnapshot shadowSnapshot = new()
                 {
-                    DrawSnapshot shadowSnapshot = new()
-                    {
-                        texture = Game1.shadowTexture,
-                        position = Game1.GlobalToLocal(c.Position + new Vector2(offset.X, 0) + c.Owner.drawOffset),
-                        sourceRect = Game1.shadowTexture.Bounds,
-                        drawColor = Color.White,
-                        rotation = 0f,
-                        origin = new Vector2(
-                            Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y
-                        ),
-                        textureScale = shadowScale,
-                        effects = SpriteEffects.None,
-                        layerDepth = layerDepth - 2E-06f
-                    };
-                    shadowSnapshot.DoDraw(b);
-                    EnqueueRepeatDraws(shadowSnapshot);
-                }
+                    texture = Game1.shadowTexture,
+                    useGlobalPosition = md.RepeatPositionGlobal,
+                    position = c.Position + new Vector2(offset.X, 0) + c.Owner.drawOffset,
+                    sourceRect = Game1.shadowTexture.Bounds,
+                    drawColor = Color.White,
+                    rotation = 0f,
+                    origin = new Vector2(
+                        Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y
+                    ),
+                    textureScale = shadowScale,
+                    effects = SpriteEffects.None,
+                    layerDepth = layerDepth - 2E-06f
+                };
+                shadowSnapshot.DoDraw(b);
+                EnqueueRepeatDraws(shadowSnapshot, true);
             }
         }
 
         /// <summary>Queue up repeats of the current draw.</summary>
         /// <param name="snapshot"></param>
-        private void EnqueueRepeatDraws(DrawSnapshot snapshot)
+        private void EnqueueRepeatDraws(DrawSnapshot snapshot, bool isShadow)
         {
-            for (int i = 1; i <= md.RepeatCount; i++)
+            // repeat for the base frame set
+            for (int repeat = 1; repeat <= md.RepeatCount; repeat++)
             {
                 drawSnapshotQueue.Enqueue(
                     snapshot,
                     Game1.currentGameTime.TotalGameTime.Ticks +
-                    TimeSpan.FromMilliseconds(md.RepeatInternval * i).Ticks
+                    TimeSpan.FromMilliseconds(md.RepeatInterval * repeat * (md.RepeatFrameSets + 1)).Ticks
                 );
             }
-        }
-        /// <summary>Queue up draws of extra segments.</summary>
-        /// <param name="snapshot"></param>
-        private void EnqueueSegmentDraws(DrawSnapshot snapshot)
-        {
-            // middle segments
-            DrawSnapshot segmentSnapshot;
-            for (int seg = 1; seg < md.Segment; seg++)
+
+            // repeat for additional frame sets
+            DrawSnapshot framesetSnapshot;
+            for (int frameset = 1; frameset <= md.RepeatFrameSets; frameset++)
             {
-                segmentSnapshot = snapshot.ShallowClone();
-                segmentSnapshot.position = null;
-                segmentSnapshot.sourceRect = cs.GetSourceRect(cs.currentFrame + seg * totalFrames);
-                for (int i = 1; i <= md.SegmentLength; i++)
+                for (int repeat = 1; repeat <= MathF.Abs(md.RepeatCount); repeat++)
                 {
+                    if (isShadow)
+                    {
+                        framesetSnapshot = snapshot;
+                    }
+                    else
+                    {
+                        framesetSnapshot = snapshot.ShallowClone();
+                        framesetSnapshot.sourceRect = cs.GetSourceRect(cs.currentFrame + frameset * totalFrames);
+                    }
                     drawSnapshotQueue.Enqueue(
-                        segmentSnapshot,
+                        framesetSnapshot,
                         Game1.currentGameTime.TotalGameTime.Ticks +
-                        TimeSpan.FromMilliseconds(md.SegmentInterval * seg * i).Ticks
+                        TimeSpan.FromMilliseconds(md.RepeatInterval * frameset * repeat).Ticks
                     );
                 }
             }
-            // tail
-            segmentSnapshot = snapshot.ShallowClone();
-            segmentSnapshot.position = null;
-            segmentSnapshot.sourceRect = cs.GetSourceRect(cs.currentFrame + md.Segment * totalFrames);
-            drawSnapshotQueue.Enqueue(
-                segmentSnapshot,
-                Game1.currentGameTime.TotalGameTime.Ticks +
-                TimeSpan.FromMilliseconds(md.SegmentInterval * ((md.Segment - 1) * md.SegmentLength + 1)).Ticks
-            );
+
         }
+
+        // /// <summary>Queue up draws of extra segments.</summary>
+        // /// <param name="snapshot"></param>
+        // private void EnqueueSegmentDraws(DrawSnapshot snapshot)
+        // {
+        //     // middle segments
+        //     DrawSnapshot segmentSnapshot;
+        //     for (int seg = 1; seg < md.Segment; seg++)
+        //     {
+        //         segmentSnapshot = snapshot.ShallowClone();
+        //         segmentSnapshot.position = null;
+        //         segmentSnapshot.sourceRect = cs.GetSourceRect(cs.currentFrame + seg * totalFrames);
+        //         for (int i = 1; i <= md.SegmentLength; i++)
+        //         {
+        //             drawSnapshotQueue.Enqueue(
+        //                 segmentSnapshot,
+        //                 Game1.currentGameTime.TotalGameTime.Ticks +
+        //                 TimeSpan.FromMilliseconds(md.SegmentInterval * seg * i).Ticks
+        //             );
+        //         }
+        //     }
+        //     // tail
+        //     segmentSnapshot = snapshot.ShallowClone();
+        //     segmentSnapshot.position = null;
+        //     segmentSnapshot.sourceRect = cs.GetSourceRect(cs.currentFrame + md.Segment * totalFrames);
+        //     drawSnapshotQueue.Enqueue(
+        //         segmentSnapshot,
+        //         Game1.currentGameTime.TotalGameTime.Ticks +
+        //         TimeSpan.FromMilliseconds(md.SegmentInterval * ((md.Segment - 1) * md.SegmentLength + 1)).Ticks
+        //     );
+        // }
 
         /// <summary>Update companion facing direction using a direction.</summary>
         /// <param name="position"></param>

@@ -41,7 +41,8 @@
             "DirectionMode": "Single",
             "DirectionRotate": true,
             "FrameLength": 3,
-            "Segment": 2,
+            "RepeatCount": -1,
+            "RepeatFrameSets": 2,
           },
           "Abilities": [
             [

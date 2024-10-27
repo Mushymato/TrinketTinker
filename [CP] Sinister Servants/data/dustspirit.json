@@ -66,7 +66,7 @@
             "DirectionMode": "R",
             "FrameLength": 4,
             "RepeatCount": 2,
-            "RepeatInterval": 750,
+            "RepeatInterval": 500,
             "AlwaysMoving": true,
             "Args": {
               "Squash": 2,

@@ -7,8 +7,8 @@ namespace TrinketTinker.Companions.Anim
     internal sealed class DrawSnapshot
     {
         internal Texture2D texture = null!;
-        internal Vector2? position = null;
-        internal Vector2? globalPosition = null;
+        internal bool useGlobalPosition = false;
+        internal Vector2 position;
         internal Rectangle sourceRect;
         internal Color drawColor;
         internal float rotation;
@@ -21,7 +21,7 @@ namespace TrinketTinker.Companions.Anim
         {
             b.Draw(
                 texture,
-                position ?? Game1.GlobalToLocal((Vector2)globalPosition!),
+                Game1.GlobalToLocal(position),
                 sourceRect,
                 drawColor,
                 rotation,
