@@ -17,16 +17,13 @@ namespace TrinketTinker.Effects.Abilities
         /// <returns></returns>
         protected override bool ApplyEffect(ProcEventArgs proc)
         {
-            if (proc.Farmer.Stamina >= proc.Farmer.MaxStamina)
-                return false;
             float healed = (float)Math.Ceiling(Math.Min(
                 proc.Farmer.MaxStamina - proc.Farmer.Stamina,
                 args.Rand(proc.DamageAmount ?? proc.Farmer.MaxStamina)
             ));
-            if (healed == 0)
-                healed = 1;
             proc.Farmer.Stamina += healed;
-            proc.Farmer.currentLocation.debris.Add(new Debris((int)healed, proc.Farmer.getStandingPosition(), Color.SeaGreen, 1f, proc.Farmer));
+            if (healed > 0)
+                proc.Farmer.currentLocation.debris.Add(new Debris((int)healed, proc.Farmer.getStandingPosition(), Color.SeaGreen, 1f, proc.Farmer));
             return healed > 0 && base.ApplyEffect(proc);
         }
     }

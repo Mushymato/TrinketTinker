@@ -9,20 +9,20 @@
   "Skull.AbilityDescription.3": "Summon a haunted skull; deal 40-50 damage to nearby enemies.",
   // Bat
   "Bat.DisplayName": "Leathery Wing",
-  "Bat.Description": "A colorful wing from a ghastly bat.\n\nLv.{0}: {1}",
+  "Bat.Description": "A colorful wing, well preserved.\n\nLv.{0}: {1}",
   "Bat.AbilityDescription.1": "Summon a bat; on critical hit, recover 13 HP and 13 Energy.",
   "Bat.AbilityDescription.2": "Summon a bat; on critical hit, recover 13% of the damage dealt as HP and Energy.",
   // Stick
   "Stick.DisplayName": "Sticc",
-  "Stick.Description": "A stick?\n\n{1}",
+  "Stick.Description": "A stick?\n\nLv.{0}: {1}",
   "Stick.AbilityDescription.1": "Summon a stickbug; harvest nearby forage, recover 44 HP on success.",
   "Stick.AbilityDescription.2": "Summon a stickbug; harvest nearby crops, recover 44 Energy on success.",
   "Stick.AbilityDescription.3": "Summon a stickbug; harvest nearby forage and crops, recover 44 HP and Energy on success.",
   // Dust Spirit
   "DustSpirit.DisplayName": "Fuzzy Coal",
   "DustSpirit.Description": "It's looking at you.\n\nLv.{0}: {1}",
-  "DustSpirit.AbilityDescription.1": "Summon 3 dust spirits; every 10s, break nearby rocks and grant +20 attack.",
-  "DustSpirit.AbilityDescription.2": "Summon 3 dust spirits; every 2s, break nearby rocks and grant +5 attack.",
+  "DustSpirit.AbilityDescription.1": "Summon 3 dust spirits; every 10s, break one nearby rock and grant +20 attack.",
+  "DustSpirit.AbilityDescription.2": "Summon 3 dust spirits; every 2s, break one nearby rock and grant +5 attack.",
   // Spider
   "Spider.DisplayName": "Tiny Spider",
   "Spider.Description": "A tiny plastic spider on some decorative webbing, scuttles around sometimes.\n\nLv.{0}: {1}",
@@ -31,10 +31,8 @@
   "Spider.AbilityDescription.3": "Summon a hopping spider; shoots a web that immobilize enemies for 5s every 8s.",
   // Snek
   "Snek.DisplayName": "Jug of Iridium Milk",
-  "Snek.Description": "Emits indescribable aroma, attract iridium snakes.",
-  "Snek.AbilityDescription.1": "snek.",
-  "Snek.AbilityDescription.2": "snek.",
-  "Snek.AbilityDescription.3": "snek.",
+  "Snek.Description": "Emits indescribable aroma enjoyed by iridium snakes.\n\nLv.{0}: {1}",
+  "Snek.AbilityDescription.1": "Summon an iridium snake; seek and blow up enemies every 3s for 77 damage, player loses 7 HP each hit.",
   // Shop
   "AngryRoger.Name": "Angry Roger",
   "AngryRoger.Dialog.1": "Bring to me the flesh and spirit of the damned ~~~",

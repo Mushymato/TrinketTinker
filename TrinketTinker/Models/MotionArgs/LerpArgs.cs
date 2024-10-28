@@ -6,9 +6,9 @@ namespace TrinketTinker.Models.MotionArgs
     public class LerpArgs : IArgs
     {
         /// <summary>Min distance from anchor, the companion does not move until they are this far from the anchor.</summary>
-        public float Min { get; set; } = 80f;
+        public float Min { get; set; } = 96f;
         /// <summary>Max distance from anchor, if the companion is farther away than this, teleport.</summary>
-        public float Max { get; set; } = 768f;
+        public float Max { get; set; } = 1280f;
         /// <summary>Lerp rate in miliseconds</summary>
         public float Rate { get; set; } = 400f;
         /// <summary>Pause between lerp retargeting, in ms</summary>

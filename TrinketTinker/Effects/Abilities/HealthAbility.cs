@@ -21,14 +21,13 @@ namespace TrinketTinker.Effects.Abilities
         /// <returns></returns>
         protected override bool ApplyEffect(ProcEventArgs proc)
         {
-            if (proc.Farmer.health >= proc.Farmer.maxHealth)
-                return false;
             int healed = (int)Math.Ceiling(Math.Min(
                 proc.Farmer.maxHealth - proc.Farmer.health,
                 args.Rand(proc.DamageAmount ?? proc.Farmer.maxHealth)
             ));
             proc.Farmer.health += healed;
-            proc.Farmer.currentLocation.debris.Add(new Debris(healed, proc.Farmer.getStandingPosition(), Color.Lime, 1f, proc.Farmer));
+            if (healed > 0)
+                proc.Farmer.currentLocation.debris.Add(new Debris(healed, proc.Farmer.getStandingPosition(), Color.Lime, 1f, proc.Farmer));
             return base.ApplyEffect(proc);
         }
     }

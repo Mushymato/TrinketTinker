@@ -133,6 +133,12 @@
               "TradeItemId": "(O)769",
               "TradeItemAmount": 200,
               "ItemId": "(TR){{ModId}}_Spider",
+            },
+            {
+              "Id": "(TR){{ModId}}_Snek",
+              "TradeItemId": "(O)226",
+              "TradeItemAmount": 77,
+              "ItemId": "(TR){{ModId}}_Snek",
             }
           ],
         },

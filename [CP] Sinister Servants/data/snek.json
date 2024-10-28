@@ -4,7 +4,7 @@
     {
       "LogName": "Snek: Sprites",
       "Action": "Load",
-      "Target": "Mods/{{ModId}}/snek_1",
+      "Target": "Mods/{{ModId}}/snek_1, Mods/{{ModId}}/snek_2, Mods/{{ModId}}/snek_t",
       "FromFile": "assets/{{TargetWithoutPath}}.png"
     },
     {
@@ -16,8 +16,8 @@
           "Id": "{{ModId}}_Snek",
           "DisplayName": "{{i18n:Snek.DisplayName}}",
           "Description": "{{i18n:Snek.Description}}",
-          "Texture": "Maps/springobjects",
-          "SheetIndex": 803,
+          "Texture": "Mods/{{ModId}}/snek_t",
+          "SheetIndex": 0,
           "DropsNaturally": false,
           "CanBeReforged": true
         },
@@ -32,26 +32,58 @@
           "Variants": [
             {
               "Texture": "Mods/{{ModId}}/snek_1",
-              "Width": 16,
+              "Width": 8,
               "Height": 8,
+              "TrinketSpriteIndex": 0,
+            },
+            {
+              "Texture": "Mods/{{ModId}}/snek_2",
+              "Width": 8,
+              "Height": 8,
+              "TrinketSpriteIndex": 1,
             },
           ],
           "Motion": {
-            "MotionClass": "Orbit",
+            "MotionClass": "Serpent",
             "DirectionMode": "Single",
             "DirectionRotate": true,
             "FrameLength": 3,
-            "RepeatCount": -1,
-            "RepeatFrameSets": 2,
+            "Interval": 400,
+            "AlwaysMoving": true,
+            "Anchors": [
+              {
+                "Mode": "Monster",
+                "Range": 1280
+              }
+            ],
+            "Args": {
+              "Max": 2048,
+              "Jitter": 128,
+              "Rate": 600,
+              "SegmentCount": 12,
+              "Sparcity": 3.5
+            }
           },
           "Abilities": [
             [
               {
-                "AbilityClass": "Buff",
-                "Proc": "DamageMonster",
+                "AbilityClass": "Hitscan",
+                "Description": "{{i18n:Snek.AbilityDescription.1}}",
+                "Proc": "Timer",
+                "ProcTimer": 3000,
                 "Args": {
-                  "BuffId": 22
-                }
+                  "Min": 77,
+                  "ExplodeRadius": 7
+                },
+              },
+              {
+                "AbilityClass": "Health",
+                "Proc": "Sync",
+                "Args": {
+                  "ValueMode": "Number",
+                  "Min": -7,
+                  "Max": -7,
+                },
               }
             ]
           ]

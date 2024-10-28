@@ -1,7 +1,5 @@
-using Force.DeepCloner;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Monsters;
 using StardewValley.TerrainFeatures;
@@ -40,7 +38,10 @@ namespace TrinketTinker.Companions.Motions
         private AnimClipData? overrideClip = null;
         /// <summary>Heap of frames to draw, after the initial one.</summary>
         private readonly PriorityQueue<DrawSnapshot, long> drawSnapshotQueue = new();
-        private readonly int totalFrames = 1;
+        /// <summary>Number of frames in 1 set, used for Repeat and <see cref="SerpentMotion"></summary>
+        protected readonly int framesetLength = 1;
+        /// <summary>Actual total frame used for Repeat, equal to frame length</summary>
+        protected virtual int TotalFrames => framesetLength;
 
         /// <summary>Basic constructor, tries to parse arguments as the generic <see cref="IArgs"/> type.</summary>
         /// <param name="companion"></param>
@@ -59,7 +60,7 @@ namespace TrinketTinker.Companions.Motions
             vd = vdata;
             cs = new TinkerAnimSprite(vdata);
 
-            totalFrames = md.DirectionMode switch
+            framesetLength = md.DirectionMode switch
             {
                 DirectionMode.Single => md.FrameLength,
                 DirectionMode.R => md.FrameLength,
@@ -268,7 +269,7 @@ namespace TrinketTinker.Companions.Motions
         }
 
         /// <inheritdoc/>
-        public virtual void Draw(SpriteBatch b)
+        public void Draw(SpriteBatch b)
         {
             if (md.HideDuringEvents && Game1.eventUp)
                 return;
@@ -276,7 +277,7 @@ namespace TrinketTinker.Companions.Motions
             while (drawSnapshotQueue.TryPeek(out DrawSnapshot? _, out long priority) &&
                    Game1.currentGameTime.TotalGameTime.Ticks >= priority)
             {
-                drawSnapshotQueue.Dequeue().DoDraw(b);
+                drawSnapshotQueue.Dequeue().Draw(b);
             }
 
             Vector2 offset = GetOffset();
@@ -287,47 +288,60 @@ namespace TrinketTinker.Companions.Motions
                 _ => GetPositionalLayerDepth(offset),
             };
 
-            DrawSnapshot snapshot = new()
-            {
-                texture = cs.Texture,
-                position = c.Position + offset + c.Owner.drawOffset,
-                sourceRect = cs.SourceRect,
-                drawColor = cs.DrawColor,
-                rotation = GetRotation(),
-                origin = cs.Origin,
-                textureScale = GetTextureScale(),
-                effects = (c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
-                layerDepth = layerDepth
-            };
-            snapshot.DoDraw(b);
-            EnqueueRepeatDraws(snapshot, false);
+            DrawSnapshot snapshot = new(
+                cs.Texture,
+                c.Position + c.Owner.drawOffset + offset,
+                cs.SourceRect,
+                cs.DrawColor,
+                GetRotation(),
+                cs.Origin,
+                GetTextureScale(),
+                (c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
+                layerDepth
+            );
+            DrawCompanion(b, snapshot);
 
             Vector2 shadowScale = GetShadowScale();
             if (shadowScale.X > 0 || shadowScale.Y > 0)
             {
-                DrawSnapshot shadowSnapshot = new()
-                {
-                    texture = Game1.shadowTexture,
-                    useGlobalPosition = md.RepeatPositionGlobal,
-                    position = c.Position + new Vector2(offset.X, 0) + c.Owner.drawOffset,
-                    sourceRect = Game1.shadowTexture.Bounds,
-                    drawColor = Color.White,
-                    rotation = 0f,
-                    origin = new Vector2(
+                DrawSnapshot shadowSnapshot = new(
+                    Game1.shadowTexture,
+                    c.Position + c.Owner.drawOffset + new Vector2(offset.X, 0),
+                    Game1.shadowTexture.Bounds,
+                    Color.White,
+                    0f,
+                    new Vector2(
                         Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y
                     ),
-                    textureScale = shadowScale,
-                    effects = SpriteEffects.None,
-                    layerDepth = layerDepth - 2E-06f
-                };
-                shadowSnapshot.DoDraw(b);
-                EnqueueRepeatDraws(shadowSnapshot, true);
+                    shadowScale,
+                    SpriteEffects.None,
+                    layerDepth - 2E-06f
+                );
+                DrawShadow(b, shadowSnapshot);
             }
+        }
+
+        /// <summary>Draw companion from snapshot, enqueue repeat as required</summary>
+        /// <param name="b"></param>
+        /// <param name="snapshot"></param>
+        protected virtual void DrawCompanion(SpriteBatch b, DrawSnapshot snapshot)
+        {
+            snapshot.Draw(b);
+            EnqueueRepeatDraws(snapshot, false);
+        }
+
+        /// <summary>Draw shadow from snapshot, enqueue repeat as required</summary>
+        /// <param name="b"></param>
+        /// <param name="snapshot"></param>
+        protected virtual void DrawShadow(SpriteBatch b, DrawSnapshot snapshot)
+        {
+            snapshot.Draw(b);
+            EnqueueRepeatDraws(snapshot, true);
         }
 
         /// <summary>Queue up repeats of the current draw.</summary>
         /// <param name="snapshot"></param>
-        private void EnqueueRepeatDraws(DrawSnapshot snapshot, bool isShadow)
+        protected void EnqueueRepeatDraws(DrawSnapshot snapshot, bool isShadow)
         {
             // repeat for the base frame set
             for (int repeat = 1; repeat <= md.RepeatCount; repeat++)
@@ -351,8 +365,9 @@ namespace TrinketTinker.Companions.Motions
                     }
                     else
                     {
-                        framesetSnapshot = snapshot.ShallowClone();
-                        framesetSnapshot.sourceRect = cs.GetSourceRect(cs.currentFrame + frameset * totalFrames);
+                        framesetSnapshot = snapshot.CloneWithChanges(
+                            sourceRect: cs.GetSourceRect(cs.currentFrame + frameset * TotalFrames)
+                        );
                     }
                     drawSnapshotQueue.Enqueue(
                         framesetSnapshot,
@@ -361,39 +376,7 @@ namespace TrinketTinker.Companions.Motions
                     );
                 }
             }
-
         }
-
-        // /// <summary>Queue up draws of extra segments.</summary>
-        // /// <param name="snapshot"></param>
-        // private void EnqueueSegmentDraws(DrawSnapshot snapshot)
-        // {
-        //     // middle segments
-        //     DrawSnapshot segmentSnapshot;
-        //     for (int seg = 1; seg < md.Segment; seg++)
-        //     {
-        //         segmentSnapshot = snapshot.ShallowClone();
-        //         segmentSnapshot.position = null;
-        //         segmentSnapshot.sourceRect = cs.GetSourceRect(cs.currentFrame + seg * totalFrames);
-        //         for (int i = 1; i <= md.SegmentLength; i++)
-        //         {
-        //             drawSnapshotQueue.Enqueue(
-        //                 segmentSnapshot,
-        //                 Game1.currentGameTime.TotalGameTime.Ticks +
-        //                 TimeSpan.FromMilliseconds(md.SegmentInterval * seg * i).Ticks
-        //             );
-        //         }
-        //     }
-        //     // tail
-        //     segmentSnapshot = snapshot.ShallowClone();
-        //     segmentSnapshot.position = null;
-        //     segmentSnapshot.sourceRect = cs.GetSourceRect(cs.currentFrame + md.Segment * totalFrames);
-        //     drawSnapshotQueue.Enqueue(
-        //         segmentSnapshot,
-        //         Game1.currentGameTime.TotalGameTime.Ticks +
-        //         TimeSpan.FromMilliseconds(md.SegmentInterval * ((md.Segment - 1) * md.SegmentLength + 1)).Ticks
-        //     );
-        // }
 
         /// <summary>Update companion facing direction using a direction.</summary>
         /// <param name="position"></param>

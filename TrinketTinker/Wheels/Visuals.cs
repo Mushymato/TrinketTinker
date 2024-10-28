@@ -130,5 +130,22 @@ namespace TrinketTinker.Wheels
         {
             return !(Game1.paused || Game1.HostPaused);
         }
+
+        /// <summary>Take X and Y of a <see cref="Vector3"/> as a new <see cref="Vector2"/></summary>
+        /// <param name="vec3"></param>
+        /// <returns></returns>
+        public static Vector2 AsVec2(this Vector3 vec3)
+        {
+            return new(vec3.X, vec3.Y);
+        }
+
+        /// <summary>Obtain <see cref="Vector3"/> from <see cref="Vector2"/> with rotation as the Z component.</summary>
+        /// <param name="vec2"></param>
+        /// <param name="rot"></param>
+        /// <returns></returns>
+        public static Vector3 WithRot(this Vector2 vec2, float rot)
+        {
+            return new Vector3(vec2.X, vec2.Y, rot);
+        }
     }
 }
