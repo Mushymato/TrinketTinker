@@ -20,12 +20,20 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-===Exceptions==============================================================
+===Asset Attributions===========================================================
 
-These sprites were created by Aviroen (https://github.com/Aviroen):
+These sprites were drawn by mushymato and covered by MIT:
+
+* `[CP] Sinister Servants/assets/snek_1.png`
+* `[CP] Sinister Servants/assets/snek_2.png`
+* `TrinketTinker/assets/trinketcolorizer.png` and `images/favicon.png`
+* `[CP] Trinket Tinker Examples/sprites/*` and `images/sheets/*`
+
+These sprites were drawn by Aviroen (https://github.com/Aviroen) and covered by MIT:
 * `[CP] Sinister Servants/assets/bat_t.png`
 * `[CP] Sinister Servants/assets/skull_t.png`
 * `[CP] Sinister Servants/assets/dustspirit_t.png`
 * `[CP] Sinister Servants/assets/angryroger_p.png`
 
-All other sprites in `[CP] Sinister Servants/assets` are not covered by this license as they are edited game sprites.
+
+All other sprites in this repository are not covered by this license as they are edited game sprites.
