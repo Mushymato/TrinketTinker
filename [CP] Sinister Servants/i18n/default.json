@@ -26,13 +26,13 @@
   // Spider
   "Spider.DisplayName": "Tiny Spider",
   "Spider.Description": "A tiny plastic spider on some decorative webbing, scuttles around sometimes.\n\nLv.{0}: {1}",
-  "Spider.AbilityDescription.1": "Summon a hopping spider; shoots a web that immobilize enemies for 3s every 10s.",
-  "Spider.AbilityDescription.2": "Summon a hopping spider; shoots a web that immobilize enemies for 4s every 9s.",
-  "Spider.AbilityDescription.3": "Summon a hopping spider; shoots a web that immobilize enemies for 5s every 8s.",
+  "Spider.AbilityDescription.1": "Summon a hopping spider; shoots a web that immobilize an enemy for 3s every 5s.",
+  "Spider.AbilityDescription.2": "Summon a hopping spider; shoots a web that immobilize an enemy for 6s every 8s.",
+  "Spider.AbilityDescription.3": "Summon a hopping spider; shoots a web that immobilize an enemy for 10s every 11s.",
   // Snek
   "Snek.DisplayName": "Jug of Iridium Milk",
   "Snek.Description": "Emits indescribable aroma enjoyed by iridium snakes.\n\nLv.{0}: {1}",
-  "Snek.AbilityDescription.1": "Summon an iridium snake; seek and blow up enemies every 3s for 77 damage, player loses 7 HP each hit.",
+  "Snek.AbilityDescription.1": "Summon an iridium snake; seek and blow up enemies every 3s for 77 damage. It costs 7 HP per attack, and the explosion can damange the player.",
   // Shop
   "AngryRoger.Name": "Angry Roger",
   "AngryRoger.Dialog.1": "Bring to me the flesh and spirit of the damned ~~~",

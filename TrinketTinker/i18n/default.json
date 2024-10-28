@@ -1,5 +1,7 @@
 {
+    "$schema": "https://smapi.io/schemas/i18n.json",
     "b-c.trinket-colorizer.name": "Trinket Colorizer",
-    "b-c.trinket-colorizer.description": "Allows you to re-color trinkets, randomizing their appearances. Costs 3 star shards per use.",
-    "b-c.trinket-colorizer.invalid-count": "Need 3 star shards",
+    "b-c.trinket-colorizer.description": "Allows you to re-color trinkets, changing their appearance. Costs 15 omni geode per use.",
+    "b-c.trinket-colorizer.invalid-count": "Need 15 omni geode.",
+    "b-c.trinket-colorizer.no-recolor": "This trinket cannot be re-colored.",
 }

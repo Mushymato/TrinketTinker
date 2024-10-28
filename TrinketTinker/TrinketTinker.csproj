@@ -16,7 +16,7 @@
   <PropertyGroup>
     <Name>TrinketTinker</Name>
     <Authors>mushymato</Authors>
-    <Description>Trinket framework.</Description>
+    <Description>Trinket &amp; Companion framework.</Description>
     <UniqueId>mushymato.TrinketTinker</UniqueId>
     <UpdateKeys>GitHub:Mushymato/TrinketTinker</UpdateKeys>
     <Version>1.0.0</Version>

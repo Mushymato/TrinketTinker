@@ -105,8 +105,8 @@ namespace TrinketTinker.Extras
                 ],
                 AdditionalConsumedItems = [
                     new(){
-                        ItemId= "(O)578",
-                        RequiredCount = 3,
+                        ItemId= "(O)749",
+                        RequiredCount = 15,
                         InvalidCountMessage = I18n.BC_TrinketColorizer_InvalidCount()
                     }
                 ],
@@ -146,14 +146,6 @@ namespace TrinketTinker.Extras
             overrideMinutesUntilReady = null;
             if (inputItem is not Trinket t)
                 return null;
-            if (!t.GetTrinketData().CanBeReforged)
-            {
-                if (!probe)
-                {
-                    Game1.showRedMessage(Game1.content.LoadString("Strings\\1_6_Strings:Anvil_wrongtrinket"));
-                }
-                return null;
-            }
 
             int previous = 0;
             if (inputItem.modData.TryGetValue(TrinketTinkerEffect.ModData_Variant, out string? previousStr))
@@ -166,7 +158,7 @@ namespace TrinketTinker.Extras
             {
                 if (!probe)
                 {
-                    player?.doEmote(40);
+                    Game1.showRedMessage(I18n.BC_TrinketColorizer_NoRecolor());
                 }
                 return null;
             }
@@ -194,14 +186,6 @@ namespace TrinketTinker.Extras
             overrideMinutesUntilReady = null;
             if (inputItem is not Trinket t)
                 return null;
-            if (!t.GetTrinketData().CanBeReforged)
-            {
-                if (!probe)
-                {
-                    Game1.showRedMessage(Game1.content.LoadString("Strings\\1_6_Strings:Anvil_wrongtrinket"));
-                }
-                return null;
-            }
 
             if (((Trinket)inputItem).GetEffect() is not TrinketTinkerEffect effect1)
                 return null;
@@ -212,7 +196,7 @@ namespace TrinketTinker.Extras
             {
                 if (!probe)
                 {
-                    player?.doEmote(40);
+                    Game1.showRedMessage(Game1.content.LoadString("Strings/1_6_Strings:Anvil_wrongtrinket"));
                 }
                 return null;
             }

@@ -64,10 +64,10 @@
                 "Args": {
                   "Min": 20,
                   "Max": 30,
-                  "Knockback": 2,
-                  "Range": 128
+                  "Knockback": 2.4,
+                  "Range": 192
                 },
-              },
+              }
             ],
             // level 3
             [
@@ -82,8 +82,8 @@
                 "Args": {
                   "Min": 30,
                   "Max": 40,
-                  "Knockback": 2,
-                  "Range": 128
+                  "Knockback": 2.4,
+                  "Range": 192
                 },
               },
             ],
@@ -100,8 +100,8 @@
                 "Args": {
                   "Min": 40,
                   "Max": 50,
-                  "Knockback": 2,
-                  "Range": 128
+                  "Knockback": 2.4,
+                  "Range": 192
                 },
               },
             ]

@@ -29,6 +29,7 @@
       "Target": "mushymato.TrinketTinker/Tinker",
       "Entries": {
         "{{ModId}}_Snek": {
+          "MinLevel": 7,
           "Variants": [
             {
               "Texture": "Mods/{{ModId}}/snek_1",

@@ -1,0 +1,7 @@
+{
+    "$schema": "https://smapi.io/schemas/i18n.json",
+    "b-c.trinket-colorizer.name": "饰品着色器",
+    "b-c.trinket-colorizer.description": "可以更改饰品的外观。每次使用消耗15颗万象晶球",
+    "b-c.trinket-colorizer.invalid-count": "需要15颗万象晶球",
+    "b-c.trinket-colorizer.no-recolor": "这个饰品无法更改外观。",
+}

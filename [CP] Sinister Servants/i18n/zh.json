@@ -3,7 +3,7 @@
   // Trinkets
   // Skull
   "Skull.DisplayName": "抛光头骨",
-  "Skull.Description": "被打磨过的未知生物头骨，冰冷触感\n\nLv.{0}: {1}",
+  "Skull.Description": "被打磨过的未知生物头骨，触感冰冷\n\nLv.{0}: {1}",
   "Skull.AbilityDescription.1": "召唤幽灵骸骨；对附近的敌人造成20-30点伤害",
   "Skull.AbilityDescription.2": "召唤幽灵骸骨；对附近的敌人造成30-40点伤害",
   "Skull.AbilityDescription.3": "召唤幽灵骸骨；对附近的敌人造成40-50点伤害",
@@ -26,13 +26,13 @@
   // Spider
   "Spider.DisplayName": "迷你蜘蛛",
   "Spider.Description": "尼龙蛛网上一只小小的塑料蜘蛛，有时会四处乱窜\n\nLv.{0}: {1}",
-  "Spider.AbilityDescription.1": "召唤蜘蛛；每10秒发射使敌人3秒内无法动弹的蛛网",
-  "Spider.AbilityDescription.2": "召唤蜘蛛；每9秒发射使敌人4秒内无法动弹的蛛网",
-  "Spider.AbilityDescription.3": "召唤蜘蛛；每8秒发射使敌人5秒内无法动弹的蛛网",
+  "Spider.AbilityDescription.1": "召唤蜘蛛；每5秒发射使敌人3秒内无法动弹的蛛网",
+  "Spider.AbilityDescription.2": "召唤蜘蛛；每8秒发射使敌人6秒内无法动弹的蛛网",
+  "Spider.AbilityDescription.3": "召唤蜘蛛；每11秒发射使敌人10秒内无法动弹的蛛网",
   // Snek
   "Snek.DisplayName": "一桶铱奶",
-  "Snek.Description": "散发出不可描述的气味，铱蛇喜欢这个味道",
-  "Snek.AbilityDescription.1": "召唤蜘蛛.",
+  "Snek.Description": "散发出不可描述的气味，铱蛇喜欢这个味道\n\n{1}",
+  "Snek.AbilityDescription.1": "召唤铱蛇；每3秒寻找并炸毁敌人，造成 77 点伤害；每次攻击消耗7点生命值，产生的爆炸可伤害玩家",
   // Shop
   "AngryRoger.Name": "怒火冲天的罗杰",
   "AngryRoger.Dialog.1": "把那些亡命徒的身肉体和灵魂带给我~~~",

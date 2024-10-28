@@ -108,7 +108,7 @@
               "Id": "(TR){{ModId}}_Skull",
               "TradeItemId": "(O)881",
               "TradeItemAmount": 200,
-              "ItemId": "{{ModId}}_Skull",
+              "ItemId": "(TR){{ModId}}_Skull",
             },
             {
               "Id": "(TR){{ModId}}_Bat",
@@ -139,6 +139,12 @@
               "TradeItemId": "(O)226",
               "TradeItemAmount": 77,
               "ItemId": "(TR){{ModId}}_Snek",
+            },
+            {
+              "Id": "(TR){{ModId}}_TrinketColorizer",
+              "TradeItemId": "(O)336",
+              "TradeItemAmount": 50,
+              "ItemId": "(BC)mushymato.TrinketTinker_TrinketColorizer",
             }
           ],
         },

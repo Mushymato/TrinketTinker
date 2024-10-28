@@ -70,7 +70,7 @@
             "Args": {
               "Magnitude": 16,
               "Period": 800,
-              "PerchingTimeout": 2000,
+              "PerchingTimeout": 6000,
               "PerchingOffset": "0,16"
             }
           },

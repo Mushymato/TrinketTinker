@@ -67,7 +67,7 @@
               {
                 "Proc": "Timer",
                 "Description": "{{i18n:Spider.AbilityDescription.1}}",
-                "ProcTimer": 10000,
+                "ProcTimer": 5000,
                 "AbilityClass": "Projectile",
                 "Args": {
                   "StunTime": 3000,
@@ -86,10 +86,10 @@
               {
                 "Proc": "Timer",
                 "Description": "{{i18n:Spider.AbilityDescription.2}}",
-                "ProcTimer": 9000,
+                "ProcTimer": 8000,
                 "AbilityClass": "Projectile",
                 "Args": {
-                  "StunTime": 4000,
+                  "StunTime": 6000,
                   "StunTAS": "{{ModId}}_SpiderWeb",
                   "Range": 4096,
                   "Texture": "Mods/{{ModId}}/spider_p",
@@ -104,11 +104,11 @@
             [
               {
                 "Proc": "Timer",
-                "Description": "{{i18n:Spider.AbilityDescription.1}}",
-                "ProcTimer": 8000,
+                "Description": "{{i18n:Spider.AbilityDescription.3}}",
+                "ProcTimer": 11000,
                 "AbilityClass": "Projectile",
                 "Args": {
-                  "StunTime": 5000,
+                  "StunTime": 10000,
                   "StunTAS": "{{ModId}}_SpiderWeb",
                   "Range": 4096,
                   "Texture": "Mods/{{ModId}}/spider_p",
