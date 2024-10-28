@@ -94,10 +94,10 @@
 <p>Creates a new trinket item. If the trinket has tinker data, set level and variant.
 Useful for producing a trinket at specified level/variant.</p>
 <h2 id="machine-trinket-colorizer-trinket-colorizer">Machine: Trinket Colorizer <img src="../images/favicon.png" alt="Trinket Colorizer"></h2>
-<p>A new machine that can be purchased from <a href="https://stardewvalleywiki.com/Blacksmith">the Blacksmith</a> for 50 <a href="https://stardewvalleywiki.com/Gold_Bar">Gold Bars</a> once the <a href="https://stardewvalleywiki.com/Anvil">Anvil</a> recipe is obtained.</p>
+<p>A new machine that can be purchased from <a href="https://stardewvalleywiki.com/Blacksmith">the Blacksmith</a> for 50 <a href="https://stardewvalleywiki.com/Gold_Bar">Gold Bars</a> once the <a href="https://stardewvalleywiki.com/Anvil">Anvil</a> recipe is obtained. Trinkets must have at least 2 <a href="2-Variant.html">variants</a> and <code>CanBeReforged</code> set to true in order to use the colorizer.</p>
 <p>Consumes 15 <a href="https://stardewvalleywiki.com/Omni_Geode">Omni Geode</a> to reroll the variant on a TrinketTinker trinket, no effect on vanilla trinkets.</p>
 <p>The colorizer will never roll the same variant twice in a row. Anvils have similar rule applied to them for TrinketTinker trinkets.</p>
-<p>Implementation wise, the Trinket Colorizer is a standard machine with qualified ID <code>(BC)mushymato.TrinketTinker_TrinketColorizer</code> and a single complex output machine rule. Mods are free to disregard</p>
+<p>Implementation wise, the colorizer is a standard machine with qualified ID <code>(BC)mushymato.TrinketTinker_TrinketColorizer</code> and a single complex output machine rule. Mods are free to add more ways to obtain this machine, and free to prepend the colorizer with special recipes for their trinkets.</p>
 
 </article>
 
