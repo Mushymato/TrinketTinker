@@ -36,8 +36,6 @@
   - href: 4.0-Proc.md
     name: Proc
   - items:
-    - href: 4.z.0-DebugDummy.md
-      name: DebugDummy
     - href: 4.z.01-Buff.md
       name: Buff
     - href: 4.z.02-Health.md
@@ -60,7 +58,7 @@
       name: HarvestForage
     name: Ability Classes
   name: Ability
-- href: 5-TAS.md
-  name: TAS
+- href: 5-Temporary Animated Sprite.md
+  name: Temporary Animated Sprite
 - href: 6-Extras.md
   name: Extras

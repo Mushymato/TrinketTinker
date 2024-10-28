@@ -136,6 +136,7 @@ Class BaseLerpMotion&lt;IArgs&gt;  <a class="header-action link-secondary" title
       <div><a class="xref" href="TrinketTinker.Companions.Motions.HopMotion.html">HopMotion</a></div>
       <div><a class="xref" href="TrinketTinker.Companions.Motions.HoverMotion.html">HoverMotion</a></div>
       <div><a class="xref" href="TrinketTinker.Companions.Motions.LerpMotion.html">LerpMotion</a></div>
+      <div><a class="xref" href="TrinketTinker.Companions.Motions.SerpentMotion.html">SerpentMotion</a></div>
     </dd>
   </dl>
 
@@ -168,6 +169,12 @@ Class BaseLerpMotion&lt;IArgs&gt;  <a class="header-action link-secondary" title
     </div>
     <div>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_cs">Motion&lt;IArgs&gt;.cs</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_framesetLength">Motion&lt;IArgs&gt;.framesetLength</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_TotalFrames">Motion&lt;IArgs&gt;.TotalFrames</a>
     </div>
     <div>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetOneshotClip_System_String_">Motion&lt;IArgs&gt;.SetOneshotClip(string)</a>
@@ -204,6 +211,15 @@ Class BaseLerpMotion&lt;IArgs&gt;  <a class="header-action link-secondary" title
     </div>
     <div>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_">Motion&lt;IArgs&gt;.Draw(SpriteBatch)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_DrawCompanion_Microsoft_Xna_Framework_Graphics_SpriteBatch_TrinketTinker_Companions_Anim_DrawSnapshot_">Motion&lt;IArgs&gt;.DrawCompanion(SpriteBatch, DrawSnapshot)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_DrawShadow_Microsoft_Xna_Framework_Graphics_SpriteBatch_TrinketTinker_Companions_Anim_DrawSnapshot_">Motion&lt;IArgs&gt;.DrawShadow(SpriteBatch, DrawSnapshot)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_EnqueueRepeatDraws_TrinketTinker_Companions_Anim_DrawSnapshot_System_Boolean_">Motion&lt;IArgs&gt;.EnqueueRepeatDraws(DrawSnapshot, bool)</a>
     </div>
     <div>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_UpdateDirection">Motion&lt;IArgs&gt;.UpdateDirection()</a>
@@ -282,13 +298,14 @@ Class BaseLerpMotion&lt;IArgs&gt;  <a class="header-action link-secondary" title
 
 
 
-  <h2 class="section" id="fields">Fields
+  <h2 class="section" id="properties">Properties
 </h2>
 
 
+  <a id="TrinketTinker_Companions_Motions_BaseLerpMotion_1_Lerp_" data-uid="TrinketTinker.Companions.Motions.BaseLerpMotion`1.Lerp*"></a>
 
-  <h3 id="TrinketTinker_Companions_Motions_BaseLerpMotion_1_lerp" data-uid="TrinketTinker.Companions.Motions.BaseLerpMotion`1.lerp">
-  lerp
+  <h3 id="TrinketTinker_Companions_Motions_BaseLerpMotion_1_Lerp" data-uid="TrinketTinker.Companions.Motions.BaseLerpMotion`1.Lerp">
+  Lerp
   <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/LerpMotion.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -297,18 +314,18 @@ Class BaseLerpMotion&lt;IArgs&gt;  <a class="header-action link-secondary" title
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected float lerp</code></pre>
+    <pre><code class="lang-csharp hljs">protected float Lerp { get; set; }</code></pre>
   </div>
 
 
 
 
-  <h4 class="section">Field Value</h4>
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
-
 
 
 
@@ -325,7 +342,7 @@ Class BaseLerpMotion&lt;IArgs&gt;  <a class="header-action link-secondary" title
 
   <h3 id="TrinketTinker_Companions_Motions_BaseLerpMotion_1_GetOffset" data-uid="TrinketTinker.Companions.Motions.BaseLerpMotion`1.GetOffset">
   GetOffset()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/LerpMotion.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/LerpMotion.cs/#L80"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get offset</p>
@@ -357,7 +374,7 @@ Class BaseLerpMotion&lt;IArgs&gt;  <a class="header-action link-secondary" title
 
   <h3 id="TrinketTinker_Companions_Motions_BaseLerpMotion_1_GetRotation" data-uid="TrinketTinker.Companions.Motions.BaseLerpMotion`1.GetRotation">
   GetRotation()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/LerpMotion.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/LerpMotion.cs/#L86"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get sprite rotation</p>
@@ -390,7 +407,7 @@ Class BaseLerpMotion&lt;IArgs&gt;  <a class="header-action link-secondary" title
 
   <h3 id="TrinketTinker_Companions_Motions_BaseLerpMotion_1_OnOwnerWarp" data-uid="TrinketTinker.Companions.Motions.BaseLerpMotion`1.OnOwnerWarp">
   OnOwnerWarp()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/LerpMotion.cs/#L120"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/LerpMotion.cs/#L124"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Update light source when owner changes location</p>
@@ -417,7 +434,7 @@ Class BaseLerpMotion&lt;IArgs&gt;  <a class="header-action link-secondary" title
 
   <h3 id="TrinketTinker_Companions_Motions_BaseLerpMotion_1_UpdateLocal_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Companions.Motions.BaseLerpMotion`1.UpdateLocal(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
   UpdateLocal(GameTime, GameLocation)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/LerpMotion.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/LerpMotion.cs/#L22"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Update info that should change every tick, for owner only. Netfield changes should happen here.</p>

@@ -87,7 +87,7 @@
         <article data-uid="">
 <h1 id="hitscan">Hitscan</h1>
 
-<p>Do damage to a monster within range, can roll criticals and apply stun/knockback.</p>
+<p>Do damage to a monster within range, can roll criticals, explode, and apply stun/knockback.</p>
 <h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.DamageArgs.html">Args</a></h2>
 <table>
 <thead>
@@ -146,6 +146,12 @@
 <td>int</td>
 <td>0</td>
 <td>Milisecond time to stun the enemy.</td>
+</tr>
+<tr>
+<td><code>StunTAS</code></td>
+<td>string</td>
+<td><em>empty</em></td>
+<td>Show this <a href="5-Temporary%20Animated%20Sprite.html">temporary animated sprite</a> while the enemy is stunned, calculate loop from stun time instead of loop value set in the TAS asset. When used with <a href="4.z.06-Projectile.html">Projectile</a>, the TAS's rotation is also overwritten with the projectile's rotation.</td>
 </tr>
 <tr>
 <td><code>Hits</code></td>

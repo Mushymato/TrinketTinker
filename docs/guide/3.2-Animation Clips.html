@@ -88,7 +88,7 @@
 <h1 id="animation-clips">Animation Clips</h1>
 
 <p>Beyond the basic <a href="3.0-Direction.html">directional movement animation</a>, companions can also have special animation states triggered by either a motion or an ability. These extra animations must live on the same sprite sheet and have the start frame + frame length specified in <code>AnimData</code>, with the right key.</p>
-<p>Animation clips can be played back once (oneshot), or continuously played over the directional movement animation (override).</p>
+<p>Animation clips can be played back once (oneshot), or continuously played over the directional movement animation (override). This is decided by particular motions/abilities that request the animation.</p>
 <h2 id="structure">Structure</h2>
 <table>
 <thead>
@@ -123,6 +123,62 @@
 <td>float</td>
 <td><em>empty</em></td>
 <td>Milisecond Interval between animation frames. If this is not set, use the Motion's interval.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="animclip-keys">AnimClip Keys</h2>
+<h3 id="idle-animation">Idle Animation</h3>
+<p>Applies when the player is not moving. Does nothing if companion is marked <code>AlwaysMoving</code>, as their directional animation will simply continue.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&quot;Idle.1&quot;</code></td>
+<td>For the first <a href="3.0-Direction.html">direction</a>, Down if DRUL.</td>
+</tr>
+<tr>
+<td><code>&quot;Idle.2&quot;</code></td>
+<td>For the second <a href="3.0-Direction.html">direction</a>, Right if DRUL</td>
+</tr>
+<tr>
+<td><code>&quot;Idle.3&quot;</code></td>
+<td>For the third <a href="3.0-Direction.html">direction</a>, Up if DRUL.</td>
+</tr>
+<tr>
+<td><code>&quot;Idle.4&quot;</code></td>
+<td>For the fourth <a href="3.0-Direction.html">direction</a>, Left if DRUL.</td>
+</tr>
+<tr>
+<td><code>&quot;Idle.0&quot;</code></td>
+<td>General directionless idle animation.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="motion-specific-state-animation">Motion Specific State Animation</h3>
+<p>Applies when a particular motion enters alternate state beyond the simple moving vs idle.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Source</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&quot;Perching&quot;</code></td>
+<td><a href="3.z.001-Hover.html">Hover</a></td>
+<td>Applies when companion perches on the player after a timeout.</td>
+</tr>
+<tr>
+<td><code>&quot;Jump&quot;</code></td>
+<td><a href="3.z.002-Bounce.html">Bounce</a> and <a href="3.z.003-Hop.html">Hop</a></td>
+<td>Applies when the companion jumped.</td>
 </tr>
 </tbody>
 </table>

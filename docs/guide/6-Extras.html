@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Namespace TrinketTinker.Companions.Motions | TrinketTinker </title>
+      <title>Extras | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Namespace TrinketTinker.Companions.Motions | TrinketTinker ">
+      <meta name="title" content="Extras | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -12,11 +12,11 @@
       <link rel="stylesheet" href="../public/main.css">
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
-      <meta name="searchOption" content="noindex">
+      
       <meta name="docfx:rel" content="../">
       
       
-      
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/6-Extras.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -39,7 +39,7 @@
 
   </head>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
@@ -84,84 +84,25 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="TrinketTinker.Companions.Motions">
+        <article data-uid="">
+<h1 id="extras">Extras</h1>
 
-  <h1 id="TrinketTinker_Companions_Motions" data-uid="TrinketTinker.Companions.Motions" class="text-break">Namespace TrinketTinker.Companions.Motions</h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
-
-    <h3 id="classes">
-Classes
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Companions.Motions.BaseLerpMotion-1.html">BaseLerpMotion&lt;IArgs&gt;</a></dt>
-      <dd><p>Base version of LerpMotion, for use with inheritance</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Companions.Motions.BaseStaticMotion-1.html">BaseStaticMotion&lt;IArgs&gt;</a></dt>
-      <dd><p>Companion stays at some static offset from anchor.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Companions.Motions.BounceMotion.html">BounceMotion</a></dt>
-      <dd><p>Companion follows the player and bobs up and down</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Companions.Motions.HopMotion.html">HopMotion</a></dt>
-      <dd><p>Companion follows the player and bobs up and down</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Companions.Motions.HoverMotion.html">HoverMotion</a></dt>
-      <dd><p>Companion follows the player and bobs up and down</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Companions.Motions.LerpMotion.html">LerpMotion</a></dt>
-      <dd><p>Companion closely follows the anchor, at a distance</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html">Motion&lt;TArgs&gt;</a></dt>
-      <dd><p>Abstract class, controls drawing and movement of companion</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Companions.Motions.OrbitMotion.html">OrbitMotion</a></dt>
-      <dd><p>Companion orbits around a point</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Companions.Motions.RelativeMotion.html">RelativeMotion</a></dt>
-      <dd><p>Companion's offset is adjusted depending on player facing direction</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Companions.Motions.SerpentMotion.html">SerpentMotion</a></dt>
-      <dd><p>Companion has trailing segments and tail, like the royal serpent.
-Needs additional sets of sprites for segment(s) and tail.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Companions.Motions.StaticMotion.html">StaticMotion</a></dt>
-      <dd><p>Companion stays at some static offset from anchor.</p>
-</dd>
-    </dl>
-    <h3 id="interfaces">
-Interfaces
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TrinketTinker.Companions.Motions.IMotion.html">IMotion</a></dt>
-      <dd></dd>
-    </dl>
-
+<p>TrinketTinker provides a few extra supporting features.</p>
+<h2 id="item-query-mushymatotrinkettinker_create_trinket">Item Query: mushymato.TrinketTinker_CREATE_TRINKET</h2>
+<pre><code>mushymato.TrinketTinker_CREATE_TRINKET &lt;trinket id&gt; [level] [variant]
+</code></pre>
+<p>Creates a new trinket item. If the trinket has tinker data, set level and variant.
+Useful for producing a trinket at specified level/variant.</p>
+<h2 id="machine-trinket-colorizer-trinket-colorizer">Machine: Trinket Colorizer <img src="../images/favicon.png" alt="Trinket Colorizer"></h2>
+<p>A new machine that can be purchased from <a href="https://stardewvalleywiki.com/Blacksmith">the Blacksmith</a> for 50 <a href="https://stardewvalleywiki.com/Gold_Bar">Gold Bars</a> once the <a href="https://stardewvalleywiki.com/Anvil">Anvil</a> recipe is obtained.</p>
+<p>Consumes 15 <a href="https://stardewvalleywiki.com/Omni_Geode">Omni Geode</a> to reroll the variant on a TrinketTinker trinket, no effect on vanilla trinkets.</p>
+<p>The Trinket Colorizer is just a normal machine with qualified id <code>(BC)mushymato.TrinketTinker_TrinketColorizer</code>, mods are free to add their own machine rules.</p>
+<p>The colorizer will never roll the same variant twice in a row. Anvils have similar rule applied to them for TrinketTinker trinkets.</p>
 
 </article>
 
 
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
 
       </div>
 

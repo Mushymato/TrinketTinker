@@ -157,7 +157,7 @@ Class MotionData  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="TrinketTinker_Models_MotionData_AnimClips" data-uid="TrinketTinker.Models.MotionData.AnimClips">
   AnimClips
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L131"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Repository of anim clips that can be shown in place of the default movement anim.
@@ -383,6 +383,38 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
 
 
 
+  <a id="TrinketTinker_Models_MotionData_HideDuringEvents_" data-uid="TrinketTinker.Models.MotionData.HideDuringEvents*"></a>
+
+  <h3 id="TrinketTinker_Models_MotionData_HideDuringEvents" data-uid="TrinketTinker.Models.MotionData.HideDuringEvents">
+  HideDuringEvents
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hide the companion during events.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HideDuringEvents { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Models_MotionData_Interval_" data-uid="TrinketTinker.Models.MotionData.Interval*"></a>
 
   <h3 id="TrinketTinker_Models_MotionData_Interval" data-uid="TrinketTinker.Models.MotionData.Interval">
@@ -547,7 +579,7 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
 
   <h3 id="TrinketTinker_Models_MotionData_RepeatCount" data-uid="TrinketTinker.Models.MotionData.RepeatCount">
   RepeatCount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L113"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Number of times to repeat the draw.</p>
@@ -575,11 +607,46 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
 
 
 
-  <a id="TrinketTinker_Models_MotionData_RepeatInternval_" data-uid="TrinketTinker.Models.MotionData.RepeatInternval*"></a>
+  <a id="TrinketTinker_Models_MotionData_RepeatFrameSets_" data-uid="TrinketTinker.Models.MotionData.RepeatFrameSets*"></a>
 
-  <h3 id="TrinketTinker_Models_MotionData_RepeatInternval" data-uid="TrinketTinker.Models.MotionData.RepeatInternval">
-  RepeatInternval
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TrinketTinker_Models_MotionData_RepeatFrameSets" data-uid="TrinketTinker.Models.MotionData.RepeatFrameSets">
+  RepeatFrameSets
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>When used with repeat, apply offset of this value times number of frames (per direction mode and frame length).<br>
+Example with <a class="xref" href="TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_RepeatFrameSets">RepeatFrameSets</a> = 2 <a class="xref" href="TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_DirectionMode">DirectionMode</a> = <a class="xref" href="TrinketTinker.Models.DirectionMode.html#TrinketTinker_Models_DirectionMode_R">R</a> and <a class="xref" href="TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_FrameLength">FrameLength</a> = 4.</p>
+<ul><li>The initial companion need 4 frames, taking up frames 0 to 3.</li><li>First repeat companion need 4 frames, taking up frames 4 to 7.</li><li>Second repeat companion need 4 frames, taking up frames 8 to 11.</li></ul>
+Spritesheet needs a total of 12 frames.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int RepeatFrameSets { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Models_MotionData_RepeatInterval_" data-uid="TrinketTinker.Models.MotionData.RepeatInterval*"></a>
+
+  <h3 id="TrinketTinker_Models_MotionData_RepeatInterval" data-uid="TrinketTinker.Models.MotionData.RepeatInterval">
+  RepeatInterval
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L115"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Number of miliseconds between repeats.</p>
@@ -587,7 +654,7 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float RepeatInternval { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public float RepeatInterval { get; set; }</code></pre>
   </div>
 
 
@@ -615,7 +682,7 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
 
   <h3 id="TrinketTinker_Models_MotionData_GetIdleAnim_System_Int32_" data-uid="TrinketTinker.Models.MotionData.GetIdleAnim(System.Int32)">
   GetIdleAnim(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L120"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L133"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>

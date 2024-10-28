@@ -22,6 +22,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Companions.Anim.DrawSnapshot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Companions.Anim.DrawSnapshot.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Companions.Anim.TinkerAnimSprite.yml",
       "output": {
         ".html": {
@@ -142,6 +152,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Companions.Motions.SerpentMotion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Companions.Motions.SerpentMotion.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Companions.Motions.StaticMotion.yml",
       "output": {
         ".html": {
@@ -216,16 +236,6 @@
       "output": {
         ".html": {
           "relative_path": "api/TrinketTinker.Effects.Abilities.BuffAbility.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TrinketTinker.Effects.Abilities.DebugDummyAbility.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TrinketTinker.Effects.Abilities.DebugDummyAbility.html"
         }
       },
       "version": ""
@@ -406,6 +416,46 @@
       "output": {
         ".html": {
           "relative_path": "api/TrinketTinker.Effects.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Extras.ItemQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Extras.ItemQuery.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Extras.ProcTrinket.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Extras.ProcTrinket.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Extras.TrinketColorizer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Extras.TrinketColorizer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Extras.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Extras.html"
         }
       },
       "version": ""
@@ -682,6 +732,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.MotionArgs.SerpentArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.MotionArgs.SerpentArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Models.MotionArgs.StaticArgs.yml",
       "output": {
         ".html": {
@@ -746,6 +806,26 @@
       "output": {
         ".html": {
           "relative_path": "api/TrinketTinker.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Wheels.TinkerConst.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Wheels.TinkerConst.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Wheels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Wheels.html"
         }
       },
       "version": ""
@@ -885,6 +965,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "guide/3.z.004-Serpent.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/3.z.004-Serpent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "guide/3.z.100-Static.md",
       "output": {
         ".html": {
@@ -939,16 +1029,6 @@
       "output": {
         ".html": {
           "relative_path": "guide/4.z-Ability Classes.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "guide/4.z.0-DebugDummy.md",
-      "output": {
-        ".html": {
-          "relative_path": "guide/4.z.0-DebugDummy.html"
         }
       },
       "version": ""
@@ -1075,10 +1155,20 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/5-Extras.md",
+      "source_relative_path": "guide/5-Temporary Animated Sprite.md",
       "output": {
         ".html": {
-          "relative_path": "guide/5-Extras.html"
+          "relative_path": "guide/5-Temporary Animated Sprite.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/6-Extras.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/6-Extras.html"
         }
       },
       "version": ""
@@ -1102,6 +1192,16 @@
       "output": {
         ".html": {
           "relative_path": "guide/x-example.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/demo/repeat.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/demo/repeat.png"
         }
       },
       "version": ""
@@ -1142,6 +1242,16 @@
       "output": {
         "resource": {
           "relative_path": "images/sheets/r.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/sheets/rl-repeat-2.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/sheets/rl-repeat-2.png"
         }
       },
       "version": ""

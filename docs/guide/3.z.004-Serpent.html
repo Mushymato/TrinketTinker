@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>DebugDummy | TrinketTinker </title>
+      <title>Serpent | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="DebugDummy | TrinketTinker ">
+      <meta name="title" content="Serpent | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/4.z.0-DebugDummy.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/3.z.004-Serpent.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,9 +85,37 @@
         </div>
 
         <article data-uid="">
-<h1 id="debugdummy">DebugDummy</h1>
+<h1 id="serpent">Serpent</h1>
 
-<p>Does nothing besides logging to debug, can be helpful for confirming activation.</p>
+<p>Draws additional body segments that follow the base sprite, which is treated as the head.</p>
+<p>Requires 2 additional sets of sprites for the body segments and tail. The number per set required is the determined by <a href="3.0-Direction.html">direction</a> and frame length, just like the base sprite number. A minimal serpent would require just 3 sprites (head, segment, tail), using direction mode Single with frame length of 1. Serpent frame</p>
+<p>To have the head rotate as well, set <code>DirectionRotate</code> to true.</p>
+<h2 id="args"><a href="../api/TrinketTinker.Models.MotionArgs.HopArgs.html">Args</a></h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SegmentCount</code></td>
+<td>int</td>
+<td>5</td>
+<td>Number of segments to draw, excluding the head. Putting a big number here may cause performance issues.</td>
+</tr>
+<tr>
+<td><code>Sparcity</code></td>
+<td>float</td>
+<td>3.5</td>
+<td>Factor determining how spaced out each segment is. The default value of 3.5 gives a little bit of overlap between segments.</td>
+</tr>
+</tbody>
+</table>
+<p>*and all arguments of <a href="3.z.000-Lerp.html">Lerp</a></p>
 
 </article>
 
