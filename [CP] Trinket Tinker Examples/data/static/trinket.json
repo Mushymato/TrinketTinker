@@ -32,6 +32,15 @@
           "DropsNaturally": false,
           "CanBeReforged": false,
         },
+        "{{ModId}}_StaticRLRepeat2": {
+          "Id": "{{ModId}}_StaticRLRepeat2",
+          "DisplayName": "Trinket Tinker - Static RL Repeat 2x2",
+          "Description": "Repeat draw example.",
+          "Texture": "Mods/{{ModId}}/rl-repeat-2",
+          "SheetIndex": 9,
+          "DropsNaturally": false,
+          "CanBeReforged": false,
+        },
       }
     }
   ]

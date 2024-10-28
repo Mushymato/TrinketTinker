@@ -20,7 +20,7 @@ namespace TrinketTinker.Companions.Motions
         /// <param name="location"></param>
         public override void UpdateGlobal(GameTime time, GameLocation location)
         {
-            theta += time.ElapsedGameTime.TotalSeconds;
+            theta += time.ElapsedGameTime.TotalMilliseconds / args.Period;
             // c.NetOffset.X = motionOffset.X + args.RadiusX * (float)Math.Cos(Math.PI * theta);
             // c.NetOffset.Y = motionOffset.Y + args.RadiusY * (float)Math.Sin(Math.PI * theta);
             if (theta >= 2f)

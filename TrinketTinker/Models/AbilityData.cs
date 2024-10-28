@@ -1,7 +1,3 @@
-using System.Collections.Immutable;
-using StardewValley.GameData;
-using TrinketTinker.Wheels;
-
 namespace TrinketTinker.Models
 {
     /// <summary>Defines how an ability can proc (activate).</summary>

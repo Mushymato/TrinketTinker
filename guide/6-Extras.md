@@ -16,8 +16,8 @@ Useful for producing a trinket at specified level/variant.
 
 A new machine that can be purchased from [the Blacksmith](https://stardewvalleywiki.com/Blacksmith) for 50 [Gold Bars](https://stardewvalleywiki.com/Gold_Bar) once the [Anvil](https://stardewvalleywiki.com/Anvil) recipe is obtained.
 
-Consumes 3 [Star Shards](https://stardewvalleywiki.com/Star_Shards) to reroll the variant on a TrinketTinker trinket, no effect on vanilla trinkets.
+Consumes 15 [Omni Geode](https://stardewvalleywiki.com/Omni_Geode) to reroll the variant on a TrinketTinker trinket, no effect on vanilla trinkets.
 
 The Trinket Colorizer is just a normal machine with qualified id `(BC)mushymato.TrinketTinker_TrinketColorizer`, mods are free to add their own machine rules.
 
-By default, the colorizer will never roll the same variant twice in a row. Anvils have similar rule applied to them, for TrinketTinker trinkets only.
+The colorizer will never roll the same variant twice in a row. Anvils have similar rule applied to them for TrinketTinker trinkets.

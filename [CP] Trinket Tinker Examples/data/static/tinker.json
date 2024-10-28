@@ -148,6 +148,46 @@
             ]
           ]
         },
+        // ID must match trinket
+        "{{ModId}}_StaticRLRepeat2": {
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/rl-repeat-2",
+              "Width": 16,
+              "Height": 32
+            },
+          ],
+          // Orbit around the player in a ellipse
+          "Motion": {
+            "MotionClass": "Orbit",
+            "AlwaysMoving": true,
+            "DirectionMode": "RL",
+            "FrameLength": 4,
+            "Interval": 100,
+            "RepeatCount": 2,
+            "RepeatInterval": 1000,
+            "RepeatFrameSets": 2,
+            "Args": {
+              "Period": 7000,
+              "RadiusX": 192,
+              "RadiusY": 80
+            }
+          },
+          "Abilities": [
+            // level 0
+            [
+              {
+                // Item drop ability 2, produces a random bone item when killing any enemy
+                "AbilityClass": "ItemDrop",
+                "Proc": "SlayMonster",
+                "Args": {
+                  "ItemId": "ALL_ITEMS (O)",
+                  "PerItemCondition": "ITEM_CONTEXT_TAG Target bone_item, !ITEM_CONTEXT_TAG Target id_o_881"
+                }
+              },
+            ]
+          ]
+        },
       }
     }
   ]

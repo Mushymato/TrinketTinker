@@ -343,21 +343,22 @@ namespace TrinketTinker.Companions.Motions
         /// <param name="snapshot"></param>
         protected void EnqueueRepeatDraws(DrawSnapshot snapshot, bool isShadow)
         {
+            int totalFrameSets = md.RepeatFrameSets + 1;
             // repeat for the base frame set
             for (int repeat = 1; repeat <= md.RepeatCount; repeat++)
             {
                 drawSnapshotQueue.Enqueue(
                     snapshot,
                     Game1.currentGameTime.TotalGameTime.Ticks +
-                    TimeSpan.FromMilliseconds(md.RepeatInterval * repeat * (md.RepeatFrameSets + 1)).Ticks
+                    TimeSpan.FromMilliseconds(md.RepeatInterval * totalFrameSets * repeat).Ticks
                 );
             }
 
             // repeat for additional frame sets
             DrawSnapshot framesetSnapshot;
-            for (int frameset = 1; frameset <= md.RepeatFrameSets; frameset++)
+            for (int repeat = 0; repeat <= md.RepeatCount; repeat++)
             {
-                for (int repeat = 1; repeat <= MathF.Abs(md.RepeatCount); repeat++)
+                for (int frameset = 1; frameset < totalFrameSets; frameset++)
                 {
                     if (isShadow)
                     {
@@ -372,7 +373,7 @@ namespace TrinketTinker.Companions.Motions
                     drawSnapshotQueue.Enqueue(
                         framesetSnapshot,
                         Game1.currentGameTime.TotalGameTime.Ticks +
-                        TimeSpan.FromMilliseconds(md.RepeatInterval * frameset * repeat).Ticks
+                        TimeSpan.FromMilliseconds(md.RepeatInterval * (totalFrameSets * repeat + frameset)).Ticks
                     );
                 }
             }

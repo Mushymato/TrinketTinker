@@ -6,6 +6,6 @@ namespace TrinketTinker.Models.MotionArgs
         /// <summary>Number of segments, not including head</summary>
         public int SegmentCount { get; set; } = 5;
         /// <summary>How spaced out each segment is</summary>
-        public float Sparcity { get; set; } = 4;
+        public float Sparcity { get; set; } = 3.5f;
     }
 }

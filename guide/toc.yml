@@ -21,6 +21,8 @@
       name: Bounce
     - href: 3.z.003-Hop.md
       name: Hop
+    - href: 3.z.004-Serpent.md
+      name: Serpent
     - href: 3.z.100-Static.md
       name: Static
     - href: 3.z.101-Orbit.md

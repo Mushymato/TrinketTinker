@@ -124,8 +124,6 @@ namespace TrinketTinker.Models
         /// Spritesheet needs a total of 12 frames.
         /// </summary>
         public int RepeatFrameSets { get; set; } = 0;
-        /// <summary>Whether the position used for repeats is recalculated from world position.</summary>
-        public bool RepeatPositionGlobal { get; set; } = true;
         /// <summary>
         /// Repository of anim clips that can be shown in place of the default movement anim.
         /// Must live on the same sprite sheet specified by variant data.
