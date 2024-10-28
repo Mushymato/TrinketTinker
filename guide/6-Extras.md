@@ -18,6 +18,6 @@ A new machine that can be purchased from [the Blacksmith](https://stardewvalleyw
 
 Consumes 15 [Omni Geode](https://stardewvalleywiki.com/Omni_Geode) to reroll the variant on a TrinketTinker trinket, no effect on vanilla trinkets.
 
-The Trinket Colorizer is just a normal machine with qualified id `(BC)mushymato.TrinketTinker_TrinketColorizer`, mods are free to add their own machine rules.
-
 The colorizer will never roll the same variant twice in a row. Anvils have similar rule applied to them for TrinketTinker trinkets.
+
+Implementation wise, the Trinket Colorizer is a standard machine with qualified ID `(BC)mushymato.TrinketTinker_TrinketColorizer` and a single complex output machine rule. Mods are free to disregard

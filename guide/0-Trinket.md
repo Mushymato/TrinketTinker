@@ -38,8 +38,7 @@ Trinkets can be added with by editing `Data/Trinkets`, generally with [Content P
           // Add trinket to random drop pool once player attains combat mastery
           // Can still add other ways to acquire (e.g. shops, machine outputs)
           "DropsNaturally": true,
-          // Allow trinket to reroll stats on the anvil
-          // This is ignored by trinkets with tinker data, where anvil eligibility is based on whether the trinket has more than 1 set of abilities.
+          // Allow trinket to reroll stats on the anvil (and reroll appearance on the colorizer, for trinkets with tinker data).
           "CanBeReforged": true,
           // Mod specific data, not used by base game or TrinketTinker
           // "CustomFields": null,

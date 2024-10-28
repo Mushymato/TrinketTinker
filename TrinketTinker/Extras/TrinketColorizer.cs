@@ -146,6 +146,12 @@ namespace TrinketTinker.Extras
             overrideMinutesUntilReady = null;
             if (inputItem is not Trinket t)
                 return null;
+            if (!t.GetTrinketData().CanBeReforged)
+            {
+                if (!probe)
+                    Game1.showRedMessage(Game1.content.LoadString(I18n.BC_TrinketColorizer_NoRecolor()));
+                return null;
+            }
 
             int previous = 0;
             if (inputItem.modData.TryGetValue(TrinketTinkerEffect.ModData_Variant, out string? previousStr))
@@ -186,6 +192,12 @@ namespace TrinketTinker.Extras
             overrideMinutesUntilReady = null;
             if (inputItem is not Trinket t)
                 return null;
+            if (!t.GetTrinketData().CanBeReforged)
+            {
+                if (!probe)
+                    Game1.showRedMessage(Game1.content.LoadString("Strings\\1_6_Strings:Anvil_wrongtrinket"));
+                return null;
+            }
 
             if (((Trinket)inputItem).GetEffect() is not TrinketTinkerEffect effect1)
                 return null;
