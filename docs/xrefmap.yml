@@ -13,6 +13,148 @@ references:
   commentId: N:TrinketTinker.Companions.Anim
   fullName: TrinketTinker.Companions.Anim
   nameWithType: TrinketTinker.Companions.Anim
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot
+  name: DrawSnapshot
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html
+  commentId: T:TrinketTinker.Companions.Anim.DrawSnapshot
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot
+  nameWithType: DrawSnapshot
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Color,System.Single,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Graphics.SpriteEffects,System.Single)
+  name: DrawSnapshot(Texture2D, Vector2, Rectangle, Color, float, Vector2, Vector2, SpriteEffects, float)
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot__ctor_Microsoft_Xna_Framework_Graphics_Texture2D_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Rectangle_Microsoft_Xna_Framework_Color_System_Single_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Graphics_SpriteEffects_System_Single_
+  commentId: M:TrinketTinker.Companions.Anim.DrawSnapshot.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Color,System.Single,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Graphics.SpriteEffects,System.Single)
+  name.vb: New(Texture2D, Vector2, Rectangle, Color, Single, Vector2, Vector2, SpriteEffects, Single)
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.DrawSnapshot(Microsoft.Xna.Framework.Graphics.Texture2D, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Rectangle, Microsoft.Xna.Framework.Color, float, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Graphics.SpriteEffects, float)
+  fullName.vb: TrinketTinker.Companions.Anim.DrawSnapshot.New(Microsoft.Xna.Framework.Graphics.Texture2D, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Rectangle, Microsoft.Xna.Framework.Color, Single, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Graphics.SpriteEffects, Single)
+  nameWithType: DrawSnapshot.DrawSnapshot(Texture2D, Vector2, Rectangle, Color, float, Vector2, Vector2, SpriteEffects, float)
+  nameWithType.vb: DrawSnapshot.New(Texture2D, Vector2, Rectangle, Color, Single, Vector2, Vector2, SpriteEffects, Single)
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.#ctor*
+  name: DrawSnapshot
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot__ctor_
+  commentId: Overload:TrinketTinker.Companions.Anim.DrawSnapshot.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.DrawSnapshot
+  fullName.vb: TrinketTinker.Companions.Anim.DrawSnapshot.New
+  nameWithType: DrawSnapshot.DrawSnapshot
+  nameWithType.vb: DrawSnapshot.New
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.DrawColor
+  name: DrawColor
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_DrawColor
+  commentId: P:TrinketTinker.Companions.Anim.DrawSnapshot.DrawColor
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.DrawColor
+  nameWithType: DrawSnapshot.DrawColor
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.DrawColor*
+  name: DrawColor
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_DrawColor_
+  commentId: Overload:TrinketTinker.Companions.Anim.DrawSnapshot.DrawColor
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.DrawColor
+  nameWithType: DrawSnapshot.DrawColor
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.Effects
+  name: Effects
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_Effects
+  commentId: P:TrinketTinker.Companions.Anim.DrawSnapshot.Effects
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.Effects
+  nameWithType: DrawSnapshot.Effects
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.Effects*
+  name: Effects
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_Effects_
+  commentId: Overload:TrinketTinker.Companions.Anim.DrawSnapshot.Effects
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.Effects
+  nameWithType: DrawSnapshot.Effects
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.LayerDepth
+  name: LayerDepth
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_LayerDepth
+  commentId: P:TrinketTinker.Companions.Anim.DrawSnapshot.LayerDepth
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.LayerDepth
+  nameWithType: DrawSnapshot.LayerDepth
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.LayerDepth*
+  name: LayerDepth
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_LayerDepth_
+  commentId: Overload:TrinketTinker.Companions.Anim.DrawSnapshot.LayerDepth
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.LayerDepth
+  nameWithType: DrawSnapshot.LayerDepth
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.Origin
+  name: Origin
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_Origin
+  commentId: P:TrinketTinker.Companions.Anim.DrawSnapshot.Origin
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.Origin
+  nameWithType: DrawSnapshot.Origin
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.Origin*
+  name: Origin
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_Origin_
+  commentId: Overload:TrinketTinker.Companions.Anim.DrawSnapshot.Origin
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.Origin
+  nameWithType: DrawSnapshot.Origin
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.Position
+  name: Position
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_Position
+  commentId: P:TrinketTinker.Companions.Anim.DrawSnapshot.Position
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.Position
+  nameWithType: DrawSnapshot.Position
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.Position*
+  name: Position
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_Position_
+  commentId: Overload:TrinketTinker.Companions.Anim.DrawSnapshot.Position
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.Position
+  nameWithType: DrawSnapshot.Position
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.Rotation
+  name: Rotation
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_Rotation
+  commentId: P:TrinketTinker.Companions.Anim.DrawSnapshot.Rotation
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.Rotation
+  nameWithType: DrawSnapshot.Rotation
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.Rotation*
+  name: Rotation
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_Rotation_
+  commentId: Overload:TrinketTinker.Companions.Anim.DrawSnapshot.Rotation
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.Rotation
+  nameWithType: DrawSnapshot.Rotation
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.SourceRect
+  name: SourceRect
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_SourceRect
+  commentId: P:TrinketTinker.Companions.Anim.DrawSnapshot.SourceRect
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.SourceRect
+  nameWithType: DrawSnapshot.SourceRect
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.SourceRect*
+  name: SourceRect
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_SourceRect_
+  commentId: Overload:TrinketTinker.Companions.Anim.DrawSnapshot.SourceRect
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.SourceRect
+  nameWithType: DrawSnapshot.SourceRect
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.Texture
+  name: Texture
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_Texture
+  commentId: P:TrinketTinker.Companions.Anim.DrawSnapshot.Texture
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.Texture
+  nameWithType: DrawSnapshot.Texture
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.Texture*
+  name: Texture
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_Texture_
+  commentId: Overload:TrinketTinker.Companions.Anim.DrawSnapshot.Texture
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.Texture
+  nameWithType: DrawSnapshot.Texture
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.TextureScale
+  name: TextureScale
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_TextureScale
+  commentId: P:TrinketTinker.Companions.Anim.DrawSnapshot.TextureScale
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.TextureScale
+  nameWithType: DrawSnapshot.TextureScale
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.TextureScale*
+  name: TextureScale
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_TextureScale_
+  commentId: Overload:TrinketTinker.Companions.Anim.DrawSnapshot.TextureScale
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.TextureScale
+  nameWithType: DrawSnapshot.TextureScale
 - uid: TrinketTinker.Companions.Anim.TinkerAnimSprite
   name: TinkerAnimSprite
   href: api/TrinketTinker.Companions.Anim.TinkerAnimSprite.html
@@ -796,6 +938,58 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).Draw
   nameWithType: Motion<TArgs>.Draw
   nameWithType.vb: Motion(Of TArgs).Draw
+- uid: TrinketTinker.Companions.Motions.Motion`1.DrawCompanion(Microsoft.Xna.Framework.Graphics.SpriteBatch,TrinketTinker.Companions.Anim.DrawSnapshot)
+  name: DrawCompanion(SpriteBatch, DrawSnapshot)
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_DrawCompanion_Microsoft_Xna_Framework_Graphics_SpriteBatch_TrinketTinker_Companions_Anim_DrawSnapshot_
+  commentId: M:TrinketTinker.Companions.Motions.Motion`1.DrawCompanion(Microsoft.Xna.Framework.Graphics.SpriteBatch,TrinketTinker.Companions.Anim.DrawSnapshot)
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.DrawCompanion(Microsoft.Xna.Framework.Graphics.SpriteBatch, TrinketTinker.Companions.Anim.DrawSnapshot)
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).DrawCompanion(Microsoft.Xna.Framework.Graphics.SpriteBatch, TrinketTinker.Companions.Anim.DrawSnapshot)
+  nameWithType: Motion<TArgs>.DrawCompanion(SpriteBatch, DrawSnapshot)
+  nameWithType.vb: Motion(Of TArgs).DrawCompanion(SpriteBatch, DrawSnapshot)
+- uid: TrinketTinker.Companions.Motions.Motion`1.DrawCompanion*
+  name: DrawCompanion
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_DrawCompanion_
+  commentId: Overload:TrinketTinker.Companions.Motions.Motion`1.DrawCompanion
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.DrawCompanion
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).DrawCompanion
+  nameWithType: Motion<TArgs>.DrawCompanion
+  nameWithType.vb: Motion(Of TArgs).DrawCompanion
+- uid: TrinketTinker.Companions.Motions.Motion`1.DrawShadow(Microsoft.Xna.Framework.Graphics.SpriteBatch,TrinketTinker.Companions.Anim.DrawSnapshot)
+  name: DrawShadow(SpriteBatch, DrawSnapshot)
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_DrawShadow_Microsoft_Xna_Framework_Graphics_SpriteBatch_TrinketTinker_Companions_Anim_DrawSnapshot_
+  commentId: M:TrinketTinker.Companions.Motions.Motion`1.DrawShadow(Microsoft.Xna.Framework.Graphics.SpriteBatch,TrinketTinker.Companions.Anim.DrawSnapshot)
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.DrawShadow(Microsoft.Xna.Framework.Graphics.SpriteBatch, TrinketTinker.Companions.Anim.DrawSnapshot)
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).DrawShadow(Microsoft.Xna.Framework.Graphics.SpriteBatch, TrinketTinker.Companions.Anim.DrawSnapshot)
+  nameWithType: Motion<TArgs>.DrawShadow(SpriteBatch, DrawSnapshot)
+  nameWithType.vb: Motion(Of TArgs).DrawShadow(SpriteBatch, DrawSnapshot)
+- uid: TrinketTinker.Companions.Motions.Motion`1.DrawShadow*
+  name: DrawShadow
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_DrawShadow_
+  commentId: Overload:TrinketTinker.Companions.Motions.Motion`1.DrawShadow
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.DrawShadow
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).DrawShadow
+  nameWithType: Motion<TArgs>.DrawShadow
+  nameWithType.vb: Motion(Of TArgs).DrawShadow
+- uid: TrinketTinker.Companions.Motions.Motion`1.EnqueueRepeatDraws(TrinketTinker.Companions.Anim.DrawSnapshot,System.Boolean)
+  name: EnqueueRepeatDraws(DrawSnapshot, bool)
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_EnqueueRepeatDraws_TrinketTinker_Companions_Anim_DrawSnapshot_System_Boolean_
+  commentId: M:TrinketTinker.Companions.Motions.Motion`1.EnqueueRepeatDraws(TrinketTinker.Companions.Anim.DrawSnapshot,System.Boolean)
+  name.vb: EnqueueRepeatDraws(DrawSnapshot, Boolean)
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.EnqueueRepeatDraws(TrinketTinker.Companions.Anim.DrawSnapshot, bool)
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).EnqueueRepeatDraws(TrinketTinker.Companions.Anim.DrawSnapshot, Boolean)
+  nameWithType: Motion<TArgs>.EnqueueRepeatDraws(DrawSnapshot, bool)
+  nameWithType.vb: Motion(Of TArgs).EnqueueRepeatDraws(DrawSnapshot, Boolean)
+- uid: TrinketTinker.Companions.Motions.Motion`1.EnqueueRepeatDraws*
+  name: EnqueueRepeatDraws
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_EnqueueRepeatDraws_
+  commentId: Overload:TrinketTinker.Companions.Motions.Motion`1.EnqueueRepeatDraws
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.EnqueueRepeatDraws
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).EnqueueRepeatDraws
+  nameWithType: Motion<TArgs>.EnqueueRepeatDraws
+  nameWithType.vb: Motion(Of TArgs).EnqueueRepeatDraws
 - uid: TrinketTinker.Companions.Motions.Motion`1.GetMoving
   name: GetMoving()
   href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_GetMoving
@@ -968,6 +1162,23 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).SetOverrideClip
   nameWithType: Motion<TArgs>.SetOverrideClip
   nameWithType.vb: Motion(Of TArgs).SetOverrideClip
+- uid: TrinketTinker.Companions.Motions.Motion`1.TotalFrames
+  name: TotalFrames
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_TotalFrames
+  commentId: P:TrinketTinker.Companions.Motions.Motion`1.TotalFrames
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.TotalFrames
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).TotalFrames
+  nameWithType: Motion<TArgs>.TotalFrames
+  nameWithType.vb: Motion(Of TArgs).TotalFrames
+- uid: TrinketTinker.Companions.Motions.Motion`1.TotalFrames*
+  name: TotalFrames
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_TotalFrames_
+  commentId: Overload:TrinketTinker.Companions.Motions.Motion`1.TotalFrames
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.TotalFrames
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).TotalFrames
+  nameWithType: Motion<TArgs>.TotalFrames
+  nameWithType.vb: Motion(Of TArgs).TotalFrames
 - uid: TrinketTinker.Companions.Motions.Motion`1.UpdateAnchor(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)
   name: UpdateAnchor(GameTime, GameLocation)
   href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_UpdateAnchor_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_
@@ -1085,6 +1296,14 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).currAnchorTarget
   nameWithType: Motion<TArgs>.currAnchorTarget
   nameWithType.vb: Motion(Of TArgs).currAnchorTarget
+- uid: TrinketTinker.Companions.Motions.Motion`1.framesetLength
+  name: framesetLength
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_framesetLength
+  commentId: F:TrinketTinker.Companions.Motions.Motion`1.framesetLength
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.framesetLength
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).framesetLength
+  nameWithType: Motion<TArgs>.framesetLength
+  nameWithType.vb: Motion(Of TArgs).framesetLength
 - uid: TrinketTinker.Companions.Motions.Motion`1.lightId
   name: lightId
   href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_lightId
@@ -1245,6 +1464,83 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Companions.Motions.RelativeMotion.GetPositionalLayerDepth
   nameWithType: RelativeMotion.GetPositionalLayerDepth
+- uid: TrinketTinker.Companions.Motions.SerpentMotion
+  name: SerpentMotion
+  href: api/TrinketTinker.Companions.Motions.SerpentMotion.html
+  commentId: T:TrinketTinker.Companions.Motions.SerpentMotion
+  fullName: TrinketTinker.Companions.Motions.SerpentMotion
+  nameWithType: SerpentMotion
+- uid: TrinketTinker.Companions.Motions.SerpentMotion.#ctor(TrinketTinker.Companions.TrinketTinkerCompanion,TrinketTinker.Models.MotionData,TrinketTinker.Models.VariantData)
+  name: SerpentMotion(TrinketTinkerCompanion, MotionData, VariantData)
+  href: api/TrinketTinker.Companions.Motions.SerpentMotion.html#TrinketTinker_Companions_Motions_SerpentMotion__ctor_TrinketTinker_Companions_TrinketTinkerCompanion_TrinketTinker_Models_MotionData_TrinketTinker_Models_VariantData_
+  commentId: M:TrinketTinker.Companions.Motions.SerpentMotion.#ctor(TrinketTinker.Companions.TrinketTinkerCompanion,TrinketTinker.Models.MotionData,TrinketTinker.Models.VariantData)
+  name.vb: New(TrinketTinkerCompanion, MotionData, VariantData)
+  fullName: TrinketTinker.Companions.Motions.SerpentMotion.SerpentMotion(TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker.Models.MotionData, TrinketTinker.Models.VariantData)
+  fullName.vb: TrinketTinker.Companions.Motions.SerpentMotion.New(TrinketTinker.Companions.TrinketTinkerCompanion, TrinketTinker.Models.MotionData, TrinketTinker.Models.VariantData)
+  nameWithType: SerpentMotion.SerpentMotion(TrinketTinkerCompanion, MotionData, VariantData)
+  nameWithType.vb: SerpentMotion.New(TrinketTinkerCompanion, MotionData, VariantData)
+- uid: TrinketTinker.Companions.Motions.SerpentMotion.#ctor*
+  name: SerpentMotion
+  href: api/TrinketTinker.Companions.Motions.SerpentMotion.html#TrinketTinker_Companions_Motions_SerpentMotion__ctor_
+  commentId: Overload:TrinketTinker.Companions.Motions.SerpentMotion.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TrinketTinker.Companions.Motions.SerpentMotion.SerpentMotion
+  fullName.vb: TrinketTinker.Companions.Motions.SerpentMotion.New
+  nameWithType: SerpentMotion.SerpentMotion
+  nameWithType.vb: SerpentMotion.New
+- uid: TrinketTinker.Companions.Motions.SerpentMotion.DrawCompanion(Microsoft.Xna.Framework.Graphics.SpriteBatch,TrinketTinker.Companions.Anim.DrawSnapshot)
+  name: DrawCompanion(SpriteBatch, DrawSnapshot)
+  href: api/TrinketTinker.Companions.Motions.SerpentMotion.html#TrinketTinker_Companions_Motions_SerpentMotion_DrawCompanion_Microsoft_Xna_Framework_Graphics_SpriteBatch_TrinketTinker_Companions_Anim_DrawSnapshot_
+  commentId: M:TrinketTinker.Companions.Motions.SerpentMotion.DrawCompanion(Microsoft.Xna.Framework.Graphics.SpriteBatch,TrinketTinker.Companions.Anim.DrawSnapshot)
+  fullName: TrinketTinker.Companions.Motions.SerpentMotion.DrawCompanion(Microsoft.Xna.Framework.Graphics.SpriteBatch, TrinketTinker.Companions.Anim.DrawSnapshot)
+  nameWithType: SerpentMotion.DrawCompanion(SpriteBatch, DrawSnapshot)
+- uid: TrinketTinker.Companions.Motions.SerpentMotion.DrawCompanion*
+  name: DrawCompanion
+  href: api/TrinketTinker.Companions.Motions.SerpentMotion.html#TrinketTinker_Companions_Motions_SerpentMotion_DrawCompanion_
+  commentId: Overload:TrinketTinker.Companions.Motions.SerpentMotion.DrawCompanion
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.SerpentMotion.DrawCompanion
+  nameWithType: SerpentMotion.DrawCompanion
+- uid: TrinketTinker.Companions.Motions.SerpentMotion.DrawShadow(Microsoft.Xna.Framework.Graphics.SpriteBatch,TrinketTinker.Companions.Anim.DrawSnapshot)
+  name: DrawShadow(SpriteBatch, DrawSnapshot)
+  href: api/TrinketTinker.Companions.Motions.SerpentMotion.html#TrinketTinker_Companions_Motions_SerpentMotion_DrawShadow_Microsoft_Xna_Framework_Graphics_SpriteBatch_TrinketTinker_Companions_Anim_DrawSnapshot_
+  commentId: M:TrinketTinker.Companions.Motions.SerpentMotion.DrawShadow(Microsoft.Xna.Framework.Graphics.SpriteBatch,TrinketTinker.Companions.Anim.DrawSnapshot)
+  fullName: TrinketTinker.Companions.Motions.SerpentMotion.DrawShadow(Microsoft.Xna.Framework.Graphics.SpriteBatch, TrinketTinker.Companions.Anim.DrawSnapshot)
+  nameWithType: SerpentMotion.DrawShadow(SpriteBatch, DrawSnapshot)
+- uid: TrinketTinker.Companions.Motions.SerpentMotion.DrawShadow*
+  name: DrawShadow
+  href: api/TrinketTinker.Companions.Motions.SerpentMotion.html#TrinketTinker_Companions_Motions_SerpentMotion_DrawShadow_
+  commentId: Overload:TrinketTinker.Companions.Motions.SerpentMotion.DrawShadow
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.SerpentMotion.DrawShadow
+  nameWithType: SerpentMotion.DrawShadow
+- uid: TrinketTinker.Companions.Motions.SerpentMotion.TotalFrames
+  name: TotalFrames
+  href: api/TrinketTinker.Companions.Motions.SerpentMotion.html#TrinketTinker_Companions_Motions_SerpentMotion_TotalFrames
+  commentId: P:TrinketTinker.Companions.Motions.SerpentMotion.TotalFrames
+  fullName: TrinketTinker.Companions.Motions.SerpentMotion.TotalFrames
+  nameWithType: SerpentMotion.TotalFrames
+- uid: TrinketTinker.Companions.Motions.SerpentMotion.TotalFrames*
+  name: TotalFrames
+  href: api/TrinketTinker.Companions.Motions.SerpentMotion.html#TrinketTinker_Companions_Motions_SerpentMotion_TotalFrames_
+  commentId: Overload:TrinketTinker.Companions.Motions.SerpentMotion.TotalFrames
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.SerpentMotion.TotalFrames
+  nameWithType: SerpentMotion.TotalFrames
+- uid: TrinketTinker.Companions.Motions.SerpentMotion.UpdateGlobal(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)
+  name: UpdateGlobal(GameTime, GameLocation)
+  href: api/TrinketTinker.Companions.Motions.SerpentMotion.html#TrinketTinker_Companions_Motions_SerpentMotion_UpdateGlobal_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_
+  commentId: M:TrinketTinker.Companions.Motions.SerpentMotion.UpdateGlobal(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)
+  fullName: TrinketTinker.Companions.Motions.SerpentMotion.UpdateGlobal(Microsoft.Xna.Framework.GameTime, StardewValley.GameLocation)
+  nameWithType: SerpentMotion.UpdateGlobal(GameTime, GameLocation)
+- uid: TrinketTinker.Companions.Motions.SerpentMotion.UpdateGlobal*
+  name: UpdateGlobal
+  href: api/TrinketTinker.Companions.Motions.SerpentMotion.html#TrinketTinker_Companions_Motions_SerpentMotion_UpdateGlobal_
+  commentId: Overload:TrinketTinker.Companions.Motions.SerpentMotion.UpdateGlobal
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.SerpentMotion.UpdateGlobal
+  nameWithType: SerpentMotion.UpdateGlobal
 - uid: TrinketTinker.Companions.Motions.StaticMotion
   name: StaticMotion
   href: api/TrinketTinker.Companions.Motions.StaticMotion.html
@@ -1950,44 +2246,6 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.Abilities.BuffAbility.CleanupEffect
   nameWithType: BuffAbility.CleanupEffect
-- uid: TrinketTinker.Effects.Abilities.DebugDummyAbility
-  name: DebugDummyAbility
-  href: api/TrinketTinker.Effects.Abilities.DebugDummyAbility.html
-  commentId: T:TrinketTinker.Effects.Abilities.DebugDummyAbility
-  fullName: TrinketTinker.Effects.Abilities.DebugDummyAbility
-  nameWithType: DebugDummyAbility
-- uid: TrinketTinker.Effects.Abilities.DebugDummyAbility.#ctor(TrinketTinker.Effects.TrinketTinkerEffect,TrinketTinker.Models.AbilityData,System.Int32)
-  name: DebugDummyAbility(TrinketTinkerEffect, AbilityData, int)
-  href: api/TrinketTinker.Effects.Abilities.DebugDummyAbility.html#TrinketTinker_Effects_Abilities_DebugDummyAbility__ctor_TrinketTinker_Effects_TrinketTinkerEffect_TrinketTinker_Models_AbilityData_System_Int32_
-  commentId: M:TrinketTinker.Effects.Abilities.DebugDummyAbility.#ctor(TrinketTinker.Effects.TrinketTinkerEffect,TrinketTinker.Models.AbilityData,System.Int32)
-  name.vb: New(TrinketTinkerEffect, AbilityData, Integer)
-  fullName: TrinketTinker.Effects.Abilities.DebugDummyAbility.DebugDummyAbility(TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker.Models.AbilityData, int)
-  fullName.vb: TrinketTinker.Effects.Abilities.DebugDummyAbility.New(TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker.Models.AbilityData, Integer)
-  nameWithType: DebugDummyAbility.DebugDummyAbility(TrinketTinkerEffect, AbilityData, int)
-  nameWithType.vb: DebugDummyAbility.New(TrinketTinkerEffect, AbilityData, Integer)
-- uid: TrinketTinker.Effects.Abilities.DebugDummyAbility.#ctor*
-  name: DebugDummyAbility
-  href: api/TrinketTinker.Effects.Abilities.DebugDummyAbility.html#TrinketTinker_Effects_Abilities_DebugDummyAbility__ctor_
-  commentId: Overload:TrinketTinker.Effects.Abilities.DebugDummyAbility.#ctor
-  isSpec: "True"
-  name.vb: New
-  fullName: TrinketTinker.Effects.Abilities.DebugDummyAbility.DebugDummyAbility
-  fullName.vb: TrinketTinker.Effects.Abilities.DebugDummyAbility.New
-  nameWithType: DebugDummyAbility.DebugDummyAbility
-  nameWithType.vb: DebugDummyAbility.New
-- uid: TrinketTinker.Effects.Abilities.DebugDummyAbility.ApplyEffect(TrinketTinker.Effects.Proc.ProcEventArgs)
-  name: ApplyEffect(ProcEventArgs)
-  href: api/TrinketTinker.Effects.Abilities.DebugDummyAbility.html#TrinketTinker_Effects_Abilities_DebugDummyAbility_ApplyEffect_TrinketTinker_Effects_Proc_ProcEventArgs_
-  commentId: M:TrinketTinker.Effects.Abilities.DebugDummyAbility.ApplyEffect(TrinketTinker.Effects.Proc.ProcEventArgs)
-  fullName: TrinketTinker.Effects.Abilities.DebugDummyAbility.ApplyEffect(TrinketTinker.Effects.Proc.ProcEventArgs)
-  nameWithType: DebugDummyAbility.ApplyEffect(ProcEventArgs)
-- uid: TrinketTinker.Effects.Abilities.DebugDummyAbility.ApplyEffect*
-  name: ApplyEffect
-  href: api/TrinketTinker.Effects.Abilities.DebugDummyAbility.html#TrinketTinker_Effects_Abilities_DebugDummyAbility_ApplyEffect_
-  commentId: Overload:TrinketTinker.Effects.Abilities.DebugDummyAbility.ApplyEffect
-  isSpec: "True"
-  fullName: TrinketTinker.Effects.Abilities.DebugDummyAbility.ApplyEffect
-  nameWithType: DebugDummyAbility.ApplyEffect
 - uid: TrinketTinker.Effects.Abilities.HarvestCropAbility
   name: HarvestCropAbility
   href: api/TrinketTinker.Effects.Abilities.HarvestCropAbility.html
@@ -4592,6 +4850,19 @@ references:
   commentId: T:TrinketTinker.Models.MotionArgs.OrbitArgs
   fullName: TrinketTinker.Models.MotionArgs.OrbitArgs
   nameWithType: OrbitArgs
+- uid: TrinketTinker.Models.MotionArgs.OrbitArgs.Period
+  name: Period
+  href: api/TrinketTinker.Models.MotionArgs.OrbitArgs.html#TrinketTinker_Models_MotionArgs_OrbitArgs_Period
+  commentId: P:TrinketTinker.Models.MotionArgs.OrbitArgs.Period
+  fullName: TrinketTinker.Models.MotionArgs.OrbitArgs.Period
+  nameWithType: OrbitArgs.Period
+- uid: TrinketTinker.Models.MotionArgs.OrbitArgs.Period*
+  name: Period
+  href: api/TrinketTinker.Models.MotionArgs.OrbitArgs.html#TrinketTinker_Models_MotionArgs_OrbitArgs_Period_
+  commentId: Overload:TrinketTinker.Models.MotionArgs.OrbitArgs.Period
+  isSpec: "True"
+  fullName: TrinketTinker.Models.MotionArgs.OrbitArgs.Period
+  nameWithType: OrbitArgs.Period
 - uid: TrinketTinker.Models.MotionArgs.OrbitArgs.RadiusX
   name: RadiusX
   href: api/TrinketTinker.Models.MotionArgs.OrbitArgs.html#TrinketTinker_Models_MotionArgs_OrbitArgs_RadiusX
@@ -4631,6 +4902,38 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.MotionArgs.OrbitArgs.Validate
   nameWithType: OrbitArgs.Validate
+- uid: TrinketTinker.Models.MotionArgs.SerpentArgs
+  name: SerpentArgs
+  href: api/TrinketTinker.Models.MotionArgs.SerpentArgs.html
+  commentId: T:TrinketTinker.Models.MotionArgs.SerpentArgs
+  fullName: TrinketTinker.Models.MotionArgs.SerpentArgs
+  nameWithType: SerpentArgs
+- uid: TrinketTinker.Models.MotionArgs.SerpentArgs.SegmentCount
+  name: SegmentCount
+  href: api/TrinketTinker.Models.MotionArgs.SerpentArgs.html#TrinketTinker_Models_MotionArgs_SerpentArgs_SegmentCount
+  commentId: P:TrinketTinker.Models.MotionArgs.SerpentArgs.SegmentCount
+  fullName: TrinketTinker.Models.MotionArgs.SerpentArgs.SegmentCount
+  nameWithType: SerpentArgs.SegmentCount
+- uid: TrinketTinker.Models.MotionArgs.SerpentArgs.SegmentCount*
+  name: SegmentCount
+  href: api/TrinketTinker.Models.MotionArgs.SerpentArgs.html#TrinketTinker_Models_MotionArgs_SerpentArgs_SegmentCount_
+  commentId: Overload:TrinketTinker.Models.MotionArgs.SerpentArgs.SegmentCount
+  isSpec: "True"
+  fullName: TrinketTinker.Models.MotionArgs.SerpentArgs.SegmentCount
+  nameWithType: SerpentArgs.SegmentCount
+- uid: TrinketTinker.Models.MotionArgs.SerpentArgs.Sparcity
+  name: Sparcity
+  href: api/TrinketTinker.Models.MotionArgs.SerpentArgs.html#TrinketTinker_Models_MotionArgs_SerpentArgs_Sparcity
+  commentId: P:TrinketTinker.Models.MotionArgs.SerpentArgs.Sparcity
+  fullName: TrinketTinker.Models.MotionArgs.SerpentArgs.Sparcity
+  nameWithType: SerpentArgs.Sparcity
+- uid: TrinketTinker.Models.MotionArgs.SerpentArgs.Sparcity*
+  name: Sparcity
+  href: api/TrinketTinker.Models.MotionArgs.SerpentArgs.html#TrinketTinker_Models_MotionArgs_SerpentArgs_Sparcity_
+  commentId: Overload:TrinketTinker.Models.MotionArgs.SerpentArgs.Sparcity
+  isSpec: "True"
+  fullName: TrinketTinker.Models.MotionArgs.SerpentArgs.Sparcity
+  nameWithType: SerpentArgs.Sparcity
 - uid: TrinketTinker.Models.MotionArgs.StaticArgs
   name: StaticArgs
   href: api/TrinketTinker.Models.MotionArgs.StaticArgs.html
@@ -4847,58 +5150,32 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.MotionData.RepeatCount
   nameWithType: MotionData.RepeatCount
-- uid: TrinketTinker.Models.MotionData.RepeatInternval
-  name: RepeatInternval
-  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_RepeatInternval
-  commentId: P:TrinketTinker.Models.MotionData.RepeatInternval
-  fullName: TrinketTinker.Models.MotionData.RepeatInternval
-  nameWithType: MotionData.RepeatInternval
-- uid: TrinketTinker.Models.MotionData.RepeatInternval*
-  name: RepeatInternval
-  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_RepeatInternval_
-  commentId: Overload:TrinketTinker.Models.MotionData.RepeatInternval
+- uid: TrinketTinker.Models.MotionData.RepeatFrameSets
+  name: RepeatFrameSets
+  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_RepeatFrameSets
+  commentId: P:TrinketTinker.Models.MotionData.RepeatFrameSets
+  fullName: TrinketTinker.Models.MotionData.RepeatFrameSets
+  nameWithType: MotionData.RepeatFrameSets
+- uid: TrinketTinker.Models.MotionData.RepeatFrameSets*
+  name: RepeatFrameSets
+  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_RepeatFrameSets_
+  commentId: Overload:TrinketTinker.Models.MotionData.RepeatFrameSets
   isSpec: "True"
-  fullName: TrinketTinker.Models.MotionData.RepeatInternval
-  nameWithType: MotionData.RepeatInternval
-- uid: TrinketTinker.Models.MotionData.Segment
-  name: Segment
-  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_Segment
-  commentId: P:TrinketTinker.Models.MotionData.Segment
-  fullName: TrinketTinker.Models.MotionData.Segment
-  nameWithType: MotionData.Segment
-- uid: TrinketTinker.Models.MotionData.Segment*
-  name: Segment
-  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_Segment_
-  commentId: Overload:TrinketTinker.Models.MotionData.Segment
+  fullName: TrinketTinker.Models.MotionData.RepeatFrameSets
+  nameWithType: MotionData.RepeatFrameSets
+- uid: TrinketTinker.Models.MotionData.RepeatInterval
+  name: RepeatInterval
+  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_RepeatInterval
+  commentId: P:TrinketTinker.Models.MotionData.RepeatInterval
+  fullName: TrinketTinker.Models.MotionData.RepeatInterval
+  nameWithType: MotionData.RepeatInterval
+- uid: TrinketTinker.Models.MotionData.RepeatInterval*
+  name: RepeatInterval
+  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_RepeatInterval_
+  commentId: Overload:TrinketTinker.Models.MotionData.RepeatInterval
   isSpec: "True"
-  fullName: TrinketTinker.Models.MotionData.Segment
-  nameWithType: MotionData.Segment
-- uid: TrinketTinker.Models.MotionData.SegmentInterval
-  name: SegmentInterval
-  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_SegmentInterval
-  commentId: P:TrinketTinker.Models.MotionData.SegmentInterval
-  fullName: TrinketTinker.Models.MotionData.SegmentInterval
-  nameWithType: MotionData.SegmentInterval
-- uid: TrinketTinker.Models.MotionData.SegmentInterval*
-  name: SegmentInterval
-  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_SegmentInterval_
-  commentId: Overload:TrinketTinker.Models.MotionData.SegmentInterval
-  isSpec: "True"
-  fullName: TrinketTinker.Models.MotionData.SegmentInterval
-  nameWithType: MotionData.SegmentInterval
-- uid: TrinketTinker.Models.MotionData.SegmentLength
-  name: SegmentLength
-  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_SegmentLength
-  commentId: P:TrinketTinker.Models.MotionData.SegmentLength
-  fullName: TrinketTinker.Models.MotionData.SegmentLength
-  nameWithType: MotionData.SegmentLength
-- uid: TrinketTinker.Models.MotionData.SegmentLength*
-  name: SegmentLength
-  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_SegmentLength_
-  commentId: Overload:TrinketTinker.Models.MotionData.SegmentLength
-  isSpec: "True"
-  fullName: TrinketTinker.Models.MotionData.SegmentLength
-  nameWithType: MotionData.SegmentLength
+  fullName: TrinketTinker.Models.MotionData.RepeatInterval
+  nameWithType: MotionData.RepeatInterval
 - uid: TrinketTinker.Models.ProcOn
   name: ProcOn
   href: api/TrinketTinker.Models.ProcOn.html

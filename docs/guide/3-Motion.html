@@ -176,13 +176,19 @@
 <td><code>RepeatCount</code></td>
 <td>int</td>
 <td>0</td>
-<td>Number of additional repeat draws to do, to make 1 companion appear to be multiple.</td>
+<td>Number of additional repeat draws to do, to make 1 companion appear to be multiple. Putting a big number here may cause performance issues.</td>
 </tr>
 <tr>
-<td><code>RepeatInternval</code></td>
+<td><code>RepeatInterval</code></td>
 <td>int</td>
 <td>1000</td>
 <td>Miliseconds between repeat draws.</td>
+</tr>
+<tr>
+<td><code>RepeatFrameSets</code></td>
+<td>int</td>
+<td>0</td>
+<td>If set, offset the sprite on repeat draw.</td>
 </tr>
 <tr>
 <td><code>AnimClips</code></td>
@@ -200,8 +206,19 @@
 </table>
 <h3 id="animation">Animation</h3>
 <p>The default animation behavior for a companion is to animate while the player is moving according to <a href="3.0-Direction.html">direction mode</a>, and display static first frame when player is still.</p>
-<p>To use a special animation while player is still, add an <code>AnimClip</code> named <code>&quot;Idle.0&quot;</code>. If the idle animation should change according to direction, add <code>&quot;Idle.X&quot;</code> where <code>&quot;X&quot;</code> is a number between 1 to 4, depending on how many directions are available for the chosen <code>DirectionMode</code>.</p>
+<p>To use a special animation while player is still, add an <code>AnimClip</code> named <code>&quot;Idle.0&quot;</code>. If the idle animation should change according to direction, add <code>&quot;Idle.X&quot;</code> where <code>&quot;X&quot;</code> is a number between 1 to 4, depending on how many directions are available for the chosen <code>DirectionMode</code>. See <a href="3.2-Animation%20Clips.html">animation clips</a> for details.</p>
 <p>To have the directional animation continue regardless of player motion, set <code>AlwaysMoving</code> to true.</p>
+<h3 id="repeat-draws">Repeat Draws</h3>
+<p>One trinket can only have one companion, but it's possible to make this companion appear as multiple entities by repeating draws with a delay, creating &quot;shadow clones&quot;. Abilities only happen relative to the first, original copy of the companion.</p>
+<p>To give these clones alternate appearances, extend the spritesheet downward with a modified duplicate of the companion's animations containing the same number of frames as the original. Then, set <code>RepeatFrameSets</code> to the number of these duplicate frames.</p>
+<h4 id="example">Example</h4>
+<ul>
+<li><code>RepeatCount</code>: 2</li>
+<li><code>RepeatFrameSets</code>: 3</li>
+<li>Spritesheet
+<img src="../images/sheets/rl-repeat-2.png" alt="3 frame sets"></li>
+</ul>
+<p><img src="../images/demo/repeat.png" alt="Repeat Demo"></p>
 
 </article>
 

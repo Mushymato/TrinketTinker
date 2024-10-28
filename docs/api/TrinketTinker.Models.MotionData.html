@@ -157,7 +157,7 @@ Class MotionData  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="TrinketTinker_Models_MotionData_AnimClips" data-uid="TrinketTinker.Models.MotionData.AnimClips">
   AnimClips
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L139"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L131"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Repository of anim clips that can be shown in place of the default movement anim.
@@ -607,10 +607,45 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
 
 
 
-  <a id="TrinketTinker_Models_MotionData_RepeatInternval_" data-uid="TrinketTinker.Models.MotionData.RepeatInternval*"></a>
+  <a id="TrinketTinker_Models_MotionData_RepeatFrameSets_" data-uid="TrinketTinker.Models.MotionData.RepeatFrameSets*"></a>
 
-  <h3 id="TrinketTinker_Models_MotionData_RepeatInternval" data-uid="TrinketTinker.Models.MotionData.RepeatInternval">
-  RepeatInternval
+  <h3 id="TrinketTinker_Models_MotionData_RepeatFrameSets" data-uid="TrinketTinker.Models.MotionData.RepeatFrameSets">
+  RepeatFrameSets
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>When used with repeat, apply offset of this value times number of frames (per direction mode and frame length).<br>
+Example with <a class="xref" href="TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_RepeatFrameSets">RepeatFrameSets</a> = 2 <a class="xref" href="TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_DirectionMode">DirectionMode</a> = <a class="xref" href="TrinketTinker.Models.DirectionMode.html#TrinketTinker_Models_DirectionMode_R">R</a> and <a class="xref" href="TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_FrameLength">FrameLength</a> = 4.</p>
+<ul><li>The initial companion need 4 frames, taking up frames 0 to 3.</li><li>First repeat companion need 4 frames, taking up frames 4 to 7.</li><li>Second repeat companion need 4 frames, taking up frames 8 to 11.</li></ul>
+Spritesheet needs a total of 12 frames.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int RepeatFrameSets { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Models_MotionData_RepeatInterval_" data-uid="TrinketTinker.Models.MotionData.RepeatInterval*"></a>
+
+  <h3 id="TrinketTinker_Models_MotionData_RepeatInterval" data-uid="TrinketTinker.Models.MotionData.RepeatInterval">
+  RepeatInterval
   <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L115"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -619,7 +654,7 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float RepeatInternval { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public float RepeatInterval { get; set; }</code></pre>
   </div>
 
 
@@ -629,106 +664,6 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="TrinketTinker_Models_MotionData_Segment_" data-uid="TrinketTinker.Models.MotionData.Segment*"></a>
-
-  <h3 id="TrinketTinker_Models_MotionData_Segment" data-uid="TrinketTinker.Models.MotionData.Segment">
-  Segment
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L127"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Draw segments, requiring additional sets of sprites for the segment(s).<br>
-Example with <a class="xref" href="TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_Segment">Segment</a> = 3 <a class="xref" href="TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_DirectionMode">DirectionMode</a> = <a class="xref" href="TrinketTinker.Models.DirectionMode.html#TrinketTinker_Models_DirectionMode_R">R</a> and <a class="xref" href="TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_FrameLength">FrameLength</a> = 4, requiring sprites for &quot;segment 1&quot;, &quot;segment 2&quot;, and &quot;tail&quot;.</p>
-<ul><li>The initial "head" need 4 frames, taking up frames 0 to 3.</li><li>"segment 1" need 4 frames, taking up frames 4 to 7.</li><li>"segment 2" need 4 frames, taking up frames 8 to 11.</li><li>Finally, the "tail" need 4 frames, taking up frames 12 to 16.</li></ul>
-Spritesheet needs a total of 16 frames.
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Segment { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="TrinketTinker_Models_MotionData_SegmentInterval_" data-uid="TrinketTinker.Models.MotionData.SegmentInterval*"></a>
-
-  <h3 id="TrinketTinker_Models_MotionData_SegmentInterval" data-uid="TrinketTinker.Models.MotionData.SegmentInterval">
-  SegmentInterval
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L134"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Draw interval between segments.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float SegmentInterval { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="TrinketTinker_Models_MotionData_SegmentLength_" data-uid="TrinketTinker.Models.MotionData.SegmentLength*"></a>
-
-  <h3 id="TrinketTinker_Models_MotionData_SegmentLength" data-uid="TrinketTinker.Models.MotionData.SegmentLength">
-  SegmentLength
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L132"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Number of times to draw each middle segment, multiple segments will be drawn in alternating pattern.
-If this is 5 and there were 3 segments (so <a class="xref" href="TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_Segment">Segment</a> is 4), the total number of segments drawn will be 15.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int SegmentLength { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 
@@ -747,7 +682,7 @@ If this is 5 and there were 3 segments (so <a class="xref" href="TrinketTinker.M
 
   <h3 id="TrinketTinker_Models_MotionData_GetIdleAnim_System_Int32_" data-uid="TrinketTinker.Models.MotionData.GetIdleAnim(System.Int32)">
   GetIdleAnim(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L133"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
