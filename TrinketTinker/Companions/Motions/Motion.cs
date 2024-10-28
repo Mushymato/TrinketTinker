@@ -38,11 +38,10 @@ namespace TrinketTinker.Companions.Motions
         private AnimClipData? overrideClip = null;
         /// <summary>Heap of frames to draw, after the initial one.</summary>
         private readonly PriorityQueue<DrawSnapshot, long> drawSnapshotQueue = new();
-        /// <summary>Number of frames in 1 set, used for Repeat and <see cref="SerpentMotion"></summary>
+        /// <summary>Number of frames in 1 set, used for Repeat and <see cref="SerpentMotion"/></summary>
         protected readonly int framesetLength = 1;
         /// <summary>Actual total frame used for Repeat, equal to frame length</summary>
         protected virtual int TotalFrames => framesetLength;
-
         /// <summary>Basic constructor, tries to parse arguments as the generic <see cref="IArgs"/> type.</summary>
         /// <param name="companion"></param>
         /// <param name="mdata"></param>
