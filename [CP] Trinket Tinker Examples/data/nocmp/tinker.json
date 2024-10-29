@@ -6,26 +6,50 @@
       "Target": "mushymato.TrinketTinker/Tinker",
       "Entries": {
         "{{ModId}}_NoCompanion": {
+          "AbilityUnlockConditions": [
+            // level 1 is always unlocked
+            // level 2 is unconditionally unlocked
+            null,
+            // level 3 unlocked if player has gold ore in inventory
+            "PLAYER_HAS_ITEM Current (O)384",
+            // level 4 is also unconditionally unlocked once 3 is unlocked
+          ],
           "Abilities": [
-            // when player take damage, apply a speed buff and play a sound
-            // activates once every 10s
             [
               {
+                "AbilityClass": "Buff",
                 "Proc": "Warped",
-                "ProcTimer": 10000,
-                "ProcSound": "rooster",
-                "AbilityClass": "DebugDummy"
-              },
-              {
-                "Proc": "Timer",
-                "ProcTimer": 5000,
-                "AbilityClass": "Projectile",
                 "Args": {
-                  "Min": 20,
-                  "Max": 50,
-                  "Range": 4096,
+                  "BuffId": 22
                 }
-              }
+              },
+            ],
+            [
+              {
+                "AbilityClass": "Buff",
+                "Proc": "Warped",
+                "Args": {
+                  "BuffId": 22
+                }
+              },
+            ],
+            [
+              {
+                "AbilityClass": "Buff",
+                "Proc": "Warped",
+                "Args": {
+                  "BuffId": 22
+                }
+              },
+            ],
+            [
+              {
+                "AbilityClass": "Buff",
+                "Proc": "Warped",
+                "Args": {
+                  "BuffId": 22
+                }
+              },
             ],
           ]
         },

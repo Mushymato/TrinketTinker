@@ -235,6 +235,25 @@ namespace TrinketTinker.Effects
             return false;
         }
 
+        /// <summary>Get the maximum allowed count from list of GSQ.</summary>
+        /// <param name="conditions"></param>
+        /// <param name="count"></param>
+        /// <param name="trinket"></param>
+        /// <returns></returns>
+        public static int GetMaxUnlockedCount(List<string?> conditions, int count, Trinket trinket)
+        {
+            if (conditions.Count == count - 1)
+                return count;
+            for (int result = 0; result < count; result++)
+            {
+                if (conditions.Count <= result)
+                    return count;
+                if (!GameStateQuery.CheckConditions(conditions[result], null, null, trinket))
+                    return result + 1;
+            }
+            return 1;
+        }
+
         /// <summary>
         /// Randomize this trinket's ability level through anvil, return true if the level is rerolled.
         /// Will not roll the same level.
@@ -245,12 +264,13 @@ namespace TrinketTinker.Effects
         {
             if (Data == null)
                 return false;
-            if (Data.Abilities.Count <= 1)
+            int maxAbility = GetMaxUnlockedCount(Data.AbilityUnlockConditions, Data.Abilities.Count, trinket);
+            if (maxAbility <= 1)
             {
                 SetLevel(trinket, 0);
                 return false;
             }
-            int newStat = Random.Shared.Next(Data.Abilities.Count - 1);
+            int newStat = Random.Shared.Next(maxAbility - 1);
             if (newStat >= previous)
                 newStat++;
             SetLevel(trinket, newStat);
@@ -264,9 +284,15 @@ namespace TrinketTinker.Effects
         /// <param name="trinket"></param>
         public virtual bool RerollVariant(Trinket trinket, int previous)
         {
-            if (Data == null || Data.Variants.Count <= 1)
+            if (Data == null)
                 return false;
-            int newVariant = Random.Shared.Next(Data.Variants.Count - 1);
+            int maxVariant = GetMaxUnlockedCount(Data.VariantUnlockConditions, Data.Variants.Count, trinket);
+            if (maxVariant <= 1)
+            {
+                SetVariant(trinket, 0);
+                return false;
+            }
+            int newVariant = Random.Shared.Next(maxVariant - 1);
             if (newVariant >= previous)
                 newVariant++;
             SetVariant(trinket, newVariant);

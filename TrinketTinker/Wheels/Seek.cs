@@ -4,6 +4,7 @@ using StardewValley.TerrainFeatures;
 
 namespace TrinketTinker.Wheels
 {
+    /// <summary>Helper methods for finding nearest entity in the current location</summary>
     internal static class Seek
     {
         /// <summary>Find nearest placed object within range.</summary>
