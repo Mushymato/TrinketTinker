@@ -60,5 +60,7 @@
   name: Ability
 - href: 5-Temporary Animated Sprite.md
   name: Temporary Animated Sprite
-- href: 6-Extras.md
-  name: Extras
+- href: 6-Item Queries.md
+  name: Item Queries
+- href: 7-Trinket Colorizer.md
+  name: Trinket Colorizer

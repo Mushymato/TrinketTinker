@@ -63,25 +63,9 @@ namespace TrinketTinker
             TriggerActionManager.RegisterTrigger(RaiseTriggerAbility.TriggerEventName);
 
             // Add item query for creating a trinket with specific level and variant
-            ItemQueryResolver.Register(ItemQuery.CreateTrinketQuery, ItemQuery.CreateTrinket);
-
-            // FIXME: spacecore doesn't support trinkets atm, perhaps send PR
-            // Add extra equipment slots
-            // if (Helper.ModRegistry.IsLoaded("spacechase0.SpaceCore") &&
-            //     Helper.ModRegistry.GetApi<Integration.ISpaceCoreApi>("spacechase0.SpaceCore") is Integration.ISpaceCoreApi SC)
-            // {
-            //     foreach (int i in Enumerable.Range(1, 3))
-            //     {
-            //         SC.RegisterEquipmentSlot(
-            //             ModManifest,
-            //             $"{ModId}_ExtraTrinketSlot_{i}",
-            //             (item) => item == null || item is Trinket,
-            //             () => $"Extra Trinket {i}",
-            //             Game1.menuTexture,
-            //             Game1.getSourceRectForStandardTileSheet(Game1.menuTexture, 70)
-            //         );
-            //     }
-            // }
+            ItemQueryResolver.Register(ItemQuery.ItemQuery_CREATE_TRINKET, ItemQuery.CREATE_TRINKET);
+            // Add item query for creating all variants of a trinket
+            ItemQueryResolver.Register(ItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS, ItemQuery.CREATE_TRINKET_ALL_VARIANTS);
         }
 
         private static void OnAssetRequested(object? sender, AssetRequestedEventArgs e)

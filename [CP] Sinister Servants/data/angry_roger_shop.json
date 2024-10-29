@@ -105,22 +105,10 @@
           ],
           "Items": [
             {
-              "Id": "(TR){{ModId}}_Skull",
-              "TradeItemId": "(O)881",
+              "Id": "(TR){{ModId}}_Spider",
+              "TradeItemId": "(O)769",
               "TradeItemAmount": 200,
-              "ItemId": "(TR){{ModId}}_Skull",
-            },
-            {
-              "Id": "(TR){{ModId}}_Bat",
-              "TradeItemId": "(O)767",
-              "TradeItemAmount": 200,
-              "ItemId": "(TR){{ModId}}_Bat",
-            },
-            {
-              "Id": "(TR){{ModId}}_Stick",
-              "TradeItemId": "(O)388",
-              "TradeItemAmount": 999,
-              "ItemId": "(TR){{ModId}}_Stick",
+              "ItemId": "(TR){{ModId}}_Spider",
             },
             {
               "Id": "(TR){{ModId}}_DustSpirit",
@@ -129,16 +117,54 @@
               "ItemId": "(TR){{ModId}}_DustSpirit",
             },
             {
-              "Id": "(TR){{ModId}}_Spider",
-              "TradeItemId": "(O)769",
+              "Id": "(TR){{ModId}}_Stick",
+              "TradeItemId": "(O)388",
+              "TradeItemAmount": 999,
+              "ItemId": "(TR){{ModId}}_Stick"
+            },
+            // Normal: can only buy first variant of skull/bat/snek
+            {
+              "Id": "(TR){{ModId}}_Skull",
+              "TradeItemId": "(O)881",
               "TradeItemAmount": 200,
-              "ItemId": "(TR){{ModId}}_Spider",
+              "ItemId": "(TR){{ModId}}_Skull",
+              "Condition": "!SEASON_DAY fall 27"
+            },
+            {
+              "Id": "(TR){{ModId}}_Bat",
+              "TradeItemId": "(O)767",
+              "TradeItemAmount": 200,
+              "ItemId": "(TR){{ModId}}_Bat",
+              "Condition": "!SEASON_DAY fall 27"
             },
             {
               "Id": "(TR){{ModId}}_Snek",
               "TradeItemId": "(O)226",
               "TradeItemAmount": 77,
               "ItemId": "(TR){{ModId}}_Snek",
+              "Condition": "!SEASON_DAY fall 27"
+            },
+            // Secret: during spirit's eve, all variants of skull/bat/snek can be directly purchased
+            {
+              "Id": "(TR){{ModId}}_Skull_fall_27",
+              "TradeItemId": "(O)881",
+              "TradeItemAmount": 200,
+              "ItemId": "mushymato.TrinketTinker_CREATE_TRINKET_ALL_VARIANTS {{ModId}}_Skull",
+              "Condition": "SEASON_DAY fall 27"
+            },
+            {
+              "Id": "(TR){{ModId}}_Bat",
+              "TradeItemId": "(O)767",
+              "TradeItemAmount": 200,
+              "ItemId": "mushymato.TrinketTinker_CREATE_TRINKET_ALL_VARIANTS {{ModId}}_Bat",
+              "Condition": "SEASON_DAY fall 27"
+            },
+            {
+              "Id": "(TR){{ModId}}_Snek_fall_27",
+              "TradeItemId": "(O)226",
+              "TradeItemAmount": 77,
+              "ItemId": "mushymato.TrinketTinker_CREATE_TRINKET_ALL_VARIANTS {{ModId}}_Snek",
+              "Condition": "SEASON_DAY fall 27"
             },
             {
               "Id": "(TR){{ModId}}_TrinketColorizer",
