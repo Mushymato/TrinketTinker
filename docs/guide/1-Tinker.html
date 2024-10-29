@@ -135,16 +135,39 @@ The key used must match the <strong>unqualified ID</strong> of the trinket.</p>
 <td><em>empty</em></td>
 <td>Defines what effects are activated, and when. Each list in the list of lists represents 1 ability level.</td>
 </tr>
+<tr>
+<td><code>VariantUnlockConditions</code></td>
+<td>List<string></string></td>
+<td><em>empty</em></td>
+<td>List of <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state queries</a> that determine how many variants are unlocked.</td>
+</tr>
+<tr>
+<td><code>AbilityUnlockConditions</code></td>
+<td>List<string></string></td>
+<td><em>empty</em></td>
+<td>List of <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state queries</a> that determine how many abilities are unlocked.</td>
+</tr>
 </tbody>
 </table>
-<h2 id="notes">Notes</h2>
-<ul>
-<li>Technically all fields here are optional, but in that case there'd be little point to using this framework at all.</li>
-<li>To display a companion, at least 1 Variant and 1 Motion must be defined.</li>
-<li>To have the trinket do things, at least 1 list of abilities must be defined.</li>
-<li>At the moment, there's no reason to have more than 1 Motion, but this may change in the future.</li>
-<li>Trinkets are created with a random level, rather than the minimum level.</li>
-</ul>
+<h3 id="this-is-a-lot-of-stuff-what-do-i-need-to-define">This is a lot of stuff, what do I need to define?</h3>
+<p>Technically all fields here are optional, but in that case there'd be little point to using this framework at all. To display a companion, at least 1 Variant and 1 Motion must be defined. To have the trinket do things, at least 1 list of abilities must be defined.</p>
+<p>At the moment, there's no reason to have more than 1 Motion so just setting <code>Motion</code> is sufficient, but this may change in the future.</p>
+<p>Trinkets are created with the first variant and at minimum level. The item query <a href="6-Item%20Queries.html">mushymato.TrinketTinker_CREATE_TRINKET</a> is needed to create trinket at other variants/levels.</p>
+<h3 id="unlock-conditions">Unlock Conditions</h3>
+<p><code>VariantUnlockConditions</code> and <code>AbilityUnlockConditions</code> can prevent the player from rolling variants or abilities above a certain level using <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state queries</a>. This only affects rerolling level and variants on the <a href="https://stardewvalleywiki.com/Anvil">anvil</a> and <a href="7-Trinket%20Colorizer.html">colorizer</a>.</p>
+<p>Example usage with 4 abilities (lv1 to lv4):</p>
+<pre><code class="lang-json">&quot;AbilityUnlockConditions&quot;: [
+    // level 1 is always unlocked
+    // level 2 is unconditionally unlocked
+    null,
+    // level 3 unlocked if player has a gold ore in inventory
+    &quot;PLAYER_HAS_ITEM Current (O)384&quot;,
+    // level 4 is also unconditionally unlocked once 3 is unlocked
+    null,
+    // there is no level 5, so this value is meaningless
+    &quot;FALSE&quot;,
+],
+</code></pre>
 
 </article>
 
