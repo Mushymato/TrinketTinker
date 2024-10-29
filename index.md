@@ -2,7 +2,7 @@
 _layout: landing
 ---
 
-# Trinket Tinker - Stardew Valley Trinket Framework
+# TrinketTinker - Stardew Valley Trinket Framework
 
 This is a framework for creating trinkets that can have advanced abilities using just [Content Patcher](https://github.com/Pathoschild/StardewMods/tree/stable/ContentPatcher).
 
