@@ -182,6 +182,6 @@
   "index.html": {
     "href": "index.html",
     "title": "TrinketTinker - Stardew Valley Trinket Framework | TrinketTinker",
-    "keywords": "TrinketTinker - Stardew Valley Trinket Framework This is a framework for creating trinkets that can have advanced abilities using just Content Patcher. If you are looking to make mods using this framework, start here. Credits Documentation generated with Docfx, with docfx-material theme. Changelog All notable changes to this project will be documented here. The format is based on Keep a Changelog, and this project adheres to Semantic Versioning. Unreleased Added The yak is being shaved please come back soon."
+    "keywords": "TrinketTinker - Stardew Valley Trinket Framework This is a framework for creating custom trinkets using Content Patcher. What can this framework do? Animated companions with various movement patterns. A skin system (variants) for companions, and related features to set/change companion variants Dynamic event based abilities that work through the companions rather than the player. Some support for custom effects from other C# mods, through the use of actions. If you are looking to make mods using this framework, start here. This mod is licensed under MIT, contributions are welcome. Credits Documentation generated with Docfx, with docfx-material theme. Changelog All notable changes to this project will be documented here. The format is based on Keep a Changelog, and this project adheres to Semantic Versioning. Unreleased Added The yak is being shaved please come back soon."
   }
 }
