@@ -128,7 +128,7 @@ namespace TrinketTinker.Effects.Abilities
                         e.EventTrigger -= HandleProc;
                         break;
                     case ProcOn.Warped:
-                        e.EventPlayerWarped += HandleProc;
+                        e.EventPlayerWarped -= HandleProc;
                         break;
                         // remember to add to Activate too
                 }
