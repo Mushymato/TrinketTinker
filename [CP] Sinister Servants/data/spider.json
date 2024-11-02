@@ -44,7 +44,7 @@
             "FrameLength": 2,
             "Interval": 150,
             "AnimClips": {
-              "Idle.0": {
+              "Idle": {
                 "FrameStart": 0,
                 "FrameLength": 2
               },

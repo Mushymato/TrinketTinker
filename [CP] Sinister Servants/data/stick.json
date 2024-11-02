@@ -52,7 +52,7 @@
               },
             ],
             "AnimClips": {
-              "Idle.0": {
+              "Idle": {
                 "FrameStart": 3,
                 "FrameLength": 1
               },
