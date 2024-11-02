@@ -602,6 +602,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.AnimClipDictionary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.AnimClipDictionary.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Models.DirectionMode.yml",
       "output": {
         ".html": {

@@ -126,46 +126,13 @@
 </tr>
 </tbody>
 </table>
-<h2 id="animclip-keys">AnimClip Keys</h2>
-<h3 id="idle-animation">Idle Animation</h3>
-<p>Applies when the player is not moving. Does nothing if companion is marked <code>AlwaysMoving</code>, as their directional animation will simply continue.</p>
+<h3 id="motion-defined-keys">Motion Defined Keys</h3>
+<p>These animation are applied when companion enter a state defined by particular motion, except for <code>&quot;Idle&quot;</code>, which applies for all motions. These are considered &quot;override&quot; anim clips, which play until the player or trinket leaves the specified state.</p>
 <table>
 <thead>
 <tr>
 <th>Key</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&quot;Idle.1&quot;</code></td>
-<td>For the first <a href="3.0-Direction.html">direction</a>, Down if DRUL.</td>
-</tr>
-<tr>
-<td><code>&quot;Idle.2&quot;</code></td>
-<td>For the second <a href="3.0-Direction.html">direction</a>, Right if DRUL</td>
-</tr>
-<tr>
-<td><code>&quot;Idle.3&quot;</code></td>
-<td>For the third <a href="3.0-Direction.html">direction</a>, Up if DRUL.</td>
-</tr>
-<tr>
-<td><code>&quot;Idle.4&quot;</code></td>
-<td>For the fourth <a href="3.0-Direction.html">direction</a>, Left if DRUL.</td>
-</tr>
-<tr>
-<td><code>&quot;Idle.0&quot;</code></td>
-<td>General directionless idle animation.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="motion-specific-state-animation">Motion Specific State Animation</h3>
-<p>Applies when a particular motion enters alternate state beyond the simple moving vs idle.</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Source</th>
+<th>Motion</th>
 <th>Note</th>
 </tr>
 </thead>
@@ -177,11 +144,37 @@
 </tr>
 <tr>
 <td><code>&quot;Jump&quot;</code></td>
-<td><a href="3.z.002-Bounce.html">Bounce</a> and <a href="3.z.003-Hop.html">Hop</a></td>
+<td><a href="3.z.002-Bounce.html">Bounce</a>, <a href="3.z.003-Hop.html">Hop</a></td>
 <td>Applies when the companion jumped.</td>
+</tr>
+<tr>
+<td><code>&quot;Idle&quot;</code></td>
+<td>All Motions</td>
+<td>Played when the player is not moving, Does nothing if companion is marked <code>AlwaysMoving</code> which forces regular directional animation to continue.</td>
 </tr>
 </tbody>
 </table>
+<h3 id="ability-defined-keys">Ability Defined Keys</h3>
+<p>These keys are defined by mod, in specified models.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Model</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ProcOneshotAnim</code></td>
+<td><a href="4-Ability.html">AbilityData</a></td>
+<td>Play the clip once on ability proc. This is a oneshot animation, after 1 cycle is finished the companion returns to normal directional animation.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="directional-animclip-keys">Directional AnimClip Keys</h3>
+<p>All anim keys can take on a directional index suffix such as <code>&quot;{KEY}.1&quot;</code> which depends on the <a href="3.0-Direction.html">direction mode</a>. The suffix takes the absolute value of the index, no need to manually flip sprites for negative direction index.</p>
+<p>Example: when the direction index is <code>1</code> and the player is still, <code>&quot;Idle.1&quot;</code> will be picked if available, fallback to <code>&quot;Idle&quot;</code>.</p>
 
 </article>
 

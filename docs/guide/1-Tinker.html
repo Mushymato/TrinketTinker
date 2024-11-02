@@ -92,7 +92,7 @@ The key used must match the <strong>unqualified ID</strong> of the trinket.</p>
 <p>When a <code>mushymato.TrinketTinker/Tinker</code> entry exists, the <code>TrinketEffectClass</code> will be set to <code>TrinketTinker.Effects.TrinketTinkerEffect</code> from this mod.</p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>Trinkets can be reloaded with <code>patch reload &lt;content mod id&gt;</code>, however it must be removed and equipped again to do anything.</p>
+<p>Trinkets can be reloaded with <code>patch reload &lt;content mod id&gt;</code>, however the trinket must be unequipped and requipped to get updated.</p>
 </div>
 <h2 id="structure">Structure</h2>
 <table>
@@ -137,13 +137,13 @@ The key used must match the <strong>unqualified ID</strong> of the trinket.</p>
 </tr>
 <tr>
 <td><code>VariantUnlockConditions</code></td>
-<td>List<string></string></td>
+<td>List&lt;string&gt;</td>
 <td><em>empty</em></td>
 <td>List of <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state queries</a> that determine how many variants are unlocked.</td>
 </tr>
 <tr>
 <td><code>AbilityUnlockConditions</code></td>
-<td>List<string></string></td>
+<td>List&lt;string&gt;</td>
 <td><em>empty</em></td>
 <td>List of <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state queries</a> that determine how many abilities are unlocked.</td>
 </tr>
