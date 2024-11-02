@@ -51,7 +51,8 @@ To give these clones alternate appearances, extend the spritesheet downward with
 
 * `RepeatCount`: 2
 * `RepeatFrameSets`: 3
-* Spritesheet
+* Spritesheet:
+
 ![3 frame sets](~/images/sheets/rl-repeat-2.png)
 
 ![Repeat Demo](~/images/demo/repeat.png)
