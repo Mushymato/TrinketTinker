@@ -21,7 +21,7 @@ In the base game certain companions such as the frog have different color varian
 | `Radius` | float | 2 | Size of light source. |
 | `Index` | int | 1 | Vanilla light source texture index. |
 | `Texture` | string | 1 | Custom light map, must be loaded into game content. |
-| `Color` | string | 1 | Light color name, accepts same values as `ColorMask`. |
+| `Color` | string | _empty_ | Light color name, accepts same values as `ColorMask`. |
 
 ## Notes
 

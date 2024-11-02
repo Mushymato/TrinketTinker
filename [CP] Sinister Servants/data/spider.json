@@ -42,12 +42,9 @@
             "DirectionMode": "R",
             "FrameStart": 0,
             "FrameLength": 2,
+            "AlwaysMoving": true,
             "Interval": 150,
             "AnimClips": {
-              "Idle": {
-                "FrameStart": 0,
-                "FrameLength": 2
-              },
               "Jump": {
                 "FrameStart": 2,
                 "FrameLength": 1

@@ -6,4 +6,4 @@ Consumes 15 [Omni Geode](https://stardewvalleywiki.com/Omni_Geode) to reroll the
 
 The colorizer will never roll the same variant twice in a row. Anvils have similar rule applied to them for TrinketTinker trinkets.
 
-Implementation wise, the colorizer is a standard machine with qualified ID `(BC)mushymato.TrinketTinker_TrinketColorizer` and a single complex output machine rule. Mods are can add more ways to obtain this machine or prepend the colorizer with special upgrade rules for their trinkets.
+Implementation wise, the colorizer is a standard machine with qualified ID `(BC)mushymato.TrinketTinker_TrinketColorizer` and a single complex output machine rule.Mods are can add more ways to obtain this machine and prepend the colorizer with special upgrade rules for their trinkets.

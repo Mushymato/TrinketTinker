@@ -33,8 +33,15 @@ namespace TrinketTinker.Companions.Motions
         {
             return new Vector2(
                 args.RadiusX * (float)Math.Cos(Math.PI * theta),
-                args.RadiusY * (float)Math.Sin(Math.PI * theta) - Game1.tileSize
+                args.RadiusY * (float)Math.Sin(Math.PI * theta) - args.Height
             ) + base.GetOffset();
+        }
+
+        /// <summary>Get shadow offset, same as offset but -</summary>
+        /// <returns></returns>
+        public override Vector2 GetShadowOffset(Vector2 offset)
+        {
+            return new Vector2(offset.X, offset.Y + args.Height);
         }
 
         /// <inheritdoc/>

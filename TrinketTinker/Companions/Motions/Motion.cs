@@ -277,6 +277,13 @@ namespace TrinketTinker.Companions.Motions
             return md.Offset;
         }
 
+        /// <summary>Get shadow offset, default same as offset but with no Y</summary>
+        /// <returns></returns>
+        public virtual Vector2 GetShadowOffset(Vector2 offset)
+        {
+            return new Vector2(offset.X, 0);
+        }
+
         /// <inheritdoc/>
         public void Draw(SpriteBatch b)
         {
@@ -313,9 +320,10 @@ namespace TrinketTinker.Companions.Motions
             Vector2 shadowScale = GetShadowScale();
             if (shadowScale.X > 0 || shadowScale.Y > 0)
             {
+                Vector2 shadowOffset = GetShadowOffset(offset);
                 DrawSnapshot shadowSnapshot = new(
                     Game1.shadowTexture,
-                    c.Position + c.Owner.drawOffset + new Vector2(offset.X, 0),
+                    c.Position + c.Owner.drawOffset + shadowOffset,
                     Game1.shadowTexture.Bounds,
                     Color.White,
                     0f,
