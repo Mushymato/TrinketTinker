@@ -9,7 +9,7 @@
         "{{ModId}}_StaticDRUL": {
           "Variants": [
             {
-              "Texture": "Mods/{{ModId}}/drul",
+              "Texture": "Mods/{{ModId}}/rl-repeat-2",
               "Width": 16,
               "Height": 32
             },
@@ -18,13 +18,29 @@
           "Motion": {
             "MotionClass": "Orbit",
             "AlwaysMoving": true,
-            "DirectionMode": "DRUL",
+            "DirectionMode": "R",
             "FrameLength": 4,
             "Interval": 100,
+            "AnimClips": {
+              "AbilityProc.1": {
+                "FrameStart": 8,
+                "FrameLength": 4,
+                "Interval": 400
+              }
+            }
           },
           "Abilities": [
             // level 0
-            [],
+            [
+              {
+                "AbilityClass": "Buff",
+                "Proc": "Footstep",
+                "ProcOneshotAnim": "AbilityProc",
+                "Args": {
+                  "BuffId": 22
+                }
+              }
+            ],
             // level 1
             [
               {

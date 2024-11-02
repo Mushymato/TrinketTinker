@@ -107,6 +107,13 @@ namespace TrinketTinker.Effects
             return initAblities.ToImmutableList();
         }
 
+
+        public void SetOneshotClip(string? clipKey)
+        {
+            if (Companion is TrinketTinkerCompanion cmp)
+                cmp.Motion?.SetOneshotClip(clipKey);
+        }
+
         /// <summary>Spawn the companion, and activate all abilities</summary>
         /// <param name="farmer"></param>
         public override void Apply(Farmer farmer)
@@ -304,7 +311,7 @@ namespace TrinketTinker.Effects
         /// <param name="generalStat"></param>
         public void SetLevel(Trinket trinket, int generalStat)
         {
-            if (Data == null)
+            if (Data == null || Data.Abilities.Count == 0)
                 return;
             if (generalStat >= Data.Abilities.Count)
                 generalStat = 0;
@@ -325,7 +332,7 @@ namespace TrinketTinker.Effects
         /// <param name="variant"></param>
         public void SetVariant(Trinket trinket, int variant)
         {
-            if (Data == null)
+            if (Data == null || Data.Variants.Count == 0)
                 return;
             if (variant >= Data.Variants.Count)
                 variant = 0;

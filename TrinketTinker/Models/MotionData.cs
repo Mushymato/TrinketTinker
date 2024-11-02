@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using StardewValley;
 
@@ -79,6 +80,37 @@ namespace TrinketTinker.Models
         public float? Interval { get; set; } = null;
     }
 
+    public class AnimClipDictionary : Dictionary<string, AnimClipData?>
+    {
+        public const string IDLE = "Idle";
+        /// <summary>
+        /// Obtain the anim clip for key and direction.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="direction"></param>
+        /// <param name="clip"></param>
+        /// <returns></returns>
+        public bool TryGetDirectional(string? key, int direction, [NotNullWhen(true)] out AnimClipData? clip)
+        {
+            clip = null;
+            if (key == null)
+                return false;
+            string keyDirectional = $"{key}.{MathF.Abs(direction)}";
+            if (TryGetValue(keyDirectional, out clip))
+                return clip != null;
+            if (TryGetValue(key, out clip))
+            {
+                // short-circuit the next attempt to obtain AnimClipData
+                Add(keyDirectional, clip);
+                return clip != null;
+            }
+            // short-circuit the next attempt to obtain AnimClipData, null means this key has no anim
+            Add(keyDirectional, null);
+            Add(key, null);
+            return false;
+        }
+    }
+
     /// <summary>Data for <see cref="Companions.Motions"/>, defines how a companion moves.</summary>
     public sealed class MotionData : Mixin.IHaveArgs
     {
@@ -128,15 +160,6 @@ namespace TrinketTinker.Models
         /// Repository of anim clips that can be shown in place of the default movement anim.
         /// Must live on the same sprite sheet specified by variant data.
         /// </summary>
-        public Dictionary<string, AnimClipData> AnimClips = [];
-
-        public AnimClipData? GetIdleAnim(int direction)
-        {
-            if (AnimClips.TryGetValue($"Idle.{MathF.Abs(direction)}", out AnimClipData? idle))
-                return idle;
-            if (AnimClips.TryGetValue("Idle.0", out idle))
-                return idle;
-            return null;
-        }
+        public AnimClipDictionary AnimClips { get; set; } = [];
     }
 }

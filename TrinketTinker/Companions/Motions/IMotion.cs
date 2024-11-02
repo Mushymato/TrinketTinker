@@ -8,11 +8,11 @@ namespace TrinketTinker.Companions.Motions
     {
         /// <summary>Set an oneshot clip, to play once until end</summary>
         /// <param name="clipKey"></param>
-        void SetOneshotClip(string clipKey);
+        void SetOneshotClip(string? clipKey);
 
         /// <summary>Set an override clip, to play instead of normal directional animation</summary>
         /// <param name="clipKey"></param>
-        void SetOverrideClip(string clipKey);
+        void SetOverrideClip(string? clipKey);
 
         /// <summary>Initialize motion, setup light source if needed.</summary>
         /// <param name="farmer"></param>

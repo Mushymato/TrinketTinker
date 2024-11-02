@@ -32,10 +32,10 @@ namespace TrinketTinker.Companions.Motions
         protected bool AnchorChanged => prevAnchorTarget != currAnchorTarget;
         /// <summary>Companion animation controller</summary>
         protected readonly TinkerAnimSprite cs;
-        /// <summary>NetString, key of next oneshotClip to set</summary>
-        private AnimClipData? oneshotClip = null;
-        /// <summary>NetString, key of next oneshotClip to set</summary>
-        private AnimClipData? overrideClip = null;
+        /// <summary>Oneshot anim clip key</summary>
+        private string? oneshotClipKey = null;
+        /// <summary>Override anim clip key</summary>
+        private string? overrideClipKey = null;
         /// <summary>Heap of frames to draw, after the initial one.</summary>
         private readonly PriorityQueue<DrawSnapshot, long> drawSnapshotQueue = new();
         /// <summary>Number of frames in 1 set, used for Repeat and <see cref="SerpentMotion"/></summary>
@@ -73,19 +73,13 @@ namespace TrinketTinker.Companions.Motions
         /// <inheritdoc/>
         public void SetOneshotClip(string? clipKey)
         {
-            if (clipKey == null)
-                overrideClip = null;
-            else
-                md.AnimClips.TryGetValue(clipKey, out oneshotClip);
+            oneshotClipKey = clipKey;
         }
 
         /// <inheritdoc/>
         public void SetOverrideClip(string? clipKey)
         {
-            if (clipKey == null)
-                overrideClip = null;
-            else
-                md.AnimClips.TryGetValue(clipKey, out overrideClip);
+            overrideClipKey = clipKey;
         }
 
         /// <inheritdoc/>
@@ -186,35 +180,51 @@ namespace TrinketTinker.Companions.Motions
         /// <inheritdoc/>
         public abstract void UpdateLocal(GameTime time, GameLocation location);
 
+        /// <summary>Helper, animate a particular clip</summary>
+        /// <param name="time"></param>
+        /// <param name="key"></param>
+        /// <returns>
+        /// 0: clip not found
+        /// 1: clip is animating
+        /// 1: clip reached last frame
+        /// </returns>
+        private int AnimateClip(GameTime time, string? key)
+        {
+            if (!md.AnimClips.TryGetDirectional(key, c.direction.Value, out AnimClipData? clip))
+                return 0;
+            return cs.AnimateClip(time, clip, md.Interval) ? 2 : 1;
+        }
+
         /// <inheritdoc/>
         public virtual void UpdateGlobal(GameTime time, GameLocation location)
         {
-            if (oneshotClip != null)
+            // Try each kind of anim in order, stop whenever one kind succeeds
+
+            // Oneshot Clip: play once and unset.
+            if (AnimateClip(time, oneshotClipKey) is int res && res != 0)
             {
-                if (cs.AnimateClip(time, oneshotClip, md.Interval))
-                {
-                    oneshotClip = null;
-                }
+                if (res == 2)
+                    oneshotClipKey = null;
+                return;
             }
-            else if (overrideClip != null)
+            // Override Clip: play until override is unset externally
+            if (overrideClipKey != null && AnimateClip(time, overrideClipKey) != 0)
             {
-                cs.AnimateClip(time, overrideClip, md.Interval);
+                return;
             }
-            else if (GetMoving())
+            // Moving: play while player is moving, or if always moving is true
+            if (GetMoving())
             {
                 cs.Animate(md.LoopMode, time, DirectionFrameStart(), md.FrameLength, md.Interval);
+                return;
             }
-            else
+            // Idle: play while player is not moving
+            if (AnimateClip(time, AnimClipDictionary.IDLE) != 0)
             {
-                if (md.GetIdleAnim(c.direction.Value) is AnimClipData idleAnim)
-                {
-                    cs.AnimateClip(time, idleAnim, md.Interval);
-                }
-                else
-                {
-                    cs.SetCurrentFrame(DirectionFrameStart());
-                }
+                return;
             }
+            // Default: Use first frame of the current direction as fallback
+            cs.SetCurrentFrame(DirectionFrameStart());
         }
 
         /// <summary>Moving flag used for basis of anim</summary>

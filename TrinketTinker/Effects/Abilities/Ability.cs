@@ -148,7 +148,8 @@ namespace TrinketTinker.Effects.Abilities
             {
                 if (d.ProcSound != null)
                     Game1.playSound(d.ProcSound);
-
+                if (d.ProcOneshotAnim != null)
+                    e.SetOneshotClip(d.ProcOneshotAnim);
                 Visuals.BroadcastTASList(d.ProcTAS, GetTASPosition(proc), e.CompanionOwnerDrawLayer, proc.LocationOrCurrent);
 
                 EventAbilityProc?.Invoke(sender, proc);

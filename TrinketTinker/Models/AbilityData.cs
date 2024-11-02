@@ -40,6 +40,8 @@ namespace TrinketTinker.Models
         public string? ProcSound { get; set; } = null;
         /// <summary>Temporary animated sprite to spawn on proc, each item is the id of an entry in the mushymato.TrinketTinker/TAS asset.</summary>
         public List<string> ProcTAS { get; set; } = [];
+        /// <summary>Have companion switch to an <see cref="MotionData.AnimClips"/> on proc, switch back to normal anim after it is done.</summary>
+        public string? ProcOneshotAnim { get; set; } = null;
         /// <summary>Condition, see <see cref="StardewValley.GameStateQuery"/></summary>
         public string? Condition { get; set; } = null;
         /// <summary>
