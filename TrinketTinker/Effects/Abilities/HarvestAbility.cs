@@ -97,7 +97,7 @@ namespace TrinketTinker.Effects.Abilities
             void OnDebrisAdded(Debris debris)
             {
                 if (debris.debrisType.Value == Debris.DebrisType.OBJECT ||
-                    debris.debrisType.Value != Debris.DebrisType.ARCHAEOLOGY)
+                    debris.debrisType.Value == Debris.DebrisType.ARCHAEOLOGY)
                 {
                     location.debris.Remove(debris);
                     debris.collect(farmer);
@@ -138,7 +138,7 @@ namespace TrinketTinker.Effects.Abilities
             void OnDebrisAdded(Debris debris)
             {
                 if (debris.debrisType.Value == Debris.DebrisType.OBJECT ||
-                    debris.debrisType.Value != Debris.DebrisType.ARCHAEOLOGY)
+                    debris.debrisType.Value == Debris.DebrisType.ARCHAEOLOGY)
                 {
                     location.debris.Remove(debris);
                     debris.collect(farmer);
