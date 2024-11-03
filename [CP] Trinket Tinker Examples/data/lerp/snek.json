@@ -1,0 +1,89 @@
+{
+  // modified serpent example from sinister servants
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "LogName": "Snek: Sprites",
+      "Action": "Load",
+      "Target": "Mods/{{ModId}}/snek",
+      "FromFile": "sprites/{{TargetWithoutPath}}.png"
+    },
+    {
+      "LogName": "Snek: Trinkets",
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_Snek": {
+          "Id": "{{ModId}}_Snek",
+          "DisplayName": "Snek",
+          "Description": "Snek",
+          "Texture": "Mods/{{ModId}}/snek",
+          "SheetIndex": 0,
+          "DropsNaturally": false,
+          "CanBeReforged": true
+        },
+      }
+    },
+    {
+      "LogName": "Snek: Tinker",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        "{{ModId}}_Snek": {
+          "MinLevel": 7,
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/snek",
+              "Width": 8,
+              "Height": 8,
+              "TrinketSpriteIndex": 0,
+            },
+          ],
+          "Motion": {
+            "MotionClass": "Serpent",
+            "DirectionMode": "Single",
+            "DirectionRotate": true,
+            "FrameLength": 3,
+            "Interval": 400,
+            "AlwaysMoving": true,
+            "Anchors": [
+              {
+                "Mode": "Monster",
+                "Range": 1280
+              }
+            ],
+            "Args": {
+              "Max": 2048,
+              "Rate": 600,
+              "SegmentCount": 24,
+              "SegmentAlts": 2
+            }
+          },
+          "Abilities": [
+            [
+              {
+                "AbilityClass": "Hitscan",
+                "Description": "{{i18n:Snek.AbilityDescription.1}}",
+                "Proc": "Timer",
+                "ProcTimer": 3000,
+                "Args": {
+                  "Min": 77,
+                  "ExplodeRadius": 7
+                },
+              },
+              {
+                "AbilityClass": "Health",
+                "Proc": "Sync",
+                "Args": {
+                  "ValueMode": "Number",
+                  "Min": -7,
+                  "Max": -7,
+                },
+              }
+            ]
+          ]
+        },
+      }
+    }
+  ]
+}

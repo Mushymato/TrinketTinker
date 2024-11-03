@@ -64,24 +64,31 @@ namespace TrinketTinker.Companions.Motions
             Vector2 offset = GetOffset();
             DrawSnapshot segSnapshot;
             // segments
+            int altIdx = 1;
             for (int i = 0; i < segments.Count - 1; i++)
             {
                 segSnapshot = snapshot.CloneWithChanges(
                     position: segments[i].AsVec2() + c.Owner.drawOffset + offset,
-                    sourceRect: cs.GetSourceRect(cs.currentFrame + framesetLength),
+                    sourceRect: cs.GetSourceRect(cs.currentFrame + framesetLength * altIdx),
                     rotation: segments[i].Z
                 );
                 segSnapshot.Draw(b);
                 EnqueueRepeatDraws(segSnapshot, false);
+                altIdx++;
+                if (altIdx > args.SegmentAlts)
+                    altIdx = 1;
             }
-            // tail
-            segSnapshot = snapshot.CloneWithChanges(
-                position: segments.Last().AsVec2() + c.Owner.drawOffset + offset,
-                sourceRect: cs.GetSourceRect(cs.currentFrame + framesetLength * 2),
-                rotation: segments.Last().Z
-            );
-            segSnapshot.Draw(b);
-            EnqueueRepeatDraws(segSnapshot, false);
+            if (args.HasTail)
+            {
+                // tail
+                segSnapshot = snapshot.CloneWithChanges(
+                    position: segments.Last().AsVec2() + c.Owner.drawOffset + offset,
+                    sourceRect: cs.GetSourceRect(cs.currentFrame + framesetLength * (args.SegmentAlts + 1)),
+                    rotation: segments.Last().Z
+                );
+                segSnapshot.Draw(b);
+                EnqueueRepeatDraws(segSnapshot, false);
+            }
         }
 
         /// <summary>Do not draw shadow for this motion type it looks bad.</summary>

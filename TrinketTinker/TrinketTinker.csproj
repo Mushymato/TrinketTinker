@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <Import Project="../../debug.csproj" />
+  <Import Project="$(MSBuildUserExtensionsPath)/sdv.props"
+    Condition="Exists('$(MSBuildUserExtensionsPath)/sdv.props')" />
 
   <ItemGroup>
     <None Remove="i18n/default.json" />

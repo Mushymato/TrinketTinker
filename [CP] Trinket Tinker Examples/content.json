@@ -22,5 +22,10 @@
       "Action": "Include",
       "FromFile": "data/nocmp/trinket.json, data/nocmp/tinker.json"
     },
+    // Snek
+    {
+      "Action": "Include",
+      "FromFile": "data/lerp/snek.json"
+    },
   ]
 }
