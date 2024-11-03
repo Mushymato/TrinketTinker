@@ -5046,6 +5046,25 @@ references:
   commentId: T:TrinketTinker.Models.MotionArgs.SerpentArgs
   fullName: TrinketTinker.Models.MotionArgs.SerpentArgs
   nameWithType: SerpentArgs
+- uid: TrinketTinker.Models.MotionArgs.SerpentArgs.HasTail
+  name: HasTail
+  href: api/TrinketTinker.Models.MotionArgs.SerpentArgs.html#TrinketTinker_Models_MotionArgs_SerpentArgs_HasTail
+  commentId: F:TrinketTinker.Models.MotionArgs.SerpentArgs.HasTail
+  fullName: TrinketTinker.Models.MotionArgs.SerpentArgs.HasTail
+  nameWithType: SerpentArgs.HasTail
+- uid: TrinketTinker.Models.MotionArgs.SerpentArgs.SegmentAlts
+  name: SegmentAlts
+  href: api/TrinketTinker.Models.MotionArgs.SerpentArgs.html#TrinketTinker_Models_MotionArgs_SerpentArgs_SegmentAlts
+  commentId: P:TrinketTinker.Models.MotionArgs.SerpentArgs.SegmentAlts
+  fullName: TrinketTinker.Models.MotionArgs.SerpentArgs.SegmentAlts
+  nameWithType: SerpentArgs.SegmentAlts
+- uid: TrinketTinker.Models.MotionArgs.SerpentArgs.SegmentAlts*
+  name: SegmentAlts
+  href: api/TrinketTinker.Models.MotionArgs.SerpentArgs.html#TrinketTinker_Models_MotionArgs_SerpentArgs_SegmentAlts_
+  commentId: Overload:TrinketTinker.Models.MotionArgs.SerpentArgs.SegmentAlts
+  isSpec: "True"
+  fullName: TrinketTinker.Models.MotionArgs.SerpentArgs.SegmentAlts
+  nameWithType: SerpentArgs.SegmentAlts
 - uid: TrinketTinker.Models.MotionArgs.SerpentArgs.SegmentCount
   name: SegmentCount
   href: api/TrinketTinker.Models.MotionArgs.SerpentArgs.html#TrinketTinker_Models_MotionArgs_SerpentArgs_SegmentCount
