@@ -46,7 +46,8 @@ namespace TrinketTinker.Wheels
         public static void BroadcastTAS(TemporaryAnimatedSpriteDefinition tasDef, Vector2 position, float drawLayer, GameLocation location,
                                         float? duration = null, float? rotation = null)
         {
-            TemporaryAnimatedSprite temporaryAnimatedSprite = new(
+            // TemporaryAnimatedSprite temporaryAnimatedSprite = new(
+            TemporaryAnimatedSprite temporaryAnimatedSprite = TemporaryAnimatedSprite.GetTemporaryAnimatedSprite(
                 tasDef.Texture,
                 tasDef.SourceRect,
                 tasDef.Interval,
