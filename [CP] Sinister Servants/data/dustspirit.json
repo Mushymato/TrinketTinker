@@ -65,7 +65,7 @@
             "MotionClass": "Bounce",
             "DirectionMode": "R",
             "FrameLength": 4,
-            "RepeatCount": 3,
+            "RepeatCount": 2,
             "RepeatInterval": 500,
             "AlwaysMoving": true,
             "Args": {

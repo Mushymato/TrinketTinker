@@ -5,71 +5,68 @@ using StardewValley.GameData;
 using TrinketTinker.Effects;
 using TrinketTinker.Models;
 
-namespace TrinketTinker.Wheels
+namespace TrinketTinker.Wheels;
+
+/// <summary>Handles caching of custom asset.</summary>
+internal static class AssetManager
 {
-    /// <summary>
-    /// Handles caching of custom asset.
-    /// </summary>
-    internal static class AssetManager
+    /// <summary>Vanilla trinket asset target</summary>
+    internal const string TRINKET_TARGET = "Data/Trinkets";
+    /// <summary>Tinker asset target</summary>
+    internal static string TinkerAsset => $"{ModEntry.ModId}/Tinker";
+    /// <summary>TAS (TemporaryAnimatedSprite) asset target</summary>
+    internal static string TASAsset => $"{ModEntry.ModId}/TAS";
+    /// <summary>Assembly qualified name of <see cref="TrinketTinkerEffect"/></summary>
+    internal static string EffectClass => typeof(TrinketTinkerEffect).AssemblyQualifiedName!;
+    /// <summary>Backing field for tinker data</summary>
+    private static Dictionary<string, TinkerData>? _tinkerData = null;
+    /// <summary>Tinker data lazy loader</summary>
+    internal static Dictionary<string, TinkerData> TinkerData
     {
-        /// <summary>Vanilla trinket asset target</summary>
-        internal const string TRINKET_TARGET = "Data/Trinkets";
-        /// <summary>Tinker asset target</summary>
-        internal static string TinkerAsset => $"{ModEntry.ModId}/Tinker";
-        /// <summary>TAS (TemporaryAnimatedSprite) asset target</summary>
-        internal static string TASAsset => $"{ModEntry.ModId}/TAS";
-        /// <summary>Assembly qualified name of <see cref="TrinketTinkerEffect"/></summary>
-        internal static string EffectClass => typeof(TrinketTinkerEffect).AssemblyQualifiedName!;
-        /// <summary>Backing field for tinker data</summary>
-        private static Dictionary<string, TinkerData>? _tinkerData = null;
-        /// <summary>Tinker data lazy loader</summary>
-        internal static Dictionary<string, TinkerData> TinkerData
+        get
         {
-            get
-            {
-                _tinkerData ??= Game1.content.Load<Dictionary<string, TinkerData>>(TinkerAsset);
-                return _tinkerData;
-            }
+            _tinkerData ??= Game1.content.Load<Dictionary<string, TinkerData>>(TinkerAsset);
+            return _tinkerData;
         }
-        /// <summary>Backing field for tinker data</summary>
-        private static Dictionary<string, TemporaryAnimatedSpriteDefinition>? _tasData = null;
-        internal static Dictionary<string, TemporaryAnimatedSpriteDefinition> TASData
+    }
+    /// <summary>Backing field for tinker data</summary>
+    private static Dictionary<string, TemporaryAnimatedSpriteDefinition>? _tasData = null;
+    internal static Dictionary<string, TemporaryAnimatedSpriteDefinition> TASData
+    {
+        get
         {
-            get
-            {
-                _tasData ??= Game1.content.Load<Dictionary<string, TemporaryAnimatedSpriteDefinition>>(TASAsset);
-                return _tasData;
-            }
+            _tasData ??= Game1.content.Load<Dictionary<string, TemporaryAnimatedSpriteDefinition>>(TASAsset);
+            return _tasData;
         }
+    }
 
-        internal static void OnAssetRequested(AssetRequestedEventArgs e)
-        {
-            if (e.Name.IsEquivalentTo(TinkerAsset))
-                e.LoadFrom(() => new Dictionary<string, TinkerData>(), AssetLoadPriority.Exclusive);
-            if (e.Name.IsEquivalentTo(TASAsset))
-                e.LoadFrom(() => new Dictionary<string, TemporaryAnimatedSpriteDefinition>(), AssetLoadPriority.Exclusive);
-            if (e.Name.IsEquivalentTo(TRINKET_TARGET))
-                e.Edit(Edit_Trinkets_EffectClass, AssetEditPriority.Late + 100);
-        }
+    internal static void OnAssetRequested(AssetRequestedEventArgs e)
+    {
+        if (e.Name.IsEquivalentTo(TinkerAsset))
+            e.LoadFrom(() => new Dictionary<string, TinkerData>(), AssetLoadPriority.Exclusive);
+        if (e.Name.IsEquivalentTo(TASAsset))
+            e.LoadFrom(() => new Dictionary<string, TemporaryAnimatedSpriteDefinition>(), AssetLoadPriority.Exclusive);
+        if (e.Name.IsEquivalentTo(TRINKET_TARGET))
+            e.Edit(Edit_Trinkets_EffectClass, AssetEditPriority.Late + 100);
+    }
 
-        internal static void OnAssetInvalidated(AssetsInvalidatedEventArgs e)
-        {
-            if (e.NamesWithoutLocale.Any(an => an.IsEquivalentTo(TinkerAsset)))
-                _tinkerData = null;
-            if (e.NamesWithoutLocale.Any(an => an.IsEquivalentTo(TASAsset)))
-                _tasData = null;
-        }
+    internal static void OnAssetInvalidated(AssetsInvalidatedEventArgs e)
+    {
+        if (e.NamesWithoutLocale.Any(an => an.IsEquivalentTo(TinkerAsset)))
+            _tinkerData = null;
+        if (e.NamesWithoutLocale.Any(an => an.IsEquivalentTo(TASAsset)))
+            _tasData = null;
+    }
 
-        /// <summary>Ensure all trinkets that have a Tinker entry also have <see cref="EffectClass"/> </summary>
-        /// <param name="asset"></param>
-        public static void Edit_Trinkets_EffectClass(IAssetData asset)
+    /// <summary>Ensure all trinkets that have a Tinker entry also have <see cref="EffectClass"/> </summary>
+    /// <param name="asset"></param>
+    public static void Edit_Trinkets_EffectClass(IAssetData asset)
+    {
+        IDictionary<string, TrinketData> trinkets = asset.AsDictionary<string, TrinketData>().Data;
+        foreach ((string key, TrinketData data) in trinkets)
         {
-            IDictionary<string, TrinketData> trinkets = asset.AsDictionary<string, TrinketData>().Data;
-            foreach ((string key, TrinketData data) in trinkets)
-            {
-                if (TinkerData.ContainsKey(key))
-                    data.TrinketEffectClass = EffectClass;
-            }
+            if (TinkerData.ContainsKey(key))
+                data.TrinketEffectClass = EffectClass;
         }
     }
 }

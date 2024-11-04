@@ -5,42 +5,41 @@ using StardewValley;
 using TrinketTinker.Models;
 using TrinketTinker.Wheels;
 
-namespace TrinketTinker.Companions.Anim
+namespace TrinketTinker.Companions.Anim;
+
+internal sealed class TinkerLightSource : LightSource
 {
-    internal sealed class TinkerLightSource : LightSource
+    /// <summary>Light source data, not netsync'd</summary>
+    private readonly LightSourceData? ld = null;
+    /// <summary>If draw color need to update after init.</summary>
+    private bool drawColorIsConstant = false;
+
+    /// <inheritdoc/>
+    internal TinkerLightSource() : base()
     {
-        /// <summary>Light source data, not netsync'd</summary>
-        private readonly LightSourceData? ld = null;
-        /// <summary>If draw color need to update after init.</summary>
-        private bool drawColorIsConstant = false;
+    }
 
-        /// <inheritdoc/>
-        internal TinkerLightSource() : base()
-        {
-        }
+    /// <summary>
+    /// Init light source from <see cref="LightSourceData"/>
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="position"></param>
+    /// <param name="ldata"></param>
+    internal TinkerLightSource(string id, Vector2 position, LightSourceData ldata) : base(id, ldata.Index, position, ldata.Radius)
+    {
+        ld = ldata;
+        color.Value = Visuals.GetSDVColor(ld.Color, out drawColorIsConstant, invert: true);
+        if (ldata.Texture != null)
+            lightTexture = Game1.content.Load<Texture2D>(ldata.Texture);
+    }
 
-        /// <summary>
-        /// Init light source from <see cref="LightSourceData"/>
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="position"></param>
-        /// <param name="ldata"></param>
-        internal TinkerLightSource(string id, Vector2 position, LightSourceData ldata) : base(id, ldata.Index, position, ldata.Radius)
+    /// <inheritdoc/>
+    public override void Draw(SpriteBatch spriteBatch, GameLocation location, float lightMultiplier)
+    {
+        if (ld != null && !drawColorIsConstant)
         {
-            ld = ldata;
             color.Value = Visuals.GetSDVColor(ld.Color, out drawColorIsConstant, invert: true);
-            if (ldata.Texture != null)
-                lightTexture = Game1.content.Load<Texture2D>(ldata.Texture);
         }
-
-        /// <inheritdoc/>
-        public override void Draw(SpriteBatch spriteBatch, GameLocation location, float lightMultiplier)
-        {
-            if (ld != null && !drawColorIsConstant)
-            {
-                color.Value = Visuals.GetSDVColor(ld.Color, out drawColorIsConstant, invert: true);
-            }
-            base.Draw(spriteBatch, location, lightMultiplier);
-        }
+        base.Draw(spriteBatch, location, lightMultiplier);
     }
 }

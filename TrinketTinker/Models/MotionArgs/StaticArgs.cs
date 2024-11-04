@@ -1,11 +1,10 @@
 using TrinketTinker.Models.Mixin;
 
-namespace TrinketTinker.Models.MotionArgs
+namespace TrinketTinker.Models.MotionArgs;
+
+/// <summary>Static args, a placeholder class for motion that inherit StaticMotion</summary>
+public class StaticArgs : IArgs
 {
-    /// <summary>Static args, a placeholder class for motion that inherit StaticMotion</summary>
-    public class StaticArgs : IArgs
-    {
-        /// <inheritdoc/>
-        public bool Validate() => true;
-    }
+    /// <inheritdoc/>
+    public bool Validate() => true;
 }
