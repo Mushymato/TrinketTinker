@@ -9,24 +9,33 @@ using TrinketTinker.Wheels;
 namespace TrinketTinker.Effects.Abilities;
 
 /// <summary>Abstract class, proc various effects while trinket is equipped.</summary>
-public abstract class Ability<TArgs> : IAbility where TArgs : IArgs
+public abstract class Ability<TArgs> : IAbility
+    where TArgs : IArgs
 {
     /// <summary>Companion that owns this ability.</summary>
     protected readonly TrinketTinkerEffect e;
+
     /// <summary>Data for this ability.</summary>
     protected readonly AbilityData d;
+
     /// <summary>Ability name, default to type name.</summary>
     public readonly string Name;
+
     /// <inheritdoc/>
     public bool Valid { get; protected set; } = false;
+
     /// <inheritdoc/>
     public event EventHandler<ProcEventArgs>? EventAbilityProc;
+
     /// <summary>True if trinket equiped.</summary>
     protected bool Active { get; set; }
+
     /// <summary>True if trinket proc timeout is not set, or elapsed.</summary>
     protected bool Allowed { get; set; }
+
     /// <summary>Tracks trinket proc timeout, counts down to 0 and resets to ProcTimer value is set in <see cref="AbilityData"/>.</summary>
     protected double ProcTimer { get; set; } = -1;
+
     /// <summary>Class dependent arguments for subclasses</summary>
     protected readonly TArgs args;
 
@@ -34,7 +43,8 @@ public abstract class Ability<TArgs> : IAbility where TArgs : IArgs
     /// <param name="effect"></param>
     /// <param name="data"></param>
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
-    public Ability(TrinketTinkerEffect effect, AbilityData data, int lvl) : base()
+    public Ability(TrinketTinkerEffect effect, AbilityData data, int lvl)
+        : base()
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     {
         if (typeof(TArgs) != typeof(NoArgs))
@@ -70,7 +80,9 @@ public abstract class Ability<TArgs> : IAbility where TArgs : IArgs
                     break;
                 case ProcOn.Sync:
                     if (e.Abilities[d.ProcSyncIndex] == this)
-                        throw new ArgumentException("Cannot use " + ProcOn.Sync.ToString() + " with self-referencing index " + d.ProcSyncIndex.ToString());
+                        throw new ArgumentException(
+                            $"Cannot use {ProcOn.Sync} with self-referencing index {d.ProcSyncIndex}"
+                        );
                     e.Abilities[d.ProcSyncIndex].EventAbilityProc += HandleProc;
                     break;
                 case ProcOn.Footstep:
@@ -91,7 +103,7 @@ public abstract class Ability<TArgs> : IAbility where TArgs : IArgs
                 case ProcOn.Warped:
                     e.EventPlayerWarped += HandleProc;
                     break;
-                    // remember to add to Deactivate too
+                // remember to add to Deactivate too
             }
         }
         return Active;
@@ -130,7 +142,7 @@ public abstract class Ability<TArgs> : IAbility where TArgs : IArgs
                 case ProcOn.Warped:
                     e.EventPlayerWarped -= HandleProc;
                     break;
-                    // remember to add to Activate too
+                // remember to add to Activate too
             }
             Active = false;
             Allowed = false;
@@ -150,7 +162,12 @@ public abstract class Ability<TArgs> : IAbility where TArgs : IArgs
                 Game1.playSound(d.ProcSound);
             if (d.ProcOneshotAnim != null)
                 e.SetOneshotClip(d.ProcOneshotAnim);
-            Visuals.BroadcastTASList(d.ProcTAS, GetTASPosition(proc), e.CompanionOwnerDrawLayer, proc.LocationOrCurrent);
+            Visuals.BroadcastTASList(
+                d.ProcTAS,
+                GetTASPosition(proc),
+                e.CompanionOwnerDrawLayer,
+                proc.LocationOrCurrent
+            );
 
             EventAbilityProc?.Invoke(sender, proc);
         }
@@ -165,9 +182,7 @@ public abstract class Ability<TArgs> : IAbility where TArgs : IArgs
 
     /// <summary>Cleanup ability when trinket is unequipped, if is <see cref="ProcOn.Always"/></summary>
     /// <param name="farmer"></param>
-    protected virtual void CleanupEffect(Farmer farmer)
-    {
-    }
+    protected virtual void CleanupEffect(Farmer farmer) { }
 
     /// <summary>Applies ability effect, mark the ability as not allowed until next tick or longer.</summary>
     /// <param name="farmer"></param>
@@ -195,13 +210,8 @@ public abstract class Ability<TArgs> : IAbility where TArgs : IArgs
         }
         if (d.ProcTimer > 0 && d.Proc == ProcOn.Timer && Allowed)
         {
-            HandleProc(null, new(ProcOn.Timer, farmer)
-            {
-                Time = time,
-                Location = location
-            });
+            HandleProc(null, new(ProcOn.Timer, farmer) { Time = time, Location = location });
             ProcTimer = d.ProcTimer;
         }
     }
 }
-

@@ -12,28 +12,38 @@ public class DamageArgs : IArgs
 {
     /// <summary>Min damage</summary>
     public int Min { get; set; } = 0;
+
     /// <summary>Max damage, out of 1</summary>
     public int Max { get; set; } = 0;
+
     /// <summary>Pixel range for finding monsters</summary>
     public int Range { get; set; } = Game1.tileSize;
+
     /// <summary>Knockback modifier</summary>
     public float Knockback { get; set; } = 0f;
+
     /// <summary>Precision modifier</summary>
     public int Precision { get; set; } = 0;
+
     /// <summary>Critical chance</summary>
     public float CritChance { get; set; } = 0f;
+
     /// <summary>Critical damage</summary>
     public float CritDamage { get; set; } = 0f;
+
     /// <summary>Stun time in miliseconds</summary>
     public int StunTime { get; set; } = 0;
+
     /// <summary>
     /// Temporary sprite to display while an enemy is stunned, must be defined in mushymato.TrinketTinker/TAS.
     /// Loop will be overwritten by the stun time.
     /// Rotation will be overwritten if this is used for a projectile.
     /// </summary>
     public string? StunTAS { get; set; } = null;
+
     /// <summary>Number of hits to perform</summary>
     public int Hits { get; set; } = 1;
+
     /// <summary>
     /// If this is non-zero, generate a explosion on hit.
     /// Farmer will take <see cref="Min"/> damage from this.
@@ -99,13 +109,26 @@ public class DamageArgs : IArgs
             {
                 Vector2 pos = target.getStandingPosition();
                 float drawLayer = pos.Y / 10000f + 2E-06f;
-                if (!Visuals.BroadcastTAS(StunTAS, pos, drawLayer, target.currentLocation, duration: StunTime))
+                if (
+                    !Visuals.BroadcastTAS(
+                        StunTAS,
+                        pos,
+                        drawLayer,
+                        target.currentLocation,
+                        duration: StunTime
+                    )
+                )
                     StunTAS = null;
             }
         }
         if (ExplodeRadius > 0)
         {
-            proc.LocationOrCurrent.explode(target.TilePoint.ToVector2(), ExplodeRadius, proc.Farmer, damage_amount: Min);
+            proc.LocationOrCurrent.explode(
+                target.TilePoint.ToVector2(),
+                ExplodeRadius,
+                proc.Farmer,
+                damage_amount: Min
+            );
         }
     }
 }

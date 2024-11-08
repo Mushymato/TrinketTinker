@@ -26,4 +26,3 @@ public interface IAbility
     /// <param name="location"></param>
     void Update(Farmer farmer, GameTime time, GameLocation location);
 }
-

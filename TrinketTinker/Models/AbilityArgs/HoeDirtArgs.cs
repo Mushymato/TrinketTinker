@@ -6,4 +6,3 @@ public class HoeDirtArgs : TileArgs
     /// <summary>Water the new hoedirt</summary>
     public bool Watering = false;
 }
-

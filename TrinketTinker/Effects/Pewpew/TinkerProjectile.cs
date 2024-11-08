@@ -32,11 +32,16 @@ public sealed class TinkerProjectile : Projectile
     internal readonly NetString stunTAS = new(null);
 
     /// <summary>Construct an empty instance.</summary>
-    public TinkerProjectile() : base()
-    {
-    }
+    public TinkerProjectile()
+        : base() { }
 
-    public TinkerProjectile(ProjectileArgs args, ProcEventArgs proc, Monster target, Vector2 sourcePosition) : this()
+    public TinkerProjectile(
+        ProjectileArgs args,
+        ProcEventArgs proc,
+        Monster target,
+        Vector2 sourcePosition
+    )
+        : this()
     {
         if (args.Texture != null)
             projectileTexture.Value = args.Texture;
@@ -44,11 +49,21 @@ public sealed class TinkerProjectile : Projectile
         projectileSpriteWidth.Value = args.SpriteWidth;
         projectileSpriteHeight.Value = args.SpriteHeight;
 
-        Vector2 velocity = Utility.getVelocityTowardPoint(sourcePosition, target.getStandingPosition(), args.MinVelocity);
+        Vector2 velocity = Utility.getVelocityTowardPoint(
+            sourcePosition,
+            target.getStandingPosition(),
+            args.MinVelocity
+        );
         xVelocity.Value = velocity.X;
         yVelocity.Value = velocity.Y;
-        startingRotation.Value = args.RotateToTarget ? (float)Math.Atan2(velocity.Y, velocity.X) : 0f;
-        acceleration.Value = Utility.getVelocityTowardPoint(sourcePosition, target.getStandingPosition(), args.Acceleration);
+        startingRotation.Value = args.RotateToTarget
+            ? (float)Math.Atan2(velocity.Y, velocity.X)
+            : 0f;
+        acceleration.Value = Utility.getVelocityTowardPoint(
+            sourcePosition,
+            target.getStandingPosition(),
+            args.Acceleration
+        );
         maxVelocity.Value = args.MaxVelocity;
         position.Value = sourcePosition;
 
@@ -76,20 +91,19 @@ public sealed class TinkerProjectile : Projectile
     {
         base.InitNetFields();
         NetFields
-        .AddField(projectileTexture, "projectileTexture")
-        .AddField(projectileSpriteWidth, "projectileSpriteWidth")
-        .AddField(projectileSpriteHeight, "projectileSpriteHeight")
-        .AddField(minDamage, "minDamage")
-        .AddField(maxDamage, "maxDamage")
-        .AddField(knockBackModifier, "knockBackModifier")
-        .AddField(addedPrecision, "addedPrecision")
-        .AddField(critChance, "critChance")
-        .AddField(critMultiplier, "critMultiplier")
-        .AddField(stunTime, "stunTime")
-        .AddField(stunTAS, "stunTAS")
-        .AddField(hits, "hits")
-        .AddField(explodeRadius, "explodeRadius")
-        ;
+            .AddField(projectileTexture, "projectileTexture")
+            .AddField(projectileSpriteWidth, "projectileSpriteWidth")
+            .AddField(projectileSpriteHeight, "projectileSpriteHeight")
+            .AddField(minDamage, "minDamage")
+            .AddField(maxDamage, "maxDamage")
+            .AddField(knockBackModifier, "knockBackModifier")
+            .AddField(addedPrecision, "addedPrecision")
+            .AddField(critChance, "critChance")
+            .AddField(critMultiplier, "critMultiplier")
+            .AddField(stunTime, "stunTime")
+            .AddField(stunTAS, "stunTAS")
+            .AddField(hits, "hits")
+            .AddField(explodeRadius, "explodeRadius");
     }
 
     /// <summary>Get the texture to draw for the projectile.</summary>
@@ -112,6 +126,7 @@ public sealed class TinkerProjectile : Projectile
             return projectileTexture.Value;
         return projectileSheetName;
     }
+
     /// <summary>Get the texture to draw for the projectile.</summary>
     private Rectangle GetCustomSourceRect(Texture2D texture)
     {
@@ -123,7 +138,6 @@ public sealed class TinkerProjectile : Projectile
         );
     }
 
-
     /// <summary>Needed to override this to get custom texture weh</summary>
     /// <param name="b"></param>
     public override void draw(SpriteBatch b)
@@ -132,15 +146,60 @@ public sealed class TinkerProjectile : Projectile
         Texture2D texture = GetCustomTexture();
         Rectangle sourceRect = GetCustomSourceRect(texture);
         Vector2 value = position.Value;
-        b.Draw(texture, Game1.GlobalToLocal(Game1.viewport, value + new Vector2(0f, 0f - height.Value) + new Vector2(32f, 32f)), sourceRect, color.Value * alpha.Value, rotation, new Vector2(8f, 8f), scale, SpriteEffects.None, (value.Y + 96f) / 10000f);
+        b.Draw(
+            texture,
+            Game1.GlobalToLocal(
+                Game1.viewport,
+                value + new Vector2(0f, 0f - height.Value) + new Vector2(32f, 32f)
+            ),
+            sourceRect,
+            color.Value * alpha.Value,
+            rotation,
+            new Vector2(8f, 8f),
+            scale,
+            SpriteEffects.None,
+            (value.Y + 96f) / 10000f
+        );
         if (height.Value > 0f)
         {
-            b.Draw(Game1.shadowTexture, Game1.GlobalToLocal(Game1.viewport, value + new Vector2(32f, 32f)), Game1.shadowTexture.Bounds, Color.White * alpha.Value * 0.75f, 0f, new Vector2(Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y), 2f, SpriteEffects.None, (value.Y - 1f) / 10000f);
+            b.Draw(
+                Game1.shadowTexture,
+                Game1.GlobalToLocal(Game1.viewport, value + new Vector2(32f, 32f)),
+                Game1.shadowTexture.Bounds,
+                Color.White * alpha.Value * 0.75f,
+                0f,
+                new Vector2(
+                    Game1.shadowTexture.Bounds.Center.X,
+                    Game1.shadowTexture.Bounds.Center.Y
+                ),
+                2f,
+                SpriteEffects.None,
+                (value.Y - 1f) / 10000f
+            );
         }
         float num = alpha.Value;
         for (int num2 = tail.Count - 1; num2 >= 0; num2--)
         {
-            b.Draw(texture, Game1.GlobalToLocal(Game1.viewport, Vector2.Lerp((num2 == tail.Count - 1) ? value : tail.ElementAt(num2 + 1), tail.ElementAt(num2), (float)tailCounter / 50f) + new Vector2(0f, 0f - height.Value) + new Vector2(32f, 32f)), sourceRect, color.Value * num, rotation, new Vector2(8f, 8f), scale, SpriteEffects.None, (value.Y - (float)(tail.Count - num2) + 96f) / 10000f);
+            b.Draw(
+                texture,
+                Game1.GlobalToLocal(
+                    Game1.viewport,
+                    Vector2.Lerp(
+                        (num2 == tail.Count - 1) ? value : tail.ElementAt(num2 + 1),
+                        tail.ElementAt(num2),
+                        (float)tailCounter / 50f
+                    )
+                        + new Vector2(0f, 0f - height.Value)
+                        + new Vector2(32f, 32f)
+                ),
+                sourceRect,
+                color.Value * num,
+                rotation,
+                new Vector2(8f, 8f),
+                scale,
+                SpriteEffects.None,
+                (value.Y - (float)(tail.Count - num2) + 96f) / 10000f
+            );
             num -= 1f / (float)tail.Count;
             scale = 0.8f * (float)(4 - 4 / (num2 + 4));
         }
@@ -194,7 +253,10 @@ public sealed class TinkerProjectile : Projectile
                 {
                     Vector2 pos = monster.getStandingPosition();
                     Visuals.BroadcastTAS(
-                        stunTAS.Value, pos, (pos.Y + 96f) / 10000f, location,
+                        stunTAS.Value,
+                        pos,
+                        (pos.Y + 96f) / 10000f,
+                        location,
                         duration: stunTime.Value,
                         rotation: rotation
                     );
@@ -202,7 +264,12 @@ public sealed class TinkerProjectile : Projectile
             }
             if (explodeRadius.Value > 0)
             {
-                location.explode(monster.TilePoint.ToVector2(), explodeRadius.Value, playerWhoFiredMe, damage_amount: minDamage.Value);
+                location.explode(
+                    monster.TilePoint.ToVector2(),
+                    explodeRadius.Value,
+                    playerWhoFiredMe,
+                    damage_amount: minDamage.Value
+                );
             }
             if (!monster.IsInvisible)
             {
@@ -217,11 +284,13 @@ public sealed class TinkerProjectile : Projectile
             UpdatePiercesLeft(location);
     }
 
-    public override void behaviorOnCollisionWithPlayer(GameLocation location, Farmer player)
-    {
-    }
+    public override void behaviorOnCollisionWithPlayer(GameLocation location, Farmer player) { }
 
-    public override void behaviorOnCollisionWithTerrainFeature(TerrainFeature t, Vector2 tileLocation, GameLocation location)
+    public override void behaviorOnCollisionWithTerrainFeature(
+        TerrainFeature t,
+        Vector2 tileLocation,
+        GameLocation location
+    )
     {
         t.performUseAction(tileLocation);
         if (!ignoreObjectCollisions.Value)
@@ -234,7 +303,11 @@ public sealed class TinkerProjectile : Projectile
     {
         xVelocity.Value += acceleration.X;
         yVelocity.Value += acceleration.Y;
-        if (maxVelocity.Value != -1f && Math.Sqrt(xVelocity.Value * xVelocity.Value + yVelocity.Value * yVelocity.Value) >= (double)maxVelocity.Value)
+        if (
+            maxVelocity.Value != -1f
+            && Math.Sqrt(xVelocity.Value * xVelocity.Value + yVelocity.Value * yVelocity.Value)
+                >= (double)maxVelocity.Value
+        )
         {
             xVelocity.Value -= acceleration.X;
             yVelocity.Value -= acceleration.Y;
@@ -254,8 +327,14 @@ public sealed class TinkerProjectile : Projectile
             sourceRect.Width = 8;
             sourceRect.Height = 8;
             Game1.createRadialDebris_MoreNatural(
-                location, GetCustomTexturePath(),
-                sourceRect, 1, (int)position.X + 32, (int)position.Y + 32, 6, (int)(position.Y / Game1.tileSize) + 1
+                location,
+                GetCustomTexturePath(),
+                sourceRect,
+                1,
+                (int)position.X + 32,
+                (int)position.Y + 32,
+                6,
+                (int)(position.Y / Game1.tileSize) + 1
             );
         }
     }

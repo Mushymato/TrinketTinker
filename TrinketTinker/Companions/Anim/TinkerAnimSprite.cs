@@ -1,4 +1,3 @@
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
@@ -15,12 +14,16 @@ namespace TrinketTinker.Companions.Anim;
 public sealed class TinkerAnimSprite
 {
     private readonly VariantData vd;
+
     /// <summary>Middle point of the sprite, based on width and height.</summary>
     internal readonly Vector2 Origin;
+
     /// <summary>Backing draw color field.</summary>
     private Color? drawColor = null;
+
     /// <summary>If draw color need to update after init.</summary>
     private bool drawColorIsConstant = false;
+
     /// <summary>Sprite draw color</summary>
     internal Color DrawColor
     {
@@ -56,7 +59,8 @@ public sealed class TinkerAnimSprite
         return new Rectangle(
             frame * vd.Width % Texture.Width,
             frame * vd.Width / Texture.Width * vd.Height,
-            vd.Width, vd.Height
+            vd.Width,
+            vd.Height
         );
     }
 
@@ -86,8 +90,10 @@ public sealed class TinkerAnimSprite
     internal bool AnimateClip(GameTime time, AnimClipData clip, float interval)
     {
         return Animate(
-            clip.LoopMode, time,
-            clip.FrameStart, clip.FrameLength,
+            clip.LoopMode,
+            time,
+            clip.FrameStart,
+            clip.FrameLength,
             clip.Interval ?? interval
         );
     }
@@ -101,7 +107,13 @@ public sealed class TinkerAnimSprite
     /// <param name="numberOfFrames">length of animation</param>
     /// <param name="interval">miliseconds between frames</param>
     /// <returns>True if animation reached last frame</returns>
-    internal bool Animate(LoopMode loopMode, GameTime time, int startFrame, int numberOfFrames, float interval)
+    internal bool Animate(
+        LoopMode loopMode,
+        GameTime time,
+        int startFrame,
+        int numberOfFrames,
+        float interval
+    )
     {
         if (numberOfFrames == 1)
         {
@@ -125,7 +137,12 @@ public sealed class TinkerAnimSprite
     /// <param name="numberOfFrames">length of animation</param>
     /// <param name="interval">miliseconds between frames</param>
     /// <returns>True if animation reached last frame</returns>
-    internal bool AnimateStandard(GameTime gameTime, int startFrame, int numberOfFrames, float interval)
+    internal bool AnimateStandard(
+        GameTime gameTime,
+        int startFrame,
+        int numberOfFrames,
+        float interval
+    )
     {
         isReverse = false;
         if (currentFrame >= startFrame + numberOfFrames || currentFrame < startFrame)
@@ -157,7 +174,12 @@ public sealed class TinkerAnimSprite
     /// <param name="numberOfFrames">length of animation</param>
     /// <param name="interval">miliseconds between frames</param>
     /// <returns>True if animation reached last frame</returns>
-    public bool AnimatePingPong(GameTime gameTime, int startFrame, int numberOfFrames, float interval)
+    public bool AnimatePingPong(
+        GameTime gameTime,
+        int startFrame,
+        int numberOfFrames,
+        float interval
+    )
     {
         int lastFrame;
         int step;

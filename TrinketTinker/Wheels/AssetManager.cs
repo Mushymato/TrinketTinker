@@ -12,14 +12,19 @@ internal static class AssetManager
 {
     /// <summary>Vanilla trinket asset target</summary>
     internal const string TRINKET_TARGET = "Data/Trinkets";
+
     /// <summary>Tinker asset target</summary>
     internal static string TinkerAsset => $"{ModEntry.ModId}/Tinker";
+
     /// <summary>TAS (TemporaryAnimatedSprite) asset target</summary>
     internal static string TASAsset => $"{ModEntry.ModId}/TAS";
+
     /// <summary>Assembly qualified name of <see cref="TrinketTinkerEffect"/></summary>
     internal static string EffectClass => typeof(TrinketTinkerEffect).AssemblyQualifiedName!;
+
     /// <summary>Backing field for tinker data</summary>
     private static Dictionary<string, TinkerData>? _tinkerData = null;
+
     /// <summary>Tinker data lazy loader</summary>
     internal static Dictionary<string, TinkerData> TinkerData
     {
@@ -29,13 +34,16 @@ internal static class AssetManager
             return _tinkerData;
         }
     }
+
     /// <summary>Backing field for tinker data</summary>
     private static Dictionary<string, TemporaryAnimatedSpriteDefinition>? _tasData = null;
     internal static Dictionary<string, TemporaryAnimatedSpriteDefinition> TASData
     {
         get
         {
-            _tasData ??= Game1.content.Load<Dictionary<string, TemporaryAnimatedSpriteDefinition>>(TASAsset);
+            _tasData ??= Game1.content.Load<Dictionary<string, TemporaryAnimatedSpriteDefinition>>(
+                TASAsset
+            );
             return _tasData;
         }
     }
@@ -45,7 +53,10 @@ internal static class AssetManager
         if (e.Name.IsEquivalentTo(TinkerAsset))
             e.LoadFrom(() => new Dictionary<string, TinkerData>(), AssetLoadPriority.Exclusive);
         if (e.Name.IsEquivalentTo(TASAsset))
-            e.LoadFrom(() => new Dictionary<string, TemporaryAnimatedSpriteDefinition>(), AssetLoadPriority.Exclusive);
+            e.LoadFrom(
+                () => new Dictionary<string, TemporaryAnimatedSpriteDefinition>(),
+                AssetLoadPriority.Exclusive
+            );
         if (e.Name.IsEquivalentTo(TRINKET_TARGET))
             e.Edit(Edit_Trinkets_EffectClass, AssetEditPriority.Late + 100);
     }

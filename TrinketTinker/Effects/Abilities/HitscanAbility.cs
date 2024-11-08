@@ -13,17 +13,20 @@ namespace TrinketTinker.Effects.Abilities;
 /// <param name="effect"></param>
 /// <param name="data"></param>
 /// <param name="lvl"></param>
-public sealed class HitscanAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<DamageArgs>(effect, data, lvl)
+public sealed class HitscanAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
+    : Ability<DamageArgs>(effect, data, lvl)
 {
     /// <inheritdoc/>
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
-        Monster? target = proc.Monster ?? Utility.findClosestMonsterWithinRange(
-            proc.LocationOrCurrent,
-            e.CompanionPosition ?? proc.Farmer.Position,
-            base.args.Range,
-            ignoreUntargetables: true
-        );
+        Monster? target =
+            proc.Monster
+            ?? Utility.findClosestMonsterWithinRange(
+                proc.LocationOrCurrent,
+                e.CompanionPosition ?? proc.Farmer.Position,
+                base.args.Range,
+                ignoreUntargetables: true
+            );
         if (target == null)
             return false;
         proc.Monster = target;

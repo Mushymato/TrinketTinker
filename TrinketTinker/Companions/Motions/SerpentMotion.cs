@@ -16,14 +16,18 @@ public sealed class SerpentMotion : BaseLerpMotion<SerpentArgs>
 {
     /// <summary>Position and rotation of segments</summary>
     private readonly List<Vector3> segments = [];
+
     /// <summary>Number of segments</summary>
     private int SegmentCount => args.SegmentCount;
+
     /// <summary>Total frame, accounting for number of segments</summary>
     protected override int TotalFrames => framesetLength * SegmentCount;
+
     /// <summary>Length of a segment, based on width of sprite.</summary>
     private readonly int segUnit;
 
-    public SerpentMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata) : base(companion, mdata, vdata)
+    public SerpentMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata)
+        : base(companion, mdata, vdata)
     {
         segUnit = (int)(vdata.Width * args.Sparcity);
     }
@@ -83,7 +87,9 @@ public sealed class SerpentMotion : BaseLerpMotion<SerpentArgs>
             // tail
             segSnapshot = snapshot.CloneWithChanges(
                 position: segments.Last().AsVec2() + c.Owner.drawOffset + offset,
-                sourceRect: cs.GetSourceRect(cs.currentFrame + framesetLength * (args.SegmentAlts + 1)),
+                sourceRect: cs.GetSourceRect(
+                    cs.currentFrame + framesetLength * (args.SegmentAlts + 1)
+                ),
                 rotation: segments.Last().Z
             );
             segSnapshot.Draw(b);

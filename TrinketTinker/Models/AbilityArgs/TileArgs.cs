@@ -9,6 +9,7 @@ public class TileArgs : IArgs
 {
     /// <summary>Tile range radius, e.g. range 1 = 3x3, results in a square</summary>
     public int Range { get; set; } = 1;
+
     /// <summary>Number of tiles to affect at a time</summary>
     public int Count { get; set; } = 1;
 
@@ -24,9 +25,9 @@ public class TileArgs : IArgs
             return [new(x, y)];
         List<Vector2> result = [];
         for (int i = -Range; i <= Range; i++)
-            for (int j = -Range; j <= Range; j++)
-                if (location.hasTileAt(x + i, y + j, "Back"))
-                    result.Add(new(x + i, y + j));
+        for (int j = -Range; j <= Range; j++)
+            if (location.hasTileAt(x + i, y + j, "Back"))
+                result.Add(new(x + i, y + j));
         return result;
     }
 
@@ -34,7 +35,11 @@ public class TileArgs : IArgs
     /// <param name="location"></param>
     /// <param name="position"></param>
     /// <returns></returns>
-    internal IEnumerable<Vector2> IterateRandomTiles(GameLocation location, Vector2 position, Func<GameLocation, Vector2, bool>? match = null)
+    internal IEnumerable<Vector2> IterateRandomTiles(
+        GameLocation location,
+        Vector2 position,
+        Func<GameLocation, Vector2, bool>? match = null
+    )
     {
         List<Vector2> tiles = GetTilesInRange(location, position);
         if (tiles.Count > 0)

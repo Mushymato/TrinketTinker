@@ -3,6 +3,7 @@ using StardewValley;
 using StardewValley.Delegates;
 using StardewValley.Monsters;
 using TrinketTinker.Models;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Effects.Proc;
 
@@ -14,22 +15,31 @@ public class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
 {
     /// <summary>Kind of proc triggering this event</summary>
     public ProcOn Proc => procOn;
+
     /// <summary>Player who triggered the event</summary>
     public Farmer Farmer => farmer;
+
     /// <summary>Game time</summary>
     public GameTime? Time { get; set; } = null;
+
     /// <summary>Proc location, one of the backing props of <see cref="LocationOrCurrent"/></summary>
     public GameLocation? Location { get; set; } = null;
+
     /// <summary>Target monster</summary>
     public Monster? Monster { get; set; } = null;
+
     /// <summary>Damage amount, to monster or to player</summary>
     public int? DamageAmount { get; set; } = null;
+
     /// <summary>Whether damage (to monster) was a bomb</summary>
     public bool? IsBomb { get; set; } = null;
+
     /// <summary>Whether damage (to monster) was a critical hit</summary>
     public bool? IsCriticalHit { get; set; } = null;
+
     /// <summary>Arguments given to trigger action handler.</summary>
     public string[]? TriggerArgs { get; set; } = null;
+
     /// <summary>Trigger action context</summary>
     public TriggerActionContext? TriggerContext { get; set; } = null;
 
@@ -45,11 +55,17 @@ public class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
     {
         if (Farmer == null)
             return false;
+        if (Places.LocationDisableTrinketAbilities(LocationOrCurrent))
+            return false;
         if (DamageAmount != null && DamageAmount < data.DamageThreshold)
             return false;
         if (Proc == ProcOn.SlayMonster || Proc == ProcOn.DamageMonster)
         {
-            if (Monster == null || (data.IsBomb ?? IsBomb) != IsBomb || (data.IsCriticalHit ?? IsCriticalHit) != IsCriticalHit)
+            if (
+                Monster == null
+                || (data.IsBomb ?? IsBomb) != IsBomb
+                || (data.IsCriticalHit ?? IsCriticalHit) != IsCriticalHit
+            )
                 return false;
         }
         if (data.Condition != null)
@@ -57,4 +73,3 @@ public class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
         return true;
     }
 }
-

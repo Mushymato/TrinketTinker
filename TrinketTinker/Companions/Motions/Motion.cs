@@ -8,40 +8,54 @@ using TrinketTinker.Models;
 using TrinketTinker.Models.Mixin;
 using TrinketTinker.Wheels;
 
-
 namespace TrinketTinker.Companions.Motions;
 
 /// <summary>Abstract class, controls drawing and movement of companion</summary>
-public abstract class Motion<TArgs> : IMotion where TArgs : IArgs
+public abstract class Motion<TArgs> : IMotion
+    where TArgs : IArgs
 {
     /// <summary>Companion that owns this motion.</summary>
     protected readonly TrinketTinkerCompanion c;
+
     /// <summary>Data for this motion.</summary>
     protected readonly MotionData md;
+
     /// <summary>Data for this motion.</summary>
     protected readonly VariantData vd;
+
     /// <summary>Light source ID, generated if LightRadius is set in <see cref="MotionData"/>.</summary>
     protected string lightId = "";
+
     /// <summary>Class dependent arguments for subclasses</summary>
     protected readonly TArgs args = default!;
+
     /// <summary>The previous anchor target</summary>
     protected AnchorTarget prevAnchorTarget = AnchorTarget.Owner;
+
     /// <summary>The current anchor target</summary>
     protected AnchorTarget currAnchorTarget = AnchorTarget.Owner;
+
     /// <summary>Anchor changed during this tick</summary>s
     protected bool AnchorChanged => prevAnchorTarget != currAnchorTarget;
+
     /// <summary>Companion animation controller</summary>
     protected readonly TinkerAnimSprite cs;
+
     /// <summary>Oneshot anim clip key</summary>
     private string? oneshotClipKey = null;
+
     /// <summary>Override anim clip key</summary>
     private string? overrideClipKey = null;
+
     /// <summary>Heap of frames to draw, after the initial one.</summary>
     private readonly PriorityQueue<DrawSnapshot, long> drawSnapshotQueue = new();
+
     /// <summary>Number of frames in 1 set, used for Repeat and <see cref="SerpentMotion"/></summary>
     protected readonly int framesetLength = 1;
+
     /// <summary>Actual total frame used for Repeat, equal to frame length</summary>
     protected virtual int TotalFrames => framesetLength;
+
     /// <summary>Basic constructor, tries to parse arguments as the generic <see cref="IArgs"/> type.</summary>
     /// <param name="companion"></param>
     /// <param name="mdata"></param>
@@ -88,7 +102,10 @@ public abstract class Motion<TArgs> : IMotion where TArgs : IArgs
         if (vd.LightSource is LightSourceData ldata)
         {
             lightId = $"{farmer.userID}/{c.ID}";
-            Game1.currentLightSources.Add(lightId, new TinkerLightSource(lightId, c.Position + GetOffset(), ldata));
+            Game1.currentLightSources.Add(
+                lightId,
+                new TinkerLightSource(lightId, c.Position + GetOffset(), ldata)
+            );
         }
     }
 
@@ -106,7 +123,10 @@ public abstract class Motion<TArgs> : IMotion where TArgs : IArgs
         drawSnapshotQueue.Clear();
         if (vd.LightSource is LightSourceData ldata)
         {
-            Game1.currentLightSources.Add(lightId, new TinkerLightSource(lightId, c.Position + GetOffset(), ldata));
+            Game1.currentLightSources.Add(
+                lightId,
+                new TinkerLightSource(lightId, c.Position + GetOffset(), ldata)
+            );
         }
     }
 
@@ -126,7 +146,10 @@ public abstract class Motion<TArgs> : IMotion where TArgs : IArgs
                 case AnchorTarget.Monster:
                     {
                         Monster closest = Utility.findClosestMonsterWithinRange(
-                            location, originPoint, anchor.Range, ignoreUntargetables: true
+                            location,
+                            originPoint,
+                            anchor.Range,
+                            ignoreUntargetables: true
                         );
                         if (closest != null)
                         {
@@ -144,23 +167,45 @@ public abstract class Motion<TArgs> : IMotion where TArgs : IArgs
                     goto case AnchorTarget.Object;
                 case AnchorTarget.Object:
                     {
-                        if (Seek.ClosestMatchingObject(location, originPoint, anchor.Range, objMatch) is SObject closest)
+                        if (
+                            Places.ClosestMatchingObject(
+                                location,
+                                originPoint,
+                                anchor.Range,
+                                objMatch
+                            )
+                            is SObject closest
+                        )
                         {
                             currAnchorTarget = anchor.Mode;
-                            c.Anchor = Utility.PointToVector2(closest.GetBoundingBox().Center) - Vector2.One;
+                            c.Anchor =
+                                Utility.PointToVector2(closest.GetBoundingBox().Center)
+                                - Vector2.One;
                             return;
                         }
                     }
                     break;
                 case AnchorTarget.Crop:
-                    terrainMatch = (terrain) => terrain is HoeDirt dirt && dirt.crop != null && dirt.crop.CanHarvest();
+                    terrainMatch = (terrain) =>
+                        terrain is HoeDirt dirt && dirt.crop != null && dirt.crop.CanHarvest();
                     goto case AnchorTarget.TerrainFeature;
                 case AnchorTarget.TerrainFeature:
                     {
-                        if (Seek.ClosestMatchingTerrainFeature(location, originPoint, anchor.Range, terrainMatch) is TerrainFeature closest)
+                        if (
+                            Places.ClosestMatchingTerrainFeature(
+                                location,
+                                originPoint,
+                                anchor.Range,
+                                terrainMatch
+                            )
+                            is TerrainFeature closest
+                        )
                         {
                             currAnchorTarget = anchor.Mode;
-                            c.Anchor = closest.Tile * Game1.tileSize + new Vector2(Game1.tileSize / 2, Game1.tileSize / 2) - Vector2.One;
+                            c.Anchor =
+                                closest.Tile * Game1.tileSize
+                                + new Vector2(Game1.tileSize / 2, Game1.tileSize / 2)
+                                - Vector2.One;
                             return;
                         }
                     }
@@ -290,8 +335,10 @@ public abstract class Motion<TArgs> : IMotion where TArgs : IArgs
         if (md.HideDuringEvents && Game1.eventUp)
             return;
 
-        while (drawSnapshotQueue.TryPeek(out DrawSnapshot? _, out long priority) &&
-               Game1.currentGameTime.TotalGameTime.Ticks >= priority)
+        while (
+            drawSnapshotQueue.TryPeek(out DrawSnapshot? _, out long priority)
+            && Game1.currentGameTime.TotalGameTime.Ticks >= priority
+        )
         {
             drawSnapshotQueue.Dequeue().Draw(b);
         }
@@ -304,36 +351,39 @@ public abstract class Motion<TArgs> : IMotion where TArgs : IArgs
             _ => GetPositionalLayerDepth(offset),
         };
 
-        DrawSnapshot snapshot = new(
-            cs.Texture,
-            c.Position + c.Owner.drawOffset + offset,
-            cs.SourceRect,
-            cs.DrawColor,
-            GetRotation(),
-            cs.Origin,
-            GetTextureScale(),
-            (c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
-            layerDepth
-        );
+        DrawSnapshot snapshot =
+            new(
+                cs.Texture,
+                c.Position + c.Owner.drawOffset + offset,
+                cs.SourceRect,
+                cs.DrawColor,
+                GetRotation(),
+                cs.Origin,
+                GetTextureScale(),
+                (c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
+                layerDepth
+            );
         DrawCompanion(b, snapshot);
 
         Vector2 shadowScale = GetShadowScale();
         if (shadowScale.X > 0 || shadowScale.Y > 0)
         {
             Vector2 shadowOffset = GetShadowOffset(offset);
-            DrawSnapshot shadowSnapshot = new(
-                Game1.shadowTexture,
-                c.Position + c.Owner.drawOffset + shadowOffset,
-                Game1.shadowTexture.Bounds,
-                Color.White,
-                0f,
-                new Vector2(
-                    Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y
-                ),
-                shadowScale,
-                SpriteEffects.None,
-                layerDepth - 2E-06f
-            );
+            DrawSnapshot shadowSnapshot =
+                new(
+                    Game1.shadowTexture,
+                    c.Position + c.Owner.drawOffset + shadowOffset,
+                    Game1.shadowTexture.Bounds,
+                    Color.White,
+                    0f,
+                    new Vector2(
+                        Game1.shadowTexture.Bounds.Center.X,
+                        Game1.shadowTexture.Bounds.Center.Y
+                    ),
+                    shadowScale,
+                    SpriteEffects.None,
+                    layerDepth - 2E-06f
+                );
             DrawShadow(b, shadowSnapshot);
         }
     }
@@ -366,8 +416,8 @@ public abstract class Motion<TArgs> : IMotion where TArgs : IArgs
         {
             drawSnapshotQueue.Enqueue(
                 snapshot,
-                Game1.currentGameTime.TotalGameTime.Ticks +
-                TimeSpan.FromMilliseconds(md.RepeatInterval * totalFrameSets * repeat).Ticks
+                Game1.currentGameTime.TotalGameTime.Ticks
+                    + TimeSpan.FromMilliseconds(md.RepeatInterval * totalFrameSets * repeat).Ticks
             );
         }
 
@@ -389,8 +439,12 @@ public abstract class Motion<TArgs> : IMotion where TArgs : IArgs
                 }
                 drawSnapshotQueue.Enqueue(
                     framesetSnapshot,
-                    Game1.currentGameTime.TotalGameTime.Ticks +
-                    TimeSpan.FromMilliseconds(md.RepeatInterval * (totalFrameSets * repeat + frameset)).Ticks
+                    Game1.currentGameTime.TotalGameTime.Ticks
+                        + TimeSpan
+                            .FromMilliseconds(
+                                md.RepeatInterval * (totalFrameSets * repeat + frameset)
+                            )
+                            .Ticks
                 );
             }
         }

@@ -7,13 +7,16 @@ public enum ValueMode
     Number,
     Percent,
 }
+
 /// <summary>Generic range argument</summary>
 public sealed class RangeArgs : IArgs
 {
     /// <summary>Determine how to interpret the value</summary>
     public ValueMode ValueMode { get; set; } = ValueMode.Percent;
+
     /// <summary>Min, out of 1</summary>
     public double Min { get; set; } = 0;
+
     /// <summary>Max, out of 1</summary>
     public double Max { get; set; } = 0;
 
@@ -25,7 +28,7 @@ public sealed class RangeArgs : IArgs
         {
             ValueMode.Number => randValue,
             ValueMode.Percent => maxValue * randValue,
-            _ => throw new NotImplementedException()
+            _ => throw new NotImplementedException(),
         };
     }
 

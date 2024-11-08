@@ -7,17 +7,24 @@ namespace TrinketTinker.Companions.Motions;
 
 /// <summary>Companion follows the player and bobs up and down</summary>
 /// <inheritdoc/>
-public sealed class HoverMotion(TrinketTinkerCompanion companion, MotionData data, VariantData vdata)
-    : BaseLerpMotion<HoverArgs>(companion, data, vdata)
+public sealed class HoverMotion(
+    TrinketTinkerCompanion companion,
+    MotionData data,
+    VariantData vdata
+) : BaseLerpMotion<HoverArgs>(companion, data, vdata)
 {
     /// <summary>Perching anim clip name.</summary>
     private const string PERCHING = "Perching";
+
     /// <summary>Default Y offset</summary>
     private const float DEFAULT_HEIGHT = 96f;
+
     /// <summary>trig function input</summary>
     private double theta = 0f;
+
     /// <summary>Timer until perch</summary>
     private double perchingTimer = 0;
+
     /// <summary>Track perching state for local. Global must check c.OverrideKey == PERCHING instead.</summary>
     private bool perching = false;
 
@@ -83,6 +90,7 @@ public sealed class HoverMotion(TrinketTinkerCompanion companion, MotionData dat
     /// <inheritdoc/>
     public override Vector2 GetOffset()
     {
-        return new Vector2(0, args.Magnitude * (float)Math.Sin(Math.PI * theta) - DEFAULT_HEIGHT) + base.GetOffset();
+        return new Vector2(0, args.Magnitude * (float)Math.Sin(Math.PI * theta) - DEFAULT_HEIGHT)
+            + base.GetOffset();
     }
 }

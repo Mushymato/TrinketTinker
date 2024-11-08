@@ -12,6 +12,7 @@ public sealed class SpawnItemArgs : GenericSpawnItemData, IArgs
     /// Be wary of using <see cref="ItemQuerySearchMode.All"/>, every matching item will be dropped at once.
     /// </summary>
     public ItemQuerySearchMode SearchMode { get; set; } = ItemQuerySearchMode.RandomOfTypeItem;
+
     /// <inheritdoc/>
     public bool Validate() => Id != "???";
 }

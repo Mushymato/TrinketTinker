@@ -9,8 +9,12 @@ namespace TrinketTinker.Companions.Motions;
 /// <param name="companion"></param>
 /// <param name="mdata"></param>
 /// <param name="vdata"></param>
-public class BaseStaticMotion<IArgs>(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata)
-    : Motion<IArgs>(companion, mdata, vdata) where IArgs : StaticArgs
+public class BaseStaticMotion<IArgs>(
+    TrinketTinkerCompanion companion,
+    MotionData mdata,
+    VariantData vdata
+) : Motion<IArgs>(companion, mdata, vdata)
+    where IArgs : StaticArgs
 {
     /// <inheritdoc/>
     public override void UpdateLocal(GameTime time, GameLocation location)
@@ -41,7 +45,7 @@ public class BaseStaticMotion<IArgs>(TrinketTinkerCompanion companion, MotionDat
                 1 => 0,
                 2 => MathF.PI / 2,
                 3 => MathF.PI,
-                _ => 0
+                _ => 0,
             };
         }
         return 0f;
@@ -86,6 +90,8 @@ public class BaseStaticMotion<IArgs>(TrinketTinkerCompanion companion, MotionDat
 }
 
 /// <inheritdoc/>
-public sealed class StaticMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata) : BaseStaticMotion<StaticArgs>(companion, mdata, vdata)
-{
-}
+public sealed class StaticMotion(
+    TrinketTinkerCompanion companion,
+    MotionData mdata,
+    VariantData vdata
+) : BaseStaticMotion<StaticArgs>(companion, mdata, vdata) { }

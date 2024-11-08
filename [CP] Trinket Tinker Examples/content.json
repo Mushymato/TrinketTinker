@@ -27,5 +27,19 @@
       "Action": "Include",
       "FromFile": "data/lerp/snek.json"
     },
+    // disable trinkets in Backwoods
+    {
+      "Action": "EditData",
+      "Target": "Data/Locations",
+      "TargetField": [
+        "Backwoods"
+      ],
+      "Entries": {
+        "CustomFields": {
+          // "mushymato.TrinketTinker/disableAbilities": true,
+          "mushymato.TrinketTinker/disableCompanions": true
+        }
+      }
+    }
   ]
 }

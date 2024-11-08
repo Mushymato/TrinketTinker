@@ -2,16 +2,16 @@
 using System.Reflection;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
+using StardewValley;
+using StardewValley.Internal;
 using StardewValley.Objects.Trinkets;
 using StardewValley.Triggers;
-using StardewValley.Internal;
 using TrinketTinker.Companions;
 using TrinketTinker.Companions.Motions;
 using TrinketTinker.Effects;
 using TrinketTinker.Effects.Abilities;
 using TrinketTinker.Extras;
 using TrinketTinker.Wheels;
-using StardewValley;
 
 namespace TrinketTinker;
 
@@ -20,12 +20,11 @@ internal sealed class ModEntry : Mod
 #if DEBUG
     private const LogLevel DEFAULT_LOG_LEVEL = LogLevel.Debug;
 #else
-        private const LogLevel DEFAULT_LOG_LEVEL = LogLevel.Trace;
+    private const LogLevel DEFAULT_LOG_LEVEL = LogLevel.Trace;
 #endif
 
     private static IMonitor? mon;
     public static string ModId { get; set; } = "";
-
 
     public override void Entry(IModHelper helper)
     {
@@ -65,7 +64,10 @@ internal sealed class ModEntry : Mod
         // Add item query for creating a trinket with specific level and variant
         ItemQueryResolver.Register(ItemQuery.ItemQuery_CREATE_TRINKET, ItemQuery.CREATE_TRINKET);
         // Add item query for creating all variants of a trinket
-        ItemQueryResolver.Register(ItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS, ItemQuery.CREATE_TRINKET_ALL_VARIANTS);
+        ItemQueryResolver.Register(
+            ItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS,
+            ItemQuery.CREATE_TRINKET_ALL_VARIANTS
+        );
     }
 
     private static void OnAssetRequested(object? sender, AssetRequestedEventArgs e)
@@ -100,14 +102,20 @@ internal sealed class ModEntry : Mod
         Log("=== TrinketTinkerEffect ===", LogLevel.Info);
         foreach (TypeInfo typeInfo in typeof(TrinketTinkerEffect).Assembly.DefinedTypes)
         {
-            if (typeInfo.IsAssignableTo(typeof(TrinketTinkerEffect)) && typeInfo.AssemblyQualifiedName != null)
+            if (
+                typeInfo.IsAssignableTo(typeof(TrinketTinkerEffect))
+                && typeInfo.AssemblyQualifiedName != null
+            )
                 Log(typeInfo.AssemblyQualifiedName);
         }
 
         Log("=== TrinketTinkerCompanion ===", LogLevel.Info);
         foreach (TypeInfo typeInfo in typeof(TrinketTinkerCompanion).Assembly.DefinedTypes)
         {
-            if (typeInfo.IsAssignableTo(typeof(TrinketTinkerCompanion)) && typeInfo.AssemblyQualifiedName != null)
+            if (
+                typeInfo.IsAssignableTo(typeof(TrinketTinkerCompanion))
+                && typeInfo.AssemblyQualifiedName != null
+            )
                 Log(typeInfo.AssemblyQualifiedName);
         }
 
@@ -155,4 +163,3 @@ internal sealed class ModEntry : Mod
         mon!.LogOnce(msg, level);
     }
 }
-

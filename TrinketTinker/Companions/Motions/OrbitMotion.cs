@@ -32,9 +32,9 @@ public class OrbitMotion(TrinketTinkerCompanion companion, MotionData mdata, Var
     public override Vector2 GetOffset()
     {
         return new Vector2(
-            args.RadiusX * (float)Math.Cos(Math.PI * theta),
-            args.RadiusY * (float)Math.Sin(Math.PI * theta) - args.Height
-        ) + base.GetOffset();
+                args.RadiusX * (float)Math.Cos(Math.PI * theta),
+                args.RadiusY * (float)Math.Sin(Math.PI * theta) - args.Height
+            ) + base.GetOffset();
     }
 
     /// <summary>Get shadow offset, same as offset but -</summary>

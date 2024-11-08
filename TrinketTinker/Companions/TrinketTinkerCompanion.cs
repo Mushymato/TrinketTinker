@@ -1,14 +1,13 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StardewModdingAPI;
 using Netcode;
+using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Companions;
-using TrinketTinker.Models;
-using TrinketTinker.Companions.Motions;
 using StardewValley.Network;
+using TrinketTinker.Companions.Motions;
+using TrinketTinker.Models;
 using TrinketTinker.Wheels;
-
 
 namespace TrinketTinker.Companions;
 
@@ -18,14 +17,19 @@ public class TrinketTinkerCompanion : Companion
     // NetFields + Getters
     /// <summary>NetField for <see cref="ID"/></summary>
     protected readonly NetString _id = new("");
+
     /// <summary>Companion ID. Companion is (re)loaded when this is changed.</summary>
     public string ID => _id.Value;
+
     /// <summary>Owner position in prev tick, for detecting moving</summary>
     private Vector2? prevOwnerPosition;
+
     /// <summary>Whether owner is moving</summary>
     public bool OwnerMoving { get; private set; } = false;
+
     /// <summary>Companion position in prev tick, for detecting moving</summary>
     private Vector2? prevPosition;
+
     /// <summary>Whether companion is moving</summary>
     public bool CompanionMoving { get; private set; } = false;
     internal NetPosition NetPosition => _position;
@@ -35,18 +39,23 @@ public class TrinketTinkerCompanion : Companion
         get => _netLerp.Value;
         set => _netLerp.Value = value;
     }
+
     // Derived
     /// <summary>Backing companion data from content.</summary>
     public TinkerData? Data;
+
     /// <summary>Motion class that controls how the companion moves.</summary>
     public IMotion? Motion { get; private set; }
+
     /// <summary>Position the companion should follow.</summary>
     public Vector2 Anchor { get; set; }
+
     /// <summary>Current motion offset</summary>
     public Vector2 Offset => Motion?.GetOffset() ?? Vector2.Zero;
 
     /// <summary>NetString key of oneshot clip</summary>
     private readonly NetString _oneshotKey = new(null);
+
     /// <summary>Getter and setter for oneshot key</summary>
     public string? OneshotKey
     {
@@ -57,8 +66,10 @@ public class TrinketTinkerCompanion : Companion
                 _oneshotKey.Value = value;
         }
     }
+
     /// <summary>String key of override clip</summary>
     private readonly NetString _overrideKey = new(null);
+
     /// <summary>Getter and setter for override key</summary>
     public string? OverrideKey
     {
@@ -70,10 +81,12 @@ public class TrinketTinkerCompanion : Companion
         }
     }
 
+    /// <summary>Should draw in current location, rechecked on warp</summary>
+    private readonly NetBool _disableCompanion = new(false);
+
     /// <summary>Argumentless constructor for netcode deserialization.</summary>
-    public TrinketTinkerCompanion() : base()
-    {
-    }
+    public TrinketTinkerCompanion()
+        : base() { }
 
     /// <summary>Construct new companion using companion ID.</summary>
     public TrinketTinkerCompanion(string companionId, int variant)
@@ -87,6 +100,7 @@ public class TrinketTinkerCompanion : Companion
     public override void InitializeCompanion(Farmer farmer)
     {
         base.InitializeCompanion(farmer);
+        _disableCompanion.Value = Places.LocationDisableTrinketCompanions(Owner.currentLocation);
         Anchor = Utility.PointToVector2(farmer.GetBoundingBox().Center);
         Motion?.Initialize(farmer);
     }
@@ -111,10 +125,18 @@ public class TrinketTinkerCompanion : Companion
             .AddField(_oneshotKey, "_oneshotKey")
             .AddField(_overrideKey, "_overrideKey")
             .AddField(_netLerp, "_netLerp")
-        ;
+            .AddField(_disableCompanion, "_disableCompanion");
         _id.fieldChangeVisibleEvent += InitCompanionData;
-        _oneshotKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) => Motion?.SetOneshotClip(newValue);
-        _overrideKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) => Motion?.SetOverrideClip(newValue);
+        _oneshotKey.fieldChangeVisibleEvent += (
+            NetString field,
+            string oldValue,
+            string newValue
+        ) => Motion?.SetOneshotClip(newValue);
+        _overrideKey.fieldChangeVisibleEvent += (
+            NetString field,
+            string oldValue,
+            string newValue
+        ) => Motion?.SetOverrideClip(newValue);
     }
 
     /// <summary>When <see cref="Id"/> is changed through net event, fetch companion data and build all fields.</summary>
@@ -150,7 +172,7 @@ public class TrinketTinkerCompanion : Companion
     /// <param name="b">SpriteBatch</param>
     public override void Draw(SpriteBatch b)
     {
-        if (Owner == null || Owner.currentLocation == null || (Owner.currentLocation.DisplayName == "Temp" && !Game1.isFestival()))
+        if (Owner == null || _disableCompanion.Value)
             return;
         if (!Visuals.ShouldDraw())
             return;
@@ -187,18 +209,15 @@ public class TrinketTinkerCompanion : Companion
         Motion?.UpdateLightSource(time, location);
     }
 
-    /// <summary>Reset position on warp</summary>
+    /// <summary>Reset position and display status on warp</summary>
     public override void OnOwnerWarp()
     {
         base.OnOwnerWarp();
         _position.Value = _owner.Value.Position;
         Motion?.OnOwnerWarp();
+        _disableCompanion.Value = Places.LocationDisableTrinketCompanions(Owner.currentLocation);
     }
 
     /// <summary>Vanilla hop event handler, not using.</summary>
-    public override void Hop(float amount)
-    {
-    }
-
+    public override void Hop(float amount) { }
 }
-

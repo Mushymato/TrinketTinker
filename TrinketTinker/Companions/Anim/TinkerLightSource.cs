@@ -1,4 +1,3 @@
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
@@ -11,13 +10,13 @@ internal sealed class TinkerLightSource : LightSource
 {
     /// <summary>Light source data, not netsync'd</summary>
     private readonly LightSourceData? ld = null;
+
     /// <summary>If draw color need to update after init.</summary>
     private bool drawColorIsConstant = false;
 
     /// <inheritdoc/>
-    internal TinkerLightSource() : base()
-    {
-    }
+    internal TinkerLightSource()
+        : base() { }
 
     /// <summary>
     /// Init light source from <see cref="LightSourceData"/>
@@ -25,7 +24,8 @@ internal sealed class TinkerLightSource : LightSource
     /// <param name="id"></param>
     /// <param name="position"></param>
     /// <param name="ldata"></param>
-    internal TinkerLightSource(string id, Vector2 position, LightSourceData ldata) : base(id, ldata.Index, position, ldata.Radius)
+    internal TinkerLightSource(string id, Vector2 position, LightSourceData ldata)
+        : base(id, ldata.Index, position, ldata.Radius)
     {
         ld = ldata;
         color.Value = Visuals.GetSDVColor(ld.Color, out drawColorIsConstant, invert: true);

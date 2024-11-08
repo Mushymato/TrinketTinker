@@ -6,7 +6,8 @@ using TrinketTinker.Models.AbilityArgs;
 namespace TrinketTinker.Effects.Abilities;
 
 /// <summary>Hoe dirt around the companion</summary>
-public sealed class HoeDirtAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<TileArgs>(effect, data, lvl)
+public sealed class HoeDirtAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
+    : Ability<TileArgs>(effect, data, lvl)
 {
     /// <summary>Hoe random amounts of dirt within range</summary>
     /// <param name="proc"></param>
@@ -14,7 +15,12 @@ public sealed class HoeDirtAbility(TrinketTinkerEffect effect, AbilityData data,
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
         int madeDirt = 0;
-        foreach (var tile in args.IterateRandomTiles(proc.LocationOrCurrent, e.CompanionPosition ?? proc.Farmer.Position))
+        foreach (
+            var tile in args.IterateRandomTiles(
+                proc.LocationOrCurrent,
+                e.CompanionPosition ?? proc.Farmer.Position
+            )
+        )
         {
             if (proc.LocationOrCurrent.makeHoeDirt(tile))
             {
@@ -29,4 +35,3 @@ public sealed class HoeDirtAbility(TrinketTinkerEffect effect, AbilityData data,
         return madeDirt > 0 && base.ApplyEffect(proc);
     }
 }
-

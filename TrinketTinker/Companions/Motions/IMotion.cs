@@ -51,4 +51,3 @@ public interface IMotion
 
     Vector2 GetOffset();
 }
-

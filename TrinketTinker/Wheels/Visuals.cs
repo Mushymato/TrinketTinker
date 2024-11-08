@@ -8,7 +8,6 @@ namespace TrinketTinker.Wheels;
 /// <summary>Helper methods for visual effects</summary>
 internal static class Visuals
 {
-
     /// <summary>
     /// Get a monogame color from string.
     /// Supports <see cref="TinkerConst.COLOR_PRISMATIC"/> for animated color.
@@ -43,26 +42,36 @@ internal static class Visuals
     /// <param name="location">sprite broadcast location</param>
     /// <param name="duration"></param>
     /// <param name="rotation"></param>
-    public static void BroadcastTAS(TemporaryAnimatedSpriteDefinition tasDef, Vector2 position, float drawLayer, GameLocation location,
-                                    float? duration = null, float? rotation = null)
+    public static void BroadcastTAS(
+        TemporaryAnimatedSpriteDefinition tasDef,
+        Vector2 position,
+        float drawLayer,
+        GameLocation location,
+        float? duration = null,
+        float? rotation = null
+    )
     {
         // TemporaryAnimatedSprite temporaryAnimatedSprite = new(
-        TemporaryAnimatedSprite temporaryAnimatedSprite = TemporaryAnimatedSprite.GetTemporaryAnimatedSprite(
-            tasDef.Texture,
-            tasDef.SourceRect,
-            tasDef.Interval,
-            tasDef.Frames,
-            (duration != null) ? (int)(duration / (tasDef.Frames * tasDef.Interval)) : tasDef.Loops,
-            position + tasDef.PositionOffset * 4f,
-            tasDef.Flicker, tasDef.Flip,
-            drawLayer + tasDef.SortOffset,
-            tasDef.AlphaFade,
-            Utility.StringToColor(tasDef.Color) ?? Color.White,
-            tasDef.Scale * 4f,
-            tasDef.ScaleChange,
-            rotation ?? tasDef.Rotation,
-            tasDef.RotationChange
-        );
+        TemporaryAnimatedSprite temporaryAnimatedSprite =
+            TemporaryAnimatedSprite.GetTemporaryAnimatedSprite(
+                tasDef.Texture,
+                tasDef.SourceRect,
+                tasDef.Interval,
+                tasDef.Frames,
+                (duration != null)
+                    ? (int)(duration / (tasDef.Frames * tasDef.Interval))
+                    : tasDef.Loops,
+                position + tasDef.PositionOffset * 4f,
+                tasDef.Flicker,
+                tasDef.Flip,
+                drawLayer + tasDef.SortOffset,
+                tasDef.AlphaFade,
+                Utility.StringToColor(tasDef.Color) ?? Color.White,
+                tasDef.Scale * 4f,
+                tasDef.ScaleChange,
+                rotation ?? tasDef.Rotation,
+                tasDef.RotationChange
+            );
         Game1.Multiplayer.broadcastSprites(location, temporaryAnimatedSprite);
     }
 
@@ -74,13 +83,18 @@ internal static class Visuals
     /// <param name="duration"></param>
     /// <param name="rotation"></param>
     /// <returns></returns>
-    public static bool BroadcastTAS(string tasId, Vector2 position, float drawLayer, GameLocation location,
-                                    float? duration = null, float? rotation = null)
+    public static bool BroadcastTAS(
+        string tasId,
+        Vector2 position,
+        float drawLayer,
+        GameLocation location,
+        float? duration = null,
+        float? rotation = null
+    )
     {
         if (AssetManager.TASData.TryGetValue(tasId, out TemporaryAnimatedSpriteDefinition? tasDef))
         {
-            BroadcastTAS(tasDef, position, drawLayer, location,
-                         duration, rotation);
+            BroadcastTAS(tasDef, position, drawLayer, location, duration, rotation);
             return true;
         }
         return false;
@@ -92,16 +106,26 @@ internal static class Visuals
     /// <param name="drawLayer"></param>
     /// <param name="duration"></param>
     /// <param name="rotation"></param>
-    public static void BroadcastTASList(List<string> tasIds, Vector2 position, float drawLayer, GameLocation location,
-                                        float? duration = null, float? rotation = null)
+    public static void BroadcastTASList(
+        List<string> tasIds,
+        Vector2 position,
+        float drawLayer,
+        GameLocation location,
+        float? duration = null,
+        float? rotation = null
+    )
     {
         HashSet<string> invalidTASIds = [];
         foreach (string tasId in tasIds)
         {
-            if (AssetManager.TASData.TryGetValue(tasId, out TemporaryAnimatedSpriteDefinition? tasDef))
+            if (
+                AssetManager.TASData.TryGetValue(
+                    tasId,
+                    out TemporaryAnimatedSpriteDefinition? tasDef
+                )
+            )
             {
-                BroadcastTAS(tasDef, position, drawLayer, location,
-                             duration, rotation);
+                BroadcastTAS(tasDef, position, drawLayer, location, duration, rotation);
             }
             else
             {
@@ -110,7 +134,10 @@ internal static class Visuals
         }
         if (invalidTASIds.Count > 0)
         {
-            ModEntry.LogOnce($"No {AssetManager.TASAsset} entry found for: {string.Join(',', invalidTASIds)}", LogLevel.Warn);
+            ModEntry.LogOnce(
+                $"No {AssetManager.TASAsset} entry found for: {string.Join(',', invalidTASIds)}",
+                LogLevel.Warn
+            );
             tasIds.RemoveAll(invalidTASIds.Contains);
         }
     }

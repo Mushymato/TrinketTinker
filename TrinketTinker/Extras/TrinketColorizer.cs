@@ -1,13 +1,13 @@
+using Force.DeepCloner;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
+using StardewValley;
 using StardewValley.GameData.BigCraftables;
 using StardewValley.GameData.Machines;
-using StardewValley;
-using StardewValley.Objects.Trinkets;
 using StardewValley.GameData.Shops;
+using StardewValley.Objects.Trinkets;
 using TrinketTinker.Effects;
-using Force.DeepCloner;
 
 namespace TrinketTinker.Extras;
 
@@ -42,7 +42,9 @@ public static class TrinketColorizer
     /// <param name="asset"></param>
     public static void Edit_BigCraftables(IAssetData asset)
     {
-        IDictionary<string, BigCraftableData> data = asset.AsDictionary<string, BigCraftableData>().Data;
+        IDictionary<string, BigCraftableData> data = asset
+            .AsDictionary<string, BigCraftableData>()
+            .Data;
         data[TrinketColorizerId] = new()
         {
             Name = TrinketColorizerId,
@@ -56,7 +58,7 @@ public static class TrinketColorizer
             Texture = TrinketColorizerTexture,
             SpriteIndex = 0,
             ContextTags = [ModEntry.ModId],
-            CustomFields = null
+            CustomFields = null,
         };
     }
 
@@ -68,14 +70,16 @@ public static class TrinketColorizer
         // data[TrinketColorizerId] = $"336 50/UNUSED/{TrinketColorizerId}/true/l 2/";
         IDictionary<string, ShopData> data = asset.AsDictionary<string, ShopData>().Data;
         ShopData blacksmith = data["Blacksmith"];
-        blacksmith.Items.Add(new ShopItemData()
-        {
-            Id = TrinketColorizerId,
-            TradeItemId = "(O)336",
-            TradeItemAmount = 50,
-            ItemId = TrinketColorizerId,
-            Condition = "PLAYER_HAS_CRAFTING_RECIPE Current Anvil"
-        });
+        blacksmith.Items.Add(
+            new ShopItemData()
+            {
+                Id = TrinketColorizerId,
+                TradeItemId = "(O)336",
+                TradeItemAmount = 50,
+                ItemId = TrinketColorizerId,
+                Condition = "PLAYER_HAS_CRAFTING_RECIPE Current Anvil",
+            }
+        );
     }
 
     /// <summary>Setup rules for the trinket colorizer, add custom rule for anvil</summary>
@@ -85,30 +89,39 @@ public static class TrinketColorizer
         IDictionary<string, MachineData> data = asset.AsDictionary<string, MachineData>().Data;
         data[TrinketColorizerQId] = new()
         {
-            OutputRules = [
-                new(){
-                        Id = $"{ModEntry.ModId}_Default",
-                        Triggers = [
-                            new(){
-                                Id = $"{ModEntry.ModId}_ItemPlacedInMachine",
-                                Trigger = MachineOutputTrigger.ItemPlacedInMachine,
-                                RequiredCount = 1,
-                                RequiredTags = ["category_trinket"]
-                            }
-                        ],
-                        OutputItem = [
-                            new(){
-                                OutputMethod = $"{typeof(TrinketColorizer).AssemblyQualifiedName}:{nameof(OutputTrinketColorizer)}"
-                            }
-                        ]
-                    }
+            OutputRules =
+            [
+                new()
+                {
+                    Id = $"{ModEntry.ModId}_Default",
+                    Triggers =
+                    [
+                        new()
+                        {
+                            Id = $"{ModEntry.ModId}_ItemPlacedInMachine",
+                            Trigger = MachineOutputTrigger.ItemPlacedInMachine,
+                            RequiredCount = 1,
+                            RequiredTags = ["category_trinket"],
+                        },
+                    ],
+                    OutputItem =
+                    [
+                        new()
+                        {
+                            OutputMethod =
+                                $"{typeof(TrinketColorizer).AssemblyQualifiedName}:{nameof(OutputTrinketColorizer)}",
+                        },
+                    ],
+                },
             ],
-            AdditionalConsumedItems = [
-                new(){
-                        ItemId= "(O)749",
-                        RequiredCount = 15,
-                        InvalidCountMessage = I18n.BC_TrinketColorizer_InvalidCount()
-                    }
+            AdditionalConsumedItems =
+            [
+                new()
+                {
+                    ItemId = "(O)749",
+                    RequiredCount = 15,
+                    InvalidCountMessage = I18n.BC_TrinketColorizer_InvalidCount(),
+                },
             ],
             // InvalidItemMessage
         };
@@ -116,18 +129,23 @@ public static class TrinketColorizer
         {
             MachineOutputRule newRule = anvilData.OutputRules.First().DeepClone();
             newRule.Id = $"{ModEntry.ModId}_Default";
-            newRule.Triggers = [
-                new(){
-                        Id = $"{ModEntry.ModId}_ItemPlacedInMachine",
-                        Trigger = MachineOutputTrigger.ItemPlacedInMachine,
-                        RequiredCount = 1,
-                        RequiredTags = ["category_trinket"]
-                    }
+            newRule.Triggers =
+            [
+                new()
+                {
+                    Id = $"{ModEntry.ModId}_ItemPlacedInMachine",
+                    Trigger = MachineOutputTrigger.ItemPlacedInMachine,
+                    RequiredCount = 1,
+                    RequiredTags = ["category_trinket"],
+                },
             ];
-            newRule.OutputItem = [
-                new(){
-                        OutputMethod = $"{typeof(TrinketColorizer).AssemblyQualifiedName}:{nameof(OutputTinkerAnvil)}"
-                    }
+            newRule.OutputItem =
+            [
+                new()
+                {
+                    OutputMethod =
+                        $"{typeof(TrinketColorizer).AssemblyQualifiedName}:{nameof(OutputTinkerAnvil)}",
+                },
             ];
             anvilData.OutputRules.Insert(0, newRule);
         }
@@ -141,7 +159,14 @@ public static class TrinketColorizer
     /// <param name="player"></param>
     /// <param name="overrideMinutesUntilReady"></param>
     /// <returns></returns>
-    public static Item? OutputTrinketColorizer(SObject machine, Item inputItem, bool probe, MachineItemOutput outputData, Farmer player, out int? overrideMinutesUntilReady)
+    public static Item? OutputTrinketColorizer(
+        SObject machine,
+        Item inputItem,
+        bool probe,
+        MachineItemOutput outputData,
+        Farmer player,
+        out int? overrideMinutesUntilReady
+    )
     {
         overrideMinutesUntilReady = null;
         if (inputItem is not Trinket t)
@@ -149,12 +174,19 @@ public static class TrinketColorizer
         if (!t.GetTrinketData().CanBeReforged)
         {
             if (!probe)
-                Game1.showRedMessage(Game1.content.LoadString(I18n.BC_TrinketColorizer_NoRecolor()));
+                Game1.showRedMessage(
+                    Game1.content.LoadString(I18n.BC_TrinketColorizer_NoRecolor())
+                );
             return null;
         }
 
         int previous = 0;
-        if (inputItem.modData.TryGetValue(TrinketTinkerEffect.ModData_Variant, out string? previousStr))
+        if (
+            inputItem.modData.TryGetValue(
+                TrinketTinkerEffect.ModData_Variant,
+                out string? previousStr
+            )
+        )
             if (!int.TryParse(previousStr, out previous))
                 previous = 0;
         Trinket output = (Trinket)inputItem.getOne();
@@ -187,7 +219,14 @@ public static class TrinketColorizer
     /// <param name="player"></param>
     /// <param name="overrideMinutesUntilReady"></param>
     /// <returns></returns>
-    public static Item? OutputTinkerAnvil(SObject machine, Item inputItem, bool probe, MachineItemOutput outputData, Farmer player, out int? overrideMinutesUntilReady)
+    public static Item? OutputTinkerAnvil(
+        SObject machine,
+        Item inputItem,
+        bool probe,
+        MachineItemOutput outputData,
+        Farmer player,
+        out int? overrideMinutesUntilReady
+    )
     {
         overrideMinutesUntilReady = null;
         if (inputItem is not Trinket t)
@@ -195,7 +234,9 @@ public static class TrinketColorizer
         if (!t.GetTrinketData().CanBeReforged)
         {
             if (!probe)
-                Game1.showRedMessage(Game1.content.LoadString("Strings\\1_6_Strings:Anvil_wrongtrinket"));
+                Game1.showRedMessage(
+                    Game1.content.LoadString("Strings\\1_6_Strings:Anvil_wrongtrinket")
+                );
             return null;
         }
 
@@ -208,7 +249,9 @@ public static class TrinketColorizer
         {
             if (!probe)
             {
-                Game1.showRedMessage(Game1.content.LoadString("Strings/1_6_Strings:Anvil_wrongtrinket"));
+                Game1.showRedMessage(
+                    Game1.content.LoadString("Strings/1_6_Strings:Anvil_wrongtrinket")
+                );
             }
             return null;
         }
@@ -223,4 +266,3 @@ public static class TrinketColorizer
         return output;
     }
 }
-

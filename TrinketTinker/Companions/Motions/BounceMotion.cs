@@ -6,10 +6,15 @@ using TrinketTinker.Models.MotionArgs;
 namespace TrinketTinker.Companions.Motions;
 
 /// <summary>Companion follows the player and bobs up and down</summary>
-public sealed class BounceMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata) : BaseLerpMotion<BounceArgs>(companion, mdata, vdata)
+public sealed class BounceMotion(
+    TrinketTinkerCompanion companion,
+    MotionData mdata,
+    VariantData vdata
+) : BaseLerpMotion<BounceArgs>(companion, mdata, vdata)
 {
     /// <summary>Jump anim clip key</summary>
     private const string JUMP = "Jump";
+
     /// <summary>trig function input</summary>
     private double theta = 0f;
 
@@ -42,12 +47,10 @@ public sealed class BounceMotion(TrinketTinkerCompanion companion, MotionData md
     {
         if (args.Squash > 0f)
         {
-            float thetaF = (float)Math.Max(Math.Pow(Math.Cos(2 * Math.PI * theta), 5) / 2, 0) * args.Squash;
+            float thetaF =
+                (float)Math.Max(Math.Pow(Math.Cos(2 * Math.PI * theta), 5) / 2, 0) * args.Squash;
             Vector2 baseTxScale = base.GetTextureScale();
-            return new(
-                baseTxScale.X + thetaF,
-                baseTxScale.Y - thetaF
-            );
+            return new(baseTxScale.X + thetaF, baseTxScale.Y - thetaF);
         }
         return base.GetTextureScale();
     }
@@ -55,6 +58,7 @@ public sealed class BounceMotion(TrinketTinkerCompanion companion, MotionData md
     /// <inheritdoc/>
     protected override Vector2 GetShadowScale()
     {
-        return MathF.Max(0f, Utility.Lerp(1.0f, 0.8f, (float)Math.Sin(Math.PI * theta))) * base.GetShadowScale();
+        return MathF.Max(0f, Utility.Lerp(1.0f, 0.8f, (float)Math.Sin(Math.PI * theta)))
+            * base.GetShadowScale();
     }
 }
