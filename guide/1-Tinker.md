@@ -27,11 +27,11 @@ Technically all fields here are optional, but in that case there'd be little poi
 
 At the moment, there's no reason to have more than 1 Motion so just setting `Motion` is sufficient, but this may change in the future.
 
-Trinkets are created with the first variant and at minimum level. The item query [mushymato.TrinketTinker_CREATE_TRINKET](6-Item%20Queries.md) is needed to create trinket at other variants/levels.
+Trinkets are created with the first variant and at minimum level. The item query [mushymato.TrinketTinker_CREATE_TRINKET](6-Utility.md) is needed to create trinket at other variants/levels.
 
 ### Unlock Conditions
 
-`VariantUnlockConditions` and `AbilityUnlockConditions` can prevent the player from rolling variants or abilities above a certain level using [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries). This only affects rerolling level and variants on the [anvil](https://stardewvalleywiki.com/Anvil) and [colorizer](7-Trinket%20Colorizer.md).
+`VariantUnlockConditions` and `AbilityUnlockConditions` can prevent the player from rolling variants or abilities above a certain level using [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries). This only affects rerolling level and variants on the [anvil](https://stardewvalleywiki.com/Anvil) and [colorizer](6-Utility.md).
 
 Example usage with 4 abilities (lv1 to lv4):
 
