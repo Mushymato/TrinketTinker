@@ -89,7 +89,7 @@
 
 
   <h1 id="TrinketTinker_Models_MotionData" data-uid="TrinketTinker.Models.MotionData" class="text-break">
-Class MotionData  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L83"><i class="bi bi-code-slash"></i></a>
+Class MotionData  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L137"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -150,42 +150,6 @@ Class MotionData  <a class="header-action link-secondary" title="View source" hr
 
 
 
-  <h2 class="section" id="fields">Fields
-</h2>
-
-
-
-  <h3 id="TrinketTinker_Models_MotionData_AnimClips" data-uid="TrinketTinker.Models.MotionData.AnimClips">
-  AnimClips
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L131"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Repository of anim clips that can be shown in place of the default movement anim.
-Must live on the same sprite sheet specified by variant data.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, AnimClipData&gt; AnimClips</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="TrinketTinker.Models.AnimClipData.html">AnimClipData</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
   <h2 class="section" id="properties">Properties
 </h2>
 
@@ -194,7 +158,7 @@ Must live on the same sprite sheet specified by variant data.</p>
 
   <h3 id="TrinketTinker_Models_MotionData_AlwaysMoving" data-uid="TrinketTinker.Models.MotionData.AlwaysMoving">
   AlwaysMoving
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L158"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>If true, continue the moving animation when not owner is not moving.</p>
@@ -226,7 +190,7 @@ Must live on the same sprite sheet specified by variant data.</p>
 
   <h3 id="TrinketTinker_Models_MotionData_Anchors" data-uid="TrinketTinker.Models.MotionData.Anchors">
   Anchors
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L155"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Prefer <a class="xref" href="TrinketTinker.Models.AnchorTargetData.html">AnchorTargetData</a> that comes earlier in the list.
@@ -255,11 +219,44 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
 
 
 
+  <a id="TrinketTinker_Models_MotionData_AnimClips_" data-uid="TrinketTinker.Models.MotionData.AnimClips*"></a>
+
+  <h3 id="TrinketTinker_Models_MotionData_AnimClips" data-uid="TrinketTinker.Models.MotionData.AnimClips">
+  AnimClips
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L200"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Repository of anim clips that can be shown in place of the default movement anim.
+Must live on the same sprite sheet specified by variant data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnimClipDictionary AnimClips { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TrinketTinker.Models.AnimClipDictionary.html">AnimClipDictionary</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Models_MotionData_DirectionMode_" data-uid="TrinketTinker.Models.MotionData.DirectionMode*"></a>
 
   <h3 id="TrinketTinker_Models_MotionData_DirectionMode" data-uid="TrinketTinker.Models.MotionData.DirectionMode">
   DirectionMode
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L143"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Direction mode, determines how sprites should be arranged.</p>
@@ -291,7 +288,7 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
 
   <h3 id="TrinketTinker_Models_MotionData_DirectionRotate" data-uid="TrinketTinker.Models.MotionData.DirectionRotate">
   DirectionRotate
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L146"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Apply sprite rotation depending on direction.</p>
@@ -323,7 +320,7 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
 
   <h3 id="TrinketTinker_Models_MotionData_FrameLength" data-uid="TrinketTinker.Models.MotionData.FrameLength">
   FrameLength
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L164"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Length of 1 set of movement animation.</p>
@@ -355,7 +352,7 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
 
   <h3 id="TrinketTinker_Models_MotionData_FrameStart" data-uid="TrinketTinker.Models.MotionData.FrameStart">
   FrameStart
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L161"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>First frame of the animation.</p>
@@ -387,7 +384,7 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
 
   <h3 id="TrinketTinker_Models_MotionData_HideDuringEvents" data-uid="TrinketTinker.Models.MotionData.HideDuringEvents">
   HideDuringEvents
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L176"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Hide the companion during events.</p>
@@ -419,7 +416,7 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
 
   <h3 id="TrinketTinker_Models_MotionData_Interval" data-uid="TrinketTinker.Models.MotionData.Interval">
   Interval
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L167"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Miliseconds between frames.</p>
@@ -451,7 +448,7 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
 
   <h3 id="TrinketTinker_Models_MotionData_LayerDepth" data-uid="TrinketTinker.Models.MotionData.LayerDepth">
   LayerDepth
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L109"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L173"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Layer depth mode.</p>
@@ -483,7 +480,7 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
 
   <h3 id="TrinketTinker_Models_MotionData_LoopMode" data-uid="TrinketTinker.Models.MotionData.LoopMode">
   LoopMode
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L149"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Animation looping mode.</p>
@@ -515,7 +512,7 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
 
   <h3 id="TrinketTinker_Models_MotionData_MotionClass" data-uid="TrinketTinker.Models.MotionData.MotionClass">
   MotionClass
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L140"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Type name of the motion, can use short form like &quot;Hover&quot; for hover motion.</p>
@@ -547,7 +544,7 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
 
   <h3 id="TrinketTinker_Models_MotionData_Offset" data-uid="TrinketTinker.Models.MotionData.Offset">
   Offset
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L170"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Position offset.</p>
@@ -579,7 +576,7 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
 
   <h3 id="TrinketTinker_Models_MotionData_RepeatCount" data-uid="TrinketTinker.Models.MotionData.RepeatCount">
   RepeatCount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L179"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Number of times to repeat the draw.</p>
@@ -611,7 +608,7 @@ Defaults to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#Trinket
 
   <h3 id="TrinketTinker_Models_MotionData_RepeatFrameSets" data-uid="TrinketTinker.Models.MotionData.RepeatFrameSets">
   RepeatFrameSets
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L194"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>When used with repeat, apply offset of this value times number of frames (per direction mode and frame length).<br>
@@ -646,7 +643,7 @@ Spritesheet needs a total of 12 frames.
 
   <h3 id="TrinketTinker_Models_MotionData_RepeatInterval" data-uid="TrinketTinker.Models.MotionData.RepeatInterval">
   RepeatInterval
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L182"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Number of miliseconds between repeats.</p>
@@ -666,46 +663,6 @@ Spritesheet needs a total of 12 frames.
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="TrinketTinker_Models_MotionData_GetIdleAnim_" data-uid="TrinketTinker.Models.MotionData.GetIdleAnim*"></a>
-
-  <h3 id="TrinketTinker_Models_MotionData_GetIdleAnim_System_Int32_" data-uid="TrinketTinker.Models.MotionData.GetIdleAnim(System.Int32)">
-  GetIdleAnim(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L133"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AnimClipData? GetIdleAnim(int direction)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>direction</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="TrinketTinker.Models.AnimClipData.html">AnimClipData</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
 
 
 

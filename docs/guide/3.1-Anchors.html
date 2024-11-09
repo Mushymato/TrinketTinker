@@ -89,8 +89,8 @@
 
 <p>A companion's motion is relative to another entity's position, generally the player.</p>
 <p><code>Anchors</code> consist of a list of <a href="../api/TrinketTinker.Models.AnchorTargetData.html">AnchorTargetData</a></p>
-<p>The order matters as companion will try for anchors in order, and stop once a valid one is found.
-When none of the anchors are valid, fallback to <code>Owner</code>.</p>
+<p>The order matters as companion will try for anchors in order, and stop once a target is found for a given anchor mode.
+When no targets are found, fallback to <code>Owner</code>.</p>
 <h2 id="structure">Structure</h2>
 <table>
 <thead>

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Ability | TrinketTinker </title>
+      <title> | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Ability | TrinketTinker ">
+      <meta name="title" content=" | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -85,8 +85,8 @@
         </div>
 
         <article data-uid="">
-<h1 id="ability">Ability</h1>
 
+<p>Ability</p>
 <p>Ability describes the effects that occur when you equip the trinket, like getting healed, or attacking an enemy.</p>
 <p>An ability is primarily defined by <code>AbilityClass</code> (what it does) and <code>Proc</code> (when does it activate).</p>
 <h2 id="structure">Structure</h2>
@@ -141,6 +141,12 @@
 <td><code>List&lt;string&gt;</code></td>
 <td><em>empty</em></td>
 <td>String Ids of <a href="5-Temporary%20Animated%20Sprite.html">temporary animated sprites</a> to show when the ability activates.</td>
+</tr>
+<tr>
+<td><code>ProcOneshotAnim</code></td>
+<td>string</td>
+<td><em>empty</em></td>
+<td>Play the matching <a href="3.2-Animation%20Clips.html">anim clip</a> on proc, return to normal animation after 1 cycle.</td>
 </tr>
 <tr>
 <td><code>Condition</code></td>
