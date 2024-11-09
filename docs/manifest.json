@@ -1175,20 +1175,10 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/6-Item Queries.md",
+      "source_relative_path": "guide/6-Utility.md",
       "output": {
         ".html": {
-          "relative_path": "guide/6-Item Queries.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "guide/7-Trinket Colorizer.md",
-      "output": {
-        ".html": {
-          "relative_path": "guide/7-Trinket Colorizer.html"
+          "relative_path": "guide/6-Utility.html"
         }
       },
       "version": ""

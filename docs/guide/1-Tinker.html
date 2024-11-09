@@ -152,9 +152,9 @@ The key used must match the <strong>unqualified ID</strong> of the trinket.</p>
 <h3 id="this-is-a-lot-of-stuff-what-do-i-need-to-define">This is a lot of stuff, what do I need to define?</h3>
 <p>Technically all fields here are optional, but in that case there'd be little point to using this framework at all. To display a companion, at least 1 Variant and 1 Motion must be defined. To have the trinket do things, at least 1 list of abilities must be defined.</p>
 <p>At the moment, there's no reason to have more than 1 Motion so just setting <code>Motion</code> is sufficient, but this may change in the future.</p>
-<p>Trinkets are created with the first variant and at minimum level. The item query <a href="6-Item%20Queries.html">mushymato.TrinketTinker_CREATE_TRINKET</a> is needed to create trinket at other variants/levels.</p>
+<p>Trinkets are created with the first variant and at minimum level. The item query <a href="6-Utility.html">mushymato.TrinketTinker_CREATE_TRINKET</a> is needed to create trinket at other variants/levels.</p>
 <h3 id="unlock-conditions">Unlock Conditions</h3>
-<p><code>VariantUnlockConditions</code> and <code>AbilityUnlockConditions</code> can prevent the player from rolling variants or abilities above a certain level using <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state queries</a>. This only affects rerolling level and variants on the <a href="https://stardewvalleywiki.com/Anvil">anvil</a> and <a href="7-Trinket%20Colorizer.html">colorizer</a>.</p>
+<p><code>VariantUnlockConditions</code> and <code>AbilityUnlockConditions</code> can prevent the player from rolling variants or abilities above a certain level using <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state queries</a>. This only affects rerolling level and variants on the <a href="https://stardewvalleywiki.com/Anvil">anvil</a> and <a href="6-Utility.html">colorizer</a>.</p>
 <p>Example usage with 4 abilities (lv1 to lv4):</p>
 <pre><code class="lang-json">&quot;AbilityUnlockConditions&quot;: [
     // level 1 is always unlocked
@@ -186,7 +186,7 @@ The key used must match the <strong>unqualified ID</strong> of the trinket.</p>
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <a href="https://github.com/Mushymato/TrinketTinker">Source Code</a>
+          <a href="https://github.com/Mushymato/TrinketTinker">Source</a>   <a href="https://www.nexusmods.com/stardewvalley/mods/29073">Nexus</a>
         </div>
       </div>
     </footer>

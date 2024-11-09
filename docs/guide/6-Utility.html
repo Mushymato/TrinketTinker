@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Trinket Colorizer  | TrinketTinker </title>
+      <title>Utility | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Trinket Colorizer  | TrinketTinker ">
+      <meta name="title" content="Utility | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/7-Trinket Colorizer.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/6-Utility.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,12 +85,34 @@
         </div>
 
         <article data-uid="">
-<h1 id="trinket-colorizer-trinket-colorizer">Trinket Colorizer <img src="../images/favicon.png" alt="Trinket Colorizer"></h1>
+<h1 id="utility">Utility</h1>
 
+<p>Extra non-trinket features provided by this mod.</p>
+<h2 id="trinket-colorizer-trinket-colorizer">Trinket Colorizer <img src="../images/favicon.png" alt="Trinket Colorizer"></h2>
 <p>The trinket colorizer is a big craftable <a href="https://stardewvalleywiki.com/Modding:Machines">machine</a> that can be purchased from <a href="https://stardewvalleywiki.com/Blacksmith">the Blacksmith</a> for 50 <a href="https://stardewvalleywiki.com/Gold_Bar">Gold Bars</a> once the <a href="https://stardewvalleywiki.com/Anvil">Anvil</a> recipe is obtained. Trinkets must have at least 2 <a href="2-Variant.html">variants</a> and <code>CanBeReforged</code> set to true in order to use the colorizer.</p>
 <p>Consumes 15 <a href="https://stardewvalleywiki.com/Omni_Geode">Omni Geode</a> to reroll the variant on a TrinketTinker trinket, no effect on vanilla trinkets.</p>
 <p>The colorizer will never roll the same variant twice in a row. Anvils have similar rule applied to them for TrinketTinker trinkets.</p>
 <p>Implementation wise, the colorizer is a standard machine with qualified ID <code>(BC)mushymato.TrinketTinker_TrinketColorizer</code> and a single complex output machine rule.Mods are can add more ways to obtain this machine and prepend the colorizer with special upgrade rules for their trinkets.</p>
+<h2 id="item-queries"><a href="https://stardewvalleywiki.com/Modding:Item_queries">Item Queries</a></h2>
+<p>These are useful for populating shops and machine output rules.</p>
+<h3 id="mushymatotrinkettinker_create_trinket">mushymato.TrinketTinker_CREATE_TRINKET</h3>
+<pre><code>mushymato.TrinketTinker_CREATE_TRINKET &lt;trinket id&gt; [level] [variant]
+</code></pre>
+<p>Create a new trinket item. If the trinket has tinker data, set level and variant. Useful for producing a trinket at specified level/variant.</p>
+<p>Setting level or variant to &quot;R&quot; will randomize the level or variant.</p>
+<h3 id="mushymatotrinkettinker_create_trinket_all_variants">mushymato.TrinketTinker_CREATE_TRINKET_ALL_VARIANTS</h3>
+<pre><code>mushymato.TrinketTinker_CREATE_TRINKET_ALL_VARIANTS &lt;trinket id&gt; [level]
+</code></pre>
+<p>Create all variants of a trinket (with tinker data). Useful for making a shop sell all variants of a trinket instead of making the player roll for them.</p>
+<p>Setting level to &quot;R&quot; will randomize the level once, and then set trinkets created by this query to that level.</p>
+<h2 id="datalocation-customfields"><a href="https://stardewvalleywiki.com/Modding:Location_data">Data/Location</a> CustomFields</h2>
+<p>Aside from conditions defined on a particular trinket, it's also possible to disable trinket features for a whole location using CustomFields.</p>
+<pre><code>&quot;mushymato.TrinketTinker/disableAbilities&quot;: true|false
+</code></pre>
+<p>Disable trinket abilities while owner is in the location (except for always active abilities).</p>
+<pre><code>&quot;mushymato.TrinketTinker/disableCompanions&quot;: true|false
+</code></pre>
+<p>Disable companion display while owner is in the location. Their position updates continue.</p>
 
 </article>
 
@@ -109,7 +131,7 @@
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <a href="https://github.com/Mushymato/TrinketTinker">Source Code</a>
+          <a href="https://github.com/Mushymato/TrinketTinker">Source</a>   <a href="https://www.nexusmods.com/stardewvalley/mods/29073">Nexus</a>
         </div>
       </div>
     </footer>
