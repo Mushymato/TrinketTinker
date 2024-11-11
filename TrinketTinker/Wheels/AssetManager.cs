@@ -58,12 +58,16 @@ internal static class AssetManager
             e.Edit(Edit_Trinkets_EffectClass, AssetEditPriority.Late + 100);
     }
 
-    internal static void OnAssetInvalidated(AssetsInvalidatedEventArgs e)
+    internal static bool OnAssetInvalidated(AssetsInvalidatedEventArgs e)
     {
-        if (e.NamesWithoutLocale.Any(an => an.IsEquivalentTo(TinkerAsset)))
-            _tinkerData = null;
         if (e.NamesWithoutLocale.Any(an => an.IsEquivalentTo(TASAsset)))
             _tasData = null;
+        if (e.NamesWithoutLocale.Any(an => an.IsEquivalentTo(TinkerAsset)))
+        {
+            _tinkerData = null;
+            return true;
+        }
+        return false;
     }
 
     /// <summary>Ensure all trinkets that have a Tinker entry also have <see cref="EffectClass"/> </summary>

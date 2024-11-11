@@ -78,9 +78,13 @@ internal sealed class ModEntry : Mod
         TrinketColorizer.OnAssetRequested(e);
     }
 
-    private static void OnAssetInvalidated(object? sender, AssetsInvalidatedEventArgs e)
+    private void OnAssetInvalidated(object? sender, AssetsInvalidatedEventArgs e)
     {
-        AssetManager.OnAssetInvalidated(e);
+        if (AssetManager.OnAssetInvalidated(e))
+        {
+            // need to invalidate this as well to ensure proper updates on Data/Trinkets
+            Helper.GameContent.InvalidateCache(AssetManager.TRINKET_TARGET);
+        }
     }
 
     private static void OnPlayerWarped(object? sender, WarpedEventArgs e)
