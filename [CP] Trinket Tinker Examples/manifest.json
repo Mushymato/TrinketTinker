@@ -3,7 +3,7 @@
     "Author": "mushymato",
     "Version": "1.0.0",
     "Description": "Examples of trinkets using Trinket Tinker",
-    "UniqueID": "d",
+    "UniqueID": "mushymato.TT.Examples",
     "MinimumApiVersion": "4.0.0",
     "UpdateKeys": [
         "Nexus:???"

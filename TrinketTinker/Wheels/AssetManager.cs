@@ -19,9 +19,6 @@ internal static class AssetManager
     /// <summary>TAS (TemporaryAnimatedSprite) asset target</summary>
     internal static string TASAsset => $"{ModEntry.ModId}/TAS";
 
-    /// <summary>Assembly qualified name of <see cref="TrinketTinkerEffect"/></summary>
-    internal static string EffectClass => typeof(TrinketTinkerEffect).AssemblyQualifiedName!;
-
     /// <summary>Backing field for tinker data</summary>
     private static Dictionary<string, TinkerData>? _tinkerData = null;
 
@@ -73,11 +70,21 @@ internal static class AssetManager
     /// <param name="asset"></param>
     public static void Edit_Trinkets_EffectClass(IAssetData asset)
     {
+        // this fails sometimes(?)
+        string? effectClass = typeof(TrinketTinkerEffect).AssemblyQualifiedName;
+        if (effectClass == null)
+        {
+            ModEntry.LogOnce(
+                $"Could not get qualified name for TrinketTinkerEffect({typeof(TrinketTinkerEffect)}), will use hardcoded value."
+            );
+            effectClass = "TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker";
+        }
+
         IDictionary<string, TrinketData> trinkets = asset.AsDictionary<string, TrinketData>().Data;
         foreach ((string key, TrinketData data) in trinkets)
         {
             if (TinkerData.ContainsKey(key))
-                data.TrinketEffectClass = EffectClass;
+                data.TrinketEffectClass = effectClass;
         }
     }
 }
