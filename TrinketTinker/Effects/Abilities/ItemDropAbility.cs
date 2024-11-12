@@ -48,7 +48,7 @@ public sealed class ItemDropAbility(TrinketTinkerEffect effect, AbilityData data
     /// <returns></returns>
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
-        return SpawnItem(new ItemQueryContext(proc.Location, proc.Farmer, Random.Shared))
+        return SpawnItem(new ItemQueryContext(proc.Location, proc.Farmer, Random.Shared, Name))
             && base.ApplyEffect(proc);
     }
 }
