@@ -2,7 +2,7 @@
   "CHANGELOG.html": {
     "href": "CHANGELOG.html",
     "title": "| TrinketTinker",
-    "keywords": "Changelog All notable changes to this project will be documented here. The format is based on Keep a Changelog, and this project adheres to Semantic Versioning. 1.0.1 Fixed Add workaround for issue where TrinketEffectClass ends up being null. 1.0.0 Added Implement all the things."
+    "keywords": "Changelog All notable changes to this project will be documented here. The format is based on Keep a Changelog, and this project adheres to Semantic Versioning. 1.1.0 Fixed Update for SDV 1.6.14, add new \"sourceChange\" argument. 1.0.2 Fixed Correctly invalidate Data/Trinkets whenever the Tinker asset gets invalidated. 1.0.1 Fixed Add workaround for issue where TrinketEffectClass ends up being null. 1.0.0 Added Implement all the things."
   },
   "guide/0-Trinket.html": {
     "href": "guide/0-Trinket.html",
@@ -177,6 +177,6 @@
   "index.html": {
     "href": "index.html",
     "title": "TrinketTinker - Stardew Valley Trinket Framework | TrinketTinker",
-    "keywords": "TrinketTinker - Stardew Valley Trinket Framework This is a framework for creating custom trinkets using Content Patcher. What can this framework do? Animated companions with various movement patterns. A skin system (variants) for companions, and related features to set/change companion variants Dynamic event based abilities that work through the companions rather than the player. Some support for custom effects from other C# mods, through the use of actions. If you are looking to make mods using this framework, start here. This mod is licensed under MIT, contributions are welcome. Credits Documentation generated with Docfx, with docfx-material theme. Changelog All notable changes to this project will be documented here. The format is based on Keep a Changelog, and this project adheres to Semantic Versioning. 1.0.1 Fixed Add workaround for issue where TrinketEffectClass ends up being null. 1.0.0 Added Implement all the things."
+    "keywords": "TrinketTinker - Stardew Valley Trinket Framework This is a framework for creating custom trinkets using Content Patcher. What can this framework do? Animated companions with various movement patterns. A skin system (variants) for companions, and related features to set/change companion variants Dynamic event based abilities that work through the companions rather than the player. Some support for custom effects from other C# mods, through the use of actions. If you are looking to make mods using this framework, start here. This mod is licensed under MIT, contributions are welcome. Credits Documentation generated with Docfx, with docfx-material theme. Changelog All notable changes to this project will be documented here. The format is based on Keep a Changelog, and this project adheres to Semantic Versioning. 1.1.0 Fixed Update for SDV 1.6.14, add new \"sourceChange\" argument. 1.0.2 Fixed Correctly invalidate Data/Trinkets whenever the Tinker asset gets invalidated. 1.0.1 Fixed Add workaround for issue where TrinketEffectClass ends up being null. 1.0.0 Added Implement all the things."
   }
 }
