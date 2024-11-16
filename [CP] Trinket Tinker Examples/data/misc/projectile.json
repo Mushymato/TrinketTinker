@@ -1,0 +1,97 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "LogName": "Projectile: Sprites",
+      "Action": "Load",
+      "Target": "{{ModId}}/companion, {{ModId}}/projectile",
+      "FromFile": "sprites/misc/{{TargetWithoutPath}}.png"
+    },
+    {
+      "LogName": "Projectile: Trinkets",
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_Projectile": {
+          "Id": "{{ModId}}_Projectile",
+          "DisplayName": "Projectile Test",
+          "Description": "Projectile Test {0} {1}",
+          "Texture": "{{ModId}}/companion",
+          "SheetIndex": 0,
+          "DropsNaturally": false,
+          "CanBeReforged": true
+        }
+      }
+    },
+    {
+      "LogName": "Projectile: Tinker",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        "{{ModId}}_Projectile": {
+          "MinLevel": 3,
+          "Variants": [
+            {
+              "Texture": "{{ModId}}/companion",
+              "Width": 90,
+              "Height": 84,
+              "TextureScale": 4
+            }
+          ],
+          "Motion": {
+            "MotionClass": "Hover",
+            "AlwaysMoving": true,
+            "DirectionMode": "Single",
+            "FrameLength": 1
+          },
+          "Abilities": [
+            /* level 5*/
+            [
+              {
+                "Proc": "Timer",
+                "Description": "{{ModId}}",
+                "ProcTimer": 500,
+                "AbilityClass": "Projectile",
+                "Args": {
+                  "Min": 50,
+                  "Max": 75,
+                  "Knockback": 2,
+                  "Range": 640,
+                  "Texture": "{{ModId}}/projectile",
+                  "SpriteIndex": 0,
+                  "SpriteWidth": 18,
+                  "SprideHeight": 15,
+                  "Acceleration": 0,
+                  "MinVelocity": 4,
+                  "MaxVelocity": 4,
+                  "IgnoreObjectCollisions": true,
+                  "IgnoreLocationCollisions": true,
+                  "ExplodeRadius": 2,
+                  "Homing": true
+                }
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/TAS",
+      "Entries": {
+        "{{ModId}}_ProjectileWeb": {
+          "Id": "{{ModId}}_ProjectileWeb",
+          "Texture": "{{ModId}}/projectile",
+          "SourceRect": {
+            "X": 0,
+            "Y": 0,
+            "Width": 18,
+            "Height": 15
+          },
+          "Frames": 1,
+          "PositionOffset": "-9,-7"
+        }
+      }
+    }
+  ]
+}

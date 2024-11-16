@@ -30,6 +30,10 @@ public sealed class TinkerProjectile : Projectile
     internal readonly NetInt hits = new(0);
     internal readonly NetInt explodeRadius = new(0);
     internal readonly NetString stunTAS = new(null);
+    internal readonly NetBool homing = new(false);
+    internal readonly NetRef<Monster> homingTarget = new();
+    internal readonly NetBool rotateToTarget = new(false);
+    private double homingTimer = 0;
 
     /// <summary>Construct an empty instance.</summary>
     public TinkerProjectile()
@@ -49,23 +53,16 @@ public sealed class TinkerProjectile : Projectile
         projectileSpriteWidth.Value = args.SpriteWidth;
         projectileSpriteHeight.Value = args.SpriteHeight;
 
-        Vector2 velocity = Utility.getVelocityTowardPoint(
-            sourcePosition,
-            target.getStandingPosition(),
-            args.MinVelocity
-        );
-        xVelocity.Value = velocity.X;
-        yVelocity.Value = velocity.Y;
-        startingRotation.Value = args.RotateToTarget
-            ? (float)Math.Atan2(velocity.Y, velocity.X)
-            : 0f;
-        acceleration.Value = Utility.getVelocityTowardPoint(
-            sourcePosition,
-            target.getStandingPosition(),
+        position.Value = sourcePosition;
+        UpdateVelocityAndAcceleration(
+            target.GetBoundingBox().Center.ToVector2(),
+            args.MinVelocity,
             args.Acceleration
         );
-        maxVelocity.Value = args.MaxVelocity;
-        position.Value = sourcePosition;
+        rotateToTarget.Value = args.RotateToTarget;
+        startingRotation.Value = rotateToTarget.Value
+            ? (float)Math.Atan2(xVelocity.Value, yVelocity.Value)
+            : 0f;
 
         piercesLeft.Value = args.Pierce;
         ignoreObjectCollisions.Value = args.IgnoreObjectCollisions;
@@ -82,6 +79,12 @@ public sealed class TinkerProjectile : Projectile
         stunTAS.Value = args.StunTAS;
         hits.Value = args.Hits;
         explodeRadius.Value = args.ExplodeRadius;
+
+        if (args.Homing)
+        {
+            homing.Value = args.Homing;
+            homingTarget.Value = target;
+        }
 
         damagesMonsters.Value = true;
     }
@@ -103,7 +106,10 @@ public sealed class TinkerProjectile : Projectile
             .AddField(stunTime, "stunTime")
             .AddField(stunTAS, "stunTAS")
             .AddField(hits, "hits")
-            .AddField(explodeRadius, "explodeRadius");
+            .AddField(explodeRadius, "explodeRadius")
+            .AddField(homing, "homing")
+            .AddField(homingTarget, "homingTarget")
+            .AddField(rotateToTarget, "rotateToTarget");
     }
 
     /// <summary>Get the texture to draw for the projectile.</summary>
@@ -251,7 +257,7 @@ public sealed class TinkerProjectile : Projectile
                 monster.stunTime.Value = stunTime.Value;
                 if (stunTAS.Value != null)
                 {
-                    Vector2 pos = monster.getStandingPosition();
+                    Vector2 pos = monster.GetBoundingBox().Center.ToVector2();
                     Visuals.BroadcastTAS(
                         stunTAS.Value,
                         pos,
@@ -297,10 +303,45 @@ public sealed class TinkerProjectile : Projectile
             UpdatePiercesLeft(location);
     }
 
+    private void UpdateVelocityAndAcceleration(Vector2 targetPosition, float velocity, float accel)
+    {
+        Vector2 velocityVect = Utility.getVelocityTowardPoint(
+            position.Value,
+            targetPosition,
+            velocity
+        );
+        xVelocity.Value = velocityVect.X;
+        yVelocity.Value = velocityVect.Y;
+        acceleration.Value = Utility.getVelocityTowardPoint(position.Value, targetPosition, accel);
+    }
+
     /// <summary>Same as basic projectile</summary>
     /// <param name="time"></param>
     public override void updatePosition(GameTime time)
     {
+        if (homing.Value)
+        {
+            if (homingTarget.Value.Health > 0)
+            {
+                homingTimer += time.ElapsedGameTime.TotalMilliseconds;
+                if (homingTimer > 100f)
+                {
+                    homingTimer = 0;
+                    UpdateVelocityAndAcceleration(
+                        homingTarget.Value.GetBoundingBox().Center.ToVector2(),
+                        new Vector2(xVelocity.Value, yVelocity.Value).Length(),
+                        acceleration.Value.Length()
+                    );
+                    _rotation = rotateToTarget.Value
+                        ? (float)Math.Atan2(xVelocity.Value, yVelocity.Value)
+                        : 0f;
+                }
+            }
+            else
+            {
+                homing.Value = false;
+            }
+        }
         xVelocity.Value += acceleration.X;
         yVelocity.Value += acceleration.Y;
         if (

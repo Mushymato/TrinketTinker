@@ -27,6 +27,11 @@
       "Action": "Include",
       "FromFile": "data/lerp/snek.json"
     },
+    // Projectile
+    {
+      "Action": "Include",
+      "FromFile": "data/misc/projectile.json"
+    },
     // disable trinkets in Backwoods
     {
       "Action": "EditData",

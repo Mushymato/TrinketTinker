@@ -107,7 +107,7 @@ public class DamageArgs : IArgs
             target.stunTime.Value = StunTime;
             if (StunTAS != null)
             {
-                Vector2 pos = target.getStandingPosition();
+                Vector2 pos = target.GetBoundingBox().Center.ToVector2();
                 float drawLayer = pos.Y / 10000f + 2E-06f;
                 if (
                     !Visuals.BroadcastTAS(
