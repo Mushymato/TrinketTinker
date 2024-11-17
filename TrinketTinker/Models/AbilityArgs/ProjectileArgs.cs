@@ -38,6 +38,6 @@ public sealed class ProjectileArgs : DamageArgs
     /// <summary>Let projectile pass through location walls</summary>
     public bool IgnoreLocationCollisions { get; set; } = false;
 
-    /// <summary>If true, recheck target and adjust directory.</summary>
+    /// <summary>Recheck target and adjust trajectory midflight.</summary>
     public bool Homing { get; set; } = false;
 }

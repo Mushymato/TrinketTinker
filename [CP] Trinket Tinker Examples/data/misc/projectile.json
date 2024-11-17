@@ -53,8 +53,8 @@
                 "ProcTimer": 500,
                 "AbilityClass": "Projectile",
                 "Args": {
-                  "Min": 50,
-                  "Max": 75,
+                  "Min": 10,
+                  "Max": 20,
                   "Knockback": 2,
                   "Range": 640,
                   "Texture": "Mods/{{ModId}}/projectile",
