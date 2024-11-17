@@ -1,4 +1,5 @@
 using StardewValley;
+using StardewValley.Delegates;
 using StardewValley.Internal;
 using StardewValley.ItemTypeDefinitions;
 using StardewValley.Objects.Trinkets;
@@ -8,9 +9,10 @@ namespace TrinketTinker.Extras;
 
 public static class ItemQuery
 {
-    public static readonly string ItemQuery_CREATE_TRINKET = $"{ModEntry.ModId}_CREATE_TRINKET";
-    public static readonly string ItemQuery_CREATE_TRINKET_ALL_VARIANTS =
+    public static string ItemQuery_CREATE_TRINKET => $"{ModEntry.ModId}_CREATE_TRINKET";
+    public static string ItemQuery_CREATE_TRINKET_ALL_VARIANTS =
         $"{ModEntry.ModId}_CREATE_TRINKET_ALL_VARIANTS";
+    public static string GameStateQuery_INPUT_IS_TINKER => $"{ModEntry.ModId}_INPUT_IS_TINKER";
     private const string RANDOM = "R";
     private const string ALL = "A";
 
@@ -168,5 +170,18 @@ public static class ItemQuery
             trinket = (Trinket)trinket.getOne();
         }
         return createdTrinkets;
+    }
+
+    /// <summary>
+    /// Check that the input item is a trinket using TrinketTinkerEffect
+    /// </summary>
+    /// <param name="query"></param>
+    /// <param name="context"></param>
+    /// <returns></returns>
+    public static bool INPUT_IS_TINKER(string[] query, GameStateQueryContext context)
+    {
+        if (context.InputItem == null)
+            return false;
+        return context.InputItem is Trinket trinket && trinket.GetEffect() is TrinketTinkerEffect;
     }
 }

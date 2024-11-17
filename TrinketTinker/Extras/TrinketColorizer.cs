@@ -102,6 +102,7 @@ public static class TrinketColorizer
                             Trigger = MachineOutputTrigger.ItemPlacedInMachine,
                             RequiredCount = 1,
                             RequiredTags = ["category_trinket"],
+                            Condition = ItemQuery.GameStateQuery_INPUT_IS_TINKER,
                         },
                     ],
                     OutputItem =
@@ -137,6 +138,7 @@ public static class TrinketColorizer
                     Trigger = MachineOutputTrigger.ItemPlacedInMachine,
                     RequiredCount = 1,
                     RequiredTags = ["category_trinket"],
+                    Condition = ItemQuery.GameStateQuery_INPUT_IS_TINKER,
                 },
             ];
             newRule.OutputItem =
@@ -245,6 +247,7 @@ public static class TrinketColorizer
         Trinket output = (Trinket)inputItem.getOne();
         if (output.GetEffect() is not TrinketTinkerEffect effect2)
             return null;
+
         if (!effect2.RerollLevel(output, effect1.GeneralStat))
         {
             if (!probe)
@@ -255,6 +258,7 @@ public static class TrinketColorizer
             }
             return null;
         }
+        effect2.ResetVariant(output);
 
         if (!probe)
         {

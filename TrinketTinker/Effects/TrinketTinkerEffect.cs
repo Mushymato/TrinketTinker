@@ -389,4 +389,21 @@ public class TrinketTinkerEffect : TrinketEffect
             trinket.ParentSheetIndex = Data.Variants[variant].TrinketSpriteIndex;
         return;
     }
+
+    /// <summary>Reset trinket variant icon to modData value</summary>
+    /// <param name="trinket"></param>
+    /// <param name="variant"></param>
+    public void ResetVariant(Trinket trinket)
+    {
+        if (Data == null || Data.Variants.Count == 0)
+            return;
+        if (trinket.modData.TryGetValue(ModData_Variant, out string variantStr))
+        {
+            int variant = int.Parse(variantStr);
+            if (variant >= Data.Variants.Count)
+                variant = 0;
+            if (Data.Variants[variant].TrinketSpriteIndex > 0)
+                trinket.ParentSheetIndex = Data.Variants[variant].TrinketSpriteIndex;
+        }
+    }
 }

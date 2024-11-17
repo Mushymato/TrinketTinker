@@ -68,6 +68,12 @@ internal sealed class ModEntry : Mod
             ItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS,
             ItemQuery.CREATE_TRINKET_ALL_VARIANTS
         );
+
+        // Add GSQ for checking trinket is for this mod
+        GameStateQuery.Register(
+            ItemQuery.GameStateQuery_INPUT_IS_TINKER,
+            ItemQuery.INPUT_IS_TINKER
+        );
     }
 
     private static void OnAssetRequested(object? sender, AssetRequestedEventArgs e)
