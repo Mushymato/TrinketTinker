@@ -4,12 +4,21 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.2.0
+
+#### Added
+
+- New "Homing" argument on projectile to make projectile recheck target midflight.
+
+#### Fixed
+
+- Projectile used wrong target point, change to bounding box center.
+
 ### 1.1.0
 
 #### Fixed
 
-- Update for SDV 1.6.14, add new "sourceChange" argument.
-
+- Update for SDV 1.6.14, add new "sourceChange" argument in ItemQueryContext.
 
 ### 1.0.2
 
