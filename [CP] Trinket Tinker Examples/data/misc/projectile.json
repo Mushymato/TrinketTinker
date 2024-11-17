@@ -4,7 +4,7 @@
     {
       "LogName": "Projectile: Sprites",
       "Action": "Load",
-      "Target": "{{ModId}}/companion, {{ModId}}/projectile",
+      "Target": "{{ModId}}/companion",
       "FromFile": "sprites/misc/{{TargetWithoutPath}}.png"
     },
     {
@@ -57,10 +57,10 @@
                   "Max": 75,
                   "Knockback": 2,
                   "Range": 640,
-                  "Texture": "{{ModId}}/projectile",
+                  "Texture": "Mods/{{ModId}}/projectile",
                   "SpriteIndex": 0,
-                  "SpriteWidth": 18,
-                  "SprideHeight": 15,
+                  "SpriteWidth": 16,
+                  "SprideHeight": 16,
                   "Acceleration": 0,
                   "MinVelocity": 4,
                   "MaxVelocity": 4,
@@ -72,24 +72,6 @@
               }
             ]
           ]
-        }
-      }
-    },
-    {
-      "Action": "EditData",
-      "Target": "mushymato.TrinketTinker/TAS",
-      "Entries": {
-        "{{ModId}}_ProjectileWeb": {
-          "Id": "{{ModId}}_ProjectileWeb",
-          "Texture": "{{ModId}}/projectile",
-          "SourceRect": {
-            "X": 0,
-            "Y": 0,
-            "Width": 18,
-            "Height": 15
-          },
-          "Frames": 1,
-          "PositionOffset": "-9,-7"
         }
       }
     }

@@ -30,9 +30,8 @@ public sealed class TinkerProjectile : Projectile
     internal readonly NetInt hits = new(0);
     internal readonly NetInt explodeRadius = new(0);
     internal readonly NetString stunTAS = new(null);
-    internal readonly NetBool homing = new(false);
-    internal readonly NetRef<Monster> homingTarget = new();
     internal readonly NetBool rotateToTarget = new(false);
+    internal readonly NetInt homingRange = new(0);
     private double homingTimer = 0;
 
     /// <summary>Construct an empty instance.</summary>
@@ -61,7 +60,7 @@ public sealed class TinkerProjectile : Projectile
         );
         rotateToTarget.Value = args.RotateToTarget;
         startingRotation.Value = rotateToTarget.Value
-            ? (float)Math.Atan2(xVelocity.Value, yVelocity.Value)
+            ? (float)Math.Atan2(yVelocity.Value, xVelocity.Value)
             : 0f;
 
         piercesLeft.Value = args.Pierce;
@@ -82,8 +81,7 @@ public sealed class TinkerProjectile : Projectile
 
         if (args.Homing)
         {
-            homing.Value = args.Homing;
-            homingTarget.Value = target;
+            homingRange.Value = args.Range;
         }
 
         damagesMonsters.Value = true;
@@ -107,8 +105,7 @@ public sealed class TinkerProjectile : Projectile
             .AddField(stunTAS, "stunTAS")
             .AddField(hits, "hits")
             .AddField(explodeRadius, "explodeRadius")
-            .AddField(homing, "homing")
-            .AddField(homingTarget, "homingTarget")
+            .AddField(homingRange, "homingRange")
             .AddField(rotateToTarget, "rotateToTarget");
     }
 
@@ -319,29 +316,6 @@ public sealed class TinkerProjectile : Projectile
     /// <param name="time"></param>
     public override void updatePosition(GameTime time)
     {
-        if (homing.Value)
-        {
-            if (homingTarget.Value.Health > 0)
-            {
-                homingTimer += time.ElapsedGameTime.TotalMilliseconds;
-                if (homingTimer > 100f)
-                {
-                    homingTimer = 0;
-                    UpdateVelocityAndAcceleration(
-                        homingTarget.Value.GetBoundingBox().Center.ToVector2(),
-                        new Vector2(xVelocity.Value, yVelocity.Value).Length(),
-                        acceleration.Value.Length()
-                    );
-                    _rotation = rotateToTarget.Value
-                        ? (float)Math.Atan2(xVelocity.Value, yVelocity.Value)
-                        : 0f;
-                }
-            }
-            else
-            {
-                homing.Value = false;
-            }
-        }
         xVelocity.Value += acceleration.X;
         yVelocity.Value += acceleration.Y;
         if (
@@ -362,21 +336,60 @@ public sealed class TinkerProjectile : Projectile
         piercesLeft.Value--;
         if (piercesLeft.Value == 0)
         {
-            Rectangle sourceRect = GetSourceRect();
-            sourceRect.X += 4;
-            sourceRect.Y += 4;
-            sourceRect.Width = 8;
-            sourceRect.Height = 8;
-            Game1.createRadialDebris_MoreNatural(
-                location,
-                GetCustomTexturePath(),
-                sourceRect,
-                1,
-                (int)position.X + 32,
-                (int)position.Y + 32,
-                6,
-                (int)(position.Y / Game1.tileSize) + 1
-            );
+            DebrisAnimation(location);
         }
+    }
+
+    private void DebrisAnimation(GameLocation location)
+    {
+        Rectangle sourceRect = GetSourceRect();
+        sourceRect.X += 4;
+        sourceRect.Y += 4;
+        sourceRect.Width = 8;
+        sourceRect.Height = 8;
+        Game1.createRadialDebris_MoreNatural(
+            location,
+            GetCustomTexturePath(),
+            sourceRect,
+            1,
+            (int)position.X + 32,
+            (int)position.Y + 32,
+            6,
+            (int)(position.Y / Game1.tileSize) + 1
+        );
+    }
+
+    public override bool update(GameTime time, GameLocation location)
+    {
+        if (homingRange.Value > 0)
+        {
+            homingTimer += time.ElapsedGameTime.TotalMilliseconds;
+            if (homingTimer > 100f)
+            {
+                homingTimer = 0;
+                Monster homingTarget = Utility.findClosestMonsterWithinRange(
+                    location,
+                    position.Value,
+                    homingRange.Value,
+                    ignoreUntargetables: true
+                );
+                if (homingTarget != null)
+                {
+                    UpdateVelocityAndAcceleration(
+                        homingTarget.GetBoundingBox().Center.ToVector2(),
+                        new Vector2(xVelocity.Value, yVelocity.Value).Length(),
+                        acceleration.Value.Length()
+                    );
+                    _rotation = rotateToTarget.Value
+                        ? (float)Math.Atan2(yVelocity.Value, xVelocity.Value)
+                        : 0f;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+        return base.update(time, location);
     }
 }

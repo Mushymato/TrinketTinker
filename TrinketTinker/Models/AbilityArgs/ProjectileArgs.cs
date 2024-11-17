@@ -38,9 +38,6 @@ public sealed class ProjectileArgs : DamageArgs
     /// <summary>Let projectile pass through location walls</summary>
     public bool IgnoreLocationCollisions { get; set; } = false;
 
-    /// <summary>
-    /// Recheck target and adjust trajectory.
-    /// If target dies before this projectile reaches it, stop homing.
-    /// </summary>
+    /// <summary>If true, recheck target and adjust directory.</summary>
     public bool Homing { get; set; } = false;
 }
