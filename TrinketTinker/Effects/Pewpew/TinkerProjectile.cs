@@ -38,12 +38,7 @@ public sealed class TinkerProjectile : Projectile
     public TinkerProjectile()
         : base() { }
 
-    public TinkerProjectile(
-        ProjectileArgs args,
-        ProcEventArgs proc,
-        Monster target,
-        Vector2 sourcePosition
-    )
+    public TinkerProjectile(ProjectileArgs args, ProcEventArgs proc, Monster target, Vector2 sourcePosition)
         : this()
     {
         if (args.Texture != null)
@@ -53,15 +48,9 @@ public sealed class TinkerProjectile : Projectile
         projectileSpriteHeight.Value = args.SpriteHeight;
 
         position.Value = sourcePosition;
-        UpdateVelocityAndAcceleration(
-            target.GetBoundingBox().Center.ToVector2(),
-            args.MinVelocity,
-            args.Acceleration
-        );
+        UpdateVelocityAndAcceleration(target.GetBoundingBox().Center.ToVector2(), args.MinVelocity, args.Acceleration);
         rotateToTarget.Value = args.RotateToTarget;
-        startingRotation.Value = rotateToTarget.Value
-            ? (float)Math.Atan2(yVelocity.Value, xVelocity.Value)
-            : 0f;
+        startingRotation.Value = rotateToTarget.Value ? (float)Math.Atan2(yVelocity.Value, xVelocity.Value) : 0f;
 
         piercesLeft.Value = args.Pierce;
         ignoreObjectCollisions.Value = args.IgnoreObjectCollisions;
@@ -133,12 +122,7 @@ public sealed class TinkerProjectile : Projectile
     /// <summary>Get the texture to draw for the projectile.</summary>
     private Rectangle GetCustomSourceRect(Texture2D texture)
     {
-        return Game1.getSourceRectForStandardTileSheet(
-            texture,
-            currentTileSheetIndex.Value,
-            projectileSpriteWidth.Value,
-            projectileSpriteHeight.Value
-        );
+        return Game1.getSourceRectForStandardTileSheet(texture, currentTileSheetIndex.Value, projectileSpriteWidth.Value, projectileSpriteHeight.Value);
     }
 
     /// <summary>Needed to override this to get custom texture weh</summary>
@@ -151,10 +135,7 @@ public sealed class TinkerProjectile : Projectile
         Vector2 value = position.Value;
         b.Draw(
             texture,
-            Game1.GlobalToLocal(
-                Game1.viewport,
-                value + new Vector2(0f, 0f - height.Value) + new Vector2(32f, 32f)
-            ),
+            Game1.GlobalToLocal(Game1.viewport, value + new Vector2(0f, 0f - height.Value) + new Vector2(32f, 32f)),
             sourceRect,
             color.Value * alpha.Value,
             rotation,
@@ -171,10 +152,7 @@ public sealed class TinkerProjectile : Projectile
                 Game1.shadowTexture.Bounds,
                 Color.White * alpha.Value * 0.75f,
                 0f,
-                new Vector2(
-                    Game1.shadowTexture.Bounds.Center.X,
-                    Game1.shadowTexture.Bounds.Center.Y
-                ),
+                new Vector2(Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y),
                 2f,
                 SpriteEffects.None,
                 (value.Y - 1f) / 10000f
@@ -187,11 +165,7 @@ public sealed class TinkerProjectile : Projectile
                 texture,
                 Game1.GlobalToLocal(
                     Game1.viewport,
-                    Vector2.Lerp(
-                        (num2 == tail.Count - 1) ? value : tail.ElementAt(num2 + 1),
-                        tail.ElementAt(num2),
-                        (float)tailCounter / 50f
-                    )
+                    Vector2.Lerp((num2 == tail.Count - 1) ? value : tail.ElementAt(num2 + 1), tail.ElementAt(num2), (float)tailCounter / 50f)
                         + new Vector2(0f, 0f - height.Value)
                         + new Vector2(32f, 32f)
                 ),
@@ -255,24 +229,12 @@ public sealed class TinkerProjectile : Projectile
                 if (stunTAS.Value != null)
                 {
                     Vector2 pos = monster.GetBoundingBox().Center.ToVector2();
-                    Visuals.BroadcastTAS(
-                        stunTAS.Value,
-                        pos,
-                        (pos.Y + 96f) / 10000f,
-                        location,
-                        duration: stunTime.Value,
-                        rotation: rotation
-                    );
+                    Visuals.BroadcastTAS(stunTAS.Value, pos, (pos.Y + 96f) / 10000f, location, duration: stunTime.Value, rotation: rotation);
                 }
             }
             if (explodeRadius.Value > 0)
             {
-                location.explode(
-                    monster.TilePoint.ToVector2(),
-                    explodeRadius.Value,
-                    playerWhoFiredMe,
-                    damage_amount: minDamage.Value
-                );
+                location.explode(monster.TilePoint.ToVector2(), explodeRadius.Value, playerWhoFiredMe, damage_amount: minDamage.Value);
             }
             if (!monster.IsInvisible)
             {
@@ -289,11 +251,7 @@ public sealed class TinkerProjectile : Projectile
 
     public override void behaviorOnCollisionWithPlayer(GameLocation location, Farmer player) { }
 
-    public override void behaviorOnCollisionWithTerrainFeature(
-        TerrainFeature t,
-        Vector2 tileLocation,
-        GameLocation location
-    )
+    public override void behaviorOnCollisionWithTerrainFeature(TerrainFeature t, Vector2 tileLocation, GameLocation location)
     {
         t.performUseAction(tileLocation);
         if (!ignoreObjectCollisions.Value)
@@ -302,11 +260,7 @@ public sealed class TinkerProjectile : Projectile
 
     private void UpdateVelocityAndAcceleration(Vector2 targetPosition, float velocity, float accel)
     {
-        Vector2 velocityVect = Utility.getVelocityTowardPoint(
-            position.Value,
-            targetPosition,
-            velocity
-        );
+        Vector2 velocityVect = Utility.getVelocityTowardPoint(position.Value, targetPosition, velocity);
         xVelocity.Value = velocityVect.X;
         yVelocity.Value = velocityVect.Y;
         acceleration.Value = Utility.getVelocityTowardPoint(position.Value, targetPosition, accel);
@@ -318,11 +272,7 @@ public sealed class TinkerProjectile : Projectile
     {
         xVelocity.Value += acceleration.X;
         yVelocity.Value += acceleration.Y;
-        if (
-            maxVelocity.Value != -1f
-            && Math.Sqrt(xVelocity.Value * xVelocity.Value + yVelocity.Value * yVelocity.Value)
-                >= (double)maxVelocity.Value
-        )
+        if (maxVelocity.Value != -1f && Math.Sqrt(xVelocity.Value * xVelocity.Value + yVelocity.Value * yVelocity.Value) >= (double)maxVelocity.Value)
         {
             xVelocity.Value -= acceleration.X;
             yVelocity.Value -= acceleration.Y;
@@ -367,12 +317,7 @@ public sealed class TinkerProjectile : Projectile
             if (homingTimer > 100f)
             {
                 homingTimer = 0;
-                Monster homingTarget = Utility.findClosestMonsterWithinRange(
-                    location,
-                    position.Value,
-                    homingRange.Value,
-                    ignoreUntargetables: true
-                );
+                Monster homingTarget = Utility.findClosestMonsterWithinRange(location, position.Value, homingRange.Value, ignoreUntargetables: true);
                 if (homingTarget != null)
                 {
                     UpdateVelocityAndAcceleration(
@@ -380,9 +325,7 @@ public sealed class TinkerProjectile : Projectile
                         new Vector2(xVelocity.Value, yVelocity.Value).Length(),
                         acceleration.Value.Length()
                     );
-                    _rotation = rotateToTarget.Value
-                        ? (float)Math.Atan2(yVelocity.Value, xVelocity.Value)
-                        : 0f;
+                    _rotation = rotateToTarget.Value ? (float)Math.Atan2(yVelocity.Value, xVelocity.Value) : 0f;
                 }
                 else
                 {

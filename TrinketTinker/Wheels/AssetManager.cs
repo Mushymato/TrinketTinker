@@ -38,9 +38,7 @@ internal static class AssetManager
     {
         get
         {
-            _tasData ??= Game1.content.Load<Dictionary<string, TemporaryAnimatedSpriteDefinition>>(
-                TASAsset
-            );
+            _tasData ??= Game1.content.Load<Dictionary<string, TemporaryAnimatedSpriteDefinition>>(TASAsset);
             return _tasData;
         }
     }
@@ -50,10 +48,7 @@ internal static class AssetManager
         if (e.Name.IsEquivalentTo(TinkerAsset))
             e.LoadFrom(() => new Dictionary<string, TinkerData>(), AssetLoadPriority.Exclusive);
         if (e.Name.IsEquivalentTo(TASAsset))
-            e.LoadFrom(
-                () => new Dictionary<string, TemporaryAnimatedSpriteDefinition>(),
-                AssetLoadPriority.Exclusive
-            );
+            e.LoadFrom(() => new Dictionary<string, TemporaryAnimatedSpriteDefinition>(), AssetLoadPriority.Exclusive);
         if (e.Name.IsEquivalentTo(TRINKET_TARGET))
             e.Edit(Edit_Trinkets_EffectClass, AssetEditPriority.Late + 100);
     }
@@ -78,9 +73,7 @@ internal static class AssetManager
         string? effectClass = typeof(TrinketTinkerEffect).AssemblyQualifiedName;
         if (effectClass == null)
         {
-            ModEntry.LogOnce(
-                $"Could not get qualified name for TrinketTinkerEffect({typeof(TrinketTinkerEffect)}), will use hardcoded value."
-            );
+            ModEntry.LogOnce($"Could not get qualified name for TrinketTinkerEffect({typeof(TrinketTinkerEffect)}), will use hardcoded value.");
             effectClass = "TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker";
         }
 

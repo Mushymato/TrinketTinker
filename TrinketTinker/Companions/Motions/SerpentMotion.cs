@@ -87,9 +87,7 @@ public sealed class SerpentMotion : BaseLerpMotion<SerpentArgs>
             // tail
             segSnapshot = snapshot.CloneWithChanges(
                 position: segments.Last().AsVec2() + c.Owner.drawOffset + offset,
-                sourceRect: cs.GetSourceRect(
-                    cs.currentFrame + framesetLength * (args.SegmentAlts + 1)
-                ),
+                sourceRect: cs.GetSourceRect(cs.currentFrame + framesetLength * (args.SegmentAlts + 1)),
                 rotation: segments.Last().Z
             );
             segSnapshot.Draw(b);

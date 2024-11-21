@@ -13,8 +13,7 @@ namespace TrinketTinker.Effects.Abilities;
 /// <param name="effect"></param>
 /// <param name="data"></param>
 /// <param name="lvl"></param>
-public sealed class HitscanAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
-    : Ability<DamageArgs>(effect, data, lvl)
+public sealed class HitscanAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<DamageArgs>(effect, data, lvl)
 {
     /// <inheritdoc/>
     protected override bool ApplyEffect(ProcEventArgs proc)

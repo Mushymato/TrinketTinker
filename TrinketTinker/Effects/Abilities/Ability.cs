@@ -80,9 +80,7 @@ public abstract class Ability<TArgs> : IAbility
                     break;
                 case ProcOn.Sync:
                     if (e.Abilities[d.ProcSyncIndex] == this)
-                        throw new ArgumentException(
-                            $"Cannot use {ProcOn.Sync} with self-referencing index {d.ProcSyncIndex}"
-                        );
+                        throw new ArgumentException($"Cannot use {ProcOn.Sync} with self-referencing index {d.ProcSyncIndex}");
                     e.Abilities[d.ProcSyncIndex].EventAbilityProc += HandleProc;
                     break;
                 case ProcOn.Footstep:
@@ -162,12 +160,7 @@ public abstract class Ability<TArgs> : IAbility
                 Game1.playSound(d.ProcSound);
             if (d.ProcOneshotAnim != null)
                 e.SetOneshotClip(d.ProcOneshotAnim);
-            Visuals.BroadcastTASList(
-                d.ProcTAS,
-                GetTASPosition(proc),
-                e.CompanionOwnerDrawLayer,
-                proc.LocationOrCurrent
-            );
+            Visuals.BroadcastTASList(d.ProcTAS, GetTASPosition(proc), e.CompanionOwnerDrawLayer, proc.LocationOrCurrent);
 
             EventAbilityProc?.Invoke(sender, proc);
         }

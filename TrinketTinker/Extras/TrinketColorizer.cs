@@ -42,9 +42,7 @@ public static class TrinketColorizer
     /// <param name="asset"></param>
     public static void Edit_BigCraftables(IAssetData asset)
     {
-        IDictionary<string, BigCraftableData> data = asset
-            .AsDictionary<string, BigCraftableData>()
-            .Data;
+        IDictionary<string, BigCraftableData> data = asset.AsDictionary<string, BigCraftableData>().Data;
         data[TrinketColorizerId] = new()
         {
             Name = TrinketColorizerId,
@@ -105,14 +103,7 @@ public static class TrinketColorizer
                             Condition = ItemQuery.GameStateQuery_INPUT_IS_TINKER,
                         },
                     ],
-                    OutputItem =
-                    [
-                        new()
-                        {
-                            OutputMethod =
-                                $"{typeof(TrinketColorizer).AssemblyQualifiedName}:{nameof(OutputTrinketColorizer)}",
-                        },
-                    ],
+                    OutputItem = [new() { OutputMethod = $"{typeof(TrinketColorizer).AssemblyQualifiedName}:{nameof(OutputTrinketColorizer)}" }],
                 },
             ],
             AdditionalConsumedItems =
@@ -141,14 +132,7 @@ public static class TrinketColorizer
                     Condition = ItemQuery.GameStateQuery_INPUT_IS_TINKER,
                 },
             ];
-            newRule.OutputItem =
-            [
-                new()
-                {
-                    OutputMethod =
-                        $"{typeof(TrinketColorizer).AssemblyQualifiedName}:{nameof(OutputTinkerAnvil)}",
-                },
-            ];
+            newRule.OutputItem = [new() { OutputMethod = $"{typeof(TrinketColorizer).AssemblyQualifiedName}:{nameof(OutputTinkerAnvil)}" }];
             anvilData.OutputRules.Insert(0, newRule);
         }
     }
@@ -176,19 +160,12 @@ public static class TrinketColorizer
         if (!t.GetTrinketData().CanBeReforged)
         {
             if (!probe)
-                Game1.showRedMessage(
-                    Game1.content.LoadString(I18n.BC_TrinketColorizer_NoRecolor())
-                );
+                Game1.showRedMessage(Game1.content.LoadString(I18n.BC_TrinketColorizer_NoRecolor()));
             return null;
         }
 
         int previous = 0;
-        if (
-            inputItem.modData.TryGetValue(
-                TrinketTinkerEffect.ModData_Variant,
-                out string? previousStr
-            )
-        )
+        if (inputItem.modData.TryGetValue(TrinketTinkerEffect.ModData_Variant, out string? previousStr))
             if (!int.TryParse(previousStr, out previous))
                 previous = 0;
         Trinket output = (Trinket)inputItem.getOne();
@@ -236,9 +213,7 @@ public static class TrinketColorizer
         if (!t.GetTrinketData().CanBeReforged)
         {
             if (!probe)
-                Game1.showRedMessage(
-                    Game1.content.LoadString("Strings\\1_6_Strings:Anvil_wrongtrinket")
-                );
+                Game1.showRedMessage(Game1.content.LoadString("Strings\\1_6_Strings:Anvil_wrongtrinket"));
             return null;
         }
 
@@ -252,9 +227,7 @@ public static class TrinketColorizer
         {
             if (!probe)
             {
-                Game1.showRedMessage(
-                    Game1.content.LoadString("Strings/1_6_Strings:Anvil_wrongtrinket")
-                );
+                Game1.showRedMessage(Game1.content.LoadString("Strings/1_6_Strings:Anvil_wrongtrinket"));
             }
             return null;
         }

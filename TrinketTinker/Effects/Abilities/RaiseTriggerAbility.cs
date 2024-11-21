@@ -9,8 +9,7 @@ namespace TrinketTinker.Effects.Abilities;
 /// Raises a trigger (<see cref="TriggerEventName"/>) on proc.
 /// The trinket is given as the target item.
 /// </summary>
-public sealed class RaiseTriggerAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
-    : Ability<NoArgs>(effect, data, lvl)
+public sealed class RaiseTriggerAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<NoArgs>(effect, data, lvl)
 {
     public static readonly string TriggerEventName = $"{ModEntry.ModId}/TrinketProc";
 
@@ -19,12 +18,7 @@ public sealed class RaiseTriggerAbility(TrinketTinkerEffect effect, AbilityData 
     /// <returns></returns>
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
-        TriggerActionManager.Raise(
-            TriggerEventName,
-            player: proc.Farmer,
-            location: proc.Location,
-            targetItem: e.Trinket
-        );
+        TriggerActionManager.Raise(TriggerEventName, player: proc.Farmer, location: proc.Location, targetItem: e.Trinket);
         return base.ApplyEffect(proc);
     }
 }

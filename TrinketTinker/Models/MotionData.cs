@@ -108,11 +108,7 @@ public class AnimClipDictionary : Dictionary<string, AnimClipData?>
     /// <param name="direction"></param>
     /// <param name="clip"></param>
     /// <returns></returns>
-    public bool TryGetDirectional(
-        string? key,
-        int direction,
-        [NotNullWhen(true)] out AnimClipData? clip
-    )
+    public bool TryGetDirectional(string? key, int direction, [NotNullWhen(true)] out AnimClipData? clip)
     {
         clip = null;
         if (key == null)

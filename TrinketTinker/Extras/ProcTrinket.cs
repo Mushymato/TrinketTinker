@@ -18,10 +18,7 @@ public static class ProcTrinket
 
         foreach (Trinket trinketItem in Game1.player.trinketItems)
         {
-            if (
-                (trinketId == null || trinketItem.ItemId == trinketId)
-                && trinketItem.GetEffect() is TrinketTinkerEffect effect
-            )
+            if ((trinketId == null || trinketItem.ItemId == trinketId) && trinketItem.GetEffect() is TrinketTinkerEffect effect)
                 effect.OnTrigger(Game1.player, args, context);
         }
         return true;

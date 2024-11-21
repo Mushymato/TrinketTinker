@@ -8,11 +8,7 @@ namespace TrinketTinker.Companions.Motions;
 
 /// <summary>Base version of LerpMotion, for use with inheritance</summary>
 /// <inheritdoc/>
-public class BaseLerpMotion<IArgs>(
-    TrinketTinkerCompanion companion,
-    MotionData mdata,
-    VariantData vdata
-) : Motion<IArgs>(companion, mdata, vdata)
+public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata) : Motion<IArgs>(companion, mdata, vdata)
     where IArgs : LerpArgs
 {
     /// <summary>Variable for how much interpolation happened so far.</summary>
@@ -47,13 +43,7 @@ public class BaseLerpMotion<IArgs>(
                 c.startPosition = c.Position;
                 c.endPosition = c.Anchor;
                 // float radius = 0.5f;
-                c.endPosition =
-                    c.Anchor
-                    + 0.5f
-                        * new Vector2(
-                            Utility.RandomFloat(-args.Jitter, args.Jitter),
-                            Utility.RandomFloat(-args.Jitter, args.Jitter)
-                        );
+                c.endPosition = c.Anchor + 0.5f * new Vector2(Utility.RandomFloat(-args.Jitter, args.Jitter), Utility.RandomFloat(-args.Jitter, args.Jitter));
                 // if (CheckSpriteCollision(location, c.endPosition + GetOffset()))
                 // {
                 //     c.endPosition = c.Anchor;
@@ -63,12 +53,7 @@ public class BaseLerpMotion<IArgs>(
             else if (md.AlwaysMoving && args.Jitter > 0f)
             {
                 c.startPosition = c.Position;
-                c.endPosition =
-                    c.Anchor
-                    + new Vector2(
-                        Utility.RandomFloat(-args.Jitter, args.Jitter),
-                        Utility.RandomFloat(-args.Jitter, args.Jitter)
-                    );
+                c.endPosition = c.Anchor + new Vector2(Utility.RandomFloat(-args.Jitter, args.Jitter), Utility.RandomFloat(-args.Jitter, args.Jitter));
                 Lerp = 0f;
             }
         }
@@ -141,5 +126,4 @@ public class BaseLerpMotion<IArgs>(
 /// <summary>Companion closely follows the anchor, at a distance</summary>
 /// <param name="companion"></param>
 /// <param name="data"></param>
-public class LerpMotion(TrinketTinkerCompanion companion, MotionData data, VariantData vdata)
-    : BaseLerpMotion<LerpArgs>(companion, data, vdata) { }
+public class LerpMotion(TrinketTinkerCompanion companion, MotionData data, VariantData vdata) : BaseLerpMotion<LerpArgs>(companion, data, vdata) { }

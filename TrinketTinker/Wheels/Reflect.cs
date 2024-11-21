@@ -25,11 +25,7 @@ internal static class Reflect
     /// <param name="typ"></param>
     /// <param name="longFormat">Full class name format</param>
     /// <returns></returns>
-    public static bool TryGetType(
-        string? className,
-        [NotNullWhen(true)] out Type? typ,
-        string longFormat
-    )
+    public static bool TryGetType(string? className, [NotNullWhen(true)] out Type? typ, string longFormat)
     {
         typ = null;
         if (className == null)

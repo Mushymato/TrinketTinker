@@ -9,11 +9,7 @@ namespace TrinketTinker.Companions.Motions;
 /// <param name="companion"></param>
 /// <param name="mdata"></param>
 /// <param name="vdata"></param>
-public class BaseStaticMotion<IArgs>(
-    TrinketTinkerCompanion companion,
-    MotionData mdata,
-    VariantData vdata
-) : Motion<IArgs>(companion, mdata, vdata)
+public class BaseStaticMotion<IArgs>(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata) : Motion<IArgs>(companion, mdata, vdata)
     where IArgs : StaticArgs
 {
     /// <inheritdoc/>
@@ -90,8 +86,5 @@ public class BaseStaticMotion<IArgs>(
 }
 
 /// <inheritdoc/>
-public sealed class StaticMotion(
-    TrinketTinkerCompanion companion,
-    MotionData mdata,
-    VariantData vdata
-) : BaseStaticMotion<StaticArgs>(companion, mdata, vdata) { }
+public sealed class StaticMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata)
+    : BaseStaticMotion<StaticArgs>(companion, mdata, vdata) { }

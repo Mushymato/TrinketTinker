@@ -14,25 +14,15 @@ namespace TrinketTinker.Effects.Abilities;
 /// <param name="effect"></param>
 /// <param name="data"></param>
 /// <param name="lvl"></param>
-public sealed class ProjectileAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
-    : Ability<ProjectileArgs>(effect, data, lvl)
+public sealed class ProjectileAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<ProjectileArgs>(effect, data, lvl)
 {
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
         Vector2 sourcePosition = e.CompanionPosition ?? proc.Farmer.Position;
-        Monster? target =
-            proc.Monster
-            ?? Utility.findClosestMonsterWithinRange(
-                proc.LocationOrCurrent,
-                sourcePosition,
-                args.Range,
-                ignoreUntargetables: true
-            );
+        Monster? target = proc.Monster ?? Utility.findClosestMonsterWithinRange(proc.LocationOrCurrent, sourcePosition, args.Range, ignoreUntargetables: true);
         if (target == null)
             return false;
-        proc.LocationOrCurrent.projectiles.Add(
-            new TinkerProjectile(args, proc, target, sourcePosition)
-        );
+        proc.LocationOrCurrent.projectiles.Add(new TinkerProjectile(args, proc, target, sourcePosition));
         return base.ApplyEffect(proc);
     }
 }

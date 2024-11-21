@@ -11,8 +11,7 @@ namespace TrinketTinker.Effects.Abilities;
 /// For <see cref="ProcOn.DamageMonster"/> and <see cref="ProcOn.ReceiveDamage"/>,
 /// healing is based on damage recieved or dealt instead of percent HP.
 /// </summary>
-public sealed class HealthAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
-    : Ability<RangeArgs>(effect, data, lvl)
+public sealed class HealthAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<RangeArgs>(effect, data, lvl)
 {
     /// <summary>
     /// Heal the player.
@@ -22,18 +21,10 @@ public sealed class HealthAbility(TrinketTinkerEffect effect, AbilityData data, 
     /// <returns></returns>
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
-        int healed = (int)
-            Math.Ceiling(
-                Math.Min(
-                    proc.Farmer.maxHealth - proc.Farmer.health,
-                    args.Rand(proc.DamageAmount ?? proc.Farmer.maxHealth)
-                )
-            );
+        int healed = (int)Math.Ceiling(Math.Min(proc.Farmer.maxHealth - proc.Farmer.health, args.Rand(proc.DamageAmount ?? proc.Farmer.maxHealth)));
         proc.Farmer.health += healed;
         if (healed > 0)
-            proc.Farmer.currentLocation.debris.Add(
-                new Debris(healed, proc.Farmer.getStandingPosition(), Color.Lime, 1f, proc.Farmer)
-            );
+            proc.Farmer.currentLocation.debris.Add(new Debris(healed, proc.Farmer.getStandingPosition(), Color.Lime, 1f, proc.Farmer));
         return base.ApplyEffect(proc);
     }
 }

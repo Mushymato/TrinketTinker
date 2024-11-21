@@ -7,8 +7,7 @@ using TrinketTinker.Wheels;
 namespace TrinketTinker.Companions.Motions;
 
 /// <summary>Companion follows the player and bobs up and down</summary>
-public sealed class HopMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata)
-    : BaseLerpMotion<HopArgs>(companion, mdata, vdata)
+public sealed class HopMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata) : BaseLerpMotion<HopArgs>(companion, mdata, vdata)
 {
     /// <summary>Jump anim clip key</summary>
     private const string JUMP = "Jump";
@@ -40,7 +39,6 @@ public sealed class HopMotion(TrinketTinkerCompanion companion, MotionData mdata
     /// <inheritdoc/>
     protected override Vector2 GetShadowScale()
     {
-        return MathF.Max(0f, Visuals.EaseOut(1.0f, 0.8f, height / args.MaxHeight))
-            * base.GetShadowScale();
+        return MathF.Max(0f, Visuals.EaseOut(1.0f, 0.8f, height / args.MaxHeight)) * base.GetShadowScale();
     }
 }

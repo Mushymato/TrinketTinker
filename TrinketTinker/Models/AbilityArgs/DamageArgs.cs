@@ -109,26 +109,13 @@ public class DamageArgs : IArgs
             {
                 Vector2 pos = target.GetBoundingBox().Center.ToVector2();
                 float drawLayer = pos.Y / 10000f + 2E-06f;
-                if (
-                    !Visuals.BroadcastTAS(
-                        StunTAS,
-                        pos,
-                        drawLayer,
-                        target.currentLocation,
-                        duration: StunTime
-                    )
-                )
+                if (!Visuals.BroadcastTAS(StunTAS, pos, drawLayer, target.currentLocation, duration: StunTime))
                     StunTAS = null;
             }
         }
         if (ExplodeRadius > 0)
         {
-            proc.LocationOrCurrent.explode(
-                target.TilePoint.ToVector2(),
-                ExplodeRadius,
-                proc.Farmer,
-                damage_amount: Min
-            );
+            proc.LocationOrCurrent.explode(target.TilePoint.ToVector2(), ExplodeRadius, proc.Farmer, damage_amount: Min);
         }
     }
 }

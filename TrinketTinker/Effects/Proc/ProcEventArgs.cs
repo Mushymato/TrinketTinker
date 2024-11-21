@@ -61,11 +61,7 @@ public class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
             return false;
         if (Proc == ProcOn.SlayMonster || Proc == ProcOn.DamageMonster)
         {
-            if (
-                Monster == null
-                || (data.IsBomb ?? IsBomb) != IsBomb
-                || (data.IsCriticalHit ?? IsCriticalHit) != IsCriticalHit
-            )
+            if (Monster == null || (data.IsBomb ?? IsBomb) != IsBomb || (data.IsCriticalHit ?? IsCriticalHit) != IsCriticalHit)
                 return false;
         }
         if (data.Condition != null)

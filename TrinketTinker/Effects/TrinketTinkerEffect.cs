@@ -86,10 +86,7 @@ public class TrinketTinkerEffect : TrinketEffect
             List<AbilityData> levelAbilities;
             if (GeneralStat > Data.Abilities.Count)
             {
-                ModEntry.Log(
-                    $"No abilities defined for level {GeneralStat}, default to highest level ({Data.Abilities.Count - 1})",
-                    LogLevel.Warn
-                );
+                ModEntry.Log($"No abilities defined for level {GeneralStat}, default to highest level ({Data.Abilities.Count - 1})", LogLevel.Warn);
                 levelAbilities = Data.Abilities.Last();
             }
             else
@@ -98,30 +95,17 @@ public class TrinketTinkerEffect : TrinketEffect
             }
             foreach (AbilityData ab in levelAbilities)
             {
-                if (
-                    Reflect.TryGetType(
-                        ab.AbilityClass,
-                        out Type? abilityType,
-                        TinkerConst.ABILITY_CLS
-                    )
-                )
+                if (Reflect.TryGetType(ab.AbilityClass, out Type? abilityType, TinkerConst.ABILITY_CLS))
                 {
-                    IAbility? ability = (IAbility?)
-                        Activator.CreateInstance(abilityType, this, ab, GeneralStat);
+                    IAbility? ability = (IAbility?)Activator.CreateInstance(abilityType, this, ab, GeneralStat);
                     if (ability != null && ability.Valid)
                         initAblities.Add(ability);
                     else
-                        ModEntry.Log(
-                            $"Skip invalid ability ({ab.AbilityClass} from {Trinket.QualifiedItemId})",
-                            LogLevel.Warn
-                        );
+                        ModEntry.Log($"Skip invalid ability ({ab.AbilityClass} from {Trinket.QualifiedItemId})", LogLevel.Warn);
                 }
                 else
                 {
-                    ModEntry.Log(
-                        $"Failed to get type for ability ({ab.AbilityClass} from {Trinket.QualifiedItemId})",
-                        LogLevel.Warn
-                    );
+                    ModEntry.Log($"Failed to get type for ability ({ab.AbilityClass} from {Trinket.QualifiedItemId})", LogLevel.Warn);
                 }
             }
         }
@@ -194,19 +178,10 @@ public class TrinketTinkerEffect : TrinketEffect
 
     public override void OnReceiveDamage(Farmer farmer, int damageAmount)
     {
-        EventReceiveDamage?.Invoke(
-            this,
-            new(ProcOn.ReceiveDamage, farmer) { DamageAmount = damageAmount }
-        );
+        EventReceiveDamage?.Invoke(this, new(ProcOn.ReceiveDamage, farmer) { DamageAmount = damageAmount });
     }
 
-    public override void OnDamageMonster(
-        Farmer farmer,
-        Monster monster,
-        int damageAmount,
-        bool isBomb,
-        bool isCriticalHit
-    )
+    public override void OnDamageMonster(Farmer farmer, Monster monster, int damageAmount, bool isBomb, bool isCriticalHit)
     {
         EventDamageMonster?.Invoke(
             this,
@@ -237,17 +212,10 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <param name="damageAmount"></param>
     public virtual void OnTrigger(Farmer farmer, string[] args, TriggerActionContext context)
     {
-        EventTrigger?.Invoke(
-            this,
-            new(ProcOn.Trigger, farmer) { TriggerArgs = args, TriggerContext = context }
-        );
+        EventTrigger?.Invoke(this, new(ProcOn.Trigger, farmer) { TriggerArgs = args, TriggerContext = context });
     }
 
-    public virtual void OnPlayerWarped(
-        Farmer farmer,
-        GameLocation oldLocation,
-        GameLocation newLocation
-    )
+    public virtual void OnPlayerWarped(Farmer farmer, GameLocation oldLocation, GameLocation newLocation)
     {
         EventPlayerWarped?.Invoke(this, new(ProcOn.Warped, farmer));
     }
@@ -269,10 +237,7 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <returns></returns>
     public override bool GenerateRandomStats(Trinket trinket)
     {
-        if (
-            trinket.modData.TryGetValue(ModData_Level, out string levelStr)
-            && int.TryParse(levelStr, out int level)
-        )
+        if (trinket.modData.TryGetValue(ModData_Level, out string levelStr) && int.TryParse(levelStr, out int level))
             SetLevel(trinket, level);
         else
             SetLevel(trinket, 0);
@@ -308,11 +273,7 @@ public class TrinketTinkerEffect : TrinketEffect
     {
         if (Data == null)
             return false;
-        int maxAbility = GetMaxUnlockedCount(
-            Data.AbilityUnlockConditions,
-            Data.Abilities.Count,
-            trinket
-        );
+        int maxAbility = GetMaxUnlockedCount(Data.AbilityUnlockConditions, Data.Abilities.Count, trinket);
         if (maxAbility <= 1)
         {
             SetLevel(trinket, 0);
@@ -334,11 +295,7 @@ public class TrinketTinkerEffect : TrinketEffect
     {
         if (Data == null)
             return false;
-        int maxVariant = GetMaxUnlockedCount(
-            Data.VariantUnlockConditions,
-            Data.Variants.Count,
-            trinket
-        );
+        int maxVariant = GetMaxUnlockedCount(Data.VariantUnlockConditions, Data.Variants.Count, trinket);
         if (maxVariant <= 1)
         {
             SetVariant(trinket, 0);
@@ -365,12 +322,7 @@ public class TrinketTinkerEffect : TrinketEffect
         trinket.descriptionSubstitutionTemplates.Clear();
         trinket.descriptionSubstitutionTemplates.Add((Data.MinLevel + GeneralStat).ToString());
         trinket.descriptionSubstitutionTemplates.Add(
-            string.Join(
-                '\n',
-                Data.Abilities[GeneralStat]
-                    .Where((ab) => ab.Description != null)
-                    .Select((ab) => ab.Description)
-            )
+            string.Join('\n', Data.Abilities[GeneralStat].Where((ab) => ab.Description != null).Select((ab) => ab.Description))
         );
         return;
     }

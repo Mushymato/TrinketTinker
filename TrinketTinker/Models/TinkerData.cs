@@ -16,7 +16,12 @@ public sealed class TinkerData
         set
         {
             if (value != null)
-                Motions.Insert(0, value);
+            {
+                if (Motions.Any())
+                    Motions[0] = value;
+                else
+                    Motions.Add(value);
+            }
         }
     }
 

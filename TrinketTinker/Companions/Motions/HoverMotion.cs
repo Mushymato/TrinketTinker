@@ -7,11 +7,7 @@ namespace TrinketTinker.Companions.Motions;
 
 /// <summary>Companion follows the player and bobs up and down</summary>
 /// <inheritdoc/>
-public sealed class HoverMotion(
-    TrinketTinkerCompanion companion,
-    MotionData data,
-    VariantData vdata
-) : BaseLerpMotion<HoverArgs>(companion, data, vdata)
+public sealed class HoverMotion(TrinketTinkerCompanion companion, MotionData data, VariantData vdata) : BaseLerpMotion<HoverArgs>(companion, data, vdata)
 {
     /// <summary>Perching anim clip name.</summary>
     private const string PERCHING = "Perching";
@@ -90,7 +86,6 @@ public sealed class HoverMotion(
     /// <inheritdoc/>
     public override Vector2 GetOffset()
     {
-        return new Vector2(0, args.Magnitude * (float)Math.Sin(Math.PI * theta) - DEFAULT_HEIGHT)
-            + base.GetOffset();
+        return new Vector2(0, args.Magnitude * (float)Math.Sin(Math.PI * theta) - DEFAULT_HEIGHT) + base.GetOffset();
     }
 }

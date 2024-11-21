@@ -34,39 +34,15 @@ public sealed record DrawSnapshot(
     /// <param name="sourceRect"></param>
     /// <param name="rotation"></param>
     /// <returns></returns>
-    internal DrawSnapshot CloneWithChanges(
-        Vector2? position = null,
-        Rectangle? sourceRect = null,
-        float? rotation = null
-    )
+    internal DrawSnapshot CloneWithChanges(Vector2? position = null, Rectangle? sourceRect = null, float? rotation = null)
     {
-        return new(
-            Texture,
-            position ?? Position,
-            sourceRect ?? SourceRect,
-            DrawColor,
-            rotation ?? Rotation,
-            Origin,
-            TextureScale,
-            Effects,
-            LayerDepth
-        );
+        return new(Texture, position ?? Position, sourceRect ?? SourceRect, DrawColor, rotation ?? Rotation, Origin, TextureScale, Effects, LayerDepth);
     }
 
     /// <summary>Do a draw to <see cref="SpriteBatch"/></summary>
     /// <param name="b"></param>
     internal void Draw(SpriteBatch b)
     {
-        b.Draw(
-            Texture,
-            Game1.GlobalToLocal(Position),
-            SourceRect,
-            DrawColor,
-            Rotation,
-            Origin,
-            TextureScale,
-            Effects,
-            LayerDepth
-        );
+        b.Draw(Texture, Game1.GlobalToLocal(Position), SourceRect, DrawColor, Rotation, Origin, TextureScale, Effects, LayerDepth);
     }
 }

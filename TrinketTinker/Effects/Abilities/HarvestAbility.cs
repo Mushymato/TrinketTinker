@@ -9,11 +9,7 @@ using TrinketTinker.Wheels;
 namespace TrinketTinker.Effects.Abilities;
 
 /// <summary>Harvest terrain features</summary>
-public abstract class BaseHarvestAbility<TArgs>(
-    TrinketTinkerEffect effect,
-    AbilityData data,
-    int lvl
-) : Ability<TArgs>(effect, data, lvl)
+public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<TArgs>(effect, data, lvl)
     where TArgs : TileArgs
 {
     /// <summary>Check that tile has object</summary>
@@ -35,13 +31,7 @@ public abstract class BaseHarvestAbility<TArgs>(
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
         bool harvested = false;
-        foreach (
-            Vector2 tile in args.IterateRandomTiles(
-                proc.LocationOrCurrent,
-                e.CompanionPosition ?? proc.Farmer.Position,
-                ProbeTile
-            )
-        )
+        foreach (Vector2 tile in args.IterateRandomTiles(proc.LocationOrCurrent, e.CompanionPosition ?? proc.Farmer.Position, ProbeTile))
         {
             harvested = DoHarvest(proc.LocationOrCurrent, proc.Farmer, tile) || harvested;
         }
@@ -50,8 +40,7 @@ public abstract class BaseHarvestAbility<TArgs>(
 }
 
 /// <summary>Harvest forage</summary>
-public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData data, int level)
-    : BaseHarvestAbility<TileArgs>(effect, data, level)
+public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData data, int level) : BaseHarvestAbility<TileArgs>(effect, data, level)
 {
     /// <inheritdocs/>
     protected override bool ProbeTile(GameLocation location, Vector2 tile)
@@ -62,19 +51,9 @@ public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData
     /// <inheritdocs/>
     protected override bool DoHarvest(GameLocation location, Farmer farmer, Vector2 tile)
     {
-        if (
-            location.objects.TryGetValue(tile, out SObject obj)
-            && obj.isForage()
-            && !obj.questItem.Value
-            && farmer.couldInventoryAcceptThisItem(obj)
-        )
+        if (location.objects.TryGetValue(tile, out SObject obj) && obj.isForage() && !obj.questItem.Value && farmer.couldInventoryAcceptThisItem(obj))
         {
-            obj.Quality = location.GetHarvestSpawnedObjectQuality(
-                farmer,
-                obj.isForage(),
-                obj.TileLocation,
-                Random.Shared
-            );
+            obj.Quality = location.GetHarvestSpawnedObjectQuality(farmer, obj.isForage(), obj.TileLocation, Random.Shared);
             farmer.addItemToInventoryBool(obj.getOne());
             if (!location.isFarmBuildingInterior())
             {
@@ -103,8 +82,7 @@ public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData
 }
 
 /// <summary>Harvest (destroy) stone</summary>
-public sealed class HarvestStoneAbility(TrinketTinkerEffect effect, AbilityData data, int level)
-    : BaseHarvestAbility<TileArgs>(effect, data, level)
+public sealed class HarvestStoneAbility(TrinketTinkerEffect effect, AbilityData data, int level) : BaseHarvestAbility<TileArgs>(effect, data, level)
 {
     /// <inheritdocs/>
     protected override bool ProbeTile(GameLocation location, Vector2 tile)
@@ -119,10 +97,7 @@ public sealed class HarvestStoneAbility(TrinketTinkerEffect effect, AbilityData 
             return false;
         void OnDebrisAdded(Debris debris)
         {
-            if (
-                debris.debrisType.Value == Debris.DebrisType.OBJECT
-                || debris.debrisType.Value == Debris.DebrisType.ARCHAEOLOGY
-            )
+            if (debris.debrisType.Value == Debris.DebrisType.OBJECT || debris.debrisType.Value == Debris.DebrisType.ARCHAEOLOGY)
             {
                 location.debris.Remove(debris);
                 debris.collect(farmer);
@@ -135,8 +110,7 @@ public sealed class HarvestStoneAbility(TrinketTinkerEffect effect, AbilityData 
         // stone break TAS, from Pickaxe.cs
         TemporaryAnimatedSprite temporaryAnimatedSprite =
             (
-                ItemRegistry.GetDataOrErrorItem(obj.QualifiedItemId).TextureName
-                    == "Maps\\springobjects"
+                ItemRegistry.GetDataOrErrorItem(obj.QualifiedItemId).TextureName == "Maps\\springobjects"
                 && obj.ParentSheetIndex < 200
                 && !Game1.objectData.ContainsKey((obj.ParentSheetIndex + 1).ToString())
                 && obj.QualifiedItemId != "(O)25"
@@ -153,14 +127,7 @@ public sealed class HarvestStoneAbility(TrinketTinkerEffect effect, AbilityData 
                 {
                     alphaFade = 0.01f,
                 }
-                : new TemporaryAnimatedSprite(
-                    47,
-                    tile * Game1.tileSize,
-                    Color.Gray,
-                    10,
-                    flipped: false,
-                    80f
-                );
+                : new TemporaryAnimatedSprite(47, tile * Game1.tileSize, Color.Gray, 10, flipped: false, 80f);
         Game1.Multiplayer.broadcastSprites(location, temporaryAnimatedSprite);
 
         return true;
@@ -168,35 +135,23 @@ public sealed class HarvestStoneAbility(TrinketTinkerEffect effect, AbilityData 
 }
 
 /// <summary>Harvest (destroy) stone</summary>
-public sealed class HarvestCropAbility(TrinketTinkerEffect effect, AbilityData data, int level)
-    : BaseHarvestAbility<TileArgs>(effect, data, level)
+public sealed class HarvestCropAbility(TrinketTinkerEffect effect, AbilityData data, int level) : BaseHarvestAbility<TileArgs>(effect, data, level)
 {
     /// <inheritdocs/>
     protected override bool ProbeTile(GameLocation location, Vector2 tile)
     {
-        return location.terrainFeatures.TryGetValue(tile, out TerrainFeature feature)
-            && feature is HoeDirt dirt
-            && dirt.crop != null
-            && dirt.crop.CanHarvest();
+        return location.terrainFeatures.TryGetValue(tile, out TerrainFeature feature) && feature is HoeDirt dirt && dirt.crop != null && dirt.crop.CanHarvest();
     }
 
     /// <inheritdocs/>
     protected override bool DoHarvest(GameLocation location, Farmer farmer, Vector2 tile)
     {
-        if (
-            !(
-                location.terrainFeatures.TryGetValue(tile, out TerrainFeature feature)
-                && feature is HoeDirt dirt
-            )
-        )
+        if (!(location.terrainFeatures.TryGetValue(tile, out TerrainFeature feature) && feature is HoeDirt dirt))
             return false;
         bool harvested = false;
         void OnDebrisAdded(Debris debris)
         {
-            if (
-                debris.debrisType.Value == Debris.DebrisType.OBJECT
-                || debris.debrisType.Value == Debris.DebrisType.ARCHAEOLOGY
-            )
+            if (debris.debrisType.Value == Debris.DebrisType.OBJECT || debris.debrisType.Value == Debris.DebrisType.ARCHAEOLOGY)
             {
                 location.debris.Remove(debris);
                 debris.collect(farmer);

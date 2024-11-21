@@ -6,11 +6,8 @@ namespace TrinketTinker.Companions.Motions;
 
 /// <summary>Companion's offset is adjusted depending on player facing direction</summary>
 /// <inheritdoc/>
-public sealed class RelativeMotion(
-    TrinketTinkerCompanion companion,
-    MotionData mdata,
-    VariantData vdata
-) : BaseStaticMotion<StaticArgs>(companion, mdata, vdata)
+public sealed class RelativeMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata)
+    : BaseStaticMotion<StaticArgs>(companion, mdata, vdata)
 {
     /// <inheritdoc/>
     protected override float GetPositionalLayerDepth(Vector2 offset)

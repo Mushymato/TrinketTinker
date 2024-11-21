@@ -7,8 +7,7 @@ namespace TrinketTinker.Companions.Motions;
 
 /// <summary>Companion orbits around a point</summary>
 /// <inheritdoc/>
-public class OrbitMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata)
-    : BaseStaticMotion<OrbitArgs>(companion, mdata, vdata)
+public class OrbitMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata) : BaseStaticMotion<OrbitArgs>(companion, mdata, vdata)
 {
     /// <summary>trig function input</summary>
     private double theta = 0f;
@@ -31,10 +30,7 @@ public class OrbitMotion(TrinketTinkerCompanion companion, MotionData mdata, Var
     /// <inheritdoc/>
     public override Vector2 GetOffset()
     {
-        return new Vector2(
-                args.RadiusX * (float)Math.Cos(Math.PI * theta),
-                args.RadiusY * (float)Math.Sin(Math.PI * theta) - args.Height
-            ) + base.GetOffset();
+        return new Vector2(args.RadiusX * (float)Math.Cos(Math.PI * theta), args.RadiusY * (float)Math.Sin(Math.PI * theta) - args.Height) + base.GetOffset();
     }
 
     /// <summary>Get shadow offset, same as offset but -</summary>
