@@ -88,6 +88,22 @@
 <h1 id="animation-clips">Animation Clips</h1>
 
 <p>Beyond the basic <a href="3.0-Direction.html">directional movement animation</a>, companions can also have special animation states triggered by either a motion or an ability. These extra animations must live on the same sprite sheet and have the start frame + frame length specified in <code>AnimData</code>, with the right key.</p>
+<p>The start frame counts up from 0 and can be any frame on the sheet, including the previously discussed movement frames. Consider these 2 situations:</p>
+<ol>
+<li>The clip reuses frames in the directional animation:
+<ul>
+<li>No new frames added.</li>
+<li>Count to the desired starting frame by going left to right, up to down.</li>
+</ul>
+</li>
+<li>The clip's frames are unique:
+<ul>
+<li>Append new frames to the end of the animation sheet.</li>
+<li>Count the length of the directional animation (e.g. 4*4 = 16), this will be the start frame.</li>
+<li>Additional clips that follow would start even later of course.</li>
+</ul>
+</li>
+</ol>
 <p>Animation clips can be played back once (oneshot), or continuously played over the directional movement animation (override). This is decided by particular motions/abilities that request the animation.</p>
 <h2 id="structure">Structure</h2>
 <table>

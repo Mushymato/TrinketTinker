@@ -3378,6 +3378,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.TrinketTinkerEffect.RerollVariant
   nameWithType: TrinketTinkerEffect.RerollVariant
+- uid: TrinketTinker.Effects.TrinketTinkerEffect.ResetVariant(StardewValley.Objects.Trinkets.Trinket)
+  name: ResetVariant(Trinket)
+  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_ResetVariant_StardewValley_Objects_Trinkets_Trinket_
+  commentId: M:TrinketTinker.Effects.TrinketTinkerEffect.ResetVariant(StardewValley.Objects.Trinkets.Trinket)
+  fullName: TrinketTinker.Effects.TrinketTinkerEffect.ResetVariant(StardewValley.Objects.Trinkets.Trinket)
+  nameWithType: TrinketTinkerEffect.ResetVariant(Trinket)
+- uid: TrinketTinker.Effects.TrinketTinkerEffect.ResetVariant*
+  name: ResetVariant
+  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_ResetVariant_
+  commentId: Overload:TrinketTinker.Effects.TrinketTinkerEffect.ResetVariant
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.TrinketTinkerEffect.ResetVariant
+  nameWithType: TrinketTinkerEffect.ResetVariant
 - uid: TrinketTinker.Effects.TrinketTinkerEffect.SetLevel(StardewValley.Objects.Trinkets.Trinket,System.Int32)
   name: SetLevel(Trinket, int)
   href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_SetLevel_StardewValley_Objects_Trinkets_Trinket_System_Int32_
@@ -3496,10 +3509,46 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Extras.ItemQuery.CREATE_TRINKET_ALL_VARIANTS
   nameWithType: ItemQuery.CREATE_TRINKET_ALL_VARIANTS
+- uid: TrinketTinker.Extras.ItemQuery.GameStateQuery_INPUT_IS_TINKER
+  name: GameStateQuery_INPUT_IS_TINKER
+  href: api/TrinketTinker.Extras.ItemQuery.html#TrinketTinker_Extras_ItemQuery_GameStateQuery_INPUT_IS_TINKER
+  commentId: P:TrinketTinker.Extras.ItemQuery.GameStateQuery_INPUT_IS_TINKER
+  fullName: TrinketTinker.Extras.ItemQuery.GameStateQuery_INPUT_IS_TINKER
+  nameWithType: ItemQuery.GameStateQuery_INPUT_IS_TINKER
+- uid: TrinketTinker.Extras.ItemQuery.GameStateQuery_INPUT_IS_TINKER*
+  name: GameStateQuery_INPUT_IS_TINKER
+  href: api/TrinketTinker.Extras.ItemQuery.html#TrinketTinker_Extras_ItemQuery_GameStateQuery_INPUT_IS_TINKER_
+  commentId: Overload:TrinketTinker.Extras.ItemQuery.GameStateQuery_INPUT_IS_TINKER
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.ItemQuery.GameStateQuery_INPUT_IS_TINKER
+  nameWithType: ItemQuery.GameStateQuery_INPUT_IS_TINKER
+- uid: TrinketTinker.Extras.ItemQuery.INPUT_IS_TINKER(System.String[],StardewValley.Delegates.GameStateQueryContext)
+  name: INPUT_IS_TINKER(string[], GameStateQueryContext)
+  href: api/TrinketTinker.Extras.ItemQuery.html#TrinketTinker_Extras_ItemQuery_INPUT_IS_TINKER_System_String___StardewValley_Delegates_GameStateQueryContext_
+  commentId: M:TrinketTinker.Extras.ItemQuery.INPUT_IS_TINKER(System.String[],StardewValley.Delegates.GameStateQueryContext)
+  name.vb: INPUT_IS_TINKER(String(), GameStateQueryContext)
+  fullName: TrinketTinker.Extras.ItemQuery.INPUT_IS_TINKER(string[], StardewValley.Delegates.GameStateQueryContext)
+  fullName.vb: TrinketTinker.Extras.ItemQuery.INPUT_IS_TINKER(String(), StardewValley.Delegates.GameStateQueryContext)
+  nameWithType: ItemQuery.INPUT_IS_TINKER(string[], GameStateQueryContext)
+  nameWithType.vb: ItemQuery.INPUT_IS_TINKER(String(), GameStateQueryContext)
+- uid: TrinketTinker.Extras.ItemQuery.INPUT_IS_TINKER*
+  name: INPUT_IS_TINKER
+  href: api/TrinketTinker.Extras.ItemQuery.html#TrinketTinker_Extras_ItemQuery_INPUT_IS_TINKER_
+  commentId: Overload:TrinketTinker.Extras.ItemQuery.INPUT_IS_TINKER
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.ItemQuery.INPUT_IS_TINKER
+  nameWithType: ItemQuery.INPUT_IS_TINKER
 - uid: TrinketTinker.Extras.ItemQuery.ItemQuery_CREATE_TRINKET
   name: ItemQuery_CREATE_TRINKET
   href: api/TrinketTinker.Extras.ItemQuery.html#TrinketTinker_Extras_ItemQuery_ItemQuery_CREATE_TRINKET
-  commentId: F:TrinketTinker.Extras.ItemQuery.ItemQuery_CREATE_TRINKET
+  commentId: P:TrinketTinker.Extras.ItemQuery.ItemQuery_CREATE_TRINKET
+  fullName: TrinketTinker.Extras.ItemQuery.ItemQuery_CREATE_TRINKET
+  nameWithType: ItemQuery.ItemQuery_CREATE_TRINKET
+- uid: TrinketTinker.Extras.ItemQuery.ItemQuery_CREATE_TRINKET*
+  name: ItemQuery_CREATE_TRINKET
+  href: api/TrinketTinker.Extras.ItemQuery.html#TrinketTinker_Extras_ItemQuery_ItemQuery_CREATE_TRINKET_
+  commentId: Overload:TrinketTinker.Extras.ItemQuery.ItemQuery_CREATE_TRINKET
+  isSpec: "True"
   fullName: TrinketTinker.Extras.ItemQuery.ItemQuery_CREATE_TRINKET
   nameWithType: ItemQuery.ItemQuery_CREATE_TRINKET
 - uid: TrinketTinker.Extras.ItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS
