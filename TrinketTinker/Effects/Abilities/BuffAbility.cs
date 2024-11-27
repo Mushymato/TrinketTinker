@@ -6,7 +6,8 @@ using TrinketTinker.Models.AbilityArgs;
 namespace TrinketTinker.Effects.Abilities;
 
 /// <summary>Applies a buff on proc.</summary>
-public sealed class BuffAbility(TrinketTinkerEffect effect, AbilityData data, int lvl) : Ability<BuffArgs>(effect, data, lvl)
+public sealed class BuffAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
+    : Ability<BuffArgs>(effect, data, lvl)
 {
     /// <summary>Apply or refreshes the buff.</summary>
     /// <param name="proc"></param>

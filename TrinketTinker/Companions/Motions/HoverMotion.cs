@@ -7,7 +7,8 @@ namespace TrinketTinker.Companions.Motions;
 
 /// <summary>Companion follows the player and bobs up and down</summary>
 /// <inheritdoc/>
-public sealed class HoverMotion(TrinketTinkerCompanion companion, MotionData data, VariantData vdata) : BaseLerpMotion<HoverArgs>(companion, data, vdata)
+public sealed class HoverMotion(TrinketTinkerCompanion companion, MotionData data, VariantData vdata)
+    : BaseLerpMotion<HoverArgs>(companion, data, vdata)
 {
     /// <summary>Perching anim clip name.</summary>
     private const string PERCHING = "Perching";

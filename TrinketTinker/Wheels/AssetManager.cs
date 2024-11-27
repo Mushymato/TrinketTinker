@@ -73,7 +73,9 @@ internal static class AssetManager
         string? effectClass = typeof(TrinketTinkerEffect).AssemblyQualifiedName;
         if (effectClass == null)
         {
-            ModEntry.LogOnce($"Could not get qualified name for TrinketTinkerEffect({typeof(TrinketTinkerEffect)}), will use hardcoded value.");
+            ModEntry.LogOnce(
+                $"Could not get qualified name for TrinketTinkerEffect({typeof(TrinketTinkerEffect)}), will use hardcoded value."
+            );
             effectClass = "TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker";
         }
 

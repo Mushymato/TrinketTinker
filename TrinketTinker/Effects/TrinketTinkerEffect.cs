@@ -86,7 +86,10 @@ public class TrinketTinkerEffect : TrinketEffect
             List<AbilityData> levelAbilities;
             if (GeneralStat > Data.Abilities.Count)
             {
-                ModEntry.Log($"No abilities defined for level {GeneralStat}, default to highest level ({Data.Abilities.Count - 1})", LogLevel.Warn);
+                ModEntry.Log(
+                    $"No abilities defined for level {GeneralStat}, default to highest level ({Data.Abilities.Count - 1})",
+                    LogLevel.Warn
+                );
                 levelAbilities = Data.Abilities.Last();
             }
             else
@@ -101,11 +104,17 @@ public class TrinketTinkerEffect : TrinketEffect
                     if (ability != null && ability.Valid)
                         initAblities.Add(ability);
                     else
-                        ModEntry.Log($"Skip invalid ability ({ab.AbilityClass} from {Trinket.QualifiedItemId})", LogLevel.Warn);
+                        ModEntry.Log(
+                            $"Skip invalid ability ({ab.AbilityClass} from {Trinket.QualifiedItemId})",
+                            LogLevel.Warn
+                        );
                 }
                 else
                 {
-                    ModEntry.Log($"Failed to get type for ability ({ab.AbilityClass} from {Trinket.QualifiedItemId})", LogLevel.Warn);
+                    ModEntry.Log(
+                        $"Failed to get type for ability ({ab.AbilityClass} from {Trinket.QualifiedItemId})",
+                        LogLevel.Warn
+                    );
                 }
             }
         }
@@ -181,7 +190,13 @@ public class TrinketTinkerEffect : TrinketEffect
         EventReceiveDamage?.Invoke(this, new(ProcOn.ReceiveDamage, farmer) { DamageAmount = damageAmount });
     }
 
-    public override void OnDamageMonster(Farmer farmer, Monster monster, int damageAmount, bool isBomb, bool isCriticalHit)
+    public override void OnDamageMonster(
+        Farmer farmer,
+        Monster monster,
+        int damageAmount,
+        bool isBomb,
+        bool isCriticalHit
+    )
     {
         EventDamageMonster?.Invoke(
             this,
@@ -322,7 +337,10 @@ public class TrinketTinkerEffect : TrinketEffect
         trinket.descriptionSubstitutionTemplates.Clear();
         trinket.descriptionSubstitutionTemplates.Add((Data.MinLevel + GeneralStat).ToString());
         trinket.descriptionSubstitutionTemplates.Add(
-            string.Join('\n', Data.Abilities[GeneralStat].Where((ab) => ab.Description != null).Select((ab) => ab.Description))
+            string.Join(
+                '\n',
+                Data.Abilities[GeneralStat].Where((ab) => ab.Description != null).Select((ab) => ab.Description)
+            )
         );
         return;
     }

@@ -103,7 +103,14 @@ public static class TrinketColorizer
                             Condition = ItemQuery.GameStateQuery_INPUT_IS_TINKER,
                         },
                     ],
-                    OutputItem = [new() { OutputMethod = $"{typeof(TrinketColorizer).AssemblyQualifiedName}:{nameof(OutputTrinketColorizer)}" }],
+                    OutputItem =
+                    [
+                        new()
+                        {
+                            OutputMethod =
+                                $"{typeof(TrinketColorizer).AssemblyQualifiedName}:{nameof(OutputTrinketColorizer)}",
+                        },
+                    ],
                 },
             ],
             AdditionalConsumedItems =
@@ -132,7 +139,13 @@ public static class TrinketColorizer
                     Condition = ItemQuery.GameStateQuery_INPUT_IS_TINKER,
                 },
             ];
-            newRule.OutputItem = [new() { OutputMethod = $"{typeof(TrinketColorizer).AssemblyQualifiedName}:{nameof(OutputTinkerAnvil)}" }];
+            newRule.OutputItem =
+            [
+                new()
+                {
+                    OutputMethod = $"{typeof(TrinketColorizer).AssemblyQualifiedName}:{nameof(OutputTinkerAnvil)}",
+                },
+            ];
             anvilData.OutputRules.Insert(0, newRule);
         }
     }

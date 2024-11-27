@@ -122,7 +122,12 @@ public sealed class TinkerProjectile : Projectile
     /// <summary>Get the texture to draw for the projectile.</summary>
     private Rectangle GetCustomSourceRect(Texture2D texture)
     {
-        return Game1.getSourceRectForStandardTileSheet(texture, currentTileSheetIndex.Value, projectileSpriteWidth.Value, projectileSpriteHeight.Value);
+        return Game1.getSourceRectForStandardTileSheet(
+            texture,
+            currentTileSheetIndex.Value,
+            projectileSpriteWidth.Value,
+            projectileSpriteHeight.Value
+        );
     }
 
     /// <summary>Needed to override this to get custom texture weh</summary>
@@ -165,7 +170,11 @@ public sealed class TinkerProjectile : Projectile
                 texture,
                 Game1.GlobalToLocal(
                     Game1.viewport,
-                    Vector2.Lerp((num2 == tail.Count - 1) ? value : tail.ElementAt(num2 + 1), tail.ElementAt(num2), (float)tailCounter / 50f)
+                    Vector2.Lerp(
+                        (num2 == tail.Count - 1) ? value : tail.ElementAt(num2 + 1),
+                        tail.ElementAt(num2),
+                        (float)tailCounter / 50f
+                    )
                         + new Vector2(0f, 0f - height.Value)
                         + new Vector2(32f, 32f)
                 ),
@@ -229,12 +238,24 @@ public sealed class TinkerProjectile : Projectile
                 if (stunTAS.Value != null)
                 {
                     Vector2 pos = monster.GetBoundingBox().Center.ToVector2();
-                    Visuals.BroadcastTAS(stunTAS.Value, pos, (pos.Y + 96f) / 10000f, location, duration: stunTime.Value, rotation: rotation);
+                    Visuals.BroadcastTAS(
+                        stunTAS.Value,
+                        pos,
+                        (pos.Y + 96f) / 10000f,
+                        location,
+                        duration: stunTime.Value,
+                        rotation: rotation
+                    );
                 }
             }
             if (explodeRadius.Value > 0)
             {
-                location.explode(monster.TilePoint.ToVector2(), explodeRadius.Value, playerWhoFiredMe, damage_amount: minDamage.Value);
+                location.explode(
+                    monster.TilePoint.ToVector2(),
+                    explodeRadius.Value,
+                    playerWhoFiredMe,
+                    damage_amount: minDamage.Value
+                );
             }
             if (!monster.IsInvisible)
             {
@@ -251,7 +272,11 @@ public sealed class TinkerProjectile : Projectile
 
     public override void behaviorOnCollisionWithPlayer(GameLocation location, Farmer player) { }
 
-    public override void behaviorOnCollisionWithTerrainFeature(TerrainFeature t, Vector2 tileLocation, GameLocation location)
+    public override void behaviorOnCollisionWithTerrainFeature(
+        TerrainFeature t,
+        Vector2 tileLocation,
+        GameLocation location
+    )
     {
         t.performUseAction(tileLocation);
         if (!ignoreObjectCollisions.Value)
@@ -272,7 +297,11 @@ public sealed class TinkerProjectile : Projectile
     {
         xVelocity.Value += acceleration.X;
         yVelocity.Value += acceleration.Y;
-        if (maxVelocity.Value != -1f && Math.Sqrt(xVelocity.Value * xVelocity.Value + yVelocity.Value * yVelocity.Value) >= (double)maxVelocity.Value)
+        if (
+            maxVelocity.Value != -1f
+            && Math.Sqrt(xVelocity.Value * xVelocity.Value + yVelocity.Value * yVelocity.Value)
+                >= (double)maxVelocity.Value
+        )
         {
             xVelocity.Value -= acceleration.X;
             yVelocity.Value -= acceleration.Y;
@@ -317,7 +346,12 @@ public sealed class TinkerProjectile : Projectile
             if (homingTimer > 100f)
             {
                 homingTimer = 0;
-                Monster homingTarget = Utility.findClosestMonsterWithinRange(location, position.Value, homingRange.Value, ignoreUntargetables: true);
+                Monster homingTarget = Utility.findClosestMonsterWithinRange(
+                    location,
+                    position.Value,
+                    homingRange.Value,
+                    ignoreUntargetables: true
+                );
                 if (homingTarget != null)
                 {
                     UpdateVelocityAndAcceleration(

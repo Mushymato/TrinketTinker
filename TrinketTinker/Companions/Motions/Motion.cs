@@ -139,7 +139,12 @@ public abstract class Motion<TArgs> : IMotion
             {
                 case AnchorTarget.Monster:
                     {
-                        Monster closest = Utility.findClosestMonsterWithinRange(location, originPoint, anchor.Range, ignoreUntargetables: true);
+                        Monster closest = Utility.findClosestMonsterWithinRange(
+                            location,
+                            originPoint,
+                            anchor.Range,
+                            ignoreUntargetables: true
+                        );
                         if (closest != null)
                         {
                             currAnchorTarget = AnchorTarget.Monster;
@@ -156,7 +161,10 @@ public abstract class Motion<TArgs> : IMotion
                     goto case AnchorTarget.Object;
                 case AnchorTarget.Object:
                     {
-                        if (Places.ClosestMatchingObject(location, originPoint, anchor.Range, objMatch) is SObject closest)
+                        if (
+                            Places.ClosestMatchingObject(location, originPoint, anchor.Range, objMatch)
+                            is SObject closest
+                        )
                         {
                             currAnchorTarget = anchor.Mode;
                             c.Anchor = Utility.PointToVector2(closest.GetBoundingBox().Center) - Vector2.One;
@@ -169,10 +177,16 @@ public abstract class Motion<TArgs> : IMotion
                     goto case AnchorTarget.TerrainFeature;
                 case AnchorTarget.TerrainFeature:
                     {
-                        if (Places.ClosestMatchingTerrainFeature(location, originPoint, anchor.Range, terrainMatch) is TerrainFeature closest)
+                        if (
+                            Places.ClosestMatchingTerrainFeature(location, originPoint, anchor.Range, terrainMatch)
+                            is TerrainFeature closest
+                        )
                         {
                             currAnchorTarget = anchor.Mode;
-                            c.Anchor = closest.Tile * Game1.tileSize + new Vector2(Game1.tileSize / 2, Game1.tileSize / 2) - Vector2.One;
+                            c.Anchor =
+                                closest.Tile * Game1.tileSize
+                                + new Vector2(Game1.tileSize / 2, Game1.tileSize / 2)
+                                - Vector2.One;
                             return;
                         }
                     }
@@ -302,7 +316,10 @@ public abstract class Motion<TArgs> : IMotion
         if (md.HideDuringEvents && Game1.eventUp)
             return;
 
-        while (drawSnapshotQueue.TryPeek(out DrawSnapshot? _, out long priority) && Game1.currentGameTime.TotalGameTime.Ticks >= priority)
+        while (
+            drawSnapshotQueue.TryPeek(out DrawSnapshot? _, out long priority)
+            && Game1.currentGameTime.TotalGameTime.Ticks >= priority
+        )
         {
             drawSnapshotQueue.Dequeue().Draw(b);
         }
@@ -377,7 +394,8 @@ public abstract class Motion<TArgs> : IMotion
         {
             drawSnapshotQueue.Enqueue(
                 snapshot,
-                Game1.currentGameTime.TotalGameTime.Ticks + TimeSpan.FromMilliseconds(md.RepeatInterval * totalFrameSets * repeat).Ticks
+                Game1.currentGameTime.TotalGameTime.Ticks
+                    + TimeSpan.FromMilliseconds(md.RepeatInterval * totalFrameSets * repeat).Ticks
             );
         }
 
@@ -393,11 +411,14 @@ public abstract class Motion<TArgs> : IMotion
                 }
                 else
                 {
-                    framesetSnapshot = snapshot.CloneWithChanges(sourceRect: cs.GetSourceRect(cs.currentFrame + frameset * TotalFrames));
+                    framesetSnapshot = snapshot.CloneWithChanges(
+                        sourceRect: cs.GetSourceRect(cs.currentFrame + frameset * TotalFrames)
+                    );
                 }
                 drawSnapshotQueue.Enqueue(
                     framesetSnapshot,
-                    Game1.currentGameTime.TotalGameTime.Ticks + TimeSpan.FromMilliseconds(md.RepeatInterval * (totalFrameSets * repeat + frameset)).Ticks
+                    Game1.currentGameTime.TotalGameTime.Ticks
+                        + TimeSpan.FromMilliseconds(md.RepeatInterval * (totalFrameSets * repeat + frameset)).Ticks
                 );
             }
         }
@@ -453,7 +474,12 @@ public abstract class Motion<TArgs> : IMotion
     protected virtual bool CheckSpriteCollision(GameLocation location, Vector2 spritePosition)
     {
         return location.isCollidingPosition(
-            new Rectangle((int)spritePosition.X - vd.Width / 2, (int)spritePosition.Y - vd.Height / 2, vd.Width, vd.Height),
+            new Rectangle(
+                (int)spritePosition.X - vd.Width / 2,
+                (int)spritePosition.Y - vd.Height / 2,
+                vd.Width,
+                vd.Height
+            ),
             Game1.viewport,
             isFarmer: false,
             0,

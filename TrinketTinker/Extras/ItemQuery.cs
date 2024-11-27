@@ -25,7 +25,13 @@ public static class ItemQuery
     /// <param name="context"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    private static bool TryGetOptionalOrRandom(string[] array, int index, int maxValue, ItemQueryContext context, out int value)
+    private static bool TryGetOptionalOrRandom(
+        string[] array,
+        int index,
+        int maxValue,
+        ItemQueryContext context,
+        out int value
+    )
     {
         if (array.Length > index && array[index] == RANDOM)
         {
@@ -58,10 +64,13 @@ public static class ItemQuery
     )
     {
         string[] array = ItemQueryResolver.Helpers.SplitArguments(arguments);
-        if (!ArgUtility.TryGet(array, 0, out string trinketId, out string error1, allowBlank: false, "string trinketId"))
+        if (
+            !ArgUtility.TryGet(array, 0, out string trinketId, out string error1, allowBlank: false, "string trinketId")
+        )
             return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, error1);
 
-        TrinketDataDefinition trinketDataDefinition = (TrinketDataDefinition)ItemRegistry.GetTypeDefinition(ItemRegistry.type_trinket);
+        TrinketDataDefinition trinketDataDefinition = (TrinketDataDefinition)
+            ItemRegistry.GetTypeDefinition(ItemRegistry.type_trinket);
         if (trinketDataDefinition.GetData(trinketId) is ParsedItemData trinketData)
         {
             Trinket trinket = (Trinket)trinketDataDefinition.CreateItem(trinketData);
@@ -99,10 +108,13 @@ public static class ItemQuery
     )
     {
         string[] array = ItemQueryResolver.Helpers.SplitArguments(arguments);
-        if (!ArgUtility.TryGet(array, 0, out string trinketId, out string error1, allowBlank: false, "string trinketId"))
+        if (
+            !ArgUtility.TryGet(array, 0, out string trinketId, out string error1, allowBlank: false, "string trinketId")
+        )
             return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, error1);
 
-        TrinketDataDefinition trinketDataDefinition = (TrinketDataDefinition)ItemRegistry.GetTypeDefinition(ItemRegistry.type_trinket);
+        TrinketDataDefinition trinketDataDefinition = (TrinketDataDefinition)
+            ItemRegistry.GetTypeDefinition(ItemRegistry.type_trinket);
         if (trinketDataDefinition.GetData(trinketId) is not ParsedItemData trinketData)
             return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, $"No trinket with id {trinketId}.");
         Trinket trinket = (Trinket)trinketDataDefinition.CreateItem(trinketData);

@@ -80,7 +80,14 @@ internal static class Visuals
     /// <param name="duration"></param>
     /// <param name="rotation"></param>
     /// <returns></returns>
-    public static bool BroadcastTAS(string tasId, Vector2 position, float drawLayer, GameLocation location, float? duration = null, float? rotation = null)
+    public static bool BroadcastTAS(
+        string tasId,
+        Vector2 position,
+        float drawLayer,
+        GameLocation location,
+        float? duration = null,
+        float? rotation = null
+    )
     {
         if (AssetManager.TASData.TryGetValue(tasId, out TemporaryAnimatedSpriteDefinition? tasDef))
         {
@@ -119,7 +126,10 @@ internal static class Visuals
         }
         if (invalidTASIds.Count > 0)
         {
-            ModEntry.LogOnce($"No {AssetManager.TASAsset} entry found for: {string.Join(',', invalidTASIds)}", LogLevel.Warn);
+            ModEntry.LogOnce(
+                $"No {AssetManager.TASAsset} entry found for: {string.Join(',', invalidTASIds)}",
+                LogLevel.Warn
+            );
             tasIds.RemoveAll(invalidTASIds.Contains);
         }
     }

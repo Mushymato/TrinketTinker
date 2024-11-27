@@ -115,7 +115,12 @@ public class DamageArgs : IArgs
         }
         if (ExplodeRadius > 0)
         {
-            proc.LocationOrCurrent.explode(target.TilePoint.ToVector2(), ExplodeRadius, proc.Farmer, damage_amount: Min);
+            proc.LocationOrCurrent.explode(
+                target.TilePoint.ToVector2(),
+                ExplodeRadius,
+                proc.Farmer,
+                damage_amount: Min
+            );
         }
     }
 }

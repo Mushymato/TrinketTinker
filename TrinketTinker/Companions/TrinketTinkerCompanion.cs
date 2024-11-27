@@ -127,8 +127,10 @@ public class TrinketTinkerCompanion : Companion
             .AddField(_netLerp, "_netLerp")
             .AddField(_disableCompanion, "_disableCompanion");
         _id.fieldChangeVisibleEvent += InitCompanionData;
-        _oneshotKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) => Motion?.SetOneshotClip(newValue);
-        _overrideKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) => Motion?.SetOverrideClip(newValue);
+        _oneshotKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
+            Motion?.SetOneshotClip(newValue);
+        _overrideKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
+            Motion?.SetOverrideClip(newValue);
     }
 
     /// <summary>When <see cref="Id"/> is changed through net event, fetch companion data and build all fields.</summary>

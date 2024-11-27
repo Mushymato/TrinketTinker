@@ -19,7 +19,12 @@ internal static class Places
     /// <param name="range">Pixel range</param>
     /// <param name="match">Filter predicate</param>
     /// <returns></returns>
-    public static SObject? ClosestMatchingObject(GameLocation location, Vector2 originPoint, int range, Func<SObject, bool>? match)
+    public static SObject? ClosestMatchingObject(
+        GameLocation location,
+        Vector2 originPoint,
+        int range,
+        Func<SObject, bool>? match
+    )
     {
         SObject? result = null;
         float minDistance = range + 1;
@@ -44,7 +49,12 @@ internal static class Places
     /// <param name="range">Pixel range</param>
     /// <param name="match">Filter predicate</param>
     /// <returns></returns>
-    public static TerrainFeature? ClosestMatchingTerrainFeature(GameLocation location, Vector2 originPoint, int range, Func<TerrainFeature, bool>? match)
+    public static TerrainFeature? ClosestMatchingTerrainFeature(
+        GameLocation location,
+        Vector2 originPoint,
+        int range,
+        Func<TerrainFeature, bool>? match
+    )
     {
         TerrainFeature? result = null;
         float minDistance = range + 1;
@@ -68,7 +78,8 @@ internal static class Places
     /// <returns></returns>
     public static bool CanHarvest(this Crop crop)
     {
-        return (crop.currentPhase.Value >= (crop.phaseDays.Count - 1)) && (!crop.fullyGrown.Value || crop.dayOfCurrentPhase.Value <= 0);
+        return (crop.currentPhase.Value >= (crop.phaseDays.Count - 1))
+            && (!crop.fullyGrown.Value || crop.dayOfCurrentPhase.Value <= 0);
     }
 
     /// <summary>Disable all trinket abilities in certain locations</summary>
@@ -78,7 +89,8 @@ internal static class Places
     {
         if (location?.GetData() is not LocationData data || data.CustomFields == null)
             return false;
-        return data.CustomFields.TryGetValue(Field_DisableTrinketAbilities, out string? value) && value.EqualsIgnoreCase("true");
+        return data.CustomFields.TryGetValue(Field_DisableTrinketAbilities, out string? value)
+            && value.EqualsIgnoreCase("true");
     }
 
     /// <summary>Hide all trinket companions in certain locations</summary>
@@ -90,6 +102,7 @@ internal static class Places
             return true;
         if (location.GetData() is not LocationData data)
             return true;
-        return (data.CustomFields?.TryGetValue(Field_DisableTrinketCompanions, out string? value) ?? false) && value.EqualsIgnoreCase("true");
+        return (data.CustomFields?.TryGetValue(Field_DisableTrinketCompanions, out string? value) ?? false)
+            && value.EqualsIgnoreCase("true");
     }
 }

@@ -56,7 +56,12 @@ public sealed class TinkerAnimSprite
     /// <returns></returns>
     public Rectangle GetSourceRect(int frame)
     {
-        return new Rectangle(frame * vd.Width % Texture.Width, frame * vd.Width / Texture.Width * vd.Height, vd.Width, vd.Height);
+        return new Rectangle(
+            frame * vd.Width % Texture.Width,
+            frame * vd.Width / Texture.Width * vd.Height,
+            vd.Width,
+            vd.Height
+        );
     }
 
     private void UpdateSourceRect()

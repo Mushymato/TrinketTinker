@@ -41,7 +41,11 @@ internal sealed class ModEntry : Mod
 
 #if DEBUG
         // Print all types
-        helper.ConsoleCommands.Add("tt_print_types", "Print valid Effect, Companion, Motion, and Ability types.", ConsolePrintTypenames);
+        helper.ConsoleCommands.Add(
+            "tt_print_types",
+            "Print valid Effect, Companion, Motion, and Ability types.",
+            ConsolePrintTypenames
+        );
         // Spawn a bunch of forage around the player
         helper.ConsoleCommands.Add("tt_spawn_forage", "Spawn forage for testing.", ConsoleSpawnForage);
 #endif
@@ -56,7 +60,10 @@ internal sealed class ModEntry : Mod
         // Add item query for creating a trinket with specific level and variant
         ItemQueryResolver.Register(ItemQuery.ItemQuery_CREATE_TRINKET, ItemQuery.CREATE_TRINKET);
         // Add item query for creating all variants of a trinket
-        ItemQueryResolver.Register(ItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS, ItemQuery.CREATE_TRINKET_ALL_VARIANTS);
+        ItemQueryResolver.Register(
+            ItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS,
+            ItemQuery.CREATE_TRINKET_ALL_VARIANTS
+        );
 
         // Add GSQ for checking trinket is for this mod
         GameStateQuery.Register(ItemQuery.GameStateQuery_INPUT_IS_TINKER, ItemQuery.INPUT_IS_TINKER);

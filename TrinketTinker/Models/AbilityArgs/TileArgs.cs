@@ -35,7 +35,11 @@ public class TileArgs : IArgs
     /// <param name="location"></param>
     /// <param name="position"></param>
     /// <returns></returns>
-    internal IEnumerable<Vector2> IterateRandomTiles(GameLocation location, Vector2 position, Func<GameLocation, Vector2, bool>? match = null)
+    internal IEnumerable<Vector2> IterateRandomTiles(
+        GameLocation location,
+        Vector2 position,
+        Func<GameLocation, Vector2, bool>? match = null
+    )
     {
         List<Vector2> tiles = GetTilesInRange(location, position);
         if (tiles.Count > 0)
