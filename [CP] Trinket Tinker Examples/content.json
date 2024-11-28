@@ -32,6 +32,11 @@
       "Action": "Include",
       "FromFile": "data/misc/projectile.json"
     },
+    // Clips only
+    {
+      "Action": "Include",
+      "FromFile": "data/misc/clipsonly.json"
+    },
     // disable trinkets in Backwoods
     {
       "Action": "EditData",
@@ -41,7 +46,7 @@
       ],
       "Entries": {
         "CustomFields": {
-          // "mushymato.TrinketTinker/disableAbilities": true,
+          "mushymato.TrinketTinker/disableAbilities": true,
           "mushymato.TrinketTinker/disableCompanions": true
         }
       }

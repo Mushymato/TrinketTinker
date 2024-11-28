@@ -18,7 +18,7 @@ public sealed class BounceMotion(TrinketTinkerCompanion companion, MotionData md
     /// <inheritdoc/>
     public override void UpdateGlobal(GameTime time, GameLocation location)
     {
-        if (theta != 0f || GetMoving())
+        if (theta != 0f || IsMoving())
         {
             theta += time.ElapsedGameTime.TotalMilliseconds / args.Period;
             if (theta >= 1f)

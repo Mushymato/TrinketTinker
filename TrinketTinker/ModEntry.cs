@@ -1,5 +1,6 @@
 ﻿global using SObject = StardewValley.Object;
 using System.Reflection;
+using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
@@ -137,7 +138,19 @@ internal sealed class ModEntry : Mod
     {
         if (!Context.IsWorldReady)
             return;
-        Game1.player.currentLocation.spawnObjects();
+
+        for (int i = 0; i < 30; i++)
+        {
+            Vector2 tilePos =
+                new(
+                    Random.Shared.Next(Game1.currentLocation.map.DisplayWidth / 64),
+                    Random.Shared.Next(Game1.currentLocation.map.DisplayHeight / 64)
+                );
+            Log($"Spawn? {tilePos}");
+            SObject forage = (SObject)ItemRegistry.Create("(O)16");
+            if (Game1.currentLocation.dropObject(forage, tilePos * 64f, Game1.viewport, initialPlacement: true))
+                Log("Yes");
+        }
     }
 #endif
 

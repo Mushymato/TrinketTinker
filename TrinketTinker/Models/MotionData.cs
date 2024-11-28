@@ -7,7 +7,7 @@ namespace TrinketTinker.Models;
 /// <summary>Determine how the sprites are interpreted.</summary>
 public enum DirectionMode
 {
-    /// <summary>Direction never changes, animate the.</summary>
+    /// <summary>Direction never changes.</summary>
     Single,
 
     /// <summary>Has right animations, flips sprite if going left</summary>
@@ -95,6 +95,9 @@ public class AnimClipData
 
     /// <summary>Anim clip interval, fall back to <see cref="MotionData.Interval"/> if not set.</summary>
     public float? Interval { get; set; } = null;
+
+    /// <summary>If set, the companion won't move while clip plays.</summary>
+    public bool PauseMovement { get; set; } = false;
 }
 
 public class AnimClipDictionary : Dictionary<string, AnimClipData?>
@@ -115,7 +118,9 @@ public class AnimClipDictionary : Dictionary<string, AnimClipData?>
             return false;
         string keyDirectional = $"{key}.{MathF.Abs(direction)}";
         if (TryGetValue(keyDirectional, out clip))
+        {
             return clip != null;
+        }
         if (TryGetValue(key, out clip))
         {
             // short-circuit the next attempt to obtain AnimClipData

@@ -39,6 +39,8 @@ public sealed class TinkerAnimSprite
     }
     internal readonly Texture2D Texture;
     internal Rectangle SourceRect { get; private set; } = Rectangle.Empty;
+    public bool Hidden => currentFrame == -1;
+
     private float timer = 0f;
     internal int currentFrame = 0;
     private bool isReverse = false;
@@ -77,7 +79,8 @@ public sealed class TinkerAnimSprite
         {
             currentFrame = frame;
             isReverse = false;
-            UpdateSourceRect();
+            if (currentFrame > -1)
+                UpdateSourceRect();
         }
     }
 
@@ -103,6 +106,11 @@ public sealed class TinkerAnimSprite
     /// <returns>True if animation reached last frame</returns>
     internal bool Animate(LoopMode loopMode, GameTime time, int startFrame, int numberOfFrames, float interval)
     {
+        if (numberOfFrames == 0)
+        {
+            SetCurrentFrame(-1);
+            return true;
+        }
         if (numberOfFrames == 1)
         {
             SetCurrentFrame(startFrame);

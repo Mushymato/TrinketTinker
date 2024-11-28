@@ -11,7 +11,7 @@ namespace TrinketTinker.Effects.Abilities;
 /// <summary>Harvest terrain features</summary>
 public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, AbilityData data, int lvl)
     : Ability<TArgs>(effect, data, lvl)
-    where TArgs : TileArgs
+    where TArgs : HarvestArgs
 {
     /// <summary>Check that tile has object</summary>
     /// <param name="location"></param>
@@ -48,12 +48,22 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
 
 /// <summary>Harvest forage</summary>
 public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData data, int level)
-    : BaseHarvestAbility<TileArgs>(effect, data, level)
+    : BaseHarvestAbility<HarvestArgs>(effect, data, level)
 {
     /// <inheritdocs/>
     protected override bool ProbeTile(GameLocation location, Vector2 tile)
     {
         return location.objects.TryGetValue(tile, out SObject obj) && obj.isForage();
+    }
+
+    private bool CanTargetAccept(Farmer farmer, SObject obj)
+    {
+        return args.HarvestTo switch
+        {
+            HarvestDestination.None => true,
+            HarvestDestination.Player => farmer.couldInventoryAcceptThisItem(obj),
+            _ => throw new NotImplementedException(),
+        };
     }
 
     /// <inheritdocs/>
@@ -63,7 +73,7 @@ public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData
             location.objects.TryGetValue(tile, out SObject obj)
             && obj.isForage()
             && !obj.questItem.Value
-            && farmer.couldInventoryAcceptThisItem(obj)
+            && CanTargetAccept(farmer, obj)
         )
         {
             obj.Quality = location.GetHarvestSpawnedObjectQuality(
@@ -72,26 +82,35 @@ public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData
                 obj.TileLocation,
                 Random.Shared
             );
-            farmer.addItemToInventoryBool(obj.getOne());
-            if (!location.isFarmBuildingInterior())
+
+            switch (args.HarvestTo)
             {
-                if (
-                    farmer.professions.Contains(Farmer.gatherer)
-                    && Random.Shared.NextDouble() < 0.2
-                    && !obj.questItem.Value
-                    && farmer.couldInventoryAcceptThisItem(obj)
-                )
-                {
+                case HarvestDestination.None:
+                    break;
+                case HarvestDestination.Player:
                     farmer.addItemToInventoryBool(obj.getOne());
-                    farmer.gainExperience(2, 7);
-                }
-                location.OnHarvestedForage(farmer, obj);
+                    if (!location.isFarmBuildingInterior())
+                    {
+                        if (
+                            farmer.professions.Contains(Farmer.gatherer)
+                            && Random.Shared.NextDouble() < 0.2
+                            && !obj.questItem.Value
+                            && CanTargetAccept(farmer, obj)
+                        )
+                        {
+                            farmer.addItemToInventoryBool(obj.getOne());
+                            farmer.gainExperience(2, 7);
+                        }
+                        location.OnHarvestedForage(farmer, obj);
+                    }
+                    else
+                    {
+                        farmer.gainExperience(0, 5);
+                    }
+                    Game1.stats.ItemsForaged++;
+                    break;
             }
-            else
-            {
-                farmer.gainExperience(0, 5);
-            }
-            Game1.stats.ItemsForaged++;
+
             location.objects.Remove(tile);
             return true;
         }
@@ -101,7 +120,7 @@ public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData
 
 /// <summary>Harvest (destroy) stone</summary>
 public sealed class HarvestStoneAbility(TrinketTinkerEffect effect, AbilityData data, int level)
-    : BaseHarvestAbility<TileArgs>(effect, data, level)
+    : BaseHarvestAbility<HarvestArgs>(effect, data, level)
 {
     /// <inheritdocs/>
     protected override bool ProbeTile(GameLocation location, Vector2 tile)
@@ -114,21 +133,31 @@ public sealed class HarvestStoneAbility(TrinketTinkerEffect effect, AbilityData 
     {
         if (!location.objects.TryGetValue(tile, out SObject obj))
             return false;
-        void OnDebrisAdded(Debris debris)
+
+        switch (args.HarvestTo)
         {
-            if (
-                debris.debrisType.Value == Debris.DebrisType.OBJECT
-                || debris.debrisType.Value == Debris.DebrisType.ARCHAEOLOGY
-            )
-            {
-                location.debris.Remove(debris);
-                debris.collect(farmer);
-            }
+            case HarvestDestination.None:
+                location.destroyObject(tile, farmer);
+                break;
+            case HarvestDestination.Player:
+                void OnDebrisAdded(Debris debris)
+                {
+                    if (
+                        debris.debrisType.Value == Debris.DebrisType.OBJECT
+                        || debris.debrisType.Value == Debris.DebrisType.ARCHAEOLOGY
+                    )
+                    {
+                        location.debris.Remove(debris);
+                        debris.collect(farmer);
+                    }
+                }
+                ;
+                location.debris.OnValueAdded += OnDebrisAdded;
+                location.destroyObject(tile, farmer);
+                location.debris.OnValueAdded -= OnDebrisAdded;
+                break;
         }
-        ;
-        location.debris.OnValueAdded += OnDebrisAdded;
-        location.destroyObject(tile, farmer);
-        location.debris.OnValueAdded -= OnDebrisAdded;
+
         // stone break TAS, from Pickaxe.cs
         TemporaryAnimatedSprite temporaryAnimatedSprite =
             (
@@ -158,7 +187,7 @@ public sealed class HarvestStoneAbility(TrinketTinkerEffect effect, AbilityData 
 
 /// <summary>Harvest (destroy) stone</summary>
 public sealed class HarvestCropAbility(TrinketTinkerEffect effect, AbilityData data, int level)
-    : BaseHarvestAbility<TileArgs>(effect, data, level)
+    : BaseHarvestAbility<HarvestArgs>(effect, data, level)
 {
     /// <inheritdocs/>
     protected override bool ProbeTile(GameLocation location, Vector2 tile)
@@ -175,25 +204,34 @@ public sealed class HarvestCropAbility(TrinketTinkerEffect effect, AbilityData d
         if (!(location.terrainFeatures.TryGetValue(tile, out TerrainFeature feature) && feature is HoeDirt dirt))
             return false;
         bool harvested = false;
-        void OnDebrisAdded(Debris debris)
+
+        switch (args.HarvestTo)
         {
-            if (
-                debris.debrisType.Value == Debris.DebrisType.OBJECT
-                || debris.debrisType.Value == Debris.DebrisType.ARCHAEOLOGY
-            )
-            {
-                location.debris.Remove(debris);
-                debris.collect(farmer);
-                harvested = true;
-            }
+            case HarvestDestination.None:
+                dirt.destroyCrop(true);
+                break;
+            case HarvestDestination.Player:
+                void OnDebrisAdded(Debris debris)
+                {
+                    if (
+                        debris.debrisType.Value == Debris.DebrisType.OBJECT
+                        || debris.debrisType.Value == Debris.DebrisType.ARCHAEOLOGY
+                    )
+                    {
+                        location.debris.Remove(debris);
+                        debris.collect(farmer);
+                        harvested = true;
+                    }
+                }
+                ;
+                location.debris.OnValueAdded += OnDebrisAdded;
+                if (dirt.crop.harvest((int)tile.X, (int)tile.Y, dirt, null, true))
+                {
+                    dirt.destroyCrop(true);
+                }
+                location.debris.OnValueAdded -= OnDebrisAdded;
+                break;
         }
-        ;
-        location.debris.OnValueAdded += OnDebrisAdded;
-        if (dirt.crop.harvest((int)tile.X, (int)tile.Y, dirt, null, true))
-        {
-            dirt.destroyCrop(true);
-        }
-        location.debris.OnValueAdded -= OnDebrisAdded;
 
         return harvested;
     }

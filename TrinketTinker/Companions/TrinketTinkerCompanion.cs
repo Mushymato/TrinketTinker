@@ -187,6 +187,7 @@ public class TrinketTinkerCompanion : Companion
         CompanionMoving = prevPosition != Position;
         prevOwnerPosition = OwnerPosition;
         prevPosition = Position;
+        Motion?.UpdateGlobal(time, location);
         Motion?.UpdateAnchor(time, location);
         if (IsLocal)
         {
@@ -199,7 +200,6 @@ public class TrinketTinkerCompanion : Companion
                 Motion?.UpdateLocal(time, location);
             }
         }
-        Motion?.UpdateGlobal(time, location);
         Motion?.UpdateLightSource(time, location);
     }
 

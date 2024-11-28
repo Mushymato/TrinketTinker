@@ -47,6 +47,9 @@ public abstract class Motion<TArgs> : IMotion
     /// <summary>Override anim clip key</summary>
     private string? overrideClipKey = null;
 
+    /// <summary>An anim clip that pauses movement is currently playing.</summary>
+    public bool PauseMovementByAnimClip = false;
+
     /// <summary>Heap of frames to draw, after the initial one.</summary>
     private readonly PriorityQueue<DrawSnapshot, long> drawSnapshotQueue = new();
 
@@ -82,18 +85,24 @@ public abstract class Motion<TArgs> : IMotion
             DirectionMode.DRUL => md.FrameLength * 4,
             _ => throw new NotImplementedException(),
         };
+
+        PauseMovementByAnimClip = false;
     }
 
     /// <inheritdoc/>
     public void SetOneshotClip(string? clipKey)
     {
         oneshotClipKey = clipKey;
+        if (clipKey == null)
+            PauseMovementByAnimClip = false;
     }
 
     /// <inheritdoc/>
     public void SetOverrideClip(string? clipKey)
     {
         overrideClipKey = clipKey;
+        if (clipKey == null)
+            PauseMovementByAnimClip = false;
     }
 
     /// <inheritdoc/>
@@ -109,6 +118,7 @@ public abstract class Motion<TArgs> : IMotion
     /// <inheritdoc/>
     public virtual void Cleanup()
     {
+        PauseMovementByAnimClip = false;
         drawSnapshotQueue.Clear();
         if (vd.LightSource != null)
             Utility.removeLightSource(lightId);
@@ -117,6 +127,7 @@ public abstract class Motion<TArgs> : IMotion
     /// <inheritdoc/>
     public virtual void OnOwnerWarp()
     {
+        PauseMovementByAnimClip = false;
         drawSnapshotQueue.Clear();
         if (vd.LightSource is LightSourceData ldata)
         {
@@ -214,9 +225,9 @@ public abstract class Motion<TArgs> : IMotion
     /// 1: clip is animating
     /// 1: clip reached last frame
     /// </returns>
-    private int AnimateClip(GameTime time, string? key)
+    private int AnimateClip(GameTime time, string? key, out AnimClipData? clip)
     {
-        if (!md.AnimClips.TryGetDirectional(key, c.direction.Value, out AnimClipData? clip))
+        if (!md.AnimClips.TryGetDirectional(key, c.direction.Value, out clip))
             return 0;
         return cs.AnimateClip(time, clip, md.Interval) ? 2 : 1;
     }
@@ -227,37 +238,59 @@ public abstract class Motion<TArgs> : IMotion
         // Try each kind of anim in order, stop whenever one kind succeeds
 
         // Oneshot Clip: play once and unset.
-        if (AnimateClip(time, oneshotClipKey) is int res && res != 0)
+        if (AnimateClip(time, oneshotClipKey, out AnimClipData? clip) is int res && res != 0)
         {
             if (res == 2)
+            {
+                PauseMovementByAnimClip = false;
                 oneshotClipKey = null;
+            }
+            else
+            {
+                PauseMovementByAnimClip = clip!.PauseMovement;
+            }
+
             return;
         }
         // Override Clip: play until override is unset externally
-        if (overrideClipKey != null && AnimateClip(time, overrideClipKey) != 0)
+        if (overrideClipKey != null && AnimateClip(time, overrideClipKey, out clip) != 0)
         {
+            PauseMovementByAnimClip = false;
             return;
         }
         // Moving: play while player is moving, or if always moving is true
-        if (GetMoving())
+        if (IsMoving())
         {
-            cs.Animate(md.LoopMode, time, DirectionFrameStart(), md.FrameLength, md.Interval);
+            // first, try anchor target based clip
+            if (currAnchorTarget == AnchorTarget.Owner || AnimateClip(time, $"Anchor.{currAnchorTarget}", out _) == 0)
+            {
+                // then play the default directional clip
+                cs.Animate(md.LoopMode, time, DirectionFrameStart(), md.FrameLength, md.Interval);
+            }
             return;
         }
         // Idle: play while player is not moving
-        if (AnimateClip(time, AnimClipDictionary.IDLE) != 0)
+        if (AnimateClip(time, AnimClipDictionary.IDLE, out _) != 0)
         {
             return;
         }
-        // Default: Use first frame of the current direction as fallback
-        cs.SetCurrentFrame(DirectionFrameStart());
+        if (md.FrameLength > 0)
+            // Default: Use first frame of the current direction as fallback
+            cs.SetCurrentFrame(DirectionFrameStart());
+        else
+            cs.SetCurrentFrame(-1);
     }
 
     /// <summary>Moving flag used for basis of anim</summary>
     /// <returns></returns>
-    protected virtual bool GetMoving()
+    protected virtual bool IsMoving()
     {
         return md.AlwaysMoving || c.OwnerMoving;
+    }
+
+    protected virtual bool ShouldMove()
+    {
+        return !PauseMovementByAnimClip;
     }
 
     /// <inheritdoc/>
@@ -314,6 +347,9 @@ public abstract class Motion<TArgs> : IMotion
     public void Draw(SpriteBatch b)
     {
         if (md.HideDuringEvents && Game1.eventUp)
+            return;
+
+        if (cs.Hidden)
             return;
 
         while (

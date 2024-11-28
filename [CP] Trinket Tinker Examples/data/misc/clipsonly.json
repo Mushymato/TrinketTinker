@@ -1,0 +1,82 @@
+{
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_ClipsOnly": {
+          "Id": "{{ModId}}_ClipsOnly",
+          "DisplayName": "Trinket Tinker - Clips Only",
+          "Description": "Example of using trinket tinker with no regular anim, only clips. Lv.{0}",
+          "Texture": "TileSheets\\Objects_2",
+          "SheetIndex": 75,
+          "DropsNaturally": false,
+          "CanBeReforged": true
+        },
+      }
+    },
+    {
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        "{{ModId}}_ClipsOnly": {
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/rotation-bw",
+              "Width": 16,
+              "Height": 16,
+              "ShadowScale": 0
+            },
+          ],
+          "Motion": {
+            "MotionClass": "Lerp",
+            "DirectionMode": "Single",
+            "FrameLength": 0,
+            "Anchors": [
+              {
+                "Mode": "Forage",
+                "Range": 480
+              }
+            ],
+            "AnimClips": {
+              "Anchor.Forage": {
+                "FrameStart": 0,
+                "FrameLength": 4
+              },
+              "Naptime": {
+                "FrameStart": 4,
+                "FrameLength": 4,
+                "Interval": 1000,
+                "PauseMovement": true
+              }
+            },
+          },
+          "Abilities": [
+            // level 1
+            [
+              {
+                "AbilityClass": "HarvestForage",
+                "Proc": "Timer",
+                "ProcTimer": 250,
+                "ProcSound": "harvest",
+                "ProcOneshotAnim": "Naptime",
+                "Args": {
+                  "Range": 1,
+                  "HarvestTo": "None"
+                },
+              },
+              {
+                "AbilityClass": "Health",
+                "Proc": "Sync",
+                "Args": {
+                  "ValueMode": "Number",
+                  "Min": 44
+                }
+              },
+            ],
+          ]
+        },
+      }
+    }
+  ]
+}

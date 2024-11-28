@@ -23,6 +23,9 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
     /// <inheritdoc/>
     public override void UpdateLocal(GameTime time, GameLocation location)
     {
+        if (!ShouldMove())
+            return;
+
         if (args.MoveSync && !c.OwnerMoving)
             return;
 
