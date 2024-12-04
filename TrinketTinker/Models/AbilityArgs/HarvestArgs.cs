@@ -7,6 +7,7 @@ namespace TrinketTinker.Models.AbilityArgs;
 public enum HarvestDestination
 {
     None,
+    Debris,
     Player,
 }
 

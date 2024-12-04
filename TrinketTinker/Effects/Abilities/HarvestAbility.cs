@@ -60,9 +60,8 @@ public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData
     {
         return args.HarvestTo switch
         {
-            HarvestDestination.None => true,
             HarvestDestination.Player => farmer.couldInventoryAcceptThisItem(obj),
-            _ => throw new NotImplementedException(),
+            _ => true,
         };
     }
 
@@ -83,35 +82,36 @@ public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData
                 Random.Shared
             );
 
-            switch (args.HarvestTo)
+            if (args.HarvestTo != HarvestDestination.None)
             {
-                case HarvestDestination.None:
-                    break;
-                case HarvestDestination.Player:
-                    farmer.addItemToInventoryBool(obj.getOne());
-                    if (!location.isFarmBuildingInterior())
+                Action harvestMethod;
+                if (args.HarvestTo == HarvestDestination.Debris)
+                    harvestMethod = () => Game1.createItemDebris(obj.getOne(), new Vector2(tile.X * 64f + 32f, tile.Y * 64f + 32f), -1);
+                else
+                    harvestMethod = () => farmer.addItemToInventoryBool(obj.getOne());
+                harvestMethod();
+                if (!location.isFarmBuildingInterior())
+                {
+                    if (
+                        farmer.professions.Contains(Farmer.gatherer)
+                        && Random.Shared.NextDouble() < 0.2
+                        && !obj.questItem.Value
+                        && CanTargetAccept(farmer, obj)
+                    )
                     {
-                        if (
-                            farmer.professions.Contains(Farmer.gatherer)
-                            && Random.Shared.NextDouble() < 0.2
-                            && !obj.questItem.Value
-                            && CanTargetAccept(farmer, obj)
-                        )
-                        {
-                            farmer.addItemToInventoryBool(obj.getOne());
-                            farmer.gainExperience(2, 7);
-                        }
-                        location.OnHarvestedForage(farmer, obj);
+                        harvestMethod();
+                        farmer.gainExperience(2, 7);
                     }
-                    else
-                    {
-                        farmer.gainExperience(0, 5);
-                    }
-                    Game1.stats.ItemsForaged++;
-                    break;
+                    location.OnHarvestedForage(farmer, obj);
+                }
+                else
+                {
+                    farmer.gainExperience(0, 5);
+                }
+                Game1.stats.ItemsForaged++;
             }
-
             location.objects.Remove(tile);
+
             return true;
         }
         return false;
@@ -137,6 +137,9 @@ public sealed class HarvestStoneAbility(TrinketTinkerEffect effect, AbilityData 
         switch (args.HarvestTo)
         {
             case HarvestDestination.None:
+                location.objects.Remove(tile);
+                break;
+            case HarvestDestination.Debris:
                 location.destroyObject(tile, farmer);
                 break;
             case HarvestDestination.Player:
@@ -209,6 +212,12 @@ public sealed class HarvestCropAbility(TrinketTinkerEffect effect, AbilityData d
         {
             case HarvestDestination.None:
                 dirt.destroyCrop(true);
+                break;
+            case HarvestDestination.Debris:
+                if (dirt.crop.harvest((int)tile.X, (int)tile.Y, dirt, null, true))
+                {
+                    dirt.destroyCrop(true);
+                }
                 break;
             case HarvestDestination.Player:
                 void OnDebrisAdded(Debris debris)
