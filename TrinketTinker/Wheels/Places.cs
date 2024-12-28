@@ -78,7 +78,8 @@ internal static class Places
     /// <returns></returns>
     public static bool CanHarvest(this Crop crop)
     {
-        return (crop.currentPhase.Value >= (crop.phaseDays.Count - 1))
+        return !crop.dead.Value
+            && (crop.currentPhase.Value >= (crop.phaseDays.Count - 1))
             && (!crop.fullyGrown.Value || crop.dayOfCurrentPhase.Value <= 0);
     }
 

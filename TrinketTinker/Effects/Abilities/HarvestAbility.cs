@@ -86,7 +86,8 @@ public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData
             {
                 Action harvestMethod;
                 if (args.HarvestTo == HarvestDestination.Debris)
-                    harvestMethod = () => Game1.createItemDebris(obj.getOne(), new Vector2(tile.X * 64f + 32f, tile.Y * 64f + 32f), -1);
+                    harvestMethod = () =>
+                        Game1.createItemDebris(obj.getOne(), new Vector2(tile.X * 64f + 32f, tile.Y * 64f + 32f), -1);
                 else
                     harvestMethod = () => farmer.addItemToInventoryBool(obj.getOne());
                 harvestMethod();

@@ -146,6 +146,7 @@ public abstract class Motion<TArgs> : IMotion
         {
             Func<SObject, bool>? objMatch = null;
             Func<TerrainFeature, bool>? terrainMatch = null;
+
             switch (anchor.Mode)
             {
                 case AnchorTarget.Monster:
@@ -154,7 +155,8 @@ public abstract class Motion<TArgs> : IMotion
                             location,
                             originPoint,
                             anchor.Range,
-                            ignoreUntargetables: true
+                            ignoreUntargetables: true,
+                            match: anchor.Filters != null ? (m) => !anchor.Filters.Contains(m.Name) : null
                         );
                         if (closest != null)
                         {

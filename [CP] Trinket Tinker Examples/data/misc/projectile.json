@@ -67,7 +67,10 @@
                   "IgnoreObjectCollisions": true,
                   "IgnoreLocationCollisions": true,
                   "ExplodeRadius": 2,
-                  "Homing": true
+                  "Homing": true,
+                  "Filters": [
+                    "Dust Spirit"
+                  ]
                 }
               }
             ]

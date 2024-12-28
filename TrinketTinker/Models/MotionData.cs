@@ -79,6 +79,14 @@ public class AnchorTargetData
 
     /// <summary>Search range, applicable to <see cref="AnchorTarget.Monster"/>.</summary>
     public int Range = Game1.tileSize * 10;
+
+    /// <summary>
+    /// Additional filters to apply, specific behavior depends on the anchor mode.
+    /// <list type="bullet">
+    /// <item><see cref="AnchorTarget.Monster"/></item>
+    /// </list>
+    /// </summary>
+    public List<string>? Filters = null;
 }
 
 /// <summary>Model for additional animation</summary>

@@ -26,7 +26,8 @@ public sealed class ProjectileAbility(TrinketTinkerEffect effect, AbilityData da
                 proc.LocationOrCurrent,
                 sourcePosition,
                 args.Range,
-                ignoreUntargetables: true
+                ignoreUntargetables: true,
+                match: args.Filters != null ? (m) => !args.Filters.Contains(m.Name) : null
             );
         if (target == null)
             return false;

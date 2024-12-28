@@ -24,8 +24,10 @@ public class TrinketTinkerCompanion : Companion
     /// <summary>Owner position in prev tick, for detecting moving</summary>
     private Vector2? prevOwnerPosition;
 
-    /// <summary>Whether owner is moving</summary>
-    public bool OwnerMoving { get; private set; } = false;
+    private bool ownerMoving = false;
+
+    /// <summary>Whether owner is moving and not using a tool</summary>
+    public bool OwnerMoving => ownerMoving && !Owner.UsingTool && !Owner.usingSlingshot;
 
     /// <summary>Companion position in prev tick, for detecting moving</summary>
     private Vector2? prevPosition;
@@ -183,7 +185,7 @@ public class TrinketTinkerCompanion : Companion
     /// <param name="location">Current map location</param>
     public override void Update(GameTime time, GameLocation location)
     {
-        OwnerMoving = prevOwnerPosition != OwnerPosition;
+        ownerMoving = prevOwnerPosition != OwnerPosition;
         CompanionMoving = prevPosition != Position;
         prevOwnerPosition = OwnerPosition;
         prevPosition = Position;

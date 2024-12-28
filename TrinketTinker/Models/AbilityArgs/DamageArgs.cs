@@ -51,6 +51,8 @@ public class DamageArgs : IArgs
     /// </summary>
     public int ExplodeRadius { get; set; } = 0;
 
+    public List<string>? Filters = null;
+
     /// <inheritdoc/>
     public bool Validate()
     {

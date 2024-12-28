@@ -32,6 +32,7 @@ public sealed class TinkerProjectile : Projectile
     internal readonly NetString stunTAS = new(null);
     internal readonly NetBool rotateToTarget = new(false);
     internal readonly NetInt homingRange = new(0);
+    internal readonly NetStringList filters = new();
     private double homingTimer = 0;
 
     /// <summary>Construct an empty instance.</summary>
@@ -72,6 +73,10 @@ public sealed class TinkerProjectile : Projectile
         {
             homingRange.Value = args.Range;
         }
+        if (args.Filters != null)
+        {
+            filters.AddRange(args.Filters);
+        }
 
         damagesMonsters.Value = true;
     }
@@ -95,7 +100,8 @@ public sealed class TinkerProjectile : Projectile
             .AddField(hits, "hits")
             .AddField(explodeRadius, "explodeRadius")
             .AddField(homingRange, "homingRange")
-            .AddField(rotateToTarget, "rotateToTarget");
+            .AddField(rotateToTarget, "rotateToTarget")
+            .AddField(filters, "filters");
     }
 
     /// <summary>Get the texture to draw for the projectile.</summary>
@@ -350,7 +356,8 @@ public sealed class TinkerProjectile : Projectile
                     location,
                     position.Value,
                     homingRange.Value,
-                    ignoreUntargetables: true
+                    ignoreUntargetables: true,
+                    match: filters.Any() ? (m) => !filters.Contains(m.Name) : null
                 );
                 if (homingTarget != null)
                 {

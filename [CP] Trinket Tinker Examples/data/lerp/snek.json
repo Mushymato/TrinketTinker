@@ -49,7 +49,10 @@
             "Anchors": [
               {
                 "Mode": "Monster",
-                "Range": 1280
+                "Range": 1280,
+                "Filters": [
+                  "Dust Spirit"
+                ]
               }
             ],
             "Args": {

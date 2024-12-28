@@ -25,7 +25,8 @@ public sealed class HitscanAbility(TrinketTinkerEffect effect, AbilityData data,
                 proc.LocationOrCurrent,
                 e.CompanionPosition ?? proc.Farmer.Position,
                 base.args.Range,
-                ignoreUntargetables: true
+                ignoreUntargetables: true,
+                match: args.Filters != null ? (m) => !args.Filters.Contains(m.Name) : null
             );
         if (target == null)
             return false;
