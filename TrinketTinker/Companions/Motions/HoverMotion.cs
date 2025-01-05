@@ -11,7 +11,7 @@ public sealed class HoverMotion(TrinketTinkerCompanion companion, MotionData dat
     : BaseLerpMotion<HoverArgs>(companion, data, vdata)
 {
     /// <summary>Perching anim clip name.</summary>
-    private const string PERCHING = "Perching";
+    public const string PERCHING = "Perching";
 
     /// <summary>Default Y offset</summary>
     private const float DEFAULT_HEIGHT = 96f;

@@ -53,7 +53,17 @@ public class BaseStaticMotion<IArgs>(TrinketTinkerCompanion companion, MotionDat
     {
         int prevDirection = c.direction.Value;
         int facingDirection = c.Owner.FacingDirection;
-        c.direction.Value = md.DirectionMode switch
+        c.direction.Value = GetDirectionFromOwner(md, facingDirection, prevDirection);
+    }
+
+    /// <summary>Get correct spritesheet row for facing direction, is static because of perching special case.</summary>
+    /// <param name="md"></param>
+    /// <param name="facingDirection"></param>
+    /// <param name="prevDirection"></param>
+    /// <returns></returns>
+    public static int GetDirectionFromOwner(MotionData md, int facingDirection, int prevDirection = 0)
+    {
+        return md.DirectionMode switch
         {
             DirectionMode.DRUL => facingDirection switch
             {

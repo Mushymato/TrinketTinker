@@ -81,7 +81,7 @@ public class TrinketTinkerEffect : TrinketEffect
     private ImmutableList<IAbility> InitAbilities()
     {
         List<IAbility> initAblities = [];
-        if (Data != null)
+        if (Data != null && Data.Abilities.Count != 0)
         {
             List<AbilityData> levelAbilities;
             if (GeneralStat > Data.Abilities.Count)

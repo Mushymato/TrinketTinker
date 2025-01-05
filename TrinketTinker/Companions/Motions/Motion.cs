@@ -146,7 +146,6 @@ public abstract class Motion<TArgs> : IMotion
         {
             Func<SObject, bool>? objMatch = null;
             Func<TerrainFeature, bool>? terrainMatch = null;
-
             switch (anchor.Mode)
             {
                 case AnchorTarget.Monster:
@@ -229,7 +228,10 @@ public abstract class Motion<TArgs> : IMotion
     /// </returns>
     private int AnimateClip(GameTime time, string? key, out AnimClipData? clip)
     {
-        if (!md.AnimClips.TryGetDirectional(key, c.direction.Value, out clip))
+        int direction = c.direction.Value;
+        if (key == HoverMotion.PERCHING)
+            direction = StaticMotion.GetDirectionFromOwner(md, c.Owner.FacingDirection);
+        if (!md.AnimClips.TryGetDirectional(key, direction, out clip))
             return 0;
         return cs.AnimateClip(time, clip, md.Interval) ? 2 : 1;
     }
