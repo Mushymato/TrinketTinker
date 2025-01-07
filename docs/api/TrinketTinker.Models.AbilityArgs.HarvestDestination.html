@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Hitscan | TrinketTinker </title>
+      <title>Enum HarvestDestination | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Hitscan | TrinketTinker ">
+      <meta name="title" content="Enum HarvestDestination | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -12,11 +12,11 @@
       <link rel="stylesheet" href="../public/main.css">
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
-      
+      <meta name="searchOption" content="noindex">
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/4.z.05-Hitscan.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/new/main/apiSpec/new?filename=TrinketTinker_Models_AbilityArgs_HarvestDestination.md&amp;value=---%0Auid%3A%20TrinketTinker.Models.AbilityArgs.HarvestDestination%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -39,7 +39,7 @@
 
   </head>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
@@ -84,100 +84,51 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="">
-<h1 id="hitscan">Hitscan</h1>
+        <article data-uid="TrinketTinker.Models.AbilityArgs.HarvestDestination">
 
-<p>Do damage to a monster within range, can roll criticals, explode, and apply stun/knockback.</p>
-<h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.DamageArgs.html">Args</a></h2>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Default</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Min</code></td>
-<td>int</td>
-<td>0</td>
-<td>Minimum damage dealt.</td>
-</tr>
-<tr>
-<td><code>Max</code></td>
-<td>int</td>
-<td>0</td>
-<td>Maximum damage dealt.</td>
-</tr>
-<tr>
-<td><code>Range</code></td>
-<td>int</td>
-<td>64</td>
-<td>Pixel range for finding monster to target.</td>
-</tr>
-<tr>
-<td><code>Knockback</code></td>
-<td>float</td>
-<td>0</td>
-<td>Knockback modifier in %.</td>
-</tr>
-<tr>
-<td><code>Precision</code></td>
-<td>int</td>
-<td>0</td>
-<td>Precision, doesn't do much unless monster has dodge rate.</td>
-</tr>
-<tr>
-<td><code>CritChance</code></td>
-<td>float</td>
-<td>0</td>
-<td>Chance to roll a critical hit.</td>
-</tr>
-<tr>
-<td><code>CritDamage</code></td>
-<td>float</td>
-<td>0</td>
-<td>Modifier to critical hit damage.</td>
-</tr>
-<tr>
-<td><code>StunTime</code></td>
-<td>int</td>
-<td>0</td>
-<td>Milisecond time to stun the enemy.</td>
-</tr>
-<tr>
-<td><code>StunTAS</code></td>
-<td>string</td>
-<td><em>empty</em></td>
-<td>Show this <a href="5-Temporary%20Animated%20Sprite.html">temporary animated sprite</a> while the enemy is stunned, calculate loop from stun time instead of loop value set in the TAS asset. When used with <a href="4.z.06-Projectile.html">Projectile</a>, the TAS's rotation is also overwritten with the projectile's rotation.</td>
-</tr>
-<tr>
-<td><code>Hits</code></td>
-<td>int</td>
-<td>0</td>
-<td>Number of hits to apply at once, monster will only get iframes after the final hit.</td>
-</tr>
-<tr>
-<td><code>ExplodeRadius</code></td>
-<td>int</td>
-<td>0</td>
-<td>Generate a explosion with this radius on hit, farmer will take damage from it.<br>Might damage another monster, but the monster that got hit would be in iframe at this point.</td>
-</tr>
-<tr>
-<td><code>Filters</code></td>
-<td><code>List&lt;string&gt;</code></td>
-<td><em>empty</em></td>
-<td>List of monster types to avoid targeting.</td>
-</tr>
-</tbody>
-</table>
+
+
+
+  <h1 id="TrinketTinker_Models_AbilityArgs_HarvestDestination" data-uid="TrinketTinker.Models.AbilityArgs.HarvestDestination" class="text-break">
+Enum HarvestDestination  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/HarvestArgs.cs/#L7"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="TrinketTinker.html">TrinketTinker</a>.<a class="xref" href="TrinketTinker.Models.html">Models</a>.<a class="xref" href="TrinketTinker.Models.AbilityArgs.html">AbilityArgs</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>TrinketTinker.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public enum HarvestDestination</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h2 id="fields">Fields
+</h2>
+  <dl class="parameters">
+    <dt id="TrinketTinker_Models_AbilityArgs_HarvestDestination_Debris"><code>Debris = 1</code></dt>
+    <dd></dd>
+    <dt id="TrinketTinker_Models_AbilityArgs_HarvestDestination_None"><code>None = 0</code></dt>
+    <dd></dd>
+    <dt id="TrinketTinker_Models_AbilityArgs_HarvestDestination_Player"><code>Player = 2</code></dt>
+    <dd></dd>
+  </dl>
+
+
 
 </article>
 
 
-        <div class="next-article d-print-none border-top" id="nextArticle"></div>
 
       </div>
 

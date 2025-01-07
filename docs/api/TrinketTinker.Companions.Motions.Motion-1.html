@@ -175,7 +175,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1__ctor_TrinketTinker_Companions_TrinketTinkerCompanion_TrinketTinker_Models_MotionData_TrinketTinker_Models_VariantData_" data-uid="TrinketTinker.Companions.Motions.Motion`1.#ctor(TrinketTinker.Companions.TrinketTinkerCompanion,TrinketTinker.Models.MotionData,TrinketTinker.Models.VariantData)">
   Motion(TrinketTinkerCompanion, MotionData, VariantData)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L71"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Basic constructor, tries to parse arguments as the generic <a class="xref" href="TrinketTinker.Models.Mixin.IArgs.html">IArgs</a> type.</p>
@@ -209,6 +209,37 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h2 class="section" id="fields">Fields
 </h2>
+
+
+
+  <h3 id="TrinketTinker_Companions_Motions_Motion_1_PauseMovementByAnimClip" data-uid="TrinketTinker.Companions.Motions.Motion`1.PauseMovementByAnimClip">
+  PauseMovementByAnimClip
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>An anim clip that pauses movement is currently playing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool PauseMovementByAnimClip</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
 
 
 
@@ -338,7 +369,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_framesetLength" data-uid="TrinketTinker.Companions.Motions.Motion`1.framesetLength">
   framesetLength
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L60"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Number of frames in 1 set, used for Repeat and <a class="xref" href="TrinketTinker.Companions.Motions.SerpentMotion.html">SerpentMotion</a></p>
@@ -526,11 +557,43 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
 
 
+  <a id="TrinketTinker_Companions_Motions_Motion_1_ClipRand_" data-uid="TrinketTinker.Companions.Motions.Motion`1.ClipRand*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_Motion_1_ClipRand" data-uid="TrinketTinker.Companions.Motions.Motion`1.ClipRand">
+  ClipRand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Clip random</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Random ClipRand { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.random">Random</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Companions_Motions_Motion_1_TotalFrames_" data-uid="TrinketTinker.Companions.Motions.Motion`1.TotalFrames*"></a>
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_TotalFrames" data-uid="TrinketTinker.Companions.Motions.Motion`1.TotalFrames">
   TotalFrames
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L63"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Actual total frame used for Repeat, equal to frame length</p>
@@ -566,7 +629,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_CheckSpriteCollision_StardewValley_GameLocation_Microsoft_Xna_Framework_Vector2_" data-uid="TrinketTinker.Companions.Motions.Motion`1.CheckSpriteCollision(StardewValley.GameLocation,Microsoft.Xna.Framework.Vector2)">
   CheckSpriteCollision(GameLocation, Vector2)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L474"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L545"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Helper function, check if the sprite collides with anything.</p>
@@ -605,7 +668,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_Cleanup" data-uid="TrinketTinker.Companions.Motions.Motion`1.Cleanup">
   Cleanup()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L125"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Cleanup motion, remove light source.</p>
@@ -632,7 +695,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_DirectionFrameStart" data-uid="TrinketTinker.Companions.Motions.Motion`1.DirectionFrameStart">
   DirectionFrameStart()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L463"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L534"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>First frame of animation, depending on direction.</p>
@@ -665,7 +728,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_" data-uid="TrinketTinker.Companions.Motions.Motion`1.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
   Draw(SpriteBatch)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L314"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L382"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws the companion, for all game instances in multiplayer.</p>
@@ -697,7 +760,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_DrawCompanion_Microsoft_Xna_Framework_Graphics_SpriteBatch_TrinketTinker_Companions_Anim_DrawSnapshot_" data-uid="TrinketTinker.Companions.Motions.Motion`1.DrawCompanion(Microsoft.Xna.Framework.Graphics.SpriteBatch,TrinketTinker.Companions.Anim.DrawSnapshot)">
   DrawCompanion(SpriteBatch, DrawSnapshot)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L372"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L443"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draw companion from snapshot, enqueue repeat as required</p>
@@ -731,7 +794,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_DrawShadow_Microsoft_Xna_Framework_Graphics_SpriteBatch_TrinketTinker_Companions_Anim_DrawSnapshot_" data-uid="TrinketTinker.Companions.Motions.Motion`1.DrawShadow(Microsoft.Xna.Framework.Graphics.SpriteBatch,TrinketTinker.Companions.Anim.DrawSnapshot)">
   DrawShadow(SpriteBatch, DrawSnapshot)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L381"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L452"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draw shadow from snapshot, enqueue repeat as required</p>
@@ -765,7 +828,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_EnqueueRepeatDraws_TrinketTinker_Companions_Anim_DrawSnapshot_System_Boolean_" data-uid="TrinketTinker.Companions.Motions.Motion`1.EnqueueRepeatDraws(TrinketTinker.Companions.Anim.DrawSnapshot,System.Boolean)">
   EnqueueRepeatDraws(DrawSnapshot, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L389"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L460"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Queue up repeats of the current draw.</p>
@@ -795,43 +858,11 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
 
 
-  <a id="TrinketTinker_Companions_Motions_Motion_1_GetMoving_" data-uid="TrinketTinker.Companions.Motions.Motion`1.GetMoving*"></a>
-
-  <h3 id="TrinketTinker_Companions_Motions_Motion_1_GetMoving" data-uid="TrinketTinker.Companions.Motions.Motion`1.GetMoving">
-  GetMoving()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L258"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Moving flag used for basis of anim</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual bool GetMoving()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
   <a id="TrinketTinker_Companions_Motions_Motion_1_GetOffset_" data-uid="TrinketTinker.Companions.Motions.Motion`1.GetOffset*"></a>
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_GetOffset" data-uid="TrinketTinker.Companions.Motions.Motion`1.GetOffset">
   GetOffset()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L301"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L369"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get offset</p>
@@ -863,7 +894,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_GetPositionalLayerDepth_Microsoft_Xna_Framework_Vector2_" data-uid="TrinketTinker.Companions.Motions.Motion`1.GetPositionalLayerDepth(Microsoft.Xna.Framework.Vector2)">
   GetPositionalLayerDepth(Vector2)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L273"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L341"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get layer depth based on position</p>
@@ -900,7 +931,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_GetRotation" data-uid="TrinketTinker.Companions.Motions.Motion`1.GetRotation">
   GetRotation()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L280"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L348"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get sprite rotation</p>
@@ -933,7 +964,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_GetShadowOffset_Microsoft_Xna_Framework_Vector2_" data-uid="TrinketTinker.Companions.Motions.Motion`1.GetShadowOffset(Microsoft.Xna.Framework.Vector2)">
   GetShadowOffset(Vector2)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L308"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L376"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get shadow offset, default same as offset but with no Y</p>
@@ -970,7 +1001,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_GetShadowScale" data-uid="TrinketTinker.Companions.Motions.Motion`1.GetShadowScale">
   GetShadowScale()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L294"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L362"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get shadow draw scale.</p>
@@ -1002,7 +1033,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_GetTextureScale" data-uid="TrinketTinker.Companions.Motions.Motion`1.GetTextureScale">
   GetTextureScale()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L287"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L355"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get texture draw scale.</p>
@@ -1034,7 +1065,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_Initialize_StardewValley_Farmer_" data-uid="TrinketTinker.Companions.Motions.Motion`1.Initialize(StardewValley.Farmer)">
   Initialize(Farmer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L115"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initialize motion, setup light source if needed.</p>
@@ -1062,11 +1093,43 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
 
 
+  <a id="TrinketTinker_Companions_Motions_Motion_1_IsMoving_" data-uid="TrinketTinker.Companions.Motions.Motion`1.IsMoving*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_Motion_1_IsMoving" data-uid="TrinketTinker.Companions.Motions.Motion`1.IsMoving">
+  IsMoving()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L321"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Moving flag used for basis of anim</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool IsMoving()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Companions_Motions_Motion_1_OnOwnerWarp_" data-uid="TrinketTinker.Companions.Motions.Motion`1.OnOwnerWarp*"></a>
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_OnOwnerWarp" data-uid="TrinketTinker.Companions.Motions.Motion`1.OnOwnerWarp">
   OnOwnerWarp()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L134"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Update light source when owner changes location</p>
@@ -1093,7 +1156,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_SetOneshotClip_System_String_" data-uid="TrinketTinker.Companions.Motions.Motion`1.SetOneshotClip(System.String)">
   SetOneshotClip(string?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L99"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set an oneshot clip, to play once until end</p>
@@ -1125,7 +1188,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_SetOverrideClip_System_String_" data-uid="TrinketTinker.Companions.Motions.Motion`1.SetOverrideClip(System.String)">
   SetOverrideClip(string?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L94"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L107"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set an override clip, to play instead of normal directional animation</p>
@@ -1153,11 +1216,42 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
 
 
+  <a id="TrinketTinker_Companions_Motions_Motion_1_ShouldMove_" data-uid="TrinketTinker.Companions.Motions.Motion`1.ShouldMove*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_Motion_1_ShouldMove" data-uid="TrinketTinker.Companions.Motions.Motion`1.ShouldMove">
+  ShouldMove()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L326"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool ShouldMove()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Companions_Motions_Motion_1_UpdateAnchor_" data-uid="TrinketTinker.Companions.Motions.Motion`1.UpdateAnchor*"></a>
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_UpdateAnchor_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Companions.Motions.Motion`1.UpdateAnchor(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
   UpdateAnchor(GameTime, GameLocation)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L147"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Changes the position of the anchor that the companion moves relative to, based on <a class="xref" href="TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_Anchors">Anchors</a>.</p>
@@ -1191,7 +1285,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_UpdateDirection" data-uid="TrinketTinker.Companions.Motions.Motion`1.UpdateDirection">
   UpdateDirection()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L429"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L500"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Update companion facing direction using a direction.</p>
@@ -1218,7 +1312,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_UpdateGlobal_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Companions.Motions.Motion`1.UpdateGlobal(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
   UpdateGlobal(GameTime, GameLocation)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L225"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L272"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Update info that should change every tick, for all game instances in multiplayer.</p>
@@ -1252,7 +1346,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_UpdateLightSource_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Companions.Motions.Motion`1.UpdateLightSource(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
   UpdateLightSource(GameTime, GameLocation)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L264"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L332"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Reposition the lightsource.</p>
@@ -1286,7 +1380,7 @@ Class Motion&lt;TArgs&gt;  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Companions_Motions_Motion_1_UpdateLocal_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Companions.Motions.Motion`1.UpdateLocal(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
   UpdateLocal(GameTime, GameLocation)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L207"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/Motion.cs/#L225"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Update info that should change every tick, for owner only. Netfield changes should happen here.</p>

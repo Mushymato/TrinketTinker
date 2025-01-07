@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class TileArgs | TrinketTinker </title>
+      <title>Class HarvestArgs | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class TileArgs | TrinketTinker ">
+      <meta name="title" content="Class HarvestArgs | TrinketTinker ">
       
-      <meta name="description" content="Args for picking a random tile within range">
+      <meta name="description" content="Args for harvest abilities">
       <link rel="icon" href="../images/favicon.png">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/new/main/apiSpec/new?filename=TrinketTinker_Models_AbilityArgs_TileArgs.md&amp;value=---%0Auid%3A%20TrinketTinker.Models.AbilityArgs.TileArgs%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/new/main/apiSpec/new?filename=TrinketTinker_Models_AbilityArgs_HarvestArgs.md&amp;value=---%0Auid%3A%20TrinketTinker.Models.AbilityArgs.HarvestArgs%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,12 +84,12 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="TrinketTinker.Models.AbilityArgs.TileArgs">
+        <article data-uid="TrinketTinker.Models.AbilityArgs.HarvestArgs">
 
 
 
-  <h1 id="TrinketTinker_Models_AbilityArgs_TileArgs" data-uid="TrinketTinker.Models.AbilityArgs.TileArgs" class="text-break">
-Class TileArgs  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/TileArgs.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  <h1 id="TrinketTinker_Models_AbilityArgs_HarvestArgs" data-uid="TrinketTinker.Models.AbilityArgs.HarvestArgs" class="text-break">
+Class HarvestArgs  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/HarvestArgs.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,12 +97,12 @@ Class TileArgs  <a class="header-action link-secondary" title="View source" href
   <dl><dt>Assembly</dt><dd>TrinketTinker.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Args for picking a random tile within range</p>
+  <div class="markdown summary"><p>Args for harvest abilities</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class TileArgs : IArgs</code></pre>
+    <pre><code class="lang-csharp hljs">public class HarvestArgs : TileArgs, IArgs</code></pre>
   </div>
 
 
@@ -112,7 +112,8 @@ Class TileArgs  <a class="header-action link-secondary" title="View source" href
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">TileArgs</span></div>
+      <div><a class="xref" href="TrinketTinker.Models.AbilityArgs.TileArgs.html">TileArgs</a></div>
+      <div><span class="xref">HarvestArgs</span></div>
     </dd>
   </dl>
 
@@ -123,17 +124,19 @@ Class TileArgs  <a class="header-action link-secondary" title="View source" href
     </dd>
   </dl>
 
-  <dl class="typelist derived">
-    <dt>Derived</dt>
-    <dd>
-      <div><a class="xref" href="TrinketTinker.Models.AbilityArgs.HarvestArgs.html">HarvestArgs</a></div>
-      <div><a class="xref" href="TrinketTinker.Models.AbilityArgs.HoeDirtArgs.html">HoeDirtArgs</a></div>
-    </dd>
-  </dl>
 
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
+    <div>
+      <a class="xref" href="TrinketTinker.Models.AbilityArgs.TileArgs.html#TrinketTinker_Models_AbilityArgs_TileArgs_Range">TileArgs.Range</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Models.AbilityArgs.TileArgs.html#TrinketTinker_Models_AbilityArgs_TileArgs_Count">TileArgs.Count</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Models.AbilityArgs.TileArgs.html#TrinketTinker_Models_AbilityArgs_TileArgs_Validate">TileArgs.Validate()</a>
+    </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -162,102 +165,32 @@ Class TileArgs  <a class="header-action link-secondary" title="View source" href
 
 
 
-  <h2 class="section" id="properties">Properties
+  <h2 class="section" id="fields">Fields
 </h2>
 
 
-  <a id="TrinketTinker_Models_AbilityArgs_TileArgs_Count_" data-uid="TrinketTinker.Models.AbilityArgs.TileArgs.Count*"></a>
 
-  <h3 id="TrinketTinker_Models_AbilityArgs_TileArgs_Count" data-uid="TrinketTinker.Models.AbilityArgs.TileArgs.Count">
-  Count
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/TileArgs.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TrinketTinker_Models_AbilityArgs_HarvestArgs_HarvestTo" data-uid="TrinketTinker.Models.AbilityArgs.HarvestArgs.HarvestTo">
+  HarvestTo
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/HarvestArgs.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Number of tiles to affect at a time</p>
+  <div class="markdown level1 summary"><p>Where to deposit the harvested item</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Count { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public HarvestDestination HarvestTo</code></pre>
   </div>
 
 
 
 
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="TrinketTinker.Models.AbilityArgs.HarvestDestination.html">HarvestDestination</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="TrinketTinker_Models_AbilityArgs_TileArgs_Range_" data-uid="TrinketTinker.Models.AbilityArgs.TileArgs.Range*"></a>
-
-  <h3 id="TrinketTinker_Models_AbilityArgs_TileArgs_Range" data-uid="TrinketTinker.Models.AbilityArgs.TileArgs.Range">
-  Range
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/TileArgs.cs/#L11"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Tile range radius, e.g. range 1 = 3x3, results in a square</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Range { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="TrinketTinker_Models_AbilityArgs_TileArgs_Validate_" data-uid="TrinketTinker.Models.AbilityArgs.TileArgs.Validate*"></a>
-
-  <h3 id="TrinketTinker_Models_AbilityArgs_TileArgs_Validate" data-uid="TrinketTinker.Models.AbilityArgs.TileArgs.Validate">
-  Validate()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/TileArgs.cs/#L64"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Checks if the given arguments are valid, potentially modify arguments to ensure they are valid</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Validate()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>true if valid</p>
-</dd>
-  </dl>
-
-
 
 
 

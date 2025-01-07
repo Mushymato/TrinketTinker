@@ -169,10 +169,16 @@ Class BaseStaticMotion&lt;IArgs&gt;  <a class="header-action link-secondary" tit
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_cs">Motion&lt;IArgs&gt;.cs</a>
     </div>
     <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_PauseMovementByAnimClip">Motion&lt;IArgs&gt;.PauseMovementByAnimClip</a>
+    </div>
+    <div>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_framesetLength">Motion&lt;IArgs&gt;.framesetLength</a>
     </div>
     <div>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_TotalFrames">Motion&lt;IArgs&gt;.TotalFrames</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_ClipRand">Motion&lt;IArgs&gt;.ClipRand</a>
     </div>
     <div>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetOneshotClip_System_String_">Motion&lt;IArgs&gt;.SetOneshotClip(string)</a>
@@ -196,7 +202,10 @@ Class BaseStaticMotion&lt;IArgs&gt;  <a class="header-action link-secondary" tit
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_UpdateGlobal_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_">Motion&lt;IArgs&gt;.UpdateGlobal(GameTime, GameLocation)</a>
     </div>
     <div>
-      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_GetMoving">Motion&lt;IArgs&gt;.GetMoving()</a>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_IsMoving">Motion&lt;IArgs&gt;.IsMoving()</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_ShouldMove">Motion&lt;IArgs&gt;.ShouldMove()</a>
     </div>
     <div>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_UpdateLightSource_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_">Motion&lt;IArgs&gt;.UpdateLightSource(GameTime, GameLocation)</a>
@@ -301,6 +310,47 @@ Class BaseStaticMotion&lt;IArgs&gt;  <a class="header-action link-secondary" tit
 
   <h2 class="section" id="methods">Methods
 </h2>
+
+
+  <a id="TrinketTinker_Companions_Motions_BaseStaticMotion_1_GetDirectionFromOwner_" data-uid="TrinketTinker.Companions.Motions.BaseStaticMotion`1.GetDirectionFromOwner*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_BaseStaticMotion_1_GetDirectionFromOwner_TrinketTinker_Models_MotionData_System_Int32_System_Int32_" data-uid="TrinketTinker.Companions.Motions.BaseStaticMotion`1.GetDirectionFromOwner(TrinketTinker.Models.MotionData,System.Int32,System.Int32)">
+  GetDirectionFromOwner(MotionData, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/StaticMotion.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get correct spritesheet row for facing direction, is static because of perching special case.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GetDirectionFromOwner(MotionData md, int facingDirection, int prevDirection = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>md</code> <a class="xref" href="TrinketTinker.Models.MotionData.html">MotionData</a></dt>
+    <dd></dd>
+    <dt><code>facingDirection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>prevDirection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
 
 
   <a id="TrinketTinker_Companions_Motions_BaseStaticMotion_1_GetPositionalLayerDepth_" data-uid="TrinketTinker.Companions.Motions.BaseStaticMotion`1.GetPositionalLayerDepth*"></a>

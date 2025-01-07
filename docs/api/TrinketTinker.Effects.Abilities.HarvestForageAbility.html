@@ -102,7 +102,7 @@ Class HarvestForageAbility  <a class="header-action link-secondary" title="View 
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class HarvestForageAbility : BaseHarvestAbility&lt;TileArgs&gt;, IAbility</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class HarvestForageAbility : BaseHarvestAbility&lt;HarvestArgs&gt;, IAbility</code></pre>
   </div>
 
 
@@ -112,8 +112,8 @@ Class HarvestForageAbility  <a class="header-action link-secondary" title="View 
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html">Ability</a>&lt;<a class="xref" href="TrinketTinker.Models.AbilityArgs.TileArgs.html">TileArgs</a>&gt;</div>
-      <div><a class="xref" href="TrinketTinker.Effects.Abilities.BaseHarvestAbility-1.html">BaseHarvestAbility</a>&lt;<a class="xref" href="TrinketTinker.Models.AbilityArgs.TileArgs.html">TileArgs</a>&gt;</div>
+      <div><a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html">Ability</a>&lt;<a class="xref" href="TrinketTinker.Models.AbilityArgs.HarvestArgs.html">HarvestArgs</a>&gt;</div>
+      <div><a class="xref" href="TrinketTinker.Effects.Abilities.BaseHarvestAbility-1.html">BaseHarvestAbility</a>&lt;<a class="xref" href="TrinketTinker.Models.AbilityArgs.HarvestArgs.html">HarvestArgs</a>&gt;</div>
       <div><span class="xref">HarvestForageAbility</span></div>
     </dd>
   </dl>
@@ -130,22 +130,22 @@ Class HarvestForageAbility  <a class="header-action link-secondary" title="View 
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Name">Ability&lt;TileArgs&gt;.Name</a>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Name">Ability&lt;HarvestArgs&gt;.Name</a>
     </div>
     <div>
-      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Valid">Ability&lt;TileArgs&gt;.Valid</a>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Valid">Ability&lt;HarvestArgs&gt;.Valid</a>
     </div>
     <div>
-      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_EventAbilityProc">Ability&lt;TileArgs&gt;.EventAbilityProc</a>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_EventAbilityProc">Ability&lt;HarvestArgs&gt;.EventAbilityProc</a>
     </div>
     <div>
-      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Activate_StardewValley_Farmer_">Ability&lt;TileArgs&gt;.Activate(Farmer)</a>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Activate_StardewValley_Farmer_">Ability&lt;HarvestArgs&gt;.Activate(Farmer)</a>
     </div>
     <div>
-      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Deactivate_StardewValley_Farmer_">Ability&lt;TileArgs&gt;.Deactivate(Farmer)</a>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Deactivate_StardewValley_Farmer_">Ability&lt;HarvestArgs&gt;.Deactivate(Farmer)</a>
     </div>
     <div>
-      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Update_StardewValley_Farmer_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_">Ability&lt;TileArgs&gt;.Update(Farmer, GameTime, GameLocation)</a>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Update_StardewValley_Farmer_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_">Ability&lt;HarvestArgs&gt;.Update(Farmer, GameTime, GameLocation)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -220,7 +220,7 @@ Class HarvestForageAbility  <a class="header-action link-secondary" title="View 
 
   <h3 id="TrinketTinker_Effects_Abilities_HarvestForageAbility_DoHarvest_StardewValley_GameLocation_StardewValley_Farmer_Microsoft_Xna_Framework_Vector2_" data-uid="TrinketTinker.Effects.Abilities.HarvestForageAbility.DoHarvest(StardewValley.GameLocation,StardewValley.Farmer,Microsoft.Xna.Framework.Vector2)">
   DoHarvest(GameLocation, Farmer, Vector2)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HarvestAbility.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HarvestAbility.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>

@@ -140,8 +140,35 @@
 <td><em>empty</em></td>
 <td>Milisecond Interval between animation frames. If this is not set, use the Motion's interval.</td>
 </tr>
+<tr>
+<td><code>PauseMovement</code></td>
+<td>bool</td>
+<td>false</td>
+<td>If true, pause movement update of this animation clip if it plays as a one shot anim clip.</td>
+</tr>
+<tr>
+<td><code>RandomClips</code></td>
+<td><code>List&lt;AnimClipData&gt;</code></td>
+<td><em>empty</em></td>
+<td>Allows extra random anim clips to be provided for this key, only relevant for the top level anim clip.</td>
+</tr>
+<tr>
+<td><code>RandomWeight</code></td>
+<td>int</td>
+<td>1</td>
+<td>Weight of random clip, if provided. Higher number is more frequent.</td>
+</tr>
+<tr>
+<td><code>NopClip</code></td>
+<td>bool</td>
+<td>false</td>
+<td>Indicates a no-op clip that does nothing, for use with <code>RandomClips</code>.</td>
+</tr>
 </tbody>
 </table>
+<h3 id="directional-animclip-keys">Directional AnimClip Keys</h3>
+<p>All anim keys can take on a directional index suffix such as <code>&quot;{KEY}.1&quot;</code> which depends on the <a href="3.0-Direction.html">direction mode</a>. The suffix takes the absolute value of the index, no need to manually flip sprites for negative direction index.</p>
+<p>Example: when the direction index is <code>1</code> and the player is still, <code>&quot;Idle.1&quot;</code> will be picked if available, fallback to <code>&quot;Idle&quot;</code>.</p>
 <h3 id="motion-defined-keys">Motion Defined Keys</h3>
 <p>These animation are applied when companion enter a state defined by particular motion, except for <code>&quot;Idle&quot;</code>, which applies for all motions. These are considered &quot;override&quot; anim clips, which play until the player or trinket leaves the specified state.</p>
 <table>
@@ -170,6 +197,22 @@
 </tr>
 </tbody>
 </table>
+<h3 id="anchor-defined-keys">Anchor Defined Keys</h3>
+<p>These keys activate while the companion is locked into a particular anchor, and cease once they are no longer targeting that anchor.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&quot;Anchor.&lt;Mode&gt;&quot;</code></td>
+<td>The mode referred to here is an anchor mode, see <a href="3.1-Anchors.html">Anchors</a>.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="ability-defined-keys">Ability Defined Keys</h3>
 <p>These keys are defined by mod, in specified models.</p>
 <table>
@@ -188,9 +231,6 @@
 </tr>
 </tbody>
 </table>
-<h3 id="directional-animclip-keys">Directional AnimClip Keys</h3>
-<p>All anim keys can take on a directional index suffix such as <code>&quot;{KEY}.1&quot;</code> which depends on the <a href="3.0-Direction.html">direction mode</a>. The suffix takes the absolute value of the index, no need to manually flip sprites for negative direction index.</p>
-<p>Example: when the direction index is <code>1</code> and the player is still, <code>&quot;Idle.1&quot;</code> will be picked if available, fallback to <code>&quot;Idle&quot;</code>.</p>
 
 </article>
 

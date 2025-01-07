@@ -492,6 +492,26 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.AbilityArgs.HarvestArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.AbilityArgs.HarvestArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.AbilityArgs.HarvestDestination.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.AbilityArgs.HarvestDestination.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Models.AbilityArgs.HoeDirtArgs.yml",
       "output": {
         ".html": {

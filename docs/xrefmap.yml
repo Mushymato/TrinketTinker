@@ -212,6 +212,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Companions.Anim.TinkerAnimSprite.GetSourceRect
   nameWithType: TinkerAnimSprite.GetSourceRect
+- uid: TrinketTinker.Companions.Anim.TinkerAnimSprite.Hidden
+  name: Hidden
+  href: api/TrinketTinker.Companions.Anim.TinkerAnimSprite.html#TrinketTinker_Companions_Anim_TinkerAnimSprite_Hidden
+  commentId: P:TrinketTinker.Companions.Anim.TinkerAnimSprite.Hidden
+  fullName: TrinketTinker.Companions.Anim.TinkerAnimSprite.Hidden
+  nameWithType: TinkerAnimSprite.Hidden
+- uid: TrinketTinker.Companions.Anim.TinkerAnimSprite.Hidden*
+  name: Hidden
+  href: api/TrinketTinker.Companions.Anim.TinkerAnimSprite.html#TrinketTinker_Companions_Anim_TinkerAnimSprite_Hidden_
+  commentId: Overload:TrinketTinker.Companions.Anim.TinkerAnimSprite.Hidden
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Anim.TinkerAnimSprite.Hidden
+  nameWithType: TinkerAnimSprite.Hidden
 - uid: TrinketTinker.Companions.Motions
   name: TrinketTinker.Companions.Motions
   href: api/TrinketTinker.Companions.Motions.html
@@ -359,6 +372,24 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.BaseStaticMotion(Of IArgs).New
   nameWithType: BaseStaticMotion<IArgs>.BaseStaticMotion
   nameWithType.vb: BaseStaticMotion(Of IArgs).New
+- uid: TrinketTinker.Companions.Motions.BaseStaticMotion`1.GetDirectionFromOwner(TrinketTinker.Models.MotionData,System.Int32,System.Int32)
+  name: GetDirectionFromOwner(MotionData, int, int)
+  href: api/TrinketTinker.Companions.Motions.BaseStaticMotion-1.html#TrinketTinker_Companions_Motions_BaseStaticMotion_1_GetDirectionFromOwner_TrinketTinker_Models_MotionData_System_Int32_System_Int32_
+  commentId: M:TrinketTinker.Companions.Motions.BaseStaticMotion`1.GetDirectionFromOwner(TrinketTinker.Models.MotionData,System.Int32,System.Int32)
+  name.vb: GetDirectionFromOwner(MotionData, Integer, Integer)
+  fullName: TrinketTinker.Companions.Motions.BaseStaticMotion<IArgs>.GetDirectionFromOwner(TrinketTinker.Models.MotionData, int, int)
+  fullName.vb: TrinketTinker.Companions.Motions.BaseStaticMotion(Of IArgs).GetDirectionFromOwner(TrinketTinker.Models.MotionData, Integer, Integer)
+  nameWithType: BaseStaticMotion<IArgs>.GetDirectionFromOwner(MotionData, int, int)
+  nameWithType.vb: BaseStaticMotion(Of IArgs).GetDirectionFromOwner(MotionData, Integer, Integer)
+- uid: TrinketTinker.Companions.Motions.BaseStaticMotion`1.GetDirectionFromOwner*
+  name: GetDirectionFromOwner
+  href: api/TrinketTinker.Companions.Motions.BaseStaticMotion-1.html#TrinketTinker_Companions_Motions_BaseStaticMotion_1_GetDirectionFromOwner_
+  commentId: Overload:TrinketTinker.Companions.Motions.BaseStaticMotion`1.GetDirectionFromOwner
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.BaseStaticMotion<IArgs>.GetDirectionFromOwner
+  fullName.vb: TrinketTinker.Companions.Motions.BaseStaticMotion(Of IArgs).GetDirectionFromOwner
+  nameWithType: BaseStaticMotion<IArgs>.GetDirectionFromOwner
+  nameWithType.vb: BaseStaticMotion(Of IArgs).GetDirectionFromOwner
 - uid: TrinketTinker.Companions.Motions.BaseStaticMotion`1.GetPositionalLayerDepth(Microsoft.Xna.Framework.Vector2)
   name: GetPositionalLayerDepth(Vector2)
   href: api/TrinketTinker.Companions.Motions.BaseStaticMotion-1.html#TrinketTinker_Companions_Motions_BaseStaticMotion_1_GetPositionalLayerDepth_Microsoft_Xna_Framework_Vector2_
@@ -619,6 +650,12 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Companions.Motions.HoverMotion.GetPositionalLayerDepth
   nameWithType: HoverMotion.GetPositionalLayerDepth
+- uid: TrinketTinker.Companions.Motions.HoverMotion.PERCHING
+  name: PERCHING
+  href: api/TrinketTinker.Companions.Motions.HoverMotion.html#TrinketTinker_Companions_Motions_HoverMotion_PERCHING
+  commentId: F:TrinketTinker.Companions.Motions.HoverMotion.PERCHING
+  fullName: TrinketTinker.Companions.Motions.HoverMotion.PERCHING
+  nameWithType: HoverMotion.PERCHING
 - uid: TrinketTinker.Companions.Motions.HoverMotion.UpdateGlobal(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)
   name: UpdateGlobal(GameTime, GameLocation)
   href: api/TrinketTinker.Companions.Motions.HoverMotion.html#TrinketTinker_Companions_Motions_HoverMotion_UpdateGlobal_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_
@@ -664,6 +701,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Companions.Motions.IMotion.Cleanup
   nameWithType: IMotion.Cleanup
+- uid: TrinketTinker.Companions.Motions.IMotion.ClipRand
+  name: ClipRand
+  href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_ClipRand
+  commentId: P:TrinketTinker.Companions.Motions.IMotion.ClipRand
+  fullName: TrinketTinker.Companions.Motions.IMotion.ClipRand
+  nameWithType: IMotion.ClipRand
+- uid: TrinketTinker.Companions.Motions.IMotion.ClipRand*
+  name: ClipRand
+  href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_ClipRand_
+  commentId: Overload:TrinketTinker.Companions.Motions.IMotion.ClipRand
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.IMotion.ClipRand
+  nameWithType: IMotion.ClipRand
 - uid: TrinketTinker.Companions.Motions.IMotion.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
   name: Draw(SpriteBatch)
   href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_
@@ -904,6 +954,23 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).Cleanup
   nameWithType: Motion<TArgs>.Cleanup
   nameWithType.vb: Motion(Of TArgs).Cleanup
+- uid: TrinketTinker.Companions.Motions.Motion`1.ClipRand
+  name: ClipRand
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_ClipRand
+  commentId: P:TrinketTinker.Companions.Motions.Motion`1.ClipRand
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.ClipRand
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).ClipRand
+  nameWithType: Motion<TArgs>.ClipRand
+  nameWithType.vb: Motion(Of TArgs).ClipRand
+- uid: TrinketTinker.Companions.Motions.Motion`1.ClipRand*
+  name: ClipRand
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_ClipRand_
+  commentId: Overload:TrinketTinker.Companions.Motions.Motion`1.ClipRand
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.ClipRand
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).ClipRand
+  nameWithType: Motion<TArgs>.ClipRand
+  nameWithType.vb: Motion(Of TArgs).ClipRand
 - uid: TrinketTinker.Companions.Motions.Motion`1.DirectionFrameStart
   name: DirectionFrameStart()
   href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_DirectionFrameStart
@@ -990,23 +1057,6 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).EnqueueRepeatDraws
   nameWithType: Motion<TArgs>.EnqueueRepeatDraws
   nameWithType.vb: Motion(Of TArgs).EnqueueRepeatDraws
-- uid: TrinketTinker.Companions.Motions.Motion`1.GetMoving
-  name: GetMoving()
-  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_GetMoving
-  commentId: M:TrinketTinker.Companions.Motions.Motion`1.GetMoving
-  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.GetMoving()
-  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).GetMoving()
-  nameWithType: Motion<TArgs>.GetMoving()
-  nameWithType.vb: Motion(Of TArgs).GetMoving()
-- uid: TrinketTinker.Companions.Motions.Motion`1.GetMoving*
-  name: GetMoving
-  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_GetMoving_
-  commentId: Overload:TrinketTinker.Companions.Motions.Motion`1.GetMoving
-  isSpec: "True"
-  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.GetMoving
-  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).GetMoving
-  nameWithType: Motion<TArgs>.GetMoving
-  nameWithType.vb: Motion(Of TArgs).GetMoving
 - uid: TrinketTinker.Companions.Motions.Motion`1.GetOffset
   name: GetOffset()
   href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_GetOffset
@@ -1126,6 +1176,23 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).Initialize
   nameWithType: Motion<TArgs>.Initialize
   nameWithType.vb: Motion(Of TArgs).Initialize
+- uid: TrinketTinker.Companions.Motions.Motion`1.IsMoving
+  name: IsMoving()
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_IsMoving
+  commentId: M:TrinketTinker.Companions.Motions.Motion`1.IsMoving
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.IsMoving()
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).IsMoving()
+  nameWithType: Motion<TArgs>.IsMoving()
+  nameWithType.vb: Motion(Of TArgs).IsMoving()
+- uid: TrinketTinker.Companions.Motions.Motion`1.IsMoving*
+  name: IsMoving
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_IsMoving_
+  commentId: Overload:TrinketTinker.Companions.Motions.Motion`1.IsMoving
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.IsMoving
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).IsMoving
+  nameWithType: Motion<TArgs>.IsMoving
+  nameWithType.vb: Motion(Of TArgs).IsMoving
 - uid: TrinketTinker.Companions.Motions.Motion`1.OnOwnerWarp
   name: OnOwnerWarp()
   href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_OnOwnerWarp
@@ -1143,6 +1210,14 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).OnOwnerWarp
   nameWithType: Motion<TArgs>.OnOwnerWarp
   nameWithType.vb: Motion(Of TArgs).OnOwnerWarp
+- uid: TrinketTinker.Companions.Motions.Motion`1.PauseMovementByAnimClip
+  name: PauseMovementByAnimClip
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_PauseMovementByAnimClip
+  commentId: F:TrinketTinker.Companions.Motions.Motion`1.PauseMovementByAnimClip
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.PauseMovementByAnimClip
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).PauseMovementByAnimClip
+  nameWithType: Motion<TArgs>.PauseMovementByAnimClip
+  nameWithType.vb: Motion(Of TArgs).PauseMovementByAnimClip
 - uid: TrinketTinker.Companions.Motions.Motion`1.SetOneshotClip(System.String)
   name: SetOneshotClip(string?)
   href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetOneshotClip_System_String_
@@ -1179,6 +1254,23 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).SetOverrideClip
   nameWithType: Motion<TArgs>.SetOverrideClip
   nameWithType.vb: Motion(Of TArgs).SetOverrideClip
+- uid: TrinketTinker.Companions.Motions.Motion`1.ShouldMove
+  name: ShouldMove()
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_ShouldMove
+  commentId: M:TrinketTinker.Companions.Motions.Motion`1.ShouldMove
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.ShouldMove()
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).ShouldMove()
+  nameWithType: Motion<TArgs>.ShouldMove()
+  nameWithType.vb: Motion(Of TArgs).ShouldMove()
+- uid: TrinketTinker.Companions.Motions.Motion`1.ShouldMove*
+  name: ShouldMove
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_ShouldMove_
+  commentId: Overload:TrinketTinker.Companions.Motions.Motion`1.ShouldMove
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.ShouldMove
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).ShouldMove
+  nameWithType: Motion<TArgs>.ShouldMove
+  nameWithType.vb: Motion(Of TArgs).ShouldMove
 - uid: TrinketTinker.Companions.Motions.Motion`1.TotalFrames
   name: TotalFrames
   href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_TotalFrames
@@ -1656,6 +1748,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Companions.TrinketTinkerCompanion.CleanupCompanion
   nameWithType: TrinketTinkerCompanion.CleanupCompanion
+- uid: TrinketTinker.Companions.TrinketTinkerCompanion.ClipSeed
+  name: ClipSeed
+  href: api/TrinketTinker.Companions.TrinketTinkerCompanion.html#TrinketTinker_Companions_TrinketTinkerCompanion_ClipSeed
+  commentId: P:TrinketTinker.Companions.TrinketTinkerCompanion.ClipSeed
+  fullName: TrinketTinker.Companions.TrinketTinkerCompanion.ClipSeed
+  nameWithType: TrinketTinkerCompanion.ClipSeed
+- uid: TrinketTinker.Companions.TrinketTinkerCompanion.ClipSeed*
+  name: ClipSeed
+  href: api/TrinketTinker.Companions.TrinketTinkerCompanion.html#TrinketTinker_Companions_TrinketTinkerCompanion_ClipSeed_
+  commentId: Overload:TrinketTinker.Companions.TrinketTinkerCompanion.ClipSeed
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.TrinketTinkerCompanion.ClipSeed
+  nameWithType: TrinketTinkerCompanion.ClipSeed
 - uid: TrinketTinker.Companions.TrinketTinkerCompanion.CompanionMoving
   name: CompanionMoving
   href: api/TrinketTinker.Companions.TrinketTinkerCompanion.html#TrinketTinker_Companions_TrinketTinkerCompanion_CompanionMoving
@@ -3847,6 +3952,12 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.ExplodeRadius
   nameWithType: DamageArgs.ExplodeRadius
+- uid: TrinketTinker.Models.AbilityArgs.DamageArgs.Filters
+  name: Filters
+  href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_Filters
+  commentId: F:TrinketTinker.Models.AbilityArgs.DamageArgs.Filters
+  fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.Filters
+  nameWithType: DamageArgs.Filters
 - uid: TrinketTinker.Models.AbilityArgs.DamageArgs.Hits
   name: Hits
   href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_Hits
@@ -3964,6 +4075,42 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.Validate
   nameWithType: DamageArgs.Validate
+- uid: TrinketTinker.Models.AbilityArgs.HarvestArgs
+  name: HarvestArgs
+  href: api/TrinketTinker.Models.AbilityArgs.HarvestArgs.html
+  commentId: T:TrinketTinker.Models.AbilityArgs.HarvestArgs
+  fullName: TrinketTinker.Models.AbilityArgs.HarvestArgs
+  nameWithType: HarvestArgs
+- uid: TrinketTinker.Models.AbilityArgs.HarvestArgs.HarvestTo
+  name: HarvestTo
+  href: api/TrinketTinker.Models.AbilityArgs.HarvestArgs.html#TrinketTinker_Models_AbilityArgs_HarvestArgs_HarvestTo
+  commentId: F:TrinketTinker.Models.AbilityArgs.HarvestArgs.HarvestTo
+  fullName: TrinketTinker.Models.AbilityArgs.HarvestArgs.HarvestTo
+  nameWithType: HarvestArgs.HarvestTo
+- uid: TrinketTinker.Models.AbilityArgs.HarvestDestination
+  name: HarvestDestination
+  href: api/TrinketTinker.Models.AbilityArgs.HarvestDestination.html
+  commentId: T:TrinketTinker.Models.AbilityArgs.HarvestDestination
+  fullName: TrinketTinker.Models.AbilityArgs.HarvestDestination
+  nameWithType: HarvestDestination
+- uid: TrinketTinker.Models.AbilityArgs.HarvestDestination.Debris
+  name: Debris
+  href: api/TrinketTinker.Models.AbilityArgs.HarvestDestination.html#TrinketTinker_Models_AbilityArgs_HarvestDestination_Debris
+  commentId: F:TrinketTinker.Models.AbilityArgs.HarvestDestination.Debris
+  fullName: TrinketTinker.Models.AbilityArgs.HarvestDestination.Debris
+  nameWithType: HarvestDestination.Debris
+- uid: TrinketTinker.Models.AbilityArgs.HarvestDestination.None
+  name: None
+  href: api/TrinketTinker.Models.AbilityArgs.HarvestDestination.html#TrinketTinker_Models_AbilityArgs_HarvestDestination_None
+  commentId: F:TrinketTinker.Models.AbilityArgs.HarvestDestination.None
+  fullName: TrinketTinker.Models.AbilityArgs.HarvestDestination.None
+  nameWithType: HarvestDestination.None
+- uid: TrinketTinker.Models.AbilityArgs.HarvestDestination.Player
+  name: Player
+  href: api/TrinketTinker.Models.AbilityArgs.HarvestDestination.html#TrinketTinker_Models_AbilityArgs_HarvestDestination_Player
+  commentId: F:TrinketTinker.Models.AbilityArgs.HarvestDestination.Player
+  fullName: TrinketTinker.Models.AbilityArgs.HarvestDestination.Player
+  nameWithType: HarvestDestination.Player
 - uid: TrinketTinker.Models.AbilityArgs.HoeDirtArgs
   name: HoeDirtArgs
   href: api/TrinketTinker.Models.AbilityArgs.HoeDirtArgs.html
@@ -4536,6 +4683,12 @@ references:
   commentId: T:TrinketTinker.Models.AnchorTargetData
   fullName: TrinketTinker.Models.AnchorTargetData
   nameWithType: AnchorTargetData
+- uid: TrinketTinker.Models.AnchorTargetData.Filters
+  name: Filters
+  href: api/TrinketTinker.Models.AnchorTargetData.html#TrinketTinker_Models_AnchorTargetData_Filters
+  commentId: F:TrinketTinker.Models.AnchorTargetData.Filters
+  fullName: TrinketTinker.Models.AnchorTargetData.Filters
+  nameWithType: AnchorTargetData.Filters
 - uid: TrinketTinker.Models.AnchorTargetData.Mode
   name: Mode
   href: api/TrinketTinker.Models.AnchorTargetData.html#TrinketTinker_Models_AnchorTargetData_Mode
@@ -4580,6 +4733,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AnimClipData.FrameStart
   nameWithType: AnimClipData.FrameStart
+- uid: TrinketTinker.Models.AnimClipData.GetClip(System.Random)
+  name: GetClip(Random)
+  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_GetClip_System_Random_
+  commentId: M:TrinketTinker.Models.AnimClipData.GetClip(System.Random)
+  fullName: TrinketTinker.Models.AnimClipData.GetClip(System.Random)
+  nameWithType: AnimClipData.GetClip(Random)
+- uid: TrinketTinker.Models.AnimClipData.GetClip*
+  name: GetClip
+  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_GetClip_
+  commentId: Overload:TrinketTinker.Models.AnimClipData.GetClip
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AnimClipData.GetClip
+  nameWithType: AnimClipData.GetClip
 - uid: TrinketTinker.Models.AnimClipData.Interval
   name: Interval
   href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_Interval
@@ -4606,6 +4772,71 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AnimClipData.LoopMode
   nameWithType: AnimClipData.LoopMode
+- uid: TrinketTinker.Models.AnimClipData.NopClip
+  name: NopClip
+  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_NopClip
+  commentId: P:TrinketTinker.Models.AnimClipData.NopClip
+  fullName: TrinketTinker.Models.AnimClipData.NopClip
+  nameWithType: AnimClipData.NopClip
+- uid: TrinketTinker.Models.AnimClipData.NopClip*
+  name: NopClip
+  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_NopClip_
+  commentId: Overload:TrinketTinker.Models.AnimClipData.NopClip
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AnimClipData.NopClip
+  nameWithType: AnimClipData.NopClip
+- uid: TrinketTinker.Models.AnimClipData.PauseMovement
+  name: PauseMovement
+  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_PauseMovement
+  commentId: P:TrinketTinker.Models.AnimClipData.PauseMovement
+  fullName: TrinketTinker.Models.AnimClipData.PauseMovement
+  nameWithType: AnimClipData.PauseMovement
+- uid: TrinketTinker.Models.AnimClipData.PauseMovement*
+  name: PauseMovement
+  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_PauseMovement_
+  commentId: Overload:TrinketTinker.Models.AnimClipData.PauseMovement
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AnimClipData.PauseMovement
+  nameWithType: AnimClipData.PauseMovement
+- uid: TrinketTinker.Models.AnimClipData.RandomClips
+  name: RandomClips
+  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_RandomClips
+  commentId: P:TrinketTinker.Models.AnimClipData.RandomClips
+  fullName: TrinketTinker.Models.AnimClipData.RandomClips
+  nameWithType: AnimClipData.RandomClips
+- uid: TrinketTinker.Models.AnimClipData.RandomClips*
+  name: RandomClips
+  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_RandomClips_
+  commentId: Overload:TrinketTinker.Models.AnimClipData.RandomClips
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AnimClipData.RandomClips
+  nameWithType: AnimClipData.RandomClips
+- uid: TrinketTinker.Models.AnimClipData.RandomWeight
+  name: RandomWeight
+  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_RandomWeight
+  commentId: P:TrinketTinker.Models.AnimClipData.RandomWeight
+  fullName: TrinketTinker.Models.AnimClipData.RandomWeight
+  nameWithType: AnimClipData.RandomWeight
+- uid: TrinketTinker.Models.AnimClipData.RandomWeight*
+  name: RandomWeight
+  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_RandomWeight_
+  commentId: Overload:TrinketTinker.Models.AnimClipData.RandomWeight
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AnimClipData.RandomWeight
+  nameWithType: AnimClipData.RandomWeight
+- uid: TrinketTinker.Models.AnimClipData.SelectedClip
+  name: SelectedClip
+  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_SelectedClip
+  commentId: P:TrinketTinker.Models.AnimClipData.SelectedClip
+  fullName: TrinketTinker.Models.AnimClipData.SelectedClip
+  nameWithType: AnimClipData.SelectedClip
+- uid: TrinketTinker.Models.AnimClipData.SelectedClip*
+  name: SelectedClip
+  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_SelectedClip_
+  commentId: Overload:TrinketTinker.Models.AnimClipData.SelectedClip
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AnimClipData.SelectedClip
+  nameWithType: AnimClipData.SelectedClip
 - uid: TrinketTinker.Models.AnimClipDictionary
   name: AnimClipDictionary
   href: api/TrinketTinker.Models.AnimClipDictionary.html
