@@ -6,6 +6,8 @@ namespace TrinketTinker.Companions.Motions;
 
 public interface IMotion
 {
+    Random ClipRand { get; set; }
+
     /// <summary>Set an oneshot clip, to play once until end</summary>
     /// <param name="clipKey"></param>
     void SetOneshotClip(string? clipKey);

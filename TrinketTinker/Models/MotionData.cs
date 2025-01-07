@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using StardewValley;
+using StardewValley.Extensions;
 
 namespace TrinketTinker.Models;
 
@@ -106,6 +107,59 @@ public class AnimClipData
 
     /// <summary>If set, the companion won't move while clip plays.</summary>
     public bool PauseMovement { get; set; } = false;
+
+    /// <summary>If true, this clip will actually do nothing (nop). For use with random clips</summary>
+    public bool NopClip { get; set; } = false;
+
+    /// <summary>Additional clips that may randomly be called, only valid for the top level clip.</summary>
+    public List<AnimClipData> RandomClips { get; set; } = [];
+
+    /// <summary>Weight of randomization on the clips, higher number is more likely.</summary>
+    public int RandomWeight { get; set; } = 1;
+
+    private static int GCD(IEnumerable<int> weights)
+    {
+        return weights.Aggregate(GCD);
+    }
+
+    private static int GCD(int a, int b)
+    {
+        return b == 0 ? a : GCD(b, a % b);
+    }
+
+    private List<AnimClipData>? randomClipForWeighted = null;
+
+    private AnimClipData? selectedClip = null;
+    public AnimClipData SelectedClip => selectedClip ?? this;
+
+    public AnimClipData GetClip(Random clipRandom)
+    {
+        if (RandomClips.Count == 0)
+        {
+            selectedClip = this;
+            return this;
+        }
+        if (randomClipForWeighted == null)
+        {
+            List<int> weights = [RandomWeight];
+            weights.AddRange(RandomClips.Select((clip) => clip.RandomWeight));
+            int gcd = GCD(weights);
+            randomClipForWeighted = [];
+            for (int i = 0; i < RandomWeight / gcd; i++)
+            {
+                randomClipForWeighted.Add(this);
+            }
+            foreach (AnimClipData clip in RandomClips)
+            {
+                for (int i = 0; i < clip.RandomWeight / gcd; i++)
+                {
+                    randomClipForWeighted.Add(clip);
+                }
+            }
+        }
+        selectedClip = clipRandom.ChooseFrom(randomClipForWeighted);
+        return selectedClip;
+    }
 }
 
 public class AnimClipDictionary : Dictionary<string, AnimClipData?>
@@ -206,5 +260,5 @@ public sealed class MotionData : Mixin.IHaveArgs
     /// Repository of anim clips that can be shown in place of the default movement anim.
     /// Must live on the same sprite sheet specified by variant data.
     /// </summary>
-    public AnimClipDictionary AnimClips { get; set; } = [];
+    public AnimClipDictionary AnimClips { get; } = [];
 }

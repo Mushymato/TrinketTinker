@@ -41,6 +41,8 @@ public class TrinketTinkerCompanion : Companion
         get => _netLerp.Value;
         set => _netLerp.Value = value;
     }
+    private readonly NetInt _clipSeed = new(Random.Shared.Next());
+    public int ClipSeed => _clipSeed.Value;
 
     // Derived
     /// <summary>Backing companion data from content.</summary>
@@ -127,12 +129,20 @@ public class TrinketTinkerCompanion : Companion
             .AddField(_oneshotKey, "_oneshotKey")
             .AddField(_overrideKey, "_overrideKey")
             .AddField(_netLerp, "_netLerp")
-            .AddField(_disableCompanion, "_disableCompanion");
+            .AddField(_disableCompanion, "_disableCompanion")
+            .AddField(_clipSeed, "_clipSeed");
         _id.fieldChangeVisibleEvent += InitCompanionData;
         _oneshotKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
             Motion?.SetOneshotClip(newValue);
         _overrideKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
             Motion?.SetOverrideClip(newValue);
+        _clipSeed.fieldChangeVisibleEvent += (NetInt field, int oldValue, int newValue) =>
+        {
+            if (Motion != null)
+            {
+                Motion.ClipRand = new Random(newValue);
+            }
+        };
     }
 
     /// <summary>When <see cref="Id"/> is changed through net event, fetch companion data and build all fields.</summary>

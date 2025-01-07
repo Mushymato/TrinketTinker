@@ -4,6 +4,18 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.4.0
+
+#### Added
+
+- Add support for randomized anime clips.
+- Allow one shot clips to pause movement.
+- Changed perching clip to behave by static motion rules (check against player facing direction), rather than lerp motion rules (check against companion facing).
+
+#### Fixed
+
+- AbilityProc clips not playing in multiplayer.
+
 ### 1.3.0
 
 #### Added

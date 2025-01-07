@@ -124,7 +124,7 @@ public class TrinketTinkerEffect : TrinketEffect
     public void SetOneshotClip(string? clipKey)
     {
         if (Companion is TrinketTinkerCompanion cmp)
-            cmp.Motion?.SetOneshotClip(clipKey);
+            cmp.OneshotKey = clipKey;
     }
 
     /// <summary>Spawn the companion, and activate all abilities</summary>

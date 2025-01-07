@@ -25,7 +25,18 @@
               "AbilityProc.1": {
                 "FrameStart": 8,
                 "FrameLength": 4,
-                "Interval": 400
+                "Interval": 400,
+                "RandomClips": [
+                  {
+                    "FrameStart": 16,
+                    "FrameLength": 4,
+                    "Interval": 400,
+                    "RandomWeight": 4
+                  },
+                  {
+                    "NopClip": true
+                  }
+                ]
               }
             }
           },

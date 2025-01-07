@@ -47,6 +47,9 @@ public abstract class Motion<TArgs> : IMotion
     /// <summary>Override anim clip key</summary>
     private string? overrideClipKey = null;
 
+    /// <summary>The current clip key</summary>
+    private string? currentClipKey = null;
+
     /// <summary>An anim clip that pauses movement is currently playing.</summary>
     public bool PauseMovementByAnimClip = false;
 
@@ -58,6 +61,9 @@ public abstract class Motion<TArgs> : IMotion
 
     /// <summary>Actual total frame used for Repeat, equal to frame length</summary>
     protected virtual int TotalFrames => framesetLength;
+
+    /// <summary>Clip random</summary>
+    public Random ClipRand { get; set; } = Random.Shared;
 
     /// <summary>Basic constructor, tries to parse arguments as the generic <see cref="IArgs"/> type.</summary>
     /// <param name="companion"></param>
@@ -228,12 +234,38 @@ public abstract class Motion<TArgs> : IMotion
     /// </returns>
     private int AnimateClip(GameTime time, string? key, out AnimClipData? clip)
     {
+        clip = null;
+        if (key == null)
+            return 0;
         int direction = c.direction.Value;
         if (key == HoverMotion.PERCHING)
             direction = StaticMotion.GetDirectionFromOwner(md, c.Owner.FacingDirection);
         if (!md.AnimClips.TryGetDirectional(key, direction, out clip))
+        {
+            if (key != null)
+                currentClipKey = null;
             return 0;
-        return cs.AnimateClip(time, clip, md.Interval) ? 2 : 1;
+        }
+        if (currentClipKey != key)
+        {
+            currentClipKey = key;
+            clip = clip.GetClip(ClipRand);
+        }
+        else
+        {
+            clip = clip.SelectedClip;
+        }
+        if (clip.NopClip)
+        {
+            currentClipKey = null;
+            return 0;
+        }
+        if (cs.AnimateClip(time, clip, md.Interval))
+        {
+            currentClipKey = null;
+            return 2;
+        }
+        return 1;
     }
 
     /// <inheritdoc/>
@@ -247,13 +279,12 @@ public abstract class Motion<TArgs> : IMotion
             if (res == 2)
             {
                 PauseMovementByAnimClip = false;
-                oneshotClipKey = null;
+                c.OneshotKey = null;
             }
             else
             {
                 PauseMovementByAnimClip = clip!.PauseMovement;
             }
-
             return;
         }
         // Override Clip: play until override is unset externally
