@@ -8,7 +8,7 @@
 
 #### Added
 
-- Add support for randomized anime clips.
+- Add support for randomized anim clips.
 - Allow one shot clips to pause movement.
 - Changed perching clip to behave by static motion rules (check against player facing direction), rather than lerp motion rules (check against companion facing).
 
