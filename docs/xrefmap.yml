@@ -798,6 +798,22 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Companions.Motions.IMotion.SetOverrideClip
   nameWithType: IMotion.SetOverrideClip
+- uid: TrinketTinker.Companions.Motions.IMotion.SetSpeechBubble(System.String)
+  name: SetSpeechBubble(string?)
+  href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_SetSpeechBubble_System_String_
+  commentId: M:TrinketTinker.Companions.Motions.IMotion.SetSpeechBubble(System.String)
+  name.vb: SetSpeechBubble(String)
+  fullName: TrinketTinker.Companions.Motions.IMotion.SetSpeechBubble(string?)
+  fullName.vb: TrinketTinker.Companions.Motions.IMotion.SetSpeechBubble(String)
+  nameWithType: IMotion.SetSpeechBubble(string?)
+  nameWithType.vb: IMotion.SetSpeechBubble(String)
+- uid: TrinketTinker.Companions.Motions.IMotion.SetSpeechBubble*
+  name: SetSpeechBubble
+  href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_SetSpeechBubble_
+  commentId: Overload:TrinketTinker.Companions.Motions.IMotion.SetSpeechBubble
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.IMotion.SetSpeechBubble
+  nameWithType: IMotion.SetSpeechBubble
 - uid: TrinketTinker.Companions.Motions.IMotion.UpdateAnchor(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)
   name: UpdateAnchor(GameTime, GameLocation)
   href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_UpdateAnchor_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_
@@ -1254,6 +1270,24 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).SetOverrideClip
   nameWithType: Motion<TArgs>.SetOverrideClip
   nameWithType.vb: Motion(Of TArgs).SetOverrideClip
+- uid: TrinketTinker.Companions.Motions.Motion`1.SetSpeechBubble(System.String)
+  name: SetSpeechBubble(string?)
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetSpeechBubble_System_String_
+  commentId: M:TrinketTinker.Companions.Motions.Motion`1.SetSpeechBubble(System.String)
+  name.vb: SetSpeechBubble(String)
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.SetSpeechBubble(string?)
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).SetSpeechBubble(String)
+  nameWithType: Motion<TArgs>.SetSpeechBubble(string?)
+  nameWithType.vb: Motion(Of TArgs).SetSpeechBubble(String)
+- uid: TrinketTinker.Companions.Motions.Motion`1.SetSpeechBubble*
+  name: SetSpeechBubble
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetSpeechBubble_
+  commentId: Overload:TrinketTinker.Companions.Motions.Motion`1.SetSpeechBubble
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.SetSpeechBubble
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).SetSpeechBubble
+  nameWithType: Motion<TArgs>.SetSpeechBubble
+  nameWithType.vb: Motion(Of TArgs).SetSpeechBubble
 - uid: TrinketTinker.Companions.Motions.Motion`1.ShouldMove
   name: ShouldMove()
   href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_ShouldMove
@@ -1748,19 +1782,6 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Companions.TrinketTinkerCompanion.CleanupCompanion
   nameWithType: TrinketTinkerCompanion.CleanupCompanion
-- uid: TrinketTinker.Companions.TrinketTinkerCompanion.ClipSeed
-  name: ClipSeed
-  href: api/TrinketTinker.Companions.TrinketTinkerCompanion.html#TrinketTinker_Companions_TrinketTinkerCompanion_ClipSeed
-  commentId: P:TrinketTinker.Companions.TrinketTinkerCompanion.ClipSeed
-  fullName: TrinketTinker.Companions.TrinketTinkerCompanion.ClipSeed
-  nameWithType: TrinketTinkerCompanion.ClipSeed
-- uid: TrinketTinker.Companions.TrinketTinkerCompanion.ClipSeed*
-  name: ClipSeed
-  href: api/TrinketTinker.Companions.TrinketTinkerCompanion.html#TrinketTinker_Companions_TrinketTinkerCompanion_ClipSeed_
-  commentId: Overload:TrinketTinker.Companions.TrinketTinkerCompanion.ClipSeed
-  isSpec: "True"
-  fullName: TrinketTinker.Companions.TrinketTinkerCompanion.ClipSeed
-  nameWithType: TrinketTinkerCompanion.ClipSeed
 - uid: TrinketTinker.Companions.TrinketTinkerCompanion.CompanionMoving
   name: CompanionMoving
   href: api/TrinketTinker.Companions.TrinketTinkerCompanion.html#TrinketTinker_Companions_TrinketTinkerCompanion_CompanionMoving
@@ -1926,6 +1947,22 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Companions.TrinketTinkerCompanion.OwnerMoving
   nameWithType: TrinketTinkerCompanion.OwnerMoving
+- uid: TrinketTinker.Companions.TrinketTinkerCompanion.SetSpeechBubble(System.String)
+  name: SetSpeechBubble(string?)
+  href: api/TrinketTinker.Companions.TrinketTinkerCompanion.html#TrinketTinker_Companions_TrinketTinkerCompanion_SetSpeechBubble_System_String_
+  commentId: M:TrinketTinker.Companions.TrinketTinkerCompanion.SetSpeechBubble(System.String)
+  name.vb: SetSpeechBubble(String)
+  fullName: TrinketTinker.Companions.TrinketTinkerCompanion.SetSpeechBubble(string?)
+  fullName.vb: TrinketTinker.Companions.TrinketTinkerCompanion.SetSpeechBubble(String)
+  nameWithType: TrinketTinkerCompanion.SetSpeechBubble(string?)
+  nameWithType.vb: TrinketTinkerCompanion.SetSpeechBubble(String)
+- uid: TrinketTinker.Companions.TrinketTinkerCompanion.SetSpeechBubble*
+  name: SetSpeechBubble
+  href: api/TrinketTinker.Companions.TrinketTinkerCompanion.html#TrinketTinker_Companions_TrinketTinkerCompanion_SetSpeechBubble_
+  commentId: Overload:TrinketTinker.Companions.TrinketTinkerCompanion.SetSpeechBubble
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.TrinketTinkerCompanion.SetSpeechBubble
+  nameWithType: TrinketTinkerCompanion.SetSpeechBubble
 - uid: TrinketTinker.Companions.TrinketTinkerCompanion.Update(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)
   name: Update(GameTime, GameLocation)
   href: api/TrinketTinker.Companions.TrinketTinkerCompanion.html#TrinketTinker_Companions_TrinketTinkerCompanion_Update_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_
@@ -3528,6 +3565,22 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.TrinketTinkerEffect.SetOneshotClip
   nameWithType: TrinketTinkerEffect.SetOneshotClip
+- uid: TrinketTinker.Effects.TrinketTinkerEffect.SetSpeechBubble(System.String)
+  name: SetSpeechBubble(string)
+  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_SetSpeechBubble_System_String_
+  commentId: M:TrinketTinker.Effects.TrinketTinkerEffect.SetSpeechBubble(System.String)
+  name.vb: SetSpeechBubble(String)
+  fullName: TrinketTinker.Effects.TrinketTinkerEffect.SetSpeechBubble(string)
+  fullName.vb: TrinketTinker.Effects.TrinketTinkerEffect.SetSpeechBubble(String)
+  nameWithType: TrinketTinkerEffect.SetSpeechBubble(string)
+  nameWithType.vb: TrinketTinkerEffect.SetSpeechBubble(String)
+- uid: TrinketTinker.Effects.TrinketTinkerEffect.SetSpeechBubble*
+  name: SetSpeechBubble
+  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_SetSpeechBubble_
+  commentId: Overload:TrinketTinker.Effects.TrinketTinkerEffect.SetSpeechBubble
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.TrinketTinkerEffect.SetSpeechBubble
+  nameWithType: TrinketTinkerEffect.SetSpeechBubble
 - uid: TrinketTinker.Effects.TrinketTinkerEffect.SetVariant(StardewValley.Objects.Trinkets.Trinket,System.Int32)
   name: SetVariant(Trinket, int)
   href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_SetVariant_StardewValley_Objects_Trinkets_Trinket_System_Int32_
@@ -4590,6 +4643,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AbilityData.ProcSound
   nameWithType: AbilityData.ProcSound
+- uid: TrinketTinker.Models.AbilityData.ProcSpeechBubble
+  name: ProcSpeechBubble
+  href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcSpeechBubble
+  commentId: P:TrinketTinker.Models.AbilityData.ProcSpeechBubble
+  fullName: TrinketTinker.Models.AbilityData.ProcSpeechBubble
+  nameWithType: AbilityData.ProcSpeechBubble
+- uid: TrinketTinker.Models.AbilityData.ProcSpeechBubble*
+  name: ProcSpeechBubble
+  href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcSpeechBubble_
+  commentId: Overload:TrinketTinker.Models.AbilityData.ProcSpeechBubble
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityData.ProcSpeechBubble
+  nameWithType: AbilityData.ProcSpeechBubble
 - uid: TrinketTinker.Models.AbilityData.ProcSyncIndex
   name: ProcSyncIndex
   href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcSyncIndex
@@ -5630,6 +5696,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.MotionData.RepeatInterval
   nameWithType: MotionData.RepeatInterval
+- uid: TrinketTinker.Models.MotionData.SpeechBubbles
+  name: SpeechBubbles
+  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_SpeechBubbles
+  commentId: P:TrinketTinker.Models.MotionData.SpeechBubbles
+  fullName: TrinketTinker.Models.MotionData.SpeechBubbles
+  nameWithType: MotionData.SpeechBubbles
+- uid: TrinketTinker.Models.MotionData.SpeechBubbles*
+  name: SpeechBubbles
+  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_SpeechBubbles_
+  commentId: Overload:TrinketTinker.Models.MotionData.SpeechBubbles
+  isSpec: "True"
+  fullName: TrinketTinker.Models.MotionData.SpeechBubbles
+  nameWithType: MotionData.SpeechBubbles
 - uid: TrinketTinker.Models.ProcOn
   name: ProcOn
   href: api/TrinketTinker.Models.ProcOn.html
@@ -5690,6 +5769,142 @@ references:
   commentId: F:TrinketTinker.Models.ProcOn.Warped
   fullName: TrinketTinker.Models.ProcOn.Warped
   nameWithType: ProcOn.Warped
+- uid: TrinketTinker.Models.SpeechBubbleData
+  name: SpeechBubbleData
+  href: api/TrinketTinker.Models.SpeechBubbleData.html
+  commentId: T:TrinketTinker.Models.SpeechBubbleData
+  fullName: TrinketTinker.Models.SpeechBubbleData
+  nameWithType: SpeechBubbleData
+- uid: TrinketTinker.Models.SpeechBubbleData.Color
+  name: Color
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_Color
+  commentId: P:TrinketTinker.Models.SpeechBubbleData.Color
+  fullName: TrinketTinker.Models.SpeechBubbleData.Color
+  nameWithType: SpeechBubbleData.Color
+- uid: TrinketTinker.Models.SpeechBubbleData.Color*
+  name: Color
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_Color_
+  commentId: Overload:TrinketTinker.Models.SpeechBubbleData.Color
+  isSpec: "True"
+  fullName: TrinketTinker.Models.SpeechBubbleData.Color
+  nameWithType: SpeechBubbleData.Color
+- uid: TrinketTinker.Models.SpeechBubbleData.FadeIn
+  name: FadeIn
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_FadeIn
+  commentId: P:TrinketTinker.Models.SpeechBubbleData.FadeIn
+  fullName: TrinketTinker.Models.SpeechBubbleData.FadeIn
+  nameWithType: SpeechBubbleData.FadeIn
+- uid: TrinketTinker.Models.SpeechBubbleData.FadeIn*
+  name: FadeIn
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_FadeIn_
+  commentId: Overload:TrinketTinker.Models.SpeechBubbleData.FadeIn
+  isSpec: "True"
+  fullName: TrinketTinker.Models.SpeechBubbleData.FadeIn
+  nameWithType: SpeechBubbleData.FadeIn
+- uid: TrinketTinker.Models.SpeechBubbleData.FadeOut
+  name: FadeOut
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_FadeOut
+  commentId: P:TrinketTinker.Models.SpeechBubbleData.FadeOut
+  fullName: TrinketTinker.Models.SpeechBubbleData.FadeOut
+  nameWithType: SpeechBubbleData.FadeOut
+- uid: TrinketTinker.Models.SpeechBubbleData.FadeOut*
+  name: FadeOut
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_FadeOut_
+  commentId: Overload:TrinketTinker.Models.SpeechBubbleData.FadeOut
+  isSpec: "True"
+  fullName: TrinketTinker.Models.SpeechBubbleData.FadeOut
+  nameWithType: SpeechBubbleData.FadeOut
+- uid: TrinketTinker.Models.SpeechBubbleData.JunimoText
+  name: JunimoText
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_JunimoText
+  commentId: P:TrinketTinker.Models.SpeechBubbleData.JunimoText
+  fullName: TrinketTinker.Models.SpeechBubbleData.JunimoText
+  nameWithType: SpeechBubbleData.JunimoText
+- uid: TrinketTinker.Models.SpeechBubbleData.JunimoText*
+  name: JunimoText
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_JunimoText_
+  commentId: Overload:TrinketTinker.Models.SpeechBubbleData.JunimoText
+  isSpec: "True"
+  fullName: TrinketTinker.Models.SpeechBubbleData.JunimoText
+  nameWithType: SpeechBubbleData.JunimoText
+- uid: TrinketTinker.Models.SpeechBubbleData.LayerDepth
+  name: LayerDepth
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_LayerDepth
+  commentId: P:TrinketTinker.Models.SpeechBubbleData.LayerDepth
+  fullName: TrinketTinker.Models.SpeechBubbleData.LayerDepth
+  nameWithType: SpeechBubbleData.LayerDepth
+- uid: TrinketTinker.Models.SpeechBubbleData.LayerDepth*
+  name: LayerDepth
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_LayerDepth_
+  commentId: Overload:TrinketTinker.Models.SpeechBubbleData.LayerDepth
+  isSpec: "True"
+  fullName: TrinketTinker.Models.SpeechBubbleData.LayerDepth
+  nameWithType: SpeechBubbleData.LayerDepth
+- uid: TrinketTinker.Models.SpeechBubbleData.Offset
+  name: Offset
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_Offset
+  commentId: P:TrinketTinker.Models.SpeechBubbleData.Offset
+  fullName: TrinketTinker.Models.SpeechBubbleData.Offset
+  nameWithType: SpeechBubbleData.Offset
+- uid: TrinketTinker.Models.SpeechBubbleData.Offset*
+  name: Offset
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_Offset_
+  commentId: Overload:TrinketTinker.Models.SpeechBubbleData.Offset
+  isSpec: "True"
+  fullName: TrinketTinker.Models.SpeechBubbleData.Offset
+  nameWithType: SpeechBubbleData.Offset
+- uid: TrinketTinker.Models.SpeechBubbleData.ScrollType
+  name: ScrollType
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_ScrollType
+  commentId: P:TrinketTinker.Models.SpeechBubbleData.ScrollType
+  fullName: TrinketTinker.Models.SpeechBubbleData.ScrollType
+  nameWithType: SpeechBubbleData.ScrollType
+- uid: TrinketTinker.Models.SpeechBubbleData.ScrollType*
+  name: ScrollType
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_ScrollType_
+  commentId: Overload:TrinketTinker.Models.SpeechBubbleData.ScrollType
+  isSpec: "True"
+  fullName: TrinketTinker.Models.SpeechBubbleData.ScrollType
+  nameWithType: SpeechBubbleData.ScrollType
+- uid: TrinketTinker.Models.SpeechBubbleData.Shake
+  name: Shake
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_Shake
+  commentId: P:TrinketTinker.Models.SpeechBubbleData.Shake
+  fullName: TrinketTinker.Models.SpeechBubbleData.Shake
+  nameWithType: SpeechBubbleData.Shake
+- uid: TrinketTinker.Models.SpeechBubbleData.Shake*
+  name: Shake
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_Shake_
+  commentId: Overload:TrinketTinker.Models.SpeechBubbleData.Shake
+  isSpec: "True"
+  fullName: TrinketTinker.Models.SpeechBubbleData.Shake
+  nameWithType: SpeechBubbleData.Shake
+- uid: TrinketTinker.Models.SpeechBubbleData.Text
+  name: Text
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_Text
+  commentId: P:TrinketTinker.Models.SpeechBubbleData.Text
+  fullName: TrinketTinker.Models.SpeechBubbleData.Text
+  nameWithType: SpeechBubbleData.Text
+- uid: TrinketTinker.Models.SpeechBubbleData.Text*
+  name: Text
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_Text_
+  commentId: Overload:TrinketTinker.Models.SpeechBubbleData.Text
+  isSpec: "True"
+  fullName: TrinketTinker.Models.SpeechBubbleData.Text
+  nameWithType: SpeechBubbleData.Text
+- uid: TrinketTinker.Models.SpeechBubbleData.Timer
+  name: Timer
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_Timer
+  commentId: P:TrinketTinker.Models.SpeechBubbleData.Timer
+  fullName: TrinketTinker.Models.SpeechBubbleData.Timer
+  nameWithType: SpeechBubbleData.Timer
+- uid: TrinketTinker.Models.SpeechBubbleData.Timer*
+  name: Timer
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_Timer_
+  commentId: Overload:TrinketTinker.Models.SpeechBubbleData.Timer
+  isSpec: "True"
+  fullName: TrinketTinker.Models.SpeechBubbleData.Timer
+  nameWithType: SpeechBubbleData.Timer
 - uid: TrinketTinker.Models.TinkerData
   name: TinkerData
   href: api/TrinketTinker.Models.TinkerData.html

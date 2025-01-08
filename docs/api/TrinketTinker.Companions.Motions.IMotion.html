@@ -159,7 +159,7 @@ Interface IMotion  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TrinketTinker_Companions_Motions_IMotion_Cleanup" data-uid="TrinketTinker.Companions.Motions.IMotion.Cleanup">
   Cleanup()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Cleanup motion, remove light source.</p>
@@ -186,7 +186,7 @@ Interface IMotion  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TrinketTinker_Companions_Motions_IMotion_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_" data-uid="TrinketTinker.Companions.Motions.IMotion.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
   Draw(SpriteBatch)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L56"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws the companion, for all game instances in multiplayer.</p>
@@ -218,10 +218,11 @@ Interface IMotion  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TrinketTinker_Companions_Motions_IMotion_GetOffset" data-uid="TrinketTinker.Companions.Motions.IMotion.GetOffset">
   GetOffset()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L60"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get position offset of motion</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -232,7 +233,8 @@ Interface IMotion  <a class="header-action link-secondary" title="View source" h
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><span class="xref">Vector2</span></dt>
-    <dd></dd>
+    <dd><p>offset</p>
+</dd>
   </dl>
 
 
@@ -249,7 +251,7 @@ Interface IMotion  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TrinketTinker_Companions_Motions_IMotion_Initialize_StardewValley_Farmer_" data-uid="TrinketTinker.Companions.Motions.IMotion.Initialize(StardewValley.Farmer)">
   Initialize(Farmer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initialize motion, setup light source if needed.</p>
@@ -281,7 +283,7 @@ Interface IMotion  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TrinketTinker_Companions_Motions_IMotion_OnOwnerWarp" data-uid="TrinketTinker.Companions.Motions.IMotion.OnOwnerWarp">
   OnOwnerWarp()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Update light source when owner changes location</p>
@@ -368,11 +370,43 @@ Interface IMotion  <a class="header-action link-secondary" title="View source" h
 
 
 
+  <a id="TrinketTinker_Companions_Motions_IMotion_SetSpeechBubble_" data-uid="TrinketTinker.Companions.Motions.IMotion.SetSpeechBubble*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_SetSpeechBubble_System_String_" data-uid="TrinketTinker.Companions.Motions.IMotion.SetSpeechBubble(System.String)">
+  SetSpeechBubble(string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set a speech bubble to call, usually on ability proc.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetSpeechBubble(string? speechBubbleKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>speechBubbleKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Companions_Motions_IMotion_UpdateAnchor_" data-uid="TrinketTinker.Companions.Motions.IMotion.UpdateAnchor*"></a>
 
   <h3 id="TrinketTinker_Companions_Motions_IMotion_UpdateAnchor_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Companions.Motions.IMotion.UpdateAnchor(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
   UpdateAnchor(GameTime, GameLocation)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Changes the position of the anchor that the companion moves relative to.</p>
@@ -406,7 +440,7 @@ Interface IMotion  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TrinketTinker_Companions_Motions_IMotion_UpdateGlobal_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Companions.Motions.IMotion.UpdateGlobal(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
   UpdateGlobal(GameTime, GameLocation)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L47"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Update info that should change every tick, for all game instances in multiplayer.</p>
@@ -440,7 +474,7 @@ Interface IMotion  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TrinketTinker_Companions_Motions_IMotion_UpdateLightSource_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Companions.Motions.IMotion.UpdateLightSource(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
   UpdateLightSource(GameTime, GameLocation)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L52"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Reposition the lightsource.</p>
@@ -474,7 +508,7 @@ Interface IMotion  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TrinketTinker_Companions_Motions_IMotion_UpdateLocal_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Companions.Motions.IMotion.UpdateLocal(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
   UpdateLocal(GameTime, GameLocation)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Update info that should change every tick, for owner only. Netfield changes should happen here.</p>

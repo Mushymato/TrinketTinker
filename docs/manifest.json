@@ -812,6 +812,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.SpeechBubbleData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.SpeechBubbleData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Models.TinkerData.yml",
       "output": {
         ".html": {
@@ -939,6 +949,16 @@
       "output": {
         ".html": {
           "relative_path": "guide/3.2-Animation Clips.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/3.3-Speech Bubbles.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/3.3-Speech Bubbles.html"
         }
       },
       "version": ""

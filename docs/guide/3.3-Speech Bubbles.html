@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Variant | TrinketTinker </title>
+      <title>Speech Bubbles | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Variant | TrinketTinker ">
+      <meta name="title" content="Speech Bubbles | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/2-Variant.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/3.3-Speech Bubbles.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,9 +85,11 @@
         </div>
 
         <article data-uid="">
-<h1 id="variant">Variant</h1>
+<h1 id="speech-bubbles">Speech Bubbles</h1>
 
-<p>In the base game certain companions such as the frog have different color variants. With this model, you can explicitly define a sprite sheet, texture size, and optionally a color for mask.</p>
+<p>Speech bubbles are a way to have the companion &quot;speak&quot; by drawing overhead text.
+Currently, the only way to activate a speech bubble is through <a href="4-Ability.html">ability</a> activation with <code>ProcSpeechBubble</code> set to the desired key.</p>
+<p>This particular feature uses the same system vanilla does for overhead NPC text, so the amount of customization is limited. If you need something fancier, you will have to use <a href="5-Temporary%20Animated%20Sprite.html">temporary animated sprites</a> to show/animate a custom sprite featuring your text.</p>
 <h2 id="structure">Structure</h2>
 <table>
 <thead>
@@ -100,90 +102,67 @@
 </thead>
 <tbody>
 <tr>
-<td><code>Texture</code></td>
+<td><code>Text</code></td>
 <td>string</td>
-<td><strong>required</strong></td>
-<td>Asset target of the loaded texture, should be a sprite sheet.</td>
+<td><code>&quot;Hey, Listen!&quot;</code></td>
+<td>The text to put in a bubble.</td>
 </tr>
 <tr>
-<td><code>Width</code></td>
-<td>int</td>
-<td>16</td>
-<td>Width of 1 sprite on the sprite sheet.</td>
+<td><code>Timer</code></td>
+<td>double</td>
+<td>3000</td>
+<td>Amount of time in miliseconds to display this bubble.</td>
 </tr>
 <tr>
-<td><code>Height</code></td>
-<td>int</td>
-<td>16</td>
-<td>Height of 1 sprite on the sprite sheet.</td>
-</tr>
-<tr>
-<td><code>ColorMask</code></td>
-<td>string</td>
-<td><em>empty</em></td>
-<td>Color to apply on draw, for use with grayscale sprites.<br>Aside from RGB and hex values, monogame accepts <a href="https://docs.monogame.net/api/Microsoft.Xna.Framework.Color.html">named colors</a> and this mod accepts special value <code>&quot;Prismatic&quot;</code> for an animated color cycle.</td>
-</tr>
-<tr>
-<td><code>TextureScale</code></td>
-<td>float</td>
-<td>4</td>
-<td>Texture draw scale, default is 4 like most things in the game.</td>
-</tr>
-<tr>
-<td><code>ShadowScale</code></td>
-<td>float</td>
-<td>3</td>
-<td>Size of the shadow to draw, 0 to disable shadow.</td>
-</tr>
-<tr>
-<td><code>LightSource</code></td>
-<td><code>LightSourceData</code></td>
-<td><em>empty</em></td>
-<td>If set, display a light source. This light source is only visible to the owner.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="lightsourcedata">LightSourceData</h3>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Default</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Radius</code></td>
-<td>float</td>
-<td>2</td>
-<td>Size of light source.</td>
-</tr>
-<tr>
-<td><code>Index</code></td>
-<td>int</td>
-<td>1</td>
-<td>Vanilla light source texture index.</td>
-</tr>
-<tr>
-<td><code>Texture</code></td>
-<td>string</td>
-<td>1</td>
-<td>Custom light map, must be loaded into game content.</td>
+<td><code>Offset</code></td>
+<td>Vector2</td>
+<td>0,0</td>
+<td>By default, the text is drawn above the companion's sprite, this adds additional offset on top.</td>
 </tr>
 <tr>
 <td><code>Color</code></td>
 <td>string</td>
 <td><em>empty</em></td>
-<td>Light color name, accepts same values as <code>ColorMask</code>.</td>
+<td>Speech text color.<br>Aside from RGB and hex values, monogame accepts <a href="https://docs.monogame.net/api/Microsoft.Xna.Framework.Color.html">named colors</a> and this mod accepts special value <code>&quot;Prismatic&quot;</code> for an animated color cycle.</td>
+</tr>
+<tr>
+<td><code>ScrollType</code></td>
+<td>int</td>
+<td>1</td>
+<td>Type of scroll(background) to draw, 0 1 2 3 4 all give valid backgrounds.</td>
+</tr>
+<tr>
+<td><code>LayerDepth</code></td>
+<td>float</td>
+<td>1</td>
+<td>Layer depth offset from the companion's draw layer depth.</td>
+</tr>
+<tr>
+<td><code>JunimoText</code></td>
+<td>bool</td>
+<td>false</td>
+<td>Layer depth offset from the companion's draw layer depth.</td>
+</tr>
+<tr>
+<td><code>FadeIn</code></td>
+<td>float</td>
+<td>0.1</td>
+<td>Percent of timer to spend in fade in (transparent to solid).</td>
+</tr>
+<tr>
+<td><code>FadeOut</code></td>
+<td>float</td>
+<td>0.1</td>
+<td>Percent of timer to spend in fade out (solid to transparent).</td>
+</tr>
+<tr>
+<td><code>Shake</code></td>
+<td>int</td>
+<td>0</td>
+<td>If greater than 0, randomly offset the draw position each frame.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="notes">Notes</h2>
-<ul>
-<li>There's no need to have the same width and height in all variants, as long as you have the same number of sprites required by the motion.</li>
-</ul>
 
 </article>
 
