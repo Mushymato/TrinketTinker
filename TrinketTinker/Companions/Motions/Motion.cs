@@ -1,8 +1,10 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
+using StardewValley.BellsAndWhistles;
 using StardewValley.Monsters;
 using StardewValley.TerrainFeatures;
+using StardewValley.TokenizableStrings;
 using TrinketTinker.Companions.Anim;
 using TrinketTinker.Models;
 using TrinketTinker.Models.Mixin;
@@ -52,6 +54,12 @@ public abstract class Motion<TArgs> : IMotion
 
     /// <summary>An anim clip that pauses movement is currently playing.</summary>
     public bool PauseMovementByAnimClip = false;
+
+    /// <summary>Speech bubble data</summary>
+    private SpeechBubbleData? speechBubble = null;
+
+    /// <summary>Speech bubble timer</summary>
+    private double speechBubbleTimer = 0;
 
     /// <summary>Heap of frames to draw, after the initial one.</summary>
     private readonly PriorityQueue<DrawSnapshot, long> drawSnapshotQueue = new();
@@ -109,6 +117,16 @@ public abstract class Motion<TArgs> : IMotion
         overrideClipKey = clipKey;
         if (clipKey == null)
             PauseMovementByAnimClip = false;
+    }
+
+    /// <inheritdoc/>
+    public void SetSpeechBubble(string? speechBubbleKey)
+    {
+        if (speechBubbleTimer > 0)
+            return;
+        if (speechBubbleKey == null || !md.SpeechBubbles.TryGetValue(speechBubbleKey, out speechBubble))
+            speechBubble = null;
+        speechBubbleTimer = speechBubble?.Timer ?? 0;
     }
 
     /// <inheritdoc/>
@@ -271,6 +289,16 @@ public abstract class Motion<TArgs> : IMotion
     /// <inheritdoc/>
     public virtual void UpdateGlobal(GameTime time, GameLocation location)
     {
+        // Speech Bubble timer
+        if (speechBubbleTimer > 0)
+        {
+            speechBubbleTimer -= time.ElapsedGameTime.TotalMilliseconds;
+            if (speechBubbleTimer <= 0)
+            {
+                c.SetSpeechBubble(null);
+            }
+        }
+
         // Try each kind of anim in order, stop whenever one kind succeeds
 
         // Oneshot Clip: play once and unset.
@@ -403,10 +431,11 @@ public abstract class Motion<TArgs> : IMotion
             _ => GetPositionalLayerDepth(offset),
         };
 
+        Vector2 drawPos = c.Position + c.Owner.drawOffset + offset;
         DrawSnapshot snapshot =
             new(
                 cs.Texture,
-                c.Position + c.Owner.drawOffset + offset,
+                drawPos,
                 cs.SourceRect,
                 cs.DrawColor,
                 GetRotation(),
@@ -434,6 +463,34 @@ public abstract class Motion<TArgs> : IMotion
                     layerDepth - 2E-06f
                 );
             DrawShadow(b, shadowSnapshot);
+        }
+
+        // speech bubble
+        if (speechBubble != null)
+        {
+            Vector2 worldDrawPos =
+                Game1.GlobalToLocal(new(drawPos.X, drawPos.Y - vd.Height * 4 - Game1.tileSize)) + speechBubble.Offset;
+            float alpha = 1;
+            double fadeInThreshold = speechBubble.Timer * (1 - speechBubble.FadeIn);
+            double fadeOutThreshold = speechBubble.Timer * speechBubble.FadeOut;
+            if (speechBubbleTimer >= fadeInThreshold)
+                alpha =
+                    1f - (float)((speechBubbleTimer - fadeInThreshold) / (speechBubble.FadeIn * speechBubble.Timer));
+            else if (speechBubbleTimer <= fadeOutThreshold)
+                alpha =
+                    1f - (float)((fadeOutThreshold - speechBubbleTimer) / (speechBubble.FadeOut * speechBubble.Timer));
+            SpriteText.drawStringWithScrollCenteredAt(
+                b,
+                TokenParser.ParseText(speechBubble.Text),
+                (int)worldDrawPos.X + Game1.random.Next(-1 * speechBubble.Shake, 2 * speechBubble.Shake),
+                (int)worldDrawPos.Y + Game1.random.Next(-1 * speechBubble.Shake, 2 * speechBubble.Shake),
+                "",
+                alpha,
+                Visuals.GetSDVColor(speechBubble.Color, out bool _),
+                speechBubble.ScrollType,
+                layerDepth + speechBubble.LayerDepth,
+                speechBubble.JunimoText
+            );
         }
     }
 

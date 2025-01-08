@@ -16,6 +16,10 @@ public interface IMotion
     /// <param name="clipKey"></param>
     void SetOverrideClip(string? clipKey);
 
+    /// <summary>Set a speech bubble to call, usually on ability proc.</summary>
+    /// <returns>offset</returns>
+    void SetSpeechBubble(string? speechBubbleKey);
+
     /// <summary>Initialize motion, setup light source if needed.</summary>
     /// <param name="farmer"></param>
     void Initialize(Farmer farmer);
@@ -51,5 +55,7 @@ public interface IMotion
     /// <param name="b"></param>
     void Draw(SpriteBatch b);
 
+    /// <summary>Get position offset of motion</summary>
+    /// <returns>offset</returns>
     Vector2 GetOffset();
 }

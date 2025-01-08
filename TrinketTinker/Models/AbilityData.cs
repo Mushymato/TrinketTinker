@@ -58,6 +58,9 @@ public sealed class AbilityData : Mixin.IHaveArgs
     /// <summary>Have companion switch to an <see cref="MotionData.AnimClips"/> on proc, switch back to normal anim after it is done.</summary>
     public string? ProcOneshotAnim { get; set; } = null;
 
+    /// <summary>Have companion display a <see cref="MotionData.SpeechBubbles"/> on proc, switch back to normal anim after it is done.</summary>
+    public string? ProcSpeechBubble { get; set; } = null;
+
     /// <summary>Condition, see <see cref="StardewValley.GameStateQuery"/></summary>
     public string? Condition { get; set; } = null;
 

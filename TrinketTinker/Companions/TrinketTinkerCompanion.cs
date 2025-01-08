@@ -24,6 +24,7 @@ public class TrinketTinkerCompanion : Companion
     /// <summary>Owner position in prev tick, for detecting moving</summary>
     private Vector2? prevOwnerPosition;
 
+    /// <summary>Whether owner is moving</summary>
     private bool ownerMoving = false;
 
     /// <summary>Whether owner is moving and not using a tool</summary>
@@ -34,15 +35,25 @@ public class TrinketTinkerCompanion : Companion
 
     /// <summary>Whether companion is moving</summary>
     public bool CompanionMoving { get; private set; } = false;
+
+    /// <summary>Net position, exposed internally</summary>
     internal NetPosition NetPosition => _position;
+
+    /// <summary>Net lerp, for niche cases as normally the net position is sufficient</summary>
     private readonly NetFloat _netLerp = new NetFloat(-1f).Interpolated(true, false);
+
+    /// <summary>Lerp motion variable</summary>
     internal float Lerp
     {
         get => _netLerp.Value;
         set => _netLerp.Value = value;
     }
+
+    /// <summary>Seed for anim clip random, to ensure some level of sync without need to update net field</summary>
     private readonly NetInt _clipSeed = new(Random.Shared.Next());
-    public int ClipSeed => _clipSeed.Value;
+
+    /// <summary>Speech bubble key</summary>
+    private readonly NetString _speechBubbleKey = new(null);
 
     // Derived
     /// <summary>Backing companion data from content.</summary>
@@ -130,12 +141,15 @@ public class TrinketTinkerCompanion : Companion
             .AddField(_overrideKey, "_overrideKey")
             .AddField(_netLerp, "_netLerp")
             .AddField(_disableCompanion, "_disableCompanion")
-            .AddField(_clipSeed, "_clipSeed");
+            .AddField(_clipSeed, "_clipSeed")
+            .AddField(_speechBubbleKey, "_speechBubbleText");
         _id.fieldChangeVisibleEvent += InitCompanionData;
         _oneshotKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
             Motion?.SetOneshotClip(newValue);
         _overrideKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
             Motion?.SetOverrideClip(newValue);
+        _speechBubbleKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
+            Motion?.SetSpeechBubble(newValue);
         _clipSeed.fieldChangeVisibleEvent += (NetInt field, int oldValue, int newValue) =>
         {
             if (Motion != null)
@@ -222,6 +236,11 @@ public class TrinketTinkerCompanion : Companion
         _position.Value = _owner.Value.Position;
         Motion?.OnOwnerWarp();
         _disableCompanion.Value = Places.LocationDisableTrinketCompanions(Owner.currentLocation);
+    }
+
+    public void SetSpeechBubble(string? speechBubbleKey)
+    {
+        _speechBubbleKey.Value = speechBubbleKey;
     }
 
     /// <summary>Vanilla hop event handler, not using.</summary>

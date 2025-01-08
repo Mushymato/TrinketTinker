@@ -168,6 +168,8 @@ public abstract class Ability<TArgs> : IAbility
                 e.CompanionOwnerDrawLayer,
                 proc.LocationOrCurrent
             );
+            if (d.ProcSpeechBubble != null)
+                e.SetSpeechBubble(d.ProcSpeechBubble);
 
             EventAbilityProc?.Invoke(sender, proc);
         }

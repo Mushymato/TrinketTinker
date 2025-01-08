@@ -127,6 +127,12 @@ public class TrinketTinkerEffect : TrinketEffect
             cmp.OneshotKey = clipKey;
     }
 
+    public void SetSpeechBubble(string speechBubbleKey)
+    {
+        if (Companion is TrinketTinkerCompanion cmp)
+            cmp.SetSpeechBubble(speechBubbleKey);
+    }
+
     /// <summary>Spawn the companion, and activate all abilities</summary>
     /// <param name="farmer"></param>
     public override void Apply(Farmer farmer)

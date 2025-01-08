@@ -41,7 +41,7 @@ public sealed class TinkerAnimSprite
     internal Rectangle SourceRect { get; private set; } = Rectangle.Empty;
     public bool Hidden => currentFrame == -1;
 
-    private float timer = 0f;
+    private double timer = 0f;
     internal int currentFrame = 0;
     private bool isReverse = false;
 
@@ -140,7 +140,7 @@ public sealed class TinkerAnimSprite
         {
             currentFrame = startFrame + currentFrame % numberOfFrames;
         }
-        timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+        timer += gameTime.ElapsedGameTime.TotalMilliseconds;
         if (timer > interval)
         {
             currentFrame++;
@@ -184,7 +184,7 @@ public sealed class TinkerAnimSprite
                 currentFrame = startFrame + Math.Abs(currentFrame) % numberOfFrames;
         }
 
-        timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+        timer += gameTime.ElapsedGameTime.TotalMilliseconds;
         if (timer > interval)
         {
             currentFrame += step;

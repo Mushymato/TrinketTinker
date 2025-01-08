@@ -196,6 +196,39 @@ public class AnimClipDictionary : Dictionary<string, AnimClipData?>
     }
 }
 
+public sealed class SpeechBubbleData
+{
+    /// <summary>Text for speech bubble</summary>
+    public string Text { get; set; } = "Hey, Listen!";
+
+    /// <summary>Timer to show speech bubble for, miliseconds</summary>
+    public double Timer { get; set; } = 3000;
+
+    /// <summary>Speech bubble draw offset</summary>
+    public Vector2 Offset { get; set; } = Vector2.Zero;
+
+    /// <summary>Text color</summary>
+    public string? Color { get; set; } = null;
+
+    /// <summary>Scroll BG type, see</summary>
+    public int ScrollType { get; set; } = 1;
+
+    /// <summary>Draw layer depth, relative to the companion's layer depth</summary>
+    public float LayerDepth { get; set; } = 2E-05f;
+
+    /// <summary>Draw using the junimo text font</summary>
+    public bool JunimoText { get; set; } = false;
+
+    /// <summary>Percent of timer to spend on fade in</summary>
+    public float FadeIn { get; set; } = 0.1f;
+
+    /// <summary>Percent of timer to spend on fade out</summary>
+    public float FadeOut { get; set; } = 0.1f;
+
+    /// <summary>Random shake to apply to the speech bubble</summary>
+    public int Shake { get; set; } = 0;
+}
+
 /// <summary>Data for <see cref="Companions.Motions"/>, defines how a companion moves.</summary>
 public sealed class MotionData : Mixin.IHaveArgs
 {
@@ -260,5 +293,11 @@ public sealed class MotionData : Mixin.IHaveArgs
     /// Repository of anim clips that can be shown in place of the default movement anim.
     /// Must live on the same sprite sheet specified by variant data.
     /// </summary>
-    public AnimClipDictionary AnimClips { get; } = [];
+    public AnimClipDictionary AnimClips { get; set; } = [];
+
+    /// <summary>
+    /// Repository of speech bubbles (overhead text for companions).
+    /// Can be proc'd by ability activation.
+    /// </summary>
+    public Dictionary<string, SpeechBubbleData> SpeechBubbles { get; set; } = [];
 }

@@ -31,6 +31,7 @@ The term "anchor" refers to a position that the companion derives it's own posit
 | `RepeatInterval` | int | 1000 | Miliseconds between repeat draws. |
 | `RepeatFrameSets` | int | 0 | If set, offset the sprite on repeat draw. |
 | `AnimClips` | Dictionary\<string, [AnimClipData](3.2-Animation%20Clips.md) \> | _empty_ | Named anim clips that can play over the movement animation. |
+| `SpeechBubbles` | Dictionary\<string, [SpeechBubbles](3.3-Speech%20Bubbles.md) \> | _empty_ | Named speech bubbles that appear over the companion. |
 | `Args` | Dictionary | _varies_ | Arguments specific to a motion class, see respective page for details. |
 
 ### Animation

@@ -54,7 +54,16 @@
             "DirectionMode": "R",
             "LoopMode": "PingPong",
             "FrameLength": 4,
-            "Interval": 200
+            "Interval": 200,
+            "SpeechBubbles": {
+              "fairy_heal_text": {
+                // the horror
+                "Text": "Do you believe in fairies?",
+                // "ScrollType": 1,
+                // "JunimoText": true
+                "Color": "Prismatic"
+              }
+            }
           },
           "Abilities": [
             // level 1: heal 0.1~.5% of max hp and stamina while walking outside
@@ -63,10 +72,11 @@
                 "Condition": "LOCATION_IS_OUTDOORS Target",
                 "Proc": "Footstep",
                 "ProcSound": "fairy_heal",
+                "ProcSpeechBubble": "fairy_heal_text",
                 "AbilityClass": "Health",
                 "Args": {
-                  "Min": 0.1,
-                  "Max": 0.5
+                  "Min": 0.001,
+                  "Max": 0.005
                 }
               },
               {
@@ -74,8 +84,8 @@
                 "Proc": "Footstep",
                 "AbilityClass": "Stamina",
                 "Args": {
-                  "Min": 0.1,
-                  "Max": 0.5
+                  "Min": 0.001,
+                  "Max": 0.005
                 }
               }
             ],
@@ -88,8 +98,8 @@
                 "ProcSound": "fairy_heal",
                 "AbilityClass": "Health",
                 "Args": {
-                  "Min": 0.1,
-                  "Max": 0.2
+                  "Min": 0.01,
+                  "Max": 0.02
                 }
               },
               {
@@ -98,8 +108,8 @@
                 "Proc": "Footstep",
                 "AbilityClass": "Stamina",
                 "Args": {
-                  "Min": 0.1,
-                  "Max": 0.2
+                  "Min": 0.01,
+                  "Max": 0.02
                 }
               }
             ]
@@ -271,7 +281,7 @@
                   "Range": 128,
                   "ExplodeRadius": 4
                 },
-                "ProcTemporarySprites": [
+                "ProcTAS": [
                   // this structure is identical to the TemporarySprites field in Data/Machine
                   "{{ModId}}_KegTAS"
                 ]
