@@ -12,6 +12,8 @@
     name: Anchors
   - href: 3.2-Animation Clips.md
     name: Animation Clips
+  - href: 3.3-Speech Bubbles.md
+    name: Speech Bubbles
   - items:
     - href: 3.z.000-Lerp.md
       name: Lerp
