@@ -73,6 +73,9 @@ public abstract class Motion<TArgs> : IMotion
     /// <summary>Clip random</summary>
     public Random ClipRand { get; set; } = Random.Shared;
 
+    /// <summary>Speech random</summary>
+    public Random SpeechRand { get; set; } = Random.Shared;
+
     /// <summary>Basic constructor, tries to parse arguments as the generic <see cref="IArgs"/> type.</summary>
     /// <param name="companion"></param>
     /// <param name="mdata"></param>
@@ -126,7 +129,17 @@ public abstract class Motion<TArgs> : IMotion
             return;
         if (speechBubbleKey == null || !md.SpeechBubbles.TryGetValue(speechBubbleKey, out speechBubble))
             speechBubble = null;
-        speechBubbleTimer = speechBubble?.Timer ?? 0;
+        if (speechBubble != null)
+        {
+            speechBubble = speechBubble.PickRand(SpeechRand);
+            if (!speechBubble.Nop)
+            {
+                speechBubbleTimer = speechBubble.Timer;
+                return;
+            }
+        }
+        speechBubble = null;
+        speechBubbleTimer = 0;
     }
 
     /// <inheritdoc/>
@@ -134,8 +147,9 @@ public abstract class Motion<TArgs> : IMotion
     {
         if (vd.LightSource is LightSourceData ldata)
         {
-            lightId = $"{farmer.userID}/{c.ID}";
-            Game1.currentLightSources.Add(lightId, new TinkerLightSource(lightId, c.Position + GetOffset(), ldata));
+            lightId = $"{farmer.UniqueMultiplayerID}/{c.ID}";
+            if (!Game1.currentLightSources.ContainsKey(lightId))
+                Game1.currentLightSources.Add(lightId, new TinkerLightSource(lightId, c.Position + GetOffset(), ldata));
         }
     }
 
@@ -267,13 +281,13 @@ public abstract class Motion<TArgs> : IMotion
         if (currentClipKey != key)
         {
             currentClipKey = key;
-            clip = clip.GetClip(ClipRand);
+            clip = clip.PickRand(ClipRand);
         }
         else
         {
-            clip = clip.SelectedClip;
+            clip = clip.Selected;
         }
-        if (clip.NopClip)
+        if (clip.Nop)
         {
             currentClipKey = null;
             return 0;
@@ -284,6 +298,19 @@ public abstract class Motion<TArgs> : IMotion
             return 2;
         }
         return 1;
+    }
+
+    /// <summary>Helper, animate a particular clip, discard selected clip</summary>
+    /// <param name="time"></param>
+    /// <param name="key"></param>
+    /// <returns>
+    /// 0: clip not found
+    /// 1: clip is animating
+    /// 1: clip reached last frame
+    /// </returns>
+    private int AnimateClip(GameTime time, string? key)
+    {
+        return AnimateClip(time, key, out _);
     }
 
     /// <inheritdoc/>
@@ -316,24 +343,30 @@ public abstract class Motion<TArgs> : IMotion
             return;
         }
         // Override Clip: play until override is unset externally
-        if (overrideClipKey != null && AnimateClip(time, overrideClipKey, out clip) != 0)
+        if (overrideClipKey != null && AnimateClip(time, overrideClipKey) != 0)
         {
             PauseMovementByAnimClip = false;
+            return;
+        }
+        // Swiming: play while player is in the water,
+        if (Game1.player.swimming.Value && AnimateClip(time, AnimClipDictionary.SWIM) != 0)
+        {
             return;
         }
         // Moving: play while player is moving, or if always moving is true
         if (IsMoving())
         {
             // first, try anchor target based clip
-            if (currAnchorTarget == AnchorTarget.Owner || AnimateClip(time, $"Anchor.{currAnchorTarget}", out _) == 0)
+            if (currAnchorTarget == AnchorTarget.Owner || AnimateClip(time, $"Anchor.{currAnchorTarget}") == 0)
             {
                 // then play the default directional clip
                 cs.Animate(md.LoopMode, time, DirectionFrameStart(), md.FrameLength, md.Interval);
             }
+            cs.Animate(md.LoopMode, time, DirectionFrameStart(), md.FrameLength, md.Interval);
             return;
         }
         // Idle: play while player is not moving
-        if (AnimateClip(time, AnimClipDictionary.IDLE, out _) != 0)
+        if (AnimateClip(time, AnimClipDictionary.IDLE) != 0)
         {
             return;
         }
@@ -409,7 +442,7 @@ public abstract class Motion<TArgs> : IMotion
     /// <inheritdoc/>
     public void Draw(SpriteBatch b)
     {
-        if (md.HideDuringEvents && Game1.eventUp)
+        if (Game1.eventUp && (md.HideDuringEvents && Game1.eventUp || Game1.CurrentEvent.id == "MovieTheaterScreening"))
             return;
 
         if (cs.Hidden)

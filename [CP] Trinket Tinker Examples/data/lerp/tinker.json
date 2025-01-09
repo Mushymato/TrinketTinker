@@ -61,7 +61,14 @@
                 "Text": "Do you believe in fairies?",
                 // "ScrollType": 1,
                 // "JunimoText": true
-                "Color": "Prismatic"
+                "Color": "Prismatic",
+                "RandomSpeech": [
+                  {
+                    "Text": "DO YOU!?",
+                    "Color": "Red",
+                    "Shake": 1
+                  }
+                ]
               }
             }
           },

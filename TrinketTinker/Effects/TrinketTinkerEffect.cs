@@ -148,7 +148,8 @@ public class TrinketTinkerEffect : TrinketEffect
         if (Data.Variants.Count > 0 && Data.Motions.Count > 0)
         {
             Companion = new TrinketTinkerCompanion(Trinket.ItemId, variant);
-            farmer.AddCompanion(Companion);
+            if (Game1.gameMode == 3)
+                farmer.AddCompanion(Companion);
         }
         else
         {

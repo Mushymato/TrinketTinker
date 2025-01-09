@@ -8,5 +8,5 @@ If you are looking to make mods using this framework, [start here](https://mushy
 
 - [CP] Sinister Servants: Fully playable mod implemented with this framework and content patcher.
 
-- [CP] Trinket Tinker Examples: Test mod that is a bit messy, will cleanup later.
+- [CP] Trinket Tinker Examples: Test mod, a bit messy.
 

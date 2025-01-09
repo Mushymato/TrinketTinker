@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Extensions;
+using TrinketTinker.Models.Mixin;
 
 namespace TrinketTinker.Models;
 
@@ -91,7 +92,7 @@ public class AnchorTargetData
 }
 
 /// <summary>Model for additional animation</summary>
-public class AnimClipData
+public class AnimClipData : WeightedRandData
 {
     /// <summary>Anim clip frame start</summary>
     public int FrameStart { get; set; } = 0;
@@ -108,95 +109,25 @@ public class AnimClipData
     /// <summary>If set, the companion won't move while clip plays.</summary>
     public bool PauseMovement { get; set; } = false;
 
-    /// <summary>If true, this clip will actually do nothing (nop). For use with random clips</summary>
-    public bool NopClip { get; set; } = false;
-
     /// <summary>Additional clips that may randomly be called, only valid for the top level clip.</summary>
-    public List<AnimClipData> RandomClips { get; set; } = [];
-
-    /// <summary>Weight of randomization on the clips, higher number is more likely.</summary>
-    public int RandomWeight { get; set; } = 1;
-
-    private static int GCD(IEnumerable<int> weights)
+    public List<AnimClipData>? RandomClips
     {
-        return weights.Aggregate(GCD);
+        get => randomExtra?.Select((clip) => (AnimClipData)clip).ToList();
+        set => randomExtra = value?.Select((clip) => (WeightedRandData)clip).ToList();
     }
 
-    private static int GCD(int a, int b)
-    {
-        return b == 0 ? a : GCD(b, a % b);
-    }
+    public AnimClipData Selected => randSelected == null ? this : (AnimClipData)randSelected;
 
-    private List<AnimClipData>? randomClipForWeighted = null;
-
-    private AnimClipData? selectedClip = null;
-    public AnimClipData SelectedClip => selectedClip ?? this;
-
-    public AnimClipData GetClip(Random clipRandom)
-    {
-        if (RandomClips.Count == 0)
-        {
-            selectedClip = this;
-            return this;
-        }
-        if (randomClipForWeighted == null)
-        {
-            List<int> weights = [RandomWeight];
-            weights.AddRange(RandomClips.Select((clip) => clip.RandomWeight));
-            int gcd = GCD(weights);
-            randomClipForWeighted = [];
-            for (int i = 0; i < RandomWeight / gcd; i++)
-            {
-                randomClipForWeighted.Add(this);
-            }
-            foreach (AnimClipData clip in RandomClips)
-            {
-                for (int i = 0; i < clip.RandomWeight / gcd; i++)
-                {
-                    randomClipForWeighted.Add(clip);
-                }
-            }
-        }
-        selectedClip = clipRandom.ChooseFrom(randomClipForWeighted);
-        return selectedClip;
-    }
-}
-
-public class AnimClipDictionary : Dictionary<string, AnimClipData?>
-{
-    public const string IDLE = "Idle";
-
-    /// <summary>
-    /// Obtain the anim clip for key and direction.
-    /// </summary>
-    /// <param name="key"></param>
-    /// <param name="direction"></param>
-    /// <param name="clip"></param>
+    /// <summary>Choose a random clip</summary>
+    /// <param name="rand"></param>
     /// <returns></returns>
-    public bool TryGetDirectional(string? key, int direction, [NotNullWhen(true)] out AnimClipData? clip)
+    public AnimClipData PickRand(Random rand)
     {
-        clip = null;
-        if (key == null)
-            return false;
-        string keyDirectional = $"{key}.{MathF.Abs(direction)}";
-        if (TryGetValue(keyDirectional, out clip))
-        {
-            return clip != null;
-        }
-        if (TryGetValue(key, out clip))
-        {
-            // short-circuit the next attempt to obtain AnimClipData
-            Add(keyDirectional, clip);
-            return clip != null;
-        }
-        // short-circuit the next attempt to obtain AnimClipData, null means this key has no anim
-        Add(keyDirectional, null);
-        Add(key, null);
-        return false;
+        return (AnimClipData)PickRandBase(rand);
     }
 }
 
-public sealed class SpeechBubbleData
+public sealed class SpeechBubbleData : WeightedRandData
 {
     /// <summary>Text for speech bubble</summary>
     public string Text { get; set; } = "Hey, Listen!";
@@ -227,6 +158,55 @@ public sealed class SpeechBubbleData
 
     /// <summary>Random shake to apply to the speech bubble</summary>
     public int Shake { get; set; } = 0;
+
+    /// <summary>Additional speech that may randomly be called, only valid for the top level speech.</summary>
+    public List<SpeechBubbleData>? RandomSpeech
+    {
+        get => randomExtra?.Select((speech) => (SpeechBubbleData)speech).ToList();
+        set => randomExtra = value?.Select((speech) => (WeightedRandData)speech).ToList();
+    }
+
+    public SpeechBubbleData Selected => randSelected == null ? this : (SpeechBubbleData)randSelected;
+
+    public SpeechBubbleData PickRand(Random rand)
+    {
+        return (SpeechBubbleData)PickRandBase(rand);
+    }
+}
+
+public class AnimClipDictionary : Dictionary<string, AnimClipData?>
+{
+    public const string IDLE = "Idle";
+    public const string SWIM = "Swim";
+
+    /// <summary>
+    /// Obtain the anim clip for key and direction.
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="direction"></param>
+    /// <param name="clip"></param>
+    /// <returns></returns>
+    public bool TryGetDirectional(string? key, int direction, [NotNullWhen(true)] out AnimClipData? clip)
+    {
+        clip = null;
+        if (key == null)
+            return false;
+        string keyDirectional = $"{key}.{MathF.Abs(direction)}";
+        if (TryGetValue(keyDirectional, out clip))
+        {
+            return clip != null;
+        }
+        if (TryGetValue(key, out clip))
+        {
+            // short-circuit the next attempt to obtain AnimClipData
+            Add(keyDirectional, clip);
+            return clip != null;
+        }
+        // short-circuit the next attempt to obtain AnimClipData, null means this key has no anim
+        Add(keyDirectional, null);
+        Add(key, null);
+        return false;
+    }
 }
 
 /// <summary>Data for <see cref="Companions.Motions"/>, defines how a companion moves.</summary>
@@ -268,7 +248,7 @@ public sealed class MotionData : Mixin.IHaveArgs
     /// <summary>Layer depth mode.</summary>
     public LayerDepth LayerDepth { get; set; } = LayerDepth.Position;
 
-    /// <summary>Hide the companion during events.</summary>
+    /// <summary>Hide the companion during all events.</summary>
     public bool HideDuringEvents { get; set; } = false;
 
     /// <summary>Number of times to repeat the draw.</summary>

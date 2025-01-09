@@ -6,7 +6,11 @@ namespace TrinketTinker.Companions.Motions;
 
 public interface IMotion
 {
+    /// <summary>Random used for anim clips</summary>
     Random ClipRand { get; set; }
+
+    /// <summary>Random used for speech bubbles</summary>
+    Random SpeechRand { get; set; }
 
     /// <summary>Set an oneshot clip, to play once until end</summary>
     /// <param name="clipKey"></param>

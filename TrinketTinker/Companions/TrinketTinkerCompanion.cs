@@ -52,6 +52,9 @@ public class TrinketTinkerCompanion : Companion
     /// <summary>Seed for anim clip random, to ensure some level of sync without need to update net field</summary>
     private readonly NetInt _clipSeed = new(Random.Shared.Next());
 
+    /// <summary>Seed for speech bubble random, to ensure some level of sync without need to update net field</summary>
+    private readonly NetInt _speechSeed = new(Random.Shared.Next());
+
     /// <summary>Speech bubble key</summary>
     private readonly NetString _speechBubbleKey = new(null);
 
@@ -142,6 +145,7 @@ public class TrinketTinkerCompanion : Companion
             .AddField(_netLerp, "_netLerp")
             .AddField(_disableCompanion, "_disableCompanion")
             .AddField(_clipSeed, "_clipSeed")
+            .AddField(_speechSeed, "_speechSeed")
             .AddField(_speechBubbleKey, "_speechBubbleText");
         _id.fieldChangeVisibleEvent += InitCompanionData;
         _oneshotKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
@@ -155,6 +159,13 @@ public class TrinketTinkerCompanion : Companion
             if (Motion != null)
             {
                 Motion.ClipRand = new Random(newValue);
+            }
+        };
+        _speechSeed.fieldChangeVisibleEvent += (NetInt field, int oldValue, int newValue) =>
+        {
+            if (Motion != null)
+            {
+                Motion.SpeechRand = new Random(newValue);
             }
         };
     }

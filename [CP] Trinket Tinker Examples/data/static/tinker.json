@@ -37,7 +37,12 @@
                     "NopClip": true
                   }
                 ]
-              }
+              },
+              "Swim.1": {
+                "FrameStart": 12,
+                "FrameLength": 4,
+                "Interval": 400,
+              },
             }
           },
           "Abilities": [
@@ -186,7 +191,7 @@
           ],
           // Orbit around the player in a ellipse
           "Motion": {
-            "MotionClass": "Orbit",
+            "MotionClass": "Static",
             "AlwaysMoving": true,
             "DirectionMode": "RL",
             "FrameLength": 4,
