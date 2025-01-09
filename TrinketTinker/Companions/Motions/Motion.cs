@@ -362,7 +362,6 @@ public abstract class Motion<TArgs> : IMotion
                 // then play the default directional clip
                 cs.Animate(md.LoopMode, time, DirectionFrameStart(), md.FrameLength, md.Interval);
             }
-            cs.Animate(md.LoopMode, time, DirectionFrameStart(), md.FrameLength, md.Interval);
             return;
         }
         // Idle: play while player is not moving

@@ -90,7 +90,7 @@ public sealed class TinkerAnimSprite
     /// <param name="time">current game time</param>
     /// <param name="clip">animation clip object</param>
     /// <param name="interval">default miliseconds between frames, if the clip did not set one</param>
-    internal bool AnimateClip(GameTime time, AnimClipData clip, float interval)
+    internal bool AnimateClip(GameTime time, AnimClipData clip, double interval)
     {
         return Animate(clip.LoopMode, time, clip.FrameStart, clip.FrameLength, clip.Interval ?? interval);
     }
@@ -104,7 +104,7 @@ public sealed class TinkerAnimSprite
     /// <param name="numberOfFrames">length of animation</param>
     /// <param name="interval">miliseconds between frames</param>
     /// <returns>True if animation reached last frame</returns>
-    internal bool Animate(LoopMode loopMode, GameTime time, int startFrame, int numberOfFrames, float interval)
+    internal bool Animate(LoopMode loopMode, GameTime time, int startFrame, int numberOfFrames, double interval)
     {
         if (numberOfFrames == 0)
         {
@@ -133,7 +133,7 @@ public sealed class TinkerAnimSprite
     /// <param name="numberOfFrames">length of animation</param>
     /// <param name="interval">miliseconds between frames</param>
     /// <returns>True if animation reached last frame</returns>
-    internal bool AnimateStandard(GameTime gameTime, int startFrame, int numberOfFrames, float interval)
+    internal bool AnimateStandard(GameTime gameTime, int startFrame, int numberOfFrames, double interval)
     {
         isReverse = false;
         if (currentFrame >= startFrame + numberOfFrames || currentFrame < startFrame)
@@ -165,7 +165,7 @@ public sealed class TinkerAnimSprite
     /// <param name="numberOfFrames">length of animation</param>
     /// <param name="interval">miliseconds between frames</param>
     /// <returns>True if animation reached last frame</returns>
-    public bool AnimatePingPong(GameTime gameTime, int startFrame, int numberOfFrames, float interval)
+    public bool AnimatePingPong(GameTime gameTime, int startFrame, int numberOfFrames, double interval)
     {
         int lastFrame;
         int step;

@@ -104,7 +104,7 @@ public class AnimClipData : WeightedRandData
     public LoopMode LoopMode { get; set; } = LoopMode.Standard;
 
     /// <summary>Anim clip interval, fall back to <see cref="MotionData.Interval"/> if not set.</summary>
-    public float? Interval { get; set; } = null;
+    public double? Interval { get; set; } = null;
 
     /// <summary>If set, the companion won't move while clip plays.</summary>
     public bool PauseMovement { get; set; } = false;
@@ -240,7 +240,7 @@ public sealed class MotionData : Mixin.IHaveArgs
     public int FrameLength { get; set; } = 4;
 
     /// <summary>Miliseconds between frames.</summary>
-    public float Interval { get; set; } = 100f;
+    public double Interval { get; set; } = 100f;
 
     /// <summary>Position offset.</summary>
     public Vector2 Offset { get; set; } = Vector2.Zero;
@@ -255,7 +255,7 @@ public sealed class MotionData : Mixin.IHaveArgs
     public float RepeatCount { get; set; } = 0;
 
     /// <summary>Number of miliseconds between repeats.</summary>
-    public float RepeatInterval { get; set; } = 500;
+    public double RepeatInterval { get; set; } = 500.0;
 
     /// <summary>
     /// When used with repeat, apply offset of this value times number of frames (per direction mode and frame length).<br/>
