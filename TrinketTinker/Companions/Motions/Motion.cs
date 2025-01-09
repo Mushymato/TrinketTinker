@@ -349,7 +349,7 @@ public abstract class Motion<TArgs> : IMotion
             return;
         }
         // Swiming: play while player is in the water,
-        if (Game1.player.swimming.Value && AnimateClip(time, AnimClipDictionary.SWIM) != 0)
+        if (c.Owner.swimming.Value && AnimateClip(time, AnimClipDictionary.SWIM) != 0)
         {
             return;
         }
