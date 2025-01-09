@@ -161,6 +161,24 @@ Currently, the only way to activate a speech bubble is through <a href="4-Abilit
 <td>0</td>
 <td>If greater than 0, randomly offset the draw position each frame.</td>
 </tr>
+<tr>
+<td><code>RandomSpeech</code></td>
+<td><code>List&lt;SpeechBubbleData&gt;</code></td>
+<td><em>empty</em></td>
+<td>Allows extra random anim clips to be provided for this key, only relevant for the top level anim clip.</td>
+</tr>
+<tr>
+<td><code>RandomWeight</code></td>
+<td>int</td>
+<td>1</td>
+<td>Weight of this random speech. Higher number is more frequent.</td>
+</tr>
+<tr>
+<td><code>Nop</code></td>
+<td>bool</td>
+<td>false</td>
+<td>Indicates a no-op speech that does nothing, for use with <code>RandomSpeech</code>.</td>
+</tr>
 </tbody>
 </table>
 

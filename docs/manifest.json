@@ -702,6 +702,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.Mixin.WeightedRandData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.Mixin.WeightedRandData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Models.Mixin.yml",
       "output": {
         ".html": {

@@ -166,6 +166,9 @@
 </tr>
 </tbody>
 </table>
+<h2 id="priority">Priority</h2>
+<p>At each update, clips are evaluated in this order: oneshot &gt; override &gt; swiming &gt; moving(anchor) &gt; moving(directional) &gt; idle.</p>
+<h2 id="available-clips">Available Clips</h2>
 <h3 id="directional-animclip-keys">Directional AnimClip Keys</h3>
 <p>All anim keys can take on a directional index suffix such as <code>&quot;{KEY}.1&quot;</code> which depends on the <a href="3.0-Direction.html">direction mode</a>. The suffix takes the absolute value of the index, no need to manually flip sprites for negative direction index.</p>
 <p>Example: when the direction index is <code>1</code> and the player is still, <code>&quot;Idle.1&quot;</code> will be picked if available, fallback to <code>&quot;Idle&quot;</code>.</p>
@@ -183,17 +186,22 @@
 <tr>
 <td><code>&quot;Perching&quot;</code></td>
 <td><a href="3.z.001-Hover.html">Hover</a></td>
-<td>Applies when companion perches on the player after a timeout.</td>
+<td>Applies when companion perches on the player after a timeout, this is an override key. Perching follows static motion rules about directions (i.e. always faces same direction as player).</td>
 </tr>
 <tr>
 <td><code>&quot;Jump&quot;</code></td>
 <td><a href="3.z.002-Bounce.html">Bounce</a>, <a href="3.z.003-Hop.html">Hop</a></td>
-<td>Applies when the companion jumped.</td>
+<td>Applies when the companion is jumping, this is an override key.</td>
 </tr>
 <tr>
 <td><code>&quot;Idle&quot;</code></td>
 <td>All Motions</td>
 <td>Played when the player is not moving, Does nothing if companion is marked <code>AlwaysMoving</code> which forces regular directional animation to continue.</td>
+</tr>
+<tr>
+<td><code>&quot;Swim&quot;</code></td>
+<td>All Motions</td>
+<td>Played when the player is swiming, supercedes movement and idle animation.</td>
 </tr>
 </tbody>
 </table>

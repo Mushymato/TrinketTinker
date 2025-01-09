@@ -180,15 +180,15 @@ references:
   fullName.vb: TrinketTinker.Companions.Anim.TinkerAnimSprite.New
   nameWithType: TinkerAnimSprite.TinkerAnimSprite
   nameWithType.vb: TinkerAnimSprite.New
-- uid: TrinketTinker.Companions.Anim.TinkerAnimSprite.AnimatePingPong(Microsoft.Xna.Framework.GameTime,System.Int32,System.Int32,System.Single)
-  name: AnimatePingPong(GameTime, int, int, float)
-  href: api/TrinketTinker.Companions.Anim.TinkerAnimSprite.html#TrinketTinker_Companions_Anim_TinkerAnimSprite_AnimatePingPong_Microsoft_Xna_Framework_GameTime_System_Int32_System_Int32_System_Single_
-  commentId: M:TrinketTinker.Companions.Anim.TinkerAnimSprite.AnimatePingPong(Microsoft.Xna.Framework.GameTime,System.Int32,System.Int32,System.Single)
-  name.vb: AnimatePingPong(GameTime, Integer, Integer, Single)
-  fullName: TrinketTinker.Companions.Anim.TinkerAnimSprite.AnimatePingPong(Microsoft.Xna.Framework.GameTime, int, int, float)
-  fullName.vb: TrinketTinker.Companions.Anim.TinkerAnimSprite.AnimatePingPong(Microsoft.Xna.Framework.GameTime, Integer, Integer, Single)
-  nameWithType: TinkerAnimSprite.AnimatePingPong(GameTime, int, int, float)
-  nameWithType.vb: TinkerAnimSprite.AnimatePingPong(GameTime, Integer, Integer, Single)
+- uid: TrinketTinker.Companions.Anim.TinkerAnimSprite.AnimatePingPong(Microsoft.Xna.Framework.GameTime,System.Int32,System.Int32,System.Double)
+  name: AnimatePingPong(GameTime, int, int, double)
+  href: api/TrinketTinker.Companions.Anim.TinkerAnimSprite.html#TrinketTinker_Companions_Anim_TinkerAnimSprite_AnimatePingPong_Microsoft_Xna_Framework_GameTime_System_Int32_System_Int32_System_Double_
+  commentId: M:TrinketTinker.Companions.Anim.TinkerAnimSprite.AnimatePingPong(Microsoft.Xna.Framework.GameTime,System.Int32,System.Int32,System.Double)
+  name.vb: AnimatePingPong(GameTime, Integer, Integer, Double)
+  fullName: TrinketTinker.Companions.Anim.TinkerAnimSprite.AnimatePingPong(Microsoft.Xna.Framework.GameTime, int, int, double)
+  fullName.vb: TrinketTinker.Companions.Anim.TinkerAnimSprite.AnimatePingPong(Microsoft.Xna.Framework.GameTime, Integer, Integer, Double)
+  nameWithType: TinkerAnimSprite.AnimatePingPong(GameTime, int, int, double)
+  nameWithType.vb: TinkerAnimSprite.AnimatePingPong(GameTime, Integer, Integer, Double)
 - uid: TrinketTinker.Companions.Anim.TinkerAnimSprite.AnimatePingPong*
   name: AnimatePingPong
   href: api/TrinketTinker.Companions.Anim.TinkerAnimSprite.html#TrinketTinker_Companions_Anim_TinkerAnimSprite_AnimatePingPong_
@@ -814,6 +814,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Companions.Motions.IMotion.SetSpeechBubble
   nameWithType: IMotion.SetSpeechBubble
+- uid: TrinketTinker.Companions.Motions.IMotion.SpeechRand
+  name: SpeechRand
+  href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_SpeechRand
+  commentId: P:TrinketTinker.Companions.Motions.IMotion.SpeechRand
+  fullName: TrinketTinker.Companions.Motions.IMotion.SpeechRand
+  nameWithType: IMotion.SpeechRand
+- uid: TrinketTinker.Companions.Motions.IMotion.SpeechRand*
+  name: SpeechRand
+  href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_SpeechRand_
+  commentId: Overload:TrinketTinker.Companions.Motions.IMotion.SpeechRand
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.IMotion.SpeechRand
+  nameWithType: IMotion.SpeechRand
 - uid: TrinketTinker.Companions.Motions.IMotion.UpdateAnchor(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)
   name: UpdateAnchor(GameTime, GameLocation)
   href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_UpdateAnchor_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_
@@ -1305,6 +1318,23 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).ShouldMove
   nameWithType: Motion<TArgs>.ShouldMove
   nameWithType.vb: Motion(Of TArgs).ShouldMove
+- uid: TrinketTinker.Companions.Motions.Motion`1.SpeechRand
+  name: SpeechRand
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SpeechRand
+  commentId: P:TrinketTinker.Companions.Motions.Motion`1.SpeechRand
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.SpeechRand
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).SpeechRand
+  nameWithType: Motion<TArgs>.SpeechRand
+  nameWithType.vb: Motion(Of TArgs).SpeechRand
+- uid: TrinketTinker.Companions.Motions.Motion`1.SpeechRand*
+  name: SpeechRand
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SpeechRand_
+  commentId: Overload:TrinketTinker.Companions.Motions.Motion`1.SpeechRand
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.SpeechRand
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).SpeechRand
+  nameWithType: Motion<TArgs>.SpeechRand
+  nameWithType.vb: Motion(Of TArgs).SpeechRand
 - uid: TrinketTinker.Companions.Motions.Motion`1.TotalFrames
   name: TotalFrames
   href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_TotalFrames
@@ -4799,19 +4829,6 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AnimClipData.FrameStart
   nameWithType: AnimClipData.FrameStart
-- uid: TrinketTinker.Models.AnimClipData.GetClip(System.Random)
-  name: GetClip(Random)
-  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_GetClip_System_Random_
-  commentId: M:TrinketTinker.Models.AnimClipData.GetClip(System.Random)
-  fullName: TrinketTinker.Models.AnimClipData.GetClip(System.Random)
-  nameWithType: AnimClipData.GetClip(Random)
-- uid: TrinketTinker.Models.AnimClipData.GetClip*
-  name: GetClip
-  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_GetClip_
-  commentId: Overload:TrinketTinker.Models.AnimClipData.GetClip
-  isSpec: "True"
-  fullName: TrinketTinker.Models.AnimClipData.GetClip
-  nameWithType: AnimClipData.GetClip
 - uid: TrinketTinker.Models.AnimClipData.Interval
   name: Interval
   href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_Interval
@@ -4838,19 +4855,6 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AnimClipData.LoopMode
   nameWithType: AnimClipData.LoopMode
-- uid: TrinketTinker.Models.AnimClipData.NopClip
-  name: NopClip
-  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_NopClip
-  commentId: P:TrinketTinker.Models.AnimClipData.NopClip
-  fullName: TrinketTinker.Models.AnimClipData.NopClip
-  nameWithType: AnimClipData.NopClip
-- uid: TrinketTinker.Models.AnimClipData.NopClip*
-  name: NopClip
-  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_NopClip_
-  commentId: Overload:TrinketTinker.Models.AnimClipData.NopClip
-  isSpec: "True"
-  fullName: TrinketTinker.Models.AnimClipData.NopClip
-  nameWithType: AnimClipData.NopClip
 - uid: TrinketTinker.Models.AnimClipData.PauseMovement
   name: PauseMovement
   href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_PauseMovement
@@ -4864,6 +4868,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AnimClipData.PauseMovement
   nameWithType: AnimClipData.PauseMovement
+- uid: TrinketTinker.Models.AnimClipData.PickRand(System.Random)
+  name: PickRand(Random)
+  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_PickRand_System_Random_
+  commentId: M:TrinketTinker.Models.AnimClipData.PickRand(System.Random)
+  fullName: TrinketTinker.Models.AnimClipData.PickRand(System.Random)
+  nameWithType: AnimClipData.PickRand(Random)
+- uid: TrinketTinker.Models.AnimClipData.PickRand*
+  name: PickRand
+  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_PickRand_
+  commentId: Overload:TrinketTinker.Models.AnimClipData.PickRand
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AnimClipData.PickRand
+  nameWithType: AnimClipData.PickRand
 - uid: TrinketTinker.Models.AnimClipData.RandomClips
   name: RandomClips
   href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_RandomClips
@@ -4877,32 +4894,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AnimClipData.RandomClips
   nameWithType: AnimClipData.RandomClips
-- uid: TrinketTinker.Models.AnimClipData.RandomWeight
-  name: RandomWeight
-  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_RandomWeight
-  commentId: P:TrinketTinker.Models.AnimClipData.RandomWeight
-  fullName: TrinketTinker.Models.AnimClipData.RandomWeight
-  nameWithType: AnimClipData.RandomWeight
-- uid: TrinketTinker.Models.AnimClipData.RandomWeight*
-  name: RandomWeight
-  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_RandomWeight_
-  commentId: Overload:TrinketTinker.Models.AnimClipData.RandomWeight
+- uid: TrinketTinker.Models.AnimClipData.Selected
+  name: Selected
+  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_Selected
+  commentId: P:TrinketTinker.Models.AnimClipData.Selected
+  fullName: TrinketTinker.Models.AnimClipData.Selected
+  nameWithType: AnimClipData.Selected
+- uid: TrinketTinker.Models.AnimClipData.Selected*
+  name: Selected
+  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_Selected_
+  commentId: Overload:TrinketTinker.Models.AnimClipData.Selected
   isSpec: "True"
-  fullName: TrinketTinker.Models.AnimClipData.RandomWeight
-  nameWithType: AnimClipData.RandomWeight
-- uid: TrinketTinker.Models.AnimClipData.SelectedClip
-  name: SelectedClip
-  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_SelectedClip
-  commentId: P:TrinketTinker.Models.AnimClipData.SelectedClip
-  fullName: TrinketTinker.Models.AnimClipData.SelectedClip
-  nameWithType: AnimClipData.SelectedClip
-- uid: TrinketTinker.Models.AnimClipData.SelectedClip*
-  name: SelectedClip
-  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_SelectedClip_
-  commentId: Overload:TrinketTinker.Models.AnimClipData.SelectedClip
-  isSpec: "True"
-  fullName: TrinketTinker.Models.AnimClipData.SelectedClip
-  nameWithType: AnimClipData.SelectedClip
+  fullName: TrinketTinker.Models.AnimClipData.Selected
+  nameWithType: AnimClipData.Selected
 - uid: TrinketTinker.Models.AnimClipDictionary
   name: AnimClipDictionary
   href: api/TrinketTinker.Models.AnimClipDictionary.html
@@ -4915,6 +4919,12 @@ references:
   commentId: F:TrinketTinker.Models.AnimClipDictionary.IDLE
   fullName: TrinketTinker.Models.AnimClipDictionary.IDLE
   nameWithType: AnimClipDictionary.IDLE
+- uid: TrinketTinker.Models.AnimClipDictionary.SWIM
+  name: SWIM
+  href: api/TrinketTinker.Models.AnimClipDictionary.html#TrinketTinker_Models_AnimClipDictionary_SWIM
+  commentId: F:TrinketTinker.Models.AnimClipDictionary.SWIM
+  fullName: TrinketTinker.Models.AnimClipDictionary.SWIM
+  nameWithType: AnimClipDictionary.SWIM
 - uid: TrinketTinker.Models.AnimClipDictionary.TryGetDirectional(System.String,System.Int32,TrinketTinker.Models.AnimClipData@)
   name: TryGetDirectional(string?, int, out AnimClipData?)
   href: api/TrinketTinker.Models.AnimClipDictionary.html#TrinketTinker_Models_AnimClipDictionary_TryGetDirectional_System_String_System_Int32_TrinketTinker_Models_AnimClipData__
@@ -5116,6 +5126,63 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.Mixin.NoArgs.Validate
   nameWithType: NoArgs.Validate
+- uid: TrinketTinker.Models.Mixin.WeightedRandData
+  name: WeightedRandData
+  href: api/TrinketTinker.Models.Mixin.WeightedRandData.html
+  commentId: T:TrinketTinker.Models.Mixin.WeightedRandData
+  fullName: TrinketTinker.Models.Mixin.WeightedRandData
+  nameWithType: WeightedRandData
+- uid: TrinketTinker.Models.Mixin.WeightedRandData.Nop
+  name: Nop
+  href: api/TrinketTinker.Models.Mixin.WeightedRandData.html#TrinketTinker_Models_Mixin_WeightedRandData_Nop
+  commentId: P:TrinketTinker.Models.Mixin.WeightedRandData.Nop
+  fullName: TrinketTinker.Models.Mixin.WeightedRandData.Nop
+  nameWithType: WeightedRandData.Nop
+- uid: TrinketTinker.Models.Mixin.WeightedRandData.Nop*
+  name: Nop
+  href: api/TrinketTinker.Models.Mixin.WeightedRandData.html#TrinketTinker_Models_Mixin_WeightedRandData_Nop_
+  commentId: Overload:TrinketTinker.Models.Mixin.WeightedRandData.Nop
+  isSpec: "True"
+  fullName: TrinketTinker.Models.Mixin.WeightedRandData.Nop
+  nameWithType: WeightedRandData.Nop
+- uid: TrinketTinker.Models.Mixin.WeightedRandData.PickRandBase(System.Random)
+  name: PickRandBase(Random)
+  href: api/TrinketTinker.Models.Mixin.WeightedRandData.html#TrinketTinker_Models_Mixin_WeightedRandData_PickRandBase_System_Random_
+  commentId: M:TrinketTinker.Models.Mixin.WeightedRandData.PickRandBase(System.Random)
+  fullName: TrinketTinker.Models.Mixin.WeightedRandData.PickRandBase(System.Random)
+  nameWithType: WeightedRandData.PickRandBase(Random)
+- uid: TrinketTinker.Models.Mixin.WeightedRandData.PickRandBase*
+  name: PickRandBase
+  href: api/TrinketTinker.Models.Mixin.WeightedRandData.html#TrinketTinker_Models_Mixin_WeightedRandData_PickRandBase_
+  commentId: Overload:TrinketTinker.Models.Mixin.WeightedRandData.PickRandBase
+  isSpec: "True"
+  fullName: TrinketTinker.Models.Mixin.WeightedRandData.PickRandBase
+  nameWithType: WeightedRandData.PickRandBase
+- uid: TrinketTinker.Models.Mixin.WeightedRandData.RandomWeight
+  name: RandomWeight
+  href: api/TrinketTinker.Models.Mixin.WeightedRandData.html#TrinketTinker_Models_Mixin_WeightedRandData_RandomWeight
+  commentId: P:TrinketTinker.Models.Mixin.WeightedRandData.RandomWeight
+  fullName: TrinketTinker.Models.Mixin.WeightedRandData.RandomWeight
+  nameWithType: WeightedRandData.RandomWeight
+- uid: TrinketTinker.Models.Mixin.WeightedRandData.RandomWeight*
+  name: RandomWeight
+  href: api/TrinketTinker.Models.Mixin.WeightedRandData.html#TrinketTinker_Models_Mixin_WeightedRandData_RandomWeight_
+  commentId: Overload:TrinketTinker.Models.Mixin.WeightedRandData.RandomWeight
+  isSpec: "True"
+  fullName: TrinketTinker.Models.Mixin.WeightedRandData.RandomWeight
+  nameWithType: WeightedRandData.RandomWeight
+- uid: TrinketTinker.Models.Mixin.WeightedRandData.randSelected
+  name: randSelected
+  href: api/TrinketTinker.Models.Mixin.WeightedRandData.html#TrinketTinker_Models_Mixin_WeightedRandData_randSelected
+  commentId: F:TrinketTinker.Models.Mixin.WeightedRandData.randSelected
+  fullName: TrinketTinker.Models.Mixin.WeightedRandData.randSelected
+  nameWithType: WeightedRandData.randSelected
+- uid: TrinketTinker.Models.Mixin.WeightedRandData.randomExtra
+  name: randomExtra
+  href: api/TrinketTinker.Models.Mixin.WeightedRandData.html#TrinketTinker_Models_Mixin_WeightedRandData_randomExtra
+  commentId: F:TrinketTinker.Models.Mixin.WeightedRandData.randomExtra
+  fullName: TrinketTinker.Models.Mixin.WeightedRandData.randomExtra
+  nameWithType: WeightedRandData.randomExtra
 - uid: TrinketTinker.Models.MotionArgs
   name: TrinketTinker.Models.MotionArgs
   href: api/TrinketTinker.Models.MotionArgs.html
@@ -5853,6 +5920,32 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.SpeechBubbleData.Offset
   nameWithType: SpeechBubbleData.Offset
+- uid: TrinketTinker.Models.SpeechBubbleData.PickRand(System.Random)
+  name: PickRand(Random)
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_PickRand_System_Random_
+  commentId: M:TrinketTinker.Models.SpeechBubbleData.PickRand(System.Random)
+  fullName: TrinketTinker.Models.SpeechBubbleData.PickRand(System.Random)
+  nameWithType: SpeechBubbleData.PickRand(Random)
+- uid: TrinketTinker.Models.SpeechBubbleData.PickRand*
+  name: PickRand
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_PickRand_
+  commentId: Overload:TrinketTinker.Models.SpeechBubbleData.PickRand
+  isSpec: "True"
+  fullName: TrinketTinker.Models.SpeechBubbleData.PickRand
+  nameWithType: SpeechBubbleData.PickRand
+- uid: TrinketTinker.Models.SpeechBubbleData.RandomSpeech
+  name: RandomSpeech
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_RandomSpeech
+  commentId: P:TrinketTinker.Models.SpeechBubbleData.RandomSpeech
+  fullName: TrinketTinker.Models.SpeechBubbleData.RandomSpeech
+  nameWithType: SpeechBubbleData.RandomSpeech
+- uid: TrinketTinker.Models.SpeechBubbleData.RandomSpeech*
+  name: RandomSpeech
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_RandomSpeech_
+  commentId: Overload:TrinketTinker.Models.SpeechBubbleData.RandomSpeech
+  isSpec: "True"
+  fullName: TrinketTinker.Models.SpeechBubbleData.RandomSpeech
+  nameWithType: SpeechBubbleData.RandomSpeech
 - uid: TrinketTinker.Models.SpeechBubbleData.ScrollType
   name: ScrollType
   href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_ScrollType
@@ -5866,6 +5959,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.SpeechBubbleData.ScrollType
   nameWithType: SpeechBubbleData.ScrollType
+- uid: TrinketTinker.Models.SpeechBubbleData.Selected
+  name: Selected
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_Selected
+  commentId: P:TrinketTinker.Models.SpeechBubbleData.Selected
+  fullName: TrinketTinker.Models.SpeechBubbleData.Selected
+  nameWithType: SpeechBubbleData.Selected
+- uid: TrinketTinker.Models.SpeechBubbleData.Selected*
+  name: Selected
+  href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_Selected_
+  commentId: Overload:TrinketTinker.Models.SpeechBubbleData.Selected
+  isSpec: "True"
+  fullName: TrinketTinker.Models.SpeechBubbleData.Selected
+  nameWithType: SpeechBubbleData.Selected
 - uid: TrinketTinker.Models.SpeechBubbleData.Shake
   name: Shake
   href: api/TrinketTinker.Models.SpeechBubbleData.html#TrinketTinker_Models_SpeechBubbleData_Shake
