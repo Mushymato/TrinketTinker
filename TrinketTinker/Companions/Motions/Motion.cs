@@ -441,7 +441,10 @@ public abstract class Motion<TArgs> : IMotion
     /// <inheritdoc/>
     public void Draw(SpriteBatch b)
     {
-        if (Game1.eventUp && (md.HideDuringEvents || (Game1.CurrentEvent != null && Game1.CurrentEvent.id == "MovieTheaterScreening")))
+        if (
+            Game1.eventUp
+            && (md.HideDuringEvents || (Game1.CurrentEvent != null && Game1.CurrentEvent.id == "MovieTheaterScreening"))
+        )
             return;
 
         if (cs.Hidden)
