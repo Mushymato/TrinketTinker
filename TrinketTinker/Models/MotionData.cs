@@ -58,6 +58,9 @@ public enum AnchorTarget
 
     /// <summary>Anchor to the nearest terrain feature</summary>
     TerrainFeature,
+
+    /// <summary>Anchor to the nearest "shakeable" terrain feature</summary>
+    Shakeable,
 }
 
 /// <summary>Determine the layer depth to use when drawing the companion</summary>
@@ -77,10 +80,10 @@ public enum LayerDepth
 public class AnchorTargetData
 {
     /// <summary>Targeting mode, see <see cref="AnchorTarget"/>.</summary>
-    public AnchorTarget Mode = AnchorTarget.Owner;
+    public AnchorTarget Mode { get; set; } = AnchorTarget.Owner;
 
     /// <summary>Search range, applicable to <see cref="AnchorTarget.Monster"/>.</summary>
-    public int Range = Game1.tileSize * 10;
+    public int Range { get; set; } = Game1.tileSize * 10;
 
     /// <summary>
     /// Additional filters to apply, specific behavior depends on the anchor mode.
@@ -88,7 +91,29 @@ public class AnchorTargetData
     /// <item><see cref="AnchorTarget.Monster"/></item>
     /// </list>
     /// </summary>
-    public List<string>? Filters = null;
+    public IReadOnlyList<string>? Filters { get; set; } = null;
+
+    private IReadOnlyList<string>? requiredAbilities = null;
+
+    /// <summary>Enable this anchor only if the companion has matching ability type.</summary>
+    public IReadOnlyList<string>? RequiredAbilities
+    {
+        get
+        {
+            if (requiredAbilities != null)
+                return requiredAbilities;
+            return Mode switch
+            {
+                AnchorTarget.Monster => ["Hitscan", "Projectile"],
+                AnchorTarget.Forage => ["HarvestForage"],
+                AnchorTarget.Stone => ["HarvestStone"],
+                AnchorTarget.Crop => ["HarvestCrop"],
+                AnchorTarget.Shakeable => ["HarvestShakeable"],
+                _ => null,
+            };
+        }
+        set => requiredAbilities = value;
+    }
 }
 
 /// <summary>Model for additional animation</summary>
@@ -110,7 +135,7 @@ public class AnimClipData : WeightedRandData
     public bool PauseMovement { get; set; } = false;
 
     /// <summary>Additional clips that may randomly be called, only valid for the top level clip.</summary>
-    public List<AnimClipData>? RandomClips
+    public IReadOnlyList<AnimClipData>? RandomClips
     {
         get => randomExtra?.Select((clip) => (AnimClipData)clip).ToList();
         set => randomExtra = value?.Select((clip) => (WeightedRandData)clip).ToList();
@@ -160,7 +185,7 @@ public sealed class SpeechBubbleData : WeightedRandData
     public int Shake { get; set; } = 0;
 
     /// <summary>Additional speech that may randomly be called, only valid for the top level speech.</summary>
-    public List<SpeechBubbleData>? RandomSpeech
+    public IReadOnlyList<SpeechBubbleData>? RandomSpeech
     {
         get => randomExtra?.Select((speech) => (SpeechBubbleData)speech).ToList();
         set => randomExtra = value?.Select((speech) => (WeightedRandData)speech).ToList();
@@ -210,7 +235,7 @@ public class AnimClipDictionary : Dictionary<string, AnimClipData?>
 }
 
 /// <summary>Data for <see cref="Companions.Motions"/>, defines how a companion moves.</summary>
-public sealed class MotionData : Mixin.IHaveArgs
+public sealed class MotionData : IHaveArgs
 {
     /// <summary>Type name of the motion, can use short form like "Hover" for hover motion.</summary>
     public string? MotionClass { get; set; } = null;
@@ -228,7 +253,7 @@ public sealed class MotionData : Mixin.IHaveArgs
     /// Prefer <see cref="AnchorTargetData"/> that comes earlier in the list.
     /// Defaults to <see cref="AnchorTarget.Owner"/>.
     /// </summary>
-    public List<AnchorTargetData> Anchors { get; set; } = [];
+    public IReadOnlyList<AnchorTargetData> Anchors { get; set; } = [];
 
     /// <summary>If true, continue the moving animation when not owner is not moving.</summary>
     public bool AlwaysMoving { get; set; } = false;

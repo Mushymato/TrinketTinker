@@ -6,7 +6,7 @@ The key used must match the __unqualified ID__ of the trinket.
 When a `mushymato.TrinketTinker/Tinker` entry exists, the `TrinketEffectClass` will be set to `TrinketTinker.Effects.TrinketTinkerEffect` from this mod.
 
 > [!NOTE]
-> Trinkets can be reloaded with `patch reload <content mod id>`, however the trinket must be unequipped and requipped to get updated.
+> Trinkets can be reloaded with `patch reload <content mod id>`, however the trinket must be unequipped and requipped to get updates.
 
 ## Structure
 
@@ -19,7 +19,6 @@ When a `mushymato.TrinketTinker/Tinker` entry exists, the `TrinketEffectClass` w
 | `Abilities` | [List\<List\<AbilityData\>\>](4-Ability.md) | _empty_ | Defines what effects are activated, and when. Each list in the list of lists represents 1 ability level. |
 | `VariantUnlockConditions` | List\<string\> | _empty_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many variants are unlocked. |
 | `AbilityUnlockConditions` | List\<string\> | _empty_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many abilities are unlocked. |
-
 
 ### This is a lot of stuff, what do I need to define?
 

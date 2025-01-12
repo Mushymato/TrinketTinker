@@ -34,8 +34,8 @@ public enum ProcOn
 /// <summary>Data for <see cref="Effects.Abilities"/>, defines game effect that a trinket can provide.</summary>
 public sealed class AbilityData : Mixin.IHaveArgs
 {
-    /// <summary>Type name of the ability, can use short form like "Buff" for buff ability.</summary>
-    public string? AbilityClass { get; set; } = null;
+    /// <summary>Type name of the ability, can use short form like "Buff" for buff ability. Default "Nop" for <see cref="Effects.Abilities.NopAbility"/></summary>
+    public string AbilityClass { get; set; } = "Nop";
 
     /// <summary>String description of what this ability does, will be passed to trinket item description and replace {1}</summary>
     public string? Description { get; set; } = null;
@@ -46,8 +46,11 @@ public sealed class AbilityData : Mixin.IHaveArgs
     /// <summary>Minimum cooldown time between ability activation, all <see cref="ProcOn"/> values respect this, not just <see cref="ProcOn.Timer"/>.</summary>
     public double ProcTimer { get; set; } = -1;
 
-    /// <summary>For <see cref="ProcOn.Sync"/></summary>
+    /// <summary>For <see cref="ProcOn.Sync"/>, this is the ability index (on same level) to listen to.</summary>
     public int ProcSyncIndex { get; set; } = 0;
+
+    /// <summary>For <see cref="ProcOn.Sync"/>, this is the delay between this ability's proc and the proc on any sync abilities.</summary>
+    public int ProcSyncDelay { get; set; } = 0;
 
     /// <summary>Sound cue to play on proc.</summary>
     public string? ProcSound { get; set; } = null;

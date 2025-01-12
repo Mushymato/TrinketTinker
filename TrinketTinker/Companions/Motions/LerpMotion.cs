@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using TrinketTinker.Models;
 using TrinketTinker.Models.MotionArgs;
@@ -46,7 +45,6 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
             {
                 c.startPosition = c.Position;
                 c.endPosition = c.Anchor;
-                // float radius = 0.5f;
                 c.endPosition =
                     c.Anchor
                     + 0.5f
@@ -54,10 +52,6 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
                             Utility.RandomFloat(-args.Jitter, args.Jitter),
                             Utility.RandomFloat(-args.Jitter, args.Jitter)
                         );
-                // if (CheckSpriteCollision(location, c.endPosition + GetOffset()))
-                // {
-                //     c.endPosition = c.Anchor;
-                // }
                 Lerp = 0f;
             }
             else if (md.AlwaysMoving && args.Jitter > 0f)
@@ -102,33 +96,6 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
         }
         return 0f;
     }
-
-    // #if DEBUG
-    //         public override void Draw(SpriteBatch b)
-    //         {
-    //             Vector2 localStartPos = Game1.GlobalToLocal(c.startPosition);
-    //             b.Draw(
-    //                 Game1.staminaRect,
-    //                 new Rectangle((int)localStartPos.X, (int)localStartPos.Y, 16, 16),
-    //                 Game1.staminaRect.Bounds,
-    //                 Color.Red,
-    //                 0f, Vector2.Zero,
-    //                 SpriteEffects.None,
-    //                 1f
-    //             );
-    //             Vector2 localEndPos = Game1.GlobalToLocal(c.endPosition);
-    //             b.Draw(
-    //                 Game1.staminaRect,
-    //                 new Rectangle((int)localEndPos.X, (int)localEndPos.Y, 16, 16),
-    //                 Game1.staminaRect.Bounds,
-    //                 Color.Blue,
-    //                 0f, Vector2.Zero,
-    //                 SpriteEffects.None,
-    //                 1f
-    //             );
-    //             base.Draw(b);
-    //         }
-    // #endif
 
     /// <inheritdoc/>
     public override void OnOwnerWarp()

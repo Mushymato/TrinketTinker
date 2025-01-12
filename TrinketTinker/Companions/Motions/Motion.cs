@@ -6,6 +6,7 @@ using StardewValley.Monsters;
 using StardewValley.TerrainFeatures;
 using StardewValley.TokenizableStrings;
 using TrinketTinker.Companions.Anim;
+using TrinketTinker.Effects.Abilities;
 using TrinketTinker.Models;
 using TrinketTinker.Models.Mixin;
 using TrinketTinker.Wheels;
@@ -34,7 +35,7 @@ public abstract class Motion<TArgs> : IMotion
     /// <summary>The previous anchor target</summary>
     protected AnchorTarget prevAnchorTarget = AnchorTarget.Owner;
 
-    /// <summary>The current anchor target</summary>
+    /// <summary>The current anchor target, is sync'd by <see cref="TrinketTinkerCompanion._currAnchorTarget"/></summary>
     protected AnchorTarget currAnchorTarget = AnchorTarget.Owner;
 
     /// <summary>Anchor changed during this tick</summary>s
@@ -75,6 +76,9 @@ public abstract class Motion<TArgs> : IMotion
 
     /// <summary>Speech random</summary>
     public Random SpeechRand { get; set; } = Random.Shared;
+
+    /// <summary>Speech random</summary>
+    private readonly List<AnchorTargetData> activeAnchors = [];
 
     /// <summary>Basic constructor, tries to parse arguments as the generic <see cref="IArgs"/> type.</summary>
     /// <param name="companion"></param>
@@ -142,6 +146,24 @@ public abstract class Motion<TArgs> : IMotion
         speechBubbleTimer = 0;
     }
 
+    public void SetActiveAnchors(IEnumerable<string> abilityTypes)
+    {
+        activeAnchors.Clear();
+        foreach (AnchorTargetData anchor in md.Anchors)
+        {
+            if (anchor.RequiredAbilities == null || abilityTypes.Intersect(anchor.RequiredAbilities).Any())
+            {
+                activeAnchors.Add(anchor);
+                continue;
+            }
+        }
+    }
+
+    public void SetCurrAnchorTarget(int val)
+    {
+        currAnchorTarget = (AnchorTarget)val;
+    }
+
     /// <inheritdoc/>
     public virtual void Initialize(Farmer farmer)
     {
@@ -176,11 +198,11 @@ public abstract class Motion<TArgs> : IMotion
     /// <summary>Changes the position of the anchor that the companion moves relative to, based on <see cref="MotionData.Anchors"/>.</summary>
     /// <param name="time"></param>
     /// <param name="location"></param>
-    public virtual void UpdateAnchor(GameTime time, GameLocation location)
+    public virtual AnchorTarget UpdateAnchor(GameTime time, GameLocation location)
     {
         prevAnchorTarget = currAnchorTarget;
         var originPoint = c.Owner.getStandingPosition();
-        foreach (AnchorTargetData anchor in md.Anchors)
+        foreach (AnchorTargetData anchor in activeAnchors)
         {
             Func<SObject, bool>? objMatch = null;
             Func<TerrainFeature, bool>? terrainMatch = null;
@@ -199,12 +221,12 @@ public abstract class Motion<TArgs> : IMotion
                         {
                             currAnchorTarget = AnchorTarget.Monster;
                             c.Anchor = Utility.PointToVector2(closest.GetBoundingBox().Center);
-                            return;
+                            return currAnchorTarget;
                         }
                     }
                     break;
                 case AnchorTarget.Forage:
-                    objMatch = (obj) => obj.isForage();
+                    objMatch = (obj) => HarvestForageAbility.IsForage(obj, anchor.Filters);
                     goto case AnchorTarget.Object;
                 case AnchorTarget.Stone:
                     objMatch = (obj) => obj.IsBreakableStone();
@@ -218,12 +240,15 @@ public abstract class Motion<TArgs> : IMotion
                         {
                             currAnchorTarget = anchor.Mode;
                             c.Anchor = Utility.PointToVector2(closest.GetBoundingBox().Center) - Vector2.One;
-                            return;
+                            return currAnchorTarget;
                         }
                     }
                     break;
                 case AnchorTarget.Crop:
-                    terrainMatch = (terrain) => terrain is HoeDirt dirt && dirt.crop != null && dirt.crop.CanHarvest();
+                    terrainMatch = (terrain) => HarvestCropAbility.CheckCrop(terrain, anchor.Filters);
+                    goto case AnchorTarget.TerrainFeature;
+                case AnchorTarget.Shakeable:
+                    terrainMatch = (terrain) => HarvestShakeableAbility.CheckShakeable(terrain, anchor.Filters);
                     goto case AnchorTarget.TerrainFeature;
                 case AnchorTarget.TerrainFeature:
                     {
@@ -237,20 +262,20 @@ public abstract class Motion<TArgs> : IMotion
                                 closest.Tile * Game1.tileSize
                                 + new Vector2(Game1.tileSize / 2, Game1.tileSize / 2)
                                 - Vector2.One;
-                            return;
+                            return currAnchorTarget;
                         }
                     }
                     break;
                 case AnchorTarget.Owner:
                     currAnchorTarget = AnchorTarget.Owner;
                     c.Anchor = Utility.PointToVector2(c.Owner.GetBoundingBox().Center);
-                    return;
+                    return currAnchorTarget;
             }
         }
         // base case is Owner
         currAnchorTarget = AnchorTarget.Owner;
         c.Anchor = Utility.PointToVector2(c.Owner.GetBoundingBox().Center);
-        return;
+        return currAnchorTarget;
     }
 
     /// <inheritdoc/>
@@ -521,7 +546,7 @@ public abstract class Motion<TArgs> : IMotion
                 (int)worldDrawPos.Y + Game1.random.Next(-1 * speechBubble.Shake, 2 * speechBubble.Shake),
                 "",
                 alpha,
-                Visuals.GetSDVColor(speechBubble.Color, out bool _),
+                speechBubble.Color == null ? null : Visuals.GetSDVColor(speechBubble.Color, out bool _),
                 speechBubble.ScrollType,
                 layerDepth + speechBubble.LayerDepth,
                 speechBubble.JunimoText

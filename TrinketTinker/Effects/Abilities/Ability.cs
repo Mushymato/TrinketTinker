@@ -21,6 +21,8 @@ public abstract class Ability<TArgs> : IAbility
     /// <summary>Ability name, default to type name.</summary>
     public readonly string Name;
 
+    public string AbilityClass => d.AbilityClass;
+
     /// <inheritdoc/>
     public bool Valid { get; protected set; } = false;
 
@@ -171,7 +173,10 @@ public abstract class Ability<TArgs> : IAbility
             if (d.ProcSpeechBubble != null)
                 e.SetSpeechBubble(d.ProcSpeechBubble);
 
-            EventAbilityProc?.Invoke(sender, proc);
+            if (d.ProcSyncDelay > 0)
+                DelayedAction.functionAfterDelay(() => EventAbilityProc?.Invoke(sender, proc), d.ProcSyncDelay);
+            else
+                EventAbilityProc?.Invoke(sender, proc);
         }
     }
 

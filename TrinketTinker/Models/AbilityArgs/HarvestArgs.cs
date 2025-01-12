@@ -1,7 +1,3 @@
-using Microsoft.Xna.Framework;
-using StardewValley;
-using TrinketTinker.Models.Mixin;
-
 namespace TrinketTinker.Models.AbilityArgs;
 
 public enum HarvestDestination
@@ -16,4 +12,7 @@ public class HarvestArgs : TileArgs
 {
     /// <summary>Where to deposit the harvested item</summary>
     public HarvestDestination HarvestTo = HarvestDestination.Player;
+
+    /// <summary>Context tags to exclude from harvest</summary>
+    public IReadOnlyList<string>? Filters = null;
 }

@@ -15,14 +15,14 @@
   // Stick
   "Stick.DisplayName": "木棍棍",
   "Stick.Description": "树枝（存疑）\n\nLv.{0}: {1}",
-  "Stick.AbilityDescription.1": "召唤树枝虫；收获附近的觅食物品，成功时恢复44生命值",
-  "Stick.AbilityDescription.2": "召唤树枝虫；收获附近的农作物，成功时恢复44能量",
-  "Stick.AbilityDescription.3": "召唤树枝虫；收获附近的觅食物品和农作物，成功时恢复44生命值或能量",
+  "Stick.AbilityDescription.1": "召唤树枝虫；收获附近的觅食物品，成功时恢复44生命值；摇动树木和灌木，并收获产出",
+  "Stick.AbilityDescription.2": "召唤树枝虫；收获附近的农作物，成功时恢复44能量；摇动树木和灌木，并收获产出",
+  "Stick.AbilityDescription.3": "召唤树枝虫；收获附近的觅食物品和农作物，成功时恢复44生命值或能量；摇动树木和灌木，并收获产出",
   // Dust Spirit
   "DustSpirit.DisplayName": "毛茸茸的煤炭",
   "DustSpirit.Description": "你被注视了\n\nLv.{0}: {1}",
-  "DustSpirit.AbilityDescription.1": "召唤煤炭球x3；每10秒击碎附近的石头/矿物并增加20点攻击",
-  "DustSpirit.AbilityDescription.2": "召唤煤炭球x3；每2秒击碎附近的石头/矿物并增加5点攻击",
+  "DustSpirit.AbilityDescription.1": "召唤煤炭球x3；每10秒击碎附近的石头/矿物并增加20点攻击；摇动附近的树木和灌木。",
+  "DustSpirit.AbilityDescription.2": "召唤煤炭球x3；每2秒击碎附近的石头/矿物并增加5点攻击；摇动附近的树木和灌木。",
   // Spider
   "Spider.DisplayName": "迷你蜘蛛",
   "Spider.Description": "尼龙蛛网上一只小小的塑料蜘蛛，有时会四处乱窜\n\nLv.{0}: {1}",
@@ -32,7 +32,7 @@
   // Snek
   "Snek.DisplayName": "一桶铱奶",
   "Snek.Description": "散发出不可描述的气味，铱蛇喜欢这个味道\n\n{1}",
-  "Snek.AbilityDescription.1": "召唤铱蛇；每3秒寻找并炸毁敌人，造成 77 点伤害；每次攻击消耗7点生命值，产生的爆炸可伤害玩家",
+  "Snek.AbilityDescription.1": "召唤铱蛇；每3秒寻找并炸毁敌人，造成77点伤害；每次攻击消耗7点生命值，产生的爆炸可伤害玩家",
   // Shop
   "AngryRoger.Name": "怒火冲天的罗杰",
   "AngryRoger.Dialog.1": "把那些亡命徒的身肉体和灵魂带给我~~~",

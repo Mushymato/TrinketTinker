@@ -4,6 +4,15 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.4.3
+
+#### Added
+
+- New HarvestShakeable ability to shake trees bushes and fruit trees.
+- New Nop ability that does nothing, but can be used for purpose of proc effects.
+- Anchors can now specify a list of RequiredAbilities. If set, the anchor only activates if the trinket has matching corresponding ability at the current level. Some mode dependent default values are provided.
+- Abilities can define ProcSyncDelay for how much time should pass between its proc and any follow up abilities.
+
 ### 1.4.2
 
 #### Fixed
@@ -19,7 +28,7 @@
 
 #### Fixed
 
-- Companions will duplicate when farmhand is exiting an event.
+- Companions duplicating when farmhand is exiting an event.
 
 ### 1.4.0
 

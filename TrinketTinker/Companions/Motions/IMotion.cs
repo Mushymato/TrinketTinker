@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
+using TrinketTinker.Models;
 
 namespace TrinketTinker.Companions.Motions;
 
@@ -11,6 +12,14 @@ public interface IMotion
 
     /// <summary>Random used for speech bubbles</summary>
     Random SpeechRand { get; set; }
+
+    /// <summary>Rebuild the list of active anchors.</summary>
+    /// <param name="strings"></param>
+    void SetActiveAnchors(IEnumerable<string> strings);
+
+    /// <summary>Sync curr anchor target value</summary>
+    /// <param name="newValue"></param>
+    void SetCurrAnchorTarget(int newValue);
 
     /// <summary>Set an oneshot clip, to play once until end</summary>
     /// <param name="clipKey"></param>
@@ -38,7 +47,8 @@ public interface IMotion
     /// <summary>Changes the position of the anchor that the companion moves relative to.</summary>
     /// <param name="time"></param>
     /// <param name="location"></param>
-    void UpdateAnchor(GameTime time, GameLocation location);
+    /// <returns>post update anchor target</returns>
+    AnchorTarget UpdateAnchor(GameTime time, GameLocation location);
 
     /// <summary>Update info that should change every tick, for owner only. Netfield changes should happen here.</summary>
     /// <param name="time"></param>

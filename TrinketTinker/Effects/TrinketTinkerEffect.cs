@@ -86,11 +86,11 @@ public class TrinketTinkerEffect : TrinketEffect
             List<AbilityData> levelAbilities;
             if (GeneralStat > Data.Abilities.Count)
             {
-                ModEntry.Log(
+                ModEntry.LogOnce(
                     $"No abilities defined for level {GeneralStat}, default to highest level ({Data.Abilities.Count - 1})",
                     LogLevel.Warn
                 );
-                levelAbilities = Data.Abilities.Last();
+                levelAbilities = Data.Abilities[Data.Abilities.Count - 1];
             }
             else
             {
@@ -104,14 +104,14 @@ public class TrinketTinkerEffect : TrinketEffect
                     if (ability != null && ability.Valid)
                         initAblities.Add(ability);
                     else
-                        ModEntry.Log(
+                        ModEntry.LogOnce(
                             $"Skip invalid ability ({ab.AbilityClass} from {Trinket.QualifiedItemId})",
                             LogLevel.Warn
                         );
                 }
                 else
                 {
-                    ModEntry.Log(
+                    ModEntry.LogOnce(
                         $"Failed to get type for ability ({ab.AbilityClass} from {Trinket.QualifiedItemId})",
                         LogLevel.Warn
                     );
@@ -163,6 +163,10 @@ public class TrinketTinkerEffect : TrinketEffect
         foreach (IAbility ability in Abilities)
         {
             ability.Activate(farmer);
+        }
+        if (Companion is TrinketTinkerCompanion ttCompanion)
+        {
+            ttCompanion.SetActiveAnchors(Abilities.Select((ab) => ab.AbilityClass));
         }
     }
 
@@ -271,7 +275,7 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <param name="count"></param>
     /// <param name="trinket"></param>
     /// <returns></returns>
-    public static int GetMaxUnlockedCount(List<string?> conditions, int count, Trinket trinket)
+    public static int GetMaxUnlockedCount(IReadOnlyList<string?> conditions, int count, Trinket trinket)
     {
         if (conditions.Count == count - 1)
             return count;

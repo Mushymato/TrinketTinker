@@ -7,7 +7,7 @@ public sealed class TinkerData
     public int MinLevel { get; set; } = 1;
 
     /// <summary>List of variants</summary>
-    public List<VariantData> Variants { get; set; } = [];
+    public IReadOnlyList<VariantData> Variants { get; set; } = [];
 
     /// <summary>Shim for case of just 1 motion</summary>
     public MotionData? Motion
@@ -29,11 +29,11 @@ public sealed class TinkerData
     public List<MotionData> Motions { get; set; } = [];
 
     /// <summary>List of abilities</summary>
-    public List<List<AbilityData>> Abilities { get; set; } = [];
+    public IReadOnlyList<List<AbilityData>> Abilities { get; set; } = [];
 
     /// <summary>GSQ conditions for locking variants.</summary>
-    public List<string?> VariantUnlockConditions = [];
+    public IReadOnlyList<string?> VariantUnlockConditions = [];
 
     /// <summary>GSQ conditions for locking abilities.</summary>
-    public List<string?> AbilityUnlockConditions = [];
+    public IReadOnlyList<string?> AbilityUnlockConditions = [];
 }

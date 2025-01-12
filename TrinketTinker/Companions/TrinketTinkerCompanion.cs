@@ -102,6 +102,18 @@ public class TrinketTinkerCompanion : Companion
     /// <summary>Should draw in current location, rechecked on warp</summary>
     private readonly NetBool _disableCompanion = new(false);
 
+    /// <summary>Net sync'd currAnchorTarget, for use in anim clip</summary>
+    private readonly NetInt _currAnchorTarget = new(0);
+
+    /// <summary>Getter and setter for override key</summary>
+    public AnchorTarget CurrAnchorTarget
+    {
+        get => (AnchorTarget)_currAnchorTarget.Value;
+        set => _currAnchorTarget.Value = (int)value;
+    }
+
+    // private readonly NetString _activeAbilityTypes = new();
+
     /// <summary>Argumentless constructor for netcode deserialization.</summary>
     public TrinketTinkerCompanion()
         : base() { }
@@ -146,7 +158,8 @@ public class TrinketTinkerCompanion : Companion
             .AddField(_disableCompanion, "_disableCompanion")
             .AddField(_clipSeed, "_clipSeed")
             .AddField(_speechSeed, "_speechSeed")
-            .AddField(_speechBubbleKey, "_speechBubbleText");
+            .AddField(_speechBubbleKey, "_speechBubbleText")
+            .AddField(_currAnchorTarget, "_currAnchorTarget");
         _id.fieldChangeVisibleEvent += InitCompanionData;
         _oneshotKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
             Motion?.SetOneshotClip(newValue);
@@ -157,9 +170,7 @@ public class TrinketTinkerCompanion : Companion
         _clipSeed.fieldChangeVisibleEvent += (NetInt field, int oldValue, int newValue) =>
         {
             if (Motion != null)
-            {
                 Motion.ClipRand = new Random(newValue);
-            }
         };
         _speechSeed.fieldChangeVisibleEvent += (NetInt field, int oldValue, int newValue) =>
         {
@@ -168,6 +179,20 @@ public class TrinketTinkerCompanion : Companion
                 Motion.SpeechRand = new Random(newValue);
             }
         };
+        _currAnchorTarget.fieldChangeVisibleEvent += (NetInt field, int oldValue, int newValue) =>
+        {
+            if (Motion != null)
+            {
+                Motion?.SetCurrAnchorTarget(newValue);
+            }
+        };
+        // _activeAbilityTypes.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
+        // {
+        //     if (Motion != null)
+        //     {
+        //         Motion.SetActiveAnchors(newValue.Split(' '));
+        //     }
+        // };
     }
 
     /// <summary>When <see cref="Id"/> is changed through net event, fetch companion data and build all fields.</summary>
@@ -225,7 +250,6 @@ public class TrinketTinkerCompanion : Companion
         prevOwnerPosition = OwnerPosition;
         prevPosition = Position;
         Motion?.UpdateGlobal(time, location);
-        Motion?.UpdateAnchor(time, location);
         if (IsLocal)
         {
             if (Motion == null)
@@ -234,7 +258,8 @@ public class TrinketTinkerCompanion : Companion
             }
             else
             {
-                Motion?.UpdateLocal(time, location);
+                CurrAnchorTarget = Motion.UpdateAnchor(time, location);
+                Motion.UpdateLocal(time, location);
             }
         }
         Motion?.UpdateLightSource(time, location);
@@ -249,9 +274,16 @@ public class TrinketTinkerCompanion : Companion
         _disableCompanion.Value = Places.LocationDisableTrinketCompanions(Owner.currentLocation);
     }
 
+    /// <summary>Set speech bubble key</summary>
     public void SetSpeechBubble(string? speechBubbleKey)
     {
         _speechBubbleKey.Value = speechBubbleKey;
+    }
+
+    /// <summary>Set active anchors list, based on ability types</summary>
+    public void SetActiveAnchors(IEnumerable<string> abilityTypes)
+    {
+        Motion?.SetActiveAnchors(abilityTypes);
     }
 
     /// <summary>Vanilla hop event handler, not using.</summary>

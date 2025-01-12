@@ -70,6 +70,7 @@ internal static class Places
                 }
             }
         }
+        // Special: check the hoedirt inside a garden pot
         return result;
     }
 
@@ -81,6 +82,33 @@ internal static class Places
         return !crop.dead.Value
             && (crop.currentPhase.Value >= (crop.phaseDays.Count - 1))
             && (!crop.fullyGrown.Value || crop.dayOfCurrentPhase.Value <= 0);
+    }
+
+    /// <summary>Check object against filters (list of context tags)</summary>
+    /// <param name="obj"></param>
+    /// <param name="filters"></param>
+    /// <returns></returns>
+    public static bool CheckContextTagFilter(Item item, IReadOnlyList<string> filters)
+    {
+        foreach (string tagLst in filters)
+        {
+            if (tagLst.Split(' ').All(item.HasContextTag))
+                return false;
+        }
+        return true;
+    }
+
+    /// <summary>Check crop harvest object against filters (list of context tags)</summary>
+    /// <param name="obj"></param>
+    /// <param name="filters"></param>
+    /// <returns></returns>
+    public static bool CheckCropFilter(Crop crop, IReadOnlyList<string> filters)
+    {
+        if (ItemRegistry.Create(crop.indexOfHarvest.Value) is Item item)
+        {
+            return CheckContextTagFilter(item, filters);
+        }
+        return true;
     }
 
     /// <summary>Disable all trinket abilities in certain locations</summary>

@@ -8,6 +8,10 @@ public interface IAbility
 {
     /// <summary>Mark the new ability as valid, if this is false after constructor, the ability is discarded</summary>
     bool Valid { get; }
+
+    string AbilityClass { get; }
+
+    /// <summary>Proc event for use with sync procs</summary>
     event EventHandler<ProcEventArgs>? EventAbilityProc;
 
     /// <summary>Activate the ability by registering events.</summary>

@@ -15,14 +15,16 @@
   // Stick
   "Stick.DisplayName": "Sticc",
   "Stick.Description": "A stick?\n\nLv.{0}: {1}",
-  "Stick.AbilityDescription.1": "Summon a stick bug; harvest nearby forage, recover 44 HP on success.",
-  "Stick.AbilityDescription.2": "Summon a stick bug; harvest nearby crops, recover 44 Energy on success.",
-  "Stick.AbilityDescription.3": "Summon a stick bug; harvest nearby forage and crops, recover 44 HP and Energy on success.",
+  "Stick.AbilityDescription.1": "Summon a stick bug; harvest nearby forage, recover 44 HP on success. Shake and harvests trees and bushes.",
+  "Stick.AbilityDescription.2": "Summon a stick bug; harvest nearby crops, recover 44 Energy on success. Shake and harvests trees and bushes.",
+  "Stick.AbilityDescription.3": "Summon a stick bug; harvest nearby forage and crops, recover 44 HP and Energy on success. Shake and harvests trees and bushes.",
+  "Stick.Exclaim.1": "!!",
+  "Stick.Exclaim.2": "!?",
   // Dust Spirit
   "DustSpirit.DisplayName": "Fuzzy Coal",
   "DustSpirit.Description": "It's looking at you.\n\nLv.{0}: {1}",
-  "DustSpirit.AbilityDescription.1": "Summon 3 dust spirits; every 10s, break one nearby rock and grant +20 attack.",
-  "DustSpirit.AbilityDescription.2": "Summon 3 dust spirits; every 2s, break one nearby rock and grant +5 attack.",
+  "DustSpirit.AbilityDescription.1": "Summon 3 dust spirits; every 10s, break one nearby rock and grant +20 attack. Shake nearby trees and bushes.",
+  "DustSpirit.AbilityDescription.2": "Summon 3 dust spirits; every 2s, break one nearby rock and grant +5 attack. Shake nearby trees and bushes.",
   // Spider
   "Spider.DisplayName": "Tiny Spider",
   "Spider.Description": "A tiny plastic spider on some decorative webbing, scuttles around sometimes.\n\nLv.{0}: {1}",

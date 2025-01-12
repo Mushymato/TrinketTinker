@@ -85,6 +85,7 @@
                 "ProcSound": "dustMeep",
                 "Args": {
                   "Range": 1,
+                  "HarvestTo": "Debris"
                 },
               },
               {
@@ -93,6 +94,16 @@
                 "Args": {
                   "BuffId": "{{ModId}}_DustSpirit_Buff_Lv1"
                 }
+              },
+              {
+                "AbilityClass": "HarvestShakeable",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "ProcSound": "dustMeep",
+                "Args": {
+                  "Range": 1,
+                  "HarvestTo": "Debris"
+                },
               }
             ],
             // level 2
@@ -105,6 +116,7 @@
                 "ProcSound": "dustMeep",
                 "Args": {
                   "Range": 1,
+                  "HarvestTo": "Debris"
                 },
               },
               {
@@ -113,6 +125,17 @@
                 "Args": {
                   "BuffId": "{{ModId}}_DustSpirit_Buff_Lv2"
                 }
+              },
+              {
+                "AbilityClass": "HarvestShakeable",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "ProcSound": "dustMeep",
+                "ProcSpeechBubble": "Exclaim",
+                "Args": {
+                  "Range": 1,
+                  "HarvestTo": "Debris"
+                },
               }
             ],
           ]

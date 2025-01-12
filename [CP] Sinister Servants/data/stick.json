@@ -50,12 +50,28 @@
                 "Mode": "Crop",
                 "Range": 240
               },
+              {
+                "Mode": "Shakeable",
+                "Range": 320
+              },
             ],
             "AnimClips": {
               "Idle": {
                 "FrameStart": 3,
                 "FrameLength": 1
               },
+            },
+            "SpeechBubbles": {
+              "Exclaim": {
+                "Text": "{{i18n:Stick.Exclaim.1}}",
+                "Timer": 1000,
+                "RandomSpeech": [
+                  {
+                    "Text": "{{i18n:Stick.Exclaim.2}}",
+                    "Timer": 1000,
+                  }
+                ]
+              }
             },
             "Args": {
               "Min": 32,
@@ -71,8 +87,9 @@
                 "Proc": "Timer",
                 "ProcTimer": 250,
                 "ProcSound": "harvest",
+                "ProcSpeechBubble": "Exclaim",
                 "Args": {
-                  "Range": 1,
+                  "Range": 0,
                 },
               },
               {
@@ -83,6 +100,16 @@
                   "Min": 44
                 }
               },
+              {
+                "AbilityClass": "HarvestShakeable",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "ProcSound": "harvest",
+                "ProcSpeechBubble": "Exclaim",
+                "Args": {
+                  "Range": 0,
+                },
+              }
             ],
             // level 2
             [
@@ -92,6 +119,7 @@
                 "Proc": "Timer",
                 "ProcTimer": 1000,
                 "ProcSound": "harvest",
+                "ProcSpeechBubble": "Exclaim",
                 "Args": {
                   "Range": 0,
                 },
@@ -103,6 +131,16 @@
                   "ValueMode": "Number",
                   "Min": 44
                 }
+              },
+              {
+                "AbilityClass": "HarvestShakeable",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "ProcSound": "harvest",
+                "ProcSpeechBubble": "Exclaim",
+                "Args": {
+                  "Range": 0,
+                },
               }
             ],
             // level 3
@@ -113,8 +151,9 @@
                 "Proc": "Timer",
                 "ProcTimer": 250,
                 "ProcSound": "harvest",
+                "ProcSpeechBubble": "Exclaim",
                 "Args": {
-                  "Range": 1,
+                  "Range": 0,
                 },
               },
               {
@@ -122,6 +161,7 @@
                 "Proc": "Timer",
                 "ProcTimer": 1000,
                 "ProcSound": "harvest",
+                "ProcSpeechBubble": "Exclaim",
                 "Args": {
                   "Range": 0,
                 },
@@ -142,6 +182,16 @@
                   "ValueMode": "Number",
                   "Min": 44
                 }
+              },
+              {
+                "AbilityClass": "HarvestShakeable",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "ProcSound": "harvest",
+                "ProcSpeechBubble": "Exclaim",
+                "Args": {
+                  "Range": 0,
+                },
               }
             ],
           ]
