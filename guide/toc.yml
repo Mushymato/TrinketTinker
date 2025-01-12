@@ -38,6 +38,8 @@
   - href: 4.0-Proc.md
     name: Proc
   - items:
+    - href: 4.z.00-Nop.md
+      name: Nop
     - href: 4.z.01-Buff.md
       name: Buff
     - href: 4.z.02-Health.md
@@ -56,8 +58,8 @@
       name: Action
     - href: 4.z.09-HoeDirt.md
       name: HoeDirt
-    - href: 4.z.10-HarvestForage.md
-      name: HarvestForage
+    - href: 4.z.10-Harvest.md
+      name: Harvest
     name: Ability Classes
   name: Ability
 - href: 5-Temporary Animated Sprite.md
