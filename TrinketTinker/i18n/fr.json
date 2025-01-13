@@ -1,7 +1,7 @@
 {
     "$schema": "https://smapi.io/schemas/i18n.json",
     "b-c.trinket-colorizer.name": "Colorisateur de bibelots",
-    "b-c.trinket-colorizer.description": "Vous permet de changer la couleur des bibelots, modifiant leur apparence. Coûte 15 Géode-omni par utilisation.",
-    "b-c.trinket-colorizer.invalid-count": "Nécessite 15 Géode-omni.",
+    "b-c.trinket-colorizer.description": "Vous permet de changer la couleur des bibelots, modifiant leur apparence. Coûte 15 Géode-omni par utilisation.",
+    "b-c.trinket-colorizer.invalid-count": "Nécessite 15 Géode-omni.",
     "b-c.trinket-colorizer.no-recolor": "Ce bibelot ne peut pas changer de couleur.",
 }

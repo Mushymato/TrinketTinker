@@ -10,8 +10,9 @@
 
 - New HarvestShakeable ability to shake trees bushes and fruit trees.
 - New Nop ability that does nothing, but can be used for purpose of proc effects.
-- Anchors can now specify a list of RequiredAbilities. If set, the anchor only activates if the trinket has matching corresponding ability at the current level. Some mode dependent default values are provided.
+- Anchors can now specify a list of RequiredAbilities. If set, the anchor only activates if the trinket has ability of matching AbilityClass at the current level. Some mode dependent default values are provided.
 - Abilities can define ProcSyncDelay for how much time should pass between its proc and any follow up abilities.
+- fr.json by by [Caranud](https://next.nexusmods.com/profile/Caranud)
 
 ### 1.4.2
 

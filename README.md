@@ -10,3 +10,8 @@ If you are looking to make mods using this framework, [start here](https://mushy
 
 - [CP] Trinket Tinker Examples: Test mod, a bit messy.
 
+## Translations
+
+- English [default.json](TrinketTinker/i18n/default.json)
+- Simplified Chinese [zh.json](TrinketTinker/i18n/zh.json)
+- French [fr.json](TrinketTinker/i18n/fr.json) (by [Caranud](https://next.nexusmods.com/profile/Caranud))
