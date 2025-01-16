@@ -71,10 +71,12 @@ public sealed class SerpentMotion : BaseLerpMotion<SerpentArgs>
         int altIdx = 1;
         for (int i = 0; i < segments.Count - 1; i++)
         {
+            int newFrame = cs.currentFrame + framesetLength * altIdx;
             segSnapshot = snapshot.CloneWithChanges(
                 position: segments[i].AsVec2() + c.Owner.drawOffset + offset,
-                sourceRect: cs.GetSourceRect(cs.currentFrame + framesetLength * altIdx),
-                rotation: segments[i].Z
+                sourceRect: cs.GetSourceRect(newFrame),
+                rotation: segments[i].Z,
+                currentFrame: newFrame
             );
             segSnapshot.Draw(b);
             EnqueueRepeatDraws(segSnapshot, false);
@@ -85,10 +87,12 @@ public sealed class SerpentMotion : BaseLerpMotion<SerpentArgs>
         if (args.HasTail)
         {
             // tail
+            int newFrame = cs.currentFrame + framesetLength * (args.SegmentAlts + 1);
             segSnapshot = snapshot.CloneWithChanges(
                 position: segments.Last().AsVec2() + c.Owner.drawOffset + offset,
                 sourceRect: cs.GetSourceRect(cs.currentFrame + framesetLength * (args.SegmentAlts + 1)),
-                rotation: segments.Last().Z
+                rotation: segments.Last().Z,
+                currentFrame: newFrame
             );
             segSnapshot.Draw(b);
             EnqueueRepeatDraws(segSnapshot, false);

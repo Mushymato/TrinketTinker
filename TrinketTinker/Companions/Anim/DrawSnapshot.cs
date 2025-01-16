@@ -26,7 +26,8 @@ public sealed record DrawSnapshot(
     Vector2 Origin,
     Vector2 TextureScale,
     SpriteEffects Effects,
-    float LayerDepth
+    float LayerDepth,
+    int CurrentFrame = -1
 )
 {
     /// <summary>Make a shallow copy with changes in some fields.</summary>
@@ -37,7 +38,8 @@ public sealed record DrawSnapshot(
     internal DrawSnapshot CloneWithChanges(
         Vector2? position = null,
         Rectangle? sourceRect = null,
-        float? rotation = null
+        float? rotation = null,
+        int? currentFrame = null
     )
     {
         return new(
@@ -49,7 +51,8 @@ public sealed record DrawSnapshot(
             Origin,
             TextureScale,
             Effects,
-            LayerDepth
+            LayerDepth,
+            CurrentFrame: currentFrame ?? CurrentFrame
         );
     }
 
@@ -57,16 +60,13 @@ public sealed record DrawSnapshot(
     /// <param name="b"></param>
     internal void Draw(SpriteBatch b)
     {
-        b.Draw(
-            Texture,
-            Game1.GlobalToLocal(Position),
-            SourceRect,
-            DrawColor,
-            Rotation,
-            Origin,
-            TextureScale,
-            Effects,
-            LayerDepth
-        );
+        Vector2 globalPos = Game1.GlobalToLocal(Position);
+        b.Draw(Texture, globalPos, SourceRect, DrawColor, Rotation, Origin, TextureScale, Effects, LayerDepth);
+
+        // debug draw sprite index
+        if ((ModEntry.Config?.DrawDebugMode ?? false) && CurrentFrame >= 0)
+        {
+            Utility.drawTinyDigits(CurrentFrame, b, globalPos, 4f, 10f, Color.AntiqueWhite);
+        }
     }
 }

@@ -502,7 +502,8 @@ public abstract class Motion<TArgs> : IMotion
                 cs.Origin,
                 GetTextureScale(),
                 (c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
-                layerDepth
+                layerDepth,
+                CurrentFrame: cs.currentFrame
             );
         DrawCompanion(b, snapshot);
 
@@ -530,22 +531,20 @@ public abstract class Motion<TArgs> : IMotion
         {
             Vector2 worldDrawPos =
                 Game1.GlobalToLocal(new(drawPos.X, drawPos.Y - vd.Height * 4 - Game1.tileSize)) + speechBubble.Offset;
-            float alpha = 1;
+            float alphaD = 0f;
             double fadeInThreshold = speechBubble.Timer * (1 - speechBubble.FadeIn);
             double fadeOutThreshold = speechBubble.Timer * speechBubble.FadeOut;
             if (speechBubbleTimer >= fadeInThreshold)
-                alpha =
-                    1f - (float)((speechBubbleTimer - fadeInThreshold) / (speechBubble.FadeIn * speechBubble.Timer));
+                alphaD = (float)((speechBubbleTimer - fadeInThreshold) / (speechBubble.FadeIn * speechBubble.Timer));
             else if (speechBubbleTimer <= fadeOutThreshold)
-                alpha =
-                    1f - (float)((fadeOutThreshold - speechBubbleTimer) / (speechBubble.FadeOut * speechBubble.Timer));
+                alphaD = (float)((fadeOutThreshold - speechBubbleTimer) / (speechBubble.FadeOut * speechBubble.Timer));
             SpriteText.drawStringWithScrollCenteredAt(
                 b,
                 TokenParser.ParseText(speechBubble.Text),
                 (int)worldDrawPos.X + Game1.random.Next(-1 * speechBubble.Shake, 2 * speechBubble.Shake),
                 (int)worldDrawPos.Y + Game1.random.Next(-1 * speechBubble.Shake, 2 * speechBubble.Shake),
                 "",
-                alpha,
+                1f - alphaD,
                 speechBubble.Color == null ? null : Visuals.GetSDVColor(speechBubble.Color, out bool _),
                 speechBubble.ScrollType,
                 layerDepth + speechBubble.LayerDepth,
@@ -599,8 +598,10 @@ public abstract class Motion<TArgs> : IMotion
                 }
                 else
                 {
+                    int newFrame = cs.currentFrame + frameset * TotalFrames;
                     framesetSnapshot = snapshot.CloneWithChanges(
-                        sourceRect: cs.GetSourceRect(cs.currentFrame + frameset * TotalFrames)
+                        sourceRect: cs.GetSourceRect(newFrame),
+                        currentFrame: newFrame
                     );
                 }
                 drawSnapshotQueue.Enqueue(

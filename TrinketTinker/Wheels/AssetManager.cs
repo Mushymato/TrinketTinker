@@ -32,8 +32,10 @@ internal static class AssetManager
         }
     }
 
-    /// <summary>Backing field for tinker data</summary>
+    /// <summary>Backing field for temporary animated sprite data</summary>
     private static Dictionary<string, TemporaryAnimatedSpriteDefinition>? _tasData = null;
+
+    /// <summary>Temporary animated sprite data</summary>
     internal static Dictionary<string, TemporaryAnimatedSpriteDefinition> TASData
     {
         get

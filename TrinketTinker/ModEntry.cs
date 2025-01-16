@@ -16,6 +16,11 @@ using TrinketTinker.Wheels;
 
 namespace TrinketTinker;
 
+internal sealed class ModConfig
+{
+    public bool DrawDebugMode { get; set; } = false;
+}
+
 internal sealed class ModEntry : Mod
 {
 #if DEBUG
@@ -26,6 +31,8 @@ internal sealed class ModEntry : Mod
 
     private static IMonitor? mon;
     public static string ModId { get; set; } = "";
+
+    public static ModConfig? Config { get; set; } = null;
 
     public override void Entry(IModHelper helper)
     {
@@ -39,6 +46,12 @@ internal sealed class ModEntry : Mod
         helper.Events.Content.AssetsInvalidated += OnAssetInvalidated;
         // Events for abilities
         helper.Events.Player.Warped += OnPlayerWarped;
+
+        helper.ConsoleCommands.Add(
+            "tt_draw_debug",
+            "Toggle drawing of the sprite index when drawing companions.",
+            ConsoleDrawDebugToggle
+        );
 
 #if DEBUG
         // Print all types
@@ -68,6 +81,9 @@ internal sealed class ModEntry : Mod
 
         // Add GSQ for checking trinket is for this mod
         GameStateQuery.Register(ItemQuery.GameStateQuery_INPUT_IS_TINKER, ItemQuery.INPUT_IS_TINKER);
+
+        // Config is not player facing atm, just holds whether draw debug mode is on.
+        Config = Helper.ReadConfig<ModConfig>();
     }
 
     private static void OnAssetRequested(object? sender, AssetRequestedEventArgs e)
@@ -153,6 +169,16 @@ internal sealed class ModEntry : Mod
         }
     }
 #endif
+
+    private void ConsoleDrawDebugToggle(string arg1, string[] arg2)
+    {
+        if (Config != null)
+        {
+            Config.DrawDebugMode = !Config.DrawDebugMode;
+            Log($"DrawDebugMode: {Config.DrawDebugMode}", LogLevel.Info);
+            Helper.WriteConfig(Config);
+        }
+    }
 
     /// Static helper functions
 
