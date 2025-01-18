@@ -49,3 +49,7 @@ Disable trinket abilities while owner is in the location (except for always acti
 "mushymato.TrinketTinker/disableCompanions": true|false
 ```
 Disable companion display while owner is in the location. Their position updates continue.
+
+## Draw debug mode
+
+To help with debugging animations, use `tt_draw_debug` to enable/disable drawing of companion sprite index.
