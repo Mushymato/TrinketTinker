@@ -35,7 +35,7 @@ public abstract class Motion<TArgs> : IMotion
     /// <summary>The previous anchor target</summary>
     protected AnchorTarget prevAnchorTarget = AnchorTarget.Owner;
 
-    /// <summary>The current anchor target, is sync'd by <see cref="TrinketTinkerCompanion._currAnchorTarget"/></summary>
+    /// <summary>The current anchor target, is sync'd by <see cref="TrinketTinkerCompanion.CurrAnchorTarget"/></summary>
     protected AnchorTarget currAnchorTarget = AnchorTarget.Owner;
 
     /// <summary>Anchor changed during this tick</summary>s
