@@ -130,7 +130,7 @@ internal static class Places
         if (location == null || (location.DisplayName == "Temp" && !Game1.isFestival()))
             return true;
         if (location.GetData() is not LocationData data)
-            return true;
+            return false;
         return (data.CustomFields?.TryGetValue(Field_DisableTrinketCompanions, out string? value) ?? false)
             && value.EqualsIgnoreCase("true");
     }

@@ -16,9 +16,14 @@ namespace TrinketTinker.Effects;
 /// <summary>Base class for TrinketTinker trinkets, allows extensible companions with extensible abilities.</summary>
 public class TrinketTinkerEffect : TrinketEffect
 {
-    /// <summary></summary>
+    /// <summary>ModData variant key</summary>
     public static readonly string ModData_Variant = $"{ModEntry.ModId}/Variant";
+
+    /// <summary>ModData variant key</summary>
     public static readonly string ModData_Level = $"{ModEntry.ModId}/Level";
+
+    /// <summary>ModData inventory guid</summary>
+    public static readonly string ModData_Inventory = $"{ModEntry.ModId}/Inventory";
 
     /// <summary>Companion data with matching ID</summary>
     protected TinkerData? Data;
