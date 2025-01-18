@@ -4,6 +4,16 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.4.4
+
+#### Added
+
+- Draw debug mode that shows the sprite index of the companion on screen. Toggle with command tt_draw_debug.
+
+#### Fixed
+
+- Companions not appearing in volcano and farm buildings.
+
 ### 1.4.3
 
 #### Added
