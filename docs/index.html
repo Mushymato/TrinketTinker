@@ -90,69 +90,95 @@
 <p>All notable changes to this project will be documented here.</p>
 <p>The format is based on <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</a>, and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 </blockquote>
-<h3 id="141">1.4.1</h3>
+<h3 id="144">1.4.4</h3>
 <h4 id="added">Added</h4>
+<ul>
+<li>Draw debug mode that shows the sprite index of the companion on screen. Toggle with command tt_draw_debug.</li>
+</ul>
+<h4 id="fixed">Fixed</h4>
+<ul>
+<li>Companions not appearing in volcano and farm buildings.</li>
+</ul>
+<h3 id="143">1.4.3</h3>
+<h4 id="added-1">Added</h4>
+<ul>
+<li>New HarvestShakeable ability to shake trees bushes and fruit trees.</li>
+<li>New Shakeable anchor target.</li>
+<li>New Nop ability that does nothing, but can be used for purpose of proc effects.</li>
+<li>Anchors can now specify a list of RequiredAbilities. If set, the anchor only activates if the trinket has ability of matching AbilityClass at the current level. Some mode dependent default values are provided.</li>
+<li>Abilities can define ProcSyncDelay for how much time should pass between its proc and any follow up abilities.</li>
+<li>Crop and Forage Anchors can now specify context tag items to ignore.</li>
+<li>HarvestCrop and HarvestForage can now specify context tag items to ignore.</li>
+<li>fr.json by by <a href="https://next.nexusmods.com/profile/Caranud">Caranud</a></li>
+</ul>
+<h3 id="142">1.4.2</h3>
+<h4 id="fixed-1">Fixed</h4>
+<ul>
+<li>Hopefully fix a crash after some events, very strange.</li>
+</ul>
+<h3 id="141">1.4.1</h3>
+<h4 id="added-2">Added</h4>
 <ul>
 <li>Add support for randomized speech bubbles.</li>
 <li>Add &quot;Swim&quot; anim clip key for when the player is swimming.</li>
 </ul>
-<h4 id="fixed">Fixed</h4>
+<h4 id="fixed-2">Fixed</h4>
 <ul>
-<li>Companions will duplicate when farmhand is exiting an event.</li>
+<li>Companions duplicating when farmhand is exiting an event.</li>
 </ul>
 <h3 id="140">1.4.0</h3>
-<h4 id="added-1">Added</h4>
+<h4 id="added-3">Added</h4>
 <ul>
 <li>Add support for randomized anim clips.</li>
 <li>Add speech bubble feature.</li>
 <li>Allow one shot clips to pause movement.</li>
 <li>Changed perching clip to behave by static motion rules (check against player facing direction), rather than lerp motion rules (check against companion facing).</li>
 </ul>
-<h4 id="fixed-1">Fixed</h4>
+<h4 id="fixed-3">Fixed</h4>
 <ul>
 <li>AbilityProc clips not playing in multiplayer.</li>
 </ul>
 <h3 id="130">1.3.0</h3>
-<h4 id="added-2">Added</h4>
+<h4 id="added-4">Added</h4>
 <ul>
 <li>Additional HarvestTo field for Harvest type abilities to determine where the harvested item go (inventory, debris, none).</li>
 <li>New field Filter on Anchors and on Hitscan/Projectile ability. If set, the enemy types listed will not be targeted.</li>
 </ul>
-<h4 id="fixed-2">Fixed</h4>
+<h4 id="fixed-4">Fixed</h4>
 <ul>
 <li>Lerp MoveSync companions moving when a weapon is swung. They are now prevented from moving while a tool is being used. Also applies to check for perching.</li>
 </ul>
 <h3 id="121">1.2.1</h3>
-<h4 id="fixed-3">Fixed</h4>
+<h4 id="fixed-5">Fixed</h4>
 <ul>
 <li>Prevent trinket tinker anvil output method from affecting non trinket tinker items.</li>
 </ul>
 <h3 id="120">1.2.0</h3>
-<h4 id="added-3">Added</h4>
+<h4 id="added-5">Added</h4>
 <ul>
 <li>New &quot;Homing&quot; argument on projectile to make projectile recheck target midflight.</li>
 </ul>
-<h4 id="fixed-4">Fixed</h4>
+<h4 id="fixed-6">Fixed</h4>
 <ul>
 <li>Projectile used wrong target point, change to bounding box center.</li>
 </ul>
 <h3 id="110">1.1.0</h3>
-<h4 id="fixed-5">Fixed</h4>
+<h4 id="fixed-7">Fixed</h4>
 <ul>
 <li>Update for SDV 1.6.14, add new &quot;sourceChange&quot; argument in ItemQueryContext.</li>
 </ul>
 <h3 id="102">1.0.2</h3>
-<h4 id="fixed-6">Fixed</h4>
+<h4 id="fixed-8">Fixed</h4>
 <ul>
 <li>Correctly invalidate Data/Trinkets whenever the Tinker asset gets invalidated.</li>
 </ul>
 <h3 id="101">1.0.1</h3>
-<h4 id="fixed-7">Fixed</h4>
+<h4 id="fixed-9">Fixed</h4>
 <ul>
 <li>Add workaround for issue where <code>TrinketEffectClass</code> ends up being null.</li>
 </ul>
 <h3 id="100">1.0.0</h3>
-<h4 id="added-4">Added</h4>
+<h4 id="added-6">Added</h4>
 <ul>
 <li>Implement all the things.</li>
 </ul>

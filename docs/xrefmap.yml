@@ -19,15 +19,15 @@ references:
   commentId: T:TrinketTinker.Companions.Anim.DrawSnapshot
   fullName: TrinketTinker.Companions.Anim.DrawSnapshot
   nameWithType: DrawSnapshot
-- uid: TrinketTinker.Companions.Anim.DrawSnapshot.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Color,System.Single,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Graphics.SpriteEffects,System.Single)
-  name: DrawSnapshot(Texture2D, Vector2, Rectangle, Color, float, Vector2, Vector2, SpriteEffects, float)
-  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot__ctor_Microsoft_Xna_Framework_Graphics_Texture2D_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Rectangle_Microsoft_Xna_Framework_Color_System_Single_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Graphics_SpriteEffects_System_Single_
-  commentId: M:TrinketTinker.Companions.Anim.DrawSnapshot.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Color,System.Single,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Graphics.SpriteEffects,System.Single)
-  name.vb: New(Texture2D, Vector2, Rectangle, Color, Single, Vector2, Vector2, SpriteEffects, Single)
-  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.DrawSnapshot(Microsoft.Xna.Framework.Graphics.Texture2D, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Rectangle, Microsoft.Xna.Framework.Color, float, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Graphics.SpriteEffects, float)
-  fullName.vb: TrinketTinker.Companions.Anim.DrawSnapshot.New(Microsoft.Xna.Framework.Graphics.Texture2D, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Rectangle, Microsoft.Xna.Framework.Color, Single, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Graphics.SpriteEffects, Single)
-  nameWithType: DrawSnapshot.DrawSnapshot(Texture2D, Vector2, Rectangle, Color, float, Vector2, Vector2, SpriteEffects, float)
-  nameWithType.vb: DrawSnapshot.New(Texture2D, Vector2, Rectangle, Color, Single, Vector2, Vector2, SpriteEffects, Single)
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Color,System.Single,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Graphics.SpriteEffects,System.Single,System.Int32)
+  name: DrawSnapshot(Texture2D, Vector2, Rectangle, Color, float, Vector2, Vector2, SpriteEffects, float, int)
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot__ctor_Microsoft_Xna_Framework_Graphics_Texture2D_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Rectangle_Microsoft_Xna_Framework_Color_System_Single_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Graphics_SpriteEffects_System_Single_System_Int32_
+  commentId: M:TrinketTinker.Companions.Anim.DrawSnapshot.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Color,System.Single,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Graphics.SpriteEffects,System.Single,System.Int32)
+  name.vb: New(Texture2D, Vector2, Rectangle, Color, Single, Vector2, Vector2, SpriteEffects, Single, Integer)
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.DrawSnapshot(Microsoft.Xna.Framework.Graphics.Texture2D, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Rectangle, Microsoft.Xna.Framework.Color, float, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Graphics.SpriteEffects, float, int)
+  fullName.vb: TrinketTinker.Companions.Anim.DrawSnapshot.New(Microsoft.Xna.Framework.Graphics.Texture2D, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Rectangle, Microsoft.Xna.Framework.Color, Single, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Graphics.SpriteEffects, Single, Integer)
+  nameWithType: DrawSnapshot.DrawSnapshot(Texture2D, Vector2, Rectangle, Color, float, Vector2, Vector2, SpriteEffects, float, int)
+  nameWithType.vb: DrawSnapshot.New(Texture2D, Vector2, Rectangle, Color, Single, Vector2, Vector2, SpriteEffects, Single, Integer)
 - uid: TrinketTinker.Companions.Anim.DrawSnapshot.#ctor*
   name: DrawSnapshot
   href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot__ctor_
@@ -38,6 +38,19 @@ references:
   fullName.vb: TrinketTinker.Companions.Anim.DrawSnapshot.New
   nameWithType: DrawSnapshot.DrawSnapshot
   nameWithType.vb: DrawSnapshot.New
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.CurrentFrame
+  name: CurrentFrame
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_CurrentFrame
+  commentId: P:TrinketTinker.Companions.Anim.DrawSnapshot.CurrentFrame
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.CurrentFrame
+  nameWithType: DrawSnapshot.CurrentFrame
+- uid: TrinketTinker.Companions.Anim.DrawSnapshot.CurrentFrame*
+  name: CurrentFrame
+  href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_CurrentFrame_
+  commentId: Overload:TrinketTinker.Companions.Anim.DrawSnapshot.CurrentFrame
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Anim.DrawSnapshot.CurrentFrame
+  nameWithType: DrawSnapshot.CurrentFrame
 - uid: TrinketTinker.Companions.Anim.DrawSnapshot.DrawColor
   name: DrawColor
   href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html#TrinketTinker_Companions_Anim_DrawSnapshot_DrawColor
@@ -766,6 +779,38 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Companions.Motions.IMotion.OnOwnerWarp
   nameWithType: IMotion.OnOwnerWarp
+- uid: TrinketTinker.Companions.Motions.IMotion.SetActiveAnchors(System.Collections.Generic.IEnumerable{System.String})
+  name: SetActiveAnchors(IEnumerable<string>)
+  href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_SetActiveAnchors_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:TrinketTinker.Companions.Motions.IMotion.SetActiveAnchors(System.Collections.Generic.IEnumerable{System.String})
+  name.vb: SetActiveAnchors(IEnumerable(Of String))
+  fullName: TrinketTinker.Companions.Motions.IMotion.SetActiveAnchors(System.Collections.Generic.IEnumerable<string>)
+  fullName.vb: TrinketTinker.Companions.Motions.IMotion.SetActiveAnchors(System.Collections.Generic.IEnumerable(Of String))
+  nameWithType: IMotion.SetActiveAnchors(IEnumerable<string>)
+  nameWithType.vb: IMotion.SetActiveAnchors(IEnumerable(Of String))
+- uid: TrinketTinker.Companions.Motions.IMotion.SetActiveAnchors*
+  name: SetActiveAnchors
+  href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_SetActiveAnchors_
+  commentId: Overload:TrinketTinker.Companions.Motions.IMotion.SetActiveAnchors
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.IMotion.SetActiveAnchors
+  nameWithType: IMotion.SetActiveAnchors
+- uid: TrinketTinker.Companions.Motions.IMotion.SetCurrAnchorTarget(System.Int32)
+  name: SetCurrAnchorTarget(int)
+  href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_SetCurrAnchorTarget_System_Int32_
+  commentId: M:TrinketTinker.Companions.Motions.IMotion.SetCurrAnchorTarget(System.Int32)
+  name.vb: SetCurrAnchorTarget(Integer)
+  fullName: TrinketTinker.Companions.Motions.IMotion.SetCurrAnchorTarget(int)
+  fullName.vb: TrinketTinker.Companions.Motions.IMotion.SetCurrAnchorTarget(Integer)
+  nameWithType: IMotion.SetCurrAnchorTarget(int)
+  nameWithType.vb: IMotion.SetCurrAnchorTarget(Integer)
+- uid: TrinketTinker.Companions.Motions.IMotion.SetCurrAnchorTarget*
+  name: SetCurrAnchorTarget
+  href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_SetCurrAnchorTarget_
+  commentId: Overload:TrinketTinker.Companions.Motions.IMotion.SetCurrAnchorTarget
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.IMotion.SetCurrAnchorTarget
+  nameWithType: IMotion.SetCurrAnchorTarget
 - uid: TrinketTinker.Companions.Motions.IMotion.SetOneshotClip(System.String)
   name: SetOneshotClip(string?)
   href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_SetOneshotClip_System_String_
@@ -1247,6 +1292,42 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).PauseMovementByAnimClip
   nameWithType: Motion<TArgs>.PauseMovementByAnimClip
   nameWithType.vb: Motion(Of TArgs).PauseMovementByAnimClip
+- uid: TrinketTinker.Companions.Motions.Motion`1.SetActiveAnchors(System.Collections.Generic.IEnumerable{System.String})
+  name: SetActiveAnchors(IEnumerable<string>)
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetActiveAnchors_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:TrinketTinker.Companions.Motions.Motion`1.SetActiveAnchors(System.Collections.Generic.IEnumerable{System.String})
+  name.vb: SetActiveAnchors(IEnumerable(Of String))
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.SetActiveAnchors(System.Collections.Generic.IEnumerable<string>)
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).SetActiveAnchors(System.Collections.Generic.IEnumerable(Of String))
+  nameWithType: Motion<TArgs>.SetActiveAnchors(IEnumerable<string>)
+  nameWithType.vb: Motion(Of TArgs).SetActiveAnchors(IEnumerable(Of String))
+- uid: TrinketTinker.Companions.Motions.Motion`1.SetActiveAnchors*
+  name: SetActiveAnchors
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetActiveAnchors_
+  commentId: Overload:TrinketTinker.Companions.Motions.Motion`1.SetActiveAnchors
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.SetActiveAnchors
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).SetActiveAnchors
+  nameWithType: Motion<TArgs>.SetActiveAnchors
+  nameWithType.vb: Motion(Of TArgs).SetActiveAnchors
+- uid: TrinketTinker.Companions.Motions.Motion`1.SetCurrAnchorTarget(System.Int32)
+  name: SetCurrAnchorTarget(int)
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetCurrAnchorTarget_System_Int32_
+  commentId: M:TrinketTinker.Companions.Motions.Motion`1.SetCurrAnchorTarget(System.Int32)
+  name.vb: SetCurrAnchorTarget(Integer)
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.SetCurrAnchorTarget(int)
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).SetCurrAnchorTarget(Integer)
+  nameWithType: Motion<TArgs>.SetCurrAnchorTarget(int)
+  nameWithType.vb: Motion(Of TArgs).SetCurrAnchorTarget(Integer)
+- uid: TrinketTinker.Companions.Motions.Motion`1.SetCurrAnchorTarget*
+  name: SetCurrAnchorTarget
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetCurrAnchorTarget_
+  commentId: Overload:TrinketTinker.Companions.Motions.Motion`1.SetCurrAnchorTarget
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.SetCurrAnchorTarget
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).SetCurrAnchorTarget
+  nameWithType: Motion<TArgs>.SetCurrAnchorTarget
+  nameWithType.vb: Motion(Of TArgs).SetCurrAnchorTarget
 - uid: TrinketTinker.Companions.Motions.Motion`1.SetOneshotClip(System.String)
   name: SetOneshotClip(string?)
   href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetOneshotClip_System_String_
@@ -1825,6 +1906,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Companions.TrinketTinkerCompanion.CompanionMoving
   nameWithType: TrinketTinkerCompanion.CompanionMoving
+- uid: TrinketTinker.Companions.TrinketTinkerCompanion.CurrAnchorTarget
+  name: CurrAnchorTarget
+  href: api/TrinketTinker.Companions.TrinketTinkerCompanion.html#TrinketTinker_Companions_TrinketTinkerCompanion_CurrAnchorTarget
+  commentId: P:TrinketTinker.Companions.TrinketTinkerCompanion.CurrAnchorTarget
+  fullName: TrinketTinker.Companions.TrinketTinkerCompanion.CurrAnchorTarget
+  nameWithType: TrinketTinkerCompanion.CurrAnchorTarget
+- uid: TrinketTinker.Companions.TrinketTinkerCompanion.CurrAnchorTarget*
+  name: CurrAnchorTarget
+  href: api/TrinketTinker.Companions.TrinketTinkerCompanion.html#TrinketTinker_Companions_TrinketTinkerCompanion_CurrAnchorTarget_
+  commentId: Overload:TrinketTinker.Companions.TrinketTinkerCompanion.CurrAnchorTarget
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.TrinketTinkerCompanion.CurrAnchorTarget
+  nameWithType: TrinketTinkerCompanion.CurrAnchorTarget
 - uid: TrinketTinker.Companions.TrinketTinkerCompanion.Data
   name: Data
   href: api/TrinketTinker.Companions.TrinketTinkerCompanion.html#TrinketTinker_Companions_TrinketTinkerCompanion_Data
@@ -1977,6 +2071,22 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Companions.TrinketTinkerCompanion.OwnerMoving
   nameWithType: TrinketTinkerCompanion.OwnerMoving
+- uid: TrinketTinker.Companions.TrinketTinkerCompanion.SetActiveAnchors(System.Collections.Generic.IEnumerable{System.String})
+  name: SetActiveAnchors(IEnumerable<string>)
+  href: api/TrinketTinker.Companions.TrinketTinkerCompanion.html#TrinketTinker_Companions_TrinketTinkerCompanion_SetActiveAnchors_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:TrinketTinker.Companions.TrinketTinkerCompanion.SetActiveAnchors(System.Collections.Generic.IEnumerable{System.String})
+  name.vb: SetActiveAnchors(IEnumerable(Of String))
+  fullName: TrinketTinker.Companions.TrinketTinkerCompanion.SetActiveAnchors(System.Collections.Generic.IEnumerable<string>)
+  fullName.vb: TrinketTinker.Companions.TrinketTinkerCompanion.SetActiveAnchors(System.Collections.Generic.IEnumerable(Of String))
+  nameWithType: TrinketTinkerCompanion.SetActiveAnchors(IEnumerable<string>)
+  nameWithType.vb: TrinketTinkerCompanion.SetActiveAnchors(IEnumerable(Of String))
+- uid: TrinketTinker.Companions.TrinketTinkerCompanion.SetActiveAnchors*
+  name: SetActiveAnchors
+  href: api/TrinketTinker.Companions.TrinketTinkerCompanion.html#TrinketTinker_Companions_TrinketTinkerCompanion_SetActiveAnchors_
+  commentId: Overload:TrinketTinker.Companions.TrinketTinkerCompanion.SetActiveAnchors
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.TrinketTinkerCompanion.SetActiveAnchors
+  nameWithType: TrinketTinkerCompanion.SetActiveAnchors
 - uid: TrinketTinker.Companions.TrinketTinkerCompanion.SetSpeechBubble(System.String)
   name: SetSpeechBubble(string?)
   href: api/TrinketTinker.Companions.TrinketTinkerCompanion.html#TrinketTinker_Companions_TrinketTinkerCompanion_SetSpeechBubble_System_String_
@@ -2052,6 +2162,23 @@ references:
   fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).New
   nameWithType: Ability<TArgs>.Ability
   nameWithType.vb: Ability(Of TArgs).New
+- uid: TrinketTinker.Effects.Abilities.Ability`1.AbilityClass
+  name: AbilityClass
+  href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_AbilityClass
+  commentId: P:TrinketTinker.Effects.Abilities.Ability`1.AbilityClass
+  fullName: TrinketTinker.Effects.Abilities.Ability<TArgs>.AbilityClass
+  fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).AbilityClass
+  nameWithType: Ability<TArgs>.AbilityClass
+  nameWithType.vb: Ability(Of TArgs).AbilityClass
+- uid: TrinketTinker.Effects.Abilities.Ability`1.AbilityClass*
+  name: AbilityClass
+  href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_AbilityClass_
+  commentId: Overload:TrinketTinker.Effects.Abilities.Ability`1.AbilityClass
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.Ability<TArgs>.AbilityClass
+  fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).AbilityClass
+  nameWithType: Ability<TArgs>.AbilityClass
+  nameWithType.vb: Ability(Of TArgs).AbilityClass
 - uid: TrinketTinker.Effects.Abilities.Ability`1.Activate(StardewValley.Farmer)
   name: Activate(Farmer)
   href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Activate_StardewValley_Farmer_
@@ -2473,6 +2600,22 @@ references:
   fullName.vb: TrinketTinker.Effects.Abilities.HarvestCropAbility.New
   nameWithType: HarvestCropAbility.HarvestCropAbility
   nameWithType.vb: HarvestCropAbility.New
+- uid: TrinketTinker.Effects.Abilities.HarvestCropAbility.CheckCrop(StardewValley.TerrainFeatures.TerrainFeature,System.Collections.Generic.IReadOnlyList{System.String})
+  name: CheckCrop(TerrainFeature, IReadOnlyList<string>?)
+  href: api/TrinketTinker.Effects.Abilities.HarvestCropAbility.html#TrinketTinker_Effects_Abilities_HarvestCropAbility_CheckCrop_StardewValley_TerrainFeatures_TerrainFeature_System_Collections_Generic_IReadOnlyList_System_String__
+  commentId: M:TrinketTinker.Effects.Abilities.HarvestCropAbility.CheckCrop(StardewValley.TerrainFeatures.TerrainFeature,System.Collections.Generic.IReadOnlyList{System.String})
+  name.vb: CheckCrop(TerrainFeature, IReadOnlyList(Of String))
+  fullName: TrinketTinker.Effects.Abilities.HarvestCropAbility.CheckCrop(StardewValley.TerrainFeatures.TerrainFeature, System.Collections.Generic.IReadOnlyList<string>?)
+  fullName.vb: TrinketTinker.Effects.Abilities.HarvestCropAbility.CheckCrop(StardewValley.TerrainFeatures.TerrainFeature, System.Collections.Generic.IReadOnlyList(Of String))
+  nameWithType: HarvestCropAbility.CheckCrop(TerrainFeature, IReadOnlyList<string>?)
+  nameWithType.vb: HarvestCropAbility.CheckCrop(TerrainFeature, IReadOnlyList(Of String))
+- uid: TrinketTinker.Effects.Abilities.HarvestCropAbility.CheckCrop*
+  name: CheckCrop
+  href: api/TrinketTinker.Effects.Abilities.HarvestCropAbility.html#TrinketTinker_Effects_Abilities_HarvestCropAbility_CheckCrop_
+  commentId: Overload:TrinketTinker.Effects.Abilities.HarvestCropAbility.CheckCrop
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.HarvestCropAbility.CheckCrop
+  nameWithType: HarvestCropAbility.CheckCrop
 - uid: TrinketTinker.Effects.Abilities.HarvestCropAbility.DoHarvest(StardewValley.GameLocation,StardewValley.Farmer,Microsoft.Xna.Framework.Vector2)
   name: DoHarvest(GameLocation, Farmer, Vector2)
   href: api/TrinketTinker.Effects.Abilities.HarvestCropAbility.html#TrinketTinker_Effects_Abilities_HarvestCropAbility_DoHarvest_StardewValley_GameLocation_StardewValley_Farmer_Microsoft_Xna_Framework_Vector2_
@@ -2537,6 +2680,22 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.Abilities.HarvestForageAbility.DoHarvest
   nameWithType: HarvestForageAbility.DoHarvest
+- uid: TrinketTinker.Effects.Abilities.HarvestForageAbility.IsForage(StardewValley.Object,System.Collections.Generic.IReadOnlyList{System.String})
+  name: IsForage(Object, IReadOnlyList<string>?)
+  href: api/TrinketTinker.Effects.Abilities.HarvestForageAbility.html#TrinketTinker_Effects_Abilities_HarvestForageAbility_IsForage_StardewValley_Object_System_Collections_Generic_IReadOnlyList_System_String__
+  commentId: M:TrinketTinker.Effects.Abilities.HarvestForageAbility.IsForage(StardewValley.Object,System.Collections.Generic.IReadOnlyList{System.String})
+  name.vb: IsForage(Object, IReadOnlyList(Of String))
+  fullName: TrinketTinker.Effects.Abilities.HarvestForageAbility.IsForage(StardewValley.Object, System.Collections.Generic.IReadOnlyList<string>?)
+  fullName.vb: TrinketTinker.Effects.Abilities.HarvestForageAbility.IsForage(StardewValley.Object, System.Collections.Generic.IReadOnlyList(Of String))
+  nameWithType: HarvestForageAbility.IsForage(Object, IReadOnlyList<string>?)
+  nameWithType.vb: HarvestForageAbility.IsForage(Object, IReadOnlyList(Of String))
+- uid: TrinketTinker.Effects.Abilities.HarvestForageAbility.IsForage*
+  name: IsForage
+  href: api/TrinketTinker.Effects.Abilities.HarvestForageAbility.html#TrinketTinker_Effects_Abilities_HarvestForageAbility_IsForage_
+  commentId: Overload:TrinketTinker.Effects.Abilities.HarvestForageAbility.IsForage
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.HarvestForageAbility.IsForage
+  nameWithType: HarvestForageAbility.IsForage
 - uid: TrinketTinker.Effects.Abilities.HarvestForageAbility.ProbeTile(StardewValley.GameLocation,Microsoft.Xna.Framework.Vector2)
   name: ProbeTile(GameLocation, Vector2)
   href: api/TrinketTinker.Effects.Abilities.HarvestForageAbility.html#TrinketTinker_Effects_Abilities_HarvestForageAbility_ProbeTile_StardewValley_GameLocation_Microsoft_Xna_Framework_Vector2_
@@ -2550,6 +2709,91 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.Abilities.HarvestForageAbility.ProbeTile
   nameWithType: HarvestForageAbility.ProbeTile
+- uid: TrinketTinker.Effects.Abilities.HarvestShakeableAbility
+  name: HarvestShakeableAbility
+  href: api/TrinketTinker.Effects.Abilities.HarvestShakeableAbility.html
+  commentId: T:TrinketTinker.Effects.Abilities.HarvestShakeableAbility
+  fullName: TrinketTinker.Effects.Abilities.HarvestShakeableAbility
+  nameWithType: HarvestShakeableAbility
+- uid: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.#ctor(TrinketTinker.Effects.TrinketTinkerEffect,TrinketTinker.Models.AbilityData,System.Int32)
+  name: HarvestShakeableAbility(TrinketTinkerEffect, AbilityData, int)
+  href: api/TrinketTinker.Effects.Abilities.HarvestShakeableAbility.html#TrinketTinker_Effects_Abilities_HarvestShakeableAbility__ctor_TrinketTinker_Effects_TrinketTinkerEffect_TrinketTinker_Models_AbilityData_System_Int32_
+  commentId: M:TrinketTinker.Effects.Abilities.HarvestShakeableAbility.#ctor(TrinketTinker.Effects.TrinketTinkerEffect,TrinketTinker.Models.AbilityData,System.Int32)
+  name.vb: New(TrinketTinkerEffect, AbilityData, Integer)
+  fullName: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.HarvestShakeableAbility(TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker.Models.AbilityData, int)
+  fullName.vb: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.New(TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker.Models.AbilityData, Integer)
+  nameWithType: HarvestShakeableAbility.HarvestShakeableAbility(TrinketTinkerEffect, AbilityData, int)
+  nameWithType.vb: HarvestShakeableAbility.New(TrinketTinkerEffect, AbilityData, Integer)
+- uid: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.#ctor*
+  name: HarvestShakeableAbility
+  href: api/TrinketTinker.Effects.Abilities.HarvestShakeableAbility.html#TrinketTinker_Effects_Abilities_HarvestShakeableAbility__ctor_
+  commentId: Overload:TrinketTinker.Effects.Abilities.HarvestShakeableAbility.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.HarvestShakeableAbility
+  fullName.vb: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.New
+  nameWithType: HarvestShakeableAbility.HarvestShakeableAbility
+  nameWithType.vb: HarvestShakeableAbility.New
+- uid: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.BUSH
+  name: BUSH
+  href: api/TrinketTinker.Effects.Abilities.HarvestShakeableAbility.html#TrinketTinker_Effects_Abilities_HarvestShakeableAbility_BUSH
+  commentId: F:TrinketTinker.Effects.Abilities.HarvestShakeableAbility.BUSH
+  fullName: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.BUSH
+  nameWithType: HarvestShakeableAbility.BUSH
+- uid: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.CheckShakeable(StardewValley.TerrainFeatures.TerrainFeature,System.Collections.Generic.IReadOnlyList{System.String})
+  name: CheckShakeable(TerrainFeature, IReadOnlyList<string>?)
+  href: api/TrinketTinker.Effects.Abilities.HarvestShakeableAbility.html#TrinketTinker_Effects_Abilities_HarvestShakeableAbility_CheckShakeable_StardewValley_TerrainFeatures_TerrainFeature_System_Collections_Generic_IReadOnlyList_System_String__
+  commentId: M:TrinketTinker.Effects.Abilities.HarvestShakeableAbility.CheckShakeable(StardewValley.TerrainFeatures.TerrainFeature,System.Collections.Generic.IReadOnlyList{System.String})
+  name.vb: CheckShakeable(TerrainFeature, IReadOnlyList(Of String))
+  fullName: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.CheckShakeable(StardewValley.TerrainFeatures.TerrainFeature, System.Collections.Generic.IReadOnlyList<string>?)
+  fullName.vb: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.CheckShakeable(StardewValley.TerrainFeatures.TerrainFeature, System.Collections.Generic.IReadOnlyList(Of String))
+  nameWithType: HarvestShakeableAbility.CheckShakeable(TerrainFeature, IReadOnlyList<string>?)
+  nameWithType.vb: HarvestShakeableAbility.CheckShakeable(TerrainFeature, IReadOnlyList(Of String))
+- uid: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.CheckShakeable*
+  name: CheckShakeable
+  href: api/TrinketTinker.Effects.Abilities.HarvestShakeableAbility.html#TrinketTinker_Effects_Abilities_HarvestShakeableAbility_CheckShakeable_
+  commentId: Overload:TrinketTinker.Effects.Abilities.HarvestShakeableAbility.CheckShakeable
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.CheckShakeable
+  nameWithType: HarvestShakeableAbility.CheckShakeable
+- uid: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.DoHarvest(StardewValley.GameLocation,StardewValley.Farmer,Microsoft.Xna.Framework.Vector2)
+  name: DoHarvest(GameLocation, Farmer, Vector2)
+  href: api/TrinketTinker.Effects.Abilities.HarvestShakeableAbility.html#TrinketTinker_Effects_Abilities_HarvestShakeableAbility_DoHarvest_StardewValley_GameLocation_StardewValley_Farmer_Microsoft_Xna_Framework_Vector2_
+  commentId: M:TrinketTinker.Effects.Abilities.HarvestShakeableAbility.DoHarvest(StardewValley.GameLocation,StardewValley.Farmer,Microsoft.Xna.Framework.Vector2)
+  fullName: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.DoHarvest(StardewValley.GameLocation, StardewValley.Farmer, Microsoft.Xna.Framework.Vector2)
+  nameWithType: HarvestShakeableAbility.DoHarvest(GameLocation, Farmer, Vector2)
+- uid: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.DoHarvest*
+  name: DoHarvest
+  href: api/TrinketTinker.Effects.Abilities.HarvestShakeableAbility.html#TrinketTinker_Effects_Abilities_HarvestShakeableAbility_DoHarvest_
+  commentId: Overload:TrinketTinker.Effects.Abilities.HarvestShakeableAbility.DoHarvest
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.DoHarvest
+  nameWithType: HarvestShakeableAbility.DoHarvest
+- uid: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.FRUIT_TREE
+  name: FRUIT_TREE
+  href: api/TrinketTinker.Effects.Abilities.HarvestShakeableAbility.html#TrinketTinker_Effects_Abilities_HarvestShakeableAbility_FRUIT_TREE
+  commentId: F:TrinketTinker.Effects.Abilities.HarvestShakeableAbility.FRUIT_TREE
+  fullName: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.FRUIT_TREE
+  nameWithType: HarvestShakeableAbility.FRUIT_TREE
+- uid: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.ProbeTile(StardewValley.GameLocation,Microsoft.Xna.Framework.Vector2)
+  name: ProbeTile(GameLocation, Vector2)
+  href: api/TrinketTinker.Effects.Abilities.HarvestShakeableAbility.html#TrinketTinker_Effects_Abilities_HarvestShakeableAbility_ProbeTile_StardewValley_GameLocation_Microsoft_Xna_Framework_Vector2_
+  commentId: M:TrinketTinker.Effects.Abilities.HarvestShakeableAbility.ProbeTile(StardewValley.GameLocation,Microsoft.Xna.Framework.Vector2)
+  fullName: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.ProbeTile(StardewValley.GameLocation, Microsoft.Xna.Framework.Vector2)
+  nameWithType: HarvestShakeableAbility.ProbeTile(GameLocation, Vector2)
+- uid: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.ProbeTile*
+  name: ProbeTile
+  href: api/TrinketTinker.Effects.Abilities.HarvestShakeableAbility.html#TrinketTinker_Effects_Abilities_HarvestShakeableAbility_ProbeTile_
+  commentId: Overload:TrinketTinker.Effects.Abilities.HarvestShakeableAbility.ProbeTile
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.ProbeTile
+  nameWithType: HarvestShakeableAbility.ProbeTile
+- uid: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.TREE
+  name: TREE
+  href: api/TrinketTinker.Effects.Abilities.HarvestShakeableAbility.html#TrinketTinker_Effects_Abilities_HarvestShakeableAbility_TREE
+  commentId: F:TrinketTinker.Effects.Abilities.HarvestShakeableAbility.TREE
+  fullName: TrinketTinker.Effects.Abilities.HarvestShakeableAbility.TREE
+  nameWithType: HarvestShakeableAbility.TREE
 - uid: TrinketTinker.Effects.Abilities.HarvestStoneAbility
   name: HarvestStoneAbility
   href: api/TrinketTinker.Effects.Abilities.HarvestStoneAbility.html
@@ -2734,6 +2978,19 @@ references:
   commentId: T:TrinketTinker.Effects.Abilities.IAbility
   fullName: TrinketTinker.Effects.Abilities.IAbility
   nameWithType: IAbility
+- uid: TrinketTinker.Effects.Abilities.IAbility.AbilityClass
+  name: AbilityClass
+  href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_AbilityClass
+  commentId: P:TrinketTinker.Effects.Abilities.IAbility.AbilityClass
+  fullName: TrinketTinker.Effects.Abilities.IAbility.AbilityClass
+  nameWithType: IAbility.AbilityClass
+- uid: TrinketTinker.Effects.Abilities.IAbility.AbilityClass*
+  name: AbilityClass
+  href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_AbilityClass_
+  commentId: Overload:TrinketTinker.Effects.Abilities.IAbility.AbilityClass
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.IAbility.AbilityClass
+  nameWithType: IAbility.AbilityClass
 - uid: TrinketTinker.Effects.Abilities.IAbility.Activate(StardewValley.Farmer)
   name: Activate(Farmer)
   href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_Activate_StardewValley_Farmer_
@@ -2830,6 +3087,44 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.Abilities.ItemDropAbility.ApplyEffect
   nameWithType: ItemDropAbility.ApplyEffect
+- uid: TrinketTinker.Effects.Abilities.NopAbility
+  name: NopAbility
+  href: api/TrinketTinker.Effects.Abilities.NopAbility.html
+  commentId: T:TrinketTinker.Effects.Abilities.NopAbility
+  fullName: TrinketTinker.Effects.Abilities.NopAbility
+  nameWithType: NopAbility
+- uid: TrinketTinker.Effects.Abilities.NopAbility.#ctor(TrinketTinker.Effects.TrinketTinkerEffect,TrinketTinker.Models.AbilityData,System.Int32)
+  name: NopAbility(TrinketTinkerEffect, AbilityData, int)
+  href: api/TrinketTinker.Effects.Abilities.NopAbility.html#TrinketTinker_Effects_Abilities_NopAbility__ctor_TrinketTinker_Effects_TrinketTinkerEffect_TrinketTinker_Models_AbilityData_System_Int32_
+  commentId: M:TrinketTinker.Effects.Abilities.NopAbility.#ctor(TrinketTinker.Effects.TrinketTinkerEffect,TrinketTinker.Models.AbilityData,System.Int32)
+  name.vb: New(TrinketTinkerEffect, AbilityData, Integer)
+  fullName: TrinketTinker.Effects.Abilities.NopAbility.NopAbility(TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker.Models.AbilityData, int)
+  fullName.vb: TrinketTinker.Effects.Abilities.NopAbility.New(TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker.Models.AbilityData, Integer)
+  nameWithType: NopAbility.NopAbility(TrinketTinkerEffect, AbilityData, int)
+  nameWithType.vb: NopAbility.New(TrinketTinkerEffect, AbilityData, Integer)
+- uid: TrinketTinker.Effects.Abilities.NopAbility.#ctor*
+  name: NopAbility
+  href: api/TrinketTinker.Effects.Abilities.NopAbility.html#TrinketTinker_Effects_Abilities_NopAbility__ctor_
+  commentId: Overload:TrinketTinker.Effects.Abilities.NopAbility.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TrinketTinker.Effects.Abilities.NopAbility.NopAbility
+  fullName.vb: TrinketTinker.Effects.Abilities.NopAbility.New
+  nameWithType: NopAbility.NopAbility
+  nameWithType.vb: NopAbility.New
+- uid: TrinketTinker.Effects.Abilities.NopAbility.ApplyEffect(TrinketTinker.Effects.Proc.ProcEventArgs)
+  name: ApplyEffect(ProcEventArgs)
+  href: api/TrinketTinker.Effects.Abilities.NopAbility.html#TrinketTinker_Effects_Abilities_NopAbility_ApplyEffect_TrinketTinker_Effects_Proc_ProcEventArgs_
+  commentId: M:TrinketTinker.Effects.Abilities.NopAbility.ApplyEffect(TrinketTinker.Effects.Proc.ProcEventArgs)
+  fullName: TrinketTinker.Effects.Abilities.NopAbility.ApplyEffect(TrinketTinker.Effects.Proc.ProcEventArgs)
+  nameWithType: NopAbility.ApplyEffect(ProcEventArgs)
+- uid: TrinketTinker.Effects.Abilities.NopAbility.ApplyEffect*
+  name: ApplyEffect
+  href: api/TrinketTinker.Effects.Abilities.NopAbility.html#TrinketTinker_Effects_Abilities_NopAbility_ApplyEffect_
+  commentId: Overload:TrinketTinker.Effects.Abilities.NopAbility.ApplyEffect
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.NopAbility.ApplyEffect
+  nameWithType: NopAbility.ApplyEffect
 - uid: TrinketTinker.Effects.Abilities.ProjectileAbility
   name: ProjectileAbility
   href: api/TrinketTinker.Effects.Abilities.ProjectileAbility.html
@@ -3377,15 +3672,15 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.TrinketTinkerEffect.GenerateRandomStats
   nameWithType: TrinketTinkerEffect.GenerateRandomStats
-- uid: TrinketTinker.Effects.TrinketTinkerEffect.GetMaxUnlockedCount(System.Collections.Generic.List{System.String},System.Int32,StardewValley.Objects.Trinkets.Trinket)
-  name: GetMaxUnlockedCount(List<string?>, int, Trinket)
-  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_GetMaxUnlockedCount_System_Collections_Generic_List_System_String__System_Int32_StardewValley_Objects_Trinkets_Trinket_
-  commentId: M:TrinketTinker.Effects.TrinketTinkerEffect.GetMaxUnlockedCount(System.Collections.Generic.List{System.String},System.Int32,StardewValley.Objects.Trinkets.Trinket)
-  name.vb: GetMaxUnlockedCount(List(Of String), Integer, Trinket)
-  fullName: TrinketTinker.Effects.TrinketTinkerEffect.GetMaxUnlockedCount(System.Collections.Generic.List<string?>, int, StardewValley.Objects.Trinkets.Trinket)
-  fullName.vb: TrinketTinker.Effects.TrinketTinkerEffect.GetMaxUnlockedCount(System.Collections.Generic.List(Of String), Integer, StardewValley.Objects.Trinkets.Trinket)
-  nameWithType: TrinketTinkerEffect.GetMaxUnlockedCount(List<string?>, int, Trinket)
-  nameWithType.vb: TrinketTinkerEffect.GetMaxUnlockedCount(List(Of String), Integer, Trinket)
+- uid: TrinketTinker.Effects.TrinketTinkerEffect.GetMaxUnlockedCount(System.Collections.Generic.IReadOnlyList{System.String},System.Int32,StardewValley.Objects.Trinkets.Trinket)
+  name: GetMaxUnlockedCount(IReadOnlyList<string?>, int, Trinket)
+  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_GetMaxUnlockedCount_System_Collections_Generic_IReadOnlyList_System_String__System_Int32_StardewValley_Objects_Trinkets_Trinket_
+  commentId: M:TrinketTinker.Effects.TrinketTinkerEffect.GetMaxUnlockedCount(System.Collections.Generic.IReadOnlyList{System.String},System.Int32,StardewValley.Objects.Trinkets.Trinket)
+  name.vb: GetMaxUnlockedCount(IReadOnlyList(Of String), Integer, Trinket)
+  fullName: TrinketTinker.Effects.TrinketTinkerEffect.GetMaxUnlockedCount(System.Collections.Generic.IReadOnlyList<string?>, int, StardewValley.Objects.Trinkets.Trinket)
+  fullName.vb: TrinketTinker.Effects.TrinketTinkerEffect.GetMaxUnlockedCount(System.Collections.Generic.IReadOnlyList(Of String), Integer, StardewValley.Objects.Trinkets.Trinket)
+  nameWithType: TrinketTinkerEffect.GetMaxUnlockedCount(IReadOnlyList<string?>, int, Trinket)
+  nameWithType.vb: TrinketTinkerEffect.GetMaxUnlockedCount(IReadOnlyList(Of String), Integer, Trinket)
 - uid: TrinketTinker.Effects.TrinketTinkerEffect.GetMaxUnlockedCount*
   name: GetMaxUnlockedCount
   href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_GetMaxUnlockedCount_
@@ -3419,6 +3714,12 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.TrinketTinkerEffect.MaxVariant
   nameWithType: TrinketTinkerEffect.MaxVariant
+- uid: TrinketTinker.Effects.TrinketTinkerEffect.ModData_Inventory
+  name: ModData_Inventory
+  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_ModData_Inventory
+  commentId: F:TrinketTinker.Effects.TrinketTinkerEffect.ModData_Inventory
+  fullName: TrinketTinker.Effects.TrinketTinkerEffect.ModData_Inventory
+  nameWithType: TrinketTinkerEffect.ModData_Inventory
 - uid: TrinketTinker.Effects.TrinketTinkerEffect.ModData_Level
   name: ModData_Level
   href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_ModData_Level
@@ -4164,6 +4465,12 @@ references:
   commentId: T:TrinketTinker.Models.AbilityArgs.HarvestArgs
   fullName: TrinketTinker.Models.AbilityArgs.HarvestArgs
   nameWithType: HarvestArgs
+- uid: TrinketTinker.Models.AbilityArgs.HarvestArgs.Filters
+  name: Filters
+  href: api/TrinketTinker.Models.AbilityArgs.HarvestArgs.html#TrinketTinker_Models_AbilityArgs_HarvestArgs_Filters
+  commentId: F:TrinketTinker.Models.AbilityArgs.HarvestArgs.Filters
+  fullName: TrinketTinker.Models.AbilityArgs.HarvestArgs.Filters
+  nameWithType: HarvestArgs.Filters
 - uid: TrinketTinker.Models.AbilityArgs.HarvestArgs.HarvestTo
   name: HarvestTo
   href: api/TrinketTinker.Models.AbilityArgs.HarvestArgs.html#TrinketTinker_Models_AbilityArgs_HarvestArgs_HarvestTo
@@ -4686,6 +4993,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AbilityData.ProcSpeechBubble
   nameWithType: AbilityData.ProcSpeechBubble
+- uid: TrinketTinker.Models.AbilityData.ProcSyncDelay
+  name: ProcSyncDelay
+  href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcSyncDelay
+  commentId: P:TrinketTinker.Models.AbilityData.ProcSyncDelay
+  fullName: TrinketTinker.Models.AbilityData.ProcSyncDelay
+  nameWithType: AbilityData.ProcSyncDelay
+- uid: TrinketTinker.Models.AbilityData.ProcSyncDelay*
+  name: ProcSyncDelay
+  href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcSyncDelay_
+  commentId: Overload:TrinketTinker.Models.AbilityData.ProcSyncDelay
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityData.ProcSyncDelay
+  nameWithType: AbilityData.ProcSyncDelay
 - uid: TrinketTinker.Models.AbilityData.ProcSyncIndex
   name: ProcSyncIndex
   href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcSyncIndex
@@ -4761,6 +5081,12 @@ references:
   commentId: F:TrinketTinker.Models.AnchorTarget.Owner
   fullName: TrinketTinker.Models.AnchorTarget.Owner
   nameWithType: AnchorTarget.Owner
+- uid: TrinketTinker.Models.AnchorTarget.Shakeable
+  name: Shakeable
+  href: api/TrinketTinker.Models.AnchorTarget.html#TrinketTinker_Models_AnchorTarget_Shakeable
+  commentId: F:TrinketTinker.Models.AnchorTarget.Shakeable
+  fullName: TrinketTinker.Models.AnchorTarget.Shakeable
+  nameWithType: AnchorTarget.Shakeable
 - uid: TrinketTinker.Models.AnchorTarget.Stone
   name: Stone
   href: api/TrinketTinker.Models.AnchorTarget.html#TrinketTinker_Models_AnchorTarget_Stone
@@ -4782,21 +5108,55 @@ references:
 - uid: TrinketTinker.Models.AnchorTargetData.Filters
   name: Filters
   href: api/TrinketTinker.Models.AnchorTargetData.html#TrinketTinker_Models_AnchorTargetData_Filters
-  commentId: F:TrinketTinker.Models.AnchorTargetData.Filters
+  commentId: P:TrinketTinker.Models.AnchorTargetData.Filters
+  fullName: TrinketTinker.Models.AnchorTargetData.Filters
+  nameWithType: AnchorTargetData.Filters
+- uid: TrinketTinker.Models.AnchorTargetData.Filters*
+  name: Filters
+  href: api/TrinketTinker.Models.AnchorTargetData.html#TrinketTinker_Models_AnchorTargetData_Filters_
+  commentId: Overload:TrinketTinker.Models.AnchorTargetData.Filters
+  isSpec: "True"
   fullName: TrinketTinker.Models.AnchorTargetData.Filters
   nameWithType: AnchorTargetData.Filters
 - uid: TrinketTinker.Models.AnchorTargetData.Mode
   name: Mode
   href: api/TrinketTinker.Models.AnchorTargetData.html#TrinketTinker_Models_AnchorTargetData_Mode
-  commentId: F:TrinketTinker.Models.AnchorTargetData.Mode
+  commentId: P:TrinketTinker.Models.AnchorTargetData.Mode
+  fullName: TrinketTinker.Models.AnchorTargetData.Mode
+  nameWithType: AnchorTargetData.Mode
+- uid: TrinketTinker.Models.AnchorTargetData.Mode*
+  name: Mode
+  href: api/TrinketTinker.Models.AnchorTargetData.html#TrinketTinker_Models_AnchorTargetData_Mode_
+  commentId: Overload:TrinketTinker.Models.AnchorTargetData.Mode
+  isSpec: "True"
   fullName: TrinketTinker.Models.AnchorTargetData.Mode
   nameWithType: AnchorTargetData.Mode
 - uid: TrinketTinker.Models.AnchorTargetData.Range
   name: Range
   href: api/TrinketTinker.Models.AnchorTargetData.html#TrinketTinker_Models_AnchorTargetData_Range
-  commentId: F:TrinketTinker.Models.AnchorTargetData.Range
+  commentId: P:TrinketTinker.Models.AnchorTargetData.Range
   fullName: TrinketTinker.Models.AnchorTargetData.Range
   nameWithType: AnchorTargetData.Range
+- uid: TrinketTinker.Models.AnchorTargetData.Range*
+  name: Range
+  href: api/TrinketTinker.Models.AnchorTargetData.html#TrinketTinker_Models_AnchorTargetData_Range_
+  commentId: Overload:TrinketTinker.Models.AnchorTargetData.Range
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AnchorTargetData.Range
+  nameWithType: AnchorTargetData.Range
+- uid: TrinketTinker.Models.AnchorTargetData.RequiredAbilities
+  name: RequiredAbilities
+  href: api/TrinketTinker.Models.AnchorTargetData.html#TrinketTinker_Models_AnchorTargetData_RequiredAbilities
+  commentId: P:TrinketTinker.Models.AnchorTargetData.RequiredAbilities
+  fullName: TrinketTinker.Models.AnchorTargetData.RequiredAbilities
+  nameWithType: AnchorTargetData.RequiredAbilities
+- uid: TrinketTinker.Models.AnchorTargetData.RequiredAbilities*
+  name: RequiredAbilities
+  href: api/TrinketTinker.Models.AnchorTargetData.html#TrinketTinker_Models_AnchorTargetData_RequiredAbilities_
+  commentId: Overload:TrinketTinker.Models.AnchorTargetData.RequiredAbilities
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AnchorTargetData.RequiredAbilities
+  nameWithType: AnchorTargetData.RequiredAbilities
 - uid: TrinketTinker.Models.AnimClipData
   name: AnimClipData
   href: api/TrinketTinker.Models.AnimClipData.html

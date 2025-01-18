@@ -262,6 +262,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Effects.Abilities.HarvestShakeableAbility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Effects.Abilities.HarvestShakeableAbility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Effects.Abilities.HarvestStoneAbility.yml",
       "output": {
         ".html": {
@@ -316,6 +326,16 @@
       "output": {
         ".html": {
           "relative_path": "api/TrinketTinker.Effects.Abilities.ItemDropAbility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Effects.Abilities.NopAbility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Effects.Abilities.NopAbility.html"
         }
       },
       "version": ""
@@ -1095,6 +1115,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "guide/4.z.00-Nop.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/4.z.00-Nop.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "guide/4.z.01-Buff.md",
       "output": {
         ".html": {
@@ -1185,30 +1215,10 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.z.10-HarvestCrop.md",
+      "source_relative_path": "guide/4.z.10-Harvest.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.z.10-HarvestCrop.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "guide/4.z.10-HarvestForage.md",
-      "output": {
-        ".html": {
-          "relative_path": "guide/4.z.10-HarvestForage.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "guide/4.z.10-HarvestStone.md",
-      "output": {
-        ".html": {
-          "relative_path": "guide/4.z.10-HarvestStone.html"
+          "relative_path": "guide/4.z.10-Harvest.html"
         }
       },
       "version": ""

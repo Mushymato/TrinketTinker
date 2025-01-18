@@ -89,7 +89,7 @@
 
 
   <h1 id="TrinketTinker_Models_AnchorTargetData" data-uid="TrinketTinker.Models.AnchorTargetData" class="text-break">
-Class AnchorTargetData  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L77"><i class="bi bi-code-slash"></i></a>
+Class AnchorTargetData  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L80"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -149,14 +149,15 @@ Class AnchorTargetData  <a class="header-action link-secondary" title="View sour
 
 
 
-  <h2 class="section" id="fields">Fields
+  <h2 class="section" id="properties">Properties
 </h2>
 
 
+  <a id="TrinketTinker_Models_AnchorTargetData_Filters_" data-uid="TrinketTinker.Models.AnchorTargetData.Filters*"></a>
 
   <h3 id="TrinketTinker_Models_AnchorTargetData_Filters" data-uid="TrinketTinker.Models.AnchorTargetData.Filters">
   Filters
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L94"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Additional filters to apply, specific behavior depends on the anchor mode.</p>
@@ -165,15 +166,16 @@ Class AnchorTargetData  <a class="header-action link-secondary" title="View sour
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;string&gt;? Filters</code></pre>
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;string&gt;? Filters { get; set; }</code></pre>
   </div>
 
 
 
 
-  <h4 class="section">Field Value</h4>
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -184,11 +186,11 @@ Class AnchorTargetData  <a class="header-action link-secondary" title="View sour
 
 
 
-
+  <a id="TrinketTinker_Models_AnchorTargetData_Mode_" data-uid="TrinketTinker.Models.AnchorTargetData.Mode*"></a>
 
   <h3 id="TrinketTinker_Models_AnchorTargetData_Mode" data-uid="TrinketTinker.Models.AnchorTargetData.Mode">
   Mode
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L83"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Targeting mode, see <a class="xref" href="TrinketTinker.Models.AnchorTarget.html">AnchorTarget</a>.</p>
@@ -196,13 +198,14 @@ Class AnchorTargetData  <a class="header-action link-secondary" title="View sour
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AnchorTarget Mode</code></pre>
+    <pre><code class="lang-csharp hljs">public AnchorTarget Mode { get; set; }</code></pre>
   </div>
 
 
 
 
-  <h4 class="section">Field Value</h4>
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="TrinketTinker.Models.AnchorTarget.html">AnchorTarget</a></dt>
     <dd></dd>
@@ -215,11 +218,11 @@ Class AnchorTargetData  <a class="header-action link-secondary" title="View sour
 
 
 
-
+  <a id="TrinketTinker_Models_AnchorTargetData_Range_" data-uid="TrinketTinker.Models.AnchorTargetData.Range*"></a>
 
   <h3 id="TrinketTinker_Models_AnchorTargetData_Range" data-uid="TrinketTinker.Models.AnchorTargetData.Range">
   Range
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L86"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Search range, applicable to <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#TrinketTinker_Models_AnchorTarget_Monster">Monster</a>.</p>
@@ -227,18 +230,50 @@ Class AnchorTargetData  <a class="header-action link-secondary" title="View sour
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Range</code></pre>
+    <pre><code class="lang-csharp hljs">public int Range { get; set; }</code></pre>
   </div>
 
 
 
 
-  <h4 class="section">Field Value</h4>
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Models_AnchorTargetData_RequiredAbilities_" data-uid="TrinketTinker.Models.AnchorTargetData.RequiredAbilities*"></a>
+
+  <h3 id="TrinketTinker_Models_AnchorTargetData_RequiredAbilities" data-uid="TrinketTinker.Models.AnchorTargetData.RequiredAbilities">
+  RequiredAbilities
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Enable this anchor only if the companion has matching ability type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;string&gt;? RequiredAbilities { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
 
 
 

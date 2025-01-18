@@ -159,8 +159,8 @@ The position given is the map X,Y position, to be translated to the viewport pos
 
   <a id="TrinketTinker_Companions_Anim_DrawSnapshot__ctor_" data-uid="TrinketTinker.Companions.Anim.DrawSnapshot.#ctor*"></a>
 
-  <h3 id="TrinketTinker_Companions_Anim_DrawSnapshot__ctor_Microsoft_Xna_Framework_Graphics_Texture2D_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Rectangle_Microsoft_Xna_Framework_Color_System_Single_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Graphics_SpriteEffects_System_Single_" data-uid="TrinketTinker.Companions.Anim.DrawSnapshot.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Color,System.Single,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Graphics.SpriteEffects,System.Single)">
-  DrawSnapshot(Texture2D, Vector2, Rectangle, Color, float, Vector2, Vector2, SpriteEffects, float)
+  <h3 id="TrinketTinker_Companions_Anim_DrawSnapshot__ctor_Microsoft_Xna_Framework_Graphics_Texture2D_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Rectangle_Microsoft_Xna_Framework_Color_System_Single_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Graphics_SpriteEffects_System_Single_System_Int32_" data-uid="TrinketTinker.Companions.Anim.DrawSnapshot.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Color,System.Single,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Graphics.SpriteEffects,System.Single,System.Int32)">
+  DrawSnapshot(Texture2D, Vector2, Rectangle, Color, float, Vector2, Vector2, SpriteEffects, float, int)
   <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Anim/DrawSnapshot.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -170,7 +170,7 @@ The position given is the map X,Y position, to be translated to the viewport pos
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DrawSnapshot(Texture2D Texture, Vector2 Position, Rectangle SourceRect, Color DrawColor, float Rotation, Vector2 Origin, Vector2 TextureScale, SpriteEffects Effects, float LayerDepth)</code></pre>
+    <pre><code class="lang-csharp hljs">public DrawSnapshot(Texture2D Texture, Vector2 Position, Rectangle SourceRect, Color DrawColor, float Rotation, Vector2 Origin, Vector2 TextureScale, SpriteEffects Effects, float LayerDepth, int CurrentFrame = -1)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -193,6 +193,8 @@ The position given is the map X,Y position, to be translated to the viewport pos
     <dd></dd>
     <dt><code>LayerDepth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
+    <dt><code>CurrentFrame</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
   </dl>
 
 
@@ -208,6 +210,37 @@ The position given is the map X,Y position, to be translated to the viewport pos
 
   <h2 class="section" id="properties">Properties
 </h2>
+
+
+  <a id="TrinketTinker_Companions_Anim_DrawSnapshot_CurrentFrame_" data-uid="TrinketTinker.Companions.Anim.DrawSnapshot.CurrentFrame*"></a>
+
+  <h3 id="TrinketTinker_Companions_Anim_DrawSnapshot_CurrentFrame" data-uid="TrinketTinker.Companions.Anim.DrawSnapshot.CurrentFrame">
+  CurrentFrame
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Anim/DrawSnapshot.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CurrentFrame { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
 
 
   <a id="TrinketTinker_Companions_Anim_DrawSnapshot_DrawColor_" data-uid="TrinketTinker.Companions.Anim.DrawSnapshot.DrawColor*"></a>

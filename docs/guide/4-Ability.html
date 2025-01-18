@@ -103,8 +103,8 @@
 <tr>
 <td><code>AbilityClass</code></td>
 <td>string</td>
-<td>DebugDummy</td>
-<td>Type name of the motion class to use, can use short name like <code>Buff</code>. <br>Refer to page titles under &quot;Ability Classes&quot; in the table of contents for details.</td>
+<td><code>&quot;Nop&quot;</code></td>
+<td>Type name of the motion class to use, can use short name like <code>&quot;Buff&quot;</code>. <br>Refer to docs under &quot;Ability Classes&quot; in the table of contents for details.</td>
 </tr>
 <tr>
 <td><code>Description</code></td>
@@ -116,7 +116,7 @@
 <td><code>Proc</code></td>
 <td><a href="4.0-Proc.html">ProcOn</a></td>
 <td>Footstep</td>
-<td>Make ability activate when something happens.</td>
+<td>Make ability activate (proc) when something happens.</td>
 </tr>
 <tr>
 <td><code>ProcTimer</code></td>
@@ -128,7 +128,13 @@
 <td><code>ProcSyncIndex</code></td>
 <td>int</td>
 <td>0</td>
-<td>For use with <a href="4.0-Proc.html">Proc.Sync</a>, makes this ability activate after another ability in the same level.</td>
+<td>For use with <a href="4.0-Proc.html">Proc.Sync</a>, makes this ability proc after another ability in the same level.</td>
+</tr>
+<tr>
+<td><code>ProcSyncDelay</code></td>
+<td>int</td>
+<td>0</td>
+<td>For use for other abilities with <a href="4.0-Proc.html">Proc.Sync</a>, add a delay between the proc of this ability and any sync ability listening to this one.</td>
 </tr>
 <tr>
 <td><code>ProcSound</code></td>
