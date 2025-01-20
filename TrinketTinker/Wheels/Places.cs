@@ -104,7 +104,7 @@ internal static class Places
     /// <returns></returns>
     public static bool CheckCropFilter(Crop crop, IReadOnlyList<string> filters)
     {
-        if (ItemRegistry.Create(crop.indexOfHarvest.Value) is Item item)
+        if (ItemRegistry.Create(crop.indexOfHarvest.Value, allowNull: true) is Item item)
         {
             return CheckContextTagFilter(item, filters);
         }
