@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.TerrainFeatures;
@@ -280,12 +281,30 @@ public sealed class HarvestShakeableAbility(TrinketTinkerEffect effect, AbilityD
     public const string TREE = "Tree";
     public const string FRUIT_TREE = "FruitTree";
 
+    private static bool TryGetFeature(
+        GameLocation location,
+        Vector2 tile,
+        [NotNullWhen(true)] out TerrainFeature? feature
+    )
+    {
+        if (!location.terrainFeatures.TryGetValue(tile, out feature))
+            feature = location.getLargeTerrainFeatureAt((int)tile.X, (int)tile.Y);
+        return feature != null;
+    }
+
     protected override bool ProbeTile(GameLocation location, Vector2 tile)
     {
-        if (!location.terrainFeatures.TryGetValue(tile, out TerrainFeature feature))
+        if (!TryGetFeature(location, tile, out TerrainFeature? feature))
             return false;
         return CheckShakeable(feature, args.Filters);
     }
+
+    /// <summary>BBM doesn't patch readyForHarvest :u</summary>
+    /// <param name="bush"></param>
+    /// <returns></returns>
+    // public static bool InBloomBBM(Bush bush) =>
+    //     bush.modData.Keys.Any((key) => key.StartsWith("NCarigon.BushBloomMod/"));
+    public static bool InBloomBBM(Bush bush) => bush.modData.ContainsKey("NCarigon.BushBloomMod/bush-schedule");
 
     /// <summary>Check if a terrain feature </summary>
     /// <param name="feature"></param>
@@ -295,7 +314,7 @@ public sealed class HarvestShakeableAbility(TrinketTinkerEffect effect, AbilityD
     {
         return feature switch
         {
-            Bush bush => (filters?.Contains(BUSH) ?? true) && bush.readyForHarvest(),
+            Bush bush => (filters?.Contains(BUSH) ?? true) && (bush.readyForHarvest() || InBloomBBM(bush)),
             Tree tree => (filters?.Contains(TREE) ?? true)
                 && tree.maxShake == 0f
                 && tree.growthStage.Value >= 5
@@ -308,7 +327,7 @@ public sealed class HarvestShakeableAbility(TrinketTinkerEffect effect, AbilityD
 
     protected override bool DoHarvest(GameLocation location, Farmer farmer, Vector2 tile)
     {
-        if (!location.terrainFeatures.TryGetValue(tile, out TerrainFeature feature))
+        if (!TryGetFeature(location, tile, out TerrainFeature? feature))
             return false;
 
         Action<Vector2, bool>? shakeFunc = feature switch

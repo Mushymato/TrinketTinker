@@ -53,11 +53,28 @@ internal static class Places
         GameLocation location,
         Vector2 originPoint,
         int range,
+        bool includeLarge,
         Func<TerrainFeature, bool>? match
     )
     {
         TerrainFeature? result = null;
         float minDistance = range + 1;
+        // large terrain features
+        if (includeLarge)
+        {
+            foreach (TerrainFeature terrain in location.largeTerrainFeatures)
+            {
+                if (match == null || match(terrain))
+                {
+                    float distance = Vector2.Distance(originPoint, terrain.Tile * Game1.tileSize);
+                    if (distance <= range && distance < minDistance)
+                    {
+                        result = terrain;
+                    }
+                }
+            }
+        }
+        // terrain features
         foreach (Vector2 tile in location.terrainFeatures.Keys)
         {
             TerrainFeature terrain = location.terrainFeatures[tile];

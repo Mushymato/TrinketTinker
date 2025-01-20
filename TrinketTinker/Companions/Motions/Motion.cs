@@ -206,6 +206,7 @@ public abstract class Motion<TArgs> : IMotion
         {
             Func<SObject, bool>? objMatch = null;
             Func<TerrainFeature, bool>? terrainMatch = null;
+            bool includeLarge = false;
             switch (anchor.Mode)
             {
                 case AnchorTarget.Monster:
@@ -249,11 +250,18 @@ public abstract class Motion<TArgs> : IMotion
                     goto case AnchorTarget.TerrainFeature;
                 case AnchorTarget.Shakeable:
                     terrainMatch = (terrain) => HarvestShakeableAbility.CheckShakeable(terrain, anchor.Filters);
+                    includeLarge = true;
                     goto case AnchorTarget.TerrainFeature;
                 case AnchorTarget.TerrainFeature:
                     {
                         if (
-                            Places.ClosestMatchingTerrainFeature(location, originPoint, anchor.Range, terrainMatch)
+                            Places.ClosestMatchingTerrainFeature(
+                                location,
+                                originPoint,
+                                anchor.Range,
+                                includeLarge,
+                                terrainMatch
+                            )
                             is TerrainFeature closest
                         )
                         {
