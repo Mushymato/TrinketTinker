@@ -8,11 +8,12 @@
         "OutputRules"
       ],
       "Entries": {
+        // increment the variant
         "{{ModId}}_StatiColorMask_Output": {
           "Id": "{{ModId}}_StatiColorMask_Output",
           "Triggers": [
             {
-              "Id": "{{ModId}}_StatiColorMask_Output_ItemPlacedInMachine",
+              "Id": "{{ModId}}_StatiColorMask_Output_01_ItemPlacedInMachine",
               "Trigger": "ItemPlacedInMachine",
               "RequiredItemId": "(TR){{ModId}}_StatiColorMask",
               "RequiredCount": 1,
@@ -21,14 +22,22 @@
           ],
           "OutputItem": [
             {
-              "Id": "mushymato.TrinketTinker_Reroll",
-              // * = Any/Keep same, + = next variant
-              "ItemId": "mushymato.TrinketTinker_CREATE_TRINKET DROP_IN_ID ? +"
+              "Id": "{{ModId}}_StatiColorMask_Output",
+              "OutputMethod": "TrinketTinker.Extras.TrinketColorizer, TrinketTinker:OutputTrinketColorizer",
+              "CustomData": {
+                "mushymato.TrinketTinker/Increment": 1
+              }
             }
           ],
           "MinutesUntilReady": 10
         }
-      }
+      },
+      "MoveEntries": [
+        {
+          "Id": "{{ModId}}_StatiColorMask_Output",
+          "BeforeID": "mushymato.TrinketTinker_Default"
+        }
+      ]
     }
   ]
 }

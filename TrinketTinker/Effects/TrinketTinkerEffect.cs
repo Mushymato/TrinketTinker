@@ -329,14 +329,12 @@ public class TrinketTinkerEffect : TrinketEffect
         int maxAbility = GetMaxUnlockedCount(Data.AbilityUnlockConditions, Data.Abilities.Count, trinket);
         if (maxAbility <= 1)
         {
-            SetLevel(trinket, 0);
-            return false;
+            return SetLevel(trinket, 0);
         }
         int newStat = Random.Shared.Next(maxAbility - 1);
         if (newStat >= previous)
             newStat++;
-        SetLevel(trinket, newStat);
-        return true;
+        return SetLevel(trinket, newStat);
     }
 
     /// <summary>
@@ -350,24 +348,20 @@ public class TrinketTinkerEffect : TrinketEffect
             return false;
         int maxVariant = GetMaxUnlockedCount(Data.VariantUnlockConditions, Data.Variants.Count, trinket);
         if (maxVariant <= 1)
-        {
-            SetVariant(trinket, 0);
-            return false;
-        }
+            return SetVariant(trinket, 0);
         int newVariant = Random.Shared.Next(maxVariant - 1);
         if (newVariant >= previous)
             newVariant++;
-        SetVariant(trinket, newVariant);
-        return true;
+        return SetVariant(trinket, newVariant);
     }
 
     /// <summary>Set level</summary>
     /// <param name="trinket"></param>
     /// <param name="generalStat"></param>
-    public void SetLevel(Trinket trinket, int generalStat)
+    public bool SetLevel(Trinket trinket, int generalStat)
     {
         if (Data == null || Data.Abilities.Count == 0)
-            return;
+            return false;
         if (generalStat >= Data.Abilities.Count)
             generalStat = 0;
         GeneralStat = generalStat;
@@ -380,22 +374,22 @@ public class TrinketTinkerEffect : TrinketEffect
                 Data.Abilities[GeneralStat].Where((ab) => ab.Description != null).Select((ab) => ab.Description)
             )
         );
-        return;
+        return true;
     }
 
     /// <summary>Set trinket variant</summary>
     /// <param name="trinket"></param>
     /// <param name="variant"></param>
-    public void SetVariant(Trinket trinket, int variant)
+    public bool SetVariant(Trinket trinket, int variant)
     {
         if (Data == null || Data.Variants.Count == 0)
-            return;
+            return false;
         if (variant >= Data.Variants.Count)
             variant = 0;
         trinket.modData[ModData_Variant] = variant.ToString();
         if (Data.Variants[variant].TrinketSpriteIndex > 0)
             trinket.ParentSheetIndex = Data.Variants[variant].TrinketSpriteIndex;
-        return;
+        return true;
     }
 
     /// <summary>Reset trinket variant icon to modData value</summary>

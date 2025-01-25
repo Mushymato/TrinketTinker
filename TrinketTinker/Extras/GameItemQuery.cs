@@ -19,7 +19,6 @@ public static class GameItemQuery
 
     private const string RANDOM = "R";
     private const string MAX = "M";
-    private const string PLUS = "+";
     private const string ANY = "?";
     private static readonly Regex compareInt = new("([>=<!]=?)(\\d+|M)");
 
@@ -37,7 +36,6 @@ public static class GameItemQuery
         string[] array,
         int index,
         int maxValue,
-        int currentValue,
         ItemQueryContext context,
         out int value
     )
@@ -49,11 +47,8 @@ public static class GameItemQuery
                 case RANDOM:
                     value = (context.Random ?? Random.Shared).Next(maxValue);
                     return true;
-                case PLUS:
-                    value = currentValue + 1;
-                    return true;
                 case ANY:
-                    value = currentValue;
+                    value = -1;
                     return false;
                 default:
                     break;
@@ -70,7 +65,7 @@ public static class GameItemQuery
         if (qStr == ANY)
             return true;
         int compValue;
-        if (compareInt.Match(qStr) is Match match)
+        if (compareInt.Match(qStr) is Match match && match.Success)
         {
             compValue = match.Groups[2].Value == "M" ? maxValue : int.Parse(match.Groups[2].Value);
             switch (match.Groups[1].Value)
@@ -125,9 +120,9 @@ public static class GameItemQuery
         {
             if (trinket.GetEffect() is TrinketTinkerEffect effect)
             {
-                if (TryGetOptionalOrRandomOrPlus(array, 1, effect.MaxLevel, effect.Level, context, out int level))
+                if (TryGetOptionalOrRandomOrPlus(array, 1, effect.MaxLevel, context, out int level))
                     effect.SetLevel(trinket, level);
-                if (TryGetOptionalOrRandomOrPlus(array, 2, effect.MaxVariant, effect.Variant, context, out int variant))
+                if (TryGetOptionalOrRandomOrPlus(array, 2, effect.MaxVariant, context, out int variant))
                     effect.SetVariant(trinket, variant);
             }
             return [new ItemQueryResult(trinket)];
@@ -178,7 +173,7 @@ public static class GameItemQuery
         if (effect.MaxVariant == 0)
             return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, $"Trinket has no variants.");
 
-        TryGetOptionalOrRandomOrPlus(array, 1, effect.MaxLevel, effect.Level, context, out int level);
+        TryGetOptionalOrRandomOrPlus(array, 1, effect.MaxLevel, context, out int level);
 
         List<ItemQueryResult> createdTrinkets = [];
         for (int variant = 0; variant < effect.MaxVariant; variant++)
