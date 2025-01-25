@@ -60,8 +60,27 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <summary>Number of ability levels</summary>
     public int MaxLevel => Data?.Abilities.Count ?? 0;
 
+    /// <summary>Level is GeneralStat</summary>
+    public int Level => GeneralStat;
+
     /// <summary>Number of variant levels</summary>
     public int MaxVariant => Data?.Variants.Count ?? 0;
+
+    /// <summary>Variant is tracked by mod data as</summary>
+    public int Variant
+    {
+        get
+        {
+            if (
+                Trinket.modData.TryGetValue(ModData_Variant, out string variantStr)
+                && int.TryParse(variantStr, out int variant)
+            )
+                return variant;
+            return 0;
+        }
+    }
+
+    public Guid InventoryId = Guid.NewGuid();
 
     internal event EventHandler<ProcEventArgs>? EventFootstep;
     internal event EventHandler<ProcEventArgs>? EventReceiveDamage;
@@ -193,7 +212,10 @@ public class TrinketTinkerEffect : TrinketEffect
 
     public override void OnUse(Farmer farmer)
     {
-        // EventUse?.Invoke(this, new(ProcOn.Use, farmer));
+        // if (Game1.activeClickableMenu == null)
+        // {
+        //     Game1.activeClickableMenu = GlobalInventory.GetMenu(InventoryId.ToString(), 9);
+        // }
     }
 
     public override void OnFootstep(Farmer farmer)

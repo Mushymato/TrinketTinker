@@ -100,17 +100,18 @@ public static class TrinketColorizer
                             Trigger = MachineOutputTrigger.ItemPlacedInMachine,
                             RequiredCount = 1,
                             RequiredTags = ["category_trinket"],
-                            Condition = ItemQuery.GameStateQuery_INPUT_IS_TINKER,
+                            Condition = GameItemQuery.GameStateQuery_HAS_VARIANTS,
                         },
                     ],
                     OutputItem =
                     [
                         new()
                         {
-                            OutputMethod =
-                                $"{typeof(TrinketColorizer).AssemblyQualifiedName}:{nameof(OutputTrinketColorizer)}",
+                            Id = $"{ModEntry.ModId}_Reroll",
+                            ItemId = $"{GameItemQuery.ItemQuery_CREATE_TRINKET} DROP_IN_ID ? R",
                         },
                     ],
+                    MinutesUntilReady = 10,
                 },
             ],
             AdditionalConsumedItems =
@@ -120,6 +121,19 @@ public static class TrinketColorizer
                     ItemId = "(O)749",
                     RequiredCount = 15,
                     InvalidCountMessage = I18n.BC_TrinketColorizer_InvalidCount(),
+                },
+            ],
+            LoadEffects =
+            [
+                new()
+                {
+                    Id = $"{ModEntry.ModId}_Default",
+                    Sounds =
+                    [
+                        new() { Id = "metal_tap", Delay = 0 },
+                        new() { Id = "metal_tap", Delay = 250 },
+                        new() { Id = "metal_tap", Delay = 500 },
+                    ],
                 },
             ],
             // InvalidItemMessage
@@ -136,123 +150,33 @@ public static class TrinketColorizer
                     Trigger = MachineOutputTrigger.ItemPlacedInMachine,
                     RequiredCount = 1,
                     RequiredTags = ["category_trinket"],
-                    Condition = ItemQuery.GameStateQuery_INPUT_IS_TINKER,
+                    Condition = GameItemQuery.GameStateQuery_HAS_LEVELS,
                 },
             ];
             newRule.OutputItem =
             [
                 new()
                 {
-                    OutputMethod = $"{typeof(TrinketColorizer).AssemblyQualifiedName}:{nameof(OutputTinkerAnvil)}",
+                    Id = $"{ModEntry.ModId}_Reroll",
+                    ItemId = $"{GameItemQuery.ItemQuery_CREATE_TRINKET} DROP_IN_ID R ?",
                 },
             ];
+            newRule.MinutesUntilReady = 10;
             anvilData.OutputRules.Insert(0, newRule);
+            anvilData.LoadEffects ??= [];
+            anvilData.LoadEffects.Add(
+                new()
+                {
+                    Id = $"{ModEntry.ModId}_Default",
+                    Condition = GameItemQuery.GameStateQuery_HAS_LEVELS,
+                    Sounds =
+                    [
+                        new() { Id = "metal_tap", Delay = 0 },
+                        new() { Id = "metal_tap", Delay = 250 },
+                        new() { Id = "metal_tap", Delay = 500 },
+                    ],
+                }
+            );
         }
-    }
-
-    /// <summary>Change trinket variant.</summary>
-    /// <param name="machine"></param>
-    /// <param name="inputItem"></param>
-    /// <param name="probe"></param>
-    /// <param name="outputData"></param>
-    /// <param name="player"></param>
-    /// <param name="overrideMinutesUntilReady"></param>
-    /// <returns></returns>
-    public static Item? OutputTrinketColorizer(
-        SObject machine,
-        Item inputItem,
-        bool probe,
-        MachineItemOutput outputData,
-        Farmer player,
-        out int? overrideMinutesUntilReady
-    )
-    {
-        overrideMinutesUntilReady = null;
-        if (inputItem is not Trinket t)
-            return null;
-        if (!t.GetTrinketData().CanBeReforged)
-        {
-            if (!probe)
-                Game1.showRedMessage(Game1.content.LoadString(I18n.BC_TrinketColorizer_NoRecolor()));
-            return null;
-        }
-
-        int previous = 0;
-        if (inputItem.modData.TryGetValue(TrinketTinkerEffect.ModData_Variant, out string? previousStr))
-            if (!int.TryParse(previousStr, out previous))
-                previous = 0;
-        Trinket output = (Trinket)inputItem.getOne();
-        if (output.GetEffect() is not TrinketTinkerEffect effect)
-            return null;
-        if (!effect.RerollVariant(output, previous))
-        {
-            if (!probe)
-            {
-                Game1.showRedMessage(I18n.BC_TrinketColorizer_NoRecolor());
-            }
-            return null;
-        }
-
-        if (!probe)
-        {
-            Game1.currentLocation.playSound("metal_tap");
-            DelayedAction.playSoundAfterDelay("metal_tap", 250);
-            DelayedAction.playSoundAfterDelay("metal_tap", 500);
-        }
-        overrideMinutesUntilReady = 10;
-        return output;
-    }
-
-    /// <summary>Change trinket level.</summary>
-    /// <param name="machine"></param>
-    /// <param name="inputItem"></param>
-    /// <param name="probe"></param>
-    /// <param name="outputData"></param>
-    /// <param name="player"></param>
-    /// <param name="overrideMinutesUntilReady"></param>
-    /// <returns></returns>
-    public static Item? OutputTinkerAnvil(
-        SObject machine,
-        Item inputItem,
-        bool probe,
-        MachineItemOutput outputData,
-        Farmer player,
-        out int? overrideMinutesUntilReady
-    )
-    {
-        overrideMinutesUntilReady = null;
-        if (inputItem is not Trinket t)
-            return null;
-        if (!t.GetTrinketData().CanBeReforged)
-        {
-            if (!probe)
-                Game1.showRedMessage(Game1.content.LoadString("Strings\\1_6_Strings:Anvil_wrongtrinket"));
-            return null;
-        }
-
-        if (((Trinket)inputItem).GetEffect() is not TrinketTinkerEffect effect1)
-            return null;
-        Trinket output = (Trinket)inputItem.getOne();
-        if (output.GetEffect() is not TrinketTinkerEffect effect2)
-            return null;
-
-        if (!effect2.RerollLevel(output, effect1.GeneralStat))
-        {
-            if (!probe)
-            {
-                Game1.showRedMessage(Game1.content.LoadString("Strings/1_6_Strings:Anvil_wrongtrinket"));
-            }
-            return null;
-        }
-        effect2.ResetVariant(output);
-
-        if (!probe)
-        {
-            Game1.currentLocation.playSound("metal_tap");
-            DelayedAction.playSoundAfterDelay("metal_tap", 250);
-            DelayedAction.playSoundAfterDelay("metal_tap", 500);
-        }
-        overrideMinutesUntilReady = 10;
-        return output;
     }
 }

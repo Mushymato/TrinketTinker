@@ -71,16 +71,17 @@ internal sealed class ModEntry : Mod
         TriggerActionManager.RegisterAction(ProcTrinket.TriggerActionName, ProcTrinket.Action);
         TriggerActionManager.RegisterTrigger(RaiseTriggerAbility.TriggerEventName);
 
-        // Add item query for creating a trinket with specific level and variant
-        ItemQueryResolver.Register(ItemQuery.ItemQuery_CREATE_TRINKET, ItemQuery.CREATE_TRINKET);
-        // Add item query for creating all variants of a trinket
+        // Add item queries
+        ItemQueryResolver.Register(GameItemQuery.ItemQuery_CREATE_TRINKET, GameItemQuery.CREATE_TRINKET);
         ItemQueryResolver.Register(
-            ItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS,
-            ItemQuery.CREATE_TRINKET_ALL_VARIANTS
+            GameItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS,
+            GameItemQuery.CREATE_TRINKET_ALL_VARIANTS
         );
 
-        // Add GSQ for checking trinket is for this mod
-        GameStateQuery.Register(ItemQuery.GameStateQuery_INPUT_IS_TINKER, ItemQuery.INPUT_IS_TINKER);
+        // Add GSQs
+        GameStateQuery.Register(GameItemQuery.GameStateQuery_IS_TINKER, GameItemQuery.IS_TINKER);
+        GameStateQuery.Register(GameItemQuery.GameStateQuery_HAS_LEVELS, GameItemQuery.HAS_LEVELS);
+        GameStateQuery.Register(GameItemQuery.GameStateQuery_HAS_VARIANTS, GameItemQuery.HAS_VARIANTS);
 
         // Config is not player facing atm, just holds whether draw debug mode is on.
         Config = Helper.ReadConfig<ModConfig>();

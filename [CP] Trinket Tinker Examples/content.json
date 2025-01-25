@@ -37,6 +37,11 @@
       "Action": "Include",
       "FromFile": "data/misc/clipsonly.json"
     },
+    // Custom upgrade path
+    {
+      "Action": "Include",
+      "FromFile": "data/misc/upgrade.json"
+    },
     // disable trinkets in Backwoods
     {
       "Action": "EditData",
