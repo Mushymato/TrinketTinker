@@ -101,7 +101,7 @@ internal static class Places
             && (!crop.fullyGrown.Value || crop.dayOfCurrentPhase.Value <= 0);
     }
 
-    /// <summary>Check object against filters (list of context tags)</summary>
+    /// <summary>Check object against filters (list of context tags), return false if matched</summary>
     /// <param name="obj"></param>
     /// <param name="filters"></param>
     /// <returns></returns>
@@ -115,7 +115,7 @@ internal static class Places
         return true;
     }
 
-    /// <summary>Check crop harvest object against filters (list of context tags)</summary>
+    /// <summary>Check crop harvest object against filters (list of context tags), return false if matched</summary>
     /// <param name="obj"></param>
     /// <param name="filters"></param>
     /// <returns></returns>

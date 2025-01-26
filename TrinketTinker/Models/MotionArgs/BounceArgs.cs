@@ -10,5 +10,5 @@ public sealed class BounceArgs : LerpArgs
     public float Squash { get; set; } = 0f;
 
     /// <summary>Period of bounce, in ms</summary>
-    public float Period { get; set; } = 400f;
+    public double Period { get; set; } = 400f;
 }

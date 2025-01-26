@@ -45,4 +45,7 @@ public sealed class VariantData
 
     /// <summary>Sprite index of the item icon.</summary>
     public int TrinketSpriteIndex { get; set; } = -1;
+
+    /// <summary>Display name override</summary>
+    public List<string>? TrinketNameArguments { get; set; } = null;
 }

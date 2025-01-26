@@ -2,6 +2,8 @@ using StardewValley;
 using StardewValley.Inventories;
 using StardewValley.Menus;
 using StardewValley.Objects.Trinkets;
+using TrinketTinker.Models;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Effects.Support;
 
@@ -120,7 +122,7 @@ internal class TinkerInventoryMenu : ItemGrabMenu
 }
 
 /// <summary>Handler for inventory</summary>
-internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, string inventoryId, int actualCapacity)
+internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerInventoryData data, string inventoryId)
 {
     /// <summary>Global inventory for this trinket</summary>
     private readonly Inventory trinketInv = Game1.player.team.GetOrCreateGlobalInventory(
@@ -130,7 +132,7 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, string 
     internal TinkerInventoryMenu GetMenu()
     {
         return new TinkerInventoryMenu(
-            actualCapacity,
+            data.Capacity,
             trinketInv,
             reverseGrab: false,
             showReceivingMenu: true,
@@ -150,6 +152,8 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, string 
     {
         if (item is Trinket trinket)
             return effect.Trinket != trinket;
+        if (data.Filters != null)
+            return !Places.CheckContextTagFilter(item, data.Filters);
         return true;
     }
 
@@ -168,7 +172,7 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, string 
                 }
             }
         }
-        if (trinketInv.Count < actualCapacity)
+        if (trinketInv.Count < data.Capacity)
         {
             trinketInv.Add(item);
             return null;

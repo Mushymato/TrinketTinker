@@ -13,7 +13,7 @@ public sealed class OrbitArgs : StaticArgs
     public float Height { get; set; } = 64f;
 
     /// <summary>Orbit period</summary>
-    public float Period { get; set; } = 1000f;
+    public double Period { get; set; } = 1000f;
 
     /// <inheritdoc/>
     public new bool Validate() => RadiusX > -1 && RadiusY > -1;

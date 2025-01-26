@@ -46,7 +46,7 @@
           ],
           "Motion": {
             "MotionClass": "Orbit",
-            "AlwaysMoving": false,
+            "AlwaysMoving": true,
             "DirectionMode": "DRUL",
             "FrameLength": 2,
           },

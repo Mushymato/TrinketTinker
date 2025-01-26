@@ -40,17 +40,17 @@
             "SpeechBubbles": {
               "Homf": {
                 "Text": "Homf",
-                "Timer": 1000,
                 "RandomSpeech": [
                   {
-                    "Text": "Munch",
-                    "Timer": 1000,
+                    "Text": "Munch"
                   },
                   {
-                    "Text": "Chomp",
-                    "Timer": 1000,
+                    "Text": "Chomp"
                   }
                 ]
+              },
+              "Hiya": {
+                "Text": "Hiya!"
               }
             },
           },
@@ -82,6 +82,24 @@
                 "Args": {
                   "Action": "Spiderbuttons.BETAS_DialogueBox Abigail \"Was that an amethyst drop?$h\"",
                 },
+              },
+              {
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "ProcSpeechBubble": "Hiya",
+                "AbilityClass": "Projectile",
+                "Args": {
+                  "Min": 50,
+                  "Max": 100,
+                  "Knockback": 2,
+                  "Range": 4096,
+                  "Texture": "Maps/springobjects",
+                  "SpriteIndex": 788,
+                  "Acceleration": 2,
+                  "MinVelocity": 2,
+                  "MaxVelocity": 24,
+                  "Homing": true,
+                }
               }
             ]
           ]

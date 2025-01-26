@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Delegates;
+using StardewValley.Inventories;
 using StardewValley.Monsters;
 using StardewValley.Objects.Trinkets;
 using TrinketTinker.Companions;
@@ -93,6 +94,13 @@ public class TrinketTinkerEffect : TrinketEffect
             Trinket.modData[ModData_Inventory] = inventoryId;
             return inventoryId;
         }
+    }
+
+    public Inventory? GetInventory(Farmer farmer)
+    {
+        if (farmer.team.globalInventories.TryGetValue($"{ModEntry.ModId}/{InventoryId}", out Inventory? trinketInv))
+            return trinketInv;
+        return null;
     }
 
     internal event EventHandler<ProcEventArgs>? EventFootstep;
@@ -216,7 +224,7 @@ public class TrinketTinkerEffect : TrinketEffect
         if (Companion != null)
             farmer.RemoveCompanion(Companion);
 
-        if (farmer != Game1.player || Abilities.Count <= GeneralStat)
+        if (farmer != Game1.player || MaxLevel <= GeneralStat)
             return;
 
         foreach (IAbility ability in Abilities)
@@ -227,11 +235,16 @@ public class TrinketTinkerEffect : TrinketEffect
 
     public override void OnUse(Farmer farmer)
     {
-        // if (Game1.activeClickableMenu == null)
-        // {
-        //     GlobalInventoryHandler handler = new(this, InventoryId, 9);
-        //     Game1.activeClickableMenu = handler.GetMenu();
-        // }
+        if (Game1.activeClickableMenu == null && Data?.Inventory.Count > 0)
+        {
+            TinkerInventoryData? inventroyData =
+                Data.Inventory.Count > GeneralStat ? Data.Inventory[GeneralStat] : Data.Inventory[^1];
+            if (inventroyData != null)
+            {
+                GlobalInventoryHandler handler = new(this, inventroyData, InventoryId);
+                Game1.activeClickableMenu = handler.GetMenu();
+            }
+        }
     }
 
     public override void OnFootstep(Farmer farmer)
@@ -310,6 +323,13 @@ public class TrinketTinkerEffect : TrinketEffect
             SetLevel(trinket, level);
         else
             SetLevel(trinket, 0);
+        if (
+            trinket.modData.TryGetValue(ModData_Variant, out string variantStr)
+            && int.TryParse(variantStr, out int variant)
+        )
+            SetVariant(trinket, variant);
+        else
+            SetVariant(trinket, 0);
         return false;
     }
 
@@ -403,8 +423,14 @@ public class TrinketTinkerEffect : TrinketEffect
         if (variant >= Data.Variants.Count)
             variant = 0;
         trinket.modData[ModData_Variant] = variant.ToString();
-        if (Data.Variants[variant].TrinketSpriteIndex > 0)
-            trinket.ParentSheetIndex = Data.Variants[variant].TrinketSpriteIndex;
+        VariantData variantData = Data.Variants[variant];
+        if (variantData.TrinketSpriteIndex > 0)
+            trinket.ParentSheetIndex = variantData.TrinketSpriteIndex;
+        if (variantData.TrinketNameArguments != null)
+            trinket.displayNameOverrideTemplate.Value = string.Format(
+                trinket.DisplayName,
+                variantData.TrinketNameArguments
+            );
         return true;
     }
 
@@ -417,11 +443,7 @@ public class TrinketTinkerEffect : TrinketEffect
             return;
         if (trinket.modData.TryGetValue(ModData_Variant, out string variantStr))
         {
-            int variant = int.Parse(variantStr);
-            if (variant >= Data.Variants.Count)
-                variant = 0;
-            if (Data.Variants[variant].TrinketSpriteIndex > 0)
-                trinket.ParentSheetIndex = Data.Variants[variant].TrinketSpriteIndex;
+            SetVariant(trinket, int.Parse(variantStr));
         }
     }
 }

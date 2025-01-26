@@ -21,8 +21,11 @@ public class BaseStaticMotion<IArgs>(TrinketTinkerCompanion companion, MotionDat
         {
             Utility.addRainbowStarExplosion(location, c.Position, 1);
         }
-        c.Position = c.Anchor;
-        UpdateDirection();
+        if (c.Position != c.Anchor)
+        {
+            c.Position = c.Anchor;
+            UpdateDirection();
+        }
     }
 
     /// <inheritdoc/>

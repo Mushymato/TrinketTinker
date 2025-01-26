@@ -25,5 +25,6 @@ public sealed class BuffAbility(TrinketTinkerEffect effect, AbilityData data, in
     protected override void CleanupEffect(Farmer farmer)
     {
         farmer.buffs.Remove(args.BuffId);
+        base.CleanupEffect(farmer);
     }
 }

@@ -12,7 +12,7 @@ public class LerpArgs : IArgs
     public float Max { get; set; } = 1280f;
 
     /// <summary>Lerp rate in miliseconds</summary>
-    public float Rate { get; set; } = 400f;
+    public double Rate { get; set; } = 400f;
 
     /// <summary>Pause between lerp retargeting, in ms</summary>
     public float Pause { get; set; } = 0f;

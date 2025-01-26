@@ -1,6 +1,8 @@
+using Netcode;
 using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Delegates;
+using StardewValley.Objects.Trinkets;
 using StardewValley.Triggers;
 using TrinketTinker.Effects.Support;
 using TrinketTinker.Models;

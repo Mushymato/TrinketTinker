@@ -1,5 +1,11 @@
 namespace TrinketTinker.Models;
 
+public sealed class TinkerInventoryData
+{
+    public int Capacity = 9;
+    public List<string>? Filters = null;
+}
+
 /// <summary>Top level data class for Tinker.</summary>
 public sealed class TinkerData
 {
@@ -36,4 +42,6 @@ public sealed class TinkerData
 
     /// <summary>GSQ conditions for locking abilities.</summary>
     public IReadOnlyList<string?> AbilityUnlockConditions = [];
+
+    public List<TinkerInventoryData?> Inventory = [];
 }
