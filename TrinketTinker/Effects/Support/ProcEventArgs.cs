@@ -5,7 +5,7 @@ using StardewValley.Monsters;
 using TrinketTinker.Models;
 using TrinketTinker.Wheels;
 
-namespace TrinketTinker.Effects.Proc;
+namespace TrinketTinker.Effects.Support;
 
 /// <summary>
 /// Proc event data.

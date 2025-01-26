@@ -5,11 +5,10 @@ using StardewValley;
 using StardewValley.Monsters;
 using StardewValley.Projectiles;
 using StardewValley.TerrainFeatures;
-using TrinketTinker.Effects.Proc;
 using TrinketTinker.Models.AbilityArgs;
 using TrinketTinker.Wheels;
 
-namespace TrinketTinker.Effects.Pewpew;
+namespace TrinketTinker.Effects.Support;
 
 /// <summary>
 /// Custom projectile class, can utilize custom texture and deal damage with optional knockback crit/crit damage and stun.

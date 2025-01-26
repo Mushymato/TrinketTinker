@@ -1,6 +1,6 @@
 using StardewModdingAPI;
 using StardewValley.Triggers;
-using TrinketTinker.Effects.Proc;
+using TrinketTinker.Effects.Support;
 using TrinketTinker.Models;
 using TrinketTinker.Models.AbilityArgs;
 

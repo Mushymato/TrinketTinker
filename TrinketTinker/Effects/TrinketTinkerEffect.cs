@@ -7,7 +7,7 @@ using StardewValley.Monsters;
 using StardewValley.Objects.Trinkets;
 using TrinketTinker.Companions;
 using TrinketTinker.Effects.Abilities;
-using TrinketTinker.Effects.Proc;
+using TrinketTinker.Effects.Support;
 using TrinketTinker.Models;
 using TrinketTinker.Wheels;
 
@@ -80,7 +80,20 @@ public class TrinketTinkerEffect : TrinketEffect
         }
     }
 
-    public Guid InventoryId = Guid.NewGuid();
+    private string? inventoryId;
+    public string InventoryId
+    {
+        get
+        {
+            if (inventoryId != null)
+                return inventoryId;
+            if (Trinket.modData.TryGetValue(ModData_Inventory, out inventoryId))
+                return inventoryId;
+            inventoryId = Guid.NewGuid().ToString();
+            Trinket.modData[ModData_Inventory] = inventoryId;
+            return inventoryId;
+        }
+    }
 
     internal event EventHandler<ProcEventArgs>? EventFootstep;
     internal event EventHandler<ProcEventArgs>? EventReceiveDamage;
@@ -214,7 +227,8 @@ public class TrinketTinkerEffect : TrinketEffect
     {
         // if (Game1.activeClickableMenu == null)
         // {
-        //     Game1.activeClickableMenu = GlobalInventory.GetMenu(InventoryId.ToString(), 9);
+        //     GlobalInventoryHandler handler = new(this, InventoryId, 9);
+        //     Game1.activeClickableMenu = handler.GetMenu();
         // }
     }
 
@@ -273,7 +287,7 @@ public class TrinketTinkerEffect : TrinketEffect
         EventPlayerWarped?.Invoke(this, new(ProcOn.Warped, farmer));
     }
 
-    /// <summary>Update every tick. Not an event because this happens for every ability regardless of <see cref="Proc"/>.</summary>
+    /// <summary>Update every tick. Not an event because this happens for every ability regardless of <see cref="Support"/>.</summary>
     /// <param name="farmer"></param>
     /// <param name="time"></param>
     /// <param name="location"></param>

@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
-using TrinketTinker.Effects.Proc;
+using TrinketTinker.Effects.Support;
 
 namespace TrinketTinker.Effects.Abilities;
 

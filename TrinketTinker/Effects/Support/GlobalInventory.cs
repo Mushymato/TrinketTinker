@@ -1,8 +1,9 @@
 using StardewValley;
+using StardewValley.Inventories;
 using StardewValley.Menus;
-using StardewValley.Objects;
+using StardewValley.Objects.Trinkets;
 
-namespace TrinketTinker.Wheels;
+namespace TrinketTinker.Effects.Support;
 
 internal class TinkerInventoryMenu : ItemGrabMenu
 {
@@ -118,39 +119,142 @@ internal class TinkerInventoryMenu : ItemGrabMenu
     }
 }
 
-/// <summary>Helper methods dealing with inventory</summary>
-internal static class GlobalInventory
+/// <summary>Handler for inventory</summary>
+internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, string inventoryId, int actualCapacity)
 {
-    internal static TinkerInventoryMenu GetMenu(string inventoryId, int actualCapacity)
+    /// <summary>Global inventory for this trinket</summary>
+    private readonly Inventory trinketInv = Game1.player.team.GetOrCreateGlobalInventory(
+        $"{ModEntry.ModId}/{inventoryId}"
+    );
+
+    internal TinkerInventoryMenu GetMenu()
     {
-        Console.WriteLine($"GetItemGrabMenu: {inventoryId}");
-        // IList<Item> inventory, bool reverseGrab, bool showReceivingMenu, InventoryMenu.highlightThisItem highlightFunction, behaviorOnItemSelect behaviorOnItemSelectFunction, string message, behaviorOnItemSelect behaviorOnItemGrab = null, bool snapToBottom = false, bool canBeExitedWithKey = false, bool playRightClickSound = true, bool allowRightClick = true, bool showOrganizeButton = false, int source = 0, Item sourceItem = null, int whichSpecialButton = -1, object context = null, ItemExitBehavior heldItemExitBehavior = ItemExitBehavior.ReturnToPlayer, bool allowExitWithHeldItem = false
         return new TinkerInventoryMenu(
             actualCapacity,
-            Game1.player.team.GetOrCreateGlobalInventory(inventoryId), //inventory
+            trinketInv,
             reverseGrab: false,
             showReceivingMenu: true,
-            InventoryMenu.highlightAllItems,
-            behaviorOnItemSelectFunction,
-            "Inventory.GetItemGrabMenu",
-            behaviorOnItemGrab,
+            HighlightFunction,
+            BehaviorOnItemSelectFunction,
+            inventoryId,
+            BehaviorOnItemGrab,
             snapToBottom: false,
             canBeExitedWithKey: true,
             playRightClickSound: true,
-            allowRightClick: true,
-            showOrganizeButton: true
+            allowRightClick: false,
+            showOrganizeButton: false
         );
     }
 
-    private static void behaviorOnItemGrab(Item item, Farmer who)
+    private bool HighlightFunction(Item item)
     {
-        ModEntry.Log($"behaviorOnItemGrab({item.QualifiedItemId}, {who.UniqueMultiplayerID})");
+        if (item is Trinket trinket)
+            return effect.Trinket != trinket;
+        return true;
+    }
+
+    private Item? AddItem(Item item)
+    {
+        item.resetState();
+        trinketInv.RemoveEmptySlots();
+        for (int i = 0; i < trinketInv.Count; i++)
+        {
+            if (trinketInv[i] != null && trinketInv[i].canStackWith(item))
+            {
+                int amount = item.Stack - trinketInv[i].addToStack(item);
+                if (item.ConsumeStack(amount) == null)
+                {
+                    return null;
+                }
+            }
+        }
+        if (trinketInv.Count < actualCapacity)
+        {
+            trinketInv.Add(item);
+            return null;
+        }
+        return item;
+    }
+
+    private void BehaviorOnItemSelectFunction(Item item, Farmer who)
+    {
+        if (item.Stack == 0)
+        {
+            item.Stack = 1;
+        }
+        Item? item2 = AddItem(item);
+        if (item2 != null)
+        {
+            who.removeItemFromInventory(item);
+        }
+        else
+        {
+            item2 = who.addItemToInventory(item2);
+        }
+        trinketInv.RemoveEmptySlots();
+        int num =
+            (Game1.activeClickableMenu.currentlySnappedComponent != null)
+                ? Game1.activeClickableMenu.currentlySnappedComponent.myID
+                : (-1);
+        TinkerInventoryMenu menu = GetMenu();
+        Game1.activeClickableMenu = menu;
+        menu.heldItem = item2;
+        if (num != -1)
+        {
+            Game1.activeClickableMenu.currentlySnappedComponent = Game1.activeClickableMenu.getComponentWithID(num);
+            Game1.activeClickableMenu.snapCursorToCurrentSnappedComponent();
+        }
         return;
     }
 
-    internal static void behaviorOnItemSelectFunction(Item item, Farmer who)
+    private void BehaviorOnItemGrab(Item item, Farmer who)
     {
-        ModEntry.Log($"behaviorOnItemSelectFunction({item.QualifiedItemId}, {who.UniqueMultiplayerID})");
-        return;
+        if (who.couldInventoryAcceptThisItem(item))
+        {
+            trinketInv.Remove(item);
+            trinketInv.RemoveEmptySlots();
+            Game1.activeClickableMenu = GetMenu();
+        }
+    }
+
+    /// <summary>Ensure empty inventories are deleted, and inaccessable inventories have their contents put into lost and found</summary>
+    internal static void DayEndingCleanup()
+    {
+        HashSet<string> missingTrinketInvs = [];
+        var team = Game1.player.team;
+        foreach (var key in team.globalInventories.Keys)
+        {
+            var value = team.globalInventories[key];
+            if (value == null)
+                continue;
+            value.RemoveEmptySlots();
+            if (key.StartsWith(ModEntry.ModId))
+            {
+                if (value.Count == 0)
+                    team.globalInventories.Remove(key);
+                else
+                    missingTrinketInvs.Add(key);
+            }
+        }
+        if (!missingTrinketInvs.Any())
+            return;
+        Utility.ForEachItem(
+            (item) =>
+            {
+                if (item is Trinket trinket && trinket.GetEffect() is TrinketTinkerEffect effect)
+                {
+                    missingTrinketInvs.Remove($"{ModEntry.ModId}/{effect.InventoryId}");
+                }
+                return missingTrinketInvs.Any();
+            }
+        );
+        team.newLostAndFoundItems.Value = missingTrinketInvs.Any();
+        foreach (string key in missingTrinketInvs)
+        {
+            var value = team.globalInventories[key];
+            foreach (var item in value)
+                team.returnedDonations.Add(item);
+            team.globalInventories.Remove(key);
+        }
     }
 }

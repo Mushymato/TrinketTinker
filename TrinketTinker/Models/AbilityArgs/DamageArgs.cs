@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Monsters;
-using TrinketTinker.Effects.Proc;
+using TrinketTinker.Effects.Support;
 using TrinketTinker.Models.Mixin;
 using TrinketTinker.Wheels;
 

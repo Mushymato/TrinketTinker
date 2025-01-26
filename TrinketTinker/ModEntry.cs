@@ -11,6 +11,7 @@ using TrinketTinker.Companions;
 using TrinketTinker.Companions.Motions;
 using TrinketTinker.Effects;
 using TrinketTinker.Effects.Abilities;
+using TrinketTinker.Effects.Support;
 using TrinketTinker.Extras;
 using TrinketTinker.Wheels;
 
@@ -46,6 +47,7 @@ internal sealed class ModEntry : Mod
         helper.Events.Content.AssetsInvalidated += OnAssetInvalidated;
         // Events for abilities
         helper.Events.Player.Warped += OnPlayerWarped;
+        helper.Events.GameLoop.DayEnding += OnDayEnding;
 
         helper.ConsoleCommands.Add(
             "tt_draw_debug",
@@ -62,6 +64,8 @@ internal sealed class ModEntry : Mod
         );
         // Spawn a bunch of forage around the player
         helper.ConsoleCommands.Add("tt_spawn_forage", "Spawn forage for testing.", ConsoleSpawnForage);
+        // Print all global inventories that exist
+        helper.ConsoleCommands.Add("tt_global_inv", "Check all global inventories.", ConsoleGlobalInv);
 #endif
     }
 
@@ -117,6 +121,11 @@ internal sealed class ModEntry : Mod
         }
     }
 
+    private void OnDayEnding(object? sender, DayEndingEventArgs e)
+    {
+        GlobalInventoryHandler.DayEndingCleanup();
+    }
+
 #if DEBUG
     private void ConsolePrintTypenames(string command, string[] args)
     {
@@ -167,6 +176,24 @@ internal sealed class ModEntry : Mod
             SObject forage = (SObject)ItemRegistry.Create("(O)16");
             if (Game1.currentLocation.dropObject(forage, tilePos * 64f, Game1.viewport, initialPlacement: true))
                 Log("Yes");
+        }
+    }
+
+    private void ConsoleGlobalInv(string arg1, string[] arg2)
+    {
+        if (!Context.IsWorldReady)
+            return;
+
+        foreach (var key in Game1.player.team.globalInventories.Keys)
+        {
+            var value = Game1.player.team.globalInventories[key];
+            if (value == null)
+                continue;
+            Log($"{key}: {value.Count}");
+            foreach (var item in value)
+            {
+                Log($"- {item.QualifiedItemId} {item.Stack}");
+            }
         }
     }
 #endif

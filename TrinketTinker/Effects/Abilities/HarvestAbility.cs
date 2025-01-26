@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.TerrainFeatures;
-using TrinketTinker.Effects.Proc;
+using TrinketTinker.Effects.Support;
 using TrinketTinker.Models;
 using TrinketTinker.Models.AbilityArgs;
 using TrinketTinker.Wheels;
