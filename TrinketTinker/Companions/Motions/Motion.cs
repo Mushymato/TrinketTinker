@@ -32,6 +32,12 @@ public abstract class Motion<TArgs> : IMotion
     /// <summary>Class dependent arguments for subclasses</summary>
     protected readonly TArgs args = default!;
 
+    /// <summary>Anchors update every 50ms</summary>
+    private const double ANCHOR_UPDATE_RATE = 50;
+
+    /// <summary>Anchor timer</summary>
+    private double anchorTimer = 0;
+
     /// <summary>The previous anchor target</summary>
     protected AnchorTarget prevAnchorTarget = AnchorTarget.Owner;
 
@@ -189,6 +195,7 @@ public abstract class Motion<TArgs> : IMotion
     {
         PauseMovementByAnimClip = false;
         drawSnapshotQueue.Clear();
+        anchorTimer = 0;
         if (vd.LightSource is LightSourceData ldata)
         {
             Game1.currentLightSources.Add(lightId, new TinkerLightSource(lightId, c.Position + GetOffset(), ldata));
@@ -199,6 +206,21 @@ public abstract class Motion<TArgs> : IMotion
     /// <param name="time"></param>
     /// <param name="location"></param>
     public virtual AnchorTarget UpdateAnchor(GameTime time, GameLocation location)
+    {
+        if (anchorTimer > 0)
+        {
+            anchorTimer -= time.ElapsedGameTime.TotalMilliseconds;
+            if (anchorTimer > 0)
+                return currAnchorTarget;
+        }
+        anchorTimer = ANCHOR_UPDATE_RATE;
+        return UpdateAnchor(location);
+    }
+
+    /// <summary>Changes the position of the anchor that the companion moves relative to, based on <see cref="MotionData.Anchors"/>.</summary>
+    /// <param name="time"></param>
+    /// <param name="location"></param>
+    protected virtual AnchorTarget UpdateAnchor(GameLocation location)
     {
         prevAnchorTarget = currAnchorTarget;
         var originPoint = c.Owner.getStandingPosition();

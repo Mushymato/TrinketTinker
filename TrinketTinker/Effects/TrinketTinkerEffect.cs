@@ -133,6 +133,7 @@ public class TrinketTinkerEffect : TrinketEffect
             {
                 levelAbilities = Data.Abilities[GeneralStat];
             }
+            int idx = 0;
             foreach (AbilityData ab in levelAbilities)
             {
                 if (Reflect.TryGetType(ab.AbilityClass, out Type? abilityType, TinkerConst.ABILITY_CLS))
@@ -142,17 +143,18 @@ public class TrinketTinkerEffect : TrinketEffect
                         initAblities.Add(ability);
                     else
                         ModEntry.LogOnce(
-                            $"Skip invalid ability ({ab.AbilityClass} from {Trinket.QualifiedItemId})",
+                            $"Skip invalid ability ({ab.AbilityClass}-{GeneralStat}:{idx}, from {Trinket.QualifiedItemId})",
                             LogLevel.Warn
                         );
                 }
                 else
                 {
                     ModEntry.LogOnce(
-                        $"Failed to get type for ability ({ab.AbilityClass} from {Trinket.QualifiedItemId})",
+                        $"Failed to get type for ability ({ab.AbilityClass}-{GeneralStat}:{idx}, from {Trinket.QualifiedItemId})",
                         LogLevel.Warn
                     );
                 }
+                idx++;
             }
         }
         return initAblities.ToImmutableList();

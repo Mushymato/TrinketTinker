@@ -1,0 +1,24 @@
+{
+  "Name": "[CP] Abigail Axcellent Adventure",
+  "Author": "mushymato",
+  "Version": "1.0.0",
+  "Description": "Go on an Axcellent Adventure with Abigail",
+  "UniqueID": "mushymato.TT.AAA",
+  "MinimumApiVersion": "4.1.0",
+  "UpdateKeys": [
+    "Nexus:???"
+  ],
+  "ContentPackFor": {
+    "UniqueID": "Pathoschild.ContentPatcher"
+  },
+  "Dependencies": [
+    {
+      "UniqueID": "mushymato.TrinketTinker",
+      "MinimumVersion": "0.1.0"
+    },
+    {
+      "UniqueID": "Spiderbuttons.BETAS",
+      "MinimumVersion": "2.11.1"
+    }
+  ]
+}

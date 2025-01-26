@@ -1,0 +1,92 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Format": "2.5.1",
+  "Changes": [
+    {
+      "LogName": "Abigail: Trinkets",
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_Abigail": {
+          "Id": "{{ModId}}_Abigail",
+          "DisplayName": "[LocalizedText Strings\\Weapons:AbbysPlanchette_Name]",
+          "Description": "[LocalizedText Strings\\Weapons:AbbysPlanchette_Description]",
+          "Texture": "TileSheets/weapons",
+          "SheetIndex": 40,
+          "DropsNaturally": false,
+          "CanBeReforged": true
+        },
+      }
+    },
+    {
+      "LogName": "Abigail: Tinker",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        "{{ModId}}_Abigail": {
+          "Variants": [
+            {
+              "Texture": "Characters/Abigail",
+              "Width": 16,
+              "Height": 32,
+            }
+          ],
+          "Motion": {
+            "MotionClass": "Lerp",
+            "AlwaysMoving": false,
+            "DirectionMode": "DRUL",
+            "FrameLength": 4,
+            "Interval": 175,
+            "SpeechBubbles": {
+              "Homf": {
+                "Text": "Homf",
+                "Timer": 1000,
+                "RandomSpeech": [
+                  {
+                    "Text": "Munch",
+                    "Timer": 1000,
+                  },
+                  {
+                    "Text": "Chomp",
+                    "Timer": 1000,
+                  }
+                ]
+              }
+            },
+          },
+          "Abilities": [
+            [
+              {
+                "AbilityClass": "Action",
+                "Proc": "Always",
+                "Args": {
+                  "Action": "SetNpcInvisible Abigail 1",
+                  "ActionEnd": "SetNpcVisible Abigail",
+                },
+              },
+              {
+                "AbilityClass": "HarvestStone",
+                "Description": "{{i18n:DustSpirit.AbilityDescription.1}}",
+                "Proc": "Timer",
+                "ProcTimer": 2000,
+                "ProcSpeechBubble": "Homf",
+                "Args": {
+                  "Range": 1,
+                  "HarvestTo": "None"
+                },
+              },
+              {
+                "AbilityClass": "Action",
+                "Proc": "Warped",
+                "Condition": "PLAYER_LOCATION_NAME Current Mine",
+                "Args": {
+                  "Action": "Spiderbuttons.BETAS_DialogueBox Abigail \"Was that an amethyst drop?$h\"",
+                },
+              }
+            ]
+          ]
+        },
+      }
+    }
+  ]
+}

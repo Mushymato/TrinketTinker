@@ -1,4 +1,6 @@
 using StardewModdingAPI;
+using StardewValley;
+using StardewValley.Delegates;
 using StardewValley.Triggers;
 using TrinketTinker.Effects.Support;
 using TrinketTinker.Models;
@@ -10,13 +12,59 @@ namespace TrinketTinker.Effects.Abilities;
 public sealed class ActionAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
     : Ability<ActionArgs>(effect, data, lvl)
 {
+    public static readonly string TriggerContextName = $"{ModEntry.ModId}/Action";
+    public static readonly string CustomFields_Owner = $"{ModEntry.ModId}/Owner";
+    public static readonly string CustomFields_Trinket = $"{ModEntry.ModId}/Trinket";
+    public static readonly string CustomFields_Data = $"{ModEntry.ModId}/Data";
+    public static readonly string CustomFields_Position = $"{ModEntry.ModId}/Position";
+
     /// <summary>Parse and call the action</summary>
     /// <param name="proc"></param>
     /// <returns></returns>
+    private bool ApplyEffectOnActions(
+        IEnumerable<CachedAction> actions,
+        Farmer farmer,
+        TriggerActionContext? TriggerContext = null
+    )
+    {
+        TriggerActionContext context;
+        if (TriggerContext != null)
+            context = (TriggerActionContext)TriggerContext;
+        else
+            context = new TriggerActionContext(TriggerContextName, [], null, []);
+
+        context.CustomFields[CustomFields_Trinket] = e.Trinket;
+        context.CustomFields[CustomFields_Data] = d;
+        context.CustomFields[CustomFields_Owner] = farmer;
+        context.CustomFields[CustomFields_Position] = e.CompanionPosition;
+
+        // if (!TriggerActionManager.TryRunAction(args.Action, out string error, out Exception _))
+        //     ModEntry.LogOnce("Couldn't apply action '" + args.Action + "': " + error, LogLevel.Error);
+        foreach (CachedAction action in actions)
+        {
+            if (!TriggerActionManager.TryRunAction(action, context, out string error, out Exception _))
+            {
+                ModEntry.LogOnce(
+                    "Couldn't apply action '" + string.Join(' ', action.Args) + "': " + error,
+                    LogLevel.Error
+                );
+            }
+        }
+        return true;
+    }
+
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
-        if (!TriggerActionManager.TryRunAction(args.Action, out string error, out Exception _))
-            ModEntry.LogOnce("Couldn't apply action '" + args.Action + "': " + error, LogLevel.Error);
-        return base.ApplyEffect(proc);
+        return ApplyEffectOnActions(
+                args.Actions.Select(TriggerActionManager.ParseAction),
+                proc.Farmer,
+                proc.TriggerContext
+            ) && base.ApplyEffect(proc);
+    }
+
+    protected override void CleanupEffect(Farmer farmer)
+    {
+        ApplyEffectOnActions(args.ActionsEnd.Select(TriggerActionManager.ParseAction), farmer);
+        base.CleanupEffect(farmer);
     }
 }
