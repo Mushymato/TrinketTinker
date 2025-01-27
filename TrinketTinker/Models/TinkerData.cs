@@ -9,6 +9,9 @@ public sealed class TinkerInventoryData
 /// <summary>Top level data class for Tinker.</summary>
 public sealed class TinkerData
 {
+    /// <summary>If this is false, does not actually do anything on equip</summary>
+    public string? EnableCondition = null;
+
     /// <summary>Trinket stat minimum level, this added to the internal level value that is based on size of <see cref="Abilities"/></summary>
     public int MinLevel { get; set; } = 1;
 
@@ -18,7 +21,7 @@ public sealed class TinkerData
     /// <summary>Shim for case of just 1 motion</summary>
     public MotionData? Motion
     {
-        get => Motions.FirstOrDefault();
+        internal get => Motions.FirstOrDefault();
         set
         {
             if (value != null)
@@ -43,5 +46,6 @@ public sealed class TinkerData
     /// <summary>GSQ conditions for locking abilities.</summary>
     public IReadOnlyList<string?> AbilityUnlockConditions = [];
 
+    /// <summary>Definition for inventory, tied to level</summary>
     public List<TinkerInventoryData?> Inventory = [];
 }

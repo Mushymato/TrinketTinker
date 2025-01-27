@@ -158,7 +158,7 @@ public abstract class Ability<TArgs> : IAbility
     /// <param name="proc"></param>
     protected virtual void HandleProc(object? sender, ProcEventArgs proc)
     {
-        if (Active && Allowed && proc.Check(d) && ApplyEffect(proc))
+        if (Active && Allowed && proc.Check(d, e.Trinket) && ApplyEffect(proc))
         {
             if (d.ProcSound != null)
                 Game1.playSound(d.ProcSound);

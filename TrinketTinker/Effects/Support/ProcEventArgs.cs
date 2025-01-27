@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Delegates;
 using StardewValley.Monsters;
+using StardewValley.Objects.Trinkets;
 using TrinketTinker.Models;
 using TrinketTinker.Wheels;
 
@@ -11,8 +12,10 @@ namespace TrinketTinker.Effects.Support;
 /// Proc event data.
 /// Most properties are only set for specific kinds of proc.
 /// </summary>
-public class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
+public sealed class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
 {
+    internal static readonly string CustomFields_Data = $"{ModEntry.ModId}/Data";
+
     /// <summary>Kind of proc triggering this event</summary>
     public ProcOn Proc => procOn;
 
@@ -51,7 +54,7 @@ public class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
     /// </summary>
     /// <param name="data"></param>
     /// <returns></returns>
-    internal bool Check(AbilityData data)
+    internal bool Check(AbilityData data, Trinket trinket)
     {
         if (Farmer == null)
             return false;
@@ -69,7 +72,11 @@ public class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
                 return false;
         }
         if (data.Condition != null)
-            return GameStateQuery.CheckConditions(data.Condition, LocationOrCurrent, Farmer);
+        {
+            GameStateQueryContext context = new(LocationOrCurrent, Farmer, null, trinket, null, null, []);
+            context.CustomFields[CustomFields_Data] = data;
+            return GameStateQuery.CheckConditions(data.Condition, context);
+        }
         return true;
     }
 }

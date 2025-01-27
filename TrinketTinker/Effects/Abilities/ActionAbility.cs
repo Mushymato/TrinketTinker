@@ -14,11 +14,11 @@ namespace TrinketTinker.Effects.Abilities;
 public sealed class ActionAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
     : Ability<ActionArgs>(effect, data, lvl)
 {
-    public static readonly string TriggerContextName = $"{ModEntry.ModId}/Action";
-    public static readonly string CustomFields_Owner = $"{ModEntry.ModId}/Owner";
-    public static readonly string CustomFields_Trinket = $"{ModEntry.ModId}/Trinket";
-    public static readonly string CustomFields_Data = $"{ModEntry.ModId}/Data";
-    public static readonly string CustomFields_Position = $"{ModEntry.ModId}/Position";
+    internal static readonly string TriggerContextName = $"{ModEntry.ModId}/Action";
+    internal static readonly string CustomFields_Owner = $"{ModEntry.ModId}/Owner";
+    internal static readonly string CustomFields_Trinket = $"{ModEntry.ModId}/Trinket";
+    internal static readonly string CustomFields_Data = $"{ModEntry.ModId}/Data";
+    internal static readonly string CustomFields_Position = $"{ModEntry.ModId}/Position";
 
     /// <summary>Parse and call the action</summary>
     /// <param name="proc"></param>

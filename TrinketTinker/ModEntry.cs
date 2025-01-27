@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
+using StardewValley.Companions;
 using StardewValley.Internal;
 using StardewValley.Objects.Trinkets;
 using StardewValley.Triggers;
@@ -54,6 +55,11 @@ internal sealed class ModEntry : Mod
             "Toggle drawing of the sprite index when drawing companions.",
             ConsoleDrawDebugToggle
         );
+        helper.ConsoleCommands.Add(
+            "tt_unequip_trinket",
+            "Debug unequip all trinkets of current player and send the trinkets to lost and found.",
+            ConsoleUnequipTrinkets
+        );
 
 #if DEBUG
         // Print all types
@@ -76,16 +82,7 @@ internal sealed class ModEntry : Mod
         TriggerActionManager.RegisterTrigger(RaiseTriggerAbility.TriggerEventName);
 
         // Add item queries
-        ItemQueryResolver.Register(GameItemQuery.ItemQuery_CREATE_TRINKET, GameItemQuery.CREATE_TRINKET);
-        ItemQueryResolver.Register(
-            GameItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS,
-            GameItemQuery.CREATE_TRINKET_ALL_VARIANTS
-        );
-
-        // Add GSQs
-        GameStateQuery.Register(GameItemQuery.GameStateQuery_IS_TINKER, GameItemQuery.IS_TINKER);
-        GameStateQuery.Register(GameItemQuery.GameStateQuery_HAS_LEVELS, GameItemQuery.HAS_LEVELS);
-        GameStateQuery.Register(GameItemQuery.GameStateQuery_HAS_VARIANTS, GameItemQuery.HAS_VARIANTS);
+        GameItemQuery.Register();
 
         // Config is not player facing atm, just holds whether draw debug mode is on.
         Config = Helper.ReadConfig<ModConfig>();
@@ -206,6 +203,23 @@ internal sealed class ModEntry : Mod
             Log($"DrawDebugMode: {Config.DrawDebugMode}", LogLevel.Info);
             Helper.WriteConfig(Config);
         }
+    }
+
+    private void ConsoleUnequipTrinkets(string arg1, string[] arg2)
+    {
+        if (!Context.IsWorldReady)
+            return;
+
+        foreach (Trinket trinketItem in Game1.player.trinketItems)
+        {
+            if (trinketItem == null)
+                continue;
+            Log($"UnequipTrinket: {trinketItem.QualifiedItemId}", LogLevel.Info);
+            Game1.player.team.returnedDonations.Add(trinketItem);
+            Game1.player.team.newLostAndFoundItems.Value = true;
+        }
+        Game1.player.trinketItems.Clear();
+        Game1.player.companions.Clear();
     }
 
     /// Static helper functions

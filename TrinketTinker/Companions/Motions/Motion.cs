@@ -211,7 +211,11 @@ public abstract class Motion<TArgs> : IMotion
         {
             anchorTimer -= time.ElapsedGameTime.TotalMilliseconds;
             if (anchorTimer > 0)
+            {
+                if (currAnchorTarget == AnchorTarget.Owner)
+                    c.Anchor = Utility.PointToVector2(c.Owner.GetBoundingBox().Center);
                 return currAnchorTarget;
+            }
         }
         anchorTimer = ANCHOR_UPDATE_RATE;
         return UpdateAnchor(location);
@@ -317,7 +321,7 @@ public abstract class Motion<TArgs> : IMotion
     /// <returns>
     /// 0: clip not found
     /// 1: clip is animating
-    /// 1: clip reached last frame
+    /// 2: clip reached last frame
     /// </returns>
     private int AnimateClip(GameTime time, string? key, out AnimClipData? clip)
     {
@@ -361,7 +365,7 @@ public abstract class Motion<TArgs> : IMotion
     /// <returns>
     /// 0: clip not found
     /// 1: clip is animating
-    /// 1: clip reached last frame
+    /// 2: clip reached last frame
     /// </returns>
     private int AnimateClip(GameTime time, string? key)
     {
@@ -408,8 +412,8 @@ public abstract class Motion<TArgs> : IMotion
         {
             return;
         }
-        // Moving: play while player is moving, or if always moving is true
-        if (IsMoving())
+        // Moving: play while companion is moving, or if always moving is true
+        if (c.CompanionMoving || md.AlwaysMoving)
         {
             // first, try anchor target based clip
             if (currAnchorTarget == AnchorTarget.Owner || AnimateClip(time, $"Anchor.{currAnchorTarget}") == 0)
@@ -419,7 +423,7 @@ public abstract class Motion<TArgs> : IMotion
             }
             return;
         }
-        // Idle: play while player is not moving
+        // Idle: play while companion is not moving
         if (AnimateClip(time, AnimClipDictionary.IDLE) != 0)
         {
             return;
@@ -652,13 +656,13 @@ public abstract class Motion<TArgs> : IMotion
         switch (md.DirectionMode)
         {
             case DirectionMode.DRUL:
-                if (Math.Abs(posDelta.X) > Math.Abs(posDelta.Y))
+                if (Math.Abs(posDelta.X) - Math.Abs(posDelta.Y) > 8f)
                     c.direction.Value = (c.Anchor.X > position.X) ? 2 : 4;
                 else
                     c.direction.Value = (c.Anchor.Y > position.Y) ? 1 : 3;
                 break;
             case DirectionMode.DRU:
-                if (Math.Abs(posDelta.X) > Math.Abs(posDelta.Y))
+                if (Math.Abs(posDelta.X) - Math.Abs(posDelta.Y) > 8f)
                     c.direction.Value = (c.Anchor.X > position.X) ? 2 : -2;
                 else
                     c.direction.Value = (c.Anchor.Y > position.Y) ? 1 : 3;

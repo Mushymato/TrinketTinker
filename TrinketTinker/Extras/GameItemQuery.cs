@@ -2,9 +2,7 @@ using System.Text.RegularExpressions;
 using StardewValley;
 using StardewValley.Delegates;
 using StardewValley.Internal;
-using StardewValley.ItemTypeDefinitions;
 using StardewValley.Objects.Trinkets;
-using StardewValley.TokenizableStrings;
 using TrinketTinker.Effects;
 
 namespace TrinketTinker.Extras;
@@ -16,11 +14,25 @@ public static class GameItemQuery
     public static string GameStateQuery_IS_TINKER => $"{ModEntry.ModId}_IS_TINKER";
     public static string GameStateQuery_HAS_LEVELS => $"{ModEntry.ModId}_HAS_LEVELS";
     public static string GameStateQuery_HAS_VARIANTS => $"{ModEntry.ModId}_HAS_VARIANTS";
+    public static string GameStateQuery_ENABLED_TRINKET_COUNT => $"{ModEntry.ModId}_ENABLED_TRINKET_COUNT";
 
     private const string RANDOM = "R";
     private const string MAX = "M";
     private const string ANY = "?";
     private static readonly Regex compareInt = new("([>=<!]=?)(\\d+|M)");
+
+    public static void Register()
+    {
+        // Add item queries
+        ItemQueryResolver.Register(ItemQuery_CREATE_TRINKET, CREATE_TRINKET);
+        ItemQueryResolver.Register(ItemQuery_CREATE_TRINKET_ALL_VARIANTS, CREATE_TRINKET_ALL_VARIANTS);
+
+        // Add GSQs
+        GameStateQuery.Register(GameStateQuery_IS_TINKER, IS_TINKER);
+        GameStateQuery.Register(GameStateQuery_HAS_LEVELS, HAS_LEVELS);
+        GameStateQuery.Register(GameStateQuery_HAS_VARIANTS, HAS_VARIANTS);
+        GameStateQuery.Register(GameStateQuery_ENABLED_TRINKET_COUNT, EQUIP_TRINKET_COUNT);
+    }
 
     /// <summary>
     /// Get a int value from argument at index.
@@ -57,7 +69,7 @@ public static class GameItemQuery
         return ArgUtility.TryGetOptionalInt(array, index, out value, out string? _);
     }
 
-    private static bool CompareIntegerQ(string[] query, int index, int value, int maxValue)
+    private static bool CompareIntegerQ(string[] query, int index, int value, int? maxValue = null)
     {
         if (query.Length <= index)
             return true;
@@ -67,7 +79,8 @@ public static class GameItemQuery
         int compValue;
         if (compareInt.Match(qStr) is Match match && match.Success)
         {
-            compValue = match.Groups[2].Value == "M" ? maxValue : int.Parse(match.Groups[2].Value);
+            compValue =
+                maxValue != null && match.Groups[2].Value == MAX ? (int)maxValue : int.Parse(match.Groups[2].Value);
             switch (match.Groups[1].Value)
             {
                 case ">":
@@ -202,8 +215,8 @@ public static class GameItemQuery
         )
             return false;
         // check for level
-        return CompareIntegerQ(query, 1, effect.Level, effect.MaxLevel)
-            && CompareIntegerQ(query, 2, effect.Variant, effect.MaxVariant);
+        return CompareIntegerQ(query, 1, effect.Level, maxValue: effect.MaxLevel)
+            && CompareIntegerQ(query, 2, effect.Variant, maxValue: effect.MaxVariant);
     }
 
     /// <summary>
@@ -240,5 +253,48 @@ public static class GameItemQuery
             return false;
         // check for variant
         return effect.MaxVariant > 1;
+    }
+
+    /// <summary>Count the number of trinkets equipped, compare to a particular number</summary>
+    /// <param name="query"></param>
+    /// <param name="context"></param>
+    /// <returns></returns>
+    /// <exception cref="NotImplementedException"></exception>
+    private static bool EQUIP_TRINKET_COUNT(string[] query, GameStateQueryContext context)
+    {
+        if (!ArgUtility.TryGet(query, 1, out var playerKey, out var error, allowBlank: true, "string playerKey"))
+        {
+            return GameStateQuery.Helpers.ErrorResult(query, error);
+        }
+        if (!ArgUtility.TryGetOptional(query, 3, out string tId, out error, "string trinketId"))
+        {
+            if (context.InputItem is Trinket inputTrinket)
+                tId = inputTrinket.QualifiedItemId;
+            else
+                return GameStateQuery.Helpers.ErrorResult(query, error);
+        }
+        int count = 0;
+        GameStateQuery.Helpers.WithPlayer(
+            context.Player,
+            playerKey,
+            (Farmer target) =>
+            {
+                foreach (Trinket trinketItem in target.trinketItems)
+                {
+                    if (trinketItem == null)
+                        continue;
+                    // ModEntry.Log($"{trinketItem.QualifiedItemId} == {trinketItem.ItemId}");
+                    if (
+                        (trinketItem.QualifiedItemId == tId || trinketItem.ItemId == tId)
+                        && trinketItem.GetEffect() is TrinketTinkerEffect effect
+                        && effect.Enabled
+                    )
+                        count++;
+                }
+                return true;
+            }
+        );
+        // ModEntry.Log($"{count} {query[2]}");
+        return CompareIntegerQ(query, 2, count);
     }
 }

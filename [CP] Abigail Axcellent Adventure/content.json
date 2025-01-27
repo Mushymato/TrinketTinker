@@ -24,6 +24,7 @@
       "Target": "mushymato.TrinketTinker/Tinker",
       "Entries": {
         "{{ModId}}_Abigail": {
+          "EnableCondition": "mushymato.TrinketTinker_ENABLED_TRINKET_COUNT All <1",
           "Variants": [
             {
               "Texture": "Characters/Abigail",

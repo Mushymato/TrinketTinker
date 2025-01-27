@@ -2,6 +2,7 @@ using System.Collections.Immutable;
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewValley;
+using StardewValley.Companions;
 using StardewValley.Delegates;
 using StardewValley.Inventories;
 using StardewValley.Monsters;
@@ -67,7 +68,7 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <summary>Number of variant levels</summary>
     public int MaxVariant => Data?.Variants.Count ?? 0;
 
-    /// <summary>Variant is tracked by mod data as</summary>
+    /// <summary>Variant is tracked by mod data as string, parse it here</summary>
     public int Variant
     {
         get
@@ -81,7 +82,10 @@ public class TrinketTinkerEffect : TrinketEffect
         }
     }
 
+    /// <summary>Backing inventory id string</summary>
     private string? inventoryId;
+
+    /// <summary>Inventory Id, for use in <see cref="GlobalInventoryHandler"/></summary>
     public string InventoryId
     {
         get
@@ -96,12 +100,9 @@ public class TrinketTinkerEffect : TrinketEffect
         }
     }
 
-    public Inventory? GetInventory(Farmer farmer)
-    {
-        if (farmer.team.globalInventories.TryGetValue($"{ModEntry.ModId}/{InventoryId}", out Inventory? trinketInv))
-            return trinketInv;
-        return null;
-    }
+    public string FullInventoryId => $"{ModEntry.ModId}/{Trinket.ItemId}/{InventoryId}";
+
+    internal bool Enabled { get; private set; } = false;
 
     internal event EventHandler<ProcEventArgs>? EventFootstep;
     internal event EventHandler<ProcEventArgs>? EventReceiveDamage;
@@ -184,7 +185,12 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <param name="farmer"></param>
     public override void Apply(Farmer farmer)
     {
+        ModEntry.Log($"Apply {Trinket.QualifiedItemId} ({Trinket.generationSeed})");
         if (Data == null || Game1.gameMode != 3)
+            return;
+
+        Enabled = GameStateQuery.CheckConditions(Data.EnableCondition, player: farmer, inputItem: Trinket);
+        if (!Enabled)
             return;
 
         int variant = 0;
@@ -195,8 +201,7 @@ public class TrinketTinkerEffect : TrinketEffect
         if (Data.Variants.Count > 0 && Data.Motions.Count > 0)
         {
             Companion = new TrinketTinkerCompanion(Trinket.ItemId, variant);
-            if (Game1.gameMode == 3)
-                farmer.AddCompanion(Companion);
+            farmer.AddCompanion(Companion);
         }
         else
         {
@@ -221,8 +226,18 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <param name="farmer"></param>
     public override void Unapply(Farmer farmer)
     {
+        ModEntry.Log($"Unapply {Trinket.QualifiedItemId} ({Trinket.generationSeed})");
         if (Companion != null)
+        {
+            ModEntry.Log($"Remove companion");
+            foreach (Companion cmp in farmer.companions)
+            {
+                ModEntry.Log($"{Companion}.Equals({cmp})? {Companion.Equals(cmp)}");
+            }
             farmer.RemoveCompanion(Companion);
+            farmer.companions.Remove(Companion);
+            Companion = null;
+        }
 
         if (farmer != Game1.player || MaxLevel <= GeneralStat)
             return;
@@ -235,13 +250,16 @@ public class TrinketTinkerEffect : TrinketEffect
 
     public override void OnUse(Farmer farmer)
     {
+        if (!GameStateQuery.CheckConditions(Data?.EnableCondition, player: farmer, inputItem: Trinket))
+            return;
+
         if (Game1.activeClickableMenu == null && Data?.Inventory.Count > 0)
         {
             TinkerInventoryData? inventroyData =
                 Data.Inventory.Count > GeneralStat ? Data.Inventory[GeneralStat] : Data.Inventory[^1];
             if (inventroyData != null)
             {
-                GlobalInventoryHandler handler = new(this, inventroyData, InventoryId);
+                GlobalInventoryHandler handler = new(this, inventroyData, FullInventoryId);
                 Game1.activeClickableMenu = handler.GetMenu();
             }
         }
@@ -249,11 +267,17 @@ public class TrinketTinkerEffect : TrinketEffect
 
     public override void OnFootstep(Farmer farmer)
     {
+        if (!Enabled)
+            return;
+
         EventFootstep?.Invoke(this, new(ProcOn.Footstep, farmer));
     }
 
     public override void OnReceiveDamage(Farmer farmer, int damageAmount)
     {
+        if (!Enabled)
+            return;
+
         EventReceiveDamage?.Invoke(this, new(ProcOn.ReceiveDamage, farmer) { DamageAmount = damageAmount });
     }
 
@@ -265,6 +289,9 @@ public class TrinketTinkerEffect : TrinketEffect
         bool isCriticalHit
     )
     {
+        if (!Enabled)
+            return;
+
         EventDamageMonster?.Invoke(
             this,
             new(ProcOn.DamageMonster, farmer)
@@ -294,20 +321,29 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <param name="damageAmount"></param>
     public virtual void OnTrigger(Farmer farmer, string[] args, TriggerActionContext context)
     {
+        if (!Enabled)
+            return;
+
         EventTrigger?.Invoke(this, new(ProcOn.Trigger, farmer) { TriggerArgs = args, TriggerContext = context });
     }
 
     public virtual void OnPlayerWarped(Farmer farmer, GameLocation oldLocation, GameLocation newLocation)
     {
+        if (!Enabled)
+            return;
+
         EventPlayerWarped?.Invoke(this, new(ProcOn.Warped, farmer));
     }
 
-    /// <summary>Update every tick. Not an event because this happens for every ability regardless of <see cref="Support"/>.</summary>
+    /// <summary>Update every tick. Not an event because this happens for every ability regardless of <see cref="ProcOn"/>.</summary>
     /// <param name="farmer"></param>
     /// <param name="time"></param>
     /// <param name="location"></param>
     public override void Update(Farmer farmer, GameTime time, GameLocation location)
     {
+        if (!Enabled)
+            return;
+
         foreach (IAbility ability in Abilities)
             ability.Update(farmer, time, location);
     }
@@ -346,7 +382,7 @@ public class TrinketTinkerEffect : TrinketEffect
         {
             if (conditions.Count <= result)
                 return count;
-            if (!GameStateQuery.CheckConditions(conditions[result], null, null, trinket))
+            if (!GameStateQuery.CheckConditions(conditions[result], null, null, inputItem: trinket))
                 return result + 1;
         }
         return 1;
@@ -445,5 +481,15 @@ public class TrinketTinkerEffect : TrinketEffect
         {
             SetVariant(trinket, int.Parse(variantStr));
         }
+    }
+
+    /// <summary>Get inventory of trinket, if there is one</summary>
+    /// <param name="farmer"></param>
+    /// <returns></returns>
+    public Inventory? GetInventory(Farmer farmer)
+    {
+        if (farmer.team.globalInventories.TryGetValue(FullInventoryId, out Inventory? trinketInv))
+            return trinketInv;
+        return null;
     }
 }

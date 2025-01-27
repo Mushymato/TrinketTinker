@@ -135,13 +135,13 @@ public class AnimClipData : WeightedRandData
     public bool PauseMovement { get; set; } = false;
 
     /// <summary>Additional clips that may randomly be called, only valid for the top level clip.</summary>
-    public IReadOnlyList<AnimClipData>? RandomClips
+    internal IReadOnlyList<AnimClipData>? RandomClips
     {
         get => randomExtra?.Select((clip) => (AnimClipData)clip).ToList();
         set => randomExtra = value?.Select((clip) => (WeightedRandData)clip).ToList();
     }
 
-    public AnimClipData Selected => randSelected == null ? this : (AnimClipData)randSelected;
+    internal AnimClipData Selected => randSelected == null ? this : (AnimClipData)randSelected;
 
     /// <summary>Choose a random clip</summary>
     /// <param name="rand"></param>
@@ -185,13 +185,13 @@ public sealed class SpeechBubbleData : WeightedRandData
     public int Shake { get; set; } = 0;
 
     /// <summary>Additional speech that may randomly be called, only valid for the top level speech.</summary>
-    public IReadOnlyList<SpeechBubbleData>? RandomSpeech
+    internal IReadOnlyList<SpeechBubbleData>? RandomSpeech
     {
         get => randomExtra?.Select((speech) => (SpeechBubbleData)speech).ToList();
         set => randomExtra = value?.Select((speech) => (WeightedRandData)speech).ToList();
     }
 
-    public SpeechBubbleData Selected => randSelected == null ? this : (SpeechBubbleData)randSelected;
+    internal SpeechBubbleData Selected => randSelected == null ? this : (SpeechBubbleData)randSelected;
 
     public SpeechBubbleData PickRand(Random rand)
     {

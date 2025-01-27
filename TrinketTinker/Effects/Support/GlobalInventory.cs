@@ -125,9 +125,7 @@ internal class TinkerInventoryMenu : ItemGrabMenu
 internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerInventoryData data, string inventoryId)
 {
     /// <summary>Global inventory for this trinket</summary>
-    private readonly Inventory trinketInv = Game1.player.team.GetOrCreateGlobalInventory(
-        $"{ModEntry.ModId}/{inventoryId}"
-    );
+    private readonly Inventory trinketInv = Game1.player.team.GetOrCreateGlobalInventory(inventoryId);
 
     internal TinkerInventoryMenu GetMenu()
     {
@@ -224,6 +222,10 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
     /// <summary>Ensure empty inventories are deleted, and inaccessable inventories have their contents put into lost and found</summary>
     internal static void DayEndingCleanup()
     {
+        ModEntry.Log(
+            $"Trinket Count {Game1.player.trinketItems.Count}, Companion Count {Game1.player.companions.Count}"
+        );
+
         HashSet<string> missingTrinketInvs = [];
         var team = Game1.player.team;
         foreach (var key in team.globalInventories.Keys)
@@ -246,15 +248,22 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
             (item) =>
             {
                 if (item is Trinket trinket && trinket.GetEffect() is TrinketTinkerEffect effect)
-                {
-                    missingTrinketInvs.Remove($"{ModEntry.ModId}/{effect.InventoryId}");
-                }
+                    missingTrinketInvs.Remove(effect.FullInventoryId);
                 return missingTrinketInvs.Any();
             }
         );
+        foreach (Farmer farmer in Game1.getAllFarmers())
+        {
+            foreach (Trinket trinketItem in farmer.trinketItems)
+            {
+                if (trinketItem != null && trinketItem.GetEffect() is TrinketTinkerEffect effect)
+                    missingTrinketInvs.Remove(effect.FullInventoryId);
+            }
+        }
         team.newLostAndFoundItems.Value = missingTrinketInvs.Any();
         foreach (string key in missingTrinketInvs)
         {
+            ModEntry.Log($"Destroy inaccessible trinket inventory: {key}");
             var value = team.globalInventories[key];
             foreach (var item in value)
                 team.returnedDonations.Add(item);

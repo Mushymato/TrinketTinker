@@ -23,7 +23,8 @@ public sealed class RaiseTriggerAbility(TrinketTinkerEffect effect, AbilityData 
             TriggerEventName,
             player: proc.Farmer,
             location: proc.Location,
-            targetItem: e.Trinket
+            targetItem: e.Trinket,
+            inputItem: e.Trinket
         );
         return base.ApplyEffect(proc);
     }
