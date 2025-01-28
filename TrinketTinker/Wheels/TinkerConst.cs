@@ -20,6 +20,9 @@ public static class TinkerConst
     /// <summary>String pattern for trinket tinker ability classes</summary>
     internal static readonly string ABILITY_CLS = GetClsPattern(typeof(BuffAbility), "Ability");
 
+    public static string CustomFields_DirectEquipOnly => $"{ModEntry.ModId}/DirectEquipOnly";
+    public static string ModData_IndirectEquip => $"{ModEntry.ModId}/IndirectEquip";
+
     internal static string GetClsPattern(Type cls, string suffix)
     {
         if (cls.AssemblyQualifiedName is not string clsName)

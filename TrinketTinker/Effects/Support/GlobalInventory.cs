@@ -148,10 +148,12 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
 
     private bool HighlightFunction(Item item)
     {
-        if (item is Trinket trinket)
-            return effect.Trinket != trinket;
-        if (data.Filters != null)
-            return !Places.CheckContextTagFilter(item, data.Filters);
+        if (item is Trinket trinket && effect.Trinket == trinket)
+            return false;
+        if (data.RequiredTags != null && !Places.CheckContextTagFilter(item, data.RequiredTags))
+            return false;
+        if (data.Condition != null && !GameStateQuery.CheckConditions(data.Condition, inputItem: item))
+            return false;
         return true;
     }
 

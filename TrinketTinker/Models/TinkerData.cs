@@ -3,7 +3,8 @@ namespace TrinketTinker.Models;
 public sealed class TinkerInventoryData
 {
     public int Capacity = 9;
-    public List<string>? Filters = null;
+    public List<string>? RequiredTags = null;
+    public string? Condition = null;
 }
 
 /// <summary>Top level data class for Tinker.</summary>

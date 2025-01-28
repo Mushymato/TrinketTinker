@@ -4,6 +4,7 @@ using StardewValley.Objects.Trinkets;
 using TrinketTinker.Effects.Support;
 using TrinketTinker.Models;
 using TrinketTinker.Models.Mixin;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Effects.Abilities;
 
@@ -28,13 +29,29 @@ public sealed class EquipTrinketAbility(TrinketTinkerEffect effect, AbilityData 
             return false;
         foreach (Item item in trinketInv)
         {
-            if (item == null || item is not Trinket trinket)
+            if (
+                item == null
+                || item is not Trinket trinket
+                || (
+                    (
+                        trinket
+                            .GetTrinketData()
+                            ?.CustomFields?.TryGetValue(
+                                TinkerConst.CustomFields_DirectEquipOnly,
+                                out string? directOnly
+                            ) ?? false
+                    )
+                    && directOnly != null
+                )
+            )
                 continue;
-            if (proc.Farmer.trinketItems.Contains(trinket))
+            var trinketItems = proc.Farmer.trinketItems;
+            if (trinketItems.Contains(trinket))
                 continue;
-            while (proc.Farmer.trinketItems.Count < 2)
-                proc.Farmer.trinketItems.Add(null);
+            while (trinketItems.Count < 2)
+                trinketItems.Add(null);
             proc.Farmer.trinketItems.Insert(2, trinket);
+            trinket.modData[TinkerConst.ModData_IndirectEquip] = "T";
         }
         return base.ApplyEffect(proc);
     }
@@ -51,6 +68,7 @@ public sealed class EquipTrinketAbility(TrinketTinkerEffect effect, AbilityData 
             if (item == null || item is not Trinket trinket)
                 continue;
             farmer.trinketItems.Remove(trinket);
+            trinket.modData.Remove(TinkerConst.ModData_IndirectEquip);
         }
         base.CleanupEffect(farmer);
     }

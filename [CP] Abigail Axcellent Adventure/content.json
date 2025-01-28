@@ -14,7 +14,10 @@
           "Texture": "TileSheets/weapons",
           "SheetIndex": 40,
           "DropsNaturally": false,
-          "CanBeReforged": true
+          "CanBeReforged": true,
+          "CustomFields": {
+            "mushymato.TrinketTinker/DirectEquipOnly": "T"
+          }
         },
       }
     },
