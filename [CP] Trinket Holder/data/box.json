@@ -1,0 +1,44 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "LogName": "Box {{L@Capacity}}: Trinkets",
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_Box_{{L@Capacity}}": {
+          "Id": "{{ModId}}_Box_{{L@Capacity}}",
+          "DisplayName": "{{i18n:Box.{{L@Capacity}}.DisplayName}}",
+          "Description": "{{i18n:Box.Shared.Description | Capacity={{L@Capacity}} }}",
+          "Texture": "{{ModId}}/trinketbox",
+          "SheetIndex": "{{L@SheetIndex}}",
+          "DropsNaturally": false,
+          "CanBeReforged": false
+        },
+      }
+    },
+    {
+      "LogName": "Box {{L@Capacity}}: Tinker",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        "{{ModId}}_Box_{{L@Capacity}}": {
+          "Abilities": [
+            [
+              {
+                "AbilityClass": "EquipTrinket",
+                "Proc": "Always"
+              },
+            ]
+          ],
+          "Inventory": {
+            "Capacity": "{{L@Capacity}}",
+            "RequiredTags": [
+              "trinket_item",
+            ]
+          }
+        },
+      }
+    },
+  ]
+}

@@ -220,7 +220,7 @@ public static class GameItemQuery
     }
 
     /// <summary>
-    /// Check that the input item is a trinket using TrinketTinkerEffect and has more than 1 level
+    /// Check that the input item is a trinket using TrinketTinkerEffect and has more than 1 unlocked level
     /// </summary>
     /// <param name="query"></param>
     /// <param name="context"></param>
@@ -234,11 +234,11 @@ public static class GameItemQuery
         )
             return false;
         // check for level
-        return effect.MaxLevel > 1;
+        return effect.GetMaxUnlockedLevel(trinket) > 1;
     }
 
     /// <summary>
-    /// Check that the input item is a trinket using TrinketTinkerEffect and has more than 1 variant
+    /// Check that the input item is a trinket using TrinketTinkerEffect and has more than 1 unlocked variant
     /// </summary>
     /// <param name="query"></param>
     /// <param name="context"></param>
@@ -252,7 +252,7 @@ public static class GameItemQuery
         )
             return false;
         // check for variant
-        return effect.MaxVariant > 1;
+        return effect.GetMaxUnlockedVariant(trinket) > 1;
     }
 
     /// <summary>Count the number of trinkets equipped, compare to a particular number</summary>

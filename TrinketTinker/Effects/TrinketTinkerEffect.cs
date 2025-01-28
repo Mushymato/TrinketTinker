@@ -249,18 +249,12 @@ public class TrinketTinkerEffect : TrinketEffect
 
     public override void OnUse(Farmer farmer)
     {
-        if (!GameStateQuery.CheckConditions(Data?.EnableCondition, player: farmer, inputItem: Trinket))
-            return;
-
-        if (Game1.activeClickableMenu == null && Data?.Inventory.Count > 0)
+        if (Game1.activeClickableMenu == null && Data?.Inventory != null)
         {
-            TinkerInventoryData? inventroyData =
-                Data.Inventory.Count > GeneralStat ? Data.Inventory[GeneralStat] : Data.Inventory[^1];
-            if (inventroyData != null)
-            {
-                GlobalInventoryHandler handler = new(this, inventroyData, FullInventoryId);
-                Game1.activeClickableMenu = handler.GetMenu();
-            }
+            if (!GameStateQuery.CheckConditions(Data.Inventory.OpenCondition, player: farmer, inputItem: Trinket))
+                return;
+            GlobalInventoryHandler handler = new(this, Data.Inventory, FullInventoryId);
+            Game1.activeClickableMenu = handler.GetMenu();
         }
     }
 
@@ -373,7 +367,7 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <param name="count"></param>
     /// <param name="trinket"></param>
     /// <returns></returns>
-    public static int GetMaxUnlockedCount(IReadOnlyList<string?> conditions, int count, Trinket trinket)
+    private static int GetMaxUnlockedCount(IReadOnlyList<string?> conditions, int count, Trinket trinket)
     {
         if (conditions.Count == count - 1)
             return count;
@@ -387,6 +381,26 @@ public class TrinketTinkerEffect : TrinketEffect
         return 1;
     }
 
+    /// <summary>Get max unlocked level by GSQ</summary>
+    /// <param name="trinket"></param>
+    /// <returns></returns>
+    public int GetMaxUnlockedLevel(Trinket trinket)
+    {
+        if (Data == null)
+            return 0;
+        return GetMaxUnlockedCount(Data.AbilityUnlockConditions, Data.Abilities.Count, trinket);
+    }
+
+    /// <summary>Get max unlocked variant by GSQ</summary>
+    /// <param name="trinket"></param>
+    /// <returns></returns>
+    public int GetMaxUnlockedVariant(Trinket trinket)
+    {
+        if (Data == null)
+            return 0;
+        return GetMaxUnlockedCount(Data.VariantUnlockConditions, Data.Variants.Count, trinket);
+    }
+
     /// <summary>
     /// Randomize this trinket's ability level through anvil, return true if the level is rerolled.
     /// Will not roll the same level.
@@ -397,7 +411,7 @@ public class TrinketTinkerEffect : TrinketEffect
     {
         if (Data == null)
             return false;
-        int maxAbility = GetMaxUnlockedCount(Data.AbilityUnlockConditions, Data.Abilities.Count, trinket);
+        int maxAbility = GetMaxUnlockedLevel(trinket);
         if (maxAbility <= 1)
         {
             return SetLevel(trinket, 0);
@@ -417,7 +431,7 @@ public class TrinketTinkerEffect : TrinketEffect
     {
         if (Data == null)
             return false;
-        int maxVariant = GetMaxUnlockedCount(Data.VariantUnlockConditions, Data.Variants.Count, trinket);
+        int maxVariant = GetMaxUnlockedVariant(trinket);
         if (maxVariant <= 1)
             return SetVariant(trinket, 0);
         int newVariant = Random.Shared.Next(maxVariant - 1);

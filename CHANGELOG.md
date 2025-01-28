@@ -4,6 +4,36 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.5.0-beta.0c
+
+#### Added
+
+- Allow HarvestShakeable to target larger bushes (but not walnut bush), handle BushBloomMod integration
+- New game state queries
+    - `mushymato.TrinketTinker_IS_TINKER [level] [variant]`: check the input item is a trinket with tinker data, then check if the item is of some level and variant. Compare operators can be used, one of `>1`, `<1`, `>=1`, `<=1`, `!=1`.
+    - `mushymato.TrinketTinker_HAS_LEVELS`: check the input item is a trinket with tinker data, then check if the input item has any unlocked levels.
+    - `mushymato.TrinketTinker_HAS_VARIANTS`: check the input item is a trinket with tinker data, then check if the input item has any unlocked variants.
+    - `mushymato.TrinketTinker_EQUIP_TRINKET_COUNT <playerKey> [count] [trinketId]`: Count number of trinket of particular ID (either the optional trinketId or inputItem) equipped, and compare it to a number.
+- MachineOutputItem CustomData `mushymato.TrinketTinker/Increment`, allows upgrading a trinket's level or variant by X amount
+- Trinket companion/effects can be silenced with `EnableCondition` on `TinkerData`, essentially making them do nothing on equip.
+- Trinket can now have an inventory via `Inventory` on `TinkerData`, "use" the trinket item to open this inventory.
+- EquipTrinket ability, equips trinkets inside the inventory.
+    - Trinkets can be banned from this ability by setting `mushymato.TrinketTinker/DirectEquipOnly` to `"T"` or any non null value.
+    - Trinkets equipped this way will have modData `mushymato.TrinketTinker/IndirectEquip` set to `"T"`.
+- ActionAbility: support for `Actions` (list of actions), `ActionEnd` (action to run at removal for AlwaysProc), and `ActionsEnd` (list of end actions)
+- TriggerActionContext from ActionAbility now use `mushymato.TrinketTinker/Action` as name and pass these fields via CustomFields:
+    - `mushymato.TrinketTinker/Owner`: trinket owner (Farmer)
+    - `mushymato.TrinketTinker/Trinket`: trinket item (Trinket)
+    - `mushymato.TrinketTinker/Data`: AbilityData (TrinketTinker.Models.AbilityData)
+    - `mushymato.TrinketTinker/Position`: companion position including offset (Vector2)
+- GameStateQueryContext from ability proc check now provides the trinket item as inputItem and targetItem, along with
+    - `mushymato.TrinketTinker/Data`: AbilityData (TrinketTinker.Models.AbilityData)
+    - `mushymato.TrinketTinker/Position`: companion position including offset (Vector2)
+
+#### Fixed
+
+- Some abilities did not apply due to an incorrect check for max level
+
 ### 1.4.5
 
 #### Fixed

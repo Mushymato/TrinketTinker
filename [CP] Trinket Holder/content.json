@@ -1,0 +1,36 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Format": "2.5.1",
+  "Changes": [
+    {
+      "LogName": "Sprites",
+      "Action": "Load",
+      "Target": "{{ModId}}/trinketbox",
+      "FromFile": "assets/{{TargetWithoutPath}}.png"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "data/box.json",
+      "LocalTokens": {
+        "L@Capacity": 2,
+        "L@SheetIndex": 0,
+      }
+    },
+    {
+      "Action": "Include",
+      "FromFile": "data/box.json",
+      "LocalTokens": {
+        "L@Capacity": 3,
+        "L@SheetIndex": 1,
+      }
+    },
+    {
+      "Action": "Include",
+      "FromFile": "data/box.json",
+      "LocalTokens": {
+        "L@Capacity": 4,
+        "L@SheetIndex": 2,
+      }
+    }
+  ]
+}

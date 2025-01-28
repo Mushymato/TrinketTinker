@@ -3,8 +3,9 @@ namespace TrinketTinker.Models;
 public sealed class TinkerInventoryData
 {
     public int Capacity = 9;
+    public string? OpenCondition = null;
     public List<string>? RequiredTags = null;
-    public string? Condition = null;
+    public string? RequiredItemCondition = null;
 }
 
 /// <summary>Top level data class for Tinker.</summary>
@@ -48,5 +49,5 @@ public sealed class TinkerData
     public IReadOnlyList<string?> AbilityUnlockConditions = [];
 
     /// <summary>Definition for inventory, tied to level</summary>
-    public List<TinkerInventoryData?> Inventory = [];
+    public TinkerInventoryData? Inventory = null;
 }

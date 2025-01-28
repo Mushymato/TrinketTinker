@@ -13,7 +13,10 @@ public sealed class ActionArgs : IArgs
         {
             if (value != null)
             {
-                Actions.Insert(0, value);
+                if (Actions.Any())
+                    Actions[0] = value;
+                else
+                    Actions.Add(value);
             }
         }
     }
@@ -29,7 +32,10 @@ public sealed class ActionArgs : IArgs
         {
             if (value != null)
             {
-                ActionsEnd.Insert(0, value);
+                if (ActionsEnd.Any())
+                    ActionsEnd[0] = value;
+                else
+                    ActionsEnd.Add(value);
             }
         }
     }

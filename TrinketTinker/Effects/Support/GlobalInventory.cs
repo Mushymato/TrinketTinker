@@ -152,7 +152,10 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
             return false;
         if (data.RequiredTags != null && !Places.CheckContextTagFilter(item, data.RequiredTags))
             return false;
-        if (data.Condition != null && !GameStateQuery.CheckConditions(data.Condition, inputItem: item))
+        if (
+            data.RequiredItemCondition != null
+            && !GameStateQuery.CheckConditions(data.RequiredItemCondition, inputItem: item)
+        )
             return false;
         return true;
     }

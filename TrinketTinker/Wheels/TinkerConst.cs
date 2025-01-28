@@ -22,6 +22,10 @@ public static class TinkerConst
 
     public static string CustomFields_DirectEquipOnly => $"{ModEntry.ModId}/DirectEquipOnly";
     public static string ModData_IndirectEquip => $"{ModEntry.ModId}/IndirectEquip";
+    public static string CustomFields_Owner => $"{ModEntry.ModId}/Owner";
+    public static string CustomFields_Trinket => $"{ModEntry.ModId}/Trinket";
+    public static string CustomFields_Data => $"{ModEntry.ModId}/Data";
+    public static string CustomFields_Position => $"{ModEntry.ModId}/Position";
 
     internal static string GetClsPattern(Type cls, string suffix)
     {

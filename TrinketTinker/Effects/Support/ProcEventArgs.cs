@@ -14,8 +14,6 @@ namespace TrinketTinker.Effects.Support;
 /// </summary>
 public sealed class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
 {
-    internal static readonly string CustomFields_Data = $"{ModEntry.ModId}/Data";
-
     /// <summary>Kind of proc triggering this event</summary>
     public ProcOn Proc => procOn;
 
@@ -54,7 +52,7 @@ public sealed class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
     /// </summary>
     /// <param name="data"></param>
     /// <returns></returns>
-    internal bool Check(AbilityData data, Trinket trinket)
+    internal bool Check(AbilityData data, TrinketTinkerEffect e)
     {
         if (Farmer == null)
             return false;
@@ -73,8 +71,9 @@ public sealed class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
         }
         if (data.Condition != null)
         {
-            GameStateQueryContext context = new(LocationOrCurrent, Farmer, null, trinket, null, null, []);
-            context.CustomFields[CustomFields_Data] = data;
+            GameStateQueryContext context = new(LocationOrCurrent, Farmer, e.Trinket, e.Trinket, null, null, []);
+            context.CustomFields[TinkerConst.CustomFields_Data] = data;
+            context.CustomFields[TinkerConst.CustomFields_Position] = e.CompanionPosition;
             return GameStateQuery.CheckConditions(data.Condition, context);
         }
         return true;

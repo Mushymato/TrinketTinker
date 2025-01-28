@@ -314,7 +314,10 @@ public sealed class HarvestShakeableAbility(TrinketTinkerEffect effect, AbilityD
     {
         return feature switch
         {
-            Bush bush => (filters?.Contains(BUSH) ?? true) && (bush.readyForHarvest() || InBloomBBM(bush)),
+            // size 4 is walnut bushes, ban
+            Bush bush => (filters?.Contains(BUSH) ?? true)
+                && bush.size.Value != 4
+                && (bush.readyForHarvest() || InBloomBBM(bush)),
             Tree tree => (filters?.Contains(TREE) ?? true)
                 && tree.maxShake == 0f
                 && tree.growthStage.Value >= 5

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://smapi.io/schemas/i18n.json",
+  // Trinkets
+  "Box.2.DisplayName": "Trinket Holder (Iridium)",
+  "Box.3.DisplayName": "Trinket Holder (Radioactive)",
+  "Box.4.DisplayName": "Trinket Holder (Prismatic)",
+  "Box.Shared.Description": "Beware of creatures inside.\nUse this trinket to open an inventory ({{Capacity}} slots), trinkets placed inside will be equipped.",
+}

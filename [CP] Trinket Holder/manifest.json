@@ -1,0 +1,20 @@
+{
+  "Name": "[CP] Trinket Box",
+  "Author": "mushymato",
+  "Version": "1.0.0",
+  "Description": "Put your trinkets in a trinket so you can trinket(plural) while you trinket(singular).",
+  "UniqueID": "mushymato.TrinketBox",
+  "MinimumApiVersion": "4.1.0",
+  "UpdateKeys": [
+    "Nexus:???"
+  ],
+  "ContentPackFor": {
+    "UniqueID": "Pathoschild.ContentPatcher"
+  },
+  "Dependencies": [
+    {
+      "UniqueID": "mushymato.TrinketTinker",
+      "MinimumVersion": "1.5.0-beta"
+    }
+  ]
+}

@@ -7,6 +7,7 @@ using StardewValley.Triggers;
 using TrinketTinker.Effects.Support;
 using TrinketTinker.Models;
 using TrinketTinker.Models.AbilityArgs;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Effects.Abilities;
 
@@ -15,10 +16,6 @@ public sealed class ActionAbility(TrinketTinkerEffect effect, AbilityData data, 
     : Ability<ActionArgs>(effect, data, lvl)
 {
     internal static readonly string TriggerContextName = $"{ModEntry.ModId}/Action";
-    internal static readonly string CustomFields_Owner = $"{ModEntry.ModId}/Owner";
-    internal static readonly string CustomFields_Trinket = $"{ModEntry.ModId}/Trinket";
-    internal static readonly string CustomFields_Data = $"{ModEntry.ModId}/Data";
-    internal static readonly string CustomFields_Position = $"{ModEntry.ModId}/Position";
 
     /// <summary>Parse and call the action</summary>
     /// <param name="proc"></param>
@@ -35,10 +32,10 @@ public sealed class ActionAbility(TrinketTinkerEffect effect, AbilityData data, 
         else
             context = new TriggerActionContext(TriggerContextName, [], null, []);
 
-        context.CustomFields[CustomFields_Trinket] = e.Trinket;
-        context.CustomFields[CustomFields_Data] = d;
-        context.CustomFields[CustomFields_Owner] = farmer;
-        context.CustomFields[CustomFields_Position] = e.CompanionPosition;
+        context.CustomFields[TinkerConst.CustomFields_Trinket] = e.Trinket;
+        context.CustomFields[TinkerConst.CustomFields_Data] = d;
+        context.CustomFields[TinkerConst.CustomFields_Owner] = farmer;
+        context.CustomFields[TinkerConst.CustomFields_Position] = e.CompanionPosition;
 
         // if (!TriggerActionManager.TryRunAction(args.Action, out string error, out Exception _))
         //     ModEntry.LogOnce("Couldn't apply action '" + args.Action + "': " + error, LogLevel.Error);
