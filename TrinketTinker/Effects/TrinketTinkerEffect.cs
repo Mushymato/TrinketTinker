@@ -143,10 +143,17 @@ public class TrinketTinkerEffect : TrinketEffect
                 levelAbilities = Data.Abilities[GeneralStat];
             }
             int idx = 0;
+            bool gotEquipTrinketAbility = false;
             foreach (AbilityData ab in levelAbilities)
             {
                 if (Reflect.TryGetType(ab.AbilityClass, out Type? abilityType, TinkerConst.ABILITY_CLS))
                 {
+                    if (abilityType == typeof(EquipTrinketAbility))
+                    {
+                        if (gotEquipTrinketAbility)
+                            continue;
+                        gotEquipTrinketAbility = true;
+                    }
                     IAbility? ability = (IAbility?)Activator.CreateInstance(abilityType, this, ab, GeneralStat);
                     if (ability != null && ability.Valid)
                         initAblities.Add(ability);
@@ -185,7 +192,6 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <param name="farmer"></param>
     public override void Apply(Farmer farmer)
     {
-        ModEntry.Log($"Apply {Trinket.QualifiedItemId} ({Trinket.generationSeed})");
         if (Data == null || Game1.gameMode != 3)
             return;
 
@@ -200,7 +206,7 @@ public class TrinketTinkerEffect : TrinketEffect
         // Companion
         if (Data.Variants.Count > 0 && Data.Motions.Count > 0)
         {
-            Companion = new TrinketTinkerCompanion(Trinket.ItemId, variant);
+            Companion ??= new TrinketTinkerCompanion(Trinket.ItemId, variant);
             farmer.AddCompanion(Companion);
         }
         else
@@ -226,16 +232,9 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <param name="farmer"></param>
     public override void Unapply(Farmer farmer)
     {
-        ModEntry.Log($"Unapply {Trinket.QualifiedItemId} ({Trinket.generationSeed})");
-        if (Companion != null)
+        if (Companion is TrinketTinkerCompanion myTTCmp)
         {
-            ModEntry.Log($"Remove companion");
-            foreach (Companion cmp in farmer.companions)
-            {
-                ModEntry.Log($"{Companion}.Equals({cmp})? {Companion.Equals(cmp)}");
-            }
-            farmer.RemoveCompanion(Companion);
-            farmer.companions.Remove(Companion);
+            farmer.RemoveCompanion(myTTCmp);
             Companion = null;
         }
 

@@ -9,6 +9,8 @@ public static class TinkerConst
     /// <summary>Float second of 1 frame (60fps), not perfectly accurate since it is float, only use for bounds.</summary>
     public const float ONE_FRAME = 1000f / 60;
 
+    public const float TURN_LEEWAY = 8f;
+
     /// <summary>Special color name for the animated prismatic color mask.</summary>
     public const string COLOR_PRISMATIC = "Prismatic";
 

@@ -656,23 +656,23 @@ public abstract class Motion<TArgs> : IMotion
         switch (md.DirectionMode)
         {
             case DirectionMode.DRUL:
-                if (Math.Abs(posDelta.X) - Math.Abs(posDelta.Y) > 8f)
+                if (Math.Abs(posDelta.X) - Math.Abs(posDelta.Y) > TinkerConst.TURN_LEEWAY)
                     c.direction.Value = (c.Anchor.X > position.X) ? 2 : 4;
                 else
                     c.direction.Value = (c.Anchor.Y > position.Y) ? 1 : 3;
                 break;
             case DirectionMode.DRU:
-                if (Math.Abs(posDelta.X) - Math.Abs(posDelta.Y) > 8f)
+                if (Math.Abs(posDelta.X) - Math.Abs(posDelta.Y) > TinkerConst.TURN_LEEWAY)
                     c.direction.Value = (c.Anchor.X > position.X) ? 2 : -2;
                 else
                     c.direction.Value = (c.Anchor.Y > position.Y) ? 1 : 3;
                 break;
             case DirectionMode.RL:
-                if (Math.Abs(posDelta.X) > 8f)
+                if (Math.Abs(posDelta.X) > TinkerConst.TURN_LEEWAY)
                     c.direction.Value = (c.Anchor.X > position.X) ? 1 : 2;
                 break;
             case DirectionMode.R:
-                if (Math.Abs(posDelta.X) > 8f)
+                if (Math.Abs(posDelta.X) > TinkerConst.TURN_LEEWAY)
                     c.direction.Value = (c.Anchor.X > position.X) ? 1 : -1;
                 break;
             default:

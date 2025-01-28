@@ -24,18 +24,17 @@ public sealed class EquipTrinketAbility(TrinketTinkerEffect effect, AbilityData 
             );
             return false;
         }
-        ModEntry.Log("EquipTrinketAbility:ApplyEffect");
         if (e.GetInventory(proc.Farmer) is not Inventory trinketInv)
             return false;
         foreach (Item item in trinketInv)
         {
             if (item == null || item is not Trinket trinket)
                 continue;
-            ModEntry.Log($"{trinket.QualifiedItemId} ({trinket.generationSeed})");
             if (proc.Farmer.trinketItems.Contains(trinket))
                 continue;
-            ModEntry.Log($"ADD {trinket.QualifiedItemId} ({trinket.generationSeed})");
-            proc.Farmer.trinketItems.Add(trinket);
+            while (proc.Farmer.trinketItems.Count < 2)
+                proc.Farmer.trinketItems.Add(null);
+            proc.Farmer.trinketItems.Insert(2, trinket);
         }
         return base.ApplyEffect(proc);
     }
@@ -45,14 +44,12 @@ public sealed class EquipTrinketAbility(TrinketTinkerEffect effect, AbilityData 
     /// <returns></returns>
     protected override void CleanupEffect(Farmer farmer)
     {
-        ModEntry.Log("EquipTrinketAbility:CleanupEffect");
         if (e.GetInventory(farmer) is not Inventory trinketInv)
             return;
         foreach (Item item in trinketInv)
         {
             if (item == null || item is not Trinket trinket)
                 continue;
-            ModEntry.Log($"REMOVE {trinket.QualifiedItemId} ({trinket.generationSeed})");
             farmer.trinketItems.Remove(trinket);
         }
         base.CleanupEffect(farmer);
