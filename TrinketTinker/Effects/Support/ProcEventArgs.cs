@@ -56,6 +56,8 @@ public sealed class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
     {
         if (Farmer == null)
             return false;
+        if (!e.Enabled)
+            return false;
         if (Places.LocationDisableTrinketAbilities(LocationOrCurrent))
             return false;
         if (DamageAmount != null && DamageAmount < data.DamageThreshold)

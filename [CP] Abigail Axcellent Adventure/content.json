@@ -41,6 +41,12 @@
             "DirectionMode": "DRUL",
             "FrameLength": 4,
             "Interval": 175,
+            "Anchors": [
+              {
+                "Mode": "Monster",
+                "Range": 1024
+              }
+            ],
             "SpeechBubbles": {
               "Homf": {
                 "Text": "Homf",
@@ -57,6 +63,9 @@
                 "Text": "Hiya!"
               }
             },
+            "Args": {
+              "Velocity": -1
+            }
           },
           "Abilities": [
             [
@@ -93,8 +102,8 @@
                 "ProcSpeechBubble": "Hiya",
                 "AbilityClass": "Projectile",
                 "Args": {
-                  "Min": 50,
-                  "Max": 100,
+                  "Min": 5,
+                  "Max": 10,
                   "Knockback": 2,
                   "Range": 4096,
                   "Texture": "Maps/springobjects",

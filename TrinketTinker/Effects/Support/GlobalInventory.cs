@@ -148,8 +148,13 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
 
     private bool HighlightFunction(Item item)
     {
-        if (item is Trinket trinket && effect.Trinket == trinket)
-            return false;
+        if (item is Trinket trinket)
+        {
+            if (effect.Trinket == trinket)
+                return false;
+            if (trinket.GetEffect() is TrinketTinkerEffect otherEffect && otherEffect.InventoryId != null)
+                return false;
+        }
         if (data.RequiredTags != null && !Places.CheckContextTagFilter(item, data.RequiredTags))
             return false;
         if (
@@ -252,8 +257,12 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
         Utility.ForEachItem(
             (item) =>
             {
-                if (item is Trinket trinket && trinket.GetEffect() is TrinketTinkerEffect effect)
-                    missingTrinketInvs.Remove(effect.FullInventoryId);
+                if (
+                    item is Trinket trinket
+                    && trinket.GetEffect() is TrinketTinkerEffect effect
+                    && effect.InventoryId != null
+                )
+                    missingTrinketInvs.Remove(effect.FullInventoryId!);
                 return missingTrinketInvs.Any();
             }
         );
@@ -261,8 +270,12 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
         {
             foreach (Trinket trinketItem in farmer.trinketItems)
             {
-                if (trinketItem != null && trinketItem.GetEffect() is TrinketTinkerEffect effect)
-                    missingTrinketInvs.Remove(effect.FullInventoryId);
+                if (
+                    trinketItem != null
+                    && trinketItem.GetEffect() is TrinketTinkerEffect effect
+                    && effect.InventoryId != null
+                )
+                    missingTrinketInvs.Remove(effect.FullInventoryId!);
             }
         }
         team.newLostAndFoundItems.Value = missingTrinketInvs.Any();

@@ -29,6 +29,10 @@
 - GameStateQueryContext from ability proc check now provides the trinket item as inputItem and targetItem, along with
     - `mushymato.TrinketTinker/Data`: AbilityData (TrinketTinker.Models.AbilityData)
     - `mushymato.TrinketTinker/Position`: companion position including offset (Vector2)
+- LerpMotion Velocity argument
+    - Limits velocity to some constant float
+    - When velocity is -1, match velocity to player movement speed
+    - Default: velocity is -2 or lower, regular Lerp
 
 #### Fixed
 

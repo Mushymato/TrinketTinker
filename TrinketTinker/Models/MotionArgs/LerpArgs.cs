@@ -23,6 +23,9 @@ public class LerpArgs : IArgs
     /// <summary>While within the minimum range, randomly move around a little bit.</summary>
     public float Jitter { get; set; } = 0f;
 
+    /// <summary>Max velocity, -1 to match farmer, -2 for unlimited</summary>
+    public float Velocity { get; set; } = -2;
+
     /// <inheritdoc/>
     public bool Validate() => Min < Max;
 }

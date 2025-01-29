@@ -86,10 +86,12 @@ public class TrinketTinkerEffect : TrinketEffect
     private string? inventoryId;
 
     /// <summary>Inventory Id, for use in <see cref="GlobalInventoryHandler"/></summary>
-    public string InventoryId
+    public string? InventoryId
     {
         get
         {
+            if (Data?.Inventory == null)
+                return null;
             if (inventoryId != null)
                 return inventoryId;
             if (Trinket.modData.TryGetValue(ModData_Inventory, out inventoryId))
@@ -100,7 +102,7 @@ public class TrinketTinkerEffect : TrinketEffect
         }
     }
 
-    public string FullInventoryId => $"{ModEntry.ModId}/{Trinket.ItemId}/{InventoryId}";
+    public string? FullInventoryId => InventoryId == null ? null : $"{ModEntry.ModId}/{Trinket.ItemId}/{InventoryId}";
 
     internal bool Enabled { get; private set; } = false;
 
@@ -195,9 +197,17 @@ public class TrinketTinkerEffect : TrinketEffect
         if (Data == null || Game1.gameMode != 3)
             return;
 
-        Enabled = GameStateQuery.CheckConditions(Data.EnableCondition, player: farmer, inputItem: Trinket);
+        Enabled = GameStateQuery.CheckConditions(
+            Data.EnableCondition,
+            player: farmer,
+            inputItem: Trinket,
+            targetItem: Trinket
+        );
         if (!Enabled)
+        {
+            Game1.addHUDMessage(new HUDMessage("not allowed") { messageSubject = Trinket });
             return;
+        }
 
         int variant = 0;
         if (Trinket.modData.TryGetValue(ModData_Variant, out string variantStr))
@@ -232,6 +242,9 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <param name="farmer"></param>
     public override void Unapply(Farmer farmer)
     {
+        if (!Enabled)
+            return;
+
         if (Companion is TrinketTinkerCompanion myTTCmp)
         {
             farmer.RemoveCompanion(myTTCmp);
@@ -253,24 +266,18 @@ public class TrinketTinkerEffect : TrinketEffect
         {
             if (!GameStateQuery.CheckConditions(Data.Inventory.OpenCondition, player: farmer, inputItem: Trinket))
                 return;
-            GlobalInventoryHandler handler = new(this, Data.Inventory, FullInventoryId);
+            GlobalInventoryHandler handler = new(this, Data.Inventory, FullInventoryId!);
             Game1.activeClickableMenu = handler.GetMenu();
         }
     }
 
     public override void OnFootstep(Farmer farmer)
     {
-        if (!Enabled)
-            return;
-
         EventFootstep?.Invoke(this, new(ProcOn.Footstep, farmer));
     }
 
     public override void OnReceiveDamage(Farmer farmer, int damageAmount)
     {
-        if (!Enabled)
-            return;
-
         EventReceiveDamage?.Invoke(this, new(ProcOn.ReceiveDamage, farmer) { DamageAmount = damageAmount });
     }
 
@@ -282,9 +289,6 @@ public class TrinketTinkerEffect : TrinketEffect
         bool isCriticalHit
     )
     {
-        if (!Enabled)
-            return;
-
         EventDamageMonster?.Invoke(
             this,
             new(ProcOn.DamageMonster, farmer)
@@ -314,17 +318,11 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <param name="damageAmount"></param>
     public virtual void OnTrigger(Farmer farmer, string[] args, TriggerActionContext context)
     {
-        if (!Enabled)
-            return;
-
         EventTrigger?.Invoke(this, new(ProcOn.Trigger, farmer) { TriggerArgs = args, TriggerContext = context });
     }
 
     public virtual void OnPlayerWarped(Farmer farmer, GameLocation oldLocation, GameLocation newLocation)
     {
-        if (!Enabled)
-            return;
-
         EventPlayerWarped?.Invoke(this, new(ProcOn.Warped, farmer));
     }
 
@@ -501,7 +499,10 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <returns></returns>
     public Inventory? GetInventory(Farmer farmer)
     {
-        if (farmer.team.globalInventories.TryGetValue(FullInventoryId, out Inventory? trinketInv))
+        if (
+            InventoryId != null
+            && farmer.team.globalInventories.TryGetValue(FullInventoryId, out Inventory? trinketInv)
+        )
             return trinketInv;
         return null;
     }

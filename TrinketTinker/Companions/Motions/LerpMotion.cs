@@ -18,6 +18,12 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
         set => c.Lerp = value;
     }
     private double pauseTimer = 0;
+    private float lerpLength = 0;
+
+    public float DeltaAbsCap(float delta, float cap)
+    {
+        return delta < 0 ? -MathF.Min(-delta, cap) : MathF.Min(delta, cap);
+    }
 
     /// <inheritdoc/>
     public override void UpdateLocal(GameTime time, GameLocation location)
@@ -53,6 +59,7 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
                             Utility.RandomFloat(-args.Jitter, args.Jitter)
                         );
                 Lerp = 0f;
+                lerpLength = (c.endPosition - c.startPosition).Length();
             }
             else if (md.AlwaysMoving && args.Jitter > 0f)
             {
@@ -68,12 +75,30 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
         }
         if (Lerp >= 0f)
         {
-            Lerp += (float)(time.ElapsedGameTime.TotalMilliseconds / args.Rate);
-            Lerp = MathF.Min(1f, Lerp);
-            c.NetPosition.X = Utility.Lerp(c.startPosition.X, c.endPosition.X, Lerp);
-            c.NetPosition.Y = Utility.Lerp(c.startPosition.Y, c.endPosition.Y, Lerp);
+            // velocity is like reverse lerp and therefore I don't need to rename this motion :)
+            if (args.Velocity >= -1)
+            {
+                float ownerSpeed = c.Owner.getMovementSpeed();
+                ownerSpeed =
+                    c.Owner.movementDirections.Count > 1 ? new Vector2(ownerSpeed, ownerSpeed).Length() : ownerSpeed;
+                Vector2 velocity = Utility.getVelocityTowardPoint(
+                    c.startPosition,
+                    c.endPosition,
+                    args.Velocity == -1 ? ownerSpeed : args.Velocity
+                );
+                c.NetPosition.X += velocity.X;
+                c.NetPosition.Y += velocity.Y;
+                Lerp = (new Vector2(c.NetPosition.X, c.NetPosition.Y) - c.startPosition).Length() / lerpLength;
+            }
+            else
+            {
+                Lerp += (float)(time.ElapsedGameTime.TotalMilliseconds / args.Rate);
+                Lerp = MathF.Min(1f, Lerp);
+                c.NetPosition.X = Utility.Lerp(c.startPosition.X, c.endPosition.X, Lerp);
+                c.NetPosition.Y = Utility.Lerp(c.startPosition.Y, c.endPosition.Y, Lerp);
+            }
             UpdateDirection();
-            if (Lerp == 1f)
+            if (Lerp >= 1f)
             {
                 Lerp = -1f;
             }
