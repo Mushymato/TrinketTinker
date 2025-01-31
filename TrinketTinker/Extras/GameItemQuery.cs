@@ -262,16 +262,20 @@ public static class GameItemQuery
     /// <exception cref="NotImplementedException"></exception>
     private static bool ENABLED_TRINKET_COUNT(string[] query, GameStateQueryContext context)
     {
-        if (!ArgUtility.TryGet(query, 1, out var playerKey, out var error, allowBlank: true, "string playerKey"))
+        if (
+            !ArgUtility.TryGet(query, 1, out var playerKey, out var error, allowBlank: true, "string playerKey")
+            || !ArgUtility.TryGetOptional(
+                query,
+                3,
+                out string tId,
+                out error,
+                defaultValue: context.InputItem?.QualifiedItemId ?? context.TargetItem?.QualifiedItemId ?? "",
+                allowBlank: false,
+                name: "string trinketId"
+            )
+        )
         {
             return GameStateQuery.Helpers.ErrorResult(query, error);
-        }
-        if (!ArgUtility.TryGetOptional(query, 3, out string tId, out error, "string trinketId"))
-        {
-            if (context.TargetItem is Trinket inputTrinket)
-                tId = inputTrinket.QualifiedItemId;
-            else
-                return GameStateQuery.Helpers.ErrorResult(query, error);
         }
         int count = 0;
         GameStateQuery.Helpers.WithPlayer(
