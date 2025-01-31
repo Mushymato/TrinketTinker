@@ -4,4 +4,5 @@
     "b-c.trinket-colorizer.description": "Allows you to re-color trinkets, changing their appearance. Costs 15 omni geode per use.",
     "b-c.trinket-colorizer.invalid-count": "Need 15 omni geode.",
     "b-c.trinket-colorizer.no-recolor": "This trinket cannot be re-colored.",
+    "effect.not-allowed": "You are not worthy of {{trinketName}}..."
 }

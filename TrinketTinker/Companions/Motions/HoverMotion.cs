@@ -17,7 +17,7 @@ public sealed class HoverMotion(TrinketTinkerCompanion companion, MotionData dat
     private const float DEFAULT_HEIGHT = 96f;
 
     /// <summary>trig function input</summary>
-    private double theta = 0f;
+    private double theta = Random.Shared.NextDouble();
 
     /// <summary>Timer until perch</summary>
     private double perchingTimer = 0;

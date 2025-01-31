@@ -31,7 +31,7 @@ public static class GameItemQuery
         GameStateQuery.Register(GameStateQuery_IS_TINKER, IS_TINKER);
         GameStateQuery.Register(GameStateQuery_HAS_LEVELS, HAS_LEVELS);
         GameStateQuery.Register(GameStateQuery_HAS_VARIANTS, HAS_VARIANTS);
-        GameStateQuery.Register(GameStateQuery_ENABLED_TRINKET_COUNT, EQUIP_TRINKET_COUNT);
+        GameStateQuery.Register(GameStateQuery_ENABLED_TRINKET_COUNT, ENABLED_TRINKET_COUNT);
     }
 
     /// <summary>
@@ -260,7 +260,7 @@ public static class GameItemQuery
     /// <param name="context"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    private static bool EQUIP_TRINKET_COUNT(string[] query, GameStateQueryContext context)
+    private static bool ENABLED_TRINKET_COUNT(string[] query, GameStateQueryContext context)
     {
         if (!ArgUtility.TryGet(query, 1, out var playerKey, out var error, allowBlank: true, "string playerKey"))
         {
@@ -268,7 +268,7 @@ public static class GameItemQuery
         }
         if (!ArgUtility.TryGetOptional(query, 3, out string tId, out error, "string trinketId"))
         {
-            if (context.InputItem is Trinket inputTrinket)
+            if (context.TargetItem is Trinket inputTrinket)
                 tId = inputTrinket.QualifiedItemId;
             else
                 return GameStateQuery.Helpers.ErrorResult(query, error);
@@ -283,7 +283,6 @@ public static class GameItemQuery
                 {
                     if (trinketItem == null)
                         continue;
-                    // ModEntry.Log($"{trinketItem.QualifiedItemId} == {trinketItem.ItemId}");
                     if (
                         (trinketItem.QualifiedItemId == tId || trinketItem.ItemId == tId)
                         && trinketItem.GetEffect() is TrinketTinkerEffect effect
@@ -294,7 +293,6 @@ public static class GameItemQuery
                 return true;
             }
         );
-        // ModEntry.Log($"{count} {query[2]}");
         return CompareIntegerQ(query, 2, count);
     }
 }

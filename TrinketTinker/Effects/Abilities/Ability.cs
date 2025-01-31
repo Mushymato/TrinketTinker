@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
-using StardewValley.GameData;
 using TrinketTinker.Effects.Support;
 using TrinketTinker.Models;
 using TrinketTinker.Models.Mixin;

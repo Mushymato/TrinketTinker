@@ -12,7 +12,10 @@ public sealed class TinkerInventoryData
 public sealed class TinkerData
 {
     /// <summary>If this is false, does not actually do anything on equip</summary>
-    public string? EnableCondition = null;
+    public string? EnableCondition { get; set; } = null;
+
+    /// <summary>Show this message when the trinket is not allowed</summary>
+    public string? EnableFailMessage { get; set; } = null;
 
     /// <summary>Trinket stat minimum level, this added to the internal level value that is based on size of <see cref="Abilities"/></summary>
     public int MinLevel { get; set; } = 1;

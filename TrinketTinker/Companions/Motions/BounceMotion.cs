@@ -13,7 +13,7 @@ public sealed class BounceMotion(TrinketTinkerCompanion companion, MotionData md
     private const string JUMP = "Jump";
 
     /// <summary>trig function input</summary>
-    private double theta = 0f;
+    private double theta = Random.Shared.NextDouble();
 
     /// <inheritdoc/>
     public override void UpdateGlobal(GameTime time, GameLocation location)

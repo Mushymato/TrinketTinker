@@ -135,10 +135,10 @@ public abstract class Motion<TArgs> : IMotion
     /// <inheritdoc/>
     public void SetSpeechBubble(string? speechBubbleKey)
     {
-        if (speechBubbleTimer > 0)
-            return;
         if (speechBubbleKey == null || !md.SpeechBubbles.TryGetValue(speechBubbleKey, out speechBubble))
             speechBubble = null;
+        else if (speechBubbleTimer > speechBubble.FadeOut * speechBubble.Timer)
+            return;
         if (speechBubble != null)
         {
             speechBubble = speechBubble.PickRand(SpeechRand);
@@ -152,6 +152,7 @@ public abstract class Motion<TArgs> : IMotion
         speechBubbleTimer = 0;
     }
 
+    /// <inheritdoc/>
     public void SetActiveAnchors(IEnumerable<string> abilityTypes)
     {
         activeAnchors.Clear();
@@ -165,6 +166,7 @@ public abstract class Motion<TArgs> : IMotion
         }
     }
 
+    /// <inheritdoc/>
     public void SetCurrAnchorTarget(int val)
     {
         currAnchorTarget = (AnchorTarget)val;

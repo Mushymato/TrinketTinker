@@ -34,13 +34,18 @@ internal sealed class ModEntry : Mod
     private static IMonitor? mon;
     public static string ModId { get; set; } = "";
 
-    public static ModConfig? Config { get; set; } = null;
+    public static ModConfig Config { get; set; } = null!;
+    internal static IModHelper Help { get; set; } = null!;
 
     public override void Entry(IModHelper helper)
     {
         I18n.Init(helper.Translation);
         mon = Monitor;
+        Help = Helper;
         ModId = ModManifest.UniqueID;
+
+        // Config is not player facing atm, just holds whether draw debug mode is on.
+        Config = Helper.ReadConfig<ModConfig>();
 
         // Events for game launch and custom asset
         helper.Events.GameLoop.GameLaunched += OnGameLaunched;
@@ -49,6 +54,7 @@ internal sealed class ModEntry : Mod
         // Events for abilities
         helper.Events.Player.Warped += OnPlayerWarped;
         helper.Events.GameLoop.DayEnding += OnDayEnding;
+        helper.Events.Multiplayer.ModMessageReceived += OnModMessageReceived;
 
         helper.ConsoleCommands.Add(
             "tt_draw_debug",
@@ -83,9 +89,6 @@ internal sealed class ModEntry : Mod
 
         // Add item queries
         GameItemQuery.Register();
-
-        // Config is not player facing atm, just holds whether draw debug mode is on.
-        Config = Helper.ReadConfig<ModConfig>();
     }
 
     private static void OnAssetRequested(object? sender, AssetRequestedEventArgs e)
@@ -121,6 +124,17 @@ internal sealed class ModEntry : Mod
     private void OnDayEnding(object? sender, DayEndingEventArgs e)
     {
         GlobalInventoryHandler.DayEndingCleanup();
+    }
+
+    private void OnModMessageReceived(object? sender, ModMessageReceivedEventArgs e)
+    {
+        if (e.FromModID != ModId)
+        {
+            if (e.FromModID.StartsWith("Spiderbuttons."))
+                LogOnce("There be spooders in here ::::)");
+            return;
+        }
+        ProcTrinket.BroadcastedAction(e);
     }
 
 #if DEBUG
@@ -237,7 +251,6 @@ internal sealed class ModEntry : Mod
     /// <param name="level"></param>
     public static void LogOnce(string msg, LogLevel level = DEFAULT_LOG_LEVEL)
     {
-        level = (level == LogLevel.Trace) ? LogLevel.Debug : level;
         mon!.LogOnce(msg, level);
     }
 }

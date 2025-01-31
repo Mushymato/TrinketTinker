@@ -11,7 +11,7 @@ public class OrbitMotion(TrinketTinkerCompanion companion, MotionData mdata, Var
     : BaseStaticMotion<OrbitArgs>(companion, mdata, vdata)
 {
     /// <summary>trig function input</summary>
-    private double theta = 0f;
+    private double theta = Random.Shared.NextDouble();
 
     /// <summary>
     /// Calculates circular motion using cos for x and sin for y

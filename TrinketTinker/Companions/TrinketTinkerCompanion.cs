@@ -112,8 +112,6 @@ public class TrinketTinkerCompanion : Companion
         set => _currAnchorTarget.Value = (int)value;
     }
 
-    // private readonly NetString _activeAbilityTypes = new();
-
     /// <summary>Argumentless constructor for netcode deserialization.</summary>
     public TrinketTinkerCompanion()
         : base() { }
@@ -186,13 +184,6 @@ public class TrinketTinkerCompanion : Companion
                 Motion?.SetCurrAnchorTarget(newValue);
             }
         };
-        // _activeAbilityTypes.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
-        // {
-        //     if (Motion != null)
-        //     {
-        //         Motion.SetActiveAnchors(newValue.Split(' '));
-        //     }
-        // };
     }
 
     /// <summary>When <see cref="Id"/> is changed through net event, fetch companion data and build all fields.</summary>

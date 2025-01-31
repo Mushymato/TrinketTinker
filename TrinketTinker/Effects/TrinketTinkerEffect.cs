@@ -7,6 +7,7 @@ using StardewValley.Delegates;
 using StardewValley.Inventories;
 using StardewValley.Monsters;
 using StardewValley.Objects.Trinkets;
+using StardewValley.TokenizableStrings;
 using TrinketTinker.Companions;
 using TrinketTinker.Effects.Abilities;
 using TrinketTinker.Effects.Support;
@@ -102,9 +103,14 @@ public class TrinketTinkerEffect : TrinketEffect
         }
     }
 
+    /// <summary>Full ID, including mod id item id and guid</summary>
     public string? FullInventoryId => InventoryId == null ? null : $"{ModEntry.ModId}/{Trinket.ItemId}/{InventoryId}";
 
+    /// <summary>Flag on whether the trinket passed condition</summary>
     internal bool Enabled { get; private set; } = false;
+
+    /// <summary>Flag on whether the trinket passed condition</summary>
+    internal bool HasEquipTrinketAbility => Abilities.Any((ab) => ab is EquipTrinketAbility);
 
     internal event EventHandler<ProcEventArgs>? EventFootstep;
     internal event EventHandler<ProcEventArgs>? EventReceiveDamage;
@@ -145,16 +151,16 @@ public class TrinketTinkerEffect : TrinketEffect
                 levelAbilities = Data.Abilities[GeneralStat];
             }
             int idx = 0;
-            bool gotEquipTrinketAbility = false;
+            bool foundEquipTrinketAbility = false;
             foreach (AbilityData ab in levelAbilities)
             {
                 if (Reflect.TryGetType(ab.AbilityClass, out Type? abilityType, TinkerConst.ABILITY_CLS))
                 {
                     if (abilityType == typeof(EquipTrinketAbility))
                     {
-                        if (gotEquipTrinketAbility)
+                        if (foundEquipTrinketAbility)
                             continue;
-                        gotEquipTrinketAbility = true;
+                        foundEquipTrinketAbility = true;
                     }
                     IAbility? ability = (IAbility?)Activator.CreateInstance(abilityType, this, ab, GeneralStat);
                     if (ability != null && ability.Valid)
@@ -205,7 +211,15 @@ public class TrinketTinkerEffect : TrinketEffect
         );
         if (!Enabled)
         {
-            Game1.addHUDMessage(new HUDMessage("not allowed") { messageSubject = Trinket });
+            Game1.addHUDMessage(
+                new HUDMessage(
+                    TokenParser.ParseText(Data.EnableFailMessage)
+                        ?? I18n.Effect_NotAllowed(trinketName: Trinket.DisplayName)
+                )
+                {
+                    messageSubject = Trinket,
+                }
+            );
             return;
         }
 

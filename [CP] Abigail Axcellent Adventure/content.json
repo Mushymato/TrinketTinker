@@ -70,11 +70,12 @@
           "Abilities": [
             [
               {
-                "AbilityClass": "Action",
+                "AbilityClass": "BroadcastAction",
                 "Proc": "Always",
                 "Args": {
                   "Action": "SetNpcInvisible Abigail 1",
                   "ActionEnd": "SetNpcVisible Abigail",
+                  "PlayerKey": "Host"
                 },
               },
               {

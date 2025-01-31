@@ -1,3 +1,4 @@
+using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Inventories;
 using StardewValley.Menus;
@@ -121,7 +122,7 @@ internal class TinkerInventoryMenu : ItemGrabMenu
     }
 }
 
-/// <summary>Handler for inventory</summary>
+/// <summary>Handler for inventory, does not use mutext (yet) because each trinket has a unique global inventory</summary>
 internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerInventoryData data, string inventoryId)
 {
     /// <summary>Global inventory for this trinket</summary>
@@ -152,8 +153,25 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
         {
             if (effect.Trinket == trinket)
                 return false;
-            if (trinket.GetEffect() is TrinketTinkerEffect otherEffect && otherEffect.InventoryId != null)
-                return false;
+            if (trinket.GetEffect() is TrinketTinkerEffect otherEffect)
+            {
+                if (otherEffect.InventoryId != null)
+                    return false;
+                ModEntry.LogOnce($"effect.HasEquipTrinketAbility: {effect.HasEquipTrinketAbility}");
+                if (
+                    effect.HasEquipTrinketAbility
+                    && (
+                        trinket
+                            .GetTrinketData()
+                            ?.CustomFields?.TryGetValue(
+                                TinkerConst.CustomFields_DirectEquipOnly,
+                                out string? directOnly
+                            ) ?? false
+                    )
+                    && directOnly != null
+                )
+                    return false;
+            }
         }
         if (data.RequiredTags != null && !Places.CheckContextTagFilter(item, data.RequiredTags))
             return false;
@@ -281,7 +299,10 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
         team.newLostAndFoundItems.Value = missingTrinketInvs.Any();
         foreach (string key in missingTrinketInvs)
         {
-            ModEntry.Log($"Destroy inaccessible trinket inventory: {key}");
+            ModEntry.Log(
+                $"Destroy inaccessible trinket inventory: {key}, items will be sent to lost and found",
+                LogLevel.Debug
+            );
             var value = team.globalInventories[key];
             foreach (var item in value)
                 team.returnedDonations.Add(item);
