@@ -15,9 +15,9 @@
           "SheetIndex": 40,
           "DropsNaturally": false,
           "CanBeReforged": true,
-          "CustomFields": {
-            "mushymato.TrinketTinker/DirectEquipOnly": "T"
-          }
+          // "CustomFields": {
+          //   "mushymato.TrinketTinker/DirectEquipOnly": "T"
+          // }
         },
       }
     },

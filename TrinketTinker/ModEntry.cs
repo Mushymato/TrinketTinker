@@ -131,7 +131,7 @@ internal sealed class ModEntry : Mod
         if (e.FromModID != ModId)
         {
             if (e.FromModID.StartsWith("Spiderbuttons."))
-                LogOnce("There be spooders in here ::::)");
+                LogOnce("There be spooders in here ::::)", LogLevel.Debug);
             return;
         }
         ProcTrinket.BroadcastedAction(e);

@@ -28,6 +28,9 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <summary>ModData inventory guid</summary>
     public static readonly string ModData_Inventory = $"{ModEntry.ModId}/Inventory";
 
+    /// <summary>ModData inventory guid</summary>
+    public static readonly string ModData_Enabled = $"{ModEntry.ModId}/Enabled";
+
     /// <summary>Companion data with matching ID</summary>
     protected TinkerData? Data;
     private readonly Lazy<ImmutableList<IAbility>> abilities;
@@ -106,8 +109,23 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <summary>Full ID, including mod id item id and guid</summary>
     public string? FullInventoryId => InventoryId == null ? null : $"{ModEntry.ModId}/{Trinket.ItemId}/{InventoryId}";
 
+    internal bool? enabledLocal = null;
+
     /// <summary>Flag on whether the trinket passed condition</summary>
-    internal bool Enabled { get; private set; } = false;
+    internal bool Enabled
+    {
+        get =>
+            enabledLocal != null
+                ? (enabledLocal ?? false)
+                : Trinket.modData.TryGetValue(ModData_Enabled, out string? enabledStr)
+                    && bool.TryParse(enabledStr, out bool enabled)
+                    && enabled;
+        set
+        {
+            enabledLocal = value;
+            Trinket.modData[ModData_Enabled] = value.ToString();
+        }
+    }
 
     /// <summary>Flag on whether the trinket passed condition</summary>
     internal bool HasEquipTrinketAbility => Abilities.Any((ab) => ab is EquipTrinketAbility);
@@ -211,15 +229,11 @@ public class TrinketTinkerEffect : TrinketEffect
         );
         if (!Enabled)
         {
-            Game1.addHUDMessage(
-                new HUDMessage(
-                    TokenParser.ParseText(Data.EnableFailMessage)
-                        ?? I18n.Effect_NotAllowed(trinketName: Trinket.DisplayName)
-                )
-                {
-                    messageSubject = Trinket,
-                }
-            );
+            string failMessage =
+                Data.EnableFailMessage != null
+                    ? string.Format(TokenParser.ParseText(Data.EnableFailMessage), Trinket.DisplayName)
+                    : I18n.Effect_NotAllowed(trinketName: Trinket.DisplayName);
+            Game1.addHUDMessage(new HUDMessage(failMessage) { messageSubject = Trinket });
             return;
         }
 

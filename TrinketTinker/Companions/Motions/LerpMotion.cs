@@ -122,5 +122,4 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
 /// <param name="companion"></param>
 /// <param name="data"></param>
 public class LerpMotion(TrinketTinkerCompanion companion, MotionData data, VariantData vdata)
-    : BaseLerpMotion<LerpArgs>(companion, data, vdata)
-{ }
+    : BaseLerpMotion<LerpArgs>(companion, data, vdata) { }
