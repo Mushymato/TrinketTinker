@@ -1,6 +1,7 @@
 using System.Collections.Immutable;
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
+using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.Companions;
 using StardewValley.Delegates;
@@ -62,6 +63,17 @@ public class TrinketTinkerEffect : TrinketEffect
 
     /// <summary>Draw layer of owner.</summary>
     public float CompanionOwnerDrawLayer => Companion.Owner.getDrawLayer();
+
+    /// <summary>Companion bounding box.</summary>
+    public Rectangle CompanionBoundingBox
+    {
+        get
+        {
+            if (Companion is TrinketTinkerCompanion cmp)
+                return cmp.BoundingBox;
+            return Rectangle.Empty;
+        }
+    }
 
     /// <summary>Number of ability levels</summary>
     public int MaxLevel => Data?.Abilities.Count ?? 0;
@@ -136,6 +148,7 @@ public class TrinketTinkerEffect : TrinketEffect
     internal event EventHandler<ProcEventArgs>? EventSlayMonster;
     internal event EventHandler<ProcEventArgs>? EventTrigger;
     internal event EventHandler<ProcEventArgs>? EventPlayerWarped;
+    internal event EventHandler<ProcEventArgs>? EventInteract;
 
     /// <summary>Constructor</summary>
     /// <param name="trinket"></param>
@@ -272,6 +285,7 @@ public class TrinketTinkerEffect : TrinketEffect
     {
         if (!Enabled)
             return;
+        Enabled = false;
 
         if (Companion is TrinketTinkerCompanion myTTCmp)
         {
@@ -352,6 +366,13 @@ public class TrinketTinkerEffect : TrinketEffect
     public virtual void OnPlayerWarped(Farmer farmer, GameLocation oldLocation, GameLocation newLocation)
     {
         EventPlayerWarped?.Invoke(this, new(ProcOn.Warped, farmer));
+    }
+
+    public virtual void OnButtonsChanged(Farmer farmer, ButtonsChangedEventArgs e)
+    {
+        Rectangle farmerBounds = farmer.GetBoundingBox();
+        if (Game1.didPlayerJustRightClick() && farmer.GetBoundingBox().Intersects(CompanionBoundingBox))
+            EventInteract?.Invoke(this, new(ProcOn.Interact, farmer));
     }
 
     /// <summary>Update every tick. Not an event because this happens for every ability regardless of <see cref="ProcOn"/>.</summary>

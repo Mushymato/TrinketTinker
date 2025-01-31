@@ -104,6 +104,9 @@ public abstract class Ability<TArgs> : IAbility
                 case ProcOn.Warped:
                     e.EventPlayerWarped += HandleProc;
                     break;
+                case ProcOn.Interact:
+                    e.EventInteract += HandleProc;
+                    break;
                 // remember to add to Deactivate too
             }
         }
@@ -142,6 +145,9 @@ public abstract class Ability<TArgs> : IAbility
                     break;
                 case ProcOn.Warped:
                     e.EventPlayerWarped -= HandleProc;
+                    break;
+                case ProcOn.Interact:
+                    e.EventInteract -= HandleProc;
                     break;
                 // remember to add to Activate too
             }

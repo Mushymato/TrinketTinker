@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StardewValley.BellsAndWhistles;
+using StardewValley.GameData.HomeRenovations;
 using StardewValley.Monsters;
 using StardewValley.TerrainFeatures;
 using StardewValley.TokenizableStrings;
@@ -83,8 +84,10 @@ public abstract class Motion<TArgs> : IMotion
     /// <summary>Speech random</summary>
     public Random SpeechRand { get; set; } = Random.Shared;
 
-    /// <summary>Speech random</summary>
+    /// <summary>Currently valid anchor targets, based on abilities</summary>
     private readonly List<AnchorTargetData> activeAnchors = [];
+
+    public Rectangle BoundingBox { get; private set; } = Rectangle.Empty;
 
     /// <summary>Basic constructor, tries to parse arguments as the generic <see cref="IArgs"/> type.</summary>
     /// <param name="companion"></param>
@@ -528,6 +531,7 @@ public abstract class Motion<TArgs> : IMotion
         };
 
         Vector2 drawPos = c.Position + c.Owner.drawOffset + offset;
+        Vector2 scale = GetTextureScale();
         DrawSnapshot snapshot =
             new(
                 cs.Texture,
@@ -536,12 +540,24 @@ public abstract class Motion<TArgs> : IMotion
                 cs.DrawColor,
                 GetRotation(),
                 cs.Origin,
-                GetTextureScale(),
+                scale,
                 (c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
                 layerDepth,
                 CurrentFrame: cs.currentFrame
             );
         DrawCompanion(b, snapshot);
+        BoundingBox = cs.GetBoundingBox(drawPos, scale);
+        if (ModEntry.Config.DrawDebugMode)
+        {
+            Utility.DrawSquare(b, Game1.GlobalToLocal(Game1.viewport, BoundingBox), 16, Color.Magenta, Color.Cyan);
+            Utility.DrawSquare(
+                b,
+                Game1.GlobalToLocal(Game1.viewport, c.Owner.GetBoundingBox()),
+                16,
+                Color.Magenta,
+                Color.Cyan
+            );
+        }
 
         Vector2 shadowScale = GetShadowScale();
         if (shadowScale.X > 0 || shadowScale.Y > 0)

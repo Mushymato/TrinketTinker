@@ -29,6 +29,9 @@ public enum ProcOn
 
     /// <summary>Proc on when player changes map.</summary>
     Warped,
+
+    /// <summary>Proc on when player interacts.</summary>
+    Interact,
 }
 
 /// <summary>Data for <see cref="Effects.Abilities"/>, defines game effect that a trinket can provide.</summary>

@@ -13,6 +13,9 @@ public interface IMotion
     /// <summary>Random used for speech bubbles</summary>
     Random SpeechRand { get; set; }
 
+    /// <summary>Anim sprite bounding box</summary>
+    Rectangle BoundingBox { get; }
+
     /// <summary>Rebuild the list of active anchors.</summary>
     /// <param name="strings"></param>
     void SetActiveAnchors(IEnumerable<string> strings);

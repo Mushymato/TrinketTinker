@@ -53,6 +53,7 @@ internal sealed class ModEntry : Mod
         helper.Events.Content.AssetsInvalidated += OnAssetInvalidated;
         // Events for abilities
         helper.Events.Player.Warped += OnPlayerWarped;
+        helper.Events.Input.ButtonsChanged += OnButtonsChanged;
         helper.Events.GameLoop.DayEnding += OnDayEnding;
         helper.Events.Multiplayer.ModMessageReceived += OnModMessageReceived;
 
@@ -117,6 +118,17 @@ internal sealed class ModEntry : Mod
             if (trinketItem != null && trinketItem.GetEffect() is TrinketTinkerEffect effect)
             {
                 effect.OnPlayerWarped(e.Player, e.OldLocation, e.NewLocation);
+            }
+        }
+    }
+
+    private void OnButtonsChanged(object? sender, ButtonsChangedEventArgs e)
+    {
+        foreach (Trinket trinketItem in Game1.player.trinketItems)
+        {
+            if (trinketItem != null && trinketItem.GetEffect() is TrinketTinkerEffect effect)
+            {
+                effect.OnButtonsChanged(Game1.player, e);
             }
         }
     }

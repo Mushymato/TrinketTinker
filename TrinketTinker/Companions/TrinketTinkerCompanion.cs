@@ -112,6 +112,8 @@ public class TrinketTinkerCompanion : Companion
         set => _currAnchorTarget.Value = (int)value;
     }
 
+    public Rectangle BoundingBox => Motion?.BoundingBox ?? Rectangle.Empty;
+
     /// <summary>Argumentless constructor for netcode deserialization.</summary>
     public TrinketTinkerCompanion()
         : base() { }

@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
+using StardewValley.GameData.HomeRenovations;
 using TrinketTinker.Models;
 using TrinketTinker.Wheels;
 
@@ -63,6 +64,16 @@ public sealed class TinkerAnimSprite
             frame * vd.Width / Texture.Width * vd.Height,
             vd.Width,
             vd.Height
+        );
+    }
+
+    public Rectangle GetBoundingBox(Vector2 drawPos, Vector2 scale)
+    {
+        return new(
+            (int)(drawPos.X - Origin.X * scale.X),
+            (int)(drawPos.Y - Origin.Y * scale.Y),
+            (int)(vd.Width * scale.X),
+            (int)(vd.Height * scale.Y)
         );
     }
 
