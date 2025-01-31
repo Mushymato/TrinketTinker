@@ -4,7 +4,16 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-### 1.5.0-beta.0c
+### 1.5.0-beta.1
+
+#### Added
+
+- Add new ability BroadcastAction, it's like action but it runs the action on multiplayer, useful with SetNpcInvisible and Host
+- Add new Proc Interact which fires when player right clicks when overlapping with companion enough, as well as debug draw for bounding boxes.
+- EquipTrinket now bans `mushymato.TrinketTinker/IndirectEquip` from entering the inventory in the first place.
+- Lerp now has Velocity, -2: old behaviour, -1: match speed with farmer, 0 does not move except teleport, 1+ caps the velocity of the trinket.
+
+### 1.5.0-beta.0
 
 #### Added
 
@@ -13,7 +22,7 @@
     - `mushymato.TrinketTinker_IS_TINKER [level] [variant]`: check the input item is a trinket with tinker data, then check if the item is of some level and variant. Compare operators can be used, one of `>1`, `<1`, `>=1`, `<=1`, `!=1`.
     - `mushymato.TrinketTinker_HAS_LEVELS`: check the input item is a trinket with tinker data, then check if the input item has any unlocked levels.
     - `mushymato.TrinketTinker_HAS_VARIANTS`: check the input item is a trinket with tinker data, then check if the input item has any unlocked variants.
-    - `mushymato.TrinketTinker_EQUIP_TRINKET_COUNT <playerKey> [count] [trinketId]`: Count number of trinket of particular ID (either the optional trinketId or inputItem) equipped, and compare it to a number.
+    - `mushymato.TrinketTinker_ENABLED_TRINKET_COUNT <playerKey> [count] [trinketId]`: Count number of trinket of particular ID (either the optional trinketId or inputItem) equipped and activated, and compare it to a number.
 - MachineOutputItem CustomData `mushymato.TrinketTinker/Increment`, allows upgrading a trinket's level or variant by X amount
 - Trinket companion/effects can be silenced with `EnableCondition` on `TinkerData`, essentially making them do nothing on equip.
 - Trinket can now have an inventory via `Inventory` on `TinkerData`, "use" the trinket item to open this inventory.
