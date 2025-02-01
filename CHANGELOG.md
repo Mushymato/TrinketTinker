@@ -8,10 +8,14 @@
 
 #### Added
 
-- Add new ability BroadcastAction, it's like action but it runs the action on multiplayer, useful with SetNpcInvisible and Host
-- Add new Proc Interact which fires when player right clicks when overlapping with companion enough, as well as debug draw for bounding boxes.
-- EquipTrinket now bans `mushymato.TrinketTinker/IndirectEquip` from entering the inventory in the first place.
+- New ability BroadcastAction, it's like action but it runs the action on multiplayer, useful with SetNpcInvisible and Host
+- New Proc Interact which fires when player right clicks when overlapping with companion enough, as well as debug draw for bounding boxes.
+- EquipTrinket now bans trinkets with CustomFields `mushymato.TrinketTinker/IndirectEquip` from entering the inventory in the first place.
 - Lerp now has Velocity, -2: old behaviour, -1: match speed with farmer, 0 does not move except teleport, 1+ caps the velocity of the trinket.
+- Speech bubble allowed to interrupt previous speech bubble during fade out time
+- New actions for equipping a hidden trinket, does not require trinketSlot to use (up to modder to gate that trigger action)
+    - `mushymato.TrinketTinker_EquipHiddenTrinket <trinketId> [level] [variant] [daysDuration]`: equip trinket for `daysDuration` days, or -1 by default
+    - `mushymato.TrinketTinker_UnequipHiddenTrinket <trinketId> [level] [variant]`: unequip trinket
 
 ### 1.5.0-beta.0
 

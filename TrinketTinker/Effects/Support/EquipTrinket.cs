@@ -61,10 +61,12 @@ public static class EquipTrinket
     public static bool EquipHiddenTrinket(string[] args, TriggerActionContext context, out string error)
     {
         if (
-            !ArgUtility.TryGet(args, 1, out string trinketId, out error, allowBlank: false, "string trinketId")
+            !ArgUtility.TryGet(args, 1, out string trinketId, out error, allowBlank: false, name: "string trinketId")
+            || !ArgUtility.TryGetOptionalInt(args, 2, out int level, out error, name: "int level")
+            || !ArgUtility.TryGetOptionalInt(args, 3, out int variant, out error, name: "int variant")
             || !ArgUtility.TryGetOptionalInt(
                 args,
-                2,
+                4,
                 out int daysDuration,
                 out error,
                 defaultValue: -1,
@@ -75,11 +77,21 @@ public static class EquipTrinket
             ModEntry.Log(error, LogLevel.Error);
             return false;
         }
+        if (daysDuration < 1)
+            daysDuration = -1;
 
-        if (ItemRegistry.Create(trinketId, allowNull: false) is Trinket trinket && Equip(Game1.player, trinket))
+        if (ItemRegistry.Create(trinketId, allowNull: false) is Trinket trinket)
         {
-            trinket.modData[TinkerConst.ModData_HiddenEquip] = daysDuration.ToString();
-            hiddenTrinketsInv.Value.Add(trinket);
+            if (trinket.GetEffect() is TrinketTinkerEffect effect)
+            {
+                effect.SetLevel(trinket, level);
+                effect.SetVariant(trinket, variant);
+            }
+            if (Equip(Game1.player, trinket))
+            {
+                trinket.modData[TinkerConst.ModData_HiddenEquip] = daysDuration.ToString();
+                hiddenTrinketsInv.Value.Add(trinket);
+            }
         }
         hiddenTrinketsInv.Value.RemoveEmptySlots();
 
@@ -93,7 +105,11 @@ public static class EquipTrinket
             error = "No equipped temporary trinkets.";
             return true;
         }
-        if (!ArgUtility.TryGet(args, 1, out string trinketId, out error, allowBlank: false, "string trinketId"))
+        if (
+            !ArgUtility.TryGet(args, 1, out string trinketId, out error, allowBlank: false, "string trinketId")
+            || !ArgUtility.TryGetOptionalInt(args, 2, out int level, out error, name: "int level")
+            || !ArgUtility.TryGetOptionalInt(args, 3, out int variant, out error, name: "int variant")
+        )
         {
             ModEntry.Log(error, LogLevel.Error);
             return false;
@@ -103,6 +119,11 @@ public static class EquipTrinket
         {
             if (item is Trinket trinket && (trinket.QualifiedItemId == trinketId || trinket.ItemId == trinketId))
             {
+                if (
+                    trinket.GetEffect() is TrinketTinkerEffect effect
+                    && (effect.Level != level || effect.Variant != variant)
+                )
+                    continue;
                 if (Unequip(Game1.player, trinket))
                 {
                     trinket.modData.Remove(TinkerConst.ModData_HiddenEquip);
