@@ -76,6 +76,8 @@ public sealed class TinkerAnimSprite
                 (int)(vd.Width * drawScale.X),
                 (int)(vd.Height * drawScale.Y)
             );
+        if (shadowDrawPos == Vector2.Zero)
+            return textureBox;
         Rectangle shadowBox =
             new(
                 (int)(shadowDrawPos.X - Game1.shadowTexture.Bounds.Center.X * shadowScale.X),

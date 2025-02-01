@@ -21,7 +21,8 @@ public sealed record BroadcastAction
 public static class ProcTrinket
 {
     internal const string BROADCAST_ACTION = "tt-broadcast-action";
-    public static readonly string TriggerActionName = $"{ModEntry.ModId}/ProcTrinket";
+    public static string TriggerActionNameOld => $"{ModEntry.ModId}/ProcTrinket";
+    public static string TriggerActionName => $"{ModEntry.ModId}_ProcTrinket";
 
     /// <summary>Trigger action, proc trinkets that use <see cref="ProcOn.Trigger"/>.</summary>
     public static bool Action(string[] args, TriggerActionContext context, out string error)

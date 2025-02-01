@@ -29,29 +29,9 @@ public sealed class EquipTrinketAbility(TrinketTinkerEffect effect, AbilityData 
             return false;
         foreach (Item item in trinketInv)
         {
-            if (
-                item == null
-                || item is not Trinket trinket
-                || (
-                    (
-                        trinket
-                            .GetTrinketData()
-                            ?.CustomFields?.TryGetValue(
-                                TinkerConst.CustomFields_DirectEquipOnly,
-                                out string? directOnly
-                            ) ?? false
-                    )
-                    && directOnly != null
-                )
-            )
+            if (item == null || item is not Trinket trinket)
                 continue;
-            var trinketItems = proc.Farmer.trinketItems;
-            if (trinketItems.Contains(trinket))
-                continue;
-            while (trinketItems.Count < 2)
-                trinketItems.Add(null);
-            proc.Farmer.trinketItems.Insert(2, trinket);
-            trinket.modData[TinkerConst.ModData_IndirectEquip] = "T";
+            EquipTrinket.Equip(proc.Farmer, trinket);
         }
         return base.ApplyEffect(proc);
     }
@@ -67,8 +47,7 @@ public sealed class EquipTrinketAbility(TrinketTinkerEffect effect, AbilityData 
         {
             if (item == null || item is not Trinket trinket)
                 continue;
-            farmer.trinketItems.Remove(trinket);
-            trinket.modData.Remove(TinkerConst.ModData_IndirectEquip);
+            EquipTrinket.Unequip(farmer, trinket);
         }
         base.CleanupEffect(farmer);
     }

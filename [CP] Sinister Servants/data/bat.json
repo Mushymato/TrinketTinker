@@ -29,7 +29,6 @@
       "Target": "mushymato.TrinketTinker/Tinker",
       "Entries": {
         "{{ModId}}_Bat": {
-          "EnableCondition": "mushymato.TrinketTinker_ENABLED_TRINKET_COUNT All <1 mushymato.TT.AAA_Abigail",
           "Variants": [
             {
               "Texture": "Mods/{{ModId}}/bat_1",

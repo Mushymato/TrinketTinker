@@ -8,7 +8,7 @@ using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Effects.Support;
 
-internal class TinkerInventoryMenu : ItemGrabMenu
+internal sealed class TinkerInventoryMenu : ItemGrabMenu
 {
     public TinkerInventoryMenu(
         int actualCapacity,
@@ -257,7 +257,7 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
             if (value == null)
                 continue;
             value.RemoveEmptySlots();
-            if (key.StartsWith(ModEntry.ModId))
+            if (key.StartsWith($"{ModEntry.ModId}/"))
             {
                 if (value.Count == 0)
                     team.globalInventories.Remove(key);

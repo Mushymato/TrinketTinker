@@ -27,7 +27,7 @@
       "Target": "mushymato.TrinketTinker/Tinker",
       "Entries": {
         "{{ModId}}_Abigail": {
-          // "EnableCondition": "mushymato.TrinketTinker_ENABLED_TRINKET_COUNT All <1",
+          "EnableCondition": "mushymato.TrinketTinker_ENABLED_TRINKET_COUNT All <1",
           "Variants": [
             {
               "Texture": "Characters/Abigail",
@@ -47,6 +47,20 @@
                 "Range": 1024
               }
             ],
+            "AnimClips": {
+              "abbyFlute": {
+                "FrameStart": 16,
+                "FrameLength": 4,
+                "PauseMovement": true,
+                "RandomClips": [
+                  {
+                    "FrameStart": 32,
+                    "FrameLength": 1,
+                    "PauseMovement": true,
+                  }
+                ]
+              }
+            },
             "SpeechBubbles": {
               "Homf": {
                 "Text": "Homf",
@@ -60,7 +74,12 @@
                 ]
               },
               "Hiya": {
-                "Text": "Hiya!"
+                "Text": "Hiya!",
+                "RandomSpeech": [
+                  {
+                    "Text": "Ho!"
+                  }
+                ]
               },
               "What": {
                 "Text": "What do you want?"
@@ -99,17 +118,11 @@
                 },
               },
               {
-                "AbilityClass": "Action",
-                "Proc": "Warped",
-                "Condition": "PLAYER_LOCATION_NAME Current Mine",
-                "Args": {
-                  "Action": "Spiderbuttons.BETAS_DialogueBox Abigail \"Was that an amethyst drop?$h\"",
-                },
-              },
-              {
                 "Proc": "Timer",
                 "ProcTimer": 1000,
                 "ProcSpeechBubble": "Hiya",
+                "ProcSound": "flute",
+                "ProcOneshotAnim": "abbyFlute",
                 "AbilityClass": "Projectile",
                 "Args": {
                   "Min": 5,

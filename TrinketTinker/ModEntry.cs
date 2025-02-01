@@ -37,6 +37,8 @@ internal sealed class ModEntry : Mod
     public static ModConfig Config { get; set; } = null!;
     internal static IModHelper Help { get; set; } = null!;
 
+    internal static bool HasWearMoreRings = false;
+
     public override void Entry(IModHelper helper)
     {
         I18n.Init(helper.Translation);
@@ -54,6 +56,7 @@ internal sealed class ModEntry : Mod
         // Events for abilities
         helper.Events.Player.Warped += OnPlayerWarped;
         helper.Events.Input.ButtonsChanged += OnButtonsChanged;
+        helper.Events.GameLoop.DayStarted += OnDayStarted;
         helper.Events.GameLoop.DayEnding += OnDayEnding;
         helper.Events.Multiplayer.ModMessageReceived += OnModMessageReceived;
 
@@ -85,11 +88,18 @@ internal sealed class ModEntry : Mod
     private void OnGameLaunched(object? sender, GameLaunchedEventArgs e)
     {
         // Add trigger & action
+        TriggerActionManager.RegisterAction(ProcTrinket.TriggerActionNameOld, ProcTrinket.Action);
         TriggerActionManager.RegisterAction(ProcTrinket.TriggerActionName, ProcTrinket.Action);
         TriggerActionManager.RegisterTrigger(RaiseTriggerAbility.TriggerEventName);
-
+        TriggerActionManager.RegisterAction(EquipTrinket.Action_EquipHiddenTrinket, EquipTrinket.EquipHiddenTrinket);
+        TriggerActionManager.RegisterAction(
+            EquipTrinket.Action_UnequipHiddenTrinket,
+            EquipTrinket.UnequipHiddenTrinket
+        );
         // Add item queries
         GameItemQuery.Register();
+
+        HasWearMoreRings = Helper.ModRegistry.IsLoaded("bcmpinc.WearMoreRings");
     }
 
     private static void OnAssetRequested(object? sender, AssetRequestedEventArgs e)
@@ -133,8 +143,14 @@ internal sealed class ModEntry : Mod
         }
     }
 
+    private void OnDayStarted(object? sender, DayStartedEventArgs e)
+    {
+        EquipTrinket.DayStartedEquip();
+    }
+
     private void OnDayEnding(object? sender, DayEndingEventArgs e)
     {
+        EquipTrinket.DayEndingRemove();
         GlobalInventoryHandler.DayEndingCleanup();
     }
 
@@ -235,17 +251,18 @@ internal sealed class ModEntry : Mod
     {
         if (!Context.IsWorldReady)
             return;
-
+        // first pass, equip ability trinkets
         foreach (Trinket trinketItem in Game1.player.trinketItems)
         {
             if (trinketItem == null)
                 continue;
-            Log($"UnequipTrinket: {trinketItem.QualifiedItemId}", LogLevel.Info);
-            Game1.player.team.returnedDonations.Add(trinketItem);
+            if (trinketItem.GetEffect() is TrinketTinkerEffect effect && effect.HasEquipTrinketAbility)
+                Log($"UnequipTrinket: {trinketItem.QualifiedItemId}", LogLevel.Info);
+            if (trinketItem.modData.ContainsKey(TinkerConst.ModData_IndirectEquip))
+                Game1.player.team.returnedDonations.Add(trinketItem);
             Game1.player.team.newLostAndFoundItems.Value = true;
         }
         Game1.player.trinketItems.Clear();
-        Game1.player.companions.Clear();
     }
 
     /// Static helper functions

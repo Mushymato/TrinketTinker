@@ -126,16 +126,14 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <summary>Flag on whether the trinket passed condition</summary>
     internal bool Enabled
     {
-        get =>
-            enabledLocal != null
-                ? (enabledLocal ?? false)
-                : Trinket.modData.TryGetValue(ModData_Enabled, out string? enabledStr)
-                    && bool.TryParse(enabledStr, out bool enabled)
-                    && enabled;
+        get => enabledLocal != null ? (enabledLocal ?? false) : Trinket.modData.ContainsKey(ModData_Enabled);
         set
         {
             enabledLocal = value;
-            Trinket.modData[ModData_Enabled] = value.ToString();
+            if (value)
+                Trinket.modData[ModData_Enabled] = "T";
+            else
+                Trinket.modData.Remove(ModData_Enabled);
         }
     }
 

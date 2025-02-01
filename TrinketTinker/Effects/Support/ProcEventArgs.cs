@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Delegates;
 using StardewValley.Monsters;
-using StardewValley.Objects.Trinkets;
 using TrinketTinker.Models;
 using TrinketTinker.Wheels;
 
