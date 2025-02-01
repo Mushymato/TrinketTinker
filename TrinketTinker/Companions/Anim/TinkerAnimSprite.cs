@@ -67,14 +67,23 @@ public sealed class TinkerAnimSprite
         );
     }
 
-    public Rectangle GetBoundingBox(Vector2 drawPos, Vector2 scale)
+    public Rectangle GetBoundingBox(Vector2 drawPos, Vector2 drawScale, Vector2 shadowDrawPos, Vector2 shadowScale)
     {
-        return new(
-            (int)(drawPos.X - Origin.X * scale.X),
-            (int)(drawPos.Y - Origin.Y * scale.Y),
-            (int)(vd.Width * scale.X),
-            (int)(vd.Height * scale.Y)
-        );
+        Rectangle textureBox =
+            new(
+                (int)(drawPos.X - Origin.X * drawScale.X),
+                (int)(drawPos.Y - Origin.Y * drawScale.Y),
+                (int)(vd.Width * drawScale.X),
+                (int)(vd.Height * drawScale.Y)
+            );
+        Rectangle shadowBox =
+            new(
+                (int)(shadowDrawPos.X - Game1.shadowTexture.Bounds.Center.X * shadowScale.X),
+                (int)(shadowDrawPos.Y - Game1.shadowTexture.Bounds.Center.Y * shadowScale.Y),
+                (int)(Game1.shadowTexture.Width * shadowScale.X),
+                (int)(Game1.shadowTexture.Height * shadowScale.Y)
+            );
+        return Rectangle.Union(textureBox, shadowBox);
     }
 
     private void UpdateSourceRect()

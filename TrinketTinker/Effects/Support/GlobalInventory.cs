@@ -157,7 +157,6 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
             {
                 if (otherEffect.InventoryId != null)
                     return false;
-                ModEntry.LogOnce($"effect.HasEquipTrinketAbility: {effect.HasEquipTrinketAbility}");
                 if (
                     effect.HasEquipTrinketAbility
                     && (
@@ -250,10 +249,6 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
     /// <summary>Ensure empty inventories are deleted, and inaccessable inventories have their contents put into lost and found</summary>
     internal static void DayEndingCleanup()
     {
-        ModEntry.Log(
-            $"Trinket Count {Game1.player.trinketItems.Count}, Companion Count {Game1.player.companions.Count}"
-        );
-
         HashSet<string> missingTrinketInvs = [];
         var team = Game1.player.team;
         foreach (var key in team.globalInventories.Keys)

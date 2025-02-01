@@ -35,8 +35,6 @@ public sealed class ActionAbility(TrinketTinkerEffect effect, AbilityData data, 
         context.CustomFields[TinkerConst.CustomFields_Owner] = farmer;
         context.CustomFields[TinkerConst.CustomFields_Position] = e.CompanionPosition;
 
-        // if (!TriggerActionManager.TryRunAction(args.Action, out string error, out Exception _))
-        //     ModEntry.LogOnce("Couldn't apply action '" + args.Action + "': " + error, LogLevel.Error);
         foreach (CachedAction action in actions)
         {
             if (!TriggerActionManager.TryRunAction(action, context, out string error, out Exception _))

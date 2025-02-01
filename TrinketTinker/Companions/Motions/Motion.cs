@@ -546,27 +546,16 @@ public abstract class Motion<TArgs> : IMotion
                 CurrentFrame: cs.currentFrame
             );
         DrawCompanion(b, snapshot);
-        BoundingBox = cs.GetBoundingBox(drawPos, scale);
-        if (ModEntry.Config.DrawDebugMode)
-        {
-            Utility.DrawSquare(b, Game1.GlobalToLocal(Game1.viewport, BoundingBox), 16, Color.Magenta, Color.Cyan);
-            Utility.DrawSquare(
-                b,
-                Game1.GlobalToLocal(Game1.viewport, c.Owner.GetBoundingBox()),
-                16,
-                Color.Magenta,
-                Color.Cyan
-            );
-        }
 
         Vector2 shadowScale = GetShadowScale();
+        Vector2 shadowDrawPos = Vector2.Zero;
         if (shadowScale.X > 0 || shadowScale.Y > 0)
         {
-            Vector2 shadowOffset = GetShadowOffset(offset);
+            shadowDrawPos = c.Position + c.Owner.drawOffset + GetShadowOffset(offset);
             DrawSnapshot shadowSnapshot =
                 new(
                     Game1.shadowTexture,
-                    c.Position + c.Owner.drawOffset + shadowOffset,
+                    shadowDrawPos,
                     Game1.shadowTexture.Bounds,
                     Color.White,
                     0f,
@@ -576,6 +565,19 @@ public abstract class Motion<TArgs> : IMotion
                     layerDepth - 2E-06f
                 );
             DrawShadow(b, shadowSnapshot);
+        }
+
+        // bounding box
+        BoundingBox = cs.GetBoundingBox(drawPos, scale, shadowDrawPos, shadowScale);
+        if (ModEntry.Config.DrawDebugMode)
+        {
+            Utility.DrawSquare(b, Game1.GlobalToLocal(Game1.viewport, BoundingBox), 0, backgroundColor: Color.Magenta);
+            Utility.DrawSquare(
+                b,
+                Game1.GlobalToLocal(Game1.viewport, c.Owner.GetBoundingBox()),
+                0,
+                backgroundColor: Color.Magenta
+            );
         }
 
         // speech bubble
