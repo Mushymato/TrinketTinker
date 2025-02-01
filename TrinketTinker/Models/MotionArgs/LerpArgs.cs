@@ -26,6 +26,9 @@ public class LerpArgs : IArgs
     /// <summary>Max velocity, -1 to match farmer, -2 for unlimited</summary>
     public float Velocity { get; set; } = -2;
 
+    /// <summary>When the player has multiple companions, avoid moving into the bounding box of another</summary>
+    public bool NoOverlap { get; set; } = true;
+
     /// <inheritdoc/>
     public bool Validate() => Min < Max;
 }

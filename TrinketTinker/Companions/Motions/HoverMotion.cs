@@ -52,7 +52,7 @@ public sealed class HoverMotion(TrinketTinkerCompanion companion, MotionData dat
             }
         }
         base.UpdateLocal(time, location);
-        if (perching && Lerp < 0f)
+        if (perching && c.Position == c.endPosition)
         {
             c.OverrideKey = PERCHING;
         }

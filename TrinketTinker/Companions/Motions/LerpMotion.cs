@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
+using StardewValley.Companions;
+using StardewValley.GameData.HomeRenovations;
 using TrinketTinker.Models;
 using TrinketTinker.Models.MotionArgs;
 
@@ -20,6 +22,20 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
     private double pauseTimer = 0;
     private float lerpLength = 0;
 
+    public bool CheckOverlap()
+    {
+        if (!args.NoOverlap)
+            return false;
+        foreach (Companion cmp in c.Owner.companions)
+        {
+            if (cmp == c)
+                break;
+            if (cmp is TrinketTinkerCompanion ttCmp && ttCmp.BoundingBox.Intersects(c.BoundingBox))
+                return true;
+        }
+        return false;
+    }
+
     /// <inheritdoc/>
     public override void UpdateLocal(GameTime time, GameLocation location)
     {
@@ -29,7 +45,7 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
         if (args.MoveSync && !c.OwnerMoving)
             return;
 
-        if (Lerp < 0f || AnchorChanged)
+        if ((Lerp < 0f || AnchorChanged) && !CheckOverlap())
         {
             pauseTimer += time.ElapsedGameTime.TotalMilliseconds;
             if (pauseTimer < args.Pause)
@@ -70,6 +86,11 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
         }
         if (Lerp >= 0f)
         {
+            if (CheckOverlap())
+            {
+                Lerp = -1f;
+                return;
+            }
             // velocity is like reverse lerp and therefore I don't need to rename this motion :)
             if (args.Velocity >= -1)
             {

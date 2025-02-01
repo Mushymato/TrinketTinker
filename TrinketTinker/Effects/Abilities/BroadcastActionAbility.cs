@@ -16,9 +16,9 @@ public sealed class BroadcastActionAbility(TrinketTinkerEffect effect, AbilityDa
     {
         if (args.PlayerKey == "Current" || args.PlayerKey == "All" || (args.PlayerKey == "Host" && Game1.IsMasterGame))
         {
-            if ((args.Actions?.Any() ?? false) && GameStateQuery.CheckConditions(args.Condition, player: Game1.player))
+            if (Actions.Any() && GameStateQuery.CheckConditions(args.Condition, player: Game1.player))
             {
-                foreach (string actionStr in args.Actions)
+                foreach (string actionStr in Actions)
                 {
                     if (!TriggerActionManager.TryRunAction(actionStr, out string error, out Exception _))
                     {
