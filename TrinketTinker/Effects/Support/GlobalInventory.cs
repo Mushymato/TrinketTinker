@@ -1,5 +1,9 @@
+using System.Reflection;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewValley;
+using StardewValley.BellsAndWhistles;
 using StardewValley.Inventories;
 using StardewValley.Menus;
 using StardewValley.Objects.Trinkets;
@@ -8,8 +12,11 @@ using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Effects.Support;
 
-internal sealed class TinkerInventoryMenu : ItemGrabMenu
+public sealed class TinkerInventoryMenu : ItemGrabMenu
 {
+    const int TEXT_M = 6;
+    const int TITLE_LM = 16;
+
     public TinkerInventoryMenu(
         int actualCapacity,
         IList<Item> inventory,
@@ -53,31 +60,48 @@ internal sealed class TinkerInventoryMenu : ItemGrabMenu
         )
     {
         // remake ItemsToGrabMenu with some specific capacity
-        int num = (actualCapacity >= 70) ? 5 : 3;
-        if (actualCapacity < 9)
+        int rows =
+            (actualCapacity < 9) ? 1
+            : (actualCapacity >= 70) ? 5
+            : 3;
+        int cols = actualCapacity / rows;
+        if (actualCapacity / cols == 12)
         {
-            num = 1;
+            int width = 64 * (actualCapacity / cols);
+            ItemsToGrabMenu = new InventoryMenu(
+                Game1.uiViewport.Width / 2 - width / 2,
+                yPositionOnScreen + ((actualCapacity < 70) ? 64 : (-21)),
+                playerInventory: false,
+                inventory,
+                highlightFunction,
+                actualCapacity,
+                rows
+            );
+            if (rows > 3)
+            {
+                yPositionOnScreen += 42;
+                base.inventory.SetPosition(base.inventory.xPositionOnScreen, base.inventory.yPositionOnScreen + 38 + 4);
+                ItemsToGrabMenu.SetPosition(
+                    ItemsToGrabMenu.xPositionOnScreen - 32 + 8,
+                    ItemsToGrabMenu.yPositionOnScreen
+                );
+                storageSpaceTopBorderOffset = 20;
+                trashCan.bounds.X =
+                    ItemsToGrabMenu.width + ItemsToGrabMenu.xPositionOnScreen + IClickableMenu.borderWidth * 2;
+                okButton.bounds.X =
+                    ItemsToGrabMenu.width + ItemsToGrabMenu.xPositionOnScreen + IClickableMenu.borderWidth * 2;
+            }
         }
-        int num2 = 64 * (actualCapacity / num);
-        ItemsToGrabMenu = new InventoryMenu(
-            Game1.uiViewport.Width / 2 - num2 / 2,
-            yPositionOnScreen + ((actualCapacity < 70) ? 64 : (-21)),
-            playerInventory: false,
-            inventory,
-            highlightFunction,
-            actualCapacity,
-            num
-        );
-        if (num > 3)
+        else
         {
-            yPositionOnScreen += 42;
-            base.inventory.SetPosition(base.inventory.xPositionOnScreen, base.inventory.yPositionOnScreen + 38 + 4);
-            ItemsToGrabMenu.SetPosition(ItemsToGrabMenu.xPositionOnScreen - 32 + 8, ItemsToGrabMenu.yPositionOnScreen);
-            storageSpaceTopBorderOffset = 20;
-            trashCan.bounds.X =
-                ItemsToGrabMenu.width + ItemsToGrabMenu.xPositionOnScreen + IClickableMenu.borderWidth * 2;
-            okButton.bounds.X =
-                ItemsToGrabMenu.width + ItemsToGrabMenu.xPositionOnScreen + IClickableMenu.borderWidth * 2;
+            ItemsToGrabMenu = new InventoryMenu(
+                xPositionOnScreen + 32,
+                yPositionOnScreen,
+                playerInventory: false,
+                inventory,
+                highlightFunction,
+                capacity: 36
+            );
         }
         // neighbour nonsense
         ItemsToGrabMenu.populateClickableComponentList();
@@ -120,6 +144,61 @@ internal sealed class TinkerInventoryMenu : ItemGrabMenu
             }
         }
     }
+
+    /// <summary>Render the UI, draw the trinket item that spawned this menu</summary>
+    /// <param name="b"></param>
+    public override void draw(SpriteBatch b)
+    {
+        // compiler went derp
+        Action<SpriteBatch> drawMethod = base.draw;
+        if (sourceItem != null)
+        {
+            Vector2 nameSize = Game1.dialogueFont.MeasureString(sourceItem.DisplayName);
+            int sourceItemPosX = ItemsToGrabMenu.xPositionOnScreen - borderWidth - spaceToClearSideBorder;
+            int sourceItemPosY =
+                ItemsToGrabMenu.yPositionOnScreen - borderWidth - spaceToClearTopBorder + storageSpaceTopBorderOffset;
+            if (drawBG && !Game1.options.showClearBackgrounds)
+            {
+                b.Draw(
+                    Game1.fadeToBlackRect,
+                    new Rectangle(0, 0, Game1.uiViewport.Width, Game1.uiViewport.Height),
+                    Color.Black * 0.5f
+                );
+            }
+            else
+            {
+                b.Draw(
+                    Game1.fadeToBlackRect,
+                    new Rectangle(
+                        sourceItemPosX - TEXT_M + Game1.tileSize + TITLE_LM,
+                        sourceItemPosY - TEXT_M,
+                        (int)nameSize.X + TEXT_M * 2,
+                        (int)nameSize.Y + TEXT_M * 2
+                    ),
+                    Color.Black * 0.5f
+                );
+            }
+            b.DrawString(
+                Game1.dialogueFont,
+                sourceItem.DisplayName,
+                new(sourceItemPosX + Game1.tileSize + TITLE_LM, sourceItemPosY),
+                Color.White
+            );
+            sourceItem.drawInMenu(
+                b,
+                new(sourceItemPosX - TEXT_M + TITLE_LM, sourceItemPosY - (Game1.tileSize - nameSize.Y) / 2),
+                1f
+            );
+            bool drawBGOrig = drawBG;
+            drawBG = false;
+            drawMethod(b);
+            drawBG = drawBGOrig;
+        }
+        else
+        {
+            drawMethod(b);
+        }
+    }
 }
 
 /// <summary>Handler for inventory, does not use mutext (yet) because each trinket has a unique global inventory</summary>
@@ -143,7 +222,8 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
             canBeExitedWithKey: true,
             playRightClickSound: true,
             allowRightClick: false,
-            showOrganizeButton: false
+            showOrganizeButton: false,
+            sourceItem: effect.Trinket
         );
     }
 
@@ -182,7 +262,7 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
         return true;
     }
 
-    private Item? AddItem(Item item)
+    internal Item? AddItem(Item item)
     {
         item.resetState();
         trinketInv.RemoveEmptySlots();
@@ -302,6 +382,41 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
             foreach (var item in value)
                 team.returnedDonations.Add(item);
             team.globalInventories.Remove(key);
+        }
+    }
+
+    internal bool CanAcceptThisItem(Item item)
+    {
+        if (item == null)
+        {
+            return false;
+        }
+        if (item.IsRecipe)
+        {
+            return true;
+        }
+        switch (item.QualifiedItemId)
+        {
+            case "(O)73":
+            case "(O)930":
+            case "(O)102":
+            case "(O)858":
+            case "(O)GoldCoin":
+                return true;
+            default:
+                trinketInv.RemoveEmptySlots();
+                if (trinketInv.Count < data.Capacity)
+                    return true;
+                for (int i = 0; i < data.Capacity; i++)
+                {
+                    if (
+                        trinketInv[i] is Item stored
+                        && stored.canStackWith(item)
+                        && stored.Stack + item.Stack < stored.maximumStackSize()
+                    )
+                        return true;
+                }
+                return false;
         }
     }
 }

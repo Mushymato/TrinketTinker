@@ -5,6 +5,7 @@ public enum HarvestDestination
     None,
     Debris,
     Player,
+    TinkerInventory,
 }
 
 /// <summary>Args for harvest abilities</summary>

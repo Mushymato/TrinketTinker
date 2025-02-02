@@ -26,8 +26,31 @@ public sealed class ItemDropAbility(TrinketTinkerEffect effect, AbilityData data
         {
             if (res.Item is Item item)
             {
-                Game1.createItemDebris(item, e.CompanionPosition ?? context.Player.position.Value, -1);
-                spawned = true;
+                switch (args.HarvestTo)
+                {
+                    case HarvestDestination.Player:
+                        if (context.Player.addItemToInventoryBool(item))
+                        {
+                            spawned = true;
+                            break;
+                        }
+                        goto case HarvestDestination.Debris;
+                    case HarvestDestination.TinkerInventory:
+                        if (e.InvHandler.Value != null)
+                            if (e.InvHandler.Value.AddItem(item) == null)
+                            {
+                                spawned = true;
+                                break;
+                            }
+                        goto case HarvestDestination.Debris;
+                    case HarvestDestination.Debris:
+                        Game1.createItemDebris(item, e.CompanionPosition ?? context.Player.position.Value, -1);
+                        spawned = true;
+                        break;
+                    case HarvestDestination.None:
+                    default:
+                        break;
+                }
             }
         }
         return spawned;

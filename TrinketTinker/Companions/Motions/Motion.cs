@@ -576,7 +576,7 @@ public abstract class Motion<TArgs> : IMotion
                 b,
                 Game1.GlobalToLocal(Game1.viewport, c.Owner.GetBoundingBox()),
                 0,
-                backgroundColor: Color.Magenta
+                backgroundColor: Color.Cyan
             );
         }
 

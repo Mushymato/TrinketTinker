@@ -15,8 +15,9 @@
 - Lerp now has NoOverlap, makes this companion avoid entering the bounding box of another companion.
 - Speech bubble allowed to interrupt previous speech bubble during fade out time
 - New actions for equipping a hidden trinket, does not require trinketSlot to use (up to modder to gate that trigger action)
-    - `mushymato.TrinketTinker_EquipHiddenTrinket <trinketId> [level] [variant] [daysDuration]`: equip trinket for `daysDuration` days, or -1 by default
+    - `mushymato.TrinketTinker_EquipHiddenTrinket <trinketId> [level] [variant] [daysDuration]`: equip trinket for `daysDuration` days, or -1 by default (unequip only with the following action)
     - `mushymato.TrinketTinker_UnequipHiddenTrinket <trinketId> [level] [variant]`: unequip trinket
+    - level and variant do not support R, unlike mushymato.TrinketTinker_CREATE_TRINKET
 
 ### 1.5.0-beta.0
 

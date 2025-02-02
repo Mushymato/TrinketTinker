@@ -4,8 +4,6 @@ using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
-using StardewValley.Companions;
-using StardewValley.Internal;
 using StardewValley.Objects.Trinkets;
 using StardewValley.Triggers;
 using TrinketTinker.Companions;
@@ -88,9 +86,9 @@ internal sealed class ModEntry : Mod
     private void OnGameLaunched(object? sender, GameLaunchedEventArgs e)
     {
         // Add trigger & action
+        TriggerActionManager.RegisterTrigger(RaiseTriggerAbility.TriggerEventName);
         TriggerActionManager.RegisterAction(ProcTrinket.TriggerActionNameOld, ProcTrinket.Action);
         TriggerActionManager.RegisterAction(ProcTrinket.TriggerActionName, ProcTrinket.Action);
-        TriggerActionManager.RegisterTrigger(RaiseTriggerAbility.TriggerEventName);
         TriggerActionManager.RegisterAction(EquipTrinket.Action_EquipHiddenTrinket, EquipTrinket.EquipHiddenTrinket);
         TriggerActionManager.RegisterAction(
             EquipTrinket.Action_UnequipHiddenTrinket,

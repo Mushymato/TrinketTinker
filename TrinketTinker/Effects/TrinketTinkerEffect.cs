@@ -121,9 +121,13 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <summary>Full ID, including mod id item id and guid</summary>
     public string? FullInventoryId => InventoryId == null ? null : $"{ModEntry.ModId}/{Trinket.ItemId}/{InventoryId}";
 
+    internal Lazy<GlobalInventoryHandler?> InvHandler =>
+        new(() => Data?.Inventory == null ? null : new(this, Data.Inventory, FullInventoryId!));
+
+    /// <summary>Track if this trinket is enabled (for local player)</summary>
     internal bool? enabledLocal = null;
 
-    /// <summary>Flag on whether the trinket passed condition</summary>
+    /// <summary>Track if this trinket is enabled, backed by modData for coop</summary>
     internal bool Enabled
     {
         get => enabledLocal != null ? (enabledLocal ?? false) : Trinket.modData.ContainsKey(ModData_Enabled);
@@ -137,7 +141,7 @@ public class TrinketTinkerEffect : TrinketEffect
         }
     }
 
-    /// <summary>Flag on whether the trinket passed condition</summary>
+    /// <summary>Check if this trinket has an equip ability</summary>
     internal bool HasEquipTrinketAbility => Abilities.Any((ab) => ab is EquipTrinketAbility);
 
     internal event EventHandler<ProcEventArgs>? EventFootstep;
@@ -302,12 +306,15 @@ public class TrinketTinkerEffect : TrinketEffect
 
     public override void OnUse(Farmer farmer)
     {
-        if (Game1.activeClickableMenu == null && Data?.Inventory != null)
+        if (
+            Game1.activeClickableMenu == null
+            && Data?.Inventory != null
+            && InvHandler.Value != null
+            && GameStateQuery.CheckConditions(Data.Inventory.OpenCondition, player: farmer, inputItem: Trinket)
+        )
         {
-            if (!GameStateQuery.CheckConditions(Data.Inventory.OpenCondition, player: farmer, inputItem: Trinket))
-                return;
-            GlobalInventoryHandler handler = new(this, Data.Inventory, FullInventoryId!);
-            Game1.activeClickableMenu = handler.GetMenu();
+            ModEntry.Log($"{Trinket.QualifiedItemId}: OnUse");
+            Game1.activeClickableMenu = InvHandler.Value.GetMenu();
         }
     }
 
@@ -368,9 +375,14 @@ public class TrinketTinkerEffect : TrinketEffect
 
     public virtual void OnButtonsChanged(Farmer farmer, ButtonsChangedEventArgs e)
     {
+        if (Game1.activeClickableMenu != null || farmer.UsingTool && farmer.usingSlingshot)
+            return;
         Rectangle farmerBounds = farmer.GetBoundingBox();
         if (Game1.didPlayerJustRightClick() && farmer.GetBoundingBox().Intersects(CompanionBoundingBox))
+        {
             EventInteract?.Invoke(this, new(ProcOn.Interact, farmer));
+            ModEntry.Log($"{Trinket.QualifiedItemId}: OnButtonsChanged");
+        }
     }
 
     /// <summary>Update every tick. Not an event because this happens for every ability regardless of <see cref="ProcOn"/>.</summary>

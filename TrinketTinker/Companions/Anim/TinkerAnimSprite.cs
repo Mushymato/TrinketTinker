@@ -133,11 +133,6 @@ public sealed class TinkerAnimSprite
             SetCurrentFrame(-1);
             return true;
         }
-        if (numberOfFrames == 1)
-        {
-            SetCurrentFrame(startFrame);
-            return true;
-        }
         return loopMode switch
         {
             LoopMode.PingPong => AnimatePingPong(time, startFrame, numberOfFrames, interval),
