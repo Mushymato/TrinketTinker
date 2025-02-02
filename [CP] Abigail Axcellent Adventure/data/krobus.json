@@ -1,0 +1,137 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "LogName": "Krobus: Trinkets",
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_Krobus": {
+          "Id": "{{ModId}}_Krobus",
+          "DisplayName": "[LocalizedText Strings\\Objects:VoidGhostPendant_Name]",
+          "Description": "[LocalizedText Strings\\Objects:VoidGhostPendant_Description]",
+          "Texture": "Maps/springobjects",
+          "SheetIndex": 808,
+          "DropsNaturally": false,
+          "CanBeReforged": false,
+          // "CustomFields": {
+          //   "mushymato.TrinketTinker/DirectEquipOnly": "T"
+          // }
+        },
+      }
+    },
+    {
+      "LogName": "Krobus: Tinker",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        "{{ModId}}_Krobus": {
+          "EnableCondition": "mushymato.TrinketTinker_ENABLED_TRINKET_COUNT All <1",
+          "Variants": [
+            {
+              "Texture": "Characters/Krobus",
+              "Width": 16,
+              "Height": 24,
+            }
+          ],
+          "Motion": {
+            "MotionClass": "Lerp",
+            "AlwaysMoving": false,
+            "DirectionMode": "DRUL",
+            "FrameLength": 4,
+            "Interval": 175,
+            "Anchors": [
+              {
+                "Mode": "Forage",
+                "Range": 320
+              },
+              {
+                "Mode": "Crop",
+                "Range": 240
+              },
+              {
+                "Mode": "Shakeable",
+                "Range": 320
+              },
+              {
+                "Mode": "Stone",
+                "Range": 320
+              },
+            ],
+            "AnimClips": {
+              "Idle": {
+                "FrameStart": 20,
+                "FrameLength": 4
+              }
+            },
+            "SpeechBubbles": {
+              "Smile": {
+                "Text": ":)"
+              }
+            }
+          },
+          "Abilities": [
+            [
+              {
+                "AbilityClass": "BroadcastAction",
+                "Proc": "Always",
+                "Args": {
+                  "Action": "SetNpcInvisible Krobus 1",
+                  "ActionEnd": "SetNpcVisible Krobus",
+                  "PlayerKey": "Host"
+                },
+              },
+              {
+                "AbilityClass": "Nop",
+                "Proc": "Interact",
+                "ProcTimer": 10000,
+                "ProcSpeechBubble": "Smile",
+              },
+              {
+                "AbilityClass": "HarvestForage",
+                "Description": "{{i18n:Stick.AbilityDescription.3}}",
+                "Proc": "Timer",
+                "ProcTimer": 250,
+                "Args": {
+                  "Range": 0,
+                  "HarvestTo": "TinkerInventory"
+                },
+              },
+              {
+                "AbilityClass": "HarvestCrop",
+                "Proc": "Timer",
+                "ProcTimer": 250,
+                "Args": {
+                  "Range": 0,
+                  "HarvestTo": "TinkerInventory"
+                },
+              },
+              {
+                "AbilityClass": "HarvestShakeable",
+                "Proc": "Timer",
+                "ProcTimer": 250,
+                "Args": {
+                  "Range": 0,
+                  "HarvestTo": "TinkerInventory"
+                },
+              },
+              {
+                "AbilityClass": "HarvestStone",
+                "Proc": "Timer",
+                "ProcTimer": 250,
+                "ProcSpeechBubble": "Homf",
+                "Args": {
+                  "Range": 0,
+                  "HarvestTo": "TinkerInventory"
+                },
+              },
+            ]
+          ],
+          "Inventory": {
+            "Capacity": 36
+          }
+        },
+      }
+    }
+  ]
+}

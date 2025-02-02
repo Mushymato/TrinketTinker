@@ -1,0 +1,145 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "LogName": "Abigail: Trinkets",
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_Abigail": {
+          "Id": "{{ModId}}_Abigail",
+          "DisplayName": "[LocalizedText Strings\\Weapons:AbbysPlanchette_Name]",
+          "Description": "[LocalizedText Strings\\Weapons:AbbysPlanchette_Description]",
+          "Texture": "TileSheets/weapons",
+          "SheetIndex": 40,
+          "DropsNaturally": false,
+          "CanBeReforged": false,
+          // "CustomFields": {
+          //   "mushymato.TrinketTinker/DirectEquipOnly": "T"
+          // }
+        },
+      }
+    },
+    {
+      "LogName": "Abigail: Tinker",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        "{{ModId}}_Abigail": {
+          "EnableCondition": "mushymato.TrinketTinker_ENABLED_TRINKET_COUNT All <1",
+          "Variants": [
+            {
+              "Texture": "Characters/Abigail",
+              "Width": 16,
+              "Height": 32,
+            }
+          ],
+          "Motion": {
+            "MotionClass": "Lerp",
+            "AlwaysMoving": false,
+            "DirectionMode": "DRUL",
+            "FrameLength": 4,
+            "Interval": 175,
+            "Anchors": [
+              {
+                "Mode": "Monster",
+                "Range": 1024
+              }
+            ],
+            "AnimClips": {
+              "abbyFlute": {
+                "FrameStart": 16,
+                "FrameLength": 4,
+                "PauseMovement": true,
+                "RandomClips": [
+                  {
+                    "FrameStart": 32,
+                    "FrameLength": 1,
+                    "Interval": 700,
+                    "PauseMovement": true,
+                  }
+                ]
+              }
+            },
+            "SpeechBubbles": {
+              "Homf": {
+                "Text": "Homf",
+                "RandomSpeech": [
+                  {
+                    "Text": "Munch"
+                  },
+                  {
+                    "Text": "Chomp"
+                  }
+                ]
+              },
+              "Hiya": {
+                "Text": "Hiya!",
+                "RandomSpeech": [
+                  {
+                    "Text": "Ho!"
+                  }
+                ]
+              },
+              "What": {
+                "Text": "What do you want?"
+              }
+            },
+            "Args": {
+              "Velocity": -1
+            }
+          },
+          "Abilities": [
+            [
+              {
+                "AbilityClass": "BroadcastAction",
+                "Proc": "Always",
+                "Args": {
+                  "Action": "SetNpcInvisible Abigail 1",
+                  "ActionEnd": "SetNpcVisible Abigail",
+                  "PlayerKey": "Host"
+                },
+              },
+              {
+                "AbilityClass": "Nop",
+                "Proc": "Interact",
+                "ProcTimer": 10000,
+                "ProcSpeechBubble": "What",
+              },
+              {
+                "AbilityClass": "HarvestStone",
+                "Proc": "Timer",
+                "ProcTimer": 2000,
+                "ProcSpeechBubble": "Homf",
+                "Args": {
+                  "Range": 1,
+                  "HarvestTo": "None"
+                },
+              },
+              {
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "ProcSpeechBubble": "Hiya",
+                "ProcSound": "flute",
+                "ProcOneshotAnim": "abbyFlute",
+                "AbilityClass": "Projectile",
+                "Args": {
+                  "Min": 5,
+                  "Max": 10,
+                  "Knockback": 2,
+                  "Range": 4096,
+                  "Texture": "Maps/springobjects",
+                  "SpriteIndex": 788,
+                  "Acceleration": 2,
+                  "MinVelocity": 2,
+                  "MaxVelocity": 24,
+                  "Homing": true,
+                }
+              }
+            ]
+          ]
+        },
+      }
+    }
+  ]
+}
