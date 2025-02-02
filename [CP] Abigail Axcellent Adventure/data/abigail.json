@@ -59,6 +59,16 @@
                     "PauseMovement": true,
                   }
                 ]
+              },
+              "Idle": {
+                "FrameStart": 24,
+                "FrameLength": 4,
+                "RandomClips": [
+                  {
+                    "FrameStart": 28,
+                    "FrameLength": 2,
+                  }
+                ]
               }
             },
             "SpeechBubbles": {

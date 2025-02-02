@@ -52,7 +52,7 @@ public class DamageArgs : IArgs
     public int ExplodeRadius { get; set; } = 0;
 
     /// <summary>List of monster types to avoid targeting.</summary>
-    public IReadOnlyList<string>? Filters = null;
+    public List<string>? Filters = null;
 
     /// <inheritdoc/>
     public bool Validate()

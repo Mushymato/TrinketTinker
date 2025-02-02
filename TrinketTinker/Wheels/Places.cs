@@ -105,7 +105,7 @@ internal static class Places
     /// <param name="obj"></param>
     /// <param name="filters"></param>
     /// <returns></returns>
-    public static bool CheckContextTagFilter(Item item, IReadOnlyList<string> filters)
+    public static bool CheckContextTagFilter(Item item, IList<string> filters)
     {
         foreach (string tagLst in filters)
         {
@@ -119,7 +119,7 @@ internal static class Places
     /// <param name="obj"></param>
     /// <param name="filters"></param>
     /// <returns></returns>
-    public static bool CheckCropFilter(Crop crop, IReadOnlyList<string> filters)
+    public static bool CheckCropFilter(Crop crop, IList<string> filters)
     {
         if (ItemRegistry.Create(crop.indexOfHarvest.Value, allowNull: true) is Item item)
         {

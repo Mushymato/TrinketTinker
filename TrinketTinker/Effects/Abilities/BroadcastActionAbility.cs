@@ -45,13 +45,13 @@ public sealed class BroadcastActionAbility(TrinketTinkerEffect effect, AbilityDa
 
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
-        BroadcastByPlayerKey(proc.Farmer, args.Actions);
+        BroadcastByPlayerKey(proc.Farmer, args.AllActions);
         return base.ApplyEffect(proc);
     }
 
     protected override void CleanupEffect(Farmer farmer)
     {
-        BroadcastByPlayerKey(farmer, args.ActionsEnd);
+        BroadcastByPlayerKey(farmer, args.AllActionsEnd);
         base.CleanupEffect(farmer);
     }
 }

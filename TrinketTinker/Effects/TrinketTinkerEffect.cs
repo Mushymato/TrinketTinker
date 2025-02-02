@@ -313,7 +313,6 @@ public class TrinketTinkerEffect : TrinketEffect
             && GameStateQuery.CheckConditions(Data.Inventory.OpenCondition, player: farmer, inputItem: Trinket)
         )
         {
-            ModEntry.Log($"{Trinket.QualifiedItemId}: OnUse");
             Game1.activeClickableMenu = InvHandler.Value.GetMenu();
         }
     }
@@ -381,7 +380,6 @@ public class TrinketTinkerEffect : TrinketEffect
         if (Game1.didPlayerJustRightClick() && farmer.GetBoundingBox().Intersects(CompanionBoundingBox))
         {
             EventInteract?.Invoke(this, new(ProcOn.Interact, farmer));
-            ModEntry.Log($"{Trinket.QualifiedItemId}: OnButtonsChanged");
         }
     }
 
@@ -424,7 +422,7 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <param name="count"></param>
     /// <param name="trinket"></param>
     /// <returns></returns>
-    private static int GetMaxUnlockedCount(IReadOnlyList<string?> conditions, int count, Trinket trinket)
+    private static int GetMaxUnlockedCount(IList<string?> conditions, int count, Trinket trinket)
     {
         if (conditions.Count == count - 1)
             return count;

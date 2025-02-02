@@ -91,12 +91,12 @@ public class AnchorTargetData
     /// <item><see cref="AnchorTarget.Monster"/></item>
     /// </list>
     /// </summary>
-    public IReadOnlyList<string>? Filters { get; set; } = null;
+    public List<string>? Filters { get; set; } = null;
 
-    private IReadOnlyList<string>? requiredAbilities = null;
+    private List<string>? requiredAbilities = null;
 
     /// <summary>Enable this anchor only if the companion has matching ability type.</summary>
-    public IReadOnlyList<string>? RequiredAbilities
+    public List<string>? RequiredAbilities
     {
         get
         {
@@ -253,7 +253,7 @@ public sealed class MotionData : IHaveArgs
     /// Prefer <see cref="AnchorTargetData"/> that comes earlier in the list.
     /// Defaults to <see cref="AnchorTarget.Owner"/>.
     /// </summary>
-    public IReadOnlyList<AnchorTargetData> Anchors { get; set; } = [];
+    public List<AnchorTargetData> Anchors { get; set; } = [];
 
     /// <summary>If true, continue the moving animation when not owner is not moving.</summary>
     public bool AlwaysMoving { get; set; } = false;

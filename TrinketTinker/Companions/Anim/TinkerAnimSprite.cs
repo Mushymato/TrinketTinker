@@ -1,16 +1,22 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
-using StardewValley.GameData.HomeRenovations;
 using TrinketTinker.Models;
 using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Companions.Anim;
 
+public enum TinkerAnimState
+{
+    None,
+    Start,
+    Return,
+    InProgress,
+}
+
 /// <summary>
 /// Simplified animated sprite controller.
 /// Not a net object and must be built independently in each game instance.
-/// Always loops.
 /// </summary>
 public sealed class TinkerAnimSprite
 {
@@ -88,6 +94,7 @@ public sealed class TinkerAnimSprite
         return Rectangle.Union(textureBox, shadowBox);
     }
 
+    /// <summary>Move source rect to current frame</summary>
     private void UpdateSourceRect()
     {
         SourceRect = GetSourceRect(currentFrame);
@@ -112,7 +119,7 @@ public sealed class TinkerAnimSprite
     /// <param name="time">current game time</param>
     /// <param name="clip">animation clip object</param>
     /// <param name="interval">default miliseconds between frames, if the clip did not set one</param>
-    internal bool AnimateClip(GameTime time, AnimClipData clip, double interval)
+    internal TinkerAnimState AnimateClip(GameTime time, AnimClipData clip, double interval)
     {
         return Animate(clip.LoopMode, time, clip.FrameStart, clip.FrameLength, clip.Interval ?? interval);
     }
@@ -126,18 +133,24 @@ public sealed class TinkerAnimSprite
     /// <param name="numberOfFrames">length of animation</param>
     /// <param name="interval">miliseconds between frames</param>
     /// <returns>True if animation reached last frame</returns>
-    internal bool Animate(LoopMode loopMode, GameTime time, int startFrame, int numberOfFrames, double interval)
+    internal TinkerAnimState Animate(
+        LoopMode loopMode,
+        GameTime time,
+        int startFrame,
+        int numberOfFrames,
+        double interval
+    )
     {
         if (numberOfFrames == 0)
         {
             SetCurrentFrame(-1);
-            return true;
+            return TinkerAnimState.Start;
         }
         return loopMode switch
         {
             LoopMode.PingPong => AnimatePingPong(time, startFrame, numberOfFrames, interval),
             LoopMode.Standard => AnimateStandard(time, startFrame, numberOfFrames, interval),
-            _ => false,
+            _ => throw new NotImplementedException(),
         };
     }
 
@@ -150,13 +163,10 @@ public sealed class TinkerAnimSprite
     /// <param name="numberOfFrames">length of animation</param>
     /// <param name="interval">miliseconds between frames</param>
     /// <returns>True if animation reached last frame</returns>
-    internal bool AnimateStandard(GameTime gameTime, int startFrame, int numberOfFrames, double interval)
+    internal TinkerAnimState AnimateStandard(GameTime gameTime, int startFrame, int numberOfFrames, double interval)
     {
-        isReverse = false;
         if (currentFrame >= startFrame + numberOfFrames || currentFrame < startFrame)
-        {
             currentFrame = startFrame + currentFrame % numberOfFrames;
-        }
         timer += gameTime.ElapsedGameTime.TotalMilliseconds;
         if (timer > interval)
         {
@@ -166,11 +176,11 @@ public sealed class TinkerAnimSprite
             {
                 currentFrame = startFrame;
                 UpdateSourceRect();
-                return true;
+                return TinkerAnimState.Start;
             }
         }
         UpdateSourceRect();
-        return false;
+        return TinkerAnimState.InProgress;
     }
 
     /// <summary>
@@ -182,7 +192,7 @@ public sealed class TinkerAnimSprite
     /// <param name="numberOfFrames">length of animation</param>
     /// <param name="interval">miliseconds between frames</param>
     /// <returns>True if animation reached last frame</returns>
-    public bool AnimatePingPong(GameTime gameTime, int startFrame, int numberOfFrames, double interval)
+    public TinkerAnimState AnimatePingPong(GameTime gameTime, int startFrame, int numberOfFrames, double interval)
     {
         int lastFrame;
         int step;
@@ -208,13 +218,12 @@ public sealed class TinkerAnimSprite
             timer = 0f;
             if (currentFrame == lastFrame)
             {
+                UpdateSourceRect();
                 isReverse = !isReverse;
-                // when frame reach lastFrame and isReverse had been true, 1 cycle is completed
-                // invert isReverse again to obtain true (and false in the case where only half of the cycle is done)
-                return !isReverse;
+                return isReverse ? TinkerAnimState.Return : TinkerAnimState.Start;
             }
         }
         UpdateSourceRect();
-        return false;
+        return TinkerAnimState.InProgress;
     }
 }

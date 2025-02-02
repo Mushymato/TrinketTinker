@@ -15,5 +15,5 @@ public class HarvestArgs : TileArgs
     public HarvestDestination HarvestTo = HarvestDestination.Player;
 
     /// <summary>Context tags to exclude from harvest</summary>
-    public IReadOnlyList<string>? Filters = null;
+    public List<string>? Filters = null;
 }

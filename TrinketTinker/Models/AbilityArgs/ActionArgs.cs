@@ -6,46 +6,24 @@ namespace TrinketTinker.Models.AbilityArgs;
 public class ActionArgs : IArgs
 {
     /// <summary>String action for TriggerAction</summary>
-    public string? Action
-    {
-        get => Actions.FirstOrDefault();
-        set
-        {
-            if (value != null)
-            {
-                if (Actions.Any())
-                    Actions[0] = value;
-                else
-                    Actions.Add(value);
-            }
-        }
-    }
+    public string? Action { private get; set; } = null;
 
     /// <summary>List of actions for TriggerAction</summary>
-    public List<string> Actions { get; set; } = [];
+    public List<string> Actions { private get; set; } = [];
+
+    internal IEnumerable<string> AllActions => Action != null ? [Action, .. Actions] : Actions;
 
     /// <summary>String action for TriggerAction, runs at the end</summary>
-    public string? ActionEnd
-    {
-        get => ActionsEnd.FirstOrDefault();
-        set
-        {
-            if (value != null)
-            {
-                if (ActionsEnd.Any())
-                    ActionsEnd[0] = value;
-                else
-                    ActionsEnd.Add(value);
-            }
-        }
-    }
+    public string? ActionEnd { private get; set; } = null;
 
     /// <summary>List of actions for TriggerAction, fires at the end</summary>
-    public List<string> ActionsEnd { get; set; } = [];
+    public List<string> ActionsEnd { private get; set; } = [];
+
+    internal IEnumerable<string> AllActionsEnd => ActionEnd != null ? [ActionEnd, .. ActionsEnd] : ActionsEnd;
 
     /// <inheritdoc/>
     public bool Validate()
     {
-        return Actions.Any();
+        return AllActions.Any();
     }
 }

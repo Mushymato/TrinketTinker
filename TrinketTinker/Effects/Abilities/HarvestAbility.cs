@@ -61,7 +61,7 @@ public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData
     /// <param name="obj"></param>
     /// <param name="filters"></param>
     /// <returns></returns>
-    public static bool IsForage(SObject obj, IReadOnlyList<string>? filters)
+    public static bool IsForage(SObject obj, IList<string>? filters)
     {
         return obj.isForage() && (filters == null || Places.CheckContextTagFilter(obj, filters));
     }
@@ -231,7 +231,7 @@ public sealed class HarvestCropAbility(TrinketTinkerEffect effect, AbilityData d
     /// <param name="feature"></param>
     /// <param name="filters"></param>
     /// <returns></returns>
-    public static bool CheckCrop(TerrainFeature feature, IReadOnlyList<string>? filters)
+    public static bool CheckCrop(TerrainFeature feature, IList<string>? filters)
     {
         return feature is HoeDirt dirt
             && dirt.crop != null

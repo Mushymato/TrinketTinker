@@ -328,11 +328,11 @@ public abstract class Motion<TArgs> : IMotion
     /// 1: clip is animating
     /// 2: clip reached last frame
     /// </returns>
-    private int AnimateClip(GameTime time, string? key, out AnimClipData? clip)
+    private TinkerAnimState AnimateClip(GameTime time, string? key, out AnimClipData? clip)
     {
         clip = null;
         if (key == null)
-            return 0;
+            return TinkerAnimState.None;
         int direction = c.direction.Value;
         if (key == HoverMotion.PERCHING)
             direction = StaticMotion.GetDirectionFromOwner(md, c.Owner.FacingDirection);
@@ -340,7 +340,7 @@ public abstract class Motion<TArgs> : IMotion
         {
             if (key != null)
                 currentClipKey = null;
-            return 0;
+            return TinkerAnimState.None;
         }
         if (currentClipKey != key)
         {
@@ -356,12 +356,10 @@ public abstract class Motion<TArgs> : IMotion
             currentClipKey = null;
             return 0;
         }
-        if (cs.AnimateClip(time, clip, md.Interval))
-        {
+        var animState = cs.AnimateClip(time, clip, md.Interval);
+        if (animState == TinkerAnimState.Start)
             currentClipKey = null;
-            return 2;
-        }
-        return 1;
+        return animState;
     }
 
     /// <summary>Helper, animate a particular clip, discard selected clip</summary>
@@ -372,7 +370,7 @@ public abstract class Motion<TArgs> : IMotion
     /// 1: clip is animating
     /// 2: clip reached last frame
     /// </returns>
-    private int AnimateClip(GameTime time, string? key)
+    private TinkerAnimState AnimateClip(GameTime time, string? key)
     {
         return AnimateClip(time, key, out _);
     }
@@ -393,9 +391,12 @@ public abstract class Motion<TArgs> : IMotion
         // Try each kind of anim in order, stop whenever one kind succeeds
 
         // Oneshot Clip: play once and unset.
-        if (AnimateClip(time, oneshotClipKey, out AnimClipData? clip) is int res && res != 0)
+        if (
+            AnimateClip(time, oneshotClipKey, out AnimClipData? clip) is TinkerAnimState res
+            && res != TinkerAnimState.None
+        )
         {
-            if (res == 2)
+            if (res == TinkerAnimState.Start)
             {
                 PauseMovementByAnimClip = false;
                 c.OneshotKey = null;

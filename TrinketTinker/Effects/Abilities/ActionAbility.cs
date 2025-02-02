@@ -51,7 +51,7 @@ public sealed class ActionAbility(TrinketTinkerEffect effect, AbilityData data, 
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
         return ApplyEffectOnActions(
-                args.Actions.Select(TriggerActionManager.ParseAction),
+                args.AllActions.Select(TriggerActionManager.ParseAction),
                 proc.Farmer,
                 proc.TriggerContext
             ) && base.ApplyEffect(proc);
@@ -59,7 +59,7 @@ public sealed class ActionAbility(TrinketTinkerEffect effect, AbilityData data, 
 
     protected override void CleanupEffect(Farmer farmer)
     {
-        ApplyEffectOnActions(args.ActionsEnd.Select(TriggerActionManager.ParseAction), farmer);
+        ApplyEffectOnActions(args.AllActionsEnd.Select(TriggerActionManager.ParseAction), farmer);
         base.CleanupEffect(farmer);
     }
 }

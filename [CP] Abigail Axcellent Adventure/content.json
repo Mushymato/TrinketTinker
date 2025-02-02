@@ -1,6 +1,12 @@
 {
   "$schema": "https://smapi.io/schemas/content-patcher.json",
   "Format": "2.5.1",
+  "ConfigSchema": {
+    "KrobusEatsRocks": {
+      "AllowValues": "true, false",
+      "Default": "true"
+    }
+  },
   "Changes": [
     {
       "Action": "Include",

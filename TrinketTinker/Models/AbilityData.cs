@@ -1,3 +1,5 @@
+using TrinketTinker.Models.Mixin;
+
 namespace TrinketTinker.Models;
 
 /// <summary>Defines how an ability can proc (activate).</summary>
@@ -35,8 +37,15 @@ public enum ProcOn
 }
 
 /// <summary>Data for <see cref="Effects.Abilities"/>, defines game effect that a trinket can provide.</summary>
-public sealed class AbilityData : Mixin.IHaveArgs
+public sealed class AbilityData : IHaveArgs
 {
+    private string? id = null;
+    public string Id
+    {
+        get => id ?? AbilityClass;
+        set => id = value;
+    }
+
     /// <summary>Type name of the ability, can use short form like "Buff" for buff ability. Default "Nop" for <see cref="Effects.Abilities.NopAbility"/></summary>
     public string AbilityClass { get; set; } = "Nop";
 

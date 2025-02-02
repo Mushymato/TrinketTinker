@@ -67,6 +67,9 @@
             "SpeechBubbles": {
               "Smile": {
                 "Text": ":)"
+              },
+              "Sadness": {
+                "Text": ":("
               }
             }
           },
@@ -94,7 +97,7 @@
                 "ProcTimer": 250,
                 "Args": {
                   "Range": 0,
-                  "HarvestTo": "TinkerInventory"
+                  "HarvestTo": "None"
                 },
               },
               {
@@ -111,18 +114,8 @@
                 "Proc": "Timer",
                 "ProcTimer": 250,
                 "Args": {
-                  "Range": 0,
-                  "HarvestTo": "TinkerInventory"
-                },
-              },
-              {
-                "AbilityClass": "HarvestStone",
-                "Proc": "Timer",
-                "ProcTimer": 250,
-                "ProcSpeechBubble": "Homf",
-                "Args": {
-                  "Range": 0,
-                  "HarvestTo": "TinkerInventory"
+                  "Range": 9,
+                  "HarvestTo": "None"
                 },
               },
             ]
@@ -131,7 +124,70 @@
             "Capacity": 36
           }
         },
+      },
+    },
+    {
+      "LogName": "Krobus: HarvestStone",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "TargetField": [
+        "{{ModId}}_Krobus",
+        "Abilities",
+        "#0"
+      ],
+      "Entries": {
+        "HarvestStone": {
+          "AbilityClass": "HarvestStone",
+          "Proc": "Timer",
+          "ProcTimer": 250,
+          "Args": {
+            "Range": 0,
+            "HarvestTo": "TinkerInventory"
+          },
+        },
+      },
+      "When": {
+        "KrobusEatsRocks": true
+      }
+    },
+    {
+      "LogName": "Krobus: HarvestCrop",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "TargetField": [
+        "{{ModId}}_Krobus",
+        "Abilities",
+        "#0",
+        "#4",
+      ],
+      "Entries": {
+        "Args": {
+          "Range": 0,
+          "HarvestTo": "TinkerInventory"
+        },
+      },
+      "When": {
+        "KrobusEatsRocks": true
       }
     }
+    // this is illegal, cannot target all the way into Args because of [REDACTED]
+    // {
+    //   "LogName": "Krobus: HarvestStone",
+    //   "Action": "EditData",
+    //   "Target": "mushymato.TrinketTinker/Tinker",
+    //   "TargetField": [
+    //     "{{ModId}}_Krobus",
+    //     "Abilities",
+    //     "#0",
+    //     "#4",
+    //     "Args"
+    //   ],
+    //   "Entries": {
+    //     "HarvestTo": "TinkerInventory",
+    //   },
+    //   "When": {
+    //     "KrobusEatsRocks": true
+    //   }
+    // }
   ]
 }
