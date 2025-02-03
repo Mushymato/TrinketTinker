@@ -165,9 +165,8 @@ public abstract class Ability<TArgs> : IAbility
     {
         if (Active && Allowed && proc.Check(d, e) && ApplyEffect(proc))
         {
-            if (d.ProcSound != null)
-                Game1.playSound(d.ProcSound);
-            if (d.ProcOneshotAnim != null)
+            d.ProcSound?.PlaySound(Name);
+            if (!string.IsNullOrEmpty(d.ProcOneshotAnim))
                 e.SetOneshotClip(d.ProcOneshotAnim);
             Visuals.BroadcastTASList(
                 d.ProcTAS,
@@ -175,7 +174,7 @@ public abstract class Ability<TArgs> : IAbility
                 e.CompanionOwnerDrawLayer,
                 proc.LocationOrCurrent
             );
-            if (d.ProcSpeechBubble != null)
+            if (!string.IsNullOrEmpty(d.ProcSpeechBubble))
                 e.SetSpeechBubble(d.ProcSpeechBubble);
 
             if (d.ProcSyncDelay > 0)

@@ -351,13 +351,9 @@ public abstract class Motion<TArgs> : IMotion
         {
             clip = clip.Selected;
         }
-        if (clip.Nop)
-        {
-            currentClipKey = null;
-            return 0;
-        }
         var animState = cs.AnimateClip(time, clip, md.Interval);
-        if (animState == TinkerAnimState.Start)
+        // reset currentClipKey, allow the clip to be rerolled next time it is chosen
+        if (animState == TinkerAnimState.Complete)
             currentClipKey = null;
         return animState;
     }
@@ -388,7 +384,7 @@ public abstract class Motion<TArgs> : IMotion
             }
         }
 
-        // Try each kind of anim in order, stop whenever one kind succeeds
+        // Try each kind of anim in order, stop whenever one kind becomes in progress
 
         // Oneshot Clip: play once and unset.
         if (
@@ -396,7 +392,7 @@ public abstract class Motion<TArgs> : IMotion
             && res != TinkerAnimState.None
         )
         {
-            if (res == TinkerAnimState.Start)
+            if (res == TinkerAnimState.Complete)
             {
                 PauseMovementByAnimClip = false;
                 c.OneshotKey = null;
@@ -408,13 +404,13 @@ public abstract class Motion<TArgs> : IMotion
             return;
         }
         // Override Clip: play until override is unset externally
-        if (overrideClipKey != null && AnimateClip(time, overrideClipKey) != 0)
+        if (overrideClipKey != null && AnimateClip(time, overrideClipKey) == TinkerAnimState.InProgress)
         {
             PauseMovementByAnimClip = false;
             return;
         }
         // Swiming: play while player is in the water,
-        if (c.Owner.swimming.Value && AnimateClip(time, AnimClipDictionary.SWIM) != 0)
+        if (c.Owner.swimming.Value && AnimateClip(time, AnimClipDictionary.SWIM) == TinkerAnimState.InProgress)
         {
             return;
         }
@@ -422,7 +418,10 @@ public abstract class Motion<TArgs> : IMotion
         if (c.CompanionMoving || md.AlwaysMoving)
         {
             // first, try anchor target based clip
-            if (currAnchorTarget == AnchorTarget.Owner || AnimateClip(time, $"Anchor.{currAnchorTarget}") == 0)
+            if (
+                currAnchorTarget == AnchorTarget.Owner
+                || AnimateClip(time, $"Anchor.{currAnchorTarget}") == TinkerAnimState.None
+            )
             {
                 // then play the default directional clip
                 cs.Animate(md.LoopMode, time, DirectionFrameStart(), md.FrameLength, md.Interval);
@@ -430,7 +429,7 @@ public abstract class Motion<TArgs> : IMotion
             return;
         }
         // Idle: play while companion is not moving
-        if (AnimateClip(time, AnimClipDictionary.IDLE) != 0)
+        if (AnimateClip(time, AnimClipDictionary.IDLE) == TinkerAnimState.InProgress)
         {
             return;
         }

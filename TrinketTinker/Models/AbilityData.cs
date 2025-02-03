@@ -1,3 +1,5 @@
+using StardewValley;
+using StardewValley.Extensions;
 using TrinketTinker.Models.Mixin;
 
 namespace TrinketTinker.Models;
@@ -36,6 +38,36 @@ public enum ProcOn
     Interact,
 }
 
+/// <summary>Proc sound data</summary>
+public sealed class ProcSoundData
+{
+    public string? CueName = null;
+    public List<int>? Pitch = null;
+
+    public static implicit operator ProcSoundData(string cueName)
+    {
+        return new() { CueName = cueName };
+    }
+
+    public void PlaySound(string? logName = null)
+    {
+        if (!string.IsNullOrEmpty(CueName))
+        {
+            if (Game1.soundBank.Exists(CueName))
+            {
+                Game1.playSound(CueName, 0, out ICue sound);
+                // weird Pitch nonsense
+                if (Pitch != null)
+                    sound.Pitch = Random.Shared.ChooseFrom(Pitch) / 2400f;
+            }
+            else if (logName != null)
+            {
+                ModEntry.LogOnce($"{logName}: ProcSound '{CueName}' does not exist", StardewModdingAPI.LogLevel.Warn);
+            }
+        }
+    }
+}
+
 /// <summary>Data for <see cref="Effects.Abilities"/>, defines game effect that a trinket can provide.</summary>
 public sealed class AbilityData : IHaveArgs
 {
@@ -65,7 +97,7 @@ public sealed class AbilityData : IHaveArgs
     public int ProcSyncDelay { get; set; } = 0;
 
     /// <summary>Sound cue to play on proc.</summary>
-    public string? ProcSound { get; set; } = null;
+    public ProcSoundData? ProcSound { get; set; } = null;
 
     /// <summary>Temporary animated sprite to spawn on proc, each item is the id of an entry in the mushymato.TrinketTinker/TAS asset.</summary>
     public List<string> ProcTAS { get; set; } = [];

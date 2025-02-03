@@ -1,9 +1,9 @@
 {
-  "Name": "[CP] Trinket Box",
+  "Name": "[CP] Trinket Holder",
   "Author": "mushymato",
   "Version": "1.0.0",
   "Description": "Put your trinkets in a trinket so you can trinket(plural) while you trinket(singular).",
-  "UniqueID": "mushymato.TrinketBox",
+  "UniqueID": "mushymato.TrinketHolder",
   "MinimumApiVersion": "4.1.0",
   "UpdateKeys": [
     "Nexus:???"

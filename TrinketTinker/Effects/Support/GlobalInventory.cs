@@ -1,9 +1,7 @@
-using System.Reflection;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewValley;
-using StardewValley.BellsAndWhistles;
 using StardewValley.Inventories;
 using StardewValley.Menus;
 using StardewValley.Objects.Trinkets;
@@ -16,6 +14,7 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
 {
     const int TEXT_M = 6;
     const int TITLE_LM = 16;
+    const int TITLE_TM = 12;
 
     public TinkerInventoryMenu(
         int actualCapacity,
@@ -154,9 +153,13 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
         if (sourceItem != null)
         {
             Vector2 nameSize = Game1.dialogueFont.MeasureString(sourceItem.DisplayName);
-            int sourceItemPosX = ItemsToGrabMenu.xPositionOnScreen - borderWidth - spaceToClearSideBorder;
+            int sourceItemPosX = ItemsToGrabMenu.xPositionOnScreen - borderWidth - spaceToClearSideBorder + TITLE_LM;
             int sourceItemPosY =
-                ItemsToGrabMenu.yPositionOnScreen - borderWidth - spaceToClearTopBorder + storageSpaceTopBorderOffset;
+                ItemsToGrabMenu.yPositionOnScreen
+                - borderWidth
+                - spaceToClearTopBorder
+                + storageSpaceTopBorderOffset
+                + TITLE_TM;
             if (drawBG && !Game1.options.showClearBackgrounds)
             {
                 b.Draw(
@@ -170,7 +173,7 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
                 b.Draw(
                     Game1.fadeToBlackRect,
                     new Rectangle(
-                        sourceItemPosX - TEXT_M + Game1.tileSize + TITLE_LM,
+                        sourceItemPosX - TEXT_M + Game1.tileSize,
                         sourceItemPosY - TEXT_M,
                         (int)nameSize.X + TEXT_M * 2,
                         (int)nameSize.Y + TEXT_M * 2
@@ -181,14 +184,10 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
             b.DrawString(
                 Game1.dialogueFont,
                 sourceItem.DisplayName,
-                new(sourceItemPosX + Game1.tileSize + TITLE_LM, sourceItemPosY),
+                new(sourceItemPosX + Game1.tileSize, sourceItemPosY),
                 Color.White
             );
-            sourceItem.drawInMenu(
-                b,
-                new(sourceItemPosX - TEXT_M + TITLE_LM, sourceItemPosY - (Game1.tileSize - nameSize.Y) / 2),
-                1f
-            );
+            sourceItem.drawInMenu(b, new(sourceItemPosX - TEXT_M, sourceItemPosY - Game1.tileSize - nameSize.Y), 1f);
             bool drawBGOrig = drawBG;
             drawBG = false;
             drawMethod(b);
@@ -326,11 +325,33 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
         }
     }
 
-    /// <summary>Ensure empty inventories are deleted, and inaccessable inventories have their contents put into lost and found</summary>
+    /// <summary>
+    /// Ensure empty inventories are deleted, and inaccessable inventories have their contents put into lost and found
+    /// Also do a check for trinketSlots and make sure people don't end up with a trinket in slot 1/2 and trinketSlots=0
+    /// </summary>
     internal static void DayEndingCleanup()
     {
-        HashSet<string> missingTrinketInvs = [];
         var team = Game1.player.team;
+        bool newLostAndFoundItems = false;
+        // check if the player somehow lost their trinketSlots stat
+        bool hasTrinketSlot = Game1.player.stats.Get("trinketSlots") != 0;
+
+        int toSkip = 0;
+        if (!hasTrinketSlot)
+        {
+            toSkip = ModEntry.HasWearMoreRings ? 2 : 1;
+            for (int i = 0; i < toSkip; i++)
+            {
+                if (Game1.player.trinketItems[i] is Trinket trinketItem)
+                {
+                    team.returnedDonations.Add(trinketItem);
+                    Game1.player.trinketItems[i] = null;
+                    newLostAndFoundItems = newLostAndFoundItems || true;
+                }
+            }
+        }
+        // check for missing trinkets to global inv
+        HashSet<string> missingTrinketInvs = [];
         foreach (var key in team.globalInventories.Keys)
         {
             var value = team.globalInventories[key];
@@ -359,19 +380,16 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
                 return missingTrinketInvs.Any();
             }
         );
-        foreach (Farmer farmer in Game1.getAllFarmers())
+        foreach (Trinket trinketItem in Game1.player.trinketItems.Skip(toSkip))
         {
-            foreach (Trinket trinketItem in farmer.trinketItems)
-            {
-                if (
-                    trinketItem != null
-                    && trinketItem.GetEffect() is TrinketTinkerEffect effect
-                    && effect.InventoryId != null
-                )
-                    missingTrinketInvs.Remove(effect.FullInventoryId!);
-            }
+            if (
+                trinketItem != null
+                && trinketItem.GetEffect() is TrinketTinkerEffect effect
+                && effect.InventoryId != null
+            )
+                missingTrinketInvs.Remove(effect.FullInventoryId!);
         }
-        team.newLostAndFoundItems.Value = missingTrinketInvs.Any();
+        newLostAndFoundItems = newLostAndFoundItems || missingTrinketInvs.Any();
         foreach (string key in missingTrinketInvs)
         {
             ModEntry.Log(
@@ -383,6 +401,7 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
                 team.returnedDonations.Add(item);
             team.globalInventories.Remove(key);
         }
+        team.newLostAndFoundItems.Value = newLostAndFoundItems;
     }
 
     internal bool CanAcceptThisItem(Item item)

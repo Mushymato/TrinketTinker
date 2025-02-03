@@ -9,9 +9,9 @@ namespace TrinketTinker.Companions.Anim;
 public enum TinkerAnimState
 {
     None,
-    Start,
-    Return,
     InProgress,
+    InNop,
+    Complete,
 }
 
 /// <summary>
@@ -121,6 +121,17 @@ public sealed class TinkerAnimSprite
     /// <param name="interval">default miliseconds between frames, if the clip did not set one</param>
     internal TinkerAnimState AnimateClip(GameTime time, AnimClipData clip, double interval)
     {
+        interval = clip.Interval ?? interval;
+        if (clip.Nop)
+        {
+            timer += time.ElapsedGameTime.TotalMilliseconds;
+            if (clip.FrameLength * interval <= timer)
+            {
+                timer = 0f;
+                return TinkerAnimState.Complete;
+            }
+            return TinkerAnimState.InNop;
+        }
         return Animate(clip.LoopMode, time, clip.FrameStart, clip.FrameLength, clip.Interval ?? interval);
     }
 
@@ -144,7 +155,7 @@ public sealed class TinkerAnimSprite
         if (numberOfFrames == 0)
         {
             SetCurrentFrame(-1);
-            return TinkerAnimState.Start;
+            return TinkerAnimState.Complete;
         }
         return loopMode switch
         {
@@ -158,16 +169,16 @@ public sealed class TinkerAnimSprite
     /// Standard looping animation, e.g. 1 2 3 4 1 2 3 4.
     /// Return true whenever animation reaches last frame.
     /// </summary>
-    /// <param name="gameTime">game time object from update</param>
+    /// <param name="time">game time object from update</param>
     /// <param name="startFrame">initial frame</param>
     /// <param name="numberOfFrames">length of animation</param>
     /// <param name="interval">miliseconds between frames</param>
     /// <returns>True if animation reached last frame</returns>
-    internal TinkerAnimState AnimateStandard(GameTime gameTime, int startFrame, int numberOfFrames, double interval)
+    internal TinkerAnimState AnimateStandard(GameTime time, int startFrame, int numberOfFrames, double interval)
     {
         if (currentFrame >= startFrame + numberOfFrames || currentFrame < startFrame)
             currentFrame = startFrame + currentFrame % numberOfFrames;
-        timer += gameTime.ElapsedGameTime.TotalMilliseconds;
+        timer += time.ElapsedGameTime.TotalMilliseconds;
         if (timer > interval)
         {
             currentFrame++;
@@ -176,7 +187,7 @@ public sealed class TinkerAnimSprite
             {
                 currentFrame = startFrame;
                 UpdateSourceRect();
-                return TinkerAnimState.Start;
+                return TinkerAnimState.Complete;
             }
         }
         UpdateSourceRect();
@@ -187,12 +198,12 @@ public sealed class TinkerAnimSprite
     /// Reverse the animation from last frame, e.g. 1 2 3 4 3 2 1 2 3 4.
     /// Return true when animation return to first frame.
     /// </summary>
-    /// <param name="gameTime">game time object from update</param>
+    /// <param name="time">game time object from update</param>
     /// <param name="startFrame">initial frame</param>
     /// <param name="numberOfFrames">length of animation</param>
     /// <param name="interval">miliseconds between frames</param>
     /// <returns>True if animation reached last frame</returns>
-    public TinkerAnimState AnimatePingPong(GameTime gameTime, int startFrame, int numberOfFrames, double interval)
+    public TinkerAnimState AnimatePingPong(GameTime time, int startFrame, int numberOfFrames, double interval)
     {
         int lastFrame;
         int step;
@@ -211,7 +222,7 @@ public sealed class TinkerAnimSprite
                 currentFrame = startFrame + Math.Abs(currentFrame) % numberOfFrames;
         }
 
-        timer += gameTime.ElapsedGameTime.TotalMilliseconds;
+        timer += time.ElapsedGameTime.TotalMilliseconds;
         if (timer > interval)
         {
             currentFrame += step;
@@ -220,7 +231,7 @@ public sealed class TinkerAnimSprite
             {
                 UpdateSourceRect();
                 isReverse = !isReverse;
-                return isReverse ? TinkerAnimState.Return : TinkerAnimState.Start;
+                return isReverse ? TinkerAnimState.InProgress : TinkerAnimState.Complete;
             }
         }
         UpdateSourceRect();

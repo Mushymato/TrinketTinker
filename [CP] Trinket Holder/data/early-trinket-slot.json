@@ -1,0 +1,39 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "LogName": "Early Trinket Slot ON",
+      "Action": "EditData",
+      "Target": "Data/TriggerActions",
+      "Entries": {
+        "{{ModId}}_TrinketSlotOn": {
+          "Id": "{{ModId}}_TrinketSlotOn",
+          "Condition": "PLAYER_STAT Current trinketSlots 0 0",
+          "Trigger": "DayStarted",
+          "Action": "IncrementStat trinketSlots 1",
+          "MarkActionApplied": false
+        },
+      },
+      "When": {
+        "EarlyTrinketSlot": true,
+      }
+    },
+    {
+      "LogName": "Early Trinket Slot OFF",
+      "Action": "EditData",
+      "Target": "Data/TriggerActions",
+      "Entries": {
+        "{{ModId}}_TrinketSlotOff": {
+          "Id": "{{ModId}}_TrinketSlotOff",
+          "Condition": "!PLAYER_STAT Current trinketSlots 0 0",
+          "Trigger": "DayEnding",
+          "Action": "IncrementStat trinketSlots -1",
+          "MarkActionApplied": false
+        }
+      },
+      "When": {
+        "EarlyTrinketSlot": false,
+      }
+    }
+  ]
+}

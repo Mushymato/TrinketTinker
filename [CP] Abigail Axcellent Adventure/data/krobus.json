@@ -66,9 +66,6 @@
             },
             "SpeechBubbles": {
               "Smile": {
-                "Text": ":)"
-              },
-              "Sadness": {
                 "Text": ":("
               }
             }
@@ -156,15 +153,12 @@
       "Target": "mushymato.TrinketTinker/Tinker",
       "TargetField": [
         "{{ModId}}_Krobus",
-        "Abilities",
-        "#0",
-        "#4",
+        "Motion",
+        "SpeechBubbles",
+        "Smile",
       ],
       "Entries": {
-        "Args": {
-          "Range": 0,
-          "HarvestTo": "TinkerInventory"
-        },
+        "Text": ":)"
       },
       "When": {
         "KrobusEatsRocks": true

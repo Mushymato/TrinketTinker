@@ -61,9 +61,15 @@
                 ]
               },
               "Idle": {
-                "FrameStart": 24,
+                "Nop": true,
+                // stay at Nop for 4 frames
                 "FrameLength": 4,
                 "RandomClips": [
+                  {
+                    "FrameStart": 24,
+                    "FrameLength": 4,
+                    "Loop": true,
+                  },
                   {
                     "FrameStart": 28,
                     "FrameLength": 2,
@@ -121,6 +127,7 @@
                 "Proc": "Timer",
                 "ProcTimer": 2000,
                 "ProcSpeechBubble": "Homf",
+                "ProcSound": "dustMeep",
                 "Args": {
                   "Range": 1,
                   "HarvestTo": "None"
@@ -130,7 +137,17 @@
                 "Proc": "Timer",
                 "ProcTimer": 1000,
                 "ProcSpeechBubble": "Hiya",
-                "ProcSound": "flute",
+                "ProcSound": {
+                  "CueName": "flute",
+                  "Pitch": [
+                    0,
+                    400,
+                    800,
+                    1200,
+                    1600,
+                    2400
+                  ]
+                },
                 "ProcOneshotAnim": "abbyFlute",
                 "AbilityClass": "Projectile",
                 "Args": {

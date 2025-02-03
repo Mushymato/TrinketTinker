@@ -1,6 +1,12 @@
 {
   "$schema": "https://smapi.io/schemas/content-patcher.json",
   "Format": "2.5.1",
+  "ConfigSchema": {
+    "EarlyTrinketSlot": {
+      "AllowValues": "true, false",
+      "Default": "false"
+    }
+  },
   "Changes": [
     {
       "LogName": "Sprites",
@@ -8,6 +14,7 @@
       "Target": "{{ModId}}/trinketbox",
       "FromFile": "assets/{{TargetWithoutPath}}.png"
     },
+    // boxes
     {
       "Action": "Include",
       "FromFile": "data/box.json",
@@ -31,6 +38,11 @@
         "L@Capacity": 4,
         "L@SheetIndex": 2,
       }
+    },
+    // trinket slot cheat
+    {
+      "Action": "Include",
+      "FromFile": "data/early-trinket-slot.json"
     }
   ]
 }
