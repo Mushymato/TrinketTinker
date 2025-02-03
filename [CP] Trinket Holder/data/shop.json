@@ -1,0 +1,34 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "LogName": "Box {{L@Capacity}}: Trinkets",
+      "Action": "EditData",
+      "Target": "Data/Shops",
+      "TargetField": [
+        "DesertTrade",
+        "Items"
+      ],
+      "Entries": {
+        "{{ModId}}_Box_0": {
+          "Id": "{{ModId}}_Box_0",
+          "ItemId": "{{ModId}}_Box_0",
+          "TradeItemId": "(O)337",
+          "TradeItemAmount": 20
+        },
+        "{{ModId}}_Box_1": {
+          "Id": "{{ModId}}_Box_1",
+          "ItemId": "{{ModId}}_Box_1",
+          "TradeItemId": "(O)910",
+          "TradeItemAmount": 5
+        },
+        "{{ModId}}_Box_2": {
+          "Id": "{{ModId}}_Box_2",
+          "ItemId": "{{ModId}}_Box_2",
+          "TradeItemId": "(O)74",
+          "TradeItemAmount": 15
+        },
+      }
+    },
+  ]
+}
