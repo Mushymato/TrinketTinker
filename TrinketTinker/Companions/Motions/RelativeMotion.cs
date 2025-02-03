@@ -7,37 +7,49 @@ namespace TrinketTinker.Companions.Motions;
 /// <summary>Companion's offset is adjusted depending on player facing direction</summary>
 /// <inheritdoc/>
 public sealed class RelativeMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata)
-    : BaseStaticMotion<StaticArgs>(companion, mdata, vdata)
+    : BaseStaticMotion<RelativeArgs>(companion, mdata, vdata)
 {
     /// <inheritdoc/>
     protected override float GetPositionalLayerDepth(Vector2 offset)
     {
-        // return (c.Owner.FacingDirection == 0) ? (c.Position.Y / 10000f) : 1f;
-        return c.Owner.FacingDirection switch
-        {
-            // up
-            0 => 1f,
-            // down
-            1 => 0f,
-            // right & left
-            _ => c.Position.Y / 10000f,
-        };
+        // // up
+        // 0 => 1f,
+        // // down
+        // 1 => 0f,
+        // // right & left
+        // _ => c.Position.Y / 10000f,
+        return (
+                c.Owner.FacingDirection switch
+                {
+                    // up
+                    0 => args.LayerU,
+                    // right
+                    1 => args.LayerR,
+                    // down
+                    2 => args.LayerD,
+                    // left
+                    3 => args.LayerL,
+                    _ => null,
+                } ?? 0
+            ) + base.GetPositionalLayerDepth(offset);
     }
 
     /// <inheritdoc/>
     public override Vector2 GetOffset()
     {
-        return c.Owner.FacingDirection switch
-        {
-            // up
-            0 => new(0, -md.Offset.Y / 2),
-            // right
-            1 => new(md.Offset.X, md.Offset.Y),
-            // down
-            2 => new(0, md.Offset.Y * 1.5f),
-            // left
-            3 => new(-md.Offset.X, md.Offset.Y),
-            _ => md.Offset,
-        };
+        return (
+                c.Owner.FacingDirection switch
+                {
+                    // up
+                    0 => args.OffsetU,
+                    // right
+                    1 => args.OffsetR,
+                    // down
+                    2 => args.OffsetD,
+                    // left
+                    3 => args.OffsetL,
+                    _ => null,
+                } ?? Vector2.Zero
+            ) + base.GetOffset();
     }
 }

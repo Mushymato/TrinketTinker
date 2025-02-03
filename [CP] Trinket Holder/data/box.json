@@ -6,9 +6,9 @@
       "Action": "EditData",
       "Target": "Data/Trinkets",
       "Entries": {
-        "{{ModId}}_Box_{{L@Capacity}}": {
-          "Id": "{{ModId}}_Box_{{L@Capacity}}",
-          "DisplayName": "{{i18n:Box.{{L@Capacity}}.DisplayName}}",
+        "{{ModId}}_Box_{{L@SheetIndex}}": {
+          "Id": "{{ModId}}_Box_{{L@SheetIndex}}",
+          "DisplayName": "{{i18n:Box.{{L@SheetIndex}}.DisplayName}}",
           "Description": "{{i18n:Box.Shared.Description | Capacity={{L@Capacity}} }}",
           "Texture": "{{ModId}}/trinketbox",
           "SheetIndex": "{{L@SheetIndex}}",
@@ -18,11 +18,11 @@
       }
     },
     {
-      "LogName": "Box {{L@Capacity}}: Tinker",
+      "LogName": "Box {{L@SheetIndex}}: Tinker",
       "Action": "EditData",
       "Target": "mushymato.TrinketTinker/Tinker",
       "Entries": {
-        "{{ModId}}_Box_{{L@Capacity}}": {
+        "{{ModId}}_Box_{{L@SheetIndex}}": {
           "Abilities": [
             [
               {

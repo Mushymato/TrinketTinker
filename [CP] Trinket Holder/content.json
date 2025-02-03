@@ -5,37 +5,44 @@
     "EarlyTrinketSlot": {
       "AllowValues": "true, false",
       "Default": "false"
+    },
+    "EarlyTrinketSlot": {
+      "AllowValues": "true, false",
+      "Default": "false"
     }
   },
   "Changes": [
     {
       "LogName": "Sprites",
       "Action": "Load",
-      "Target": "{{ModId}}/trinketbox",
+      "Target": "{{ModId}}/trinketbox, {{ModId}}/trinketbox-0",
       "FromFile": "assets/{{TargetWithoutPath}}.png"
     },
     // boxes
     {
-      "Action": "Include",
-      "FromFile": "data/box.json",
-      "LocalTokens": {
-        "L@Capacity": 2,
-        "L@SheetIndex": 0,
-      }
-    },
-    {
+      // Iridium
       "Action": "Include",
       "FromFile": "data/box.json",
       "LocalTokens": {
         "L@Capacity": 3,
+        "L@SheetIndex": 0,
+      }
+    },
+    {
+      // Radioactive
+      "Action": "Include",
+      "FromFile": "data/box.json",
+      "LocalTokens": {
+        "L@Capacity": 5,
         "L@SheetIndex": 1,
       }
     },
     {
+      // Prismatic
       "Action": "Include",
       "FromFile": "data/box.json",
       "LocalTokens": {
-        "L@Capacity": 4,
+        "L@Capacity": 6,
         "L@SheetIndex": 2,
       }
     },
@@ -43,6 +50,11 @@
     {
       "Action": "Include",
       "FromFile": "data/early-trinket-slot.json"
+    },
+    // shop
+    {
+      "Action": "Include",
+      "FromFile": "data/shop.json"
     }
   ]
 }

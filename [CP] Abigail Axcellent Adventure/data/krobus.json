@@ -9,7 +9,7 @@
         "{{ModId}}_Krobus": {
           "Id": "{{ModId}}_Krobus",
           "DisplayName": "[LocalizedText Strings\\Objects:VoidGhostPendant_Name]",
-          "Description": "[LocalizedText Strings\\Objects:VoidGhostPendant_Description]",
+          "Description": "[LocalizedText Strings\\Objects:VoidGhostPendant_Description]\n\nLv.{0}: {1}",
           "Texture": "Maps/springobjects",
           "SheetIndex": 808,
           "DropsNaturally": false,
@@ -114,6 +114,23 @@
                   "Range": 9,
                   "HarvestTo": "None"
                 },
+              },
+            ],
+            [
+              {
+                "AbilityClass": "BroadcastAction",
+                "Proc": "Always",
+                "Args": {
+                  "Action": "SetNpcInvisible Krobus 1",
+                  "ActionEnd": "SetNpcVisible Krobus",
+                  "PlayerKey": "Host"
+                },
+              },
+              {
+                "AbilityClass": "Nop",
+                "Proc": "Interact",
+                "ProcTimer": 10000,
+                "ProcSpeechBubble": "Smile",
               },
             ]
           ],

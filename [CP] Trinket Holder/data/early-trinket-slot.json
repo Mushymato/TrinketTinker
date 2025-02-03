@@ -8,7 +8,8 @@
       "Entries": {
         "{{ModId}}_TrinketSlotOn": {
           "Id": "{{ModId}}_TrinketSlotOn",
-          "Condition": "PLAYER_STAT Current trinketSlots 0 0",
+          "SkipPermanentlyCondition": "PLAYER_STAT Current mastery_4 1",
+          "Condition": "!PLAYER_STAT Current mastery_4 1, PLAYER_STAT Current trinketSlots 0 0,",
           "Trigger": "DayStarted",
           "Action": "IncrementStat trinketSlots 1",
           "MarkActionApplied": false
@@ -25,7 +26,8 @@
       "Entries": {
         "{{ModId}}_TrinketSlotOff": {
           "Id": "{{ModId}}_TrinketSlotOff",
-          "Condition": "!PLAYER_STAT Current trinketSlots 0 0",
+          "SkipPermanentlyCondition": "PLAYER_STAT Current mastery_4 1",
+          "Condition": "!PLAYER_STAT Current mastery_4 1, !PLAYER_STAT Current trinketSlots 0 0",
           "Trigger": "DayEnding",
           "Action": "IncrementStat trinketSlots -1",
           "MarkActionApplied": false

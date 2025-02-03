@@ -151,14 +151,24 @@
               "ColorMask": "MonoGameOrange"
             },
           ],
-          // Put 1/2 tile toward top left of player when facing down, adjusts when player face other directions
           "Motion": {
             "MotionClass": "Relative",
             "AlwaysMoving": false,
             "DirectionMode": "RL",
             "FrameLength": 4,
             "Interval": 200,
-            "Offset": "-128,-64"
+            "Offset": "-128,-64",
+            "Args": {
+              // decide how to offset and layer things here, a bit jank
+              "OffsetD": null,
+              "OffsetR": "-16,0",
+              "OffsetU": null,
+              "OffsetL": "16,0",
+              "LayerD": 0,
+              "LayerR": 0,
+              "LayerU": 1,
+              "LayerL": 0,
+            },
           },
           "Abilities": [
             // level 0

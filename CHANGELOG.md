@@ -4,6 +4,17 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.5.0-beta.2
+
+#### Added
+
+- Make sure your trinkets get unequipped if you end the day with trinketSlots=0 for some reason, unfortunately won't catch case where the trinketSlots stat changed after DayEnding
+- Change ProcSound to a model with these 2 fields
+    - `CueName`: sound cue to play
+    - `Pitch`: list of int pitch (/2400), random one will be used
+    - Old form of string still works
+- 
+
 ### 1.5.0-beta.1
 
 #### Added
