@@ -19,25 +19,95 @@ public class LightSourceData
     public string? Color { get; set; } = null;
 }
 
-/// <summary>Data for <see cref="Effects.Abilities"/>, holds sprite variations.</summary>
-public sealed class VariantData
+public interface IVariantData
 {
     /// <summary>Variant texture content path.</summary>
-    public string Texture { get; set; } = "";
+    public string Texture { get; set; }
 
-    /// <summary>Sprite width</summary>
-    public int Width { get; set; } = 16;
+    /// <summary>Variant portrait content path, for dialogue ability.</summary>
+    public string? Portrait { get; set; }
 
-    /// <summary>Sprite height</summary>
-    public int Height { get; set; } = 16;
+    /// <summary>Extra textures only usable by <seealso cref="AnimClipData"/>.</summary>
+    public List<string>? AnimClipTextures { get; set; }
 
     /// <summary>Draw color mask, can use color name from <see cref="Color"/>, hex value, or <see cref="TinkerConst.COLOR_PRISMATIC"/> for animated prismatic effect.</summary>
     public string? ColorMask { get; set; }
 
+    /// <summary>Sprite width</summary>
+    public int Width { get; set; }
+
+    /// <summary>Sprite height</summary>
+    public int Height { get; set; }
+
     /// <summary>Base scale to draw texture at.</summary>
-    public float TextureScale { get; set; } = 4f;
+    public float TextureScale { get; set; }
 
     /// <summary>Base scale to draw shadow texture.</summary>
+    public float ShadowScale { get; set; }
+}
+
+/// <summary>Additional variant data, kind of like NPC appearance</summary>
+public class SubVariantData : IVariantData
+{
+    /// <inheritdoc/>
+    public string Texture { get; set; } = "";
+
+    /// <inheritdoc/>
+    public string? Portrait { get; set; } = null;
+
+    /// <inheritdoc/>
+    public List<string>? AnimClipTextures { get; set; } = null;
+
+    /// <inheritdoc/>
+    public string? ColorMask { get; set; } = null;
+
+    /// <inheritdoc/>
+    public int Width { get; set; } = 16;
+
+    /// <inheritdoc/>
+    public int Height { get; set; } = 16;
+
+    /// <inheritdoc/>
+    public float TextureScale { get; set; } = 4f;
+
+    /// <inheritdoc/>
+    public float ShadowScale { get; set; } = 3f;
+
+    /// <summary>Game state query condition</summary>
+    public string? Condition { get; set; } = null;
+
+    /// <summary>Exclude</summary>
+    public bool ProcOnly { get; set; } = false;
+
+    /// <summary>Priority </summary>
+    public int Priority { get; set; } = 0;
+}
+
+/// <summary>Data for <see cref="Companions.Anim.TinkerAnimSprite"/>, holds sprite variations.</summary>
+public sealed class VariantData : IVariantData
+{
+    /// <inheritdoc/>
+    public string Texture { get; set; } = "";
+
+    /// <inheritdoc/>
+    public string? Portrait { get; set; } = null;
+
+    /// <inheritdoc/>
+    public List<string>? AnimClipTextures { get; set; } = null;
+
+    /// <inheritdoc/>
+    public string? ColorMask { get; set; } = null;
+
+    /// <inheritdoc/>
+    public int Width { get; set; } = 16;
+
+    /// <inheritdoc/>
+    public int Height { get; set; } = 16;
+
+    /// <inheritdoc/>
+    public float TextureScale { get; set; } = 4f;
+
+    /// <inheritdoc/>
     public float ShadowScale { get; set; } = 3f;
 
     /// <summary>If set, add a light with given radius. Note that the light is only visible to local player.</summary>
@@ -48,4 +118,7 @@ public sealed class VariantData
 
     /// <summary>Display name override</summary>
     public List<string>? TrinketNameArguments { get; set; } = null;
+
+    /// <summary>Display name override</summary>
+    public List<SubVariantData>? SubVariants { get; set; } = null;
 }

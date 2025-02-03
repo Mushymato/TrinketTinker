@@ -10,11 +10,12 @@ using TrinketTinker.Models;
 namespace TrinketTinker.Extras;
 
 /// <summary>Payload of a broadcasted action</summary>
-/// <param name="Condition"></param>
-/// <param name="Actions"></param>
 public sealed record BroadcastAction
 {
+    /// <summary>Condition to check on the target player</summary>
     public string? Condition { get; set; } = null;
+
+    /// <summary>Actions to run on the target player</summary>
     public IEnumerable<string>? Actions { get; set; } = null;
 };
 

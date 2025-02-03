@@ -11,7 +11,7 @@
     {
       "LogName": "Sprites",
       "Action": "Load",
-      "Target": "{{ModId}}/trinketbox, {{ModId}}/trinketbox-0",
+      "Target": "{{ModId}}/trinketbox",
       "FromFile": "assets/{{TargetWithoutPath}}.png"
     },
     // boxes

@@ -20,6 +20,7 @@ public enum TinkerAnimState
 /// </summary>
 public sealed class TinkerAnimSprite
 {
+    /// <summary>Selected variant data</summary>
     private readonly VariantData vd;
 
     /// <summary>Middle point of the sprite, based on width and height.</summary>
@@ -56,7 +57,7 @@ public sealed class TinkerAnimSprite
     {
         vd = vdata;
         Origin = new Vector2(vd.Width / 2, vd.Height / 2);
-        Texture = Game1.content.Load<Texture2D>(vd.Texture);
+        Texture = Game1.content.Load<Texture2D>(string.IsNullOrEmpty(vd.Texture) ? "Animals/Error" : vd.Texture);
         UpdateSourceRect();
     }
 

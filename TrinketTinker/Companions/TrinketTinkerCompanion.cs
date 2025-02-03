@@ -198,10 +198,10 @@ public class TrinketTinkerCompanion : Companion
             return;
         }
 
-        if (Data.Motions.Count > 0)
+        if (Data.Motion != null)
         {
             VariantData vdata = Data.Variants[whichVariant.Value];
-            MotionData mdata = Data.Motions[0];
+            MotionData mdata = Data.Motion;
             if (mdata.MotionClass == null)
             {
                 Motion = new LerpMotion(this, mdata, vdata);

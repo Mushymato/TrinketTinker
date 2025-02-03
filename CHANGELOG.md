@@ -13,7 +13,14 @@
     - `CueName`: sound cue to play
     - `Pitch`: list of int pitch (/2400), random one will be used
     - Old form of string still works
-- 
+- HarvestTo on HarvestStone/Forage/Shakeable/Crop now takes TinkerInventory, which puts the item into the companion's inventory (if it has one)
+- HarvestTo now works with ItemDrop abilities
+
+#### Fixed
+
+- Made a bunch of lists in the data model nullable
+- Deprecated Motions
+- Draw for 36 slot trinket inventory
 
 ### 1.5.0-beta.1
 
@@ -29,6 +36,7 @@
     - `mushymato.TrinketTinker_EquipHiddenTrinket <trinketId> [level] [variant] [daysDuration]`: equip trinket for `daysDuration` days, or -1 by default (unequip only with the following action)
     - `mushymato.TrinketTinker_UnequipHiddenTrinket <trinketId> [level] [variant]`: unequip trinket
     - level and variant do not support R, unlike mushymato.TrinketTinker_CREATE_TRINKET
+
 
 ### 1.5.0-beta.0
 

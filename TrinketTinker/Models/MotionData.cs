@@ -253,7 +253,7 @@ public sealed class MotionData : IHaveArgs
     /// Prefer <see cref="AnchorTargetData"/> that comes earlier in the list.
     /// Defaults to <see cref="AnchorTarget.Owner"/>.
     /// </summary>
-    public List<AnchorTargetData> Anchors { get; set; } = [];
+    public List<AnchorTargetData>? Anchors { get; set; } = null;
 
     /// <summary>If true, continue the moving animation when not owner is not moving.</summary>
     public bool AlwaysMoving { get; set; } = false;

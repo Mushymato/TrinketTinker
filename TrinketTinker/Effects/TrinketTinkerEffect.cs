@@ -257,7 +257,7 @@ public class TrinketTinkerEffect : TrinketEffect
             variant = int.Parse(variantStr);
 
         // Companion
-        if (Data.Variants.Count > 0 && Data.Motions.Count > 0)
+        if (Data.Variants.Count > 0 && Data.Motion != null)
         {
             Companion ??= new TrinketTinkerCompanion(Trinket.ItemId, variant);
             farmer.AddCompanion(Companion);

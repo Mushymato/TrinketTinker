@@ -159,6 +159,8 @@ public abstract class Motion<TArgs> : IMotion
     public void SetActiveAnchors(IEnumerable<string> abilityTypes)
     {
         activeAnchors.Clear();
+        if (md.Anchors == null)
+            return;
         foreach (AnchorTargetData anchor in md.Anchors)
         {
             if (anchor.RequiredAbilities == null || abilityTypes.Intersect(anchor.RequiredAbilities).Any())

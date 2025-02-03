@@ -168,12 +168,13 @@ public abstract class Ability<TArgs> : IAbility
             d.ProcSound?.PlaySound(Name);
             if (!string.IsNullOrEmpty(d.ProcOneshotAnim))
                 e.SetOneshotClip(d.ProcOneshotAnim);
-            Visuals.BroadcastTASList(
-                d.ProcTAS,
-                GetTASPosition(proc),
-                e.CompanionOwnerDrawLayer,
-                proc.LocationOrCurrent
-            );
+            if (d.ProcTAS != null)
+                Visuals.BroadcastTASList(
+                    d.ProcTAS,
+                    GetTASPosition(proc),
+                    e.CompanionOwnerDrawLayer,
+                    proc.LocationOrCurrent
+                );
             if (!string.IsNullOrEmpty(d.ProcSpeechBubble))
                 e.SetSpeechBubble(d.ProcSpeechBubble);
 

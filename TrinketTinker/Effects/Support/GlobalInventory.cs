@@ -14,7 +14,7 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
 {
     const int TEXT_M = 6;
     const int TITLE_LM = 16;
-    const int TITLE_TM = 12;
+    const int TITLE_TM = 20;
 
     public TinkerInventoryMenu(
         int actualCapacity,
@@ -63,10 +63,9 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
             (actualCapacity < 9) ? 1
             : (actualCapacity >= 70) ? 5
             : 3;
-        int cols = actualCapacity / rows;
-        if (actualCapacity / cols == 12)
+        if (actualCapacity != 36)
         {
-            int width = 64 * (actualCapacity / cols);
+            int width = 64 * (actualCapacity / rows);
             ItemsToGrabMenu = new InventoryMenu(
                 Game1.uiViewport.Width / 2 - width / 2,
                 yPositionOnScreen + ((actualCapacity < 70) ? 64 : (-21)),
@@ -99,7 +98,7 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
                 playerInventory: false,
                 inventory,
                 highlightFunction,
-                capacity: 36
+                capacity: actualCapacity
             );
         }
         // neighbour nonsense
@@ -173,7 +172,7 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
                 b.Draw(
                     Game1.fadeToBlackRect,
                     new Rectangle(
-                        sourceItemPosX - TEXT_M + Game1.tileSize,
+                        sourceItemPosX - TEXT_M,
                         sourceItemPosY - TEXT_M,
                         (int)nameSize.X + TEXT_M * 2,
                         (int)nameSize.Y + TEXT_M * 2
@@ -181,13 +180,12 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
                     Color.Black * 0.5f
                 );
             }
-            b.DrawString(
-                Game1.dialogueFont,
-                sourceItem.DisplayName,
-                new(sourceItemPosX + Game1.tileSize, sourceItemPosY),
-                Color.White
+            b.DrawString(Game1.dialogueFont, sourceItem.DisplayName, new(sourceItemPosX, sourceItemPosY), Color.White);
+            sourceItem.drawInMenu(
+                b,
+                new(sourceItemPosX - TEXT_M - Game1.tileSize, sourceItemPosY - Game1.tileSize + nameSize.Y),
+                1f
             );
-            sourceItem.drawInMenu(b, new(sourceItemPosX - TEXT_M, sourceItemPosY - Game1.tileSize - nameSize.Y), 1f);
             bool drawBGOrig = drawBG;
             drawBG = false;
             drawMethod(b);

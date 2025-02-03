@@ -100,7 +100,7 @@ public sealed class AbilityData : IHaveArgs
     public ProcSoundData? ProcSound { get; set; } = null;
 
     /// <summary>Temporary animated sprite to spawn on proc, each item is the id of an entry in the mushymato.TrinketTinker/TAS asset.</summary>
-    public List<string> ProcTAS { get; set; } = [];
+    public List<string>? ProcTAS { get; set; } = null;
 
     /// <summary>Have companion switch to an <see cref="MotionData.AnimClips"/> on proc, switch back to normal anim after it is done.</summary>
     public string? ProcOneshotAnim { get; set; } = null;
@@ -128,4 +128,6 @@ public sealed class AbilityData : IHaveArgs
     /// Applies to <see cref="ProcOn.DamageMonster"/> and <see cref="ProcOn.SlayMonster"/>.
     /// </summary>
     public bool? IsCriticalHit { get; set; } = null;
+
+    public bool? InCombat { get; set; } = null;
 }
