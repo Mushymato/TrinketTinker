@@ -59,7 +59,7 @@ public class TrinketTinkerCompanion : Companion
     private readonly NetString _speechBubbleKey = new(null);
 
     /// <summary>Sub variant key</summary>
-    internal readonly NetString _subVariantKey = new(null);
+    internal readonly NetString _altVariantKey = new(null);
 
     // Derived
     /// <summary>Backing companion data from content.</summary>
@@ -159,7 +159,7 @@ public class TrinketTinkerCompanion : Companion
             .AddField(_oneshotKey, "_oneshotKey")
             .AddField(_overrideKey, "_overrideKey")
             .AddField(_speechBubbleKey, "_speechBubbleText")
-            .AddField(_subVariantKey, "_subVariantKey")
+            .AddField(_altVariantKey, "_altVariantKey")
             .AddField(_netLerp, "_netLerp")
             .AddField(_disableCompanion, "_disableCompanion")
             .AddField(_netRandSeed, "_netRandSeed")
@@ -172,8 +172,8 @@ public class TrinketTinkerCompanion : Companion
             Motion?.SetOverrideClip(newValue);
         _speechBubbleKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
             Motion?.SetSpeechBubble(newValue);
-        _subVariantKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
-            Motion?.SetSubVariant(newValue);
+        _altVariantKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
+            Motion?.SetAltVariant(newValue);
         _netRandSeed.fieldChangeVisibleEvent += (NetInt field, int oldValue, int newValue) =>
         {
             if (Motion != null)

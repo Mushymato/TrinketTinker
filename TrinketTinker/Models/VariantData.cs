@@ -29,9 +29,6 @@ public interface IVariantData
     /// <summary>Variant portrait content path, for dialogue ability.</summary>
     public string? Portrait { get; set; }
 
-    /// <summary>Extra textures only usable by <seealso cref="AnimClipData"/>.</summary>
-    public List<string>? AnimClipTextures { get; set; }
-
     /// <summary>Draw color mask, can use color name from <see cref="Color"/>, hex value, or <see cref="TinkerConst.COLOR_PRISMATIC"/> for animated prismatic effect.</summary>
     public string? ColorMask { get; set; }
 
@@ -49,16 +46,13 @@ public interface IVariantData
 }
 
 /// <summary>Additional variant data, kind of like NPC appearance</summary>
-public class SubVariantData : IVariantData
+public class AltVariantData : IVariantData
 {
     /// <inheritdoc/>
     public string? Texture { get; set; } = null;
 
     /// <inheritdoc/>
     public string? Portrait { get; set; } = null;
-
-    /// <inheritdoc/>
-    public List<string>? AnimClipTextures { get; set; } = null;
 
     /// <inheritdoc/>
     public string? ColorMask { get; set; } = null;
@@ -95,9 +89,6 @@ public sealed class VariantData : IVariantData
     public string? Portrait { get; set; } = null;
 
     /// <inheritdoc/>
-    public List<string>? AnimClipTextures { get; set; } = null;
-
-    /// <inheritdoc/>
     public string? ColorMask { get; set; } = null;
 
     /// <inheritdoc/>
@@ -121,34 +112,34 @@ public sealed class VariantData : IVariantData
     /// <summary>Display name override</summary>
     public List<string>? TrinketNameArguments { get; set; } = null;
 
-    /// <summary>Subvariants dict</summary>
-    public Dictionary<string, SubVariantData>? SubVariants { get; set; } = null;
+    /// <summary>Alternate variants dict</summary>
+    public Dictionary<string, AltVariantData>? AltVariants { get; set; } = null;
 
-    /// <summary>Recheck subvariant by conditions</summary>
+    /// <summary>Recheck alt variant by conditions</summary>
     /// <param name="farmer"></param>
-    /// <param name="prevSubVariantKey"></param>
-    /// <param name="nextSubVariantKey"></param>
-    /// <returns>True of subvariant is different</returns>
-    internal bool TryRecheckSubVariant(Farmer farmer, string? prevSubVariantKey, out string? nextSubVariantKey)
+    /// <param name="prevKey"></param>
+    /// <param name="nextKey"></param>
+    /// <returns>True if sub variant is different</returns>
+    internal bool TryRecheckAltVariant(Farmer farmer, string? prevKey, out string? nextKey)
     {
-        nextSubVariantKey = null;
+        nextKey = null;
         if (
-            SubVariants
+            AltVariants
                 ?.OrderByDescending((kv) => kv.Value.Priority)
                 .FirstOrDefault(
                     (kv) => !kv.Value.ProcOnly && GameStateQuery.CheckConditions(kv.Value.Condition, player: farmer)
                 )
-                is KeyValuePair<string, SubVariantData> foundSubVariant
-            && !string.IsNullOrEmpty(foundSubVariant.Key)
-            && foundSubVariant.Key != prevSubVariantKey
+                is KeyValuePair<string, AltVariantData> foundAltVariant
+            && !string.IsNullOrEmpty(foundAltVariant.Key)
+            && foundAltVariant.Key != prevKey
         )
         {
-            nextSubVariantKey = foundSubVariant.Key;
+            nextKey = foundAltVariant.Key;
             return true;
         }
-        else if (prevSubVariantKey != null)
+        else if (prevKey != null)
         {
-            nextSubVariantKey = null;
+            nextKey = null;
             return true;
         }
         return false;

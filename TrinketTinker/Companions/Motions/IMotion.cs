@@ -33,9 +33,9 @@ public interface IMotion
     /// <returns>offset</returns>
     void SetSpeechBubble(string? speechBubbleKey);
 
-    /// <summary>Set a subvariant.</summary>
+    /// <summary>Set an alt variant.</summary>
     /// <returns>offset</returns>
-    void SetSubVariant(string? subVariantKey);
+    void SetAltVariant(string? altVariantKey);
 
     /// <summary>Initialize motion, setup light source if needed.</summary>
     /// <param name="farmer"></param>

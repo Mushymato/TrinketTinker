@@ -108,6 +108,9 @@ public sealed class AbilityData : IHaveArgs
     /// <summary>Have companion display a <see cref="MotionData.SpeechBubbles"/> on proc, switch back to normal anim after it is done.</summary>
     public string? ProcSpeechBubble { get; set; } = null;
 
+    /// <summary>Switch the companion to a specific sub variant on proc, or "RECHECK" to return to normal conditional base variants.</summary>
+    public string? ProcAltVariant { get; set; } = null;
+
     /// <summary>Condition, see <see cref="StardewValley.GameStateQuery"/></summary>
     public string? Condition { get; set; } = null;
 

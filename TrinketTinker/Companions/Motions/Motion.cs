@@ -155,7 +155,7 @@ public abstract class Motion<TArgs> : IMotion
     }
 
     /// <inheritdoc/>
-    public void SetSubVariant(string? speechBubbleKey) => cs.SetSubVariant(speechBubbleKey);
+    public void SetAltVariant(string? speechBubbleKey) => cs.SetAltVariant(speechBubbleKey);
 
     /// <inheritdoc/>
     public void SetActiveAnchors(IEnumerable<string> abilityTypes)
@@ -209,9 +209,9 @@ public abstract class Motion<TArgs> : IMotion
         {
             Game1.currentLightSources.Add(lightId, new TinkerLightSource(lightId, c.Position + GetOffset(), ldata));
         }
-        if (vd.TryRecheckSubVariant(c.Owner, c._subVariantKey.Value, out string? newSubVariantKey))
+        if (vd.TryRecheckAltVariant(c.Owner, c._altVariantKey.Value, out string? newAltVariantKey))
         {
-            c._subVariantKey.Value = newSubVariantKey;
+            c._altVariantKey.Value = newAltVariantKey;
         }
     }
 

@@ -72,13 +72,13 @@ public sealed class TinkerAnimSprite
         UpdateSourceRect();
     }
 
-    public void SetSubVariant(string? subVariantKey)
+    public void SetAltVariant(string? altVariantKey)
     {
-        if (subVariantKey == null)
+        if (altVariantKey == null)
         {
             vd = fullVd;
         }
-        else if (fullVd.SubVariants?.TryGetValue(subVariantKey, out SubVariantData? subVd) ?? false)
+        else if (fullVd.AltVariants?.TryGetValue(altVariantKey, out AltVariantData? subVd) ?? false)
         {
             vd = subVd;
         }
