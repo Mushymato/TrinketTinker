@@ -154,15 +154,21 @@ public abstract class Motion<TArgs> : IMotion
         speechBubbleTimer = 0;
     }
 
+    /// <summary>Do the thing where I recheck me alt variants</summary>
+    private void DoRecheckAltVariant()
+    {
+        if (vd.TryRecheckAltVariant(c.Owner, c._altVariantKey.Value, out string? newAltVariantKey))
+        {
+            c._altVariantKey.Value = newAltVariantKey;
+        }
+    }
+
     /// <inheritdoc/>
     public void SetAltVariant(string? speechBubbleKey)
     {
         if (speechBubbleKey == "RECHECK")
         {
-            if (vd.TryRecheckAltVariant(c.Owner, c._altVariantKey.Value, out string? newAltVariantKey))
-            {
-                c._altVariantKey.Value = newAltVariantKey;
-            }
+            DoRecheckAltVariant();
         }
         else
         {
@@ -201,6 +207,7 @@ public abstract class Motion<TArgs> : IMotion
             if (!Game1.currentLightSources.ContainsKey(lightId))
                 Game1.currentLightSources.Add(lightId, new TinkerLightSource(lightId, c.Position + GetOffset(), ldata));
         }
+        DoRecheckAltVariant();
     }
 
     /// <inheritdoc/>
@@ -222,10 +229,7 @@ public abstract class Motion<TArgs> : IMotion
         {
             Game1.currentLightSources.Add(lightId, new TinkerLightSource(lightId, c.Position + GetOffset(), ldata));
         }
-        if (vd.TryRecheckAltVariant(c.Owner, c._altVariantKey.Value, out string? newAltVariantKey))
-        {
-            c._altVariantKey.Value = newAltVariantKey;
-        }
+        DoRecheckAltVariant();
     }
 
     /// <summary>Changes the position of the anchor that the companion moves relative to, based on <see cref="MotionData.Anchors"/>.</summary>
