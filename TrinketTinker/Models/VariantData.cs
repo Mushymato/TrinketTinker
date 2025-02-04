@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using StardewValley;
 using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Models;
@@ -119,6 +120,33 @@ public sealed class VariantData : IVariantData
     /// <summary>Display name override</summary>
     public List<string>? TrinketNameArguments { get; set; } = null;
 
-    /// <summary>Display name override</summary>
-    public List<SubVariantData>? SubVariants { get; set; } = null;
+    /// <summary>Subvariants dict</summary>
+    public Dictionary<string, SubVariantData>? SubVariants { get; set; } = null;
+
+    /// <summary>Recheck subvariant by conditions</summary>
+    /// <param name="farmer"></param>
+    /// <param name="prevSubVariantKey"></param>
+    /// <param name="nextSubVariantKey"></param>
+    /// <returns>True of subvariant is different</returns>
+    internal bool TryRecheckSubVariant(Farmer farmer, string? prevSubVariantKey, out string? nextSubVariantKey)
+    {
+        nextSubVariantKey = null;
+        if (
+            SubVariants
+                ?.OrderByDescending((kv) => kv.Value.Priority)
+                .First((kv) => !kv.Value.ProcOnly && GameStateQuery.CheckConditions(kv.Value.Condition, player: farmer))
+                is KeyValuePair<string, SubVariantData> foundSubVariant
+            && foundSubVariant.Key != prevSubVariantKey
+        )
+        {
+            nextSubVariantKey = foundSubVariant.Key;
+            return true;
+        }
+        else if (prevSubVariantKey != null)
+        {
+            nextSubVariantKey = null;
+            return true;
+        }
+        return false;
+    }
 }

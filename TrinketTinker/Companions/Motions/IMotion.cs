@@ -8,10 +8,7 @@ namespace TrinketTinker.Companions.Motions;
 public interface IMotion
 {
     /// <summary>Random used for anim clips</summary>
-    Random ClipRand { get; set; }
-
-    /// <summary>Random used for speech bubbles</summary>
-    Random SpeechRand { get; set; }
+    Random NetRand { get; set; }
 
     /// <summary>Anim sprite bounding box</summary>
     Rectangle BoundingBox { get; }
@@ -35,6 +32,10 @@ public interface IMotion
     /// <summary>Set a speech bubble to call, usually on ability proc.</summary>
     /// <returns>offset</returns>
     void SetSpeechBubble(string? speechBubbleKey);
+
+    /// <summary>Set a subvariant.</summary>
+    /// <returns>offset</returns>
+    void SetSubVariant(string? subVariantKey);
 
     /// <summary>Initialize motion, setup light source if needed.</summary>
     /// <param name="farmer"></param>

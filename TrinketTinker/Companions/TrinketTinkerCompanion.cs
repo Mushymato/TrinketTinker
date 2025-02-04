@@ -50,13 +50,16 @@ public class TrinketTinkerCompanion : Companion
     }
 
     /// <summary>Seed for anim clip random, to ensure some level of sync without need to update net field</summary>
-    private readonly NetInt _clipSeed = new(Random.Shared.Next());
+    private readonly NetInt _netRandSeed = new(Random.Shared.Next());
 
     /// <summary>Seed for speech bubble random, to ensure some level of sync without need to update net field</summary>
     private readonly NetInt _speechSeed = new(Random.Shared.Next());
 
     /// <summary>Speech bubble key</summary>
     private readonly NetString _speechBubbleKey = new(null);
+
+    /// <summary>Sub variant key</summary>
+    internal readonly NetString _subVariantKey = new(null);
 
     // Derived
     /// <summary>Backing companion data from content.</summary>
@@ -112,6 +115,7 @@ public class TrinketTinkerCompanion : Companion
         set => _currAnchorTarget.Value = (int)value;
     }
 
+    /// <summary>Bounding box of companion</summary>
     public Rectangle BoundingBox => Motion?.BoundingBox ?? Rectangle.Empty;
 
     /// <summary>Argumentless constructor for netcode deserialization.</summary>
@@ -154,11 +158,12 @@ public class TrinketTinkerCompanion : Companion
             .AddField(_id, "_id")
             .AddField(_oneshotKey, "_oneshotKey")
             .AddField(_overrideKey, "_overrideKey")
+            .AddField(_speechBubbleKey, "_speechBubbleText")
+            .AddField(_subVariantKey, "_subVariantKey")
             .AddField(_netLerp, "_netLerp")
             .AddField(_disableCompanion, "_disableCompanion")
-            .AddField(_clipSeed, "_clipSeed")
+            .AddField(_netRandSeed, "_netRandSeed")
             .AddField(_speechSeed, "_speechSeed")
-            .AddField(_speechBubbleKey, "_speechBubbleText")
             .AddField(_currAnchorTarget, "_currAnchorTarget");
         _id.fieldChangeVisibleEvent += InitCompanionData;
         _oneshotKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
@@ -167,17 +172,12 @@ public class TrinketTinkerCompanion : Companion
             Motion?.SetOverrideClip(newValue);
         _speechBubbleKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
             Motion?.SetSpeechBubble(newValue);
-        _clipSeed.fieldChangeVisibleEvent += (NetInt field, int oldValue, int newValue) =>
+        _subVariantKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
+            Motion?.SetSubVariant(newValue);
+        _netRandSeed.fieldChangeVisibleEvent += (NetInt field, int oldValue, int newValue) =>
         {
             if (Motion != null)
-                Motion.ClipRand = new Random(newValue);
-        };
-        _speechSeed.fieldChangeVisibleEvent += (NetInt field, int oldValue, int newValue) =>
-        {
-            if (Motion != null)
-            {
-                Motion.SpeechRand = new Random(newValue);
-            }
+                Motion.NetRand = new Random(newValue);
         };
         _currAnchorTarget.fieldChangeVisibleEvent += (NetInt field, int oldValue, int newValue) =>
         {

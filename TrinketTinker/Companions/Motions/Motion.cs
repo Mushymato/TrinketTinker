@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StardewValley.BellsAndWhistles;
+using StardewValley.Delegates;
 using StardewValley.GameData.HomeRenovations;
 using StardewValley.Monsters;
 using StardewValley.TerrainFeatures;
@@ -79,14 +80,12 @@ public abstract class Motion<TArgs> : IMotion
     protected virtual int TotalFrames => framesetLength;
 
     /// <summary>Clip random</summary>
-    public Random ClipRand { get; set; } = Random.Shared;
-
-    /// <summary>Speech random</summary>
-    public Random SpeechRand { get; set; } = Random.Shared;
+    public Random NetRand { get; set; } = Random.Shared;
 
     /// <summary>Currently valid anchor targets, based on abilities</summary>
     private readonly List<AnchorTargetData> activeAnchors = [];
 
+    /// <summary>Bounding box of trinket</summary>
     public Rectangle BoundingBox { get; private set; } = Rectangle.Empty;
 
     /// <summary>Basic constructor, tries to parse arguments as the generic <see cref="IArgs"/> type.</summary>
@@ -144,7 +143,7 @@ public abstract class Motion<TArgs> : IMotion
             return;
         if (speechBubble != null)
         {
-            speechBubble = speechBubble.PickRand(SpeechRand);
+            speechBubble = speechBubble.PickRand(NetRand);
             if (!speechBubble.Nop)
             {
                 speechBubbleTimer = speechBubble.Timer;
@@ -154,6 +153,9 @@ public abstract class Motion<TArgs> : IMotion
         speechBubble = null;
         speechBubbleTimer = 0;
     }
+
+    /// <inheritdoc/>
+    public void SetSubVariant(string? speechBubbleKey) => cs.SetSubVariant(speechBubbleKey);
 
     /// <inheritdoc/>
     public void SetActiveAnchors(IEnumerable<string> abilityTypes)
@@ -206,6 +208,10 @@ public abstract class Motion<TArgs> : IMotion
         if (vd.LightSource is LightSourceData ldata)
         {
             Game1.currentLightSources.Add(lightId, new TinkerLightSource(lightId, c.Position + GetOffset(), ldata));
+        }
+        if (vd.TryRecheckSubVariant(c.Owner, c._subVariantKey.Value, out string? newSubVariantKey))
+        {
+            c._subVariantKey.Value = newSubVariantKey;
         }
     }
 
@@ -347,7 +353,7 @@ public abstract class Motion<TArgs> : IMotion
         if (currentClipKey != key)
         {
             currentClipKey = key;
-            clip = clip.PickRand(ClipRand);
+            clip = clip.PickRand(NetRand);
         }
         else
         {
@@ -386,7 +392,7 @@ public abstract class Motion<TArgs> : IMotion
             }
         }
 
-        // Try each kind of anim in order, stop whenever one kind becomes in progress
+        // Try each kind of anim in order, stop whenever one kind is playing
 
         // Oneshot Clip: play once and unset.
         if (
@@ -406,13 +412,13 @@ public abstract class Motion<TArgs> : IMotion
             return;
         }
         // Override Clip: play until override is unset externally
-        if (overrideClipKey != null && AnimateClip(time, overrideClipKey) == TinkerAnimState.InProgress)
+        if (overrideClipKey != null && TinkerAnimState.Playing.HasFlag(AnimateClip(time, overrideClipKey)))
         {
             PauseMovementByAnimClip = false;
             return;
         }
         // Swiming: play while player is in the water,
-        if (c.Owner.swimming.Value && AnimateClip(time, AnimClipDictionary.SWIM) == TinkerAnimState.InProgress)
+        if (c.Owner.swimming.Value && TinkerAnimState.Playing.HasFlag(AnimateClip(time, AnimClipDictionary.SWIM)))
         {
             return;
         }
@@ -431,7 +437,7 @@ public abstract class Motion<TArgs> : IMotion
             return;
         }
         // Idle: play while companion is not moving
-        if (AnimateClip(time, AnimClipDictionary.IDLE) == TinkerAnimState.InProgress)
+        if (TinkerAnimState.Playing.HasFlag(AnimateClip(time, AnimClipDictionary.IDLE)))
         {
             return;
         }

@@ -151,7 +151,6 @@ public static class EquipTrinket
                     && int.TryParse(daysDurationStr, out int daysDuration)
                 )
                 {
-                    ModEntry.Log($"{trinket.QualifiedItemId}: {daysDurationStr}");
                     if (decrement && daysDuration != -1)
                         daysDuration--;
                     if (Unequip(Game1.player, trinket))
@@ -160,6 +159,7 @@ public static class EquipTrinket
                         {
                             trinket.modData.Remove(TinkerConst.ModData_HiddenEquip);
                             hiddenTrinketsInv.Value.Remove(trinket);
+                            ModEntry.Log($"{trinket.QualifiedItemId} expired");
                         }
                         else
                         {

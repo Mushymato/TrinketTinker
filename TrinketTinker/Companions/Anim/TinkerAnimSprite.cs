@@ -6,12 +6,14 @@ using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Companions.Anim;
 
+[Flags]
 public enum TinkerAnimState
 {
-    None,
-    InProgress,
-    InNop,
-    Complete,
+    None = 1 << 0,
+    InProgress = 1 << 1,
+    Complete = 1 << 2,
+    InNop = 1 << 3,
+    Playing = InProgress | Complete,
 }
 
 /// <summary>
@@ -21,7 +23,10 @@ public enum TinkerAnimState
 public sealed class TinkerAnimSprite
 {
     /// <summary>Selected variant data</summary>
-    private readonly VariantData vd;
+    private IVariantData vd;
+
+    /// <summary>full variant data</summary>
+    private readonly VariantData fullVd;
 
     /// <summary>Middle point of the sprite, based on width and height.</summary>
     internal readonly Vector2 Origin;
@@ -39,7 +44,7 @@ public sealed class TinkerAnimSprite
         {
             if (drawColor != null)
                 return (Color)drawColor;
-            if (!drawColorIsConstant) // cannot keep prismatic color
+            if (!drawColorIsConstant) // must update draw color every call
                 return Visuals.GetSDVColor(vd.ColorMask, out drawColorIsConstant);
             drawColor = Visuals.GetSDVColor(vd.ColorMask, out drawColorIsConstant);
             return (Color)drawColor;
@@ -55,10 +60,23 @@ public sealed class TinkerAnimSprite
 
     public TinkerAnimSprite(VariantData vdata)
     {
-        vd = vdata;
+        fullVd = vdata;
+        vd = fullVd;
         Origin = new Vector2(vd.Width / 2, vd.Height / 2);
         Texture = Game1.content.Load<Texture2D>(string.IsNullOrEmpty(vd.Texture) ? "Animals/Error" : vd.Texture);
         UpdateSourceRect();
+    }
+
+    public void SetSubVariant(string? subVariantKey)
+    {
+        if (subVariantKey == null)
+        {
+            vd = fullVd;
+        }
+        else if (fullVd.SubVariants?.TryGetValue(subVariantKey, out SubVariantData? subVd) ?? false)
+        {
+            vd = subVd;
+        }
     }
 
     /// <summary>Get source rect corresponding to a particular frame.</summary>
@@ -74,6 +92,15 @@ public sealed class TinkerAnimSprite
         );
     }
 
+    /// <summary>
+    /// Bounding box of the sprite, calculated at draw time because thats the most convienant way.
+    /// Extends down to their shadow if they have one.
+    /// </summary>
+    /// <param name="drawPos"></param>
+    /// <param name="drawScale"></param>
+    /// <param name="shadowDrawPos"></param>
+    /// <param name="shadowScale"></param>
+    /// <returns></returns>
     public Rectangle GetBoundingBox(Vector2 drawPos, Vector2 drawScale, Vector2 shadowDrawPos, Vector2 shadowScale)
     {
         Rectangle textureBox =
@@ -133,7 +160,7 @@ public sealed class TinkerAnimSprite
             }
             return TinkerAnimState.InNop;
         }
-        return Animate(clip.LoopMode, time, clip.FrameStart, clip.FrameLength, clip.Interval ?? interval);
+        return Animate(clip.LoopMode, time, clip.FrameStart, clip.FrameLength, interval);
     }
 
     /// <summary>
