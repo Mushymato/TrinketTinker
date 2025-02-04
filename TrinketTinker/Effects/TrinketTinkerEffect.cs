@@ -229,6 +229,12 @@ public class TrinketTinkerEffect : TrinketEffect
             cmp.SetSpeechBubble(speechBubbleKey);
     }
 
+    public void SetAltVariant(string speechBubbleKey)
+    {
+        if (Companion is TrinketTinkerCompanion cmp)
+            cmp.SetAltVariant(speechBubbleKey);
+    }
+
     /// <summary>Spawn the companion, and activate all abilities</summary>
     /// <param name="farmer"></param>
     public override void Apply(Farmer farmer)

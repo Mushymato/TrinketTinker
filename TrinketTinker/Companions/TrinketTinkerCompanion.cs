@@ -279,6 +279,12 @@ public class TrinketTinkerCompanion : Companion
         Motion?.SetActiveAnchors(abilityTypes);
     }
 
+    /// <summary>Set alt variant, or "RECHECK" to reroll</summary>
+    internal void SetAltVariant(string altVariantKey)
+    {
+        Motion?.SetAltVariant(altVariantKey);
+    }
+
     /// <summary>Vanilla hop event handler, not using.</summary>
     public override void Hop(float amount) { }
 }

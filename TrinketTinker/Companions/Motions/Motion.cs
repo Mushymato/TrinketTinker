@@ -155,7 +155,20 @@ public abstract class Motion<TArgs> : IMotion
     }
 
     /// <inheritdoc/>
-    public void SetAltVariant(string? speechBubbleKey) => cs.SetAltVariant(speechBubbleKey);
+    public void SetAltVariant(string? speechBubbleKey)
+    {
+        if (speechBubbleKey == "RECHECK")
+        {
+            if (vd.TryRecheckAltVariant(c.Owner, c._altVariantKey.Value, out string? newAltVariantKey))
+            {
+                c._altVariantKey.Value = newAltVariantKey;
+            }
+        }
+        else
+        {
+            cs.SetAltVariant(speechBubbleKey);
+        }
+    }
 
     /// <inheritdoc/>
     public void SetActiveAnchors(IEnumerable<string> abilityTypes)

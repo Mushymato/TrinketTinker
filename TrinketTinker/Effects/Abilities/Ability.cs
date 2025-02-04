@@ -177,6 +177,8 @@ public abstract class Ability<TArgs> : IAbility
                 );
             if (!string.IsNullOrEmpty(d.ProcSpeechBubble))
                 e.SetSpeechBubble(d.ProcSpeechBubble);
+            if (!string.IsNullOrEmpty(d.ProcAltVariant))
+                e.SetAltVariant(d.ProcAltVariant);
 
             if (d.ProcSyncDelay > 0)
                 DelayedAction.functionAfterDelay(() => EventAbilityProc?.Invoke(sender, proc), d.ProcSyncDelay);

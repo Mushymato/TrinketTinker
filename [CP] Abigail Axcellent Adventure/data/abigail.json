@@ -144,6 +144,12 @@
                 },
               },
               {
+                "AbilityClass": "Nop",
+                "Proc": "Footstep",
+                "ProcTimer": 2100,
+                "ProcAltVariant": "RECHECK"
+              },
+              {
                 "Proc": "Timer",
                 "ProcTimer": 1000,
                 "ProcSpeechBubble": "Hiya",
