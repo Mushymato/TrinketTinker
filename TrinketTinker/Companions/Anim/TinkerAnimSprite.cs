@@ -29,7 +29,7 @@ public sealed class TinkerAnimSprite
     private readonly VariantData fullVd;
 
     /// <summary>Middle point of the sprite, based on width and height.</summary>
-    internal readonly Vector2 Origin;
+    internal Vector2 Origin;
 
     /// <summary>Backing draw color field.</summary>
     private Color? drawColor = null;
@@ -50,7 +50,13 @@ public sealed class TinkerAnimSprite
             return (Color)drawColor;
         }
     }
-    internal readonly Texture2D Texture;
+
+    /// <summary>Current texture</summary>
+    internal Texture2D Texture;
+    internal int Width;
+    internal int Height;
+    internal float TextureScale;
+    internal float ShadowScale;
     internal Rectangle SourceRect { get; private set; } = Rectangle.Empty;
     public bool Hidden => currentFrame == -1;
 
@@ -62,8 +68,7 @@ public sealed class TinkerAnimSprite
     {
         fullVd = vdata;
         vd = fullVd;
-        Origin = new Vector2(vd.Width / 2, vd.Height / 2);
-        Texture = Game1.content.Load<Texture2D>(string.IsNullOrEmpty(vd.Texture) ? "Animals/Error" : vd.Texture);
+        Texture = UpdateVariantFields();
         UpdateSourceRect();
     }
 
@@ -77,6 +82,32 @@ public sealed class TinkerAnimSprite
         {
             vd = subVd;
         }
+        else
+        {
+            return;
+        }
+        Texture = UpdateVariantFields();
+        UpdateSourceRect();
+    }
+
+    /// <summary>Load the texture.</summary>
+    internal static Texture2D? LoadTexture(string? texture)
+    {
+        return string.IsNullOrEmpty(texture) ? null : Game1.content.Load<Texture2D>(texture);
+    }
+
+    /// <summary>Update fields according to selected variant</summary>
+    /// <returns></returns>
+    private Texture2D UpdateVariantFields()
+    {
+        Width = vd.Width >= 0 ? vd.Width : fullVd.Width;
+        Height = vd.Height >= 0 ? vd.Height : fullVd.Height;
+        TextureScale = vd.TextureScale >= 0 ? vd.TextureScale : fullVd.TextureScale;
+        ShadowScale = vd.ShadowScale >= 0 ? vd.ShadowScale : fullVd.ShadowScale;
+        Origin = new Vector2(Width / 2, Height / 2);
+        drawColor = null;
+        drawColorIsConstant = false;
+        return LoadTexture(vd.Texture) ?? LoadTexture(fullVd.Texture) ?? LoadTexture("Animals/Error")!;
     }
 
     /// <summary>Get source rect corresponding to a particular frame.</summary>
@@ -84,12 +115,7 @@ public sealed class TinkerAnimSprite
     /// <returns></returns>
     public Rectangle GetSourceRect(int frame)
     {
-        return new Rectangle(
-            frame * vd.Width % Texture.Width,
-            frame * vd.Width / Texture.Width * vd.Height,
-            vd.Width,
-            vd.Height
-        );
+        return new Rectangle(frame * Width % Texture.Width, frame * Width / Texture.Width * Height, Width, Height);
     }
 
     /// <summary>
@@ -107,8 +133,8 @@ public sealed class TinkerAnimSprite
             new(
                 (int)(drawPos.X - Origin.X * drawScale.X),
                 (int)(drawPos.Y - Origin.Y * drawScale.Y),
-                (int)(vd.Width * drawScale.X),
-                (int)(vd.Height * drawScale.Y)
+                (int)(Width * drawScale.X),
+                (int)(Height * drawScale.Y)
             );
         if (shadowDrawPos == Vector2.Zero)
             return textureBox;

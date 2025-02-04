@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using TrinketTinker.Wheels;
 
@@ -23,7 +24,7 @@ public class LightSourceData
 public interface IVariantData
 {
     /// <summary>Variant texture content path.</summary>
-    public string Texture { get; set; }
+    public string? Texture { get; set; }
 
     /// <summary>Variant portrait content path, for dialogue ability.</summary>
     public string? Portrait { get; set; }
@@ -51,7 +52,7 @@ public interface IVariantData
 public class SubVariantData : IVariantData
 {
     /// <inheritdoc/>
-    public string Texture { get; set; } = "";
+    public string? Texture { get; set; } = null;
 
     /// <inheritdoc/>
     public string? Portrait { get; set; } = null;
@@ -63,16 +64,16 @@ public class SubVariantData : IVariantData
     public string? ColorMask { get; set; } = null;
 
     /// <inheritdoc/>
-    public int Width { get; set; } = 16;
+    public int Width { get; set; } = -1;
 
     /// <inheritdoc/>
-    public int Height { get; set; } = 16;
+    public int Height { get; set; } = -1;
 
     /// <inheritdoc/>
-    public float TextureScale { get; set; } = 4f;
+    public float TextureScale { get; set; } = -1;
 
     /// <inheritdoc/>
-    public float ShadowScale { get; set; } = 3f;
+    public float ShadowScale { get; set; } = -1;
 
     /// <summary>Game state query condition</summary>
     public string? Condition { get; set; } = null;
@@ -88,7 +89,7 @@ public class SubVariantData : IVariantData
 public sealed class VariantData : IVariantData
 {
     /// <inheritdoc/>
-    public string Texture { get; set; } = "";
+    public string? Texture { get; set; } = null;
 
     /// <inheritdoc/>
     public string? Portrait { get; set; } = null;
@@ -134,8 +135,11 @@ public sealed class VariantData : IVariantData
         if (
             SubVariants
                 ?.OrderByDescending((kv) => kv.Value.Priority)
-                .First((kv) => !kv.Value.ProcOnly && GameStateQuery.CheckConditions(kv.Value.Condition, player: farmer))
+                .FirstOrDefault(
+                    (kv) => !kv.Value.ProcOnly && GameStateQuery.CheckConditions(kv.Value.Condition, player: farmer)
+                )
                 is KeyValuePair<string, SubVariantData> foundSubVariant
+            && !string.IsNullOrEmpty(foundSubVariant.Key)
             && foundSubVariant.Key != prevSubVariantKey
         )
         {

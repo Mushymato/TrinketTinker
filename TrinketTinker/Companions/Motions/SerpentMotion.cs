@@ -12,7 +12,8 @@ namespace TrinketTinker.Companions.Motions;
 /// Companion has trailing segments and tail, like the royal serpent.
 /// Needs additional sets of sprites for segment(s) and tail.
 /// </summary>
-public sealed class SerpentMotion : BaseLerpMotion<SerpentArgs>
+public sealed class SerpentMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata)
+    : BaseLerpMotion<SerpentArgs>(companion, mdata, vdata)
 {
     /// <summary>Position and rotation of segments</summary>
     private readonly List<Vector3> segments = [];
@@ -24,13 +25,7 @@ public sealed class SerpentMotion : BaseLerpMotion<SerpentArgs>
     protected override int TotalFrames => framesetLength * SegmentCount;
 
     /// <summary>Length of a segment, based on width of sprite.</summary>
-    private readonly int segUnit;
-
-    public SerpentMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata)
-        : base(companion, mdata, vdata)
-    {
-        segUnit = (int)(vdata.Width * args.Sparcity);
-    }
+    private int SegUnit => (int)(cs.Width * args.Sparcity);
 
     /// <inheritdoc/>
     public override void UpdateGlobal(GameTime time, GameLocation location)
@@ -51,8 +46,8 @@ public sealed class SerpentMotion : BaseLerpMotion<SerpentArgs>
             Vector2 segDelta = segPos - pos;
             float segDeltaLength = segDelta.Length();
             segDelta.Normalize();
-            if (segDeltaLength > segUnit)
-                segPos = segDelta * segUnit + pos;
+            if (segDeltaLength > SegUnit)
+                segPos = segDelta * SegUnit + pos;
             // segments[i] = segPos.WithRot(MathF.Atan2(segDelta.Y, segDelta.X) - MathF.PI / 2f);
             segments[i] = segPos.WithRot(MathF.Atan2(segDelta.Y, segDelta.X) + MathF.PI);
             pos = segPos;

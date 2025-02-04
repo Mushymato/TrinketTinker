@@ -32,6 +32,17 @@
               "Texture": "Characters/Abigail",
               "Width": 16,
               "Height": 32,
+              "SubVariants": {
+                "BIG": {
+                  // "Texture": "Characters/Abigail",
+                  "TextureScale": 16,
+                  "Condition": "RANDOM .3"
+                },
+                "WINTER": {
+                  "Texture": "Characters/Abigail_Winter",
+                  "Condition": "RANDOM .6"
+                }
+              }
             }
           ],
           "Motion": {

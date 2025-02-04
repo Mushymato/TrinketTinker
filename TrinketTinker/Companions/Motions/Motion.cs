@@ -486,14 +486,14 @@ public abstract class Motion<TArgs> : IMotion
     /// <returns></returns>
     protected virtual Vector2 GetTextureScale()
     {
-        return new(vd.TextureScale, vd.TextureScale);
+        return new(cs.TextureScale, cs.TextureScale);
     }
 
     /// <summary>Get shadow draw scale.</summary>
     /// <returns></returns>
     protected virtual Vector2 GetShadowScale()
     {
-        return new(vd.ShadowScale, vd.ShadowScale);
+        return new(cs.ShadowScale, cs.ShadowScale);
     }
 
     /// <summary>Get offset</summary>
@@ -592,7 +592,7 @@ public abstract class Motion<TArgs> : IMotion
         if (speechBubble != null)
         {
             Vector2 worldDrawPos =
-                Game1.GlobalToLocal(new(drawPos.X, drawPos.Y - vd.Height * 4 - Game1.tileSize)) + speechBubble.Offset;
+                Game1.GlobalToLocal(new(drawPos.X, drawPos.Y - cs.Height * 4 - Game1.tileSize)) + speechBubble.Offset;
             float alphaD = 0f;
             double fadeInThreshold = speechBubble.Timer * (1 - speechBubble.FadeIn);
             double fadeOutThreshold = speechBubble.Timer * speechBubble.FadeOut;
@@ -716,29 +716,5 @@ public abstract class Motion<TArgs> : IMotion
         if (md.DirectionMode == DirectionMode.Single)
             return md.FrameStart;
         return (Math.Abs(c.direction.Value) - 1) * md.FrameLength + md.FrameStart;
-    }
-
-    /// <summary>Helper function, check if the sprite collides with anything.</summary>
-    /// <param name="location"></param>
-    /// <param name="spritePosition"></param>
-    /// <returns></returns>
-    protected virtual bool CheckSpriteCollision(GameLocation location, Vector2 spritePosition)
-    {
-        return location.isCollidingPosition(
-            new Rectangle(
-                (int)spritePosition.X - vd.Width / 2,
-                (int)spritePosition.Y - vd.Height / 2,
-                vd.Width,
-                vd.Height
-            ),
-            Game1.viewport,
-            isFarmer: false,
-            0,
-            glider: false,
-            null,
-            pathfinding: true,
-            projectile: false,
-            ignoreCharacterRequirement: true
-        );
     }
 }

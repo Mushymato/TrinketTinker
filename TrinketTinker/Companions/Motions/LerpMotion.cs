@@ -116,7 +116,7 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
     /// <inheritdoc/>
     public override Vector2 GetOffset()
     {
-        return new Vector2(0, -vd.Height * 4 / 2) + base.GetOffset();
+        return new Vector2(0, -cs.Height * cs.TextureScale / 2) + base.GetOffset();
     }
 
     /// <inheritdoc/>
