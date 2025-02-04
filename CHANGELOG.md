@@ -16,6 +16,7 @@
 - HarvestTo on HarvestStone/Forage/Shakeable/Crop now takes TinkerInventory, which puts the item into the companion's inventory (if it has one)
 - HarvestTo now works with ItemDrop abilities
 - Nop anim clips may now have a duration
+- Alt variants for companions to switch variant on the fly (just visual, no effect on the variant number)
 
 #### Fixed
 
