@@ -103,8 +103,7 @@
               {
                 "AbilityClass": "Chatter",
                 "Proc": "Interact",
-                "ProcTimer": 1000,
-                "Args": {}
+                "ProcTimer": 1000
               },
               {
                 "AbilityClass": "Nop",
