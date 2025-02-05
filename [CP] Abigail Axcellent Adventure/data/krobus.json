@@ -32,8 +32,21 @@
               "Texture": "Characters/Krobus",
               "Width": 16,
               "Height": 24,
+              // for Chatter
+              "Name": "[LocalizedText Strings\\NPCNames:Krobus]",
+              "Portrait": "Portraits/Krobus",
             }
           ],
+          "Chatter": {
+            "AcceptGift": {
+              "Lines": [
+                "Characters/Dialogue/Krobus:AcceptGift_(O)StardropTea",
+                "Characters/Dialogue/Krobus:AcceptGift_(O)Book_Void",
+                "Characters/Dialogue/Krobus:AcceptGift_(O)879",
+                "Characters/Dialogue/Krobus:AcceptGift_(O)308"
+              ]
+            }
+          },
           "Motion": {
             "MotionClass": "Lerp",
             "AlwaysMoving": false,
@@ -66,7 +79,13 @@
             },
             "SpeechBubbles": {
               "Smile": {
-                "Text": ":("
+                "Text": ">:)"
+              },
+              "ItsScary": {
+                "Text": "Help :("
+              },
+              "HowAreYou": {
+                "Text": "What's up :)"
               }
             }
           },
@@ -82,10 +101,24 @@
                 },
               },
               {
-                "AbilityClass": "Nop",
+                "AbilityClass": "Chatter",
                 "Proc": "Interact",
-                "ProcTimer": 10000,
-                "ProcSpeechBubble": "Smile",
+                "ProcTimer": 1000,
+                "Args": {}
+              },
+              {
+                "AbilityClass": "Nop",
+                "Proc": "Footstep",
+                "ProcTimer": 15000,
+                "ProcSpeechBubble": "ItsScary",
+                "InCombat": true
+              },
+              {
+                "AbilityClass": "Nop",
+                "Proc": "Footstep",
+                "ProcTimer": 15000,
+                "ProcSpeechBubble": "HowAreYou",
+                "InCombat": false
               },
               {
                 "AbilityClass": "HarvestForage",
@@ -175,7 +208,7 @@
         "Smile",
       ],
       "Entries": {
-        "Text": ":)"
+        "Text": "::::)"
       },
       "When": {
         "KrobusEatsRocks": true

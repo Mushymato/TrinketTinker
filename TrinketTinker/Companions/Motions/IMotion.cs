@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using TrinketTinker.Models;
+using TrinketTinker.Models.AbilityArgs;
 
 namespace TrinketTinker.Companions.Motions;
 
@@ -12,6 +13,9 @@ public interface IMotion
 
     /// <summary>Anim sprite bounding box</summary>
     Rectangle BoundingBox { get; }
+
+    /// <summary>Current variant data</summary>
+    ChatterSpeaker Speaker { get; }
 
     /// <summary>Rebuild the list of active anchors.</summary>
     /// <param name="strings"></param>

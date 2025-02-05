@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using TrinketTinker.Models;
+using TrinketTinker.Models.AbilityArgs;
 using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Companions.Anim;
@@ -58,7 +59,8 @@ public sealed class TinkerAnimSprite
     internal float TextureScale;
     internal float ShadowScale;
     internal Rectangle SourceRect { get; private set; } = Rectangle.Empty;
-    public bool Hidden => currentFrame == -1;
+    internal bool Hidden => currentFrame == -1;
+    internal ChatterSpeaker Speaker => new(vd.Name ?? fullVd.Name, vd.Portrait ?? fullVd.Portrait);
 
     private double timer = 0f;
     internal int currentFrame = 0;

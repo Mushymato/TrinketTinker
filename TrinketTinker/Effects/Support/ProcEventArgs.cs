@@ -46,6 +46,9 @@ public sealed class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
     /// <summary>Get the most valid location of this proc, either the event location or the player's current location</summary>
     public GameLocation LocationOrCurrent => Location ?? Farmer.currentLocation;
 
+    /// <summary>GSQ Context, guarenteed to exist after Check is called</summary>
+    public GameStateQueryContext GSQContext;
+
     /// <summary>
     /// Validate whether this proc should trigger ability of given data.
     /// </summary>
@@ -56,6 +59,8 @@ public sealed class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
         if (Farmer == null)
             return false;
         if (!e.Enabled)
+            return false;
+        if (data.InCombat != null && data.InCombat != e.InCombat)
             return false;
         if (Places.LocationDisableTrinketAbilities(LocationOrCurrent))
             return false;
@@ -70,12 +75,12 @@ public sealed class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
             )
                 return false;
         }
+        GSQContext = new(LocationOrCurrent, Farmer, e.Trinket, e.Trinket, null, null, []);
+        GSQContext.CustomFields[TinkerConst.CustomFields_Data] = data;
+        GSQContext.CustomFields[TinkerConst.CustomFields_Position] = e.CompanionPosition;
         if (data.Condition != null)
         {
-            GameStateQueryContext context = new(LocationOrCurrent, Farmer, e.Trinket, e.Trinket, null, null, []);
-            context.CustomFields[TinkerConst.CustomFields_Data] = data;
-            context.CustomFields[TinkerConst.CustomFields_Position] = e.CompanionPosition;
-            return GameStateQuery.CheckConditions(data.Condition, context);
+            return GameStateQuery.CheckConditions(data.Condition, GSQContext);
         }
         return true;
     }

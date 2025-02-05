@@ -7,6 +7,7 @@ using StardewValley.Companions;
 using StardewValley.Network;
 using TrinketTinker.Companions.Motions;
 using TrinketTinker.Models;
+using TrinketTinker.Models.AbilityArgs;
 using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Companions;
@@ -117,6 +118,8 @@ public class TrinketTinkerCompanion : Companion
 
     /// <summary>Bounding box of companion</summary>
     public Rectangle BoundingBox => Motion?.BoundingBox ?? Rectangle.Empty;
+
+    public ChatterSpeaker? Speaker => Motion?.Speaker;
 
     /// <summary>Argumentless constructor for netcode deserialization.</summary>
     public TrinketTinkerCompanion()

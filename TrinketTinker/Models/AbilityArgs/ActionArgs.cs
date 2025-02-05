@@ -22,8 +22,5 @@ public class ActionArgs : IArgs
     internal IEnumerable<string> AllActionsEnd => ActionEnd != null ? [ActionEnd, .. ActionsEnd] : ActionsEnd;
 
     /// <inheritdoc/>
-    public bool Validate()
-    {
-        return AllActions.Any();
-    }
+    public bool Validate() => AllActions.Any();
 }

@@ -1,11 +1,31 @@
 namespace TrinketTinker.Models;
 
+/// <summary>Tinker inventory definition</summary>
 public sealed class TinkerInventoryData
 {
+    /// <summary>Inventory size</summary>
     public int Capacity = 9;
+
+    /// <summary>Game state query condition, if false the inventory cannot be opened</summary>
     public string? OpenCondition = null;
+
+    /// <summary>Item must have these context tags (OR), can use "tag1 tag2" for AND</summary>
     public List<string>? RequiredTags = null;
+
+    /// <summary>Game state query condition, if false the item cannot be put inside</summary>
     public string? RequiredItemCondition = null;
+}
+
+public sealed class ChatterLinesData
+{
+    /// <summary>Ordered dialogue lines, one will be picked at random. Supports translation keys.</summary>
+    public List<string> Lines = [];
+
+    /// <summary>Game state query condition</summary>
+    public string? Condition { get; set; } = null;
+
+    /// <summary>Priority of this chatter line, higher is earlier</summary>
+    public int Priority { get; set; } = 0;
 }
 
 /// <summary>Top level data class for Tinker.</summary>
@@ -25,6 +45,8 @@ public sealed class TinkerData
 
     /// <summary>Definition for inventory, tied to level</summary>
     public TinkerInventoryData? Inventory = null;
+
+    public Dictionary<string, ChatterLinesData>? Chatter = null;
 
     /// <summary>List of variants</summary>
     public List<VariantData> Variants { get; set; } = [];

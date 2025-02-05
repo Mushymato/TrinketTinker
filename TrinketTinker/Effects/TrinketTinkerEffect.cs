@@ -13,6 +13,7 @@ using TrinketTinker.Companions;
 using TrinketTinker.Effects.Abilities;
 using TrinketTinker.Effects.Support;
 using TrinketTinker.Models;
+using TrinketTinker.Models.AbilityArgs;
 using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Effects;
@@ -20,6 +21,9 @@ namespace TrinketTinker.Effects;
 /// <summary>Base class for TrinketTinker trinkets, allows extensible companions with extensible abilities.</summary>
 public class TrinketTinkerEffect : TrinketEffect
 {
+    /// <summary>Miliseconds</summary>
+    public const double IN_COMBAT_CD = 10000;
+
     /// <summary>ModData variant key</summary>
     public static readonly string ModData_Variant = $"{ModEntry.ModId}/Variant";
 
@@ -33,7 +37,7 @@ public class TrinketTinkerEffect : TrinketEffect
     public static readonly string ModData_Enabled = $"{ModEntry.ModId}/Enabled";
 
     /// <summary>Companion data with matching ID</summary>
-    protected TinkerData? Data;
+    internal TinkerData? Data;
     private readonly Lazy<ImmutableList<IAbility>> abilities;
 
     /// <summary>Abilities for this trinket.</summary>
@@ -72,6 +76,17 @@ public class TrinketTinkerEffect : TrinketEffect
             if (Companion is TrinketTinkerCompanion cmp)
                 return cmp.BoundingBox;
             return Rectangle.Empty;
+        }
+    }
+
+    /// <summary>Companion bounding box.</summary>
+    public ChatterSpeaker? CompanionSpeaker
+    {
+        get
+        {
+            if (Companion is TrinketTinkerCompanion cmp)
+                return cmp.Speaker;
+            return null;
         }
     }
 
@@ -143,6 +158,9 @@ public class TrinketTinkerEffect : TrinketEffect
 
     /// <summary>Check if this trinket has an equip ability</summary>
     internal bool HasEquipTrinketAbility => Abilities.Any((ab) => ab is EquipTrinketAbility);
+
+    private double inCombatTimer = -1;
+    internal bool InCombat => inCombatTimer > 0;
 
     internal event EventHandler<ProcEventArgs>? EventFootstep;
     internal event EventHandler<ProcEventArgs>? EventReceiveDamage;
@@ -325,12 +343,19 @@ public class TrinketTinkerEffect : TrinketEffect
 
     public override void OnFootstep(Farmer farmer)
     {
+        if (!Enabled)
+            return;
+
         EventFootstep?.Invoke(this, new(ProcOn.Footstep, farmer));
     }
 
     public override void OnReceiveDamage(Farmer farmer, int damageAmount)
     {
+        if (!Enabled)
+            return;
+
         EventReceiveDamage?.Invoke(this, new(ProcOn.ReceiveDamage, farmer) { DamageAmount = damageAmount });
+        inCombatTimer = IN_COMBAT_CD;
     }
 
     public override void OnDamageMonster(
@@ -341,6 +366,9 @@ public class TrinketTinkerEffect : TrinketEffect
         bool isCriticalHit
     )
     {
+        if (!Enabled)
+            return;
+
         EventDamageMonster?.Invoke(
             this,
             new(ProcOn.DamageMonster, farmer)
@@ -352,6 +380,7 @@ public class TrinketTinkerEffect : TrinketEffect
             }
         );
         if (monster.Health <= 0)
+        {
             EventSlayMonster?.Invoke(
                 this,
                 new(ProcOn.SlayMonster, farmer)
@@ -362,6 +391,10 @@ public class TrinketTinkerEffect : TrinketEffect
                     IsCriticalHit = isCriticalHit,
                 }
             );
+            if (farmer.currentLocation?.characters.Any((chara) => chara is Monster m && m != monster) ?? false)
+                return;
+        }
+        inCombatTimer = IN_COMBAT_CD;
     }
 
     /// <summary>Handle the trigger.</summary>
@@ -370,16 +403,26 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <param name="damageAmount"></param>
     public virtual void OnTrigger(Farmer farmer, string[] args, TriggerActionContext context)
     {
+        if (!Enabled)
+            return;
+
         EventTrigger?.Invoke(this, new(ProcOn.Trigger, farmer) { TriggerArgs = args, TriggerContext = context });
     }
 
     public virtual void OnPlayerWarped(Farmer farmer, GameLocation oldLocation, GameLocation newLocation)
     {
+        if (!Enabled)
+            return;
+
         EventPlayerWarped?.Invoke(this, new(ProcOn.Warped, farmer));
+        inCombatTimer = 0;
     }
 
     public virtual void OnButtonsChanged(Farmer farmer, ButtonsChangedEventArgs e)
     {
+        if (!Enabled)
+            return;
+
         if (Game1.activeClickableMenu != null || farmer.UsingTool && farmer.usingSlingshot)
             return;
         Rectangle farmerBounds = farmer.GetBoundingBox();
@@ -400,6 +443,8 @@ public class TrinketTinkerEffect : TrinketEffect
 
         foreach (IAbility ability in Abilities)
             ability.Update(farmer, time, location);
+        if (inCombatTimer > 0)
+            inCombatTimer -= time.ElapsedGameTime.TotalMilliseconds;
     }
 
     /// <summary>

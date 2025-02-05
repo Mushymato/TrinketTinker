@@ -61,8 +61,5 @@ public class TileArgs : IArgs
     }
 
     /// <inheritdoc/>
-    public bool Validate()
-    {
-        return Range >= 0 && Count > 0;
-    }
+    public bool Validate() => Range >= 0 && Count > 0;
 }

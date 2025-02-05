@@ -132,5 +132,8 @@ public sealed class AbilityData : IHaveArgs
     /// </summary>
     public bool? IsCriticalHit { get; set; } = null;
 
+    /// <summary>
+    /// Check if the player is in-combat, which is defined in this mod as "location has monster" and have dealt damage/taken damage in the last 10 seconds
+    /// </summary>
     public bool? InCombat { get; set; } = null;
 }

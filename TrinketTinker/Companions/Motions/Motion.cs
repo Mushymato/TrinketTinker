@@ -10,6 +10,7 @@ using StardewValley.TokenizableStrings;
 using TrinketTinker.Companions.Anim;
 using TrinketTinker.Effects.Abilities;
 using TrinketTinker.Models;
+using TrinketTinker.Models.AbilityArgs;
 using TrinketTinker.Models.Mixin;
 using TrinketTinker.Wheels;
 
@@ -87,6 +88,8 @@ public abstract class Motion<TArgs> : IMotion
 
     /// <summary>Bounding box of trinket</summary>
     public Rectangle BoundingBox { get; private set; } = Rectangle.Empty;
+
+    public ChatterSpeaker Speaker => cs.Speaker;
 
     /// <summary>Basic constructor, tries to parse arguments as the generic <see cref="IArgs"/> type.</summary>
     /// <param name="companion"></param>

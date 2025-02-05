@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using TrinketTinker.Wheels;
 
@@ -26,9 +25,6 @@ public interface IVariantData
     /// <summary>Variant texture content path.</summary>
     public string? Texture { get; set; }
 
-    /// <summary>Variant portrait content path, for dialogue ability.</summary>
-    public string? Portrait { get; set; }
-
     /// <summary>Draw color mask, can use color name from <see cref="Color"/>, hex value, or <see cref="TinkerConst.COLOR_PRISMATIC"/> for animated prismatic effect.</summary>
     public string? ColorMask { get; set; }
 
@@ -43,6 +39,12 @@ public interface IVariantData
 
     /// <summary>Base scale to draw shadow texture.</summary>
     public float ShadowScale { get; set; }
+
+    /// <summary>Variant speaker name, for chatter ability.</summary>
+    public string? Name { get; set; }
+
+    /// <summary>Variant portrait content path, for chatter ability.</summary>
+    public string? Portrait { get; set; }
 }
 
 /// <summary>Additional variant data, kind of like NPC appearance</summary>
@@ -50,9 +52,6 @@ public class AltVariantData : IVariantData
 {
     /// <inheritdoc/>
     public string? Texture { get; set; } = null;
-
-    /// <inheritdoc/>
-    public string? Portrait { get; set; } = null;
 
     /// <inheritdoc/>
     public string? ColorMask { get; set; } = null;
@@ -69,13 +68,19 @@ public class AltVariantData : IVariantData
     /// <inheritdoc/>
     public float ShadowScale { get; set; } = -1;
 
+    /// <inheritdoc/>
+    public string? Name { get; set; } = null;
+
+    /// <inheritdoc/>
+    public string? Portrait { get; set; } = null;
+
     /// <summary>Game state query condition</summary>
     public string? Condition { get; set; } = null;
 
-    /// <summary>Exclude</summary>
+    /// <summary>Exclude from standard (re)check</summary>
     public bool ProcOnly { get; set; } = false;
 
-    /// <summary>Priority </summary>
+    /// <summary>Priority of this alt variant, higher </summary>
     public int Priority { get; set; } = 0;
 }
 
@@ -84,9 +89,6 @@ public sealed class VariantData : IVariantData
 {
     /// <inheritdoc/>
     public string? Texture { get; set; } = null;
-
-    /// <inheritdoc/>
-    public string? Portrait { get; set; } = null;
 
     /// <inheritdoc/>
     public string? ColorMask { get; set; } = null;
@@ -102,6 +104,12 @@ public sealed class VariantData : IVariantData
 
     /// <inheritdoc/>
     public float ShadowScale { get; set; } = 3f;
+
+    /// <inheritdoc/>
+    public string? Name { get; set; } = null;
+
+    /// <inheritdoc/>
+    public string? Portrait { get; set; } = null;
 
     /// <summary>If set, add a light with given radius. Note that the light is only visible to local player.</summary>
     public LightSourceData? LightSource { get; set; } = null;
