@@ -60,6 +60,13 @@
                 "beachquestion_followup": "$p 305#Tomorrow should be a lot of fun!$h|Hmm, I wonder if I can get someone to go with me...$s",
               },
               "Priority": 0,
+            },
+            "Subby": {
+              "Lines": [
+                "Oh what are you doing with that?"
+              ],
+              "Priority": 1,
+              "Condition": "FALSE"
             }
           },
           "Motion": {
@@ -118,7 +125,10 @@
               {
                 "AbilityClass": "Chatter",
                 "Proc": "Interact",
-                "ProcTimer": 1000
+                "ProcTimer": 1000,
+                "Args": {
+                  "ChatterPrefix": "Qte"
+                }
               },
               {
                 "AbilityClass": "Nop",
@@ -132,6 +142,7 @@
                 "Proc": "Footstep",
                 "ProcTimer": 15000,
                 "ProcSpeechBubble": "HowAreYou",
+                "ProcChatterKey": "Subby",
                 "InCombat": false
               },
               {

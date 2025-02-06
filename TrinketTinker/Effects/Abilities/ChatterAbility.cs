@@ -16,8 +16,7 @@ namespace TrinketTinker.Effects.Abilities;
 public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
     : Ability<ChatterArgs>(effect, data, lvl)
 {
-    private Dictionary<string, ChatterLinesData>? chatter = null;
-    private readonly HashSet<string> spoken = [];
+    private Dictionary<string, ChatterLinesData> chatter = null!;
     private NPC speakerNPC = null!;
     private readonly FieldInfo dialogueField = typeof(NPC).GetField(
         "dialogue",
@@ -28,10 +27,11 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
         BindingFlags.NonPublic | BindingFlags.Instance
     )!;
 
-    private static string GetText(string text, object[] subs)
+    private string GetText(string text)
     {
+        // object[] subs = args.Substitutions?.ToArray() ?? [];
         if (Game1.content.IsValidTranslationKey(text))
-            return Game1.content.LoadString(text, subs);
+            return Game1.content.LoadString(text);
         return TokenParser.ParseText(text) ?? "CHATTER ERROR";
     }
 
@@ -39,7 +39,7 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
     {
         if (base.Activate(farmer))
         {
-            chatter = e.Data?.Chatter;
+            chatter = e.Data?.Chatter!;
             if (chatter == null)
                 return false;
             speakerNPC = new(null, Vector2.Zero, "", 0, "???", null, eventActor: false) { displayName = "???" };
@@ -49,51 +49,56 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
 
     protected override void CleanupEffect(Farmer farmer)
     {
-        chatter = null;
+        chatter = null!;
         speakerNPC = null!;
-        spoken.Clear();
         base.CleanupEffect(farmer);
     }
 
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
-        // choose line
-        if (
-            chatter!
-                .OrderByDescending((kv) => kv.Value.Priority)
-                .FirstOrDefault(
-                    (kv) =>
-                        (args.ChatterPrefix == null || kv.Key.StartsWith(args.ChatterPrefix))
-                        && GameStateQuery.CheckConditions(kv.Value.Condition, proc.GSQContext)
-                )
-            is KeyValuePair<string, ChatterLinesData> foundLines
-        )
+        // choose chatter data, either from next chatter key proc'd by ability or by conds
+        if (e.NextChatterKey == null || !chatter.TryGetValue(e.NextChatterKey, out ChatterLinesData? foundLines))
         {
-            string chosen = Random.Shared.ChooseFrom(foundLines.Value.Lines);
-            // draw the dialogue
-            ChatterSpeaker? speaker = e.CompanionSpeaker;
-            if (speaker != null && speaker.Portrait.Value != null)
-            {
-                speakerNPC.displayName = speaker.DisplayName;
-                portraitField.SetValue(speakerNPC, speaker.Portrait.Value);
-            }
+            if (
+                chatter
+                    .OrderByDescending((kv) => kv.Value.Priority)
+                    .FirstOrDefault(
+                        (kv) =>
+                            (args.ChatterPrefix == null || kv.Key.StartsWith(args.ChatterPrefix))
+                            && GameStateQuery.CheckConditions(kv.Value.Condition, proc.GSQContext)
+                    )
+                is KeyValuePair<string, ChatterLinesData> foundLinesKV
+            )
+                foundLines = foundLinesKV.Value;
             else
-            {
-                speakerNPC.displayName = "???";
-                portraitField.SetValue(speakerNPC, null);
-            }
-            object[] subs = args.Substitutions.ToArray();
-            if (foundLines.Value.Responses != null)
-            {
-                Dictionary<string, string> TranslatedResponses = foundLines
-                    .Value.Responses.Select((kv) => new KeyValuePair<string, string>(kv.Key, GetText(kv.Value, subs)))
-                    .ToDictionary((kv) => kv.Key, (kv) => kv.Value);
-                dialogueField.SetValue(speakerNPC, TranslatedResponses);
-            }
-            Game1.DrawDialogue(new(speakerNPC, chosen, GetText(chosen, subs)));
-            return base.ApplyEffect(proc);
+                return false;
         }
-        ModEntry.Log("no line picked");
-        return false;
+        e.NextChatterKey = null;
+        if (foundLines == null)
+            return false;
+
+        string chosen = Random.Shared.ChooseFrom(foundLines.Lines);
+        // draw the dialogue
+        ChatterSpeaker? speaker = e.CompanionSpeaker;
+        if (speaker != null && speaker.Portrait.Value != null)
+        {
+            speakerNPC.displayName = speaker.DisplayName;
+            portraitField.SetValue(speakerNPC, speaker.Portrait.Value);
+        }
+        else
+        {
+            speakerNPC.displayName = "???";
+            portraitField.SetValue(speakerNPC, null);
+        }
+
+        if (foundLines.Responses != null)
+        {
+            Dictionary<string, string> TranslatedResponses = foundLines
+                .Responses.Select((kv) => new KeyValuePair<string, string>(kv.Key, GetText(kv.Value)))
+                .ToDictionary((kv) => kv.Key, (kv) => kv.Value);
+            dialogueField.SetValue(speakerNPC, TranslatedResponses);
+        }
+        Game1.DrawDialogue(new(speakerNPC, chosen, GetText(chosen)));
+        return base.ApplyEffect(proc);
     }
 }

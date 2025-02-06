@@ -182,6 +182,8 @@ public abstract class Ability<TArgs> : IAbility
                 e.SetSpeechBubble(d.ProcSpeechBubble);
             if (!string.IsNullOrEmpty(d.ProcAltVariant))
                 e.SetAltVariant(d.ProcAltVariant);
+            if (!string.IsNullOrEmpty(d.ProcChatterKey))
+                e.NextChatterKey = d.ProcChatterKey;
 
             if (d.ProcSyncDelay > 0)
                 DelayedAction.functionAfterDelay(() => EventAbilityProc?.Invoke(sender, proc), d.ProcSyncDelay);

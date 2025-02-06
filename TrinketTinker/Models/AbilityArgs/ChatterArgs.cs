@@ -27,9 +27,6 @@ public sealed class ChatterArgs : IArgs
     /// <summary>String chatter prefix used to filter</summary>
     public string? ChatterPrefix { get; set; } = null;
 
-    /// <summary>Substitutions for {0} {1} {2} etc.</summary>
-    public object[] Substitutions { get; set; } = [];
-
     /// <inheritdoc/>
     public bool Validate() => true;
 }

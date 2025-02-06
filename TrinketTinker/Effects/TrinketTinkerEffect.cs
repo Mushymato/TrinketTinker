@@ -159,8 +159,14 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <summary>Check if this trinket has an equip ability</summary>
     internal bool HasEquipTrinketAbility => Abilities.Any((ab) => ab is EquipTrinketAbility);
 
+    /// <summary>timer for checking combat status</summary>
     private double inCombatTimer = -1;
+
+    /// <summary>Is in combat (have dealt/taken damage in past <see cref="IN_COMBAT_CD"/> miliseconds</summary>
     internal bool InCombat => inCombatTimer > 0;
+
+    /// <summary>Queue'd next chatter key</summary>
+    internal string? NextChatterKey { get; set; } = null;
 
     internal event EventHandler<ProcEventArgs>? EventFootstep;
     internal event EventHandler<ProcEventArgs>? EventReceiveDamage;

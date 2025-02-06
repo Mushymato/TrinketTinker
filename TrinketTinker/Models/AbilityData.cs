@@ -111,7 +111,10 @@ public sealed class AbilityData : IHaveArgs
     /// <summary>Switch the companion to a specific sub variant on proc, or "RECHECK" to return to normal conditional base variants.</summary>
     public string? ProcAltVariant { get; set; } = null;
 
-    /// <summary>Condition, see <see cref="StardewValley.GameStateQuery"/></summary>
+    /// <summary>Make the next invocation of "Chatter" use this key.</summary>
+    public string? ProcChatterKey { get; set; } = null;
+
+    /// <summary>Condition, see <see cref="GameStateQuery"/></summary>
     public string? Condition { get; set; } = null;
 
     /// <summary>

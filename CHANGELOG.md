@@ -18,6 +18,8 @@
 - Nop anim clips may now have a duration
 - Alt variants for companions to switch variant on the fly (just visual, no effect on the variant number)
 - Chatter ability, pick a dialogue from a set of Chatter dialogue data
+- ProcChatterKey, force a particular chatter key the next time a chatter ability is activated
+- Ability can now check for InCombat, combat is defined as "location has monster" and player have dealt damage/taken damage in the last 10 seconds
 
 #### Fixed
 
