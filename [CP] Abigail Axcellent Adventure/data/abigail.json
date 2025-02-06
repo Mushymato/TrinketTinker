@@ -34,8 +34,7 @@
               "Height": 32,
               "AltVariants": {
                 "BIG": {
-                  "TextureScale": 16,
-                  "ProcOnly": true
+                  "TextureScale": 16
                 },
                 "WINTER": {
                   "Texture": "Characters/Abigail_Winter",

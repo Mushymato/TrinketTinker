@@ -77,9 +77,6 @@ public class AltVariantData : IVariantData
     /// <summary>Game state query condition</summary>
     public string? Condition { get; set; } = null;
 
-    /// <summary>Exclude from standard (re)check</summary>
-    public bool ProcOnly { get; set; } = false;
-
     /// <summary>Priority of this alt variant, higher </summary>
     public int Priority { get; set; } = 0;
 }
@@ -134,9 +131,7 @@ public sealed class VariantData : IVariantData
         if (
             AltVariants
                 ?.OrderByDescending((kv) => kv.Value.Priority)
-                .FirstOrDefault(
-                    (kv) => !kv.Value.ProcOnly && GameStateQuery.CheckConditions(kv.Value.Condition, player: farmer)
-                )
+                .FirstOrDefault((kv) => GameStateQuery.CheckConditions(kv.Value.Condition, player: farmer))
                 is KeyValuePair<string, AltVariantData> foundAltVariant
             && !string.IsNullOrEmpty(foundAltVariant.Key)
             && foundAltVariant.Key != prevKey

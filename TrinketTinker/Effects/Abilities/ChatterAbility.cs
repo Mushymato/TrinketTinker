@@ -1,3 +1,4 @@
+using System.Reflection;
 using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Extensions;
@@ -16,18 +17,32 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
 {
     private Dictionary<string, ChatterLinesData>? chatter = null;
     private readonly HashSet<string> spoken = [];
+    private NPC speakerNPC = null!;
+    private readonly FieldInfo dialogueField = typeof(NPC).GetField(
+        "dialogue",
+        BindingFlags.NonPublic | BindingFlags.Instance
+    )!;
+    private readonly FieldInfo portraitField = typeof(NPC).GetField(
+        "portrait",
+        BindingFlags.NonPublic | BindingFlags.Instance
+    )!;
 
     public override bool Activate(Farmer farmer)
     {
-        chatter = e.Data?.Chatter;
-        if (chatter == null)
-            return false;
-        return base.Activate(farmer);
+        if (base.Activate(farmer))
+        {
+            chatter = e.Data?.Chatter;
+            if (chatter == null)
+                return false;
+            speakerNPC = new(null, Vector2.Zero, "", 0, "???", null, eventActor: false) { displayName = "???" };
+        }
+        return Active;
     }
 
     protected override void CleanupEffect(Farmer farmer)
     {
         chatter = null;
+        speakerNPC = null!;
         spoken.Clear();
         base.CleanupEffect(farmer);
     }
@@ -47,21 +62,29 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
         )
         {
             string chosen = Random.Shared.ChooseFrom(foundLines.Value.Lines);
-            ModEntry.Log(chosen);
             // draw the dialogue
             ChatterSpeaker? speaker = e.CompanionSpeaker;
-            NPC? speakerNPC = null;
             if (speaker != null && speaker.Portrait.Value != null)
             {
-                //new AnimatedSprite("Characters\\Abigail", 0, 16, 16)
-                speakerNPC = new(null, Vector2.Zero, "", 0, "???", speaker.Portrait.Value, eventActor: false)
-                {
-                    displayName = speaker.DisplayName,
-                };
+                speakerNPC.displayName = speaker.DisplayName;
+                portraitField.SetValue(speakerNPC, speaker.Portrait.Value);
             }
-            Game1.DrawDialogue(
-                new Dialogue(speakerNPC, chosen, Game1.content.LoadString(chosen, args.Substitutions.ToArray()))
-            );
+            else
+            {
+                speakerNPC.displayName = "???";
+                portraitField.SetValue(speakerNPC, null);
+            }
+            object[] subs = args.Substitutions.ToArray();
+            if (foundLines.Value.Responses != null)
+            {
+                Dictionary<string, string> TranslatedResponses = foundLines
+                    .Value.Responses.Select(
+                        (kv) => new KeyValuePair<string, string>(kv.Key, Game1.content.LoadString(kv.Value, subs))
+                    )
+                    .ToDictionary((kv) => kv.Key, (kv) => kv.Value);
+                dialogueField.SetValue(speakerNPC, TranslatedResponses);
+            }
+            Game1.DrawDialogue(new(speakerNPC, chosen, Game1.content.LoadString(chosen, subs)));
             return base.ApplyEffect(proc);
         }
         ModEntry.Log("no line picked");

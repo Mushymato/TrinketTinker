@@ -21,6 +21,9 @@ public sealed class ChatterLinesData
     /// <summary>Ordered dialogue lines, one will be picked at random. Supports translation keys.</summary>
     public List<string> Lines = [];
 
+    /// <summary>Response dialogue lines, used for $q and other cross dialogue key things. Supports translation keys.</summary>
+    public Dictionary<string, string>? Responses;
+
     /// <summary>Game state query condition</summary>
     public string? Condition { get; set; } = null;
 

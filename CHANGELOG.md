@@ -17,6 +17,7 @@
 - HarvestTo now works with ItemDrop abilities
 - Nop anim clips may now have a duration
 - Alt variants for companions to switch variant on the fly (just visual, no effect on the variant number)
+- Chatter ability, pick a dialogue from a set of Chatter dialogue data
 
 #### Fixed
 

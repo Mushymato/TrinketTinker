@@ -34,7 +34,7 @@
               "Height": 24,
               // for Chatter
               "Name": "[LocalizedText Strings\\NPCNames:Krobus]",
-              "Portrait": "Portraits/Krobus",
+              "Portrait": "Portraits/Abigail",
             }
           ],
           "Chatter": {
@@ -44,7 +44,19 @@
                 "Characters/Dialogue/Krobus:AcceptGift_(O)Book_Void",
                 "Characters/Dialogue/Krobus:AcceptGift_(O)879",
                 "Characters/Dialogue/Krobus:AcceptGift_(O)308"
-              ]
+              ],
+              "Condition": "FALSE"
+            },
+            "Qtest": {
+              "Lines": [
+                "Characters/Dialogue/Abigail:winter_Sun"
+              ],
+              "Responses": {
+                "winter_Sun_old": "Characters/Dialogue/Abigail:winter_Sun_old",
+                "Sun_29": "Characters/Dialogue/Abigail:Sun_29",
+                "Sun_30": "Characters/Dialogue/Abigail:Sun_30",
+                "Sun_Bad": "Characters/Dialogue/Abigail:Sun_Bad",
+              }
             }
           },
           "Motion": {
