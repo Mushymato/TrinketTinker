@@ -17,7 +17,7 @@
               "Trigger": "ItemPlacedInMachine",
               "RequiredItemId": "(TR){{ModId}}_StatiColorMask",
               "RequiredCount": 1,
-              "Condition": "mushymato.TrinketTinker_IS_TINKER ? <=M"
+              "Condition": "mushymato.TrinketTinker_IS_TINKER Input ? <=M"
             }
           ],
           "OutputItem": [

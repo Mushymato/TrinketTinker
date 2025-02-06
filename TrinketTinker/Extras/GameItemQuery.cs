@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
 using StardewValley;
 using StardewValley.Delegates;
@@ -66,6 +67,12 @@ public static class GameItemQuery
         return ArgUtility.TryGetOptionalInt(array, index, out value, out string? _);
     }
 
+    /// <summary>Compare integers with this funny syntax: [operator][compareVal], value is implied to be left of the operator</summary>
+    /// <param name="query"></param>
+    /// <param name="index"></param>
+    /// <param name="value"></param>
+    /// <param name="maxValue"></param>
+    /// <returns></returns>
     private static bool CompareIntegerQ(string[] query, int index, int value, int? maxValue = null)
     {
         if (query.Length <= index)
@@ -96,6 +103,59 @@ public static class GameItemQuery
             }
         }
         return int.TryParse(qStr, out compValue) && value == compValue;
+    }
+
+    /// <summary>Check for a input or target item, assert that it is a trinket tinker trinket</summary>
+    /// <param name="query"></param>
+    /// <param name="context"></param>
+    /// <param name="idx"></param>
+    /// <param name="item"></param>
+    /// <param name="effect"></param>
+    /// <returns></returns>
+    private static bool TryGetTinkerTrinket(
+        string[] query,
+        GameStateQueryContext context,
+        int idx,
+        [NotNullWhen(true)] out Trinket? trinket,
+        [NotNullWhen(true)] out TrinketTinkerEffect? effect
+    )
+    {
+        trinket = null;
+        effect = null;
+        if (
+            !GameStateQuery.Helpers.TryGetItemArg(
+                query,
+                idx,
+                context.TargetItem,
+                context.InputItem,
+                out Item item,
+                out var error
+            )
+        )
+        {
+            if (!ArgUtility.TryGet(query, idx, out string itemId, out string _, allowBlank: true, "string itemId"))
+            {
+                ModEntry.Log(
+                    $"Failed parsing condition '{string.Join(" ", query)}': {error}.",
+                    StardewModdingAPI.LogLevel.Warn
+                );
+                return false;
+            }
+            if (ItemRegistry.Create(itemId, allowNull: false) is not Item item2)
+            {
+                ModEntry.Log($"Invalid item ID '{itemId}': {error}.", StardewModdingAPI.LogLevel.Warn);
+                return false;
+            }
+            item = item2;
+        }
+
+        if (item is not Trinket trinketItem || trinketItem.GetEffect() is not TrinketTinkerEffect effectTT)
+        {
+            return false;
+        }
+        trinket = trinketItem;
+        effect = effectTT;
+        return true;
     }
 
     /// <summary>
@@ -198,22 +258,20 @@ public static class GameItemQuery
     }
 
     /// <summary>
-    /// Check that the input item is a trinket using TrinketTinkerEffect
+    /// Check that the input item is a trinket using TrinketTinkerEffect, then check current level/variant against int compare
     /// </summary>
     /// <param name="query"></param>
     /// <param name="context"></param>
     /// <returns></returns>
     public static bool IS_TINKER(string[] query, GameStateQueryContext context)
     {
-        if (
-            context.InputItem == null
-            || context.InputItem is not Trinket trinket
-            || trinket.GetEffect() is not TrinketTinkerEffect effect
-        )
-            return false;
-        // check for level
-        return CompareIntegerQ(query, 1, effect.Level, maxValue: effect.MaxLevel)
-            && CompareIntegerQ(query, 2, effect.Variant, maxValue: effect.MaxVariant);
+        if (TryGetTinkerTrinket(query, context, 1, out Trinket? trinket, out TrinketTinkerEffect? effect))
+        {
+            // check for level
+            return CompareIntegerQ(query, 2, effect.Level, maxValue: effect.MaxLevel)
+                && CompareIntegerQ(query, 3, effect.Variant, maxValue: effect.MaxVariant);
+        }
+        return false;
     }
 
     /// <summary>
@@ -224,14 +282,12 @@ public static class GameItemQuery
     /// <returns></returns>
     public static bool HAS_LEVELS(string[] query, GameStateQueryContext context)
     {
-        if (
-            context.InputItem == null
-            || context.InputItem is not Trinket trinket
-            || trinket.GetEffect() is not TrinketTinkerEffect effect
-        )
-            return false;
-        // check for level
-        return effect.GetMaxUnlockedLevel(trinket) > 1;
+        if (TryGetTinkerTrinket(query, context, 1, out Trinket? trinket, out TrinketTinkerEffect? effect))
+        {
+            // check for level
+            return effect.GetMaxUnlockedLevel(trinket) > 1;
+        }
+        return false;
     }
 
     /// <summary>
@@ -242,14 +298,12 @@ public static class GameItemQuery
     /// <returns></returns>
     public static bool HAS_VARIANTS(string[] query, GameStateQueryContext context)
     {
-        if (
-            context.InputItem == null
-            || context.InputItem is not Trinket trinket
-            || trinket.GetEffect() is not TrinketTinkerEffect effect
-        )
-            return false;
-        // check for variant
-        return effect.GetMaxUnlockedVariant(trinket) > 1;
+        if (TryGetTinkerTrinket(query, context, 1, out Trinket? trinket, out TrinketTinkerEffect? effect))
+        {
+            // check for variant
+            return effect.GetMaxUnlockedVariant(trinket) > 1;
+        }
+        return false;
     }
 
     /// <summary>Count the number of trinkets equipped, compare to a particular number</summary>
@@ -259,21 +313,17 @@ public static class GameItemQuery
     /// <exception cref="NotImplementedException"></exception>
     private static bool ENABLED_TRINKET_COUNT(string[] query, GameStateQueryContext context)
     {
-        if (
-            !ArgUtility.TryGet(query, 1, out var playerKey, out var error, allowBlank: true, "string playerKey")
-            || !ArgUtility.TryGetOptional(
-                query,
-                3,
-                out string tId,
-                out error,
-                defaultValue: context.InputItem?.QualifiedItemId ?? context.TargetItem?.QualifiedItemId ?? "",
-                allowBlank: false,
-                name: "string trinketId"
-            )
-        )
+        if (!TryGetTinkerTrinket(query, context, 1, out Trinket? trinket, out TrinketTinkerEffect? effect))
+            return false;
+        if (!ArgUtility.TryGet(query, 2, out var playerKey, out string error, allowBlank: true, "string playerKey"))
         {
-            return GameStateQuery.Helpers.ErrorResult(query, error);
+            ModEntry.Log(
+                $"Failed parsing condition '{string.Join(" ", query)}': {error}.",
+                StardewModdingAPI.LogLevel.Warn
+            );
+            return false;
         }
+        string tId = trinket.ItemId;
         int count = 0;
         GameStateQuery.Helpers.WithPlayer(
             context.Player,
@@ -285,7 +335,7 @@ public static class GameItemQuery
                     if (trinketItem == null)
                         continue;
                     if (
-                        (trinketItem.QualifiedItemId == tId || trinketItem.ItemId == tId)
+                        trinketItem.ItemId == tId
                         && trinketItem.GetEffect() is TrinketTinkerEffect effect
                         && effect.Enabled
                     )
@@ -294,6 +344,6 @@ public static class GameItemQuery
                 return true;
             }
         );
-        return CompareIntegerQ(query, 2, count);
+        return CompareIntegerQ(query, 3, count);
     }
 }

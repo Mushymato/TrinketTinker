@@ -102,7 +102,7 @@ public static class TrinketColorizer
                             Trigger = MachineOutputTrigger.ItemPlacedInMachine,
                             RequiredCount = 1,
                             RequiredTags = ["category_trinket"],
-                            Condition = GameItemQuery.GameStateQuery_HAS_VARIANTS,
+                            Condition = $"{GameItemQuery.GameStateQuery_HAS_VARIANTS} Input",
                         },
                     ],
                     OutputItem =
@@ -153,7 +153,7 @@ public static class TrinketColorizer
                     Trigger = MachineOutputTrigger.ItemPlacedInMachine,
                     RequiredCount = 1,
                     RequiredTags = ["category_trinket"],
-                    Condition = GameItemQuery.GameStateQuery_HAS_LEVELS,
+                    Condition = $"{GameItemQuery.GameStateQuery_HAS_LEVELS} Input",
                 },
             ];
             newRule.OutputItem =
@@ -171,7 +171,7 @@ public static class TrinketColorizer
                 new()
                 {
                     Id = $"{ModEntry.ModId}_Default",
-                    Condition = GameItemQuery.GameStateQuery_HAS_LEVELS,
+                    Condition = $"{GameItemQuery.GameStateQuery_HAS_LEVELS} Input",
                     Sounds =
                     [
                         new() { Id = "metal_tap", Delay = 0 },
@@ -229,7 +229,10 @@ public static class TrinketColorizer
                 Game1.showRedMessage(I18n.BC_TrinketColorizer_NoRecolor());
             return null;
         }
-        if ((outputData.CustomData?.TryGetValue(CustomData_LevelPlus, out increment) ?? false) && int.TryParse(increment, out amount))
+        if (
+            (outputData.CustomData?.TryGetValue(CustomData_LevelPlus, out increment) ?? false)
+            && int.TryParse(increment, out amount)
+        )
         {
             effect.SetLevel(output, previous + amount);
         }
@@ -287,7 +290,10 @@ public static class TrinketColorizer
             return null;
         }
 
-        if ((outputData.CustomData?.TryGetValue(CustomData_VariantPlus, out increment) ?? false) && int.TryParse(increment, out amount))
+        if (
+            (outputData.CustomData?.TryGetValue(CustomData_VariantPlus, out increment) ?? false)
+            && int.TryParse(increment, out amount)
+        )
         {
             effect2.SetVariant(output, effect1.Variant + amount);
         }
