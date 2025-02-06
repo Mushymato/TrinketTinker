@@ -34,29 +34,32 @@
               "Height": 24,
               // for Chatter
               "Name": "[LocalizedText Strings\\NPCNames:Krobus]",
-              "Portrait": "Portraits/Abigail",
+              "Portrait": "Portraits/Krobus",
             }
           ],
           "Chatter": {
             "AcceptGift": {
+              // one line will be picked from these at random
               "Lines": [
                 "Characters/Dialogue/Krobus:AcceptGift_(O)StardropTea",
                 "Characters/Dialogue/Krobus:AcceptGift_(O)Book_Void",
                 "Characters/Dialogue/Krobus:AcceptGift_(O)879",
                 "Characters/Dialogue/Krobus:AcceptGift_(O)308"
               ],
-              "Condition": "FALSE"
+              "Priority": 1,
+              "Condition": "RANDOM 0.5"
             },
             "Qtest": {
               "Lines": [
-                "Characters/Dialogue/Abigail:winter_Sun"
+                "I think I'll go to the beach tomorrow!#$q 305/306 beachquestion_followup#Would you like to go with me?#$r 305 15 beachquestion_yes#Sure, I would love to!#$r 306 0 beachquestion_sorry#Oh, sorry, I've already made plans with someone else...#$r 306 -10 beachquestion_no#No thank you."
               ],
               "Responses": {
-                "winter_Sun_old": "Characters/Dialogue/Abigail:winter_Sun_old",
-                "Sun_29": "Characters/Dialogue/Abigail:Sun_29",
-                "Sun_30": "Characters/Dialogue/Abigail:Sun_30",
-                "Sun_Bad": "Characters/Dialogue/Abigail:Sun_Bad",
-              }
+                "beachquestion_yes": "Good! It's a date.$h",
+                "beachquestion_sorry": "Oh. Darn. Okay.$6",
+                "beachquestion_no": "Oh. Um. Sorry.$s",
+                "beachquestion_followup": "$p 305#Tomorrow should be a lot of fun!$h|Hmm, I wonder if I can get someone to go with me...$s",
+              },
+              "Priority": 0,
             }
           },
           "Motion": {

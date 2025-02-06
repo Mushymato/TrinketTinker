@@ -2,6 +2,7 @@ using System.Reflection;
 using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Extensions;
+using StardewValley.TokenizableStrings;
 using TrinketTinker.Effects.Support;
 using TrinketTinker.Models;
 using TrinketTinker.Models.AbilityArgs;
@@ -26,6 +27,13 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
         "portrait",
         BindingFlags.NonPublic | BindingFlags.Instance
     )!;
+
+    private static string GetText(string text, object[] subs)
+    {
+        if (Game1.content.IsValidTranslationKey(text))
+            return Game1.content.LoadString(text, subs);
+        return TokenParser.ParseText(text) ?? "CHATTER ERROR";
+    }
 
     public override bool Activate(Farmer farmer)
     {
@@ -78,13 +86,11 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
             if (foundLines.Value.Responses != null)
             {
                 Dictionary<string, string> TranslatedResponses = foundLines
-                    .Value.Responses.Select(
-                        (kv) => new KeyValuePair<string, string>(kv.Key, Game1.content.LoadString(kv.Value, subs))
-                    )
+                    .Value.Responses.Select((kv) => new KeyValuePair<string, string>(kv.Key, GetText(kv.Value, subs)))
                     .ToDictionary((kv) => kv.Key, (kv) => kv.Value);
                 dialogueField.SetValue(speakerNPC, TranslatedResponses);
             }
-            Game1.DrawDialogue(new(speakerNPC, chosen, Game1.content.LoadString(chosen, subs)));
+            Game1.DrawDialogue(new(speakerNPC, chosen, GetText(chosen, subs)));
             return base.ApplyEffect(proc);
         }
         ModEntry.Log("no line picked");
