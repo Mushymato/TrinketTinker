@@ -1,4 +1,3 @@
-<!-- https://wiki.stardewvalley.net/Modding:Machines#Audio_.26_visuals -->
 # Temporary Animated Sprite
 
 Temporary animated sprites are ways to show animated effects on screen temporarily. They existed prior to 1.6, but was given a proper data model to use in [Data/Machines](https://wiki.stardewvalley.net/Modding:Machines#Audio_.26_visuals).

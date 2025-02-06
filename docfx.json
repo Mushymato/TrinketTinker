@@ -1,17 +1,17 @@
 {
   "metadata": [
-    {
-      "src": [
-        {
-          "src": ".",
-          "files": [
-            "TrinketTinker/TrinketTinker.csproj"
-          ]
-        }
-      ],
-      "dest": "api",
-      // "filter": "docfx-api-filters.yml"
-    }
+    // {
+    //   "src": [
+    //     {
+    //       "src": ".",
+    //       "files": [
+    //         "TrinketTinker/TrinketTinker.csproj"
+    //       ]
+    //     }
+    //   ],
+    //   "dest": "api",
+    //   // "filter": "docfx-api-filters.yml"
+    // }
   ],
   "maxParallelism": 1,
   "build": {
@@ -19,7 +19,7 @@
       {
         "files": [
           "guide/*.{md,yml}",
-          "api/*",
+          // "api/*",
           "toc.yml",
           "index.md",
           "CHANGELOG.md"

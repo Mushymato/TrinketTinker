@@ -25,7 +25,7 @@
               "Id": "{{ModId}}_StatiColorMask_Output",
               "OutputMethod": "TrinketTinker.Extras.TrinketColorizer, TrinketTinker:OutputTrinketColorizer",
               "CustomData": {
-                "mushymato.TrinketTinker/Increment": 1
+                "mushymato.TrinketTinker/Variant+": 1
               }
             }
           ],

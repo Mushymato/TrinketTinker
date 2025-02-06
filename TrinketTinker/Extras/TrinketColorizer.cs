@@ -17,7 +17,8 @@ public static class TrinketColorizer
     public static string TrinketColorizerTexture => $"Mods/{ModEntry.ModId}/TrinketColorizer";
     public static string TrinketColorizerId => $"{ModEntry.ModId}_TrinketColorizer";
     public static string TrinketColorizerQId => $"(BC){ModEntry.ModId}_TrinketColorizer";
-    public static string CustomData_Increment => $"{ModEntry.ModId}/Increment";
+    public static string CustomData_LevelPlus => $"{ModEntry.ModId}/Level+";
+    public static string CustomData_VariantPlus => $"{ModEntry.ModId}/Variant+";
 
     public static void OnAssetRequested(AssetRequestedEventArgs e)
     {
@@ -209,17 +210,14 @@ public static class TrinketColorizer
             return null;
         }
 
-        int previous = 0;
-        if (inputItem.modData.TryGetValue(TrinketTinkerEffect.ModData_Variant, out string? previousStr))
-            if (!int.TryParse(previousStr, out previous))
-                previous = 0;
         Trinket output = (Trinket)inputItem.getOne();
         if (output.GetEffect() is not TrinketTinkerEffect effect)
             return null;
+        int previous = effect.Variant;
 
         bool success;
         if (
-            (outputData.CustomData?.TryGetValue(CustomData_Increment, out string? increment) ?? false)
+            (outputData.CustomData?.TryGetValue(CustomData_VariantPlus, out string? increment) ?? false)
             && int.TryParse(increment, out int amount)
         )
             success = effect.SetVariant(output, previous + amount);
@@ -230,6 +228,10 @@ public static class TrinketColorizer
             if (!probe)
                 Game1.showRedMessage(I18n.BC_TrinketColorizer_NoRecolor());
             return null;
+        }
+        if ((outputData.CustomData?.TryGetValue(CustomData_LevelPlus, out increment) ?? false) && int.TryParse(increment, out amount))
+        {
+            effect.SetLevel(output, previous + amount);
         }
         overrideMinutesUntilReady = 10;
         return output;
@@ -270,7 +272,7 @@ public static class TrinketColorizer
 
         bool success;
         if (
-            (outputData.CustomData?.TryGetValue(CustomData_Increment, out string? increment) ?? false)
+            (outputData.CustomData?.TryGetValue(CustomData_LevelPlus, out string? increment) ?? false)
             && int.TryParse(increment, out int amount)
         )
             success = effect2.SetLevel(output, effect1.GeneralStat + amount);
@@ -284,7 +286,15 @@ public static class TrinketColorizer
             }
             return null;
         }
-        effect2.ResetVariant(output);
+
+        if ((outputData.CustomData?.TryGetValue(CustomData_VariantPlus, out increment) ?? false) && int.TryParse(increment, out amount))
+        {
+            effect2.SetVariant(output, effect1.Variant + amount);
+        }
+        else
+        {
+            effect2.ResetVariant(output);
+        }
 
         if (!probe)
         {
