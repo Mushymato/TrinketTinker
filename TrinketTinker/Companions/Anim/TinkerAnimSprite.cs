@@ -60,7 +60,8 @@ public sealed class TinkerAnimSprite
     internal float ShadowScale;
     internal Rectangle SourceRect { get; private set; } = Rectangle.Empty;
     internal bool Hidden => currentFrame == -1;
-    internal ChatterSpeaker Speaker => new(vd.Name ?? fullVd.Name, vd.Portrait ?? fullVd.Portrait);
+    internal ChatterSpeaker Speaker =>
+        new(vd.Portrait ?? fullVd.Portrait, vd.Name ?? fullVd.Name, vd.NPC ?? fullVd.NPC);
 
     private double timer = 0f;
     internal int currentFrame = 0;

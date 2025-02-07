@@ -40,6 +40,9 @@ public interface IVariantData
     /// <summary>Base scale to draw shadow texture.</summary>
     public float ShadowScale { get; set; }
 
+    /// <summary>Variant speaker NPC, for chatter ability. Required for Portraiture compatibility, can omit <seealso cref="Name"/> if set./summary>
+    public string? NPC { get; set; }
+
     /// <summary>Variant speaker name, for chatter ability.</summary>
     public string? Name { get; set; }
 
@@ -67,6 +70,9 @@ public class AltVariantData : IVariantData
 
     /// <inheritdoc/>
     public float ShadowScale { get; set; } = -1;
+
+    /// <inheritdoc/>
+    public string? NPC { get; set; } = null;
 
     /// <inheritdoc/>
     public string? Name { get; set; } = null;
@@ -101,6 +107,9 @@ public sealed class VariantData : IVariantData
 
     /// <inheritdoc/>
     public float ShadowScale { get; set; } = 3f;
+
+    /// <inheritdoc/>
+    public string? NPC { get; set; } = null;
 
     /// <inheritdoc/>
     public string? Name { get; set; } = null;

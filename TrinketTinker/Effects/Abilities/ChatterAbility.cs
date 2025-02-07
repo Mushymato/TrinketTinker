@@ -16,6 +16,7 @@ namespace TrinketTinker.Effects.Abilities;
 public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
     : Ability<ChatterArgs>(effect, data, lvl)
 {
+    private const string QQQ = "???";
     private Dictionary<string, ChatterLinesData> chatter = null!;
     private NPC speakerNPC = null!;
     private readonly FieldInfo dialogueField = typeof(NPC).GetField(
@@ -42,7 +43,7 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
             chatter = e.Data?.Chatter!;
             if (chatter == null)
                 return false;
-            speakerNPC = new(null, Vector2.Zero, "", 0, "???", null, eventActor: false) { displayName = "???" };
+            speakerNPC = new(null, Vector2.Zero, "", 0, QQQ, null, eventActor: false) { displayName = QQQ };
         }
         return Active;
     }
@@ -80,14 +81,24 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
         string chosen = Random.Shared.ChooseFrom(foundLines.Lines);
         // draw the dialogue
         ChatterSpeaker? speaker = e.CompanionSpeaker;
-        if (speaker != null && speaker.Portrait.Value != null)
+        if (speaker != null && speaker.PortraitTx2D.Value != null)
         {
-            speakerNPC.displayName = speaker.DisplayName;
-            portraitField.SetValue(speakerNPC, speaker.Portrait.Value);
+            portraitField.SetValue(speakerNPC, speaker.PortraitTx2D.Value);
+            if (speaker.NPC != null)
+            {
+                speakerNPC.Name = speaker.NPC;
+                speakerNPC.displayName = null;
+            }
+            else
+            {
+                speakerNPC.Name = QQQ;
+                speakerNPC.displayName = speaker.DisplayName ?? QQQ;
+            }
         }
         else
         {
-            speakerNPC.displayName = "???";
+            speakerNPC.Name = QQQ;
+            speakerNPC.displayName = QQQ;
             portraitField.SetValue(speakerNPC, null);
         }
 
