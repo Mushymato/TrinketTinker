@@ -40,7 +40,7 @@ public interface IVariantData
     /// <summary>Base scale to draw shadow texture.</summary>
     public float ShadowScale { get; set; }
 
-    /// <summary>Variant speaker NPC, for chatter ability. Required for Portraiture compatibility, can omit <seealso cref="Name"/> if set./summary>
+    /// <summary>Variant speaker NPC, for chatter ability. Required for Portraiture compatibility, can omit <see cref="Name"/> if set. </summary>
     public string? NPC { get; set; }
 
     /// <summary>Variant speaker name, for chatter ability.</summary>
@@ -81,7 +81,7 @@ public class AltVariantData : IVariantData
     public string? Portrait { get; set; } = null;
 
     /// <summary>Game state query condition</summary>
-    public string? Condition { get; set; } = null;
+    public string Condition { get; set; } = "FALSE";
 
     /// <summary>Priority of this alt variant, higher </summary>
     public int Priority { get; set; } = 0;

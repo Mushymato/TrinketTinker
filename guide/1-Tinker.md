@@ -21,17 +21,17 @@ When a `mushymato.TrinketTinker/Tinker` entry exists, the `TrinketEffectClass` f
 | `VariantUnlockConditions` | List\<string\> | _null_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many variants are unlocked. |
 | `AbilityUnlockConditions` | List\<string\> | _null_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many abilities are unlocked. |
 | `Inventory` | [TinkerInventoryData](6-Inventory.md) | _null_ | Gives the trinket an inventory that can be opened by the "use" button (RightClick/X) over the trinket item. |
-| `Chatter` | [Dictionary<string, ChatterLinesData>](5-Chatter.md) | _null_ | Gives the trinket dialogue for use with the [Chatter ability](4.z.103-Chatter.md). |
+| `Chatter` | [Dictionary<string, ChatterLinesData>](5-Chatter.md) | _null_ | Gives the trinket dialogue for use with the [Chatter ability](4.z.201-Chatter.md). |
 
 ### This is a lot of stuff, what do I need to define?
 
 Technically all fields here are optional, but in that case there'd be little point to using this framework at all. To display a companion, at least Motion and 1 Variant must be defined. To have the trinket do things after equippping, at least 1 list of abilities must be defined. For `Inventory` and `Chatter` usage, refer to their subpages.
 
-Trinkets are created with the first variant and at minimum level. The item query [mushymato.TrinketTinker_CREATE_TRINKET](6-Utility.md) is needed to create trinket at other variants/levels.
+Trinkets are created with the first variant and at minimum level. The item query [mushymato.TrinketTinker_CREATE_TRINKET](8-Utility.md) is needed to create trinket at other variants/levels.
 
 ### Unlock Conditions
 
-`VariantUnlockConditions` and `AbilityUnlockConditions` can prevent the player from rolling variants or abilities above a certain level using [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries). This only affects rerolling level and variants on the [anvil](https://stardewvalleywiki.com/Anvil) and [colorizer](6-Utility.md).
+`VariantUnlockConditions` and `AbilityUnlockConditions` can prevent the player from rolling variants or abilities above a certain level using [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries). This only affects rerolling level and variants on the [anvil](https://stardewvalleywiki.com/Anvil) and [colorizer](8-Utility.md).
 
 Example usage with 4 abilities (lv1 to lv4):
 

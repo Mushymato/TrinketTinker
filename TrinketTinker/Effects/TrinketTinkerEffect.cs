@@ -156,6 +156,9 @@ public class TrinketTinkerEffect : TrinketEffect
         }
     }
 
+    internal bool CheckEnabled(Farmer farmer) =>
+        GameStateQuery.CheckConditions(Data?.EnableCondition, player: farmer, inputItem: Trinket, targetItem: Trinket);
+
     /// <summary>Check if this trinket has an equip ability</summary>
     internal bool HasEquipTrinketAbility => Abilities.Any((ab) => ab is EquipTrinketAbility);
 
@@ -266,12 +269,7 @@ public class TrinketTinkerEffect : TrinketEffect
         if (Data == null || Game1.gameMode != 3)
             return;
 
-        Enabled = GameStateQuery.CheckConditions(
-            Data.EnableCondition,
-            player: farmer,
-            inputItem: Trinket,
-            targetItem: Trinket
-        );
+        Enabled = CheckEnabled(farmer);
         if (!Enabled)
         {
             string failMessage =

@@ -38,31 +38,49 @@
   - href: 4.0-Proc.md
     name: Proc
   - items:
-    - href: 4.z.00-Nop.md
+    - href: 4.z.000-Nop.md
       name: Nop
-    - href: 4.z.01-Buff.md
+    - href: 4.z.001-Buff.md
       name: Buff
-    - href: 4.z.02-Health.md
+    - href: 4.z.002-Health.md
       name: Health
-    - href: 4.z.03-Stamina.md
+    - href: 4.z.003-Stamina.md
       name: Stamina
-    - href: 4.z.04-ItemDrop.md
-      name: ItemDrop
-    - href: 4.z.05-Hitscan.md
+    - href: 4.z.004-Hitscan.md
       name: Hitscan
-    - href: 4.z.06-Projectile.md
+    - href: 4.z.005-Projectile.md
       name: Projectile
-    - href: 4.z.07-RaiseTrigger.md
-      name: RaiseTrigger
-    - href: 4.z.08-Action.md
-      name: Action
-    - href: 4.z.09-HoeDirt.md
+    - href: 4.z.006-HoeDirt.md
       name: HoeDirt
-    - href: 4.z.10-Harvest.md
+    - href: 4.z.007-ItemDrop.md
+      name: ItemDrop
+    - href: 4.z.008-Harvest.md
       name: Harvest
+    - href: 4.z.100-Action.md
+      name: Action
+    - href: 4.z.101-BroadcastAction.md
+      name: BroadcastAction
+    - href: 4.z.102-RaiseTrigger.md
+      name: RaiseTrigger
+    - href: 4.z.200-EquipTrinket.md
+      name: EquipTrinket
+    - name: Chatter
     name: Ability Classes
   name: Ability
-- href: 5-Temporary Animated Sprite.md
+- href: 5-Chatter.md
+  name: Chatter
+- href: 6-Inventory.md
+  name: Inventory
+- href: 7-Temporary Animated Sprite.md
   name: Temporary Animated Sprite
-- href: 6-Utility.md
+- href: 8-Utility.md
+  items:
+  - href: 8.0-Item Queries.md
+    name: Item Queries
+  - href: 8.1-Game State Queries.md
+    name: Game State Queries
+  - href: 8.2-Trinket Colorizer and Anvil.md
+    name: Trinket Colorizer and Anvil
   name: Utility
+- href: 9-For SMAPI Mods.md
+  name: For SMAPI Mods

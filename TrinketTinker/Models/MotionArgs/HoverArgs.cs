@@ -13,5 +13,7 @@ public sealed class HoverArgs : LerpArgs
 
     /// <summary>If set, the companion will perch on the player's head after the player stays still for this many miliseconds</summary>
     public float? PerchingTimeout { get; set; } = null;
+
+    /// <summary>Amount of offset to apply relative to the default "perching" position.</summary>
     public Vector2 PerchingOffset { get; set; } = Vector2.Zero;
 }

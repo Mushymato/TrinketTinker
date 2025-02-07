@@ -11,7 +11,8 @@ This is a framework for creating custom trinkets using [Content Patcher](https:/
 - Animated companions with various movement patterns.
 - A skin system (variants) for companions, and related features to set/change companion variants
 - Dynamic event based abilities that work through the companions rather than the player.
-- Some support for custom effects from other C# mods, through the use of actions.
+- Support for custom effects from other C# mods, through the use of actions.
+- Have the player obtain trinket effects without actually having the trinket slot unlocked, through the use of special trigger actions.
 
 If you are looking to make mods using this framework, [start here](guide/0-Trinket.md).
 

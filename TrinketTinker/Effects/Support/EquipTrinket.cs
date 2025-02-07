@@ -33,6 +33,9 @@ public static class EquipTrinket
         var trinketItems = farmer.trinketItems;
         if (trinketItems.Contains(trinket))
             return false;
+        if (trinket.GetEffect() is TrinketTinkerEffect effect && !effect.CheckEnabled(farmer))
+            return false;
+
         // wear more rings compat
         if (ModEntry.HasWearMoreRings)
         {

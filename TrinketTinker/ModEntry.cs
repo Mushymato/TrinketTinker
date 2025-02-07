@@ -96,7 +96,7 @@ internal sealed class ModEntry : Mod
         );
         // Add item queries
         GameItemQuery.Register();
-
+        // Check for WearMoreRings, which adds a 2nd trinket slot
         HasWearMoreRings = Helper.ModRegistry.IsLoaded("bcmpinc.WearMoreRings");
     }
 

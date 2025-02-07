@@ -19,7 +19,7 @@
       {
         "files": [
           "guide/*.{md,yml}",
-          // "api/*",
+          "api/*",
           "toc.yml",
           "index.md",
           "CHANGELOG.md"

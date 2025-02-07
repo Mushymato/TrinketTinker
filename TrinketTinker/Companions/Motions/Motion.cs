@@ -2,8 +2,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StardewValley.BellsAndWhistles;
-using StardewValley.Delegates;
-using StardewValley.GameData.HomeRenovations;
 using StardewValley.Monsters;
 using StardewValley.TerrainFeatures;
 using StardewValley.TokenizableStrings;

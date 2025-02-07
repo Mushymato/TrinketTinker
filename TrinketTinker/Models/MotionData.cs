@@ -1,7 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using StardewValley;
-using StardewValley.Extensions;
 using TrinketTinker.Models.Mixin;
 
 namespace TrinketTinker.Models;

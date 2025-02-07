@@ -16,19 +16,60 @@ These fields are valid for both variant and alt variant.
 | `Height` | int | 16 | Height of 1 sprite on the sprite sheet. |
 | `TextureScale` | float | 4 | Texture draw scale, default is 4 like most things in the game. |
 | `ShadowScale` | float | 3 | Size of the shadow to draw, 0 to disable shadow. |
-| `NPC` | string | _null_ | An NPC name (key of `Data/Characters`) to associate this variant with, used for the [Chatter ability](4.z.103-Chatter.md). |
-| `Name` | string | _null_ | A display name for the [Chatter ability](4.z.103-Chatter.md), used if there's no real `NPC`. |
+| `NPC` | string | _null_ | An NPC name (key of `Data/Characters`) to associate this variant with, used for the [Chatter ability](4.z.201-Chatter.md). |
+| `Name` | string | _null_ | A display name for the [Chatter ability](4.z.201-Chatter.md), used if there's no real `NPC`. |
+| `Portrait` | string | _null_ | A portrait texture for the [Chatter ability](4.z.201-Chatter.md), required to display a portrait and a name. |
 
-### Top Level Variant Only
+### Top Level Variant
+
+The top level variant can have all shared fields, as well as:
 
 | Property | Type | Default | Notes |
 | -------- | ---- | ------- | ----- |
 | `LightSource` | `LightSourceData` | _null_ | If set, display a light source. This light source is only visible to the owner. |
 | `TrinketSpriteIndex` | int | -1 | If set, alters the trinket item's sprite index to this. This is used to give the trinket different icon depending on the variant. |
-| `TrinketNameArguments` | `List<string>?` | _null_ | If set, use these strings as the argument to the item name. |
+| `TrinketNameArguments` | List\<string\> | _null_ | If set, use these strings as the argument to the item name. |
+| `AltVariants` | Dictionary\<string, AltVariantData\> | _null_ | A dictionary of alternate variants. |
+
+### TrinketSpriteIndex and TrinketNameArguments
+
+These two fields are used to allow variants to have different name and icons.
+
+_TrinketSpriteIndex_: Changes the sprite index along with variant, meaning that if your trinket's texture is a sprite sheet with multiple item icon sprites, this can be used to point to a specific one. To make this work, put every icon associated with the variants of 1 trinket on 1 texture. You cannot change to a completely different texture, or use color masks.
+
+_TrinketNameArguments_: Adds substitute strings for use with `{0}` in `DisplayName`, for example:
+```json
+// Data/Trinkets
+"DisplayName": "My Trinket {0} {1}",
+// mushymato.TrinketTinker/Tinker
+"Variants": [
+  {
+    "Texture": "{{ModId}}/trinkets/red/water",
+    "TrinketNameArguments": ["Red", "Water"],
+  },
+  {
+    "Texture": "{{ModId}}/trinkets/blue/fire",
+    "TrinketNameArguments": ["Blue", "Fire"],
+  }
+]
+```
+
+The resulting trinket can have these names:
+
+- `"My Trinket Red Water"`, for the first Variant
+- `"My Trinket Blue Fire"`, for the second Variant
 
 
-### Alt Variant Only 
+### Alt Variant Only
+
+The alt variant in `AltVariants` can have all shared fields, as well as:
+
+| Property | Type | Default | Notes |
+| -------- | ---- | ------- | ----- |
+| `Condition` | string | `"FALSE"` | A [game state query](https://stardewvalleywiki.com/Modding:Game_state_queries) used to check if this alt variant should be selected. If you want to have an alt variant exclusively activate through [ability](4-Ability.md) with `ProcAltVariant`, use `"FALSE"` |
+| `Priority` | int | 0 | Sort priority of this variant, higher number have their conditions checked first. |
+
+Note that not all shared fields are required in alt variant, and any not set field will simply fall back to the value found in top level. For example, if you want to change the trinket's sprite to a different sprite with the same dimensions during winter, the only fields needed to achieve this are `Texture` and `Condition` (`"SEASON Winter"`), (and perhaps `"Portrait` if the trinket has a [Chatter ability](4.z.201-Chatter.md)).
 
 ### LightSourceData
 
@@ -41,4 +82,4 @@ These fields are valid for both variant and alt variant.
 
 ## Notes
 
-- There's no need to have the same width and height in all variants, as long as you have the same number of sprites required by the motion.
+- There's no need to have the same width and height in all variants, or the same scale. What does matter is having the right number of sprites for all your animation.
