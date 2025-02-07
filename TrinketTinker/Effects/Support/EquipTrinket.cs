@@ -69,7 +69,7 @@ public static class EquipTrinket
                 4,
                 out int daysDuration,
                 out error,
-                defaultValue: -1,
+                defaultValue: 1,
                 name: "int daysDuration"
             )
         )

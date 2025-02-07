@@ -36,12 +36,18 @@
               "Width": 16,
               "Height": 16,
               "TrinketSpriteIndex": 0,
+              "TrinketNameArguments": [
+                "{{i18n:Skull.DisplayName.Arg.0}}",
+              ]
             },
             {
               "Texture": "Mods/{{ModId}}/skull_2",
               "Width": 16,
               "Height": 16,
               "TrinketSpriteIndex": 1,
+              "TrinketNameArguments": [
+                "{{i18n:Skull.DisplayName.Arg.1}}",
+              ]
             },
           ],
           "Motion": {

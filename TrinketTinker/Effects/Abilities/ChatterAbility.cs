@@ -57,6 +57,8 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
 
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
+        if (Game1.activeClickableMenu != null)
+            return false;
         // choose chatter data, either from next chatter key proc'd by ability or by conds
         if (e.NextChatterKey == null || !chatter.TryGetValue(e.NextChatterKey, out ChatterLinesData? foundLines))
         {

@@ -20,7 +20,7 @@ The term "anchor" refers to a position that the companion derives it's own posit
 | `DirectionMode` | [DirectionMode](3.0-Direction.md) | Single | Determines how the trinket behaves when changing directions and controls what sprites are required. |
 | `DirectionRotation` | bool | false | When true, the sprite will rotate depending on direction, the exact behavior depends the motion class. |
 | `LoopMode` | [LoopMode](~/api/TrinketTinker.Models.LoopMode.yml) | Standard | Control animation playback. <ul><li>Standard: 1 2 3 4 1 2 3 4</li><li>PingPong:  1 2 3 4 3 2 1</li><ul> |
-| `Anchors` | List\<[AnchorTargetData](3.1-Anchors.md)\> | _empty_ | Ordered list of anchors to follow, if not set, fall back to following the player |
+| `Anchors` | List\<[AnchorTargetData](3.1-Anchors.md)\> | _null_ | Ordered list of anchors to follow, if not set, fall back to following the player |
 | `AlwaysMoving` | bool | false | By default the companion only animates while the player is moving, setting this to true makes the companion continue their animation. |
 | `FrameStart` | int | 0 | First frame/sprite index of the directional animations, set this if you want to put multiple companions on 1 file. |
 | `FrameLength` | int | 4 | Length of each cycle for directional animations. |
@@ -30,8 +30,8 @@ The term "anchor" refers to a position that the companion derives it's own posit
 | `RepeatCount` | int | 0 | Number of additional repeat draws to do, to make 1 companion appear to be multiple. Putting a big number here may cause performance issues. |
 | `RepeatInterval` | int | 1000 | Miliseconds between repeat draws. |
 | `RepeatFrameSets` | int | 0 | If set, offset the sprite on repeat draw. |
-| `AnimClips` | Dictionary\<string, [AnimClipData](3.2-Animation%20Clips.md) \> | _empty_ | Named anim clips that can play over the movement animation. |
-| `SpeechBubbles` | Dictionary\<string, [SpeechBubbles](3.3-Speech%20Bubbles.md) \> | _empty_ | Named speech bubbles that appear over the companion. |
+| `AnimClips` | Dictionary\<string, [AnimClipData](3.2-Animation%20Clips.md) \> | _null_ | Named anim clips that can play over the movement animation. |
+| `SpeechBubbles` | Dictionary\<string, [SpeechBubbles](3.3-Speech%20Bubbles.md) \> | _null_ | Named speech bubbles that appear over the companion. |
 | `Args` | Dictionary | _varies_ | Arguments specific to a motion class, see respective page for details. |
 
 ### Animation

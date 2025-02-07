@@ -46,11 +46,6 @@ public sealed class TinkerData
     /// <summary>Motion of the companion</summary>
     public MotionData? Motion { get; set; } = null;
 
-    /// <summary>Definition for inventory, tied to level</summary>
-    public TinkerInventoryData? Inventory = null;
-
-    public Dictionary<string, ChatterLinesData>? Chatter = null;
-
     /// <summary>List of variants</summary>
     public List<VariantData> Variants { get; set; } = [];
 
@@ -62,4 +57,10 @@ public sealed class TinkerData
 
     /// <summary>GSQ conditions for locking abilities.</summary>
     public List<string?> AbilityUnlockConditions = [];
+
+    /// <summary>Definition for inventory, tied to level</summary>
+    public TinkerInventoryData? Inventory = null;
+
+    /// <summary>Data for <see cref="Effects.Abilities.ChatterAbility"/></summary>
+    public Dictionary<string, ChatterLinesData>? Chatter = null;
 }

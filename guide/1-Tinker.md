@@ -1,30 +1,31 @@
 # Tinker
 
 To make a trinket use TrinketTinker features, add a new entry to the custom asset `mushymato.TrinketTinker/Tinker`.
-The key used must match the __unqualified ID__ of the trinket.
+The key used must match the __unqualified ID__ of the trinket, e.g. `{{ModId}}_Trinket` instead of `(TR){{ModId}}_Trinket`.
 
-When a `mushymato.TrinketTinker/Tinker` entry exists, the `TrinketEffectClass` will be set to `TrinketTinker.Effects.TrinketTinkerEffect` from this mod.
+When a `mushymato.TrinketTinker/Tinker` entry exists, the `TrinketEffectClass` field on `Data/Trinkets` will be set to `TrinketTinker.Effects.TrinketTinkerEffect` from this mod.
 
 > [!NOTE]
-> Trinkets can be reloaded with `patch reload <content mod id>`, however the trinket must be unequipped and requipped to get updates.
+> Trinkets can be reloaded with `patch reload <your content mod id>`, however the trinket must be unequipped and requipped to get updates.
 
 ## Structure
 
 | Property | Type | Default | Notes |
 | -------- | ---- | ------- | ----- |
+| `EnableCondition` | string | _null_ | A [game state query](https://stardewvalleywiki.com/Modding:Game_state_queries) used to check if the trinket should be enabled. This is checked on equip, it can only be rechecked by requipping the trinket. The check also happens every night, when the trinket is unequipped/requipped by the game. |
+| `EnableFailMessage` | string | _null_ | When `EnableCondition` is false, this message will be displayed upon equipping the trinket.<br/>Default message: ` "You are not worthy of {{trinketName}}..."` |
 | `MinLevel` | int | 1 | Changes the level value that will replace `{0}` in `DisplayName`. |
-| `Variants` | [List\<VariantData\>](2-Variant.md) | _empty_ | Defines the sprites of the companion. |
-| `Motion` | [MotionData](3-Motion.md) | _empty_ | Defines how the companion moves, setting this is shortcut for having a single item in `Motions`. |
-| `Motions` | [List\<MotionData\>](3-Motion.md) | _empty_ | Defines how the companion moves. |
-| `Abilities` | [List\<List\<AbilityData\>\>](4-Ability.md) | _empty_ | Defines what effects are activated, and when. Each list in the list of lists represents 1 ability level. |
-| `VariantUnlockConditions` | List\<string\> | _empty_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many variants are unlocked. |
-| `AbilityUnlockConditions` | List\<string\> | _empty_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many abilities are unlocked. |
+| `Variants` | [List\<VariantData\>](2-Variant.md) | _null_ | Defines the sprites of the companion. |
+| `Motion` | [MotionData](3-Motion.md) | _null_ | Defines how the companion moves. |
+| `Abilities` | [List\<List\<AbilityData\>\>](4-Ability.md) | _null_ | Defines what effects are activated, and when. Each list in the list of lists represents 1 ability level. |
+| `VariantUnlockConditions` | List\<string\> | _null_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many variants are unlocked. |
+| `AbilityUnlockConditions` | List\<string\> | _null_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many abilities are unlocked. |
+| `Inventory` | [TinkerInventoryData](6-Inventory.md) | _null_ | Gives the trinket an inventory that can be opened by the "use" button (RightClick/X) over the trinket item. |
+| `Chatter` | [Dictionary<string, ChatterLinesData>](5-Chatter.md) | _null_ | Gives the trinket dialogue for use with the [Chatter ability](4.z.103-Chatter.md). |
 
 ### This is a lot of stuff, what do I need to define?
 
-Technically all fields here are optional, but in that case there'd be little point to using this framework at all. To display a companion, at least 1 Variant and 1 Motion must be defined. To have the trinket do things, at least 1 list of abilities must be defined.
-
-At the moment, there's no reason to have more than 1 Motion so just setting `Motion` is sufficient, but this may change in the future.
+Technically all fields here are optional, but in that case there'd be little point to using this framework at all. To display a companion, at least Motion and 1 Variant must be defined. To have the trinket do things after equippping, at least 1 list of abilities must be defined. For `Inventory` and `Chatter` usage, refer to their subpages.
 
 Trinkets are created with the first variant and at minimum level. The item query [mushymato.TrinketTinker_CREATE_TRINKET](6-Utility.md) is needed to create trinket at other variants/levels.
 
@@ -47,3 +48,7 @@ Example usage with 4 abilities (lv1 to lv4):
     "FALSE",
 ],
 ```
+
+### Deprecated
+
+- `Motions`, previously unused but exists, is deprecated as of 1.5.0

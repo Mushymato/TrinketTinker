@@ -426,10 +426,12 @@ public class TrinketTinkerEffect : TrinketEffect
 
     public virtual void OnButtonsChanged(Farmer farmer, ButtonsChangedEventArgs e)
     {
-        if (!Enabled)
-            return;
-
-        if (Game1.activeClickableMenu != null || farmer.UsingTool && farmer.usingSlingshot)
+        if (
+            !Enabled
+            || Companion is not TrinketTinkerCompanion
+            || Game1.activeClickableMenu != null
+            || farmer.UsingTool && farmer.usingSlingshot
+        )
             return;
         Rectangle farmerBounds = farmer.GetBoundingBox();
         if (Game1.didPlayerJustRightClick() && farmer.GetBoundingBox().Intersects(CompanionBoundingBox))
@@ -588,10 +590,13 @@ public class TrinketTinkerEffect : TrinketEffect
         if (variantData.TrinketSpriteIndex > 0)
             trinket.ParentSheetIndex = variantData.TrinketSpriteIndex;
         if (variantData.TrinketNameArguments != null)
+        {
             trinket.displayNameOverrideTemplate.Value = string.Format(
-                trinket.DisplayName,
-                variantData.TrinketNameArguments
+                TokenParser.ParseText(trinket.GetTrinketData()?.DisplayName) ?? trinket.DisplayName,
+                variantData.TrinketNameArguments.Select((txt) => TokenParser.ParseText(txt) ?? txt).ToArray()
             );
+        }
+
         return true;
     }
 

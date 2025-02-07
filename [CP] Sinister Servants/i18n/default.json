@@ -2,7 +2,9 @@
   "$schema": "https://smapi.io/schemas/i18n.json",
   // Trinkets
   // Skull
-  "Skull.DisplayName": "Polished Cranium",
+  "Skull.DisplayName": "{0} Polished Cranium",
+  "Skull.DisplayName.Arg.0": "Red",
+  "Skull.DisplayName.Arg.1": "Blue",
   "Skull.Description": "A polished skull from some creature, it's cold to the touch.\n\nLv.{0}: {1}",
   "Skull.AbilityDescription.1": "Summon a haunted skull; deal 20-30 damage to nearby enemies.",
   "Skull.AbilityDescription.2": "Summon a hauunted skull; deal 30-40 damage to nearby enemies.",

@@ -40,8 +40,9 @@ Trinkets can be added with by editing `Data/Trinkets`, generally with [Content P
           "DropsNaturally": true,
           // Allow trinket to reroll stats on the anvil (and reroll appearance on the colorizer, for trinkets with tinker data).
           "CanBeReforged": true,
-          // Mod specific data, not used by base game or TrinketTinker
+          // Mod specific data, shared across trinkets
           // "CustomFields": null,
+          // Mod specific data, per instance of trinket
           // "ModData": null
         },
       }
@@ -55,7 +56,7 @@ Trinkets can be added with by editing `Data/Trinkets`, generally with [Content P
 
 ## TrinketEffectClass
 
-Game comes with these trinket effect classes:
+The vanilla game provide these trinket effect classes:
 
 | Type Name | Notes |
 | --------- | ----- |
@@ -67,3 +68,5 @@ Game comes with these trinket effect classes:
 | StardewValley.Objects.Trinkets.IceOrbTrinketEffect | Shoot an icy orb that freezes the enemy every few seconds |
 
 The Golden Spur and Basilisk Paw effects are not implemented through an effect class, instead certain parts of game simply checks if the player has a specific trinket equipped.
+
+Trinket tinker uses a specific TrinketEffectClass, it is automatically set so there is no need to provide when editing Data/Trinkets.
