@@ -1,6 +1,6 @@
 # Variant
 
-In the base game certain companions such as the frog have different color variants. With this model, you can explicitly define a sprite sheet, texture size, and optionally a color for mask. The [trinket colorizer](8.2-Trinket%20Colorizer%20and%20Anvil.md) can be used to reroll the trinket variable, but you can also add other machine rules or shop entries for purpose of obtaining trinket in a specific variant.
+In the base game certain companions such as the frog have different color variants. With this model, you can explicitly define a sprite sheet, texture size, and optionally a color for mask. The [trinket colorizer](7.2-Trinket%20Colorizer%20and%20Anvil.md) can be used to reroll the trinket variable, but you can also add other machine rules or shop entries for purpose of obtaining trinket in a specific variant.
 
 Variants can have alternate variants, which are automatically rechecked whenever the player changes locations, or when an [ability](4-Ability.md) has `ProcAltVariant` set.
 
@@ -11,6 +11,7 @@ These fields are valid for both variant and alt variant.
 | Property | Type | Default | Notes |
 | -------- | ---- | ------- | ----- |
 | `Texture` | string | **required** | Asset target of the loaded texture, should be a sprite sheet. |
+| `TextureExtra` | string | _null_ | Additional sprites of the same dimension as the original, for use in [AnimClip](3.2-Animation%20Clips.md). |
 | `ColorMask` | string | _null_ | Color to apply on draw, for use with grayscale sprites.<br>Aside from RGB and hex values, monogame accepts [named colors](https://docs.monogame.net/api/Microsoft.Xna.Framework.Color.html) and this mod accepts special value `"Prismatic"` for an animated color cycle. |
 | `Width` | int | 16 | Width of 1 sprite on the sprite sheet. |
 | `Height` | int | 16 | Height of 1 sprite on the sprite sheet. |

@@ -64,23 +64,22 @@
       name: RaiseTrigger
     - href: 4.z.200-EquipTrinket.md
       name: EquipTrinket
-    - name: Chatter
+    - href: 4.z.201-Chatter.md
+      name: Chatter
     name: Ability Classes
   name: Ability
-- href: 5-Chatter.md
-  name: Chatter
-- href: 6-Inventory.md
+- href: 5-Inventory.md
   name: Inventory
-- href: 7-Temporary Animated Sprite.md
+- href: 6-Temporary Animated Sprite.md
   name: Temporary Animated Sprite
-- href: 8-Utility.md
+- href: 7-Utility.md
   items:
-  - href: 8.0-Item Queries.md
+  - href: 7.0-Item Queries.md
     name: Item Queries
-  - href: 8.1-Game State Queries.md
+  - href: 7.1-Game State Queries.md
     name: Game State Queries
-  - href: 8.2-Trinket Colorizer and Anvil.md
+  - href: 7.2-Trinket Colorizer and Anvil.md
     name: Trinket Colorizer and Anvil
   name: Utility
-- href: 9-For SMAPI Mods.md
+- href: 8-For SMAPI Mods.md
   name: For SMAPI Mods

@@ -15,7 +15,7 @@ An ability is primarily defined by `AbilityClass` (what it does) and `Proc` (whe
 | `ProcSyncIndex`| int | 0 | For use with [Proc.Sync](4.0-Proc.md), makes this ability proc after another ability in the same level. Warning: you can get yourself into infinite loops with this, be careful. |
 | `ProcSyncDelay`| int | 0 | For use for other abilities with [Proc.Sync](4.0-Proc.md), add a delay between the proc of this ability and any sync ability listening to this one. |
 | `ProcSound` | string | _null_ | Play a sound cue when ability procs ([details](https://stardewvalleywiki.com/Modding:Audio)) |
-| `ProcTAS` | `List<string>` | _null_ | String Ids of [temporary animated sprites](5-Temporary%20Animated%20Sprite.md) to show when the ability activates. |
+| `ProcTAS` | `List<string>` | _null_ | String Ids of [temporary animated sprites](6-Temporary%20Animated%20Sprite.md) to show when the ability activates. |
 | `ProcOneshotAnim` | string | _null_ | Play the matching [anim clip](3.2-Animation%20Clips.md) on proc, return to normal animation after 1 cycle. |
 | `ProcSpeechBubble` | string | _null_ | Show the matching [speech bubble](3.3-Speech%20Bubbles.md) on proc. |
 | `ProcAltVariant` | string | _null_ | Switch the companion to the matching [alt variant](2-Variant.md) on proc. Use `"RECHECK"` to switch |

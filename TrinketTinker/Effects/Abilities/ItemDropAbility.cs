@@ -20,6 +20,8 @@ public sealed class ItemDropAbility(TrinketTinkerEffect effect, AbilityData data
     /// <returns></returns>
     private bool SpawnItem(ItemQueryContext context)
     {
+        if (args.HarvestTo == HarvestDestination.None)
+            return false;
         IList<ItemQueryResult> itemQueryResults = ItemQueryResolver.TryResolve(args, context, args.SearchMode);
         bool spawned = false;
         foreach (ItemQueryResult res in itemQueryResults)
@@ -47,7 +49,6 @@ public sealed class ItemDropAbility(TrinketTinkerEffect effect, AbilityData data
                         Game1.createItemDebris(item, e.CompanionPosition ?? context.Player.position.Value, -1);
                         spawned = true;
                         break;
-                    case HarvestDestination.None:
                     default:
                         break;
                 }
