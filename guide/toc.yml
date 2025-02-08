@@ -78,7 +78,9 @@
     name: Item Queries
   - href: 7.1-Game State Queries.md
     name: Game State Queries
-  - href: 7.2-Trinket Colorizer and Anvil.md
+  - href: 7.2-Actions.md
+    name: Actions
+  - href: 7.3-Trinket Colorizer and Anvil.md
     name: Trinket Colorizer and Anvil
   name: Utility
 - href: 8-For SMAPI Mods.md

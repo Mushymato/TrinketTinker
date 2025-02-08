@@ -200,10 +200,34 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
 }
 
 /// <summary>Handler for inventory, does not use mutext (yet) because each trinket has a unique global inventory</summary>
-internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerInventoryData data, string inventoryId)
+internal sealed class GlobalInventoryHandler
 {
+    internal record GlobalInventoryHandlerInfo
+
     /// <summary>Global inventory for this trinket</summary>
-    private readonly Inventory trinketInv = Game1.player.team.GetOrCreateGlobalInventory(inventoryId);
+    private readonly Inventory trinketInv;
+    private TrinketTinkerEffect effect;
+    private TinkerInventoryData data;
+    private string inventoryId;
+
+    /// <summary>Current page, if this handler is not paged, this value is -1</summary>
+    private int page;
+    internal List<Trinket>? pagedTrinkets = null;
+
+    internal GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerInventoryData data, string inventoryId)
+    {
+        this.effect = effect;
+        this.data = data;
+        this.inventoryId = inventoryId;
+        page = -1;
+        trinketInv = Game1.player.team.GetOrCreateGlobalInventory(inventoryId);
+    }
+
+    internal GlobalInventoryHandler(Farmer farmer)
+    {
+
+    }
+
 
     internal TinkerInventoryMenu GetMenu()
     {

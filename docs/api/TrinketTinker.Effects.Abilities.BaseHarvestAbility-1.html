@@ -1,0 +1,404 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class BaseHarvestAbility&lt;TArgs&gt; | TrinketTinker </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class BaseHarvestAbility&lt;TArgs&gt; | TrinketTinker ">
+      
+      <meta name="description" content="Harvest terrain features">
+      <link rel="icon" href="../images/favicon.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      <meta name="searchOption" content="noindex">
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/new/main/apiSpec/new?filename=TrinketTinker_Effects_Abilities_BaseHarvestAbility_1.md&amp;value=---%0Auid%3A%20TrinketTinker.Effects.Abilities.BaseHarvestAbility%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/favicon.png" alt="TrinketTinker">
+            TrinketTinker
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="TrinketTinker.Effects.Abilities.BaseHarvestAbility`1">
+
+
+
+  <h1 id="TrinketTinker_Effects_Abilities_BaseHarvestAbility_1" data-uid="TrinketTinker.Effects.Abilities.BaseHarvestAbility`1" class="text-break">
+Class BaseHarvestAbility&lt;TArgs&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HarvestAbility.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="TrinketTinker.html">TrinketTinker</a>.<a class="xref" href="TrinketTinker.Effects.html">Effects</a>.<a class="xref" href="TrinketTinker.Effects.Abilities.html">Abilities</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>TrinketTinker.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Harvest terrain features</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class BaseHarvestAbility&lt;TArgs&gt; : Ability&lt;TArgs&gt;, IAbility where TArgs : HarvestArgs</code></pre>
+  </div>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TArgs</code></dt>
+    <dd></dd>
+  </dl>
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html">Ability</a>&lt;TArgs&gt;</div>
+      <div><span class="xref">BaseHarvestAbility&lt;TArgs&gt;</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="TrinketTinker.Effects.Abilities.IAbility.html">IAbility</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="TrinketTinker.Effects.Abilities.HarvestCropAbility.html">HarvestCropAbility</a></div>
+      <div><a class="xref" href="TrinketTinker.Effects.Abilities.HarvestForageAbility.html">HarvestForageAbility</a></div>
+      <div><a class="xref" href="TrinketTinker.Effects.Abilities.HarvestShakeableAbility.html">HarvestShakeableAbility</a></div>
+      <div><a class="xref" href="TrinketTinker.Effects.Abilities.HarvestStoneAbility.html">HarvestStoneAbility</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_e">Ability&lt;TArgs&gt;.e</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_d">Ability&lt;TArgs&gt;.d</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Name">Ability&lt;TArgs&gt;.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_AbilityClass">Ability&lt;TArgs&gt;.AbilityClass</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Valid">Ability&lt;TArgs&gt;.Valid</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_EventAbilityProc">Ability&lt;TArgs&gt;.EventAbilityProc</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Active">Ability&lt;TArgs&gt;.Active</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Allowed">Ability&lt;TArgs&gt;.Allowed</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_ProcTimer">Ability&lt;TArgs&gt;.ProcTimer</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_args">Ability&lt;TArgs&gt;.args</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Activate_StardewValley_Farmer_">Ability&lt;TArgs&gt;.Activate(Farmer)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Deactivate_StardewValley_Farmer_">Ability&lt;TArgs&gt;.Deactivate(Farmer)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_HandleProc_System_Object_TrinketTinker_Effects_Support_ProcEventArgs_">Ability&lt;TArgs&gt;.HandleProc(object, ProcEventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_GetTASPosition_TrinketTinker_Effects_Support_ProcEventArgs_">Ability&lt;TArgs&gt;.GetTASPosition(ProcEventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_CleanupEffect_StardewValley_Farmer_">Ability&lt;TArgs&gt;.CleanupEffect(Farmer)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Update_StardewValley_Farmer_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_">Ability&lt;TArgs&gt;.Update(Farmer, GameTime, GameLocation)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="TrinketTinker_Effects_Abilities_BaseHarvestAbility_1__ctor_" data-uid="TrinketTinker.Effects.Abilities.BaseHarvestAbility`1.#ctor*"></a>
+
+  <h3 id="TrinketTinker_Effects_Abilities_BaseHarvestAbility_1__ctor_TrinketTinker_Effects_TrinketTinkerEffect_TrinketTinker_Models_AbilityData_System_Int32_" data-uid="TrinketTinker.Effects.Abilities.BaseHarvestAbility`1.#ctor(TrinketTinker.Effects.TrinketTinkerEffect,TrinketTinker.Models.AbilityData,System.Int32)">
+  BaseHarvestAbility(TrinketTinkerEffect, AbilityData, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HarvestAbility.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Harvest terrain features</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected BaseHarvestAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>effect</code> <a class="xref" href="TrinketTinker.Effects.TrinketTinkerEffect.html">TrinketTinkerEffect</a></dt>
+    <dd></dd>
+    <dt><code>data</code> <a class="xref" href="TrinketTinker.Models.AbilityData.html">AbilityData</a></dt>
+    <dd></dd>
+    <dt><code>lvl</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="TrinketTinker_Effects_Abilities_BaseHarvestAbility_1_ApplyEffect_" data-uid="TrinketTinker.Effects.Abilities.BaseHarvestAbility`1.ApplyEffect*"></a>
+
+  <h3 id="TrinketTinker_Effects_Abilities_BaseHarvestAbility_1_ApplyEffect_TrinketTinker_Effects_Support_ProcEventArgs_" data-uid="TrinketTinker.Effects.Abilities.BaseHarvestAbility`1.ApplyEffect(TrinketTinker.Effects.Support.ProcEventArgs)">
+  ApplyEffect(ProcEventArgs)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HarvestAbility.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Harvest forage or crops within range</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override bool ApplyEffect(ProcEventArgs proc)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>proc</code> <a class="xref" href="TrinketTinker.Effects.Support.ProcEventArgs.html">ProcEventArgs</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Effects_Abilities_BaseHarvestAbility_1_DoHarvest_" data-uid="TrinketTinker.Effects.Abilities.BaseHarvestAbility`1.DoHarvest*"></a>
+
+  <h3 id="TrinketTinker_Effects_Abilities_BaseHarvestAbility_1_DoHarvest_StardewValley_GameLocation_StardewValley_Farmer_Microsoft_Xna_Framework_Vector2_" data-uid="TrinketTinker.Effects.Abilities.BaseHarvestAbility`1.DoHarvest(StardewValley.GameLocation,StardewValley.Farmer,Microsoft.Xna.Framework.Vector2)">
+  DoHarvest(GameLocation, Farmer, Vector2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HarvestAbility.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Harvest given object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract bool DoHarvest(GameLocation location, Farmer farmer, Vector2 tile)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>location</code> <span class="xref">GameLocation</span></dt>
+    <dd></dd>
+    <dt><code>farmer</code> <span class="xref">Farmer</span></dt>
+    <dd></dd>
+    <dt><code>tile</code> <span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Effects_Abilities_BaseHarvestAbility_1_ProbeTile_" data-uid="TrinketTinker.Effects.Abilities.BaseHarvestAbility`1.ProbeTile*"></a>
+
+  <h3 id="TrinketTinker_Effects_Abilities_BaseHarvestAbility_1_ProbeTile_StardewValley_GameLocation_Microsoft_Xna_Framework_Vector2_" data-uid="TrinketTinker.Effects.Abilities.BaseHarvestAbility`1.ProbeTile(StardewValley.GameLocation,Microsoft.Xna.Framework.Vector2)">
+  ProbeTile(GameLocation, Vector2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/HarvestAbility.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Check that tile has object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract bool ProbeTile(GameLocation location, Vector2 tile)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>location</code> <span class="xref">GameLocation</span></dt>
+    <dd></dd>
+    <dt><code>tile</code> <span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <a href="https://github.com/Mushymato/TrinketTinker">Source</a>   <a href="https://www.nexusmods.com/stardewvalley/mods/29073">Nexus</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

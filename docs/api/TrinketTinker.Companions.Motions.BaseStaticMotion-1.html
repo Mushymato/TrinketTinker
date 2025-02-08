@@ -1,0 +1,527 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class BaseStaticMotion&lt;IArgs&gt; | TrinketTinker </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class BaseStaticMotion&lt;IArgs&gt; | TrinketTinker ">
+      
+      <meta name="description" content="Companion stays at some static offset from anchor.">
+      <link rel="icon" href="../images/favicon.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      <meta name="searchOption" content="noindex">
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/new/main/apiSpec/new?filename=TrinketTinker_Companions_Motions_BaseStaticMotion_1.md&amp;value=---%0Auid%3A%20TrinketTinker.Companions.Motions.BaseStaticMotion%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/favicon.png" alt="TrinketTinker">
+            TrinketTinker
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="TrinketTinker.Companions.Motions.BaseStaticMotion`1">
+
+
+
+  <h1 id="TrinketTinker_Companions_Motions_BaseStaticMotion_1" data-uid="TrinketTinker.Companions.Motions.BaseStaticMotion`1" class="text-break">
+Class BaseStaticMotion&lt;IArgs&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/StaticMotion.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="TrinketTinker.html">TrinketTinker</a>.<a class="xref" href="TrinketTinker.Companions.html">Companions</a>.<a class="xref" href="TrinketTinker.Companions.Motions.html">Motions</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>TrinketTinker.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Companion stays at some static offset from anchor.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class BaseStaticMotion&lt;IArgs&gt; : Motion&lt;IArgs&gt;, IMotion where IArgs : StaticArgs</code></pre>
+  </div>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>IArgs</code></dt>
+    <dd></dd>
+  </dl>
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html">Motion</a>&lt;IArgs&gt;</div>
+      <div><span class="xref">BaseStaticMotion&lt;IArgs&gt;</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="TrinketTinker.Companions.Motions.IMotion.html">IMotion</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="TrinketTinker.Companions.Motions.OrbitMotion.html">OrbitMotion</a></div>
+      <div><a class="xref" href="TrinketTinker.Companions.Motions.RelativeMotion.html">RelativeMotion</a></div>
+      <div><a class="xref" href="TrinketTinker.Companions.Motions.StaticMotion.html">StaticMotion</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_c">Motion&lt;IArgs&gt;.c</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_md">Motion&lt;IArgs&gt;.md</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_vd">Motion&lt;IArgs&gt;.vd</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_lightId">Motion&lt;IArgs&gt;.lightId</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_args">Motion&lt;IArgs&gt;.args</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_prevAnchorTarget">Motion&lt;IArgs&gt;.prevAnchorTarget</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_currAnchorTarget">Motion&lt;IArgs&gt;.currAnchorTarget</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_AnchorChanged">Motion&lt;IArgs&gt;.AnchorChanged</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_cs">Motion&lt;IArgs&gt;.cs</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_PauseMovementByAnimClip">Motion&lt;IArgs&gt;.PauseMovementByAnimClip</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_framesetLength">Motion&lt;IArgs&gt;.framesetLength</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_TotalFrames">Motion&lt;IArgs&gt;.TotalFrames</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_NetRand">Motion&lt;IArgs&gt;.NetRand</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_BoundingBox">Motion&lt;IArgs&gt;.BoundingBox</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_Speaker">Motion&lt;IArgs&gt;.Speaker</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetOneshotClip_System_String_">Motion&lt;IArgs&gt;.SetOneshotClip(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetOverrideClip_System_String_">Motion&lt;IArgs&gt;.SetOverrideClip(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetSpeechBubble_System_String_">Motion&lt;IArgs&gt;.SetSpeechBubble(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetAltVariant_System_String_">Motion&lt;IArgs&gt;.SetAltVariant(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetActiveAnchors_System_Collections_Generic_IEnumerable_System_String__">Motion&lt;IArgs&gt;.SetActiveAnchors(IEnumerable&lt;string&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetCurrAnchorTarget_System_Int32_">Motion&lt;IArgs&gt;.SetCurrAnchorTarget(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_Initialize_StardewValley_Farmer_">Motion&lt;IArgs&gt;.Initialize(Farmer)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_Cleanup">Motion&lt;IArgs&gt;.Cleanup()</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_OnOwnerWarp">Motion&lt;IArgs&gt;.OnOwnerWarp()</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_UpdateAnchor_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_">Motion&lt;IArgs&gt;.UpdateAnchor(GameTime, GameLocation)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_UpdateAnchor_StardewValley_GameLocation_">Motion&lt;IArgs&gt;.UpdateAnchor(GameLocation)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_UpdateGlobal_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_">Motion&lt;IArgs&gt;.UpdateGlobal(GameTime, GameLocation)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_IsMoving">Motion&lt;IArgs&gt;.IsMoving()</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_ShouldMove">Motion&lt;IArgs&gt;.ShouldMove()</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_UpdateLightSource_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_">Motion&lt;IArgs&gt;.UpdateLightSource(GameTime, GameLocation)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_GetTextureScale">Motion&lt;IArgs&gt;.GetTextureScale()</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_GetShadowScale">Motion&lt;IArgs&gt;.GetShadowScale()</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_GetOffset">Motion&lt;IArgs&gt;.GetOffset()</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_GetShadowOffset_Microsoft_Xna_Framework_Vector2_">Motion&lt;IArgs&gt;.GetShadowOffset(Vector2)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_">Motion&lt;IArgs&gt;.Draw(SpriteBatch)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_DrawCompanion_Microsoft_Xna_Framework_Graphics_SpriteBatch_TrinketTinker_Companions_Anim_DrawSnapshot_">Motion&lt;IArgs&gt;.DrawCompanion(SpriteBatch, DrawSnapshot)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_DrawShadow_Microsoft_Xna_Framework_Graphics_SpriteBatch_TrinketTinker_Companions_Anim_DrawSnapshot_">Motion&lt;IArgs&gt;.DrawShadow(SpriteBatch, DrawSnapshot)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_EnqueueRepeatDraws_TrinketTinker_Companions_Anim_DrawSnapshot_System_Boolean_">Motion&lt;IArgs&gt;.EnqueueRepeatDraws(DrawSnapshot, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_DirectionFrameStart">Motion&lt;IArgs&gt;.DirectionFrameStart()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="TrinketTinker_Companions_Motions_BaseStaticMotion_1__ctor_" data-uid="TrinketTinker.Companions.Motions.BaseStaticMotion`1.#ctor*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_BaseStaticMotion_1__ctor_TrinketTinker_Companions_TrinketTinkerCompanion_TrinketTinker_Models_MotionData_TrinketTinker_Models_VariantData_" data-uid="TrinketTinker.Companions.Motions.BaseStaticMotion`1.#ctor(TrinketTinker.Companions.TrinketTinkerCompanion,TrinketTinker.Models.MotionData,TrinketTinker.Models.VariantData)">
+  BaseStaticMotion(TrinketTinkerCompanion, MotionData, VariantData)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/StaticMotion.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Companion stays at some static offset from anchor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BaseStaticMotion(TrinketTinkerCompanion companion, MotionData mdata, VariantData vdata)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>companion</code> <a class="xref" href="TrinketTinker.Companions.TrinketTinkerCompanion.html">TrinketTinkerCompanion</a></dt>
+    <dd></dd>
+    <dt><code>mdata</code> <a class="xref" href="TrinketTinker.Models.MotionData.html">MotionData</a></dt>
+    <dd></dd>
+    <dt><code>vdata</code> <a class="xref" href="TrinketTinker.Models.VariantData.html">VariantData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="TrinketTinker_Companions_Motions_BaseStaticMotion_1_GetDirectionFromOwner_" data-uid="TrinketTinker.Companions.Motions.BaseStaticMotion`1.GetDirectionFromOwner*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_BaseStaticMotion_1_GetDirectionFromOwner_TrinketTinker_Models_MotionData_System_Int32_System_Int32_" data-uid="TrinketTinker.Companions.Motions.BaseStaticMotion`1.GetDirectionFromOwner(TrinketTinker.Models.MotionData,System.Int32,System.Int32)">
+  GetDirectionFromOwner(MotionData, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/StaticMotion.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get correct spritesheet row for facing direction, is static because of perching special case.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GetDirectionFromOwner(MotionData md, int facingDirection, int prevDirection = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>md</code> <a class="xref" href="TrinketTinker.Models.MotionData.html">MotionData</a></dt>
+    <dd></dd>
+    <dt><code>facingDirection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>prevDirection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_BaseStaticMotion_1_GetPositionalLayerDepth_" data-uid="TrinketTinker.Companions.Motions.BaseStaticMotion`1.GetPositionalLayerDepth*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_BaseStaticMotion_1_GetPositionalLayerDepth_Microsoft_Xna_Framework_Vector2_" data-uid="TrinketTinker.Companions.Motions.BaseStaticMotion`1.GetPositionalLayerDepth(Microsoft.Xna.Framework.Vector2)">
+  GetPositionalLayerDepth(Vector2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/StaticMotion.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get layer depth based on position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override float GetPositionalLayerDepth(Vector2 offset)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>offset</code> <span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_BaseStaticMotion_1_GetRotation_" data-uid="TrinketTinker.Companions.Motions.BaseStaticMotion`1.GetRotation*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_BaseStaticMotion_1_GetRotation" data-uid="TrinketTinker.Companions.Motions.BaseStaticMotion`1.GetRotation">
+  GetRotation()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/StaticMotion.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get sprite rotation</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override float GetRotation()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Rotation in radians</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_BaseStaticMotion_1_UpdateDirection_" data-uid="TrinketTinker.Companions.Motions.BaseStaticMotion`1.UpdateDirection*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_BaseStaticMotion_1_UpdateDirection" data-uid="TrinketTinker.Companions.Motions.BaseStaticMotion`1.UpdateDirection">
+  UpdateDirection()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/StaticMotion.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Update companion facing direction using player facing direction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void UpdateDirection()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_BaseStaticMotion_1_UpdateLocal_" data-uid="TrinketTinker.Companions.Motions.BaseStaticMotion`1.UpdateLocal*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_BaseStaticMotion_1_UpdateLocal_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Companions.Motions.BaseStaticMotion`1.UpdateLocal(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
+  UpdateLocal(GameTime, GameLocation)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/StaticMotion.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Update info that should change every tick, for owner only. Netfield changes should happen here.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void UpdateLocal(GameTime time, GameLocation location)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>time</code> <span class="xref">GameTime</span></dt>
+    <dd></dd>
+    <dt><code>location</code> <span class="xref">GameLocation</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <a href="https://github.com/Mushymato/TrinketTinker">Source</a>   <a href="https://www.nexusmods.com/stardewvalley/mods/29073">Nexus</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

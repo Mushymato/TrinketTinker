@@ -10,7 +10,6 @@ using TrinketTinker.Companions;
 using TrinketTinker.Companions.Motions;
 using TrinketTinker.Effects;
 using TrinketTinker.Effects.Abilities;
-using TrinketTinker.Effects.Support;
 using TrinketTinker.Extras;
 using TrinketTinker.Wheels;
 
