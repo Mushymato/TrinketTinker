@@ -174,7 +174,7 @@ public abstract class Motion<TArgs> : IMotion
         }
         else
         {
-            c._altVariantKey.Value = altVariantKey;
+            cs.SetAltVariant(altVariantKey);
         }
     }
 

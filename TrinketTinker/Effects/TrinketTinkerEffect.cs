@@ -260,7 +260,7 @@ public class TrinketTinkerEffect : TrinketEffect
     public void SetAltVariant(string altVariantKey)
     {
         if (Companion is TrinketTinkerCompanion cmp)
-            cmp.SetAltVariant(altVariantKey);
+            cmp._altVariantKey.Value = altVariantKey;
     }
 
     /// <summary>Spawn the companion, and activate all abilities</summary>

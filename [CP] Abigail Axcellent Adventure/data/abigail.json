@@ -38,7 +38,8 @@
                 },
                 "WINTER": {
                   "Texture": "Characters/Abigail_Winter",
-                  "Condition": "RANDOM .6"
+                  "Condition": "RANDOM .6",
+                  "Priority": 1
                 }
               }
             }
@@ -59,7 +60,6 @@
               "abbyFlute": {
                 "FrameStart": 16,
                 "FrameLength": 4,
-                "Condition": "FALSE",
                 "PauseMovement": true,
                 "RandomClips": [
                   {
@@ -67,7 +67,6 @@
                     "FrameLength": 1,
                     "Interval": 700,
                     "PauseMovement": true,
-                    "Condition": "FALSE",
                   }
                 ]
               },
@@ -75,15 +74,18 @@
                 "Nop": true,
                 // stay at Nop for 4 frames
                 "FrameLength": 4,
+                "Condition": "SEASON Winter",
                 "RandomClips": [
                   {
                     "FrameStart": 24,
                     "FrameLength": 4,
                     "Loop": true,
+                    "Condition": "SEASON Winter",
                   },
                   {
                     "FrameStart": 28,
                     "FrameLength": 2,
+                    "Condition": "SEASON Winter",
                   }
                 ]
               }

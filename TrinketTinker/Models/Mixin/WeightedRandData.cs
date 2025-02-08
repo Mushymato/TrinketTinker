@@ -49,17 +49,21 @@ public abstract class WeightedRandData
         int gcd = GCD(weights);
         List<WeightedRandData> randWeightedList = [];
         if (GameStateQuery.CheckConditions(Condition, player: owner, random: rand))
+        {
             for (int i = 0; i < RandomWeight / gcd; i++)
             {
                 randWeightedList.Add(this);
             }
+        }
         foreach (WeightedRandData clip in randomExtra)
         {
             if (GameStateQuery.CheckConditions(clip.Condition, player: owner, random: rand))
+            {
                 for (int i = 0; i < clip.RandomWeight / gcd; i++)
                 {
                     randWeightedList.Add(clip);
                 }
+            }
         }
         if (randWeightedList.Count == 0)
         {
