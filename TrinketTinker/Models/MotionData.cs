@@ -148,9 +148,14 @@ public class AnimClipData : WeightedRandData
     /// <summary>Choose a random clip</summary>
     /// <param name="rand"></param>
     /// <returns></returns>
-    public AnimClipData PickRand(Random rand)
+    public bool TryPickRand(Random rand, Farmer owner, [NotNullWhen(true)] out AnimClipData? clip)
     {
-        return (AnimClipData)PickRandBase(rand);
+        clip = null;
+        WeightedRandData? result = PickRandBase(rand, owner);
+        if (result == null)
+            return false;
+        clip = (AnimClipData)result;
+        return true;
     }
 }
 
@@ -195,9 +200,14 @@ public sealed class SpeechBubbleData : WeightedRandData
 
     internal SpeechBubbleData Selected => randSelected == null ? this : (SpeechBubbleData)randSelected;
 
-    public SpeechBubbleData PickRand(Random rand)
+    public bool TryPickRand(Random rand, Farmer owner, [NotNullWhen(true)] out SpeechBubbleData? speech)
     {
-        return (SpeechBubbleData)PickRandBase(rand);
+        speech = null;
+        WeightedRandData? result = PickRandBase(rand, owner);
+        if (result == null)
+            return false;
+        speech = (SpeechBubbleData)result;
+        return true;
     }
 }
 

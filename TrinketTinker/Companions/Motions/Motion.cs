@@ -144,7 +144,8 @@ public abstract class Motion<TArgs> : IMotion
             return;
         if (speechBubble != null)
         {
-            speechBubble = speechBubble.PickRand(NetRand);
+            if (!speechBubble.TryPickRand(NetRand, c.Owner, out speechBubble))
+                return;
             if (!speechBubble.Nop)
             {
                 speechBubbleTimer = speechBubble.Timer;
@@ -370,8 +371,9 @@ public abstract class Motion<TArgs> : IMotion
         }
         if (currentClipKey != key)
         {
+            if (!clip.TryPickRand(NetRand, c.Owner, out clip))
+                return TinkerAnimState.None;
             currentClipKey = key;
-            clip = clip.PickRand(NetRand);
         }
         else
         {
