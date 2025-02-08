@@ -1,6 +1,6 @@
 # Inventory
 
-Trinkets can have inventory, which can be opened by "using" the trinket item. This inventory can accept most items except for itself and other trinkets that have inventory.
+Trinkets can have inventory, which can be opened by "using" the trinket item. This inventory can accept most items except for itself and other trinkets that have inventory. Further control of what is allowed into an inventory can be achieved through `RequiredTags` and `RequiredItemCondition`.
 
 Should the trinket item be lost, all items inside will be sent to the lost and found on the next day.
 

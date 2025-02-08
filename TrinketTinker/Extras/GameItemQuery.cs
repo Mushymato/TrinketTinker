@@ -363,7 +363,10 @@ public static class GameItemQuery
         {
             if (effect.Companion is TrinketTinkerCompanion cmp)
             {
-                return cmp._altVariantKey.Value == altVariantKey;
+                if (altVariantKey == "BASE")
+                    return cmp._altVariantKey.Value == null;
+                else
+                    return cmp._altVariantKey.Value == altVariantKey;
             }
         }
         return false;

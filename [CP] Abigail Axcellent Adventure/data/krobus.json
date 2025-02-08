@@ -39,16 +39,16 @@
             }
           ],
           "Chatter": {
-            "AcceptGift": {
+            "Weekdays": {
               // one line will be picked from these at random
               "Lines": [
-                "Characters/Dialogue/Krobus:AcceptGift_(O)StardropTea",
-                "Characters/Dialogue/Krobus:AcceptGift_(O)Book_Void",
-                "Characters/Dialogue/Krobus:AcceptGift_(O)879",
-                "Characters/Dialogue/Krobus:AcceptGift_(O)308"
+                "Characters/Dialogue/Krobus:Mon",
+                // "Characters/Dialogue/Krobus:Tue",
+                // "Characters/Dialogue/Krobus:Wed",
+                // "Characters/Dialogue/Krobus:Thu",
               ],
               "Priority": 1,
-              "Condition": "RANDOM 0.5"
+              // "Condition": "RANDOM 0.5"
             },
             "Qtest": {
               "Lines": [
@@ -62,13 +62,13 @@
               },
               "Priority": 0,
             },
-            "Subby": {
-              "Lines": [
-                "Oh what are you doing with that?"
-              ],
-              "Priority": 1,
-              "Condition": "FALSE"
-            }
+            // "Subby": {
+            //   "Lines": [
+            //     "Oh what are you doing with that?"
+            //   ],
+            //   "Priority": 1,
+            //   "Condition": "FALSE"
+            // }
           },
           "Motion": {
             "MotionClass": "Lerp",
@@ -107,8 +107,8 @@
               "ItsScary": {
                 "Text": "Help :("
               },
-              "HowAreYou": {
-                "Text": "What's up :)"
+              "IHaveStone": {
+                "Text": "I have a (O)390"
               }
             }
           },
@@ -142,9 +142,10 @@
                 "AbilityClass": "Nop",
                 "Proc": "Footstep",
                 "ProcTimer": 15000,
-                "ProcSpeechBubble": "HowAreYou",
+                "ProcSpeechBubble": "IHaveStone",
                 "ProcChatterKey": "Subby",
-                "InCombat": false
+                "InCombat": false,
+                "Condition": "mushymato.TrinketTinker_HAS_ITEM Target (O)390 >0",
               },
               {
                 "AbilityClass": "HarvestForage",

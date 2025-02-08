@@ -19,6 +19,7 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
     private const string QQQ = "???";
     private Dictionary<string, ChatterLinesData> chatter = null!;
     private NPC speakerNPC = null!;
+    private Dialogue? chosenDialogue = null;
     private readonly FieldInfo dialogueField = typeof(NPC).GetField(
         "dialogue",
         BindingFlags.NonPublic | BindingFlags.Instance
@@ -59,6 +60,12 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
     {
         if (Game1.activeClickableMenu != null)
             return false;
+        if (!chosenDialogue?.isDialogueFinished() ?? false)
+        {
+            Game1.DrawDialogue(chosenDialogue);
+            return base.ApplyEffect(proc);
+        }
+        chosenDialogue = null;
         // choose chatter data, either from next chatter key proc'd by ability or by conds
         if (e.NextChatterKey == null || !chatter.TryGetValue(e.NextChatterKey, out ChatterLinesData? foundLines))
         {
@@ -112,7 +119,8 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
                 .ToDictionary((kv) => kv.Key, (kv) => kv.Value);
             dialogueField.SetValue(speakerNPC, TranslatedResponses);
         }
-        Game1.DrawDialogue(new(speakerNPC, chosen, GetText(chosen)));
+        chosenDialogue = new(speakerNPC, chosen, GetText(chosen));
+        Game1.DrawDialogue(chosenDialogue);
         return base.ApplyEffect(proc);
     }
 }
