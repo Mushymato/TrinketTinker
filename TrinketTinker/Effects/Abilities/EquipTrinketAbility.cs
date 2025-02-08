@@ -1,30 +1,43 @@
+using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Inventories;
 using StardewValley.Objects.Trinkets;
 using TrinketTinker.Effects.Support;
+using TrinketTinker.Extras;
 using TrinketTinker.Models;
 using TrinketTinker.Models.Mixin;
-using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Effects.Abilities;
 
 /// <summary>Equips trinkets held in the inventory.</summary>
-public sealed class EquipTrinketAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
-    : Ability<NoArgs>(effect, data, lvl)
+public sealed class EquipTrinketAbility : Ability<NoArgs>
 {
+    public EquipTrinketAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
+        : base(effect, data, lvl)
+    {
+        if (data.Proc != ProcOn.Always)
+        {
+            ModEntry.LogOnce(
+                $"EquipTrinket can only be used with Proc=Always (from {e.Trinket.QualifiedItemId})",
+                LogLevel.Warn
+            );
+            Valid = false;
+        }
+        else if (e.InventoryId == null)
+        {
+            ModEntry.LogOnce(
+                $"EquipTrinketAbility requires Inventory to use, ({Name}, from {e.Trinket.QualifiedItemId})",
+                LogLevel.Warn
+            );
+            Valid = false;
+        }
+    }
+
     /// <summary>Apply or refreshes the buff.</summary>
     /// <param name="proc"></param>
     /// <returns></returns>
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
-        if (proc.Proc != ProcOn.Always)
-        {
-            ModEntry.LogOnce(
-                $"EquipTrinket can only be used with Proc Always (from {e.Trinket.QualifiedItemId})",
-                StardewModdingAPI.LogLevel.Warn
-            );
-            return false;
-        }
         if (e.GetInventory(proc.Farmer) is not Inventory trinketInv)
             return false;
         foreach (Item item in trinketInv)

@@ -81,7 +81,7 @@ public class AltVariantData : IVariantData
     public string? Portrait { get; set; } = null;
 
     /// <summary>Game state query condition</summary>
-    public string Condition { get; set; } = "FALSE";
+    public string? Condition { get; set; } = null;
 
     /// <summary>Priority of this alt variant, higher </summary>
     public int Priority { get; set; } = 0;

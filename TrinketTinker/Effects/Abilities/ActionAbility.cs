@@ -31,9 +31,9 @@ public sealed class ActionAbility(TrinketTinkerEffect effect, AbilityData data, 
             context = new TriggerActionContext(TriggerContextName, [], null, []);
 
         context.CustomFields[TinkerConst.CustomFields_Trinket] = e.Trinket;
-        context.CustomFields[TinkerConst.CustomFields_Data] = d;
         context.CustomFields[TinkerConst.CustomFields_Owner] = farmer;
         context.CustomFields[TinkerConst.CustomFields_Position] = e.CompanionPosition;
+        context.CustomFields[TinkerConst.CustomFields_Data] = d;
 
         foreach (CachedAction action in actions)
         {

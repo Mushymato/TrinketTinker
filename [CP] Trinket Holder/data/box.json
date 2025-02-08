@@ -32,10 +32,7 @@
             ]
           ],
           "Inventory": {
-            "Capacity": "{{L@Capacity}}",
-            "RequiredTags": [
-              "trinket_item",
-            ]
+            "Capacity": "{{L@Capacity}}"
           }
         },
       }

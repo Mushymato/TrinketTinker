@@ -10,7 +10,7 @@ public enum ProcOn
     /// <summary>Proc on equip, ignore conditions.</summary>
     Always,
 
-    /// <summary>Proc when the first ability on the level procs</summary>
+    /// <summary>Proc when the ability denoted by ProcSyncIndex on the same level procs</summary>
     Sync,
 
     /// <summary>Proc on walk.</summary>

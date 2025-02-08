@@ -69,6 +69,7 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
                         (kv) =>
                             (args.ChatterPrefix == null || kv.Key.StartsWith(args.ChatterPrefix))
                             && GameStateQuery.CheckConditions(kv.Value.Condition, proc.GSQContext)
+                            && kv.Value.Lines != null
                     )
                 is KeyValuePair<string, ChatterLinesData> foundLinesKV
             )

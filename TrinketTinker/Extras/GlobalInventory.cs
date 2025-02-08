@@ -5,10 +5,11 @@ using StardewValley;
 using StardewValley.Inventories;
 using StardewValley.Menus;
 using StardewValley.Objects.Trinkets;
+using TrinketTinker.Effects;
 using TrinketTinker.Models;
 using TrinketTinker.Wheels;
 
-namespace TrinketTinker.Effects.Support;
+namespace TrinketTinker.Extras;
 
 public sealed class TinkerInventoryMenu : ItemGrabMenu
 {
@@ -248,6 +249,10 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
                 )
                     return false;
             }
+        }
+        else if (effect.HasEquipTrinketAbility)
+        {
+            return false;
         }
         if (data.RequiredTags != null && !Places.CheckContextTagFilter(item, data.RequiredTags))
             return false;

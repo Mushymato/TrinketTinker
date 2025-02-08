@@ -3,9 +3,10 @@ using StardewValley;
 using StardewValley.Delegates;
 using StardewValley.Inventories;
 using StardewValley.Objects.Trinkets;
+using TrinketTinker.Effects;
 using TrinketTinker.Wheels;
 
-namespace TrinketTinker.Effects.Support;
+namespace TrinketTinker.Extras;
 
 public static class EquipTrinket
 {

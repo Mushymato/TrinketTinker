@@ -6,13 +6,13 @@ The key used must match the __unqualified ID__ of the trinket, e.g. `{{ModId}}_T
 When a `mushymato.TrinketTinker/Tinker` entry exists, the `TrinketEffectClass` field on `Data/Trinkets` will be set to `TrinketTinker.Effects.TrinketTinkerEffect` from this mod.
 
 > [!NOTE]
-> Trinkets can be reloaded with `patch reload <your content mod id>`, however the trinket must be unequipped and requipped to get updates.
+> Trinkets can be reloaded with `patch reload <your content mod id>`, however the trinket must be unequipped and reequipped to get updates.
 
 ## Structure
 
 | Property | Type | Default | Notes |
 | -------- | ---- | ------- | ----- |
-| `EnableCondition` | string | _null_ | A [game state query](https://stardewvalleywiki.com/Modding:Game_state_queries) used to check if the trinket should be enabled. This is checked on equip, it can only be rechecked by requipping the trinket. The check also happens every night, when the trinket is unequipped/requipped by the game. |
+| `EnableCondition` | string | _null_ | A [game state query](https://stardewvalleywiki.com/Modding:Game_state_queries) used to check if the trinket should be enabled. This is checked on equip, it can only be rechecked by reequipping the trinket. The check also happens every night, when the trinket is unequipped/reequipped by the game. |
 | `EnableFailMessage` | string | _null_ | When `EnableCondition` is false, this message will be displayed upon equipping the trinket.<br/>Default message: ` "You are not worthy of {{trinketName}}..."` |
 | `MinLevel` | int | 1 | Changes the level value that will replace `{0}` in `DisplayName`. |
 | `Variants` | [List\<VariantData\>](2-Variant.md) | _null_ | Defines the sprites of the companion. |
@@ -21,7 +21,7 @@ When a `mushymato.TrinketTinker/Tinker` entry exists, the `TrinketEffectClass` f
 | `VariantUnlockConditions` | List\<string\> | _null_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many variants are unlocked. |
 | `AbilityUnlockConditions` | List\<string\> | _null_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many abilities are unlocked. |
 | `Inventory` | [TinkerInventoryData](6-Inventory.md) | _null_ | Gives the trinket an inventory that can be opened by the "use" button (RightClick/X) over the trinket item. |
-| `Chatter` | [Dictionary<string, ChatterLinesData>](5-Chatter.md) | _null_ | Gives the trinket dialogue for use with the [Chatter ability](4.z.201-Chatter.md). |
+| `Chatter` | [Dictionary\<string, ChatterLinesData\>](4.z.201-Chatter.md.md) | _null_ | Gives the trinket dialogue for use with the [Chatter ability](4.z.201-Chatter.md). |
 
 ### This is a lot of stuff, what do I need to define?
 

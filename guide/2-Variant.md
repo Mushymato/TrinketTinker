@@ -16,9 +16,9 @@ These fields are valid for both variant and alt variant.
 | `Height` | int | 16 | Height of 1 sprite on the sprite sheet. |
 | `TextureScale` | float | 4 | Texture draw scale, default is 4 like most things in the game. |
 | `ShadowScale` | float | 3 | Size of the shadow to draw, 0 to disable shadow. |
+| `Portrait` | string | _null_ | A portrait texture for the [Chatter ability](4.z.201-Chatter.md), required to display a portrait and a name. |
 | `NPC` | string | _null_ | An NPC name (key of `Data/Characters`) to associate this variant with, used for the [Chatter ability](4.z.201-Chatter.md). |
 | `Name` | string | _null_ | A display name for the [Chatter ability](4.z.201-Chatter.md), used if there's no real `NPC`. |
-| `Portrait` | string | _null_ | A portrait texture for the [Chatter ability](4.z.201-Chatter.md), required to display a portrait and a name. |
 
 ### Top Level Variant
 
@@ -66,10 +66,32 @@ The alt variant in `AltVariants` can have all shared fields, as well as:
 
 | Property | Type | Default | Notes |
 | -------- | ---- | ------- | ----- |
-| `Condition` | string | `"FALSE"` | A [game state query](https://stardewvalleywiki.com/Modding:Game_state_queries) used to check if this alt variant should be selected. If you want to have an alt variant exclusively activate through [ability](4-Ability.md) with `ProcAltVariant`, use `"FALSE"` |
+| `Condition` | string | `"FALSE"` | A [game state query](https://stardewvalleywiki.com/Modding:Game_state_queries) used to check if this alt variant should be selected. If you want to have an alt variant exclusively activate through [ability](4-Ability.md) with `ProcAltVariant`, use `"FALSE"`. |
 | `Priority` | int | 0 | Sort priority of this variant, higher number have their conditions checked first. |
 
-Note that not all shared fields are required in alt variant, and any not set field will simply fall back to the value found in top level. For example, if you want to change the trinket's sprite to a different sprite with the same dimensions during winter, the only fields needed to achieve this are `Texture` and `Condition` (`"SEASON Winter"`), (and perhaps `"Portrait` if the trinket has a [Chatter ability](4.z.201-Chatter.md)).
+Note that not all shared fields are required in alt variant, and any not set field will simply fall back to the value found in top level.
+
+An example: Change the companion's appearance during winter.
+```json
+// assuming "{{ModId}}/Companion" and "{{ModId}}/Companion_Winter" are loaded
+"Variants": [
+  {
+    "Texture": "{{ModId}}/Companion",
+    "Width": 16,
+    "Height": 32,
+    "AltVariants": {
+      "WINTER": {
+        // Since Width and Height is not set,
+        // The alt variant inherits 16x36 from the base variant.
+        "Texture": "{{ModId}}/Companion_Winter",
+        "Condition": "SEASON Winter"
+      }
+    }
+  }
+],
+```
+
+[Abilities](4-Ability.md) can explicitly set a specific variant, which bypasses `Condition`. If you want to make a special variant that only activates by ability proc, set the `Condition` to `"FALSE"` to exclude it from standard checks.
 
 ### LightSourceData
 

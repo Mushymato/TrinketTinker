@@ -165,15 +165,15 @@ public abstract class Motion<TArgs> : IMotion
     }
 
     /// <inheritdoc/>
-    public void SetAltVariant(string? speechBubbleKey)
+    public void SetAltVariant(string? altVariantKey)
     {
-        if (speechBubbleKey == "RECHECK")
+        if (altVariantKey == "RECHECK")
         {
             DoRecheckAltVariant();
         }
         else
         {
-            cs.SetAltVariant(speechBubbleKey);
+            cs.SetAltVariant(altVariantKey);
         }
     }
 

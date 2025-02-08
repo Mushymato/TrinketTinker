@@ -87,6 +87,7 @@ public sealed class TinkerAnimSprite
         }
         else
         {
+            vd = fullVd;
             return;
         }
         Texture = UpdateVariantFields();

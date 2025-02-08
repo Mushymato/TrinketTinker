@@ -18,17 +18,17 @@ public sealed class TinkerInventoryData
 
 public sealed class ChatterLinesData
 {
-    /// <summary>Ordered dialogue lines, one will be picked at random. Supports translation keys.</summary>
-    public List<string> Lines = [];
-
-    /// <summary>Response dialogue lines, used for $q and other cross dialogue key things. Supports translation keys.</summary>
-    public Dictionary<string, string>? Responses;
-
     /// <summary>Game state query condition</summary>
     public string? Condition { get; set; } = null;
 
     /// <summary>Priority of this chatter line, higher is earlier</summary>
     public int Priority { get; set; } = 0;
+
+    /// <summary>Ordered dialogue lines, one will be picked at random. Supports translation keys.</summary>
+    public List<string>? Lines { get; set; } = null;
+
+    /// <summary>Response dialogue lines, used for $q and other cross dialogue key things. Supports translation keys.</summary>
+    public Dictionary<string, string>? Responses { get; set; } = null;
 }
 
 /// <summary>Top level data class for Tinker.</summary>

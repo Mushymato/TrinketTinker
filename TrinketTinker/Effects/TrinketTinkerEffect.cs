@@ -12,6 +12,7 @@ using StardewValley.TokenizableStrings;
 using TrinketTinker.Companions;
 using TrinketTinker.Effects.Abilities;
 using TrinketTinker.Effects.Support;
+using TrinketTinker.Extras;
 using TrinketTinker.Models;
 using TrinketTinker.Models.AbilityArgs;
 using TrinketTinker.Wheels;
@@ -256,10 +257,10 @@ public class TrinketTinkerEffect : TrinketEffect
             cmp.SetSpeechBubble(speechBubbleKey);
     }
 
-    public void SetAltVariant(string speechBubbleKey)
+    public void SetAltVariant(string altVariantKey)
     {
         if (Companion is TrinketTinkerCompanion cmp)
-            cmp.SetAltVariant(speechBubbleKey);
+            cmp.SetAltVariant(altVariantKey);
     }
 
     /// <summary>Spawn the companion, and activate all abilities</summary>
