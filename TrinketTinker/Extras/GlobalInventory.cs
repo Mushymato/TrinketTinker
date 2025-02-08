@@ -233,7 +233,7 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
                 return false;
             if (trinket.GetEffect() is TrinketTinkerEffect otherEffect)
             {
-                if (otherEffect.InventoryId != null)
+                if (otherEffect.HasEquipTrinketAbility)
                     return false;
                 if (
                     effect.HasEquipTrinketAbility
@@ -258,7 +258,7 @@ internal sealed class GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerI
             return false;
         if (
             data.RequiredItemCondition != null
-            && !GameStateQuery.CheckConditions(data.RequiredItemCondition, inputItem: item)
+            && !GameStateQuery.CheckConditions(data.RequiredItemCondition, inputItem: item, targetItem: item)
         )
             return false;
         return true;

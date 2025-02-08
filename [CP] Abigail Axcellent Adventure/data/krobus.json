@@ -145,7 +145,7 @@
                 "ProcSpeechBubble": "IHaveStone",
                 "ProcChatterKey": "Subby",
                 "InCombat": false,
-                "Condition": "mushymato.TrinketTinker_HAS_ITEM Target (O)390 >0",
+                "Condition": "mushymato.TrinketTinker_TRINKET_HAS_ITEM Target (O)390 >0",
               },
               {
                 "AbilityClass": "HarvestForage",

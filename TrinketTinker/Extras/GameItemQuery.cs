@@ -19,8 +19,8 @@ public static class GameItemQuery
     public static string GameStateQuery_HAS_LEVELS => $"{ModEntry.ModId}_HAS_LEVELS";
     public static string GameStateQuery_HAS_VARIANTS => $"{ModEntry.ModId}_HAS_VARIANTS";
     public static string GameStateQuery_ENABLED_TRINKET_COUNT => $"{ModEntry.ModId}_ENABLED_TRINKET_COUNT";
-    public static string GameStateQuery_ALT_VARIANT => $"{ModEntry.ModId}_ALT_VARIANT";
-    public static string GameStateQuery_HAS_ITEM => $"{ModEntry.ModId}_HAS_ITEM";
+    public static string GameStateQuery_IN_ALT_VARIANT => $"{ModEntry.ModId}_IN_ALT_VARIANT";
+    public static string GameStateQuery_TRINKET_HAS_ITEM => $"{ModEntry.ModId}_TRINKET_HAS_ITEM";
 
     private const string RANDOM = "R";
     private const string MAX = "M";
@@ -38,8 +38,8 @@ public static class GameItemQuery
         GameStateQuery.Register(GameStateQuery_HAS_LEVELS, HAS_LEVELS);
         GameStateQuery.Register(GameStateQuery_HAS_VARIANTS, HAS_VARIANTS);
         GameStateQuery.Register(GameStateQuery_ENABLED_TRINKET_COUNT, ENABLED_TRINKET_COUNT);
-        GameStateQuery.Register(GameStateQuery_ALT_VARIANT, ALT_VARIANT);
-        GameStateQuery.Register(GameStateQuery_HAS_ITEM, HAS_ITEM);
+        GameStateQuery.Register(GameStateQuery_IN_ALT_VARIANT, IN_ALT_VARIANT);
+        GameStateQuery.Register(GameStateQuery_TRINKET_HAS_ITEM, TRINKET_HAS_ITEM);
     }
 
     /// <summary>
@@ -354,7 +354,7 @@ public static class GameItemQuery
         return CompareIntegerQ(query, 3, count);
     }
 
-    private static bool ALT_VARIANT(string[] query, GameStateQueryContext context)
+    private static bool IN_ALT_VARIANT(string[] query, GameStateQueryContext context)
     {
         if (
             TryGetTinkerTrinket(query, context, 1, out Trinket? _, out TrinketTinkerEffect? effect, createFromId: false)
@@ -372,7 +372,7 @@ public static class GameItemQuery
         return false;
     }
 
-    private static bool HAS_ITEM(string[] query, GameStateQueryContext context)
+    private static bool TRINKET_HAS_ITEM(string[] query, GameStateQueryContext context)
     {
         if (
             TryGetTinkerTrinket(query, context, 1, out Trinket? _, out TrinketTinkerEffect? effect, createFromId: false)

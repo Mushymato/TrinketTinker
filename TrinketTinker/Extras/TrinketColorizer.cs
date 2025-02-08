@@ -114,7 +114,6 @@ public static class TrinketColorizer
                                 $"{typeof(TrinketColorizer).AssemblyQualifiedName}:{nameof(OutputTrinketColorizer)}",
                         },
                     ],
-                    MinutesUntilReady = 10,
                 },
             ],
             AdditionalConsumedItems =
@@ -143,7 +142,8 @@ public static class TrinketColorizer
         };
         if (data.TryGetValue("(BC)Anvil", out MachineData? anvilData))
         {
-            MachineOutputRule newRule = anvilData.OutputRules.First().DeepClone();
+            int defaultIndex = anvilData.OutputRules.FindIndex((rule) => rule.Id == "Default");
+            MachineOutputRule newRule = anvilData.OutputRules[defaultIndex].DeepClone();
             newRule.Id = $"{ModEntry.ModId}_Default";
             newRule.Triggers =
             [
@@ -164,8 +164,7 @@ public static class TrinketColorizer
                     OutputMethod = $"{typeof(TrinketColorizer).AssemblyQualifiedName}:{nameof(OutputTinkerAnvil)}",
                 },
             ];
-            newRule.MinutesUntilReady = 10;
-            anvilData.OutputRules.Insert(0, newRule);
+            anvilData.OutputRules.Insert(defaultIndex, newRule);
             anvilData.LoadEffects ??= [];
             anvilData.LoadEffects.Add(
                 new()

@@ -488,7 +488,7 @@ public class TrinketTinkerEffect : TrinketEffect
         {
             if (conditions.Count <= result)
                 return count;
-            if (!GameStateQuery.CheckConditions(conditions[result], null, null, inputItem: trinket))
+            if (!GameStateQuery.CheckConditions(conditions[result], null, null, inputItem: trinket, targetItem: trinket))
                 return result + 1;
         }
         return 1;

@@ -111,8 +111,8 @@ public static class EquipTrinket
         }
         if (
             !ArgUtility.TryGet(args, 1, out string trinketId, out error, allowBlank: false, "string trinketId")
-            || !ArgUtility.TryGetOptionalInt(args, 2, out int level, out error, name: "int level")
-            || !ArgUtility.TryGetOptionalInt(args, 3, out int variant, out error, name: "int variant")
+            || !ArgUtility.TryGetOptionalInt(args, 2, out int level, out error, defaultValue: -1, name: "int level")
+            || !ArgUtility.TryGetOptionalInt(args, 3, out int variant, out error, defaultValue: -1, name: "int variant")
         )
         {
             ModEntry.Log(error, LogLevel.Error);
@@ -125,7 +125,7 @@ public static class EquipTrinket
             {
                 if (
                     trinket.GetEffect() is TrinketTinkerEffect effect
-                    && (effect.Level != level || effect.Variant != variant)
+                    && ((level != -1 && effect.Level != level) || (variant != -1 && effect.Variant != variant))
                 )
                     continue;
                 if (Unequip(Game1.player, trinket))
