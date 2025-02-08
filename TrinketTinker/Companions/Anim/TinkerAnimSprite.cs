@@ -53,7 +53,10 @@ public sealed class TinkerAnimSprite
     }
 
     /// <summary>Current texture</summary>
-    internal Texture2D Texture;
+    internal Texture2D Texture => UseExtra ? TextureExtra ?? TextureBase : TextureBase;
+    internal Texture2D TextureBase;
+    internal Texture2D? TextureExtra = null;
+    private bool UseExtra = false;
     internal int Width;
     internal int Height;
     internal float TextureScale;
@@ -71,26 +74,20 @@ public sealed class TinkerAnimSprite
     {
         fullVd = vdata;
         vd = fullVd;
-        Texture = UpdateVariantFields();
+        TextureBase = UpdateVariantFields();
         UpdateSourceRect();
     }
 
     public void SetAltVariant(string? altVariantKey)
     {
-        if (altVariantKey == null)
-        {
-            vd = fullVd;
-        }
-        else if (fullVd.AltVariants?.TryGetValue(altVariantKey, out AltVariantData? subVd) ?? false)
-        {
+        if (
+            altVariantKey != null
+            && (fullVd.AltVariants?.TryGetValue(altVariantKey, out AltVariantData? subVd) ?? false)
+        )
             vd = subVd;
-        }
         else
-        {
             vd = fullVd;
-            return;
-        }
-        Texture = UpdateVariantFields();
+        UpdateVariantFields();
         UpdateSourceRect();
     }
 
@@ -111,7 +108,9 @@ public sealed class TinkerAnimSprite
         Origin = new Vector2(Width / 2, Height / 2);
         drawColor = null;
         drawColorIsConstant = false;
-        return LoadTexture(vd.Texture) ?? LoadTexture(fullVd.Texture) ?? LoadTexture("Animals/Error")!;
+        TextureBase = LoadTexture(vd.Texture) ?? LoadTexture(fullVd.Texture) ?? LoadTexture("Animals/Error")!;
+        TextureExtra = LoadTexture(vd.TextureExtra) ?? LoadTexture(fullVd.TextureExtra) ?? null;
+        return TextureBase;
     }
 
     /// <summary>Get source rect corresponding to a particular frame.</summary>
@@ -190,7 +189,7 @@ public sealed class TinkerAnimSprite
             }
             return TinkerAnimState.InNop;
         }
-        return Animate(clip.LoopMode, time, clip.FrameStart, clip.FrameLength, interval);
+        return Animate(clip.LoopMode, time, clip.FrameStart, clip.FrameLength, interval, useExtra: clip.UseExtra);
     }
 
     /// <summary>
@@ -207,9 +206,11 @@ public sealed class TinkerAnimSprite
         GameTime time,
         int startFrame,
         int numberOfFrames,
-        double interval
+        double interval,
+        bool useExtra = false
     )
     {
+        UseExtra = useExtra;
         if (numberOfFrames == 0)
         {
             SetCurrentFrame(-1);

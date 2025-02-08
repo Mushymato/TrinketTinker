@@ -11,7 +11,7 @@
     {
       "LogName": "Sprites",
       "Action": "Load",
-      "Target": "{{ModId}}/trinketbox",
+      "Target": "{{ModId}}/trinketbox, {{ModId}}/opossum, {{ModId}}/opossum-2",
       "FromFile": "assets/{{TargetWithoutPath}}.png"
     },
     // boxes
@@ -38,9 +38,15 @@
       "Action": "Include",
       "FromFile": "data/box.json",
       "LocalTokens": {
-        "L@Capacity": 5,
+        "L@Capacity": 6,
         "L@SheetIndex": 2,
       }
+    },
+    // Pack Possum
+    {
+      // Iridium
+      "Action": "Include",
+      "FromFile": "data/opossum.json",
     },
     // trinket slot cheat
     {

@@ -1,9 +1,12 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
+using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Delegates;
 using StardewValley.Internal;
+using StardewValley.Inventories;
 using StardewValley.Objects.Trinkets;
+using TrinketTinker.Companions;
 using TrinketTinker.Effects;
 
 namespace TrinketTinker.Extras;
@@ -16,6 +19,8 @@ public static class GameItemQuery
     public static string GameStateQuery_HAS_LEVELS => $"{ModEntry.ModId}_HAS_LEVELS";
     public static string GameStateQuery_HAS_VARIANTS => $"{ModEntry.ModId}_HAS_VARIANTS";
     public static string GameStateQuery_ENABLED_TRINKET_COUNT => $"{ModEntry.ModId}_ENABLED_TRINKET_COUNT";
+    public static string GameStateQuery_ALT_VARIANT => $"{ModEntry.ModId}_ALT_VARIANT";
+    public static string GameStateQuery_HAS_ITEM => $"{ModEntry.ModId}_HAS_ITEM";
 
     private const string RANDOM = "R";
     private const string MAX = "M";
@@ -33,6 +38,8 @@ public static class GameItemQuery
         GameStateQuery.Register(GameStateQuery_HAS_LEVELS, HAS_LEVELS);
         GameStateQuery.Register(GameStateQuery_HAS_VARIANTS, HAS_VARIANTS);
         GameStateQuery.Register(GameStateQuery_ENABLED_TRINKET_COUNT, ENABLED_TRINKET_COUNT);
+        GameStateQuery.Register(GameStateQuery_ALT_VARIANT, ALT_VARIANT);
+        GameStateQuery.Register(GameStateQuery_HAS_ITEM, HAS_ITEM);
     }
 
     /// <summary>
@@ -117,7 +124,8 @@ public static class GameItemQuery
         GameStateQueryContext context,
         int idx,
         [NotNullWhen(true)] out Trinket? trinket,
-        [NotNullWhen(true)] out TrinketTinkerEffect? effect
+        [NotNullWhen(true)] out TrinketTinkerEffect? effect,
+        bool createFromId = true
     )
     {
         trinket = null;
@@ -133,6 +141,8 @@ public static class GameItemQuery
             )
         )
         {
+            if (!createFromId)
+                return false;
             if (!ArgUtility.TryGet(query, idx, out string itemId, out string _, allowBlank: true, "string itemId"))
             {
                 ModEntry.Log(
@@ -317,10 +327,7 @@ public static class GameItemQuery
             return false;
         if (!ArgUtility.TryGet(query, 2, out var playerKey, out string error, allowBlank: true, "string playerKey"))
         {
-            ModEntry.Log(
-                $"Failed parsing condition '{string.Join(" ", query)}': {error}.",
-                StardewModdingAPI.LogLevel.Warn
-            );
+            ModEntry.Log($"Failed parsing condition '{string.Join(" ", query)}': {error}.", LogLevel.Warn);
             return false;
         }
         string tId = trinket.ItemId;
@@ -345,5 +352,33 @@ public static class GameItemQuery
             }
         );
         return CompareIntegerQ(query, 3, count);
+    }
+
+    private static bool ALT_VARIANT(string[] query, GameStateQueryContext context)
+    {
+        if (
+            TryGetTinkerTrinket(query, context, 1, out Trinket? _, out TrinketTinkerEffect? effect, createFromId: false)
+            && ArgUtility.TryGetOptional(query, 2, out string altVariantKey, out string _, "string altVariantKey")
+        )
+        {
+            if (effect.Companion is TrinketTinkerCompanion cmp)
+            {
+                return cmp._altVariantKey.Value == altVariantKey;
+            }
+        }
+        return false;
+    }
+
+    private static bool HAS_ITEM(string[] query, GameStateQueryContext context)
+    {
+        if (
+            TryGetTinkerTrinket(query, context, 1, out Trinket? _, out TrinketTinkerEffect? effect, createFromId: false)
+            && ArgUtility.TryGetOptional(query, 2, out string itemId, out string _, "string itemId")
+            && effect.GetInventory(context.Player) is Inventory trinketInv
+        )
+        {
+            return CompareIntegerQ(query, 3, trinketInv.CountId(itemId));
+        }
+        return false;
     }
 }

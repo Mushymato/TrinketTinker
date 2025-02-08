@@ -133,6 +133,9 @@ public class AnimClipData : WeightedRandData
     /// <summary>If set, the companion won't move while clip plays.</summary>
     public bool PauseMovement { get; set; } = false;
 
+    /// <summary>If set, use <see cref="VariantData.TextureExtra"/> instead of <see cref="VariantData.Texture"/>.</summary>
+    public bool UseExtra { get; set; } = false;
+
     /// <summary>Additional clips that may randomly be called, only valid for the top level clip.</summary>
     public IReadOnlyList<AnimClipData>? RandomClips
     {

@@ -25,6 +25,9 @@ public interface IVariantData
     /// <summary>Variant texture content path.</summary>
     public string? Texture { get; set; }
 
+    /// <summary>Additional textures.</summary>
+    public string? TextureExtra { get; set; }
+
     /// <summary>Draw color mask, can use color name from <see cref="Color"/>, hex value, or <see cref="TinkerConst.COLOR_PRISMATIC"/> for animated prismatic effect.</summary>
     public string? ColorMask { get; set; }
 
@@ -55,6 +58,9 @@ public class AltVariantData : IVariantData
 {
     /// <inheritdoc/>
     public string? Texture { get; set; } = null;
+
+    /// <inheritdoc/>
+    public string? TextureExtra { get; set; } = null;
 
     /// <inheritdoc/>
     public string? ColorMask { get; set; } = null;
@@ -92,6 +98,9 @@ public sealed class VariantData : IVariantData
 {
     /// <inheritdoc/>
     public string? Texture { get; set; } = null;
+
+    /// <inheritdoc/>
+    public string? TextureExtra { get; set; } = null;
 
     /// <inheritdoc/>
     public string? ColorMask { get; set; } = null;

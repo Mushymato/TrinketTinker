@@ -1,0 +1,70 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "LogName": "Opossum: Trinkets",
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_Opossum": {
+          "Id": "{{ModId}}_Opossum",
+          "DisplayName": "{{i18n:Opossum.DisplayName}}",
+          "Description": "{{i18n:Opossum.Description}}",
+          "Texture": "{{ModId}}/opossum",
+          "SheetIndex": 0,
+          "DropsNaturally": false,
+          "CanBeReforged": false
+        },
+      }
+    },
+    {
+      "LogName": "Opossum: Tinker",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        "{{ModId}}_Opossum": {
+          "Variants": [
+            {
+              "Texture": "{{ModId}}/opossum",
+              "TextureExtra": "{{ModId}}/opossum-2",
+              "Width": 32,
+              "Height": 18,
+              "ShadowScale": 0
+            },
+          ],
+          "Motion": {
+            "MotionClass": "Lerp",
+            "DirectionMode": "R",
+            "FrameLength": 4,
+            "AnimClips": {
+              "Idle": {
+                "FrameStart": 0,
+                "FrameLength": 3,
+                "Interval": 200,
+                "LoopMode": "PingPong",
+                "UseExtra": true
+              },
+            },
+            // "Anchors": [
+            //   {
+            //     "Mode": "Forage",
+            //     "Range": 320
+            //   },
+            //   {
+            //     "Mode": "Crop",
+            //     "Range": 240
+            //   },
+            //   {
+            //     "Mode": "Shakeable",
+            //     "Range": 320
+            //   },
+            // ],
+          },
+          "Inventory": {
+            "Capacity": 24
+          }
+        },
+      }
+    },
+  ]
+}
