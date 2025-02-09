@@ -407,7 +407,7 @@ internal sealed class GlobalInventoryHandler
         int toSkip = 0;
         if (!hasTrinketSlot)
         {
-            toSkip = ModEntry.HasWearMoreRings ? 2 : 1;
+            toSkip = Math.Min(Game1.player.trinketItems.Count, ModEntry.HasWearMoreRings ? 2 : 1);
             for (int i = 0; i < toSkip; i++)
             {
                 if (Game1.player.trinketItems[i] is Trinket trinketItem)

@@ -74,18 +74,18 @@
                 "Nop": true,
                 // stay at Nop for 4 frames
                 "FrameLength": 4,
-                "Condition": "SEASON Winter",
+                "Condition": "mushymato.TrinketTinker_IN_ALT_VARIANT Target WINTER",
                 "RandomClips": [
                   {
                     "FrameStart": 24,
                     "FrameLength": 4,
                     "Loop": true,
-                    "Condition": "SEASON Winter",
+                    "Condition": "mushymato.TrinketTinker_IN_ALT_VARIANT Target WINTER",
                   },
                   {
                     "FrameStart": 28,
                     "FrameLength": 2,
-                    "Condition": "SEASON Winter",
+                    "Condition": "mushymato.TrinketTinker_IN_ALT_VARIANT Target WINTER",
                   }
                 ]
               }

@@ -38,14 +38,16 @@ To have greater control over trinket abilities, you can define custom Game State
 
 The following Condition fields get the trinket item as both the Input and Target items on their `GameStateQueryContext`.
 
-- [TinkerData](1-Tinker.md)
-    - `EnableCondition`
-    - `AbilityUnlockConditions`
-    - `VariantUnlockConditions`
 - [Ability](4-Ability.md)
     - `Condition`
 - [Chatter](4.z.201-Chatter.md)
     - `Condition`
+- [Inventory](5-Inventory.md)
+    - `OpenCondition`
+- [TinkerData](1-Tinker.md)
+    - `EnableCondition`
+    - `AbilityUnlockConditions`
+    - `VariantUnlockConditions`
 
 Other cases of Condition either do not provide this, or only use something else for Input and Target items (e.g. [Inventory.RequiredItemCondition](5-Inventory.md))
 
