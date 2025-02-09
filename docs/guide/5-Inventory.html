@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title> | TrinketTinker </title>
+      <title>Inventory | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content=" | TrinketTinker ">
+      <meta name="title" content="Inventory | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/x-example.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/5-Inventory.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,59 +85,48 @@
         </div>
 
         <article data-uid="">
+<h1 id="inventory">Inventory</h1>
 
-<blockquote>
-<p>All examples are assumed to live under content patcher</p>
-</blockquote>
-<div class="tabGroup" id="tabgroup_1">
-<ul role="tablist">
-<li role="presentation">
-<a href="#tabpanel_1_tinker" role="tab" aria-controls="tabpanel_1_tinker" data-tab="tinker" tabindex="0" aria-selected="true">Tinker</a>
-</li>
-<li role="presentation">
-<a href="#tabpanel_1_other" role="tab" aria-controls="tabpanel_1_other" data-tab="other" tabindex="-1">Trinket &amp; Sprites</a>
-</li>
-</ul>
-<section id="tabpanel_1_tinker" role="tabpanel" data-tab="tinker">
-
-<pre><code class="lang-json">
-</code></pre>
-</section>
-<section id="tabpanel_1_other" role="tabpanel" data-tab="other" aria-hidden="true" hidden="hidden">
-
-<pre><code class="lang-json">// Load texture
-{
-  &quot;Action&quot;: &quot;Load&quot;,
-  &quot;Target&quot;: &quot;Mods/{{ModId}}/MyTrinket&quot;,
-  &quot;FromFile&quot;: &quot;sprites/{{TargetWithoutPath}}.png&quot;
-},
-// Edit Data/Trinkets 
-{
-  &quot;Action&quot;: &quot;EditData&quot;,
-  &quot;Target&quot;: &quot;Data/Trinkets&quot;,
-  &quot;Entries&quot;: {
-    &quot;{{ModId}}_MyTrinket&quot;: {
-      // Trinket ID, gives qualified ID of (TR){{ModId}}_MyTrinket
-      &quot;Id&quot;: &quot;{{ModId}}_MyTrinket&quot;,
-      // Display name (with i18n)
-      &quot;DisplayName&quot;: &quot;{{i18n:MyTrinket.DisplayName}}&quot;,
-      // Description
-      &quot;Description&quot;: &quot;{{i18n:MyTrinket.Description}}&quot;,
-      // Path to asset texture load target
-      &quot;Texture&quot;: &quot;Mods/{{ModId}}/MyTrinket&quot;,
-      // Sheet index (with 16x16 sprite size)
-      &quot;SheetIndex&quot;: 0,
-      // Add trinket to random drop pool once player attains combat mastery
-      // Can still add other ways to acquire (e.g. shops, machine outputs)
-      &quot;DropsNaturally&quot;: true,
-      // Allow trinket to reroll stats on the anvil
-      &quot;CanBeReforged&quot;: true,
-    },
-  }
-}
-</code></pre>
-</section>
-</div>
+<p>Trinkets can have inventory, which can be opened by &quot;using&quot; the trinket item. This menu can also be accessed when the trinket is equipped via a <a href="9-User%20Configuration.html">keybinding</a>. This inventory can accept most items except for itself and other trinkets that have inventory. Further control of what is allowed into an inventory can be achieved through <code>RequiredTags</code> and <code>RequiredItemCondition</code>.</p>
+<p>Should the trinket item be lost, all items inside will be sent to the lost and found on the next day.</p>
+<p>There's a number of caveats when using inventory with <a href="4.z.200-EquipTrinket.html">EquipTrinket</a>, refer to that page for details.</p>
+<h2 id="structure">Structure</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Capacity</code></td>
+<td>int</td>
+<td>9</td>
+<td>Capacity of the inventory.</td>
+</tr>
+<tr>
+<td><code>OpenCondition</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>A <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state query</a> used to check if this inventory can be opened.</td>
+</tr>
+<tr>
+<td><code>RequiredTags</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>A list of <a href="https://stardewvalleywiki.com/Modding:Common_data_field_types#Context_tag">context tags</a> used to check if an item should be allowed into the inventory. Each space separated sub list of tags act as AND while the overall list act as OR.</td>
+</tr>
+<tr>
+<td><code>RequiredItemCondition</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>A <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state query</a> used to check if an item should be allowed into the inventory. The item being checked will be provided as the Input and Target.</td>
+</tr>
+</tbody>
+</table>
 
 </article>
 

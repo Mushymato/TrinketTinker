@@ -87,10 +87,68 @@
         <article data-uid="">
 <h1 id="orbit">Orbit</h1>
 
-<p>Alters the offset depending on the direction, to give illusion that the trinket is attached to the player.</p>
-<p>Not very useful until you set <a href="3-Motion.html">an offset</a></p>
-<h2 id="args"><a href="../api/TrinketTinker.Models.MotionArgs.StaticArgs.html">Args</a></h2>
-<p>No extra arguments.</p>
+<p>Alters the offset depending on the direction, to give illusion that the trinket is attached to the player. Offset and layer can be individually applied per direction, which is determined by the player's facing direction rather than this mod's of <a href="3.0-Direction.html">direction mode</a>.</p>
+<h2 id="args"><a href="../api/TrinketTinker.Models.MotionArgs.RelativeArgs.html">Args</a></h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OffsetD</code></td>
+<td>float</td>
+<td><em>null</em></td>
+<td>Directional offset, down.</td>
+</tr>
+<tr>
+<td><code>OffsetR</code></td>
+<td>float</td>
+<td><em>null</em></td>
+<td>Directional offset, right.</td>
+</tr>
+<tr>
+<td><code>OffsetU</code></td>
+<td>float</td>
+<td><em>null</em></td>
+<td>Directional offset, up.</td>
+</tr>
+<tr>
+<td><code>OffsetL</code></td>
+<td>float</td>
+<td><em>null</em></td>
+<td>Directional offset, left.</td>
+</tr>
+<tr>
+<td><code>LayerD</code></td>
+<td>float</td>
+<td><em>null</em></td>
+<td>Layer depth offset, down.</td>
+</tr>
+<tr>
+<td><code>LayerR</code></td>
+<td>float</td>
+<td><em>null</em></td>
+<td>Layer depth offset, right.</td>
+</tr>
+<tr>
+<td><code>LayerU</code></td>
+<td>float</td>
+<td><em>null</em></td>
+<td>Layer depth offset, up.</td>
+</tr>
+<tr>
+<td><code>LayerL</code></td>
+<td>float</td>
+<td><em>null</em></td>
+<td>Layer depth offset, left.</td>
+</tr>
+</tbody>
+</table>
 
 </article>
 

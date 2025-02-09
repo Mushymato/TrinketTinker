@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Action | TrinketTinker </title>
+      <title>EquipTrinket | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Action | TrinketTinker ">
+      <meta name="title" content="EquipTrinket | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/4.z.08-Action.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/4.z.200-EquipTrinket.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,28 +85,28 @@
         </div>
 
         <article data-uid="">
-<h1 id="action">Action</h1>
+<h1 id="equiptrinket">EquipTrinket</h1>
 
-<p>Run an registered <a href="https://stardewvalleywiki.com/Modding:Trigger_actions">action</a>, either vanilla or mod provided.</p>
-<h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.ActionArgs.html">Args</a></h2>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Default</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Action</code></td>
-<td>string</td>
-<td><strong>required</strong></td>
-<td>An action to run.</td>
-</tr>
-</tbody>
-</table>
+<p>This ability requires <a href="5-Inventory.html">inventory</a> to use, and can only be used with <a href="4.0-Proc.html">Proc Always</a>. Only 1 EquipTrinket ability can exist per level, and having this ability changes this trinket's inventory to only accept trinkets (that do not have inventory). Inventory cannot be opened while this trinket is equippped.</p>
+<p>The reason for all the special caveats is because this ability turns a trinket into a holder for additional trinkets. By equipping this trinket, all trinkets within the inventory of this trinket is also equipped.</p>
+<p>For mod authors, your trinket can be explictly banned from this ability with a <code>Data/Trinkets</code> custom field.</p>
+<pre><code class="lang-json">{
+  &quot;Action&quot;: &quot;EditData&quot;,
+  &quot;Target&quot;: &quot;Data/Trinkets&quot;,
+  &quot;Entries&quot;: {
+    &quot;{{ModId}}_YourOPTrinket&quot;: {
+      &quot;Id&quot;: &quot;{{ModId}}_YourOPTrinket&quot;,
+      // other fields omitted...
+      &quot;CustomFields&quot;: {
+        // prevent this trinket from being equipped indirectly via EquipTrinket and the trinket equip action.
+        &quot;mushymato.TrinketTinker/DirectEquipOnly&quot;: &quot;T&quot;
+      }
+    },
+  }
+}
+</code></pre>
+<h2 id="args"><a href="../api/TrinketTinker.Models.Mixin.NoArgs.html">Args</a></h2>
+<p>No additional arguments.</p>
 
 </article>
 

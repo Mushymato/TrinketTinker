@@ -87,7 +87,7 @@
         <article data-uid="">
 <h1 id="animation-clips">Animation Clips</h1>
 
-<p>Beyond the basic <a href="3.0-Direction.html">directional movement animation</a>, companions can also have special animation states triggered by either a motion or an ability. These extra animations must live on the same sprite sheet and have the start frame + frame length specified in <code>AnimData</code>, with the right key.</p>
+<p>Beyond the basic <a href="3.0-Direction.html">directional movement animation</a>, companions can also have special animation states triggered by either a motion or an ability. These extra animations must live on the same sprite sheet and have the start frame + frame length specified as an entry in <a href="3-Motion.html">Motion</a> <code>AnimClips</code>, with the right key.</p>
 <p>The start frame counts up from 0 and can be any frame on the sheet, including the previously discussed movement frames. Consider these 2 situations:</p>
 <ol>
 <li>The clip reuses frames in the directional animation:
@@ -104,7 +104,11 @@
 </ul>
 </li>
 </ol>
-<p>Animation clips can be played back once (oneshot), or continuously played over the directional movement animation (override). This is decided by particular motions/abilities that request the animation.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The console command <code>tt_draw_debug</code> is helpful for debugging animation frames in game.</p>
+</div>
+<p>Animation clips can be played back once (oneshot), or continuously played over the directional movement animation (override). This is decided by particular motions/abilities/states that request the animation.</p>
 <h2 id="structure">Structure</h2>
 <table>
 <thead>
@@ -137,7 +141,7 @@
 <tr>
 <td><code>Interval</code></td>
 <td>float</td>
-<td><em>empty</em></td>
+<td><em>null</em></td>
 <td>Milisecond Interval between animation frames. If this is not set, use the Motion's interval.</td>
 </tr>
 <tr>
@@ -147,16 +151,28 @@
 <td>If true, pause movement update of this animation clip if it plays as a one shot anim clip.</td>
 </tr>
 <tr>
+<td><code>Condition</code></td>
+<td>string</td>
+<td><code>&quot;FALSE&quot;</code></td>
+<td>A <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state query</a> used to check if this clip is allowed to play. Note that unlike most <code>Condition</code> checked by trinket tinker, this one does not receive the trinket as Input/Target item and will not work if a given query is meant to check for a trinket item there.</td>
+</tr>
+<tr>
+<td><code>UseExtra</code></td>
+<td>bool</td>
+<td>false</td>
+<td>If true, try to use <code>TextureExtra</code> instead of <code>Texture</code> from <a href="2-Variant.html">Variant</a>.</td>
+</tr>
+<tr>
 <td><code>RandomClips</code></td>
-<td><code>List&lt;AnimClipData&gt;</code></td>
-<td><em>empty</em></td>
+<td>List&lt;AnimClipData&gt;</td>
+<td><em>null</em></td>
 <td>Allows extra random anim clips to be provided for this key, only relevant for the top level anim clip.</td>
 </tr>
 <tr>
 <td><code>RandomWeight</code></td>
 <td>int</td>
 <td>1</td>
-<td>Weight of random clip, if provided. Higher number is more frequent.</td>
+<td>Weight of random clip, if provided. Higher weight relative to other clips makes it more frequent.</td>
 </tr>
 <tr>
 <td><code>Nop</code></td>
@@ -167,7 +183,12 @@
 </tbody>
 </table>
 <h2 id="priority">Priority</h2>
-<p>At each update, clips are evaluated in this order: oneshot &gt; override &gt; swiming &gt; moving(anchor) &gt; moving(directional) &gt; idle.</p>
+<p>At each update, clips are evaluated in this order: oneshot &gt; override &gt; swiming &gt; moving(anchor) &gt; moving(directional) &gt; idle</p>
+<h2 id="random-clips">Random Clips</h2>
+<p><code>RandomClips</code> allows one clip key to be associated with multiple clips, to be chosen by random. For oneshot clips, the random is checked once before they play. For override clips, random is rechecked at the end of 1 cycle of clip. To have a case where no clip is rolled, set <code>Nop</code> on a clip. When a <code>Nop=true</code> clip is chosen, the next recheck of random will be delayed by <code>Interval * FrameLength</code>, thus the frame number/interval is still meaningful.</p>
+<p><code>RandomWeight</code> can be thought of as frequence. If there are 3 clips with <code>RandomWeight</code> of 1 2 3, the weight 1 clip will appear 1 in 6 times, while the weight 3 clip will appear 3 in 6 times, or 1 in 2.</p>
+<p>Clips inside <code>RandomClips</code> may not have their own <code>RandomClips</code>.</p>
+<p>The randomization logic here is identical to <code>RandomSpeech</code> for <a href="3.3-Speech%20Bubbles.html">speech bubbles</a>.</p>
 <h2 id="available-clips">Available Clips</h2>
 <h3 id="directional-animclip-keys">Directional AnimClip Keys</h3>
 <p>All anim keys can take on a directional index suffix such as <code>&quot;{KEY}.1&quot;</code> which depends on the <a href="3.0-Direction.html">direction mode</a>. The suffix takes the absolute value of the index, no need to manually flip sprites for negative direction index.</p>

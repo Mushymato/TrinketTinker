@@ -89,7 +89,7 @@
 
 
   <h1 id="TrinketTinker_Models_TinkerData" data-uid="TrinketTinker.Models.TinkerData" class="text-break">
-Class TinkerData  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L4"><i class="bi bi-code-slash"></i></a>
+Class TinkerData  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L35"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -153,7 +153,7 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="TrinketTinker_Models_TinkerData_AbilityUnlockConditions" data-uid="TrinketTinker.Models.TinkerData.AbilityUnlockConditions">
   AbilityUnlockConditions
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>GSQ conditions for locking abilities.</p>
@@ -161,7 +161,7 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;string?&gt; AbilityUnlockConditions</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;string?&gt; AbilityUnlockConditions</code></pre>
   </div>
 
 
@@ -169,7 +169,69 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="TrinketTinker_Models_TinkerData_Chatter" data-uid="TrinketTinker.Models.TinkerData.Chatter">
+  Chatter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Data for <a class="xref" href="TrinketTinker.Effects.Abilities.ChatterAbility.html">ChatterAbility</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, ChatterLinesData&gt;? Chatter</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="TrinketTinker.Models.ChatterLinesData.html">ChatterLinesData</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="TrinketTinker_Models_TinkerData_Inventory" data-uid="TrinketTinker.Models.TinkerData.Inventory">
+  Inventory
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Definition for inventory, tied to level</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TinkerInventoryData? Inventory</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TrinketTinker.Models.TinkerInventoryData.html">TinkerInventoryData</a></dt>
     <dd></dd>
   </dl>
 
@@ -184,7 +246,7 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="TrinketTinker_Models_TinkerData_VariantUnlockConditions" data-uid="TrinketTinker.Models.TinkerData.VariantUnlockConditions">
   VariantUnlockConditions
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L56"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>GSQ conditions for locking variants.</p>
@@ -192,7 +254,7 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;string?&gt; VariantUnlockConditions</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;string?&gt; VariantUnlockConditions</code></pre>
   </div>
 
 
@@ -200,7 +262,7 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -220,7 +282,7 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="TrinketTinker_Models_TinkerData_Abilities" data-uid="TrinketTinker.Models.TinkerData.Abilities">
   Abilities
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>List of abilities</p>
@@ -228,7 +290,7 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;List&lt;AbilityData&gt;&gt; Abilities { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;List&lt;AbilityData&gt;&gt; Abilities { get; set; }</code></pre>
   </div>
 
 
@@ -237,7 +299,71 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="TrinketTinker.Models.AbilityData.html">AbilityData</a>&gt;&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="TrinketTinker.Models.AbilityData.html">AbilityData</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Models_TinkerData_EnableCondition_" data-uid="TrinketTinker.Models.TinkerData.EnableCondition*"></a>
+
+  <h3 id="TrinketTinker_Models_TinkerData_EnableCondition" data-uid="TrinketTinker.Models.TinkerData.EnableCondition">
+  EnableCondition
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>If this is false, does not actually do anything on equip</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? EnableCondition { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Models_TinkerData_EnableFailMessage_" data-uid="TrinketTinker.Models.TinkerData.EnableFailMessage*"></a>
+
+  <h3 id="TrinketTinker_Models_TinkerData_EnableFailMessage" data-uid="TrinketTinker.Models.TinkerData.EnableFailMessage">
+  EnableFailMessage
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Show this message when the trinket is not allowed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? EnableFailMessage { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 
@@ -252,7 +378,7 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="TrinketTinker_Models_TinkerData_MinLevel" data-uid="TrinketTinker.Models.TinkerData.MinLevel">
   MinLevel
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L7"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L44"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Trinket stat minimum level, this added to the internal level value that is based on size of <a class="xref" href="TrinketTinker.Models.TinkerData.html#TrinketTinker_Models_TinkerData_Abilities">Abilities</a></p>
@@ -284,10 +410,10 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="TrinketTinker_Models_TinkerData_Motion" data-uid="TrinketTinker.Models.TinkerData.Motion">
   Motion
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L47"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Shim for case of just 1 motion</p>
+  <div class="markdown level1 summary"><p>Motion of the companion</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -312,43 +438,11 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
 
 
 
-  <a id="TrinketTinker_Models_TinkerData_Motions_" data-uid="TrinketTinker.Models.TinkerData.Motions*"></a>
-
-  <h3 id="TrinketTinker_Models_TinkerData_Motions" data-uid="TrinketTinker.Models.TinkerData.Motions">
-  Motions
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L29"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>List of motions</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;MotionData&gt; Motions { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="TrinketTinker.Models.MotionData.html">MotionData</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <a id="TrinketTinker_Models_TinkerData_Variants_" data-uid="TrinketTinker.Models.TinkerData.Variants*"></a>
 
   <h3 id="TrinketTinker_Models_TinkerData_Variants" data-uid="TrinketTinker.Models.TinkerData.Variants">
   Variants
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/TinkerData.cs/#L50"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>List of variants</p>
@@ -356,7 +450,7 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;VariantData&gt; Variants { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;VariantData&gt; Variants { get; set; }</code></pre>
   </div>
 
 
@@ -365,7 +459,7 @@ Class TinkerData  <a class="header-action link-secondary" title="View source" hr
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="TrinketTinker.Models.VariantData.html">VariantData</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="TrinketTinker.Models.VariantData.html">VariantData</a>&gt;</dt>
     <dd></dd>
   </dl>
 

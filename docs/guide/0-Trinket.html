@@ -125,8 +125,9 @@ You must add trinket items before you can extend it with trinket tinker data.</p
           &quot;DropsNaturally&quot;: true,
           // Allow trinket to reroll stats on the anvil (and reroll appearance on the colorizer, for trinkets with tinker data).
           &quot;CanBeReforged&quot;: true,
-          // Mod specific data, not used by base game or TrinketTinker
+          // Mod specific data, shared across trinkets
           // &quot;CustomFields&quot;: null,
+          // Mod specific data, per instance of trinket
           // &quot;ModData&quot;: null
         },
       }
@@ -139,7 +140,7 @@ You must add trinket items before you can extend it with trinket tinker data.</p
 <p>Refer to content patcher docs for more details about <a href="https://github.com/Pathoschild/StardewMods/blob/stable/ContentPatcher/docs/author-guide/action-load.md">EditData</a> and <a href="https://github.com/Pathoschild/StardewMods/blob/stable/ContentPatcher/docs/author-guide/action-load.md">Load</a></p>
 </div>
 <h2 id="trinketeffectclass">TrinketEffectClass</h2>
-<p>Game comes with these trinket effect classes:</p>
+<p>The vanilla game provide these trinket effect classes:</p>
 <table>
 <thead>
 <tr>
@@ -175,6 +176,7 @@ You must add trinket items before you can extend it with trinket tinker data.</p
 </tbody>
 </table>
 <p>The Golden Spur and Basilisk Paw effects are not implemented through an effect class, instead certain parts of game simply checks if the player has a specific trinket equipped.</p>
+<p>Trinket tinker uses a specific TrinketEffectClass, it is automatically set so there is no need to provide when editing Data/Trinkets.</p>
 
 </article>
 

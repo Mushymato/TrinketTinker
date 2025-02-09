@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Projectile | TrinketTinker </title>
+      <title>Buff | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Projectile | TrinketTinker ">
+      <meta name="title" content="Buff | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/4.z.06-Projectile.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/4.z.001-Buff.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,12 +85,11 @@
         </div>
 
         <article data-uid="">
-<h1 id="projectile">Projectile</h1>
+<h1 id="buff">Buff</h1>
 
-<p>Do damage to a monster within range using a projectile.
-Can roll criticals and apply stun/knockback.</p>
-<p>Uses a custom <a href="../api/TrinketTinker.Effects.Pewpew.TinkerProjectile.html">projectile class</a> that accepts custom projectile texture.</p>
-<h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.ProjectileArgs.html">Args</a></h2>
+<p>Applies a <a href="https://stardewvalleywiki.com/Modding:Buffs">buff</a> to the player. Must be a buff registered in <code>Data/Buffs</code>, no support for inline buffs.</p>
+<p>Normally buffs expire when sleeping, but due to trinket mechanics this buff is reapplied every morning.</p>
+<h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.BuffArgs.html">Args</a></h2>
 <table>
 <thead>
 <tr>
@@ -102,80 +101,13 @@ Can roll criticals and apply stun/knockback.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>Texture</code></td>
-<td>string</td>
-<td><code>&quot;TileSheets/Projectiles&quot;</code></td>
-<td>Path to custom projectile texture.</td>
-</tr>
-<tr>
-<td><code>SpriteIndex</code></td>
-<td>int</td>
+<td><code>BuffId</code></td>
+<td>float</td>
 <td>0</td>
-<td>Sprite index of projectile.</td>
-</tr>
-<tr>
-<td><code>SpriteWidth</code></td>
-<td>int</td>
-<td>16</td>
-<td>Projectile sprite width.</td>
-</tr>
-<tr>
-<td><code>SpriteHeight</code></td>
-<td>int</td>
-<td>16</td>
-<td>Projectile sprite height.</td>
-</tr>
-<tr>
-<td><code>TailCount</code></td>
-<td>int</td>
-<td>0</td>
-<td>Number of echo/trail sprites to draw.</td>
-</tr>
-<tr>
-<td><code>MinVelocity</code></td>
-<td>float</td>
-<td>12</td>
-<td>Starting projectile velocity.</td>
-</tr>
-<tr>
-<td><code>MaxVelocity</code></td>
-<td>float</td>
-<td>-1</td>
-<td>Maximum projectile velocity, -1 if unbounded.</td>
-</tr>
-<tr>
-<td><code>Acceleration</code></td>
-<td>float</td>
-<td>1</td>
-<td>Velocity increase per tick.</td>
-</tr>
-<tr>
-<td><code>Pierce</code></td>
-<td>int</td>
-<td>1</td>
-<td>Number of times the projectile can collide (with enemy object or terrain) before it is destroyed.</td>
-</tr>
-<tr>
-<td><code>IgnoreObjectCollisions</code></td>
-<td>bool</td>
-<td>false</td>
-<td>Allow projectile to pass through object/terrain.</td>
-</tr>
-<tr>
-<td><code>IgnoreLocationCollisions</code></td>
-<td>bool</td>
-<td>false</td>
-<td>Allow projectile to pass through walls.</td>
-</tr>
-<tr>
-<td><code>Homing</code></td>
-<td>bool</td>
-<td>false</td>
-<td>Recheck target and adjust trajectory midflight.</td>
+<td>String id of buff to apply.</td>
 </tr>
 </tbody>
 </table>
-<p>*and all arguments of <a href="4.z.05-Hitscan.html">Hitscan</a></p>
 
 </article>
 

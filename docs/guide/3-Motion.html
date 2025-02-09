@@ -109,8 +109,8 @@
 <tr>
 <td><code>MotionClass</code></td>
 <td>string</td>
-<td>Lerp</td>
-<td>Type name of the motion class to use, can use short name like <code>&quot;Lerp&quot;</code>.<br>Refer to pages under Motion Classes in the table of contents for details.</td>
+<td><code>&quot;Lerp&quot;</code></td>
+<td>Type name of the motion class to use, can use short name like <code>&quot;Hover&quot;</code>.<br>Refer to pages under Motion Classes in the table of contents for details.</td>
 </tr>
 <tr>
 <td><code>DirectionMode</code></td>
@@ -119,7 +119,7 @@
 <td>Determines how the trinket behaves when changing directions and controls what sprites are required.</td>
 </tr>
 <tr>
-<td><code>DirectionRotation</code></td>
+<td><code>DirectionRotate</code></td>
 <td>bool</td>
 <td>false</td>
 <td>When true, the sprite will rotate depending on direction, the exact behavior depends the motion class.</td>
@@ -133,7 +133,7 @@
 <tr>
 <td><code>Anchors</code></td>
 <td>List&lt;<a href="3.1-Anchors.html">AnchorTargetData</a>&gt;</td>
-<td><em>empty</em></td>
+<td><em>null</em></td>
 <td>Ordered list of anchors to follow, if not set, fall back to following the player</td>
 </tr>
 <tr>
@@ -173,10 +173,16 @@
 <td>Changes draw layer relative to player. <ul><li>Position: Calculate layer based on Y position</li><li>Behind: Always behind the player.</li><li>InFront: Always infront of the player</li></ul></td>
 </tr>
 <tr>
+<td><code>HideDuringEvents</code></td>
+<td>bool</td>
+<td>false</td>
+<td>Hide the companion during events.</td>
+</tr>
+<tr>
 <td><code>RepeatCount</code></td>
 <td>int</td>
 <td>0</td>
-<td>Number of additional repeat draws to do, to make 1 companion appear to be multiple. Putting a big number here may cause performance issues.</td>
+<td>Number of additional repeat draws to do, to make 1 companion appear to be multiple.</td>
 </tr>
 <tr>
 <td><code>RepeatInterval</code></td>
@@ -193,13 +199,13 @@
 <tr>
 <td><code>AnimClips</code></td>
 <td>Dictionary&lt;string, <a href="3.2-Animation%20Clips.html">AnimClipData</a> &gt;</td>
-<td><em>empty</em></td>
+<td><em>null</em></td>
 <td>Named anim clips that can play over the movement animation.</td>
 </tr>
 <tr>
 <td><code>SpeechBubbles</code></td>
 <td>Dictionary&lt;string, <a href="3.3-Speech%20Bubbles.html">SpeechBubbles</a> &gt;</td>
-<td><em>empty</em></td>
+<td><em>null</em></td>
 <td>Named speech bubbles that appear over the companion.</td>
 </tr>
 <tr>

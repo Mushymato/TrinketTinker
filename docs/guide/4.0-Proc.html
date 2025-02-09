@@ -92,6 +92,16 @@
 <p>In content patcher, use a string value like <code>&quot;Proc&quot;: &quot;Always&quot;</code> to set this value. Internally it is an <a href="../api/TrinketTinker.Models.ProcOn.html">enum</a>.</p>
 <h2 id="procon">ProcOn</h2>
 <ul>
+<li><strong>Always</strong>
+<ul>
+<li>Activate the ability once on equip, deactivate it on unequip. By default, the game unequip and reequips all trinkets on a new day, causing any <code>Always</code> effect to activate again. Does not respect conditions.</li>
+</ul>
+</li>
+<li><strong>Sync</strong>
+<ul>
+<li>Activate the ability when another ability on the same level activates. By default this follows the first ability (index 0) and can be changed by setting <code>ProcSyncIndex</code> to a different number.</li>
+</ul>
+</li>
 <li><strong>Footstep</strong>
 <ul>
 <li>When the player walks around.</li>
@@ -122,8 +132,8 @@
 </li>
 <li><strong>Trigger</strong>
 <ul>
-<li>When the <a href="https://stardewvalleywiki.com/Modding:Trigger_actions">action</a> <code>&quot;mushymato.TrinketTinker/ProcTrinket&quot;</code> is called.</li>
-<li>If the unqualified trinket Id is given (e.g. <code>&quot;mushymato.TrinketTinker/ProcTrinket MyTrinket&quot;</code>), only the specified trinket's ablities will proc.</li>
+<li>When the <a href="https://stardewvalleywiki.com/Modding:Trigger_actions">action</a> <code>&quot;mushymato.TrinketTinker_ProcTrinket&quot;</code> is called.</li>
+<li>If the unqualified trinket Id is given (e.g. <code>&quot;mushymato.TrinketTinker_ProcTrinket MyTrinket&quot;</code>), only the specified trinket's ablities will proc.</li>
 </ul>
 </li>
 <li><strong>Warped</strong>
@@ -131,14 +141,9 @@
 <li>When the player warps/moves to another map.</li>
 </ul>
 </li>
-<li><strong>Sync</strong>
+<li><strong>Interact</strong>
 <ul>
-<li>Activate the ability when another ability on the same level activates. By default this follows the first ability (index 0) and can be changed by setting <code>ProcSyncIndex</code> to a different number.</li>
-</ul>
-</li>
-<li><strong>Always</strong>
-<ul>
-<li>Activate the ability once on equip, deactivate it on unequip. Mainly useful as a way to give a persistent <a href="4.z.01-Buff.html">Buff</a>.</li>
+<li>Activate when the player presses the <a href="9-User%20Configuration.html">configured keybinding</a> while their bounding box overlaps with the companion's bounding box.</li>
 </ul>
 </li>
 </ul>

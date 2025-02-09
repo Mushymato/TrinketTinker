@@ -88,11 +88,11 @@
 <h1 id="tinker">Tinker</h1>
 
 <p>To make a trinket use TrinketTinker features, add a new entry to the custom asset <code>mushymato.TrinketTinker/Tinker</code>.
-The key used must match the <strong>unqualified ID</strong> of the trinket.</p>
-<p>When a <code>mushymato.TrinketTinker/Tinker</code> entry exists, the <code>TrinketEffectClass</code> will be set to <code>TrinketTinker.Effects.TrinketTinkerEffect</code> from this mod.</p>
+The key used must match the <strong>unqualified ID</strong> of the trinket, e.g. <code>{{ModId}}_Trinket</code> instead of <code>(TR){{ModId}}_Trinket</code>.</p>
+<p>When a <code>mushymato.TrinketTinker/Tinker</code> entry exists, the <code>TrinketEffectClass</code> field on <code>Data/Trinkets</code> will be set to <code>TrinketTinker.Effects.TrinketTinkerEffect</code> from this mod.</p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>Trinkets can be reloaded with <code>patch reload &lt;content mod id&gt;</code>, however the trinket must be unequipped and requipped to get updates.</p>
+<p>Trinkets can be reloaded with <code>patch reload &lt;your content mod id&gt;</code>, however the trinket must be unequipped and reequipped to get updates.</p>
 </div>
 <h2 id="structure">Structure</h2>
 <table>
@@ -106,6 +106,18 @@ The key used must match the <strong>unqualified ID</strong> of the trinket.</p>
 </thead>
 <tbody>
 <tr>
+<td><code>EnableCondition</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>A <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state query</a> used to check if the trinket should be enabled. This is checked on equip, it can only be rechecked by reequipping the trinket. The check also happens every night, when the trinket is unequipped/reequipped by the game.</td>
+</tr>
+<tr>
+<td><code>EnableFailMessage</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>When <code>EnableCondition</code> is false, this message will be displayed upon equipping the trinket.<br>Default message: <code> &quot;You are not worthy of {{trinketName}}...&quot;</code></td>
+</tr>
+<tr>
 <td><code>MinLevel</code></td>
 <td>int</td>
 <td>1</td>
@@ -114,47 +126,52 @@ The key used must match the <strong>unqualified ID</strong> of the trinket.</p>
 <tr>
 <td><code>Variants</code></td>
 <td><a href="2-Variant.html">List&lt;VariantData&gt;</a></td>
-<td><em>empty</em></td>
+<td><em>null</em></td>
 <td>Defines the sprites of the companion.</td>
 </tr>
 <tr>
 <td><code>Motion</code></td>
 <td><a href="3-Motion.html">MotionData</a></td>
-<td><em>empty</em></td>
-<td>Defines how the companion moves, setting this is shortcut for having a single item in <code>Motions</code>.</td>
-</tr>
-<tr>
-<td><code>Motions</code></td>
-<td><a href="3-Motion.html">List&lt;MotionData&gt;</a></td>
-<td><em>empty</em></td>
+<td><em>null</em></td>
 <td>Defines how the companion moves.</td>
 </tr>
 <tr>
 <td><code>Abilities</code></td>
 <td><a href="4-Ability.html">List&lt;List&lt;AbilityData&gt;&gt;</a></td>
-<td><em>empty</em></td>
+<td><em>null</em></td>
 <td>Defines what effects are activated, and when. Each list in the list of lists represents 1 ability level.</td>
 </tr>
 <tr>
 <td><code>VariantUnlockConditions</code></td>
 <td>List&lt;string&gt;</td>
-<td><em>empty</em></td>
+<td><em>null</em></td>
 <td>List of <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state queries</a> that determine how many variants are unlocked.</td>
 </tr>
 <tr>
 <td><code>AbilityUnlockConditions</code></td>
 <td>List&lt;string&gt;</td>
-<td><em>empty</em></td>
+<td><em>null</em></td>
 <td>List of <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state queries</a> that determine how many abilities are unlocked.</td>
+</tr>
+<tr>
+<td><code>Inventory</code></td>
+<td><a href="5-Inventory.html">TinkerInventoryData</a></td>
+<td><em>null</em></td>
+<td>Gives the trinket an inventory that can be opened by the &quot;use&quot; button (RightClick/X) over the trinket item.</td>
+</tr>
+<tr>
+<td><code>Chatter</code></td>
+<td><a href="4.z.201-Chatter.html">Dictionary&lt;string, ChatterLinesData&gt;</a></td>
+<td><em>null</em></td>
+<td>Gives the trinket dialogue for use with the <a href="4.z.201-Chatter.html">Chatter ability</a>.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="this-is-a-lot-of-stuff-what-do-i-need-to-define">This is a lot of stuff, what do I need to define?</h3>
-<p>Technically all fields here are optional, but in that case there'd be little point to using this framework at all. To display a companion, at least 1 Variant and 1 Motion must be defined. To have the trinket do things, at least 1 list of abilities must be defined.</p>
-<p>At the moment, there's no reason to have more than 1 Motion so just setting <code>Motion</code> is sufficient, but this may change in the future.</p>
-<p>Trinkets are created with the first variant and at minimum level. The item query <a href="6-Utility.html">mushymato.TrinketTinker_CREATE_TRINKET</a> is needed to create trinket at other variants/levels.</p>
+<p>Technically all fields here are optional, but in that case there'd be little point to using this framework at all. To display a companion, at least Motion and 1 Variant must be defined. To have the trinket do things after equippping, at least 1 list of abilities must be defined. For <code>Inventory</code> and <code>Chatter</code> usage, refer to their subpages.</p>
+<p>Trinkets are created with the first variant and at minimum level. The item query <a href="7-Utility.html">mushymato.TrinketTinker_CREATE_TRINKET</a> is needed to create trinket at other variants/levels.</p>
 <h3 id="unlock-conditions">Unlock Conditions</h3>
-<p><code>VariantUnlockConditions</code> and <code>AbilityUnlockConditions</code> can prevent the player from rolling variants or abilities above a certain level using <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state queries</a>. This only affects rerolling level and variants on the <a href="https://stardewvalleywiki.com/Anvil">anvil</a> and <a href="6-Utility.html">colorizer</a>.</p>
+<p><code>VariantUnlockConditions</code> and <code>AbilityUnlockConditions</code> can prevent the player from rolling variants or abilities above a certain level using <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state queries</a>. This only affects rerolling level and variants on the <a href="https://stardewvalleywiki.com/Anvil">anvil</a> and <a href="7-Utility.html">colorizer</a>.</p>
 <p>Example usage with 4 abilities (lv1 to lv4):</p>
 <pre><code class="lang-json">&quot;AbilityUnlockConditions&quot;: [
     // level 1 is always unlocked
@@ -168,6 +185,10 @@ The key used must match the <strong>unqualified ID</strong> of the trinket.</p>
     &quot;FALSE&quot;,
 ],
 </code></pre>
+<h3 id="deprecated">Deprecated</h3>
+<ul>
+<li><code>Motions</code>, previously unused but exists, is deprecated as of 1.5.0</li>
+</ul>
 
 </article>
 

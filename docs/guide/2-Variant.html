@@ -87,8 +87,10 @@
         <article data-uid="">
 <h1 id="variant">Variant</h1>
 
-<p>In the base game certain companions such as the frog have different color variants. With this model, you can explicitly define a sprite sheet, texture size, and optionally a color for mask.</p>
-<h2 id="structure">Structure</h2>
+<p>In the base game certain companions such as the frog have different color variants. With this model, you can explicitly define a sprite sheet, texture size, and optionally a color for mask. The <a href="7.3-Trinket%20Colorizer%20and%20Anvil.html">trinket colorizer</a> can be used to reroll the trinket variable, but you can also add other machine rules or shop entries for purpose of obtaining trinket in a specific variant.</p>
+<p>Variants can have alternate variants, which are automatically rechecked whenever the player changes locations, or when an <a href="4-Ability.html">ability</a> has <code>ProcAltVariant</code> set.</p>
+<h2 id="shared-fields">Shared Fields</h2>
+<p>These fields are valid for both variant and alt variant.</p>
 <table>
 <thead>
 <tr>
@@ -106,6 +108,18 @@
 <td>Asset target of the loaded texture, should be a sprite sheet.</td>
 </tr>
 <tr>
+<td><code>TextureExtra</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>Additional sprites of the same dimension as the original, for use in <a href="3.2-Animation%20Clips.html">AnimClip</a>.</td>
+</tr>
+<tr>
+<td><code>ColorMask</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>Color to apply on draw, for use with grayscale sprites.<br>Aside from RGB and hex values, monogame accepts <a href="https://docs.monogame.net/api/Microsoft.Xna.Framework.Color.html">named colors</a> and this mod accepts special value <code>&quot;Prismatic&quot;</code> for an animated color cycle.</td>
+</tr>
+<tr>
 <td><code>Width</code></td>
 <td>int</td>
 <td>16</td>
@@ -116,12 +130,6 @@
 <td>int</td>
 <td>16</td>
 <td>Height of 1 sprite on the sprite sheet.</td>
-</tr>
-<tr>
-<td><code>ColorMask</code></td>
-<td>string</td>
-<td><em>empty</em></td>
-<td>Color to apply on draw, for use with grayscale sprites.<br>Aside from RGB and hex values, monogame accepts <a href="https://docs.monogame.net/api/Microsoft.Xna.Framework.Color.html">named colors</a> and this mod accepts special value <code>&quot;Prismatic&quot;</code> for an animated color cycle.</td>
 </tr>
 <tr>
 <td><code>TextureScale</code></td>
@@ -136,13 +144,132 @@
 <td>Size of the shadow to draw, 0 to disable shadow.</td>
 </tr>
 <tr>
-<td><code>LightSource</code></td>
-<td><code>LightSourceData</code></td>
-<td><em>empty</em></td>
-<td>If set, display a light source. This light source is only visible to the owner.</td>
+<td><code>Portrait</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>A portrait texture for the <a href="4.z.201-Chatter.html">Chatter ability</a>, required to display a portrait and a name.</td>
+</tr>
+<tr>
+<td><code>NPC</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>An NPC name (key of <code>Data/Characters</code>) to associate this variant with, used for the <a href="4.z.201-Chatter.html">Chatter ability</a>.</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>A display name for the <a href="4.z.201-Chatter.html">Chatter ability</a>, used if there's no real <code>NPC</code>.</td>
 </tr>
 </tbody>
 </table>
+<h3 id="top-level-variant">Top Level Variant</h3>
+<p>The top level variant can have all shared fields, as well as:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LightSource</code></td>
+<td><code>LightSourceData</code></td>
+<td><em>null</em></td>
+<td>If set, display a light source. This light source is only visible to the owner.</td>
+</tr>
+<tr>
+<td><code>TrinketSpriteIndex</code></td>
+<td>int</td>
+<td>-1</td>
+<td>If set, alters the trinket item's sprite index to this. This is used to give the trinket different icon depending on the variant.</td>
+</tr>
+<tr>
+<td><code>TrinketNameArguments</code></td>
+<td>List&lt;string&gt;</td>
+<td><em>null</em></td>
+<td>If set, use these strings as the argument to the item name.</td>
+</tr>
+<tr>
+<td><code>AltVariants</code></td>
+<td>Dictionary&lt;string, AltVariantData&gt;</td>
+<td><em>null</em></td>
+<td>A dictionary of alternate variants.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="trinketspriteindex-and-trinketnamearguments">TrinketSpriteIndex and TrinketNameArguments</h3>
+<p>These two fields are used to allow variants to have different name and icons.</p>
+<p><em>TrinketSpriteIndex</em>: Changes the sprite index along with variant, meaning that if your trinket's texture is a sprite sheet with multiple item icon sprites, this can be used to point to a specific one. To make this work, put every icon associated with the variants of 1 trinket on 1 texture. You cannot change to a completely different texture, or use color masks.</p>
+<p><em>TrinketNameArguments</em>: Adds substitute strings for use with <code>{0}</code> in <code>DisplayName</code>, for example:</p>
+<pre><code class="lang-json">// Data/Trinkets
+&quot;DisplayName&quot;: &quot;My Trinket {0} {1}&quot;,
+// mushymato.TrinketTinker/Tinker
+&quot;Variants&quot;: [
+  {
+    &quot;Texture&quot;: &quot;{{ModId}}/trinkets/red/water&quot;,
+    &quot;TrinketNameArguments&quot;: [&quot;Red&quot;, &quot;Water&quot;],
+  },
+  {
+    &quot;Texture&quot;: &quot;{{ModId}}/trinkets/blue/fire&quot;,
+    &quot;TrinketNameArguments&quot;: [&quot;Blue&quot;, &quot;Fire&quot;],
+  }
+]
+</code></pre>
+<p>The resulting trinket can have these names:</p>
+<ul>
+<li><code>&quot;My Trinket Red Water&quot;</code>, for the first Variant</li>
+<li><code>&quot;My Trinket Blue Fire&quot;</code>, for the second Variant</li>
+</ul>
+<h3 id="alt-variant-only">Alt Variant Only</h3>
+<p>The alt variant in <code>AltVariants</code> can have all shared fields, as well as:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Condition</code></td>
+<td>string</td>
+<td><code>&quot;FALSE&quot;</code></td>
+<td>A <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state query</a> used to check if this alt variant should be selected. If you want to have an alt variant exclusively activate through <a href="4-Ability.html">ability</a> with <code>ProcAltVariant</code>, use <code>&quot;FALSE&quot;</code>.</td>
+</tr>
+<tr>
+<td><code>Priority</code></td>
+<td>int</td>
+<td>0</td>
+<td>Sort priority of this variant, higher number have their conditions checked first.</td>
+</tr>
+</tbody>
+</table>
+<p>Note that not all shared fields are required in alt variant, and any not set field will simply fall back to the value found in top level.</p>
+<p>An example: Change the companion's appearance during winter.</p>
+<pre><code class="lang-json">// assuming &quot;{{ModId}}/Companion&quot; and &quot;{{ModId}}/Companion_Winter&quot; are loaded
+&quot;Variants&quot;: [
+  {
+    &quot;Texture&quot;: &quot;{{ModId}}/Companion&quot;,
+    &quot;Width&quot;: 16,
+    &quot;Height&quot;: 32,
+    &quot;AltVariants&quot;: {
+      &quot;WINTER&quot;: {
+        // Since Width and Height is not set,
+        // The alt variant inherits 16x36 from the base variant.
+        &quot;Texture&quot;: &quot;{{ModId}}/Companion_Winter&quot;,
+        &quot;Condition&quot;: &quot;SEASON Winter&quot;
+      }
+    }
+  }
+],
+</code></pre>
+<p><a href="4-Ability.html">Abilities</a> can explicitly set a specific variant, which bypasses <code>Condition</code>. If you want to make a special variant that only activates by ability proc, set the <code>Condition</code> to <code>&quot;FALSE&quot;</code> to exclude it from standard checks.</p>
 <h3 id="lightsourcedata">LightSourceData</h3>
 <table>
 <thead>
@@ -175,14 +302,14 @@
 <tr>
 <td><code>Color</code></td>
 <td>string</td>
-<td><em>empty</em></td>
+<td><em>null</em></td>
 <td>Light color name, accepts same values as <code>ColorMask</code>.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>There's no need to have the same width and height in all variants, as long as you have the same number of sprites required by the motion.</li>
+<li>There's no need to have the same width and height in all variants, or the same scale. What does matter is having the right number of sprites for all your animation.</li>
 </ul>
 
 </article>

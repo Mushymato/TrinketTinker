@@ -89,7 +89,7 @@
 
 
   <h1 id="TrinketTinker_Models_VariantData" data-uid="TrinketTinker.Models.VariantData" class="text-break">
-Class VariantData  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L23"><i class="bi bi-code-slash"></i></a>
+Class VariantData  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L97"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,12 +97,12 @@ Class VariantData  <a class="header-action link-secondary" title="View source" h
   <dl><dt>Assembly</dt><dd>TrinketTinker.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Data for <a class="xref" href="TrinketTinker.Effects.Abilities.html">TrinketTinker.Effects.Abilities</a>, holds sprite variations.</p>
+  <div class="markdown summary"><p>Data for <a class="xref" href="TrinketTinker.Companions.Anim.TinkerAnimSprite.html">TinkerAnimSprite</a>, holds sprite variations.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class VariantData</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class VariantData : IVariantData</code></pre>
   </div>
 
 
@@ -116,6 +116,12 @@ Class VariantData  <a class="header-action link-secondary" title="View source" h
     </dd>
   </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="TrinketTinker.Models.IVariantData.html">IVariantData</a></div>
+    </dd>
+  </dl>
 
 
   <dl class="typelist inheritedMembers">
@@ -150,11 +156,43 @@ Class VariantData  <a class="header-action link-secondary" title="View source" h
 </h2>
 
 
+  <a id="TrinketTinker_Models_VariantData_AltVariants_" data-uid="TrinketTinker.Models.VariantData.AltVariants*"></a>
+
+  <h3 id="TrinketTinker_Models_VariantData_AltVariants" data-uid="TrinketTinker.Models.VariantData.AltVariants">
+  AltVariants
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L139"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Alternate variants dict</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, AltVariantData&gt;? AltVariants { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="TrinketTinker.Models.AltVariantData.html">AltVariantData</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Models_VariantData_ColorMask_" data-uid="TrinketTinker.Models.VariantData.ColorMask*"></a>
 
   <h3 id="TrinketTinker_Models_VariantData_ColorMask" data-uid="TrinketTinker.Models.VariantData.ColorMask">
   ColorMask
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L106"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draw color mask, can use color name from <span class="xref">Microsoft.Xna.Framework.Color</span>, hex value, or <a class="xref" href="TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_COLOR_PRISMATIC">COLOR_PRISMATIC</a> for animated prismatic effect.</p>
@@ -186,7 +224,7 @@ Class VariantData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TrinketTinker_Models_VariantData_Height" data-uid="TrinketTinker.Models.VariantData.Height">
   Height
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L112"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sprite height</p>
@@ -218,7 +256,7 @@ Class VariantData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TrinketTinker_Models_VariantData_LightSource" data-uid="TrinketTinker.Models.VariantData.LightSource">
   LightSource
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L130"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>If set, add a light with given radius. Note that the light is only visible to local player.</p>
@@ -246,11 +284,107 @@ Class VariantData  <a class="header-action link-secondary" title="View source" h
 
 
 
+  <a id="TrinketTinker_Models_VariantData_NPC_" data-uid="TrinketTinker.Models.VariantData.NPC*"></a>
+
+  <h3 id="TrinketTinker_Models_VariantData_NPC" data-uid="TrinketTinker.Models.VariantData.NPC">
+  NPC
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Variant speaker NPC, for chatter ability. Required for Portraiture compatibility, can omit <a class="xref" href="TrinketTinker.Models.IVariantData.html#TrinketTinker_Models_IVariantData_Name">Name</a> if set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? NPC { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Models_VariantData_Name_" data-uid="TrinketTinker.Models.VariantData.Name*"></a>
+
+  <h3 id="TrinketTinker_Models_VariantData_Name" data-uid="TrinketTinker.Models.VariantData.Name">
+  Name
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Variant speaker name, for chatter ability.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? Name { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Models_VariantData_Portrait_" data-uid="TrinketTinker.Models.VariantData.Portrait*"></a>
+
+  <h3 id="TrinketTinker_Models_VariantData_Portrait" data-uid="TrinketTinker.Models.VariantData.Portrait">
+  Portrait
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L127"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Variant portrait content path, for chatter ability.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? Portrait { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Models_VariantData_ShadowScale_" data-uid="TrinketTinker.Models.VariantData.ShadowScale*"></a>
 
   <h3 id="TrinketTinker_Models_VariantData_ShadowScale" data-uid="TrinketTinker.Models.VariantData.ShadowScale">
   ShadowScale
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L118"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Base scale to draw shadow texture.</p>
@@ -282,7 +416,7 @@ Class VariantData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TrinketTinker_Models_VariantData_Texture" data-uid="TrinketTinker.Models.VariantData.Texture">
   Texture
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L100"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Variant texture content path.</p>
@@ -290,7 +424,39 @@ Class VariantData  <a class="header-action link-secondary" title="View source" h
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Texture { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string? Texture { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Models_VariantData_TextureExtra_" data-uid="TrinketTinker.Models.VariantData.TextureExtra*"></a>
+
+  <h3 id="TrinketTinker_Models_VariantData_TextureExtra" data-uid="TrinketTinker.Models.VariantData.TextureExtra">
+  TextureExtra
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Additional textures.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? TextureExtra { get; set; }</code></pre>
   </div>
 
 
@@ -314,7 +480,7 @@ Class VariantData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TrinketTinker_Models_VariantData_TextureScale" data-uid="TrinketTinker.Models.VariantData.TextureScale">
   TextureScale
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L115"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Base scale to draw texture at.</p>
@@ -342,11 +508,43 @@ Class VariantData  <a class="header-action link-secondary" title="View source" h
 
 
 
+  <a id="TrinketTinker_Models_VariantData_TrinketNameArguments_" data-uid="TrinketTinker.Models.VariantData.TrinketNameArguments*"></a>
+
+  <h3 id="TrinketTinker_Models_VariantData_TrinketNameArguments" data-uid="TrinketTinker.Models.VariantData.TrinketNameArguments">
+  TrinketNameArguments
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L136"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Display name override</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt;? TrinketNameArguments { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Models_VariantData_TrinketSpriteIndex_" data-uid="TrinketTinker.Models.VariantData.TrinketSpriteIndex*"></a>
 
   <h3 id="TrinketTinker_Models_VariantData_TrinketSpriteIndex" data-uid="TrinketTinker.Models.VariantData.TrinketSpriteIndex">
   TrinketSpriteIndex
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L133"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sprite index of the item icon.</p>
@@ -378,7 +576,7 @@ Class VariantData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="TrinketTinker_Models_VariantData_Width" data-uid="TrinketTinker.Models.VariantData.Width">
   Width
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/VariantData.cs/#L109"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sprite width</p>

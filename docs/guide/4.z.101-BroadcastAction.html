@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Health | TrinketTinker </title>
+      <title>BroadcastAction | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Health | TrinketTinker ">
+      <meta name="title" content="BroadcastAction | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/4.z.02-Health.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/4.z.101-BroadcastAction.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,10 +85,11 @@
         </div>
 
         <article data-uid="">
-<h1 id="health">Health</h1>
+<h1 id="broadcastaction">BroadcastAction</h1>
 
-<p>Recover some amount of HP. If Min and Max are negative, this ability will damage the player instead.</p>
-<h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.RangeArgs.html">Args</a></h2>
+<p>Run an registered <a href="https://stardewvalleywiki.com/Modding:Trigger_actions">action</a>, either vanilla or mod provided, on another player.</p>
+<p>This is a specialized version of <a href="4.z.100-Action.html">Action</a> meant for niche cases where a particular action only properly works on the host, or if the trinket should effect another player and not the main player.</p>
+<h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.BroadcastActionArgs.html">Args</a></h2>
 <table>
 <thead>
 <tr>
@@ -100,25 +101,22 @@
 </thead>
 <tbody>
 <tr>
-<td><code>ValueMode</code></td>
-<td><a href="../api/TrinketTinker.Models.AbilityArgs.ValueMode.html">ValueMode</a></td>
-<td>&quot;Percent&quot;</td>
-<td>Treat the range as either percent or a true value</td>
+<td><code>Condition</code></td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td>A <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state query</a>, checked on the remote player actually running the action.</td>
 </tr>
 <tr>
-<td><code>Min</code></td>
-<td>double</td>
-<td>0</td>
-<td>Minimum value.</td>
-</tr>
-<tr>
-<td><code>Max</code></td>
-<td>double</td>
-<td>0</td>
-<td>Maximum value.</td>
+<td><code>PlayerKey</code></td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td>Players to target, accepts these values:<ul><li>All: run action on all players</li><li>Host: run action on the host player</li></ul></td>
 </tr>
 </tbody>
 </table>
+<p>*and all arguments of <a href="4.z.100-Action.html">Action</a></p>
+<h2 id="for-smapi-mods">For SMAPI Mods</h2>
+<p>Unlike Action, BroadcastAction does not provide custom fields provided for modded actions to use.</p>
 
 </article>
 

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Utility | TrinketTinker </title>
+      <title>Trinket Colorizer and Anvil | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Utility | TrinketTinker ">
+      <meta name="title" content="Trinket Colorizer and Anvil | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/6-Utility.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/7.3-Trinket Colorizer and Anvil.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,36 +85,57 @@
         </div>
 
         <article data-uid="">
-<h1 id="utility">Utility</h1>
+<h1 id="trinket-colorizer-and-anvil">Trinket Colorizer and Anvil</h1>
 
-<p>Extra non-trinket features provided by this mod.</p>
+<p>Machines are provided for the purpose of rerolling/upgrading trinkets.</p>
 <h2 id="trinket-colorizer-trinket-colorizer">Trinket Colorizer <img src="../images/favicon.png" alt="Trinket Colorizer"></h2>
 <p>The trinket colorizer is a big craftable <a href="https://stardewvalleywiki.com/Modding:Machines">machine</a> that can be purchased from <a href="https://stardewvalleywiki.com/Blacksmith">the Blacksmith</a> for 50 <a href="https://stardewvalleywiki.com/Gold_Bar">Gold Bars</a> once the <a href="https://stardewvalleywiki.com/Anvil">Anvil</a> recipe is obtained. Trinkets must have at least 2 <a href="2-Variant.html">variants</a> and <code>CanBeReforged</code> set to true in order to use the colorizer.</p>
 <p>Consumes 15 <a href="https://stardewvalleywiki.com/Omni_Geode">Omni Geode</a> to reroll the variant on a TrinketTinker trinket, no effect on vanilla trinkets.</p>
 <p>The colorizer will never roll the same variant twice in a row. Anvils have similar rule applied to them for TrinketTinker trinkets.</p>
-<p>Implementation wise, the colorizer is a standard machine with qualified ID <code>(BC)mushymato.TrinketTinker_TrinketColorizer</code> and a single complex output machine rule.Mods are can add more ways to obtain this machine and prepend the colorizer with special upgrade rules for their trinkets.</p>
-<h2 id="item-queries"><a href="https://stardewvalleywiki.com/Modding:Item_queries">Item Queries</a></h2>
-<p>These are useful for populating shops and machine output rules.</p>
-<h3 id="mushymatotrinkettinker_create_trinket">mushymato.TrinketTinker_CREATE_TRINKET</h3>
-<pre><code>mushymato.TrinketTinker_CREATE_TRINKET &lt;trinket id&gt; [level] [variant]
+<p>Implementation wise, the colorizer is a standard big craftabe machine with qualified ID <code>(BC)mushymato.TrinketTinker_TrinketColorizer</code> and a complex output machine rule. Mods are free to add more ways to obtain this machine and prepend the colorizer with special upgrade rules for their trinkets.</p>
+<h2 id="anvil">Anvil</h2>
+<p>Trinket tinker does not use vanilla Anvil's level reroll logic and instead uses a custom output method. Trinkets must have at least 2 <a href="4-Ability.html">levels </a> and <code>CanBeReforged</code> set to true in order to use the anvil. The cost is 3 iridium bars, just like vanilla.</p>
+<h2 id="adding-custom-machine-rules-for-upgrades">Adding Custom Machine Rules for Upgrades</h2>
+<p>This example assumes you already know how to add a new <a href="https://stardewvalleywiki.com/Modding:Machines">machine rule</a>.</p>
+<p>To add your own machine rule for upgrading trinkets add a new <code>OutputRules</code> entry like so:</p>
+<pre><code class="lang-json">&quot;{{ModId}}_YourTrinket_Rule&quot;: {
+  &quot;Id&quot;: &quot;{{ModId}}_YourTrinket_Rule&quot;,
+  &quot;Triggers&quot;: [
+    {
+      &quot;Id&quot;: &quot;{{ModId}}_YourTrinket_Rule_ItemPlacedInMachine&quot;,
+      &quot;Trigger&quot;: &quot;ItemPlacedInMachine&quot;,
+      // Require a specific trinket
+      &quot;RequiredItemId&quot;: &quot;(TR){{ModId}}_YourTrinket&quot;,
+      &quot;RequiredCount&quot;: 1,
+      &quot;Condition&quot;: &quot;mushymato.TrinketTinker_IS_TINKER Input ? &lt;=M&quot;
+    }
+  ],
+  &quot;OutputItem&quot;: [
+    {
+      &quot;Id&quot;: &quot;{{ModId}}_YourTrinket_Rule_Output&quot;,
+      // Use output method 
+      &quot;OutputMethod&quot;: &quot;TrinketTinker.Extras.TrinketColorizer, TrinketTinker:OutputTrinketColorizer&quot;,
+      // The Anvil OutputMethod is &quot;TrinketTinker.Extras.TrinketColorizer, TrinketTinker:OutputTinkerAnvil&quot;
+      &quot;CustomData&quot;: {
+        // Instead of rerolling, add 1 to variant
+        &quot;mushymato.TrinketTinker/Variant+&quot;: 1,
+        // Same as above, for level
+        &quot;mushymato.TrinketTinker/Level+&quot;: 1,
+      }
+    }
+  ]
+}
 </code></pre>
-<p>Create a new trinket item. If the trinket has tinker data, set level and variant. Useful for producing a trinket at specified level/variant.</p>
-<p>Setting level or variant to &quot;R&quot; will randomize the level or variant.</p>
-<h3 id="mushymatotrinkettinker_create_trinket_all_variants">mushymato.TrinketTinker_CREATE_TRINKET_ALL_VARIANTS</h3>
-<pre><code>mushymato.TrinketTinker_CREATE_TRINKET_ALL_VARIANTS &lt;trinket id&gt; [level]
+<p>If you are adding this to the trinket colorizer or the anvil, you will need to move your rule above the default rule provided by trinket tinker.</p>
+<pre><code class="lang-json">&quot;MoveEntries&quot;: [
+  {
+    &quot;Id&quot;: &quot;{{ModId}}_StatiColorMask_Output&quot;,
+    // Same ID for both Anvil and Trinket Colorizer
+    &quot;BeforeID&quot;: &quot;mushymato.TrinketTinker_Default&quot;
+  }
+]
 </code></pre>
-<p>Create all variants of a trinket (with tinker data). Useful for making a shop sell all variants of a trinket instead of making the player roll for them.</p>
-<p>Setting level to &quot;R&quot; will randomize the level once, and then set trinkets created by this query to that level.</p>
-<h2 id="datalocation-customfields"><a href="https://stardewvalleywiki.com/Modding:Location_data">Data/Location</a> CustomFields</h2>
-<p>Aside from conditions defined on a particular trinket, it's also possible to disable trinket features for a whole location using CustomFields.</p>
-<pre><code>&quot;mushymato.TrinketTinker/disableAbilities&quot;: true|false
-</code></pre>
-<p>Disable trinket abilities while owner is in the location (except for always active abilities).</p>
-<pre><code>&quot;mushymato.TrinketTinker/disableCompanions&quot;: true|false
-</code></pre>
-<p>Disable companion display while owner is in the location. Their position updates continue.</p>
-<h2 id="draw-debug-mode">Draw debug mode</h2>
-<p>To help with debugging animations, use <code>tt_draw_debug</code> to enable/disable drawing of companion sprite index.</p>
+<p>Aside from using OutputMethod, you may also use <a href="7.0-Item%20Queries.html">item query</a> <code>mushymato.TrinketTinker_CREATE_TRINKET</code>, it just won't be able to increment the level.</p>
 
 </article>
 

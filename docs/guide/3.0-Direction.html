@@ -91,7 +91,7 @@
 <p>In content patcher, use a string value like <code>&quot;DirectionMode&quot;: &quot;DRUL&quot;</code> to set this value. Internally it is an <a href="../api/TrinketTinker.Models.DirectionMode.html">enum</a>.</p>
 <p>Arrangement charts in this page assumes <code>FrameLength</code> is 4, but you can have as many frames as desired. There's also no need to adhere to exact row layout as long as you have the correct number of sprites in the left to right &amp; up to down order, but it is easier to organize this way as the companion's current direction is represented by a number corresponding to which set of animation it will use (with negative number representing flipped sprite), if the rows all have <code>FrameLength</code> number of items, then the direction index is simply the row number.</p>
 <p>Direction index is involved in <a href="3.2-Animation%20Clips.html">anim clips</a>, where it is used to set different clip per direction as desired.</p>
-<p>In the Direction Index tables, * indicates that this direction will not change the companion's direction index, i.e. it will continue with previous value until the next direction that will change index.</p>
+<p>In the following Direction Index tables, * indicates that this direction will not change the companion's direction index, i.e. it will continue with previous value until the next direction that will change index.</p>
 <h2 id="single">Single</h2>
 <p>Animate the sprite, ignore all changes to direction.
 This is the default value.</p>

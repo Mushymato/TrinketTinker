@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/new/main/apiSpec/new?filename=TrinketTinker_Effects_Proc_ProcEventArgs.md&amp;value=---%0Auid%3A%20TrinketTinker.Effects.Proc.ProcEventArgs%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/new/main/apiSpec/new?filename=TrinketTinker_Effects_Support_ProcEventArgs.md&amp;value=---%0Auid%3A%20TrinketTinker.Effects.Support.ProcEventArgs%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,16 +84,16 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="TrinketTinker.Effects.Proc.ProcEventArgs">
+        <article data-uid="TrinketTinker.Effects.Support.ProcEventArgs">
 
 
 
-  <h1 id="TrinketTinker_Effects_Proc_ProcEventArgs" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs" class="text-break">
-Class ProcEventArgs  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Proc/ProcEventArgs.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <h1 id="TrinketTinker_Effects_Support_ProcEventArgs" data-uid="TrinketTinker.Effects.Support.ProcEventArgs" class="text-break">
+Class ProcEventArgs  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Support/ProcEventArgs.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="TrinketTinker.html">TrinketTinker</a>.<a class="xref" href="TrinketTinker.Effects.html">Effects</a>.<a class="xref" href="TrinketTinker.Effects.Proc.html">Proc</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="TrinketTinker.html">TrinketTinker</a>.<a class="xref" href="TrinketTinker.Effects.html">Effects</a>.<a class="xref" href="TrinketTinker.Effects.Support.html">Support</a></dd></dl>
   <dl><dt>Assembly</dt><dd>TrinketTinker.dll</dd></dl>
   </div>
 
@@ -103,7 +103,7 @@ Most properties are only set for specific kinds of proc.</p>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ProcEventArgs : EventArgs</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class ProcEventArgs : EventArgs</code></pre>
   </div>
 
 
@@ -139,9 +139,6 @@ Most properties are only set for specific kinds of proc.</p>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
-    </div>
-    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
     </div>
     <div>
@@ -158,11 +155,11 @@ Most properties are only set for specific kinds of proc.</p>
 </h2>
 
 
-  <a id="TrinketTinker_Effects_Proc_ProcEventArgs__ctor_" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.#ctor*"></a>
+  <a id="TrinketTinker_Effects_Support_ProcEventArgs__ctor_" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.#ctor*"></a>
 
-  <h3 id="TrinketTinker_Effects_Proc_ProcEventArgs__ctor_TrinketTinker_Models_ProcOn_StardewValley_Farmer_" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.#ctor(TrinketTinker.Models.ProcOn,StardewValley.Farmer)">
+  <h3 id="TrinketTinker_Effects_Support_ProcEventArgs__ctor_TrinketTinker_Models_ProcOn_StardewValley_Farmer_" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.#ctor(TrinketTinker.Models.ProcOn,StardewValley.Farmer)">
   ProcEventArgs(ProcOn, Farmer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Proc/ProcEventArgs.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Support/ProcEventArgs.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Proc event data.
@@ -193,15 +190,50 @@ Most properties are only set for specific kinds of proc.</p>
 
 
 
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="TrinketTinker_Effects_Support_ProcEventArgs_GSQContext" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.GSQContext">
+  GSQContext
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Support/ProcEventArgs.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>GSQ Context, guarenteed to exist after Check is called</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GameStateQueryContext GSQContext</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">GameStateQueryContext</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
   <h2 class="section" id="properties">Properties
 </h2>
 
 
-  <a id="TrinketTinker_Effects_Proc_ProcEventArgs_DamageAmount_" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.DamageAmount*"></a>
+  <a id="TrinketTinker_Effects_Support_ProcEventArgs_DamageAmount_" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.DamageAmount*"></a>
 
-  <h3 id="TrinketTinker_Effects_Proc_ProcEventArgs_DamageAmount" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.DamageAmount">
+  <h3 id="TrinketTinker_Effects_Support_ProcEventArgs_DamageAmount" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.DamageAmount">
   DamageAmount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Proc/ProcEventArgs.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Support/ProcEventArgs.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Damage amount, to monster or to player</p>
@@ -229,11 +261,11 @@ Most properties are only set for specific kinds of proc.</p>
 
 
 
-  <a id="TrinketTinker_Effects_Proc_ProcEventArgs_Farmer_" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.Farmer*"></a>
+  <a id="TrinketTinker_Effects_Support_ProcEventArgs_Farmer_" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.Farmer*"></a>
 
-  <h3 id="TrinketTinker_Effects_Proc_ProcEventArgs_Farmer" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.Farmer">
+  <h3 id="TrinketTinker_Effects_Support_ProcEventArgs_Farmer" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.Farmer">
   Farmer
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Proc/ProcEventArgs.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Support/ProcEventArgs.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Player who triggered the event</p>
@@ -261,11 +293,11 @@ Most properties are only set for specific kinds of proc.</p>
 
 
 
-  <a id="TrinketTinker_Effects_Proc_ProcEventArgs_IsBomb_" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.IsBomb*"></a>
+  <a id="TrinketTinker_Effects_Support_ProcEventArgs_IsBomb_" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.IsBomb*"></a>
 
-  <h3 id="TrinketTinker_Effects_Proc_ProcEventArgs_IsBomb" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.IsBomb">
+  <h3 id="TrinketTinker_Effects_Support_ProcEventArgs_IsBomb" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.IsBomb">
   IsBomb
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Proc/ProcEventArgs.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Support/ProcEventArgs.cs/#L35"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Whether damage (to monster) was a bomb</p>
@@ -293,11 +325,11 @@ Most properties are only set for specific kinds of proc.</p>
 
 
 
-  <a id="TrinketTinker_Effects_Proc_ProcEventArgs_IsCriticalHit_" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.IsCriticalHit*"></a>
+  <a id="TrinketTinker_Effects_Support_ProcEventArgs_IsCriticalHit_" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.IsCriticalHit*"></a>
 
-  <h3 id="TrinketTinker_Effects_Proc_ProcEventArgs_IsCriticalHit" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.IsCriticalHit">
+  <h3 id="TrinketTinker_Effects_Support_ProcEventArgs_IsCriticalHit" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.IsCriticalHit">
   IsCriticalHit
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Proc/ProcEventArgs.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Support/ProcEventArgs.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Whether damage (to monster) was a critical hit</p>
@@ -325,14 +357,14 @@ Most properties are only set for specific kinds of proc.</p>
 
 
 
-  <a id="TrinketTinker_Effects_Proc_ProcEventArgs_Location_" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.Location*"></a>
+  <a id="TrinketTinker_Effects_Support_ProcEventArgs_Location_" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.Location*"></a>
 
-  <h3 id="TrinketTinker_Effects_Proc_ProcEventArgs_Location" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.Location">
+  <h3 id="TrinketTinker_Effects_Support_ProcEventArgs_Location" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.Location">
   Location
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Proc/ProcEventArgs.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Support/ProcEventArgs.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Proc location, one of the backing props of <a class="xref" href="TrinketTinker.Effects.Proc.ProcEventArgs.html#TrinketTinker_Effects_Proc_ProcEventArgs_LocationOrCurrent">LocationOrCurrent</a></p>
+  <div class="markdown level1 summary"><p>Proc location, one of the backing props of <a class="xref" href="TrinketTinker.Effects.Support.ProcEventArgs.html#TrinketTinker_Effects_Support_ProcEventArgs_LocationOrCurrent">LocationOrCurrent</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -357,11 +389,11 @@ Most properties are only set for specific kinds of proc.</p>
 
 
 
-  <a id="TrinketTinker_Effects_Proc_ProcEventArgs_LocationOrCurrent_" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.LocationOrCurrent*"></a>
+  <a id="TrinketTinker_Effects_Support_ProcEventArgs_LocationOrCurrent_" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.LocationOrCurrent*"></a>
 
-  <h3 id="TrinketTinker_Effects_Proc_ProcEventArgs_LocationOrCurrent" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.LocationOrCurrent">
+  <h3 id="TrinketTinker_Effects_Support_ProcEventArgs_LocationOrCurrent" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.LocationOrCurrent">
   LocationOrCurrent
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Proc/ProcEventArgs.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Support/ProcEventArgs.cs/#L47"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the most valid location of this proc, either the event location or the player's current location</p>
@@ -389,11 +421,11 @@ Most properties are only set for specific kinds of proc.</p>
 
 
 
-  <a id="TrinketTinker_Effects_Proc_ProcEventArgs_Monster_" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.Monster*"></a>
+  <a id="TrinketTinker_Effects_Support_ProcEventArgs_Monster_" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.Monster*"></a>
 
-  <h3 id="TrinketTinker_Effects_Proc_ProcEventArgs_Monster" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.Monster">
+  <h3 id="TrinketTinker_Effects_Support_ProcEventArgs_Monster" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.Monster">
   Monster
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Proc/ProcEventArgs.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Support/ProcEventArgs.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Target monster</p>
@@ -421,11 +453,11 @@ Most properties are only set for specific kinds of proc.</p>
 
 
 
-  <a id="TrinketTinker_Effects_Proc_ProcEventArgs_Proc_" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.Proc*"></a>
+  <a id="TrinketTinker_Effects_Support_ProcEventArgs_Proc_" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.Proc*"></a>
 
-  <h3 id="TrinketTinker_Effects_Proc_ProcEventArgs_Proc" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.Proc">
+  <h3 id="TrinketTinker_Effects_Support_ProcEventArgs_Proc" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.Proc">
   Proc
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Proc/ProcEventArgs.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Support/ProcEventArgs.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Kind of proc triggering this event</p>
@@ -453,11 +485,11 @@ Most properties are only set for specific kinds of proc.</p>
 
 
 
-  <a id="TrinketTinker_Effects_Proc_ProcEventArgs_Time_" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.Time*"></a>
+  <a id="TrinketTinker_Effects_Support_ProcEventArgs_Time_" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.Time*"></a>
 
-  <h3 id="TrinketTinker_Effects_Proc_ProcEventArgs_Time" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.Time">
+  <h3 id="TrinketTinker_Effects_Support_ProcEventArgs_Time" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.Time">
   Time
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Proc/ProcEventArgs.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Support/ProcEventArgs.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Game time</p>
@@ -485,11 +517,11 @@ Most properties are only set for specific kinds of proc.</p>
 
 
 
-  <a id="TrinketTinker_Effects_Proc_ProcEventArgs_TriggerArgs_" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.TriggerArgs*"></a>
+  <a id="TrinketTinker_Effects_Support_ProcEventArgs_TriggerArgs_" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.TriggerArgs*"></a>
 
-  <h3 id="TrinketTinker_Effects_Proc_ProcEventArgs_TriggerArgs" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.TriggerArgs">
+  <h3 id="TrinketTinker_Effects_Support_ProcEventArgs_TriggerArgs" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.TriggerArgs">
   TriggerArgs
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Proc/ProcEventArgs.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Support/ProcEventArgs.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Arguments given to trigger action handler.</p>
@@ -517,11 +549,11 @@ Most properties are only set for specific kinds of proc.</p>
 
 
 
-  <a id="TrinketTinker_Effects_Proc_ProcEventArgs_TriggerContext_" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.TriggerContext*"></a>
+  <a id="TrinketTinker_Effects_Support_ProcEventArgs_TriggerContext_" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.TriggerContext*"></a>
 
-  <h3 id="TrinketTinker_Effects_Proc_ProcEventArgs_TriggerContext" data-uid="TrinketTinker.Effects.Proc.ProcEventArgs.TriggerContext">
+  <h3 id="TrinketTinker_Effects_Support_ProcEventArgs_TriggerContext" data-uid="TrinketTinker.Effects.Support.ProcEventArgs.TriggerContext">
   TriggerContext
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Proc/ProcEventArgs.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Support/ProcEventArgs.cs/#L44"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Trigger action context</p>

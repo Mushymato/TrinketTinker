@@ -98,7 +98,11 @@
 <li>Enter lerping state.</li>
 </ul>
 </li>
-<li>When start and end positions are set, increase <code>lerp</code> by value relative to elapsed game time, then calculate companion position with <code>start + (end - start) * lerp</code>.</li>
+<li>When start and end positions are set, increase <code>lerp</code> by value relative to elapsed game time, then calculate companion position with <code>start + (end - start) * lerp</code>.
+<ul>
+<li>If <code>Velocity</code> is 0 or greater, calculate the lerp value by the velocity instead.</li>
+</ul>
+</li>
 <li>Once <code>lerp</code> reach 1 (and thus the companion reached the end position), exit lerping state.</li>
 <li>This completes 1 lerp step, and the companion will try to initiate new lerp state in the next game update tick.</li>
 </ol>
@@ -123,7 +127,7 @@
 <td><code>Max</code></td>
 <td>float</td>
 <td>1280</td>
-<td>Max distance from anchor, if the companion is farther away than this, teleport.</td>
+<td>Max distance from anchor, if the companion is farther away than this, teleport. This argument is not speed, but rather how often the new Lerp target is to be checked. A larger number makes the companion takes longer strides.</td>
 </tr>
 <tr>
 <td><code>Rate</code></td>
@@ -148,6 +152,18 @@
 <td>float</td>
 <td>0f</td>
 <td>Add randomness to movement, if greater than 0 and <code>AlwaysMoving</code> is true, the companion will randomly move around the anchor while within minimum range.</td>
+</tr>
+<tr>
+<td><code>Velocity</code></td>
+<td>int</td>
+<td>-2</td>
+<td>Limit the companion's velocity to a constant number, rathern than variable with lerp. Has special values -2 (unlimited), and -1 (follow the owner's velocity, when anchored to owner).</td>
+</tr>
+<tr>
+<td><code>NoOverlap</code></td>
+<td>bool</td>
+<td>true</td>
+<td>When true and when the player has multiple trinkets with companions equipped, avoid overlapping with any other companion.</td>
 </tr>
 </tbody>
 </table>

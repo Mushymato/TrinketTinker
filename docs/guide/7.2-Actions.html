@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>HoeDirt | TrinketTinker </title>
+      <title>Actions | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="HoeDirt | TrinketTinker ">
+      <meta name="title" content="Actions | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/4.z.09-HoeDirt.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/7.2-Actions.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,40 +85,28 @@
         </div>
 
         <article data-uid="">
-<h1 id="hoedirt">HoeDirt</h1>
+<h1 id="actions"><a href="https://stardewvalleywiki.com/Modding:Trigger_actions">Actions</a></h1>
 
-<p>Create tilled soil in random tiles around the companion.</p>
-<h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.HoeDirtArgs.html">Args</a></h2>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Default</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Range</code></td>
-<td>int</td>
-<td>1</td>
-<td>Tile radius around companion, 0 for the tile the companion is on, 1 for 3x3, 2 for 5x5, and so on.</td>
-</tr>
-<tr>
-<td><code>Count</code></td>
-<td>int</td>
-<td>1</td>
-<td>Number of tiles to randomly choose each time.</td>
-</tr>
-<tr>
-<td><code>Watering</code></td>
-<td>bool</td>
-<td>false</td>
-<td>Water the newly hoed dirt, will not water existing dirt.</td>
-</tr>
-</tbody>
-</table>
+<p>Actions, sometimes called trigger actions, are little snippets of behavior that can be called in places that support action.</p>
+<p>Trinket Tinker provide these special actions.</p>
+<h2 id="mushymatotrinkettinker_equiphiddentrinket">mushymato.TrinketTinker_EquipHiddenTrinket</h2>
+<pre><code>mushymato.TrinketTinker_EquipHiddenTrinket &lt;trinket id&gt; [level] [variant] [daysDuration]
+</code></pre>
+<p>Equips a hidden trinket to the player. This trinket does not occupy the trinket slot, and does not require combat mastery.
+Just like <a href="4.z.200-EquipTrinket.html">EquipTrinket</a>, the custom field <code>mushymato.TrinketTinker/DirectEquipOnly</code> can be used to exclude your trinket from being equipped by this action.</p>
+<p>Level and Variant default to 0 and can be specified, randomize (&quot;R&quot;) is not supported yet.</p>
+<p>By default, daysDuration is 1, meaning the hidden trinket is removed automatically after sleeping once.
+They can be made permanent with -1, and will stay until explicitly removed with the following action.</p>
+<h2 id="mushymatotrinkettinker_unequiphiddentrinket">mushymato.TrinketTinker_UnequipHiddenTrinket</h2>
+<pre><code>mushymato.TrinketTinker_UnequipHiddenTrinket &lt;trinket id&gt; [level] [variant]
+</code></pre>
+<p>Unequip a hidden trinket, optionally matching for a specific level and variant.
+If the player has multiple copies of a trinket that matches ID (and level/variant if specified), the most recently equipped hidden trinket is removed first.</p>
+<h2 id="mushymatotrinkettinker_proctrinket">mushymato.TrinketTinker_ProcTrinket</h2>
+<pre><code>mushymato.TrinketTinker_ProcTrinket &lt;trinket id&gt; [level] [variant]
+</code></pre>
+<p>Activates all abilities with <a href="4.0-Proc.html">Proc=Trigger</a>, filtered to only trinkets of matching ID if it is specified.
+This is a niche case, primarily for bespoke logic implemented in SMAPI mods.</p>
 
 </article>
 

@@ -89,7 +89,7 @@
 
 
   <h1 id="TrinketTinker_Models_Mixin_WeightedRandData" data-uid="TrinketTinker.Models.Mixin.WeightedRandData" class="text-break">
-Class WeightedRandData  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/Mixin/WeightedRandData.cs/#L5"><i class="bi bi-code-slash"></i></a>
+Class WeightedRandData  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/Mixin/WeightedRandData.cs/#L6"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -162,7 +162,7 @@ Class WeightedRandData  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TrinketTinker_Models_Mixin_WeightedRandData_randSelected" data-uid="TrinketTinker.Models.Mixin.WeightedRandData.randSelected">
   randSelected
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/Mixin/WeightedRandData.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/Mixin/WeightedRandData.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -192,7 +192,7 @@ Class WeightedRandData  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TrinketTinker_Models_Mixin_WeightedRandData_randomExtra" data-uid="TrinketTinker.Models.Mixin.WeightedRandData.randomExtra">
   randomExtra
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/Mixin/WeightedRandData.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/Mixin/WeightedRandData.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -223,11 +223,43 @@ Class WeightedRandData  <a class="header-action link-secondary" title="View sour
 </h2>
 
 
+  <a id="TrinketTinker_Models_Mixin_WeightedRandData_Condition_" data-uid="TrinketTinker.Models.Mixin.WeightedRandData.Condition*"></a>
+
+  <h3 id="TrinketTinker_Models_Mixin_WeightedRandData_Condition" data-uid="TrinketTinker.Models.Mixin.WeightedRandData.Condition">
+  Condition
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/Mixin/WeightedRandData.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Condition to check before clip can be chosen</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? Condition { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Models_Mixin_WeightedRandData_Nop_" data-uid="TrinketTinker.Models.Mixin.WeightedRandData.Nop*"></a>
 
   <h3 id="TrinketTinker_Models_Mixin_WeightedRandData_Nop" data-uid="TrinketTinker.Models.Mixin.WeightedRandData.Nop">
   Nop
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/Mixin/WeightedRandData.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/Mixin/WeightedRandData.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>If true, this will actually do nothing (nop). For use with random</p>
@@ -259,7 +291,7 @@ Class WeightedRandData  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TrinketTinker_Models_Mixin_WeightedRandData_RandomWeight" data-uid="TrinketTinker.Models.Mixin.WeightedRandData.RandomWeight">
   RandomWeight
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/Mixin/WeightedRandData.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/Mixin/WeightedRandData.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Weight of randomization, higher number is more likely.</p>
@@ -293,21 +325,23 @@ Class WeightedRandData  <a class="header-action link-secondary" title="View sour
 
   <a id="TrinketTinker_Models_Mixin_WeightedRandData_PickRandBase_" data-uid="TrinketTinker.Models.Mixin.WeightedRandData.PickRandBase*"></a>
 
-  <h3 id="TrinketTinker_Models_Mixin_WeightedRandData_PickRandBase_System_Random_" data-uid="TrinketTinker.Models.Mixin.WeightedRandData.PickRandBase(System.Random)">
-  PickRandBase(Random)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/Mixin/WeightedRandData.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TrinketTinker_Models_Mixin_WeightedRandData_PickRandBase_System_Random_StardewValley_Farmer_" data-uid="TrinketTinker.Models.Mixin.WeightedRandData.PickRandBase(System.Random,StardewValley.Farmer)">
+  PickRandBase(Random, Farmer)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/Mixin/WeightedRandData.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected WeightedRandData PickRandBase(Random rand)</code></pre>
+    <pre><code class="lang-csharp hljs">protected WeightedRandData? PickRandBase(Random rand, Farmer owner)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>rand</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.random">Random</a></dt>
+    <dd></dd>
+    <dt><code>owner</code> <span class="xref">Farmer</span></dt>
     <dd></dd>
   </dl>
 

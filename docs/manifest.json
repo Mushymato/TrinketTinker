@@ -42,6 +42,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Companions.Anim.TinkerAnimState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Companions.Anim.TinkerAnimState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Companions.Anim.yml",
       "output": {
         ".html": {
@@ -232,10 +242,40 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Effects.Abilities.BroadcastActionAbility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Effects.Abilities.BroadcastActionAbility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Effects.Abilities.BuffAbility.yml",
       "output": {
         ".html": {
           "relative_path": "api/TrinketTinker.Effects.Abilities.BuffAbility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Effects.Abilities.ChatterAbility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Effects.Abilities.ChatterAbility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Effects.Abilities.EquipTrinketAbility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Effects.Abilities.EquipTrinketAbility.html"
         }
       },
       "version": ""
@@ -382,40 +422,50 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TrinketTinker.Effects.Pewpew.TinkerProjectile.yml",
+      "source_relative_path": "api/TrinketTinker.Effects.Support.EquipTrinket.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TrinketTinker.Effects.Pewpew.TinkerProjectile.html"
+          "relative_path": "api/TrinketTinker.Effects.Support.EquipTrinket.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TrinketTinker.Effects.Pewpew.yml",
+      "source_relative_path": "api/TrinketTinker.Effects.Support.ProcEventArgs.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TrinketTinker.Effects.Pewpew.html"
+          "relative_path": "api/TrinketTinker.Effects.Support.ProcEventArgs.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TrinketTinker.Effects.Proc.ProcEventArgs.yml",
+      "source_relative_path": "api/TrinketTinker.Effects.Support.TinkerInventoryMenu.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TrinketTinker.Effects.Proc.ProcEventArgs.html"
+          "relative_path": "api/TrinketTinker.Effects.Support.TinkerInventoryMenu.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TrinketTinker.Effects.Proc.yml",
+      "source_relative_path": "api/TrinketTinker.Effects.Support.TinkerProjectile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TrinketTinker.Effects.Proc.html"
+          "relative_path": "api/TrinketTinker.Effects.Support.TinkerProjectile.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Effects.Support.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Effects.Support.html"
         }
       },
       "version": ""
@@ -442,10 +492,30 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TrinketTinker.Extras.ItemQuery.yml",
+      "source_relative_path": "api/TrinketTinker.Extras.BroadcastAction.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TrinketTinker.Extras.ItemQuery.html"
+          "relative_path": "api/TrinketTinker.Extras.BroadcastAction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Extras.EquipTrinket.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Extras.EquipTrinket.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Extras.GameItemQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Extras.GameItemQuery.html"
         }
       },
       "version": ""
@@ -456,6 +526,16 @@
       "output": {
         ".html": {
           "relative_path": "api/TrinketTinker.Extras.ProcTrinket.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Extras.TinkerInventoryMenu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Extras.TinkerInventoryMenu.html"
         }
       },
       "version": ""
@@ -492,10 +572,40 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.AbilityArgs.BroadcastActionArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.AbilityArgs.BroadcastActionArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Models.AbilityArgs.BuffArgs.yml",
       "output": {
         ".html": {
           "relative_path": "api/TrinketTinker.Models.AbilityArgs.BuffArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.AbilityArgs.ChatterArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.AbilityArgs.ChatterArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.AbilityArgs.ChatterSpeaker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.AbilityArgs.ChatterSpeaker.html"
         }
       },
       "version": ""
@@ -612,6 +722,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.AltVariantData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.AltVariantData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Models.AnchorTarget.yml",
       "output": {
         ".html": {
@@ -652,10 +772,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.ChatterLinesData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.ChatterLinesData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Models.DirectionMode.yml",
       "output": {
         ".html": {
           "relative_path": "api/TrinketTinker.Models.DirectionMode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.IVariantData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.IVariantData.html"
         }
       },
       "version": ""
@@ -792,6 +932,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.MotionArgs.RelativeArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.MotionArgs.RelativeArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Models.MotionArgs.SerpentArgs.yml",
       "output": {
         ".html": {
@@ -842,6 +992,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.ProcSoundData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.ProcSoundData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Models.SpeechBubbleData.yml",
       "output": {
         ".html": {
@@ -862,6 +1022,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.TinkerInventoryData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.TinkerInventoryData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Models.VariantData.yml",
       "output": {
         ".html": {
@@ -876,6 +1046,26 @@
       "output": {
         ".html": {
           "relative_path": "api/TrinketTinker.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Wheels.Integration.IGenericModConfigMenuApi.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Wheels.Integration.IGenericModConfigMenuApi.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Wheels.Integration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Wheels.Integration.html"
         }
       },
       "version": ""
@@ -1115,130 +1305,230 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.z.00-Nop.md",
+      "source_relative_path": "guide/4.z.000-Nop.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.z.00-Nop.html"
+          "relative_path": "guide/4.z.000-Nop.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.z.01-Buff.md",
+      "source_relative_path": "guide/4.z.001-Buff.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.z.01-Buff.html"
+          "relative_path": "guide/4.z.001-Buff.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.z.02-Health.md",
+      "source_relative_path": "guide/4.z.002-Health.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.z.02-Health.html"
+          "relative_path": "guide/4.z.002-Health.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.z.03-Stamina.md",
+      "source_relative_path": "guide/4.z.003-Stamina.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.z.03-Stamina.html"
+          "relative_path": "guide/4.z.003-Stamina.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.z.04-ItemDrop.md",
+      "source_relative_path": "guide/4.z.004-Hitscan.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.z.04-ItemDrop.html"
+          "relative_path": "guide/4.z.004-Hitscan.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.z.05-Hitscan.md",
+      "source_relative_path": "guide/4.z.005-Projectile.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.z.05-Hitscan.html"
+          "relative_path": "guide/4.z.005-Projectile.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.z.06-Projectile.md",
+      "source_relative_path": "guide/4.z.006-HoeDirt.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.z.06-Projectile.html"
+          "relative_path": "guide/4.z.006-HoeDirt.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.z.07-RaiseTrigger.md",
+      "source_relative_path": "guide/4.z.007-ItemDrop.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.z.07-RaiseTrigger.html"
+          "relative_path": "guide/4.z.007-ItemDrop.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.z.08-Action.md",
+      "source_relative_path": "guide/4.z.008-Harvest.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.z.08-Action.html"
+          "relative_path": "guide/4.z.008-Harvest.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.z.09-HoeDirt.md",
+      "source_relative_path": "guide/4.z.100-Action.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.z.09-HoeDirt.html"
+          "relative_path": "guide/4.z.100-Action.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/4.z.10-Harvest.md",
+      "source_relative_path": "guide/4.z.101-BroadcastAction.md",
       "output": {
         ".html": {
-          "relative_path": "guide/4.z.10-Harvest.html"
+          "relative_path": "guide/4.z.101-BroadcastAction.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/5-Temporary Animated Sprite.md",
+      "source_relative_path": "guide/4.z.102-RaiseTrigger.md",
       "output": {
         ".html": {
-          "relative_path": "guide/5-Temporary Animated Sprite.html"
+          "relative_path": "guide/4.z.102-RaiseTrigger.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/6-Utility.md",
+      "source_relative_path": "guide/4.z.200-EquipTrinket.md",
       "output": {
         ".html": {
-          "relative_path": "guide/6-Utility.html"
+          "relative_path": "guide/4.z.200-EquipTrinket.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/4.z.201-Chatter.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/4.z.201-Chatter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/5-Inventory.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/5-Inventory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/6-Temporary Animated Sprite.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/6-Temporary Animated Sprite.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/7-Utility.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/7-Utility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/7.0-Item Queries.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/7.0-Item Queries.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/7.1-Game State Queries.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/7.1-Game State Queries.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/7.2-Actions.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/7.2-Actions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/7.3-Trinket Colorizer and Anvil.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/7.3-Trinket Colorizer and Anvil.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/8-For SMAPI Mods.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/8-For SMAPI Mods.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/9-User Configuration.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/9-User Configuration.html"
         }
       },
       "version": ""
@@ -1252,16 +1542,6 @@
         },
         ".html": {
           "relative_path": "guide/toc.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "guide/x-example.md",
-      "output": {
-        ".html": {
-          "relative_path": "guide/x-example.html"
         }
       },
       "version": ""

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>ItemDrop | TrinketTinker </title>
+      <title>Utility | TrinketTinker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="ItemDrop | TrinketTinker ">
+      <meta name="title" content="Utility | TrinketTinker ">
       
       
       <link rel="icon" href="../images/favicon.png">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/4.z.04-ItemDrop.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/7-Utility.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,29 +85,28 @@
         </div>
 
         <article data-uid="">
-<h1 id="itemdrop">ItemDrop</h1>
+<h1 id="utility">Utility</h1>
 
-<p>Drops an item, picked with item query.</p>
-<h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.SpawnItemArgs.html">Args</a></h2>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Default</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>SearchMode</code></td>
-<td>ItemQuerySearchMode</td>
-<td><code>&quot;RandomOfTypeItem&quot;</code></td>
-<td>Determine how the final item is picked from results.</td>
-</tr>
-</tbody>
-</table>
-<p>*Also accepts all members of GenericSpawnItemData, which is the usual <a href="https://stardewvalleywiki.com/Modding:Item_queries#Item_spawn_fields">item spawn fields</a> minus <code>Condition</code>. Use the <code>Condition</code> field on <a href="4-Ability.html">ability</a> instead.</p>
+<p>Extra non-trinket features provided by this mod.</p>
+<p>See sub pages for more specific topics.</p>
+<h2 id="datalocation-customfields"><a href="https://stardewvalleywiki.com/Modding:Location_data">Data/Location</a> CustomFields</h2>
+<p>Aside from conditions defined on a particular trinket, it's also possible to disable trinket features for a whole location using CustomFields.</p>
+<pre><code>&quot;mushymato.TrinketTinker/disableAbilities&quot;: true|false
+</code></pre>
+<p>Disable trinket abilities while owner is in the location (except for always active abilities).</p>
+<pre><code>&quot;mushymato.TrinketTinker/disableCompanions&quot;: true|false
+</code></pre>
+<p>Disable companion display while owner is in the location. Their position updates continue.</p>
+<h2 id="console-commands">Console Commands</h2>
+<h3 id="tt_draw_debug">tt_draw_debug</h3>
+<p>This command toggles drawing of companion sprite index and bounding box of both the companion and the farmer ()</p>
+<p>This command toggles some debug drawing options:</p>
+<ul>
+<li>Companion sprite index: a sprite index will be drawn over the companion as they animate. This sprite index is positioned at the companion's &quot;position&quot;.</li>
+<li>Companion bounding box: a magenta box is drawn around the companion, showing the zone used for <a href="4-Ability.html">Interact proc</a> type and for <a href="3.z.000-Lerp.html">NoOverlap Lerp motion</a>.</li>
+</ul>
+<h3 id="tt_unequip_trinket">tt_unequip_trinket</h3>
+<p>Force unequip all trinkets and send the unequipped trinkets to lost and found. Mainly useful if a mod fails to properly remove their trinkets.</p>
 
 </article>
 

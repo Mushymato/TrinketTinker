@@ -116,13 +116,13 @@ When no targets are found, fallback to <code>Owner</code>.</p>
 </tr>
 <tr>
 <td><code>Filters</code></td>
-<td><code>List&lt;string&gt;</code></td>
-<td><em>empty</em></td>
+<td>List&lt;string&gt;</td>
+<td><em>null</em></td>
 <td>List of anchor mode specific filters, see the headings on each Mode for details. If not specified, then no filters have been implemented.</td>
 </tr>
 <tr>
 <td><code>RequiredAbilities</code></td>
-<td><code>List&lt;string&gt;?</code></td>
+<td>List&lt;string&gt;?</td>
 <td><em>mode dependent</em></td>
 <td>List of ability classes to check for to determine if this anchor should be enabled. Some modes have default values, which can be cleared by setting this value to <code>null</code>.</td>
 </tr>
@@ -134,25 +134,26 @@ When no targets are found, fallback to <code>Owner</code>.</p>
 <p><strong>RequiredAbilities</strong>: Default <code>&quot;Hitscan&quot;</code>, <code>&quot;Projectile&quot;</code>.</p>
 <h3 id="forage">Forage</h3>
 <p>Anchor to nearest forageable item.</p>
-<p><strong>Filters</strong>: list of context tags to avoid harvesting, e.g. <code>&quot;category_flower&quot;</code> (exclude flower category) or <code>&quot;color_orange season_summer&quot;</code> (exclude orange and summer). Each space separated sub list of tags act as AND while the overall list act as OR.</p>
+<p><strong>Filters</strong>: list of <a href="https://stardewvalleywiki.com/Modding:Common_data_field_types#Context_tag">context tags</a> to avoid harvesting, e.g. <code>&quot;category_flowers&quot;</code> (exclude flower category) or <code>&quot;color_orange season_summer&quot;</code> (exclude orange and summer). Each space separated sub list of tags act as AND while the overall list act as OR.</p>
 <p><strong>RequiredAbilities</strong>: Default <code>&quot;HarvestForage&quot;</code>.</p>
-<h3 id="object">Object</h3>
-<p>Anchor to nearest placed object.</p>
 <h3 id="stone">Stone</h3>
 <p>Anchor to nearest breakable stone.</p>
 <p><strong>RequiredAbilities</strong>: Default <code>&quot;HarvestStone&quot;</code>.</p>
+<h3 id="object">Object</h3>
+<p>Anchor to nearest placed object. This is a superset of Stone and Forage, but also placed objects on the ground.</p>
 <h3 id="crop">Crop</h3>
 <p>Anchor to nearest harvestable crop.</p>
-<p><strong>Filters</strong>: list of context tags to avoid harvesting, e.g. <code>&quot;category_flower&quot;</code> (exclude flower category) or <code>&quot;color_orange season_summer&quot;</code> (exclude orange and summer). Each space separated sub list of tags act as AND while the overall list act as OR. For crops, only the main harvestable item is considered.</p>
+<p><strong>Filters</strong>: list of <a href="https://stardewvalleywiki.com/Modding:Common_data_field_types#Context_tag">context tags</a> to avoid harvesting, e.g. <code>&quot;category_flowers&quot;</code> (exclude flower category) or <code>&quot;color_orange season_summer&quot;</code> (exclude orange and summer). Each space separated sub list of tags act as AND while the overall list act as OR. For crops, only the main harvestable item is considered.</p>
 <p><strong>RequiredAbilities</strong>: Default <code>&quot;HarvestCrop&quot;</code>.</p>
 <h3 id="shakeable">Shakeable</h3>
 <p>Anchor to nearest shakeable bush/tree/fruit tree.</p>
 <p><strong>Filters</strong>: list of <code>&quot;Bush&quot;</code>, <code>&quot;Tree&quot;</code>, <code>&quot;FruitTree&quot;</code>, indicating which of the 3 possible categories to avoid targeting.</p>
 <p><strong>RequiredAbilities</strong>: Default <code>&quot;HarvestShakeable&quot;</code>.</p>
 <h3 id="terrainfeature">TerrainFeature</h3>
-<p>Anchor to nearest terrain feature.</p>
+<p>Anchor to nearest terrain feature. This is a superset of Crop and Shakeable.</p>
 <h3 id="owner">Owner</h3>
-<p>Anchor to the player who equipped the trinket. Range has no effect.</p>
+<p>Anchor to the player who equipped the trinket. Range has no effect.
+This is the default anchor.</p>
 
 </article>
 
