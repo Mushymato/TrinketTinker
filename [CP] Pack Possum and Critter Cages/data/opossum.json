@@ -55,6 +55,10 @@
             },
             "Anchors": [
               {
+                "Mode": "Forage",
+                "Range": 400
+              },
+              {
                 "Mode": "Shakeable",
                 "Range": 400
               },
@@ -70,6 +74,15 @@
                 "Args": {
                   "Range": 0,
                   "HarvestTo": "TinkerInventory"
+                },
+              },
+              {
+                "AbilityClass": "HarvestForage",
+                "Proc": "Timer",
+                "ProcTimer": 500,
+                "ProcSound": "harvest",
+                "Args": {
+                  "Range": 0,
                 },
               },
               {
