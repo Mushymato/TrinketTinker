@@ -53,13 +53,19 @@
                 "UseExtra": true
               },
             },
+            "Anchors": [
+              {
+                "Mode": "Shakeable",
+                "Range": 400
+              },
+            ],
           },
           "Abilities": [
             [
               {
                 "AbilityClass": "HarvestShakeable",
                 "Proc": "Timer",
-                "ProcTimer": 1000,
+                "ProcTimer": 500,
                 "ProcSound": "harvest",
                 "Args": {
                   "Range": 0,

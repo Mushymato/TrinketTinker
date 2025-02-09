@@ -8,8 +8,8 @@
       "Entries": {
         "{{ModId}}_Box_{{L@SheetIndex}}": {
           "Id": "{{ModId}}_Box_{{L@SheetIndex}}",
-          "DisplayName": "{{i18n:Box.{{L@SheetIndex}}.DisplayName}}",
-          "Description": "{{i18n:Box.Shared.Description | Capacity={{L@Capacity}} }}",
+          "DisplayName": "[LocalizedText {{ModId}}/i18n:Box.{{L@SheetIndex}}.DisplayName]",
+          "Description": "[LocalizedText {{ModId}}/i18n:Box.Shared.Description {{L@Capacity}}]",
           "Texture": "{{ModId}}/trinketbox",
           "SheetIndex": "{{L@SheetIndex}}",
           "DropsNaturally": false,
