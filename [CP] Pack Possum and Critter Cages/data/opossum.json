@@ -1,0 +1,125 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "LogName": "Opossum: Trinkets",
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_Opossum": {
+          "Id": "{{ModId}}_Opossum",
+          "DisplayName": "[LocalizedText {{ModId}}/i18n:Opossum.DisplayName]",
+          "Description": "[LocalizedText {{ModId}}/i18n:Opossum.Description]",
+          "Texture": "{{ModId}}/opossum-icon",
+          "SheetIndex": 0,
+          "DropsNaturally": false,
+          "CanBeReforged": false
+        },
+      }
+    },
+    {
+      "LogName": "Opossum: Tinker",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        "{{ModId}}_Opossum": {
+          "Variants": [
+            {
+              "Texture": "{{ModId}}/opossum",
+              "TextureExtra": "{{ModId}}/opossum-2",
+              "Width": 32,
+              "Height": 18,
+              "ShadowScale": 0
+            },
+          ],
+          "Chatter": {
+            "Tutorial": {
+              "Lines": [
+                "{{ModId}}/i18n:Opossum.Chatter.0"
+              ],
+              "Condition": "TRUE"
+            }
+          },
+          "Motion": {
+            "MotionClass": "Lerp",
+            "DirectionMode": "R",
+            "FrameLength": 4,
+            "AnimClips": {
+              "Idle": {
+                "FrameStart": 0,
+                "FrameLength": 3,
+                "Interval": 200,
+                "LoopMode": "PingPong",
+                "UseExtra": true
+              },
+            },
+          },
+          "Abilities": [
+            [
+              {
+                "AbilityClass": "HarvestShakeable",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "ProcSound": "harvest",
+                "Args": {
+                  "Range": 0,
+                  "HarvestTo": "TinkerInventory"
+                },
+              },
+              {
+                "AbilityClass": "Chatter",
+                "Condition": "!PLAYER_HAS_MAIL Current {{ModId}}_Opossum_hired",
+                "Proc": "Always"
+              },
+            ]
+          ],
+          "Inventory": {
+            "Capacity": 36
+          }
+        },
+      }
+    },
+    {
+      "LogName": "Opossum: Hire",
+      "Action": "EditData",
+      "Target": "Data/Shops",
+      "TargetField": [
+        "AdventureShop",
+        "Items"
+      ],
+      "Entries": {
+        "{{ModId}}_Opossum_OneDay_Tutorial": {
+          "Id": "{{ModId}}_Opossum_OneDay_Tutorial",
+          "ItemId": "mushymato.TrinketTinker_HIRE_TRINKET {{ModId}}_Opossum",
+          "Price": 6000,
+          "ObjectDisplayName": "[LocalizedText {{ModId}}/i18n:Opossum.DisplayName][LocalizedText {{ModId}}/i18n:Opossum.DisplayName.OneDay]",
+          "Condition": "!PLAYER_HAS_MAIL Current {{ModId}}_Opossum_hired, !PLAYER_HAS_TRINKET Current {{ModId}}_Opossum",
+          "ActionsOnPurchase": [
+            "mushymato.TrinketTinker_EquipHiddenTrinket {{ModId}}_Opossum 0 0 1",
+            "AddMail Current {{ModId}}_Opossum_hired now",
+          ]
+        },
+        "{{ModId}}_Opossum_OneDay": {
+          "Id": "{{ModId}}_Opossum_OneDay",
+          "ItemId": "mushymato.TrinketTinker_HIRE_TRINKET {{ModId}}_Opossum",
+          "Price": 6000,
+          "ObjectDisplayName": "[LocalizedText {{ModId}}/i18n:Opossum.DisplayName][LocalizedText {{ModId}}/i18n:Opossum.DisplayName.OneDay]",
+          "Condition": "PLAYER_HAS_MAIL Current {{ModId}}_Opossum_hired, !PLAYER_HAS_TRINKET Current {{ModId}}_Opossum",
+          "ActionsOnPurchase": [
+            "mushymato.TrinketTinker_EquipHiddenTrinket {{ModId}}_Opossum 0 0 1"
+          ]
+        },
+        "{{ModId}}_Opossum_OneWeek": {
+          "Id": "{{ModId}}_Opossum_OneWeek",
+          "ItemId": "mushymato.TrinketTinker_HIRE_TRINKET {{ModId}}_Opossum",
+          "Price": 30000,
+          "ObjectDisplayName": "[LocalizedText {{ModId}}/i18n:Opossum.DisplayName][LocalizedText {{ModId}}/i18n:Opossum.DisplayName.OneWeek]",
+          "Condition": "PLAYER_HAS_MAIL Current {{ModId}}_Opossum_hired, !PLAYER_HAS_TRINKET Current {{ModId}}_Opossum",
+          "ActionsOnPurchase": [
+            "mushymato.TrinketTinker_EquipHiddenTrinket {{ModId}}_Opossum 0 0 7"
+          ]
+        }
+      }
+    }
+  ]
+}

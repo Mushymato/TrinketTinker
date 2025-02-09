@@ -1,0 +1,17 @@
+{
+  "$schema": "https://smapi.io/schemas/i18n.json",
+  // Trinkets
+  "Box.0.DisplayName": "Critter Cage (Iridium)",
+  "Box.1.DisplayName": "Critter Cage (Radioactive)",
+  "Box.2.DisplayName": "Critter Cage (Prismatic)",
+  "Box.Shared.Description": "Beware of critters inside.\nUse this trinket to open an inventory ({{Capacity}} slots), trinkets placed inside will be equipped.",
+  "Opossum.DisplayName": "Pack Possum for Hire",
+  "Opossum.DisplayName.OneDay": " (1 Day)",
+  "Opossum.DisplayName.OneWeek": " (1 Week)",
+  "Opossum.Description": "Marlon introduced me to a skilled and resourceful opossum, she's working hard for her 36 children.",
+  // Chatter
+  "Opossum.Chatter.0": "You can open my pack with the \"Open Tinker Inventory\" key (default RightAlt Plus OemPeriod or LeftStick+ControllerX), set this via TrinketTinker's GMCM.#$b#If you forgot to take your things before I leave, don't fret! They will be safely delivered to the lost and found.",
+  // Config
+  "config.EarlyTrinketSlot.name": "Early Trinket Slot",
+  "config.EarlyTrinketSlot.description": "Enable trinket slot early, which also make trinkets drop from monsters early. This option takes 1 save/load to change.",
+}

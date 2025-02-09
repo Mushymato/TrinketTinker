@@ -133,6 +133,17 @@ public static class EquipTrinket
                     trinket.modData.Remove(TinkerConst.ModData_HiddenEquip);
                     hiddenTrinketsInv.Value.Remove(trinket);
                     hiddenTrinketsInv.Value.RemoveEmptySlots();
+                    var team = Game1.player.team;
+                    if (
+                        trinket.GetEffect() is TrinketTinkerEffect effect2
+                        && effect2.GetInventory(Game1.player) is Inventory trinketInv
+                    )
+                    {
+                        trinketInv.RemoveEmptySlots();
+                        foreach (var item2 in trinketInv)
+                            team.returnedDonations.Add(item2);
+                        team.globalInventories.Remove(effect2.FullInventoryId);
+                    }
                     return true;
                 }
             }

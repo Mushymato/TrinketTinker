@@ -6,15 +6,32 @@ using StardewValley.Delegates;
 using StardewValley.Internal;
 using StardewValley.Inventories;
 using StardewValley.Objects.Trinkets;
+using StardewValley.TokenizableStrings;
 using TrinketTinker.Companions;
 using TrinketTinker.Effects;
 
 namespace TrinketTinker.Extras;
 
+public class HiredTrinket(string itemId, int generationSeed) : Trinket(itemId, generationSeed)
+{
+    public override bool actionWhenPurchased(string shopId)
+    {
+        Game1.exitActiveMenu();
+        Game1.playSound("purchaseClick", null);
+        return true;
+    }
+
+    protected override string loadDisplayName()
+    {
+        return TokenParser.ParseText(displayNameFormat) ?? base.loadDisplayName();
+    }
+}
+
 public static class GameItemQuery
 {
     public static string ItemQuery_CREATE_TRINKET => $"{ModEntry.ModId}_CREATE_TRINKET";
     public static string ItemQuery_CREATE_TRINKET_ALL_VARIANTS => $"{ModEntry.ModId}_CREATE_TRINKET_ALL_VARIANTS";
+    public static string ItemQuery_HIRE_TRINKET => $"{ModEntry.ModId}_HIRE_TRINKET";
     public static string GameStateQuery_IS_TINKER => $"{ModEntry.ModId}_IS_TINKER";
     public static string GameStateQuery_HAS_LEVELS => $"{ModEntry.ModId}_HAS_LEVELS";
     public static string GameStateQuery_HAS_VARIANTS => $"{ModEntry.ModId}_HAS_VARIANTS";
@@ -32,6 +49,7 @@ public static class GameItemQuery
         // Add item queries
         ItemQueryResolver.Register(ItemQuery_CREATE_TRINKET, CREATE_TRINKET);
         ItemQueryResolver.Register(ItemQuery_CREATE_TRINKET_ALL_VARIANTS, CREATE_TRINKET_ALL_VARIANTS);
+        ItemQueryResolver.Register(ItemQuery_HIRE_TRINKET, HIRE_TRINKET);
 
         // Add GSQs
         GameStateQuery.Register(GameStateQuery_IS_TINKER, IS_TINKER);
@@ -265,6 +283,22 @@ public static class GameItemQuery
             trinket = (Trinket)trinket.getOne();
         }
         return createdTrinkets;
+    }
+
+    public static IEnumerable<ItemQueryResult> HIRE_TRINKET(
+        string key,
+        string arguments,
+        ItemQueryContext context,
+        bool avoidRepeat,
+        HashSet<string> avoidItemIds,
+        Action<string, string> logError
+    )
+    {
+        string[] array = ItemQueryResolver.Helpers.SplitArguments(arguments);
+        if (!ArgUtility.TryGet(array, 0, out string trinketId, out string error1, allowBlank: false, "string itemId"))
+            return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, error1);
+
+        return [new ItemQueryResult(new HiredTrinket(trinketId, context.Random.Next()))];
     }
 
     /// <summary>

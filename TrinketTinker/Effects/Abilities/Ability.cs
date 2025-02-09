@@ -80,7 +80,7 @@ public abstract class Ability<TArgs> : IAbility
             switch (d.Proc)
             {
                 case ProcOn.Always:
-                    ApplyEffect(new(ProcOn.Always, farmer));
+                    HandleProc(null, new(ProcOn.Always, farmer));
                     break;
                 case ProcOn.Sync:
                     if (e.Abilities[d.ProcSyncIndex] == this)

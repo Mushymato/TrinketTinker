@@ -12,6 +12,8 @@ public record ChatterSpeaker(string? Portrait, string? Name, string? NPC)
     internal Lazy<Texture2D?> PortraitTx2D =
         new(() =>
         {
+            if (string.IsNullOrEmpty(Portrait))
+                return null;
             if (!Game1.content.DoesAssetExist<Texture2D>(Portrait))
             {
                 ModEntry.LogOnce($"Can't load custom portrait '{Portrait}', it does not exist.", LogLevel.Warn);

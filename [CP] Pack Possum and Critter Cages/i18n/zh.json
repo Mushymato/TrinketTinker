@@ -1,0 +1,15 @@
+{
+  "$schema": "https://smapi.io/schemas/i18n.json",
+  // Trinkets
+  "Box.0.DisplayName": "怪物笼子【铱】",
+  "Box.1.DisplayName": "怪物笼子【放射】",
+  "Box.2.DisplayName": "怪物笼子【五彩】",
+  "Box.Shared.Description": "内有恶鬼。\n使用此饰品打开背包（{{Capacity}}格），被放入的饰品会在装备时被装备。",
+  "Opossum.DisplayName": "雇佣负鼠",
+  "Opossum.DisplayName.OneDay": "（一日）",
+  "Opossum.DisplayName.OneWeek": "（一周）",
+  "Opossum.Description": "马龙向我介绍了一只老练并且机智的负鼠，她正在为她的36个孩子努力工作。",
+  // Config
+  "config.EarlyTrinketSlot.name": "提早解锁饰品槽",
+  "config.EarlyTrinketSlot.description": "提前解锁饰品槽，同时会使饰品提前掉落。此选项需要1次保存/加载才能更改。",
+}

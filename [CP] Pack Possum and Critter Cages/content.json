@@ -11,7 +11,7 @@
     {
       "LogName": "Sprites",
       "Action": "Load",
-      "Target": "{{ModId}}/trinketbox, {{ModId}}/opossum, {{ModId}}/opossum-2",
+      "Target": "{{ModId}}/trinketbox, {{ModId}}/opossum, {{ModId}}/opossum-2, {{ModId}}/opossum-icon",
       "FromFile": "assets/{{TargetWithoutPath}}.png"
     },
     // boxes
@@ -57,6 +57,18 @@
     {
       "Action": "Include",
       "FromFile": "data/shop.json"
+    },
+    // i18n stuff
+    {
+      "Action": "Load",
+      "Target": "{{ModId}}/i18n",
+      "FromFile": "i18n/default.json"
+    },
+    {
+      "Action": "Load",
+      "Target": "{{ModId}}/i18n",
+      "TargetLocale": "zh-CN",
+      "FromFile": "i18n/zh.json",
     }
   ]
 }

@@ -1,12 +1,12 @@
 {
-  "Name": "[CP] Trinket Holder",
+  "Name": "[CP] Pack Possum and Critter Cages",
   "Author": "mushymato",
   "Version": "1.0.0",
-  "Description": "Put your trinkets in a trinket so you can trinket(plural) while you trinket(singular).",
-  "UniqueID": "mushymato.TrinketHolder",
+  "Description": "Adds 4 trinkets that have inventory.",
+  "UniqueID": "mushymato.PackPossumAndCritterCages",
   "MinimumApiVersion": "4.1.0",
   "UpdateKeys": [
-    "Nexus:???"
+    "Nexus:31571"
   ],
   "ContentPackFor": {
     "UniqueID": "Pathoschild.ContentPatcher"
@@ -14,7 +14,7 @@
   "Dependencies": [
     {
       "UniqueID": "mushymato.TrinketTinker",
-      "MinimumVersion": "1.5.0-beta"
+      "MinimumVersion": "1.4.0"
     }
   ]
 }

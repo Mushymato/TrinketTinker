@@ -39,14 +39,17 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
 
     public override bool Activate(Farmer farmer)
     {
-        if (base.Activate(farmer))
+        chatter = e.Data?.Chatter!;
+        if (chatter == null)
+            return false;
+        speakerNPC = new(null, Vector2.Zero, "", 0, QQQ, null, eventActor: false) { displayName = QQQ };
+        if (!base.Activate(farmer))
         {
-            chatter = e.Data?.Chatter!;
-            if (chatter == null)
-                return false;
-            speakerNPC = new(null, Vector2.Zero, "", 0, QQQ, null, eventActor: false) { displayName = QQQ };
+            chatter = null!;
+            speakerNPC = null!;
+            return false;
         }
-        return Active;
+        return true;
     }
 
     protected override void CleanupEffect(Farmer farmer)
@@ -71,10 +74,10 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
         {
             if (
                 chatter
-                    .OrderByDescending((kv) => kv.Value.Priority)
+                    .OrderByDescending((kv) => kv.Value?.Priority ?? 0)
                     .FirstOrDefault(
                         (kv) =>
-                            (args.ChatterPrefix == null || kv.Key.StartsWith(args.ChatterPrefix))
+                            (args.ChatterPrefix == null || kv.Key.StartsWith(args.ChatterPrefix ?? ""))
                             && GameStateQuery.CheckConditions(kv.Value.Condition, proc.GSQContext)
                             && kv.Value.Lines != null
                     )

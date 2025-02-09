@@ -14,6 +14,7 @@ public sealed class ActionAbility(TrinketTinkerEffect effect, AbilityData data, 
     : Ability<ActionArgs>(effect, data, lvl)
 {
     internal static readonly string TriggerContextName = $"{ModEntry.ModId}/Action";
+    internal bool activatedByAlways = false;
 
     /// <summary>Parse and call the action</summary>
     /// <param name="proc"></param>
@@ -53,6 +54,8 @@ public sealed class ActionAbility(TrinketTinkerEffect effect, AbilityData data, 
 
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
+        if (proc.Proc == ProcOn.Always)
+            activatedByAlways = true;
         return ApplyEffectOnActions(
                 args.AllActions.Select(TriggerActionManager.ParseAction),
                 proc.Farmer,
@@ -62,7 +65,8 @@ public sealed class ActionAbility(TrinketTinkerEffect effect, AbilityData data, 
 
     protected override void CleanupEffect(Farmer farmer)
     {
-        ApplyEffectOnActions(args.AllActionsEnd.Select(TriggerActionManager.ParseAction), farmer);
+        if (activatedByAlways)
+            ApplyEffectOnActions(args.AllActionsEnd.Select(TriggerActionManager.ParseAction), farmer);
         base.CleanupEffect(farmer);
     }
 }

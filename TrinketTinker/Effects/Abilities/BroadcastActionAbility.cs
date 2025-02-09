@@ -12,6 +12,8 @@ namespace TrinketTinker.Effects.Abilities;
 public sealed class BroadcastActionAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
     : Ability<BroadcastActionArgs>(effect, data, lvl)
 {
+    internal bool activatedByAlways = false;
+
     private void BroadcastByPlayerKey(Farmer farmer, IEnumerable<string> Actions)
     {
         if (args.PlayerKey == "Current" || args.PlayerKey == "All" || (args.PlayerKey == "Host" && Game1.IsMasterGame))
@@ -45,13 +47,16 @@ public sealed class BroadcastActionAbility(TrinketTinkerEffect effect, AbilityDa
 
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
+        if (proc.Proc == ProcOn.Always)
+            activatedByAlways = true;
         BroadcastByPlayerKey(proc.Farmer, args.AllActions);
         return base.ApplyEffect(proc);
     }
 
     protected override void CleanupEffect(Farmer farmer)
     {
-        BroadcastByPlayerKey(farmer, args.AllActionsEnd);
+        if (activatedByAlways)
+            BroadcastByPlayerKey(farmer, args.AllActionsEnd);
         base.CleanupEffect(farmer);
     }
 }
