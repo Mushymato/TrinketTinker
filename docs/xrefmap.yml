@@ -4784,6 +4784,22 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Extras.GameItemQuery.HAS_VARIANTS
   nameWithType: GameItemQuery.HAS_VARIANTS
+- uid: TrinketTinker.Extras.GameItemQuery.HIRE_TRINKET(System.String,System.String,StardewValley.Internal.ItemQueryContext,System.Boolean,System.Collections.Generic.HashSet{System.String},System.Action{System.String,System.String})
+  name: HIRE_TRINKET(string, string, ItemQueryContext, bool, HashSet<string>, Action<string, string>)
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_HIRE_TRINKET_System_String_System_String_StardewValley_Internal_ItemQueryContext_System_Boolean_System_Collections_Generic_HashSet_System_String__System_Action_System_String_System_String__
+  commentId: M:TrinketTinker.Extras.GameItemQuery.HIRE_TRINKET(System.String,System.String,StardewValley.Internal.ItemQueryContext,System.Boolean,System.Collections.Generic.HashSet{System.String},System.Action{System.String,System.String})
+  name.vb: HIRE_TRINKET(String, String, ItemQueryContext, Boolean, HashSet(Of String), Action(Of String, String))
+  fullName: TrinketTinker.Extras.GameItemQuery.HIRE_TRINKET(string, string, StardewValley.Internal.ItemQueryContext, bool, System.Collections.Generic.HashSet<string>, System.Action<string, string>)
+  fullName.vb: TrinketTinker.Extras.GameItemQuery.HIRE_TRINKET(String, String, StardewValley.Internal.ItemQueryContext, Boolean, System.Collections.Generic.HashSet(Of String), System.Action(Of String, String))
+  nameWithType: GameItemQuery.HIRE_TRINKET(string, string, ItemQueryContext, bool, HashSet<string>, Action<string, string>)
+  nameWithType.vb: GameItemQuery.HIRE_TRINKET(String, String, ItemQueryContext, Boolean, HashSet(Of String), Action(Of String, String))
+- uid: TrinketTinker.Extras.GameItemQuery.HIRE_TRINKET*
+  name: HIRE_TRINKET
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_HIRE_TRINKET_
+  commentId: Overload:TrinketTinker.Extras.GameItemQuery.HIRE_TRINKET
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.GameItemQuery.HIRE_TRINKET
+  nameWithType: GameItemQuery.HIRE_TRINKET
 - uid: TrinketTinker.Extras.GameItemQuery.IS_TINKER(System.String[],StardewValley.Delegates.GameStateQueryContext)
   name: IS_TINKER(string[], GameStateQueryContext)
   href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_IS_TINKER_System_String___StardewValley_Delegates_GameStateQueryContext_
@@ -4826,6 +4842,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Extras.GameItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS
   nameWithType: GameItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS
+- uid: TrinketTinker.Extras.GameItemQuery.ItemQuery_HIRE_TRINKET
+  name: ItemQuery_HIRE_TRINKET
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_ItemQuery_HIRE_TRINKET
+  commentId: P:TrinketTinker.Extras.GameItemQuery.ItemQuery_HIRE_TRINKET
+  fullName: TrinketTinker.Extras.GameItemQuery.ItemQuery_HIRE_TRINKET
+  nameWithType: GameItemQuery.ItemQuery_HIRE_TRINKET
+- uid: TrinketTinker.Extras.GameItemQuery.ItemQuery_HIRE_TRINKET*
+  name: ItemQuery_HIRE_TRINKET
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_ItemQuery_HIRE_TRINKET_
+  commentId: Overload:TrinketTinker.Extras.GameItemQuery.ItemQuery_HIRE_TRINKET
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.GameItemQuery.ItemQuery_HIRE_TRINKET
+  nameWithType: GameItemQuery.ItemQuery_HIRE_TRINKET
 - uid: TrinketTinker.Extras.GameItemQuery.Register
   name: Register()
   href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_Register
@@ -4839,6 +4868,60 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Extras.GameItemQuery.Register
   nameWithType: GameItemQuery.Register
+- uid: TrinketTinker.Extras.HiredTrinket
+  name: HiredTrinket
+  href: api/TrinketTinker.Extras.HiredTrinket.html
+  commentId: T:TrinketTinker.Extras.HiredTrinket
+  fullName: TrinketTinker.Extras.HiredTrinket
+  nameWithType: HiredTrinket
+- uid: TrinketTinker.Extras.HiredTrinket.#ctor(System.String,System.Int32)
+  name: HiredTrinket(string, int)
+  href: api/TrinketTinker.Extras.HiredTrinket.html#TrinketTinker_Extras_HiredTrinket__ctor_System_String_System_Int32_
+  commentId: M:TrinketTinker.Extras.HiredTrinket.#ctor(System.String,System.Int32)
+  name.vb: New(String, Integer)
+  fullName: TrinketTinker.Extras.HiredTrinket.HiredTrinket(string, int)
+  fullName.vb: TrinketTinker.Extras.HiredTrinket.New(String, Integer)
+  nameWithType: HiredTrinket.HiredTrinket(string, int)
+  nameWithType.vb: HiredTrinket.New(String, Integer)
+- uid: TrinketTinker.Extras.HiredTrinket.#ctor*
+  name: HiredTrinket
+  href: api/TrinketTinker.Extras.HiredTrinket.html#TrinketTinker_Extras_HiredTrinket__ctor_
+  commentId: Overload:TrinketTinker.Extras.HiredTrinket.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TrinketTinker.Extras.HiredTrinket.HiredTrinket
+  fullName.vb: TrinketTinker.Extras.HiredTrinket.New
+  nameWithType: HiredTrinket.HiredTrinket
+  nameWithType.vb: HiredTrinket.New
+- uid: TrinketTinker.Extras.HiredTrinket.actionWhenPurchased(System.String)
+  name: actionWhenPurchased(string)
+  href: api/TrinketTinker.Extras.HiredTrinket.html#TrinketTinker_Extras_HiredTrinket_actionWhenPurchased_System_String_
+  commentId: M:TrinketTinker.Extras.HiredTrinket.actionWhenPurchased(System.String)
+  name.vb: actionWhenPurchased(String)
+  fullName: TrinketTinker.Extras.HiredTrinket.actionWhenPurchased(string)
+  fullName.vb: TrinketTinker.Extras.HiredTrinket.actionWhenPurchased(String)
+  nameWithType: HiredTrinket.actionWhenPurchased(string)
+  nameWithType.vb: HiredTrinket.actionWhenPurchased(String)
+- uid: TrinketTinker.Extras.HiredTrinket.actionWhenPurchased*
+  name: actionWhenPurchased
+  href: api/TrinketTinker.Extras.HiredTrinket.html#TrinketTinker_Extras_HiredTrinket_actionWhenPurchased_
+  commentId: Overload:TrinketTinker.Extras.HiredTrinket.actionWhenPurchased
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.HiredTrinket.actionWhenPurchased
+  nameWithType: HiredTrinket.actionWhenPurchased
+- uid: TrinketTinker.Extras.HiredTrinket.loadDisplayName
+  name: loadDisplayName()
+  href: api/TrinketTinker.Extras.HiredTrinket.html#TrinketTinker_Extras_HiredTrinket_loadDisplayName
+  commentId: M:TrinketTinker.Extras.HiredTrinket.loadDisplayName
+  fullName: TrinketTinker.Extras.HiredTrinket.loadDisplayName()
+  nameWithType: HiredTrinket.loadDisplayName()
+- uid: TrinketTinker.Extras.HiredTrinket.loadDisplayName*
+  name: loadDisplayName
+  href: api/TrinketTinker.Extras.HiredTrinket.html#TrinketTinker_Extras_HiredTrinket_loadDisplayName_
+  commentId: Overload:TrinketTinker.Extras.HiredTrinket.loadDisplayName
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.HiredTrinket.loadDisplayName
+  nameWithType: HiredTrinket.loadDisplayName
 - uid: TrinketTinker.Extras.ProcTrinket
   name: ProcTrinket
   href: api/TrinketTinker.Extras.ProcTrinket.html

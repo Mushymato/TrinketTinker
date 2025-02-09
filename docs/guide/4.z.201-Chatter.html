@@ -181,7 +181,8 @@
 <h3 id="choosing-the-next-dialogue-line">Choosing the next Dialogue Line</h3>
 <p>The Chatter system has nothing to do with the vanilla NPC dialogue keys beyond ability to reuse the same strings via translation key.</p>
 <ol>
-<li>If a <code>ProcChatterKey</code> has been set and exists, skip the rest of the steps and directly pick that Chatter.</li>
+<li>If the previous dialogue has not finished (i.e. <code>$e</code> is used), finish that dialogue first.</li>
+<li>If a <code>ProcChatterKey</code> has been set and exists, skip the rest of the steps and pick that Chatter.</li>
 <li>Chatter data is sorted by <code>Priority</code> (highest to lowest)</li>
 <li>The first Chatter data that fits these conditions is picked:
 <ul>

@@ -98,6 +98,23 @@
 </code></pre>
 <p>Create all variants of a trinket (with tinker data). Useful for making a shop sell all variants of a trinket instead of making the player roll for them.</p>
 <p>Setting level to &quot;R&quot; will randomize the level once, and then set trinkets created by this query to that level.</p>
+<h2 id="mushymatotrinkettinker_hire_trinket">mushymato.TrinketTinker_HIRE_TRINKET</h2>
+<pre><code>mushymato.TrinketTinker_HIRE_TRINKET &lt;trinket id&gt;
+</code></pre>
+<p>This is a special item query for use in shops only, it creates a placeholder trinket and serves as a base for <a href="7.2-Actions.html">mushymato.TrinketTinker_EquipHiddenTrinket</a>.</p>
+<p>Example:</p>
+<pre><code class="lang-json">// &quot;Target&quot;: &quot;Data/Shops&quot;, &quot;TargetField&quot;: [ &quot;AdventureShop&quot;, &quot;Items&quot; ]
+&quot;{{ModId}}_TrinketForHire&quot;: {
+  &quot;Id&quot;: &quot;{{ModId}}_TrinketForHire&quot;,
+  &quot;ItemId&quot;: &quot;mushymato.TrinketTinker_HIRE_TRINKET {{ModId}}_TrinketForHire&quot;,
+  &quot;Price&quot;: 6000,
+  &quot;ObjectDisplayName&quot;: &quot;Hire this merc for 1 day!&quot;,
+  &quot;Condition&quot;: &quot;!PLAYER_HAS_TRINKET Current {{ModId}}_TrinketForHire&quot;,
+  &quot;ActionsOnPurchase&quot;: [
+    &quot;mushymato.TrinketTinker_EquipHiddenTrinket {{ModId}}_TrinketForHire 0 0 1&quot;
+  ]
+},
+</code></pre>
 
 </article>
 

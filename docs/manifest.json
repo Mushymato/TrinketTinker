@@ -522,6 +522,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Extras.HiredTrinket.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Extras.HiredTrinket.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Extras.ProcTrinket.yml",
       "output": {
         ".html": {
