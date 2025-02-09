@@ -4,6 +4,17 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.5.0
+
+### Added
+
+- Interact now uses a keybind, configurable in GMCM
+- Inventories of equipped trinkets can now be opened with a keybind, configurable in GMCM
+- Updated documentation with all 1.5.0 changes
+- Add 2 new GSQ please see docs
+    - `mushymato.TrinketTinker_IN_ALT_VARIANT <Input|Target> <itemId> <item count compare>`
+    - `mushymato.TrinketTinker_TRINKET_HAS_ITEM <Input|Target> <itemId> <item count compare>`
+
 ### 1.5.0-beta.2
 
 #### Added
@@ -38,7 +49,7 @@
 
 - New ability BroadcastAction, it's like action but it runs the action on multiplayer, useful with SetNpcInvisible and Host
 - New Proc Interact which fires when player right clicks when overlapping with companion enough, as well as debug draw for bounding boxes.
-- EquipTrinket now bans trinkets with CustomFields `mushymato.TrinketTinker/IndirectEquip` from entering the inventory in the first place.
+- EquipTrinket now bans trinkets with CustomFields `mushymato.TrinketTinker/DirectEquipOnly` from entering the inventory in the first place.
 - Lerp now has Velocity, -2: old behaviour, -1: match speed with farmer, 0 does not move except teleport, 1+ caps the velocity of the trinket.
 - Lerp now has NoOverlap, makes this companion avoid entering the bounding box of another companion.
 - Speech bubble allowed to interrupt previous speech bubble during fade out time
