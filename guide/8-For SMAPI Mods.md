@@ -2,7 +2,7 @@
 
 Trinket Tinker has no API at the moment as it is primarily meant to be interacted with a content editing framework like Content Patcher.
 
-Here are some well-defined ways SMAPI mods can interface with Trinket Tinker.
+Still, trinket tinker may not have implemented everything you need, here are ways SMAPI mods can interface with Trinket Tinker.
 
 ## Custom Trigger Action in Ability Action
 
@@ -20,7 +20,7 @@ Once again, [BroadcastAction](4.z.101-BroadcastAction.md) do not benefit from th
 ## Trigger Action
 
 The action `mushymato.TrinketTinker_ProcTrinket <trinket id>` can be run with `TriggerActionManager.TryRunAction` to activate an equipped trinket's `Proc=Trigger` ablities.
-The `TriggerContext` provided to the action will be passed through to any action ran by [Action ability](guide/4.z.100-Action.md). If `TriggerContext.CustomFields` is not null, trinket tinker will fill in the aformentioned custom fields for the `TriggerContext`.
+The `TriggerContext` provided to the action will be passed through to any action ran by [Action ability](4.z.100-Action.md). If `TriggerContext.CustomFields` is not null, trinket tinker will fill in the aformentioned custom fields for the `TriggerContext`.
 
 To ensure CustomFields is not null, call the action like this:
 ```cs
@@ -47,12 +47,23 @@ The following Condition fields get the trinket item as both the Input and Target
 - [Chatter](4.z.201-Chatter.md)
     - `Condition`
 
+Other cases of Condition either do not provide this, or only use something else for Input and Target items (e.g. [Inventory.RequiredItemCondition](5-Inventory.md))
+
 ## Implementing Entirely new Motions/Abilities
 
 While it's possible to do this by hard DLL reference, it's not recommended as implementation details may change at the author's digression.
 
 ## Compatibility
 
-Trinkets are equippped onto the player by appending to `Farmer.trinketItems`, which is a list of trinkets.
+Trinkets are equippped onto the player by appending to `Farmer.trinketItems`, which is a list of trinkets. Normally this list only ever has 1 trinket, but trinket tinker will add indirectly equipped trinkets to the list as well.
+
+These trinkets have mod data set to:
+- `mushymato.TrinketTinker/IndirectEquip` = `"T"`
+    - All indirectly equipped trinkets has this field set.
+- `mushymato.TrinketTinker/HiddenEquip` = `"integer"`, if this trinket is equipped using [mushymato.TrinketTinker_EquipHiddenTrinket](7.2-Actions.md) then this value is the number of days left before the trinket will be
+
+Please leave my 
+
+Special compatiblity is done for `bcmpinc.WearMoreRings`, indirect trinkets will be inserted after trinket 2.
 
 

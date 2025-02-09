@@ -13,13 +13,16 @@ namespace TrinketTinker.Extras;
 
 public sealed class TinkerInventoryMenu : ItemGrabMenu
 {
-    const int TEXT_M = 6;
-    const int TITLE_LM = 16;
-    const int TITLE_TM = 20;
+    private const int TEXT_M = 6;
+    private const int TITLE_LM = 16;
+    private const int TITLE_TM = 20;
+
+    public Action<int>? pageMethod;
 
     public TinkerInventoryMenu(
         int actualCapacity,
         IList<Item> inventory,
+        Action<int>? pageMethod,
         bool reverseGrab,
         bool showReceivingMenu,
         InventoryMenu.highlightThisItem highlightFunction,
@@ -59,6 +62,7 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
             allowExitWithHeldItem
         )
     {
+        this.pageMethod = pageMethod;
         // remake ItemsToGrabMenu with some specific capacity
         int rows =
             (actualCapacity < 9) ? 1
@@ -150,117 +154,154 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
     {
         // compiler went derp
         Action<SpriteBatch> drawMethod = base.draw;
-        if (sourceItem != null)
+        if (sourceItem == null)
         {
-            Vector2 nameSize = Game1.dialogueFont.MeasureString(sourceItem.DisplayName);
-            int sourceItemPosX = ItemsToGrabMenu.xPositionOnScreen - borderWidth - spaceToClearSideBorder + TITLE_LM;
-            int sourceItemPosY =
-                ItemsToGrabMenu.yPositionOnScreen
-                - borderWidth
-                - spaceToClearTopBorder
-                + storageSpaceTopBorderOffset
-                + TITLE_TM;
-            if (drawBG && !Game1.options.showClearBackgrounds)
-            {
-                b.Draw(
-                    Game1.fadeToBlackRect,
-                    new Rectangle(0, 0, Game1.uiViewport.Width, Game1.uiViewport.Height),
-                    Color.Black * 0.5f
-                );
-            }
-            else
-            {
-                b.Draw(
-                    Game1.fadeToBlackRect,
-                    new Rectangle(
-                        sourceItemPosX - TEXT_M,
-                        sourceItemPosY - TEXT_M,
-                        (int)nameSize.X + TEXT_M * 2,
-                        (int)nameSize.Y + TEXT_M * 2
-                    ),
-                    Color.Black * 0.5f
-                );
-            }
-            b.DrawString(Game1.dialogueFont, sourceItem.DisplayName, new(sourceItemPosX, sourceItemPosY), Color.White);
-            sourceItem.drawInMenu(
-                b,
-                new(sourceItemPosX - TEXT_M - Game1.tileSize, sourceItemPosY - Game1.tileSize + nameSize.Y),
-                1f
-            );
-            bool drawBGOrig = drawBG;
-            drawBG = false;
+            // should not happen, but put here just in case
             drawMethod(b);
-            drawBG = drawBGOrig;
+            return;
+        }
+
+        Vector2 nameSize = Game1.dialogueFont.MeasureString(sourceItem.DisplayName);
+        int sourceItemPosX = ItemsToGrabMenu.xPositionOnScreen - borderWidth - spaceToClearSideBorder + TITLE_LM;
+        int sourceItemPosY =
+            ItemsToGrabMenu.yPositionOnScreen
+            - borderWidth
+            - spaceToClearTopBorder
+            + storageSpaceTopBorderOffset
+            + TITLE_TM;
+        if (drawBG && !Game1.options.showClearBackgrounds)
+        {
+            b.Draw(
+                Game1.fadeToBlackRect,
+                new Rectangle(0, 0, Game1.uiViewport.Width, Game1.uiViewport.Height),
+                Color.Black * 0.5f
+            );
         }
         else
         {
-            drawMethod(b);
+            b.Draw(
+                Game1.fadeToBlackRect,
+                new Rectangle(
+                    sourceItemPosX - TEXT_M,
+                    sourceItemPosY - TEXT_M,
+                    (int)nameSize.X + TEXT_M * 2,
+                    (int)nameSize.Y + TEXT_M * 2
+                ),
+                Color.Black * 0.5f
+            );
         }
+        b.DrawString(Game1.dialogueFont, sourceItem.DisplayName, new(sourceItemPosX, sourceItemPosY), Color.White);
+        sourceItem.drawInMenu(
+            b,
+            new(sourceItemPosX - TEXT_M - Game1.tileSize, sourceItemPosY - Game1.tileSize + nameSize.Y),
+            1f
+        );
+
+        bool drawBGOrig = drawBG;
+        drawBG = false;
+        drawMethod(b);
+        drawBG = drawBGOrig;
     }
 }
 
 /// <summary>Handler for inventory, does not use mutext (yet) because each trinket has a unique global inventory</summary>
 internal sealed class GlobalInventoryHandler
 {
-    internal record GlobalInventoryHandlerInfo
-
-    /// <summary>Global inventory for this trinket</summary>
-    private readonly Inventory trinketInv;
-    private TrinketTinkerEffect effect;
-    private TinkerInventoryData data;
-    private string inventoryId;
-
-    /// <summary>Current page, if this handler is not paged, this value is -1</summary>
-    private int page;
-    internal List<Trinket>? pagedTrinkets = null;
-
-    internal GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerInventoryData data, string inventoryId)
+    /// <summary>
+    /// Holds info about the current inventory
+    /// </summary>
+    /// <param name="Effect"></param>
+    /// <param name="Data"></param>
+    /// <param name="FullInventoryId"></param>
+    internal record GIHInfo(TrinketTinkerEffect Effect, TinkerInventoryData Data, string FullInventoryId)
     {
-        this.effect = effect;
-        this.data = data;
-        this.inventoryId = inventoryId;
-        page = -1;
-        trinketInv = Game1.player.team.GetOrCreateGlobalInventory(inventoryId);
+        internal readonly Inventory TrinketInv = Game1.player.team.GetOrCreateGlobalInventory(FullInventoryId);
     }
 
-    internal GlobalInventoryHandler(Farmer farmer)
-    {
+    /// <summary>Current page</summary>
+    internal readonly bool CanPage = false;
+    private int page = 0;
+    internal readonly List<GIHInfo> pagedInfo;
 
+    private Inventory TrinketInv => pagedInfo[page].TrinketInv;
+    private TrinketTinkerEffect Effect => pagedInfo[page].Effect;
+    private TinkerInventoryData Data => pagedInfo[page].Data;
+    private string FullInventoryId => pagedInfo[page].FullInventoryId;
+
+    internal GlobalInventoryHandler(TrinketTinkerEffect effect, TinkerInventoryData data, string fullInventoryId)
+    {
+        CanPage = false;
+        pagedInfo = [new(effect, data, fullInventoryId)];
     }
 
-
-    internal TinkerInventoryMenu GetMenu()
+    internal GlobalInventoryHandler(Farmer owner)
     {
+        pagedInfo = [];
+        foreach (Trinket trinketItem in owner.trinketItems)
+        {
+            if (trinketItem == null)
+                continue;
+            if (
+                trinketItem.GetEffect() is TrinketTinkerEffect effect
+                && effect.CheckCanOpenInventory(owner)
+                && !effect.HasEquipTrinketAbility
+            )
+            {
+                pagedInfo.Add(new(effect, effect.Data!.Inventory!, effect.FullInventoryId!));
+            }
+        }
+        CanPage = pagedInfo.Count > 1;
+        page = pagedInfo.Count > 0 ? 0 : -1;
+    }
+
+    internal TinkerInventoryMenu? GetMenu()
+    {
+        if (page >= pagedInfo.Count)
+            return null;
         return new TinkerInventoryMenu(
-            data.Capacity,
-            trinketInv,
+            Data.Capacity,
+            TrinketInv,
+            CanPage ? MovePage : null,
             reverseGrab: false,
             showReceivingMenu: true,
             HighlightFunction,
             BehaviorOnItemSelectFunction,
-            inventoryId,
+            FullInventoryId,
             BehaviorOnItemGrab,
             snapToBottom: false,
             canBeExitedWithKey: true,
             playRightClickSound: true,
             allowRightClick: false,
             showOrganizeButton: false,
-            sourceItem: effect.Trinket
+            sourceItem: Effect.Trinket
         );
+    }
+
+    private void MovePage(int count = 1)
+    {
+        int newPage = page + count;
+        if (newPage < 0)
+            page = pagedInfo.Count - 1;
+        else if (newPage >= pagedInfo.Count)
+            page = 0;
+        else
+            page = newPage;
+        TinkerInventoryMenu menu = GetMenu()!;
+        Game1.activeClickableMenu = menu;
     }
 
     private bool HighlightFunction(Item item)
     {
         if (item is Trinket trinket)
         {
-            if (effect.Trinket == trinket)
+            if (Effect.Trinket == trinket)
                 return false;
             if (trinket.GetEffect() is TrinketTinkerEffect otherEffect)
             {
                 if (otherEffect.HasEquipTrinketAbility)
                     return false;
                 if (
-                    effect.HasEquipTrinketAbility
+                    Effect.HasEquipTrinketAbility
                     && (
                         trinket
                             .GetTrinketData()
@@ -274,15 +315,15 @@ internal sealed class GlobalInventoryHandler
                     return false;
             }
         }
-        else if (effect.HasEquipTrinketAbility)
+        else if (Effect.HasEquipTrinketAbility)
         {
             return false;
         }
-        if (data.RequiredTags != null && !Places.CheckContextTagFilter(item, data.RequiredTags))
+        if (Data.RequiredTags != null && !Places.CheckContextTagFilter(item, Data.RequiredTags))
             return false;
         if (
-            data.RequiredItemCondition != null
-            && !GameStateQuery.CheckConditions(data.RequiredItemCondition, inputItem: item, targetItem: item)
+            Data.RequiredItemCondition != null
+            && !GameStateQuery.CheckConditions(Data.RequiredItemCondition, inputItem: item, targetItem: item)
         )
             return false;
         return true;
@@ -291,21 +332,21 @@ internal sealed class GlobalInventoryHandler
     internal Item? AddItem(Item item)
     {
         item.resetState();
-        trinketInv.RemoveEmptySlots();
-        for (int i = 0; i < trinketInv.Count; i++)
+        TrinketInv.RemoveEmptySlots();
+        for (int i = 0; i < TrinketInv.Count; i++)
         {
-            if (trinketInv[i] != null && trinketInv[i].canStackWith(item))
+            if (TrinketInv[i] != null && TrinketInv[i].canStackWith(item))
             {
-                int amount = item.Stack - trinketInv[i].addToStack(item);
+                int amount = item.Stack - TrinketInv[i].addToStack(item);
                 if (item.ConsumeStack(amount) == null)
                 {
                     return null;
                 }
             }
         }
-        if (trinketInv.Count < data.Capacity)
+        if (TrinketInv.Count < Data.Capacity)
         {
-            trinketInv.Add(item);
+            TrinketInv.Add(item);
             return null;
         }
         return item;
@@ -326,12 +367,12 @@ internal sealed class GlobalInventoryHandler
         {
             item2 = who.addItemToInventory(item2);
         }
-        trinketInv.RemoveEmptySlots();
+        TrinketInv.RemoveEmptySlots();
         int num =
             (Game1.activeClickableMenu.currentlySnappedComponent != null)
                 ? Game1.activeClickableMenu.currentlySnappedComponent.myID
                 : (-1);
-        TinkerInventoryMenu menu = GetMenu();
+        TinkerInventoryMenu menu = GetMenu()!;
         Game1.activeClickableMenu = menu;
         menu.heldItem = item2;
         if (num != -1)
@@ -346,8 +387,8 @@ internal sealed class GlobalInventoryHandler
     {
         if (who.couldInventoryAcceptThisItem(item))
         {
-            trinketInv.Remove(item);
-            trinketInv.RemoveEmptySlots();
+            TrinketInv.Remove(item);
+            TrinketInv.RemoveEmptySlots();
             Game1.activeClickableMenu = GetMenu();
         }
     }
@@ -450,13 +491,13 @@ internal sealed class GlobalInventoryHandler
             case "(O)GoldCoin":
                 return true;
             default:
-                trinketInv.RemoveEmptySlots();
-                if (trinketInv.Count < data.Capacity)
+                TrinketInv.RemoveEmptySlots();
+                if (TrinketInv.Count < Data.Capacity)
                     return true;
-                for (int i = 0; i < data.Capacity; i++)
+                for (int i = 0; i < Data.Capacity; i++)
                 {
                     if (
-                        trinketInv[i] is Item stored
+                        TrinketInv[i] is Item stored
                         && stored.canStackWith(item)
                         && stored.Stack + item.Stack < stored.maximumStackSize()
                     )

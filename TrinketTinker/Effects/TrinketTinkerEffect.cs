@@ -157,8 +157,17 @@ public class TrinketTinkerEffect : TrinketEffect
         }
     }
 
-    internal bool CheckEnabled(Farmer farmer) =>
-        GameStateQuery.CheckConditions(Data?.EnableCondition, player: farmer, inputItem: Trinket, targetItem: Trinket);
+    internal bool CheckEnabled(Farmer owner) =>
+        GameStateQuery.CheckConditions(Data?.EnableCondition, player: owner, inputItem: Trinket, targetItem: Trinket);
+
+    internal bool CheckCanOpenInventory(Farmer owner) =>
+        Data?.Inventory != null
+        && GameStateQuery.CheckConditions(
+            Data.Inventory.OpenCondition,
+            player: owner,
+            inputItem: Trinket,
+            targetItem: Trinket
+        );
 
     /// <summary>Check if this trinket has an equip ability</summary>
     internal bool HasEquipTrinketAbility => Abilities.Any((ab) => ab is EquipTrinketAbility);
@@ -429,11 +438,11 @@ public class TrinketTinkerEffect : TrinketEffect
             !Enabled
             || Companion is not TrinketTinkerCompanion
             || Game1.activeClickableMenu != null
-            || farmer.UsingTool && farmer.usingSlingshot
+            || farmer.UsingTool
+            || farmer.usingSlingshot
         )
             return;
-        Rectangle farmerBounds = farmer.GetBoundingBox();
-        if (Game1.didPlayerJustRightClick() && farmer.GetBoundingBox().Intersects(CompanionBoundingBox))
+        if (ModEntry.Config.DoInteractKey.JustPressed() && farmer.GetBoundingBox().Intersects(CompanionBoundingBox))
         {
             EventInteract?.Invoke(this, new(ProcOn.Interact, farmer));
         }
@@ -488,7 +497,9 @@ public class TrinketTinkerEffect : TrinketEffect
         {
             if (conditions.Count <= result)
                 return count;
-            if (!GameStateQuery.CheckConditions(conditions[result], null, null, inputItem: trinket, targetItem: trinket))
+            if (
+                !GameStateQuery.CheckConditions(conditions[result], null, null, inputItem: trinket, targetItem: trinket)
+            )
                 return result + 1;
         }
         return 1;

@@ -15,11 +15,6 @@ using TrinketTinker.Wheels;
 
 namespace TrinketTinker;
 
-internal sealed class ModConfig
-{
-    public bool DrawDebugMode { get; set; } = false;
-}
-
 internal sealed class ModEntry : Mod
 {
 #if DEBUG
@@ -97,6 +92,7 @@ internal sealed class ModEntry : Mod
         GameItemQuery.Register();
         // Check for WearMoreRings, which adds a 2nd trinket slot
         HasWearMoreRings = Helper.ModRegistry.IsLoaded("bcmpinc.WearMoreRings");
+        Config.Register(Helper, ModManifest);
     }
 
     private static void OnAssetRequested(object? sender, AssetRequestedEventArgs e)
@@ -131,6 +127,23 @@ internal sealed class ModEntry : Mod
 
     private void OnButtonsChanged(object? sender, ButtonsChangedEventArgs e)
     {
+        if (Game1.activeClickableMenu == null && Config.OpenTinkerInventoryKey.JustPressed())
+        {
+            GlobalInventoryHandler pagedInvHandler = new(Game1.player);
+            if (pagedInvHandler.pagedInfo.Count > 0)
+            {
+                Game1.activeClickableMenu = pagedInvHandler.GetMenu();
+            }
+            return;
+        }
+        if (Game1.activeClickableMenu is TinkerInventoryMenu menu && menu.pageMethod != null)
+        {
+            if (Config.TinkerInventoryNextKey.JustPressed())
+                menu.pageMethod(1);
+            else if (Config.TinkerInventoryPrevKey.JustPressed())
+                menu.pageMethod(-1);
+            return;
+        }
         foreach (Trinket trinketItem in Game1.player.trinketItems)
         {
             if (trinketItem != null && trinketItem.GetEffect() is TrinketTinkerEffect effect)
@@ -248,7 +261,6 @@ internal sealed class ModEntry : Mod
     {
         if (!Context.IsWorldReady)
             return;
-        // first pass, equip ability trinkets
         foreach (Trinket trinketItem in Game1.player.trinketItems)
         {
             if (trinketItem == null)
