@@ -28,7 +28,7 @@
               "Texture": "{{ModId}}/opossum",
               "TextureExtra": "{{ModId}}/opossum-2",
               "Width": 32,
-              "Height": 18,
+              "Height": 32,
               "ShadowScale": 0
             },
           ],
@@ -42,7 +42,7 @@
           },
           "Motion": {
             "MotionClass": "Lerp",
-            "DirectionMode": "R",
+            "DirectionMode": "DRUL",
             "FrameLength": 4,
             "AnimClips": {
               "Idle": {
@@ -72,7 +72,7 @@
                 "ProcTimer": 500,
                 "ProcSound": "harvest",
                 "Args": {
-                  "Range": 0,
+                  "Range": 1,
                   "HarvestTo": "TinkerInventory"
                 },
               },
@@ -82,7 +82,8 @@
                 "ProcTimer": 500,
                 "ProcSound": "harvest",
                 "Args": {
-                  "Range": 0,
+                  "Range": 1,
+                  "HarvestTo": "TinkerInventory"
                 },
               },
               {
