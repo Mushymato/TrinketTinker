@@ -14,6 +14,9 @@
 - Add 2 new GSQ please see docs
     - `mushymato.TrinketTinker_IN_ALT_VARIANT <Input|Target> <itemId> <item count compare>`
     - `mushymato.TrinketTinker_TRINKET_HAS_ITEM <Input|Target> <itemId> <item count compare>`
+- Add 1 new Item Query for specific usage
+    - `mushymato.TrinketTinker_HIRE_TRINKET <trinketId>`
+- Allow Proc Always to respect Condition
 
 ### 1.5.0-beta.2
 
