@@ -12,6 +12,7 @@ workfiles/
 
 _site/
 docs/
+guide/toc.yml
 api/
 dfx*
 templates/
