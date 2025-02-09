@@ -45,6 +45,20 @@
             "DirectionMode": "DRUL",
             "FrameLength": 4,
             "AnimClips": {
+              "Idle.4": {
+                "FrameStart": 3,
+                "FrameLength": 3,
+                "Interval": 200,
+                "LoopMode": "PingPong",
+                "UseExtra": true
+              },
+              "Idle.3": {
+                "FrameStart": 3,
+                "FrameLength": 3,
+                "Interval": 200,
+                "LoopMode": "PingPong",
+                "UseExtra": true
+              },
               "Idle": {
                 "FrameStart": 0,
                 "FrameLength": 3,
