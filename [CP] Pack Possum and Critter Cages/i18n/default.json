@@ -10,7 +10,7 @@
   "Opossum.DisplayName.OneWeek": " (1 Week)",
   "Opossum.Description": "Marlon introduced me to a skilled and resourceful opossum, she's working hard for her 36 children.",
   // Chatter
-  "Opossum.Chatter.0": "Hello! I'm the Pack Possum. I'll shake things and collect dropped items for you, and carry your stuff.#$b#You can open my pack with the \"Open Tinker Inventory\" key。(default RightAlt & OemPeriod, or LeftStick & ControllerX, set via TrinketTinker's GMCM)#$b#If you forgot to take your things before I leave, don't fret! They will be safely delivered to the lost and found.",
+  "Opossum.Chatter.0": "Hello! I'm the Pack Possum. I'll shake trees and bushes, collect forage, and carry your stuff.#$b#You can open my pack with the \"Open Tinker Inventory\" key。(default RightAlt & OemPeriod, or LeftStick & ControllerX, set via TrinketTinker's GMCM)#$b#If you forgot to take your things before I leave, don't fret! They will be safely delivered to the lost and found.",
   // Config
   "config.EarlyTrinketSlot.name": "Early Trinket Slot",
   "config.EarlyTrinketSlot.description": "Enable trinket slot early, which also make trinkets drop from monsters early. This option takes 1 save/load to change, and if you forgot your trinket, it takes another day before it will appear in the lost and found.",
