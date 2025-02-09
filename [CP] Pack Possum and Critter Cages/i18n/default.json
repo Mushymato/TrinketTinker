@@ -8,9 +8,17 @@
   "Opossum.DisplayName": "Pack Possum for Hire",
   "Opossum.DisplayName.OneDay": " (1 Day)",
   "Opossum.DisplayName.OneWeek": " (1 Week)",
+  "Opossum.DisplayName.OneSeason": " (1 Season)",
   "Opossum.Description": "Marlon introduced me to a skilled and resourceful opossum, she's working hard for her 36 children.",
   // Chatter
-  "Opossum.Chatter.0": "Hello! I'm the Pack Possum. I'll shake trees and bushes, collect forage, and carry your stuff.#$b#You can open my pack with the \"Open Tinker Inventory\" key。(default RightAlt & OemPeriod, or LeftStick & ControllerX, set via TrinketTinker's GMCM)#$b#If you forgot to take your things before I leave, don't fret! They will be safely delivered to the lost and found.",
+  "Opossum.Chatter.0.0": "Hello! I'm the Pack Possum. I'll shake trees and bushes, collect forage, and carry your stuff.",
+  "Opossum.Chatter.0.1": "You can open my pack with the \"Open Tinker Inventory\" key. (default RightAlt & OemPeriod, or LeftStick & ControllerX, set via TrinketTinker's GMCM)",
+  "Opossum.Chatter.0.2": "You can also talk to me with the \"Do Interaction\" button, though I'm not very talktive. (default LeftAlt & MouseRight, or LeftStick & ControllerA, set via TrinketTinker's GMCM)",
+  "Opossum.Chatter.0.3": "If you forgot to take your things before I leave, don't fret! They will be safely delivered to the lost and found.",
+  "Opossum.Chatter.1": "Lovely day isn't it?",
+  "Opossum.Chatter.2": "Had any good eats?",
+  "Opossum.Chatter.3": "Don't forget your things ${lad^lass^duck}$.",
+  "Opossum.Chatter.4": "Your grandpa was a good man, hired me a few times.",
   // Config
   "config.EarlyTrinketSlot.name": "Early Trinket Slot",
   "config.EarlyTrinketSlot.description": "Enable trinket slot early, which also make trinkets drop from monsters early. This option takes 1 save/load to change, and if you forgot your trinket, it takes another day before it will appear in the lost and found.",

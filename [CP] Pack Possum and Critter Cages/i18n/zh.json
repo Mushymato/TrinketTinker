@@ -8,9 +8,17 @@
   "Opossum.DisplayName": "雇佣负重鼠",
   "Opossum.DisplayName.OneDay": "（一日）",
   "Opossum.DisplayName.OneWeek": "（一周）",
+  "Opossum.DisplayName.OneSeason": "（一季）",
   "Opossum.Description": "马龙向我介绍了一位老练并且机智的负鼠，她正在为她的36个孩子努力工作。",
   // Chatter
-  "Opossum.Chatter.0": "你好！我是负重鼠。我会帮你摇晃树木和灌木，收集觅食物品，并帮你背东西。#$b#你可以用\"打开Tinker背包\"键打开我的背包。\n（默认RightAlt & OemPeriod，LeftStick & ControllerX，可以通过TrinketTinker的GMCM设置$b#$如果你忘记在我离开前拿走您的物品，请不要担心！它们将被安全地送到失物招领处。",
+  "Opossum.Chatter.0.0": "你好！我是负重鼠。我会帮你摇晃树木和灌木，收集觅食物品，并帮你背东西。",
+  "Opossum.Chatter.0.1": "你可以用\"打开Tinker背包\"键打开我的背包。\n（默认RightAlt & OemPeriod，LeftStick & ControllerX，可以通过TrinketTinker的GMCM设置）",
+  "Opossum.Chatter.0.2": "你可以用\"互动\"键打跟我对话，虽然我没啥好说的。\n（默认LeftAlt & MouseRight，or LeftStick & ControllerA，可以通过TrinketTinker的GMCM设置）",
+  "Opossum.Chatter.0.3": "如果你忘记在我离开前拿走您的物品，请不要担心！它们将被安全地送到失物招领处。",
+  "Opossum.Chatter.1": "真是美好的一天。",
+  "Opossum.Chatter.2": "吃了吗？",
+  "Opossum.Chatter.3": "别忘了你的东西。",
+  "Opossum.Chatter.4": "你爷爷是个好人，雇用过我几次。",
   // Config
   "config.EarlyTrinketSlot.name": "提早解锁饰品槽",
   "config.EarlyTrinketSlot.description": "提前解锁饰品槽，同时会使饰品提前掉落。此选项需要1次保存/加载才能更改。如果你忘记摘下饰品，再过一天它就会出现在失物招领处。",

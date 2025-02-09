@@ -44,9 +44,29 @@
     },
     // Pack Possum
     {
-      // Iridium
       "Action": "Include",
       "FromFile": "data/opossum.json",
+    },
+    {
+      "Action": "Include",
+      "FromFile": "data/opossum-hire.json",
+      "LocalTokens": {
+        "L@Vendor": "AdventureShop",
+      }
+    },
+    {
+      "Action": "Include",
+      "FromFile": "data/opossum-hire.json",
+      "LocalTokens": {
+        "L@Vendor": "Dwarf",
+      }
+    },
+    {
+      "Action": "Include",
+      "FromFile": "data/opossum-hire.json",
+      "LocalTokens": {
+        "L@Vendor": "VolcanoShop",
+      }
     },
     // trinket slot cheat
     {

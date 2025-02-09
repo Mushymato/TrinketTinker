@@ -1,0 +1,57 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "LogName": "Opossum: Hire ({{L@Vendor}})",
+      "Action": "EditData",
+      "Target": "Data/Shops",
+      "TargetField": [
+        "{{L@Vendor}}",
+        "Items"
+      ],
+      "Entries": {
+        "{{ModId}}_Opossum_OneDay_Tutorial": {
+          "Id": "{{ModId}}_Opossum_OneDay_Tutorial",
+          "ItemId": "mushymato.TrinketTinker_HIRE_TRINKET {{ModId}}_Opossum",
+          "Price": 3000,
+          "ObjectDisplayName": "[LocalizedText {{ModId}}/i18n:Opossum.DisplayName][LocalizedText {{ModId}}/i18n:Opossum.DisplayName.OneDay]",
+          "Condition": "!PLAYER_HAS_MAIL Current {{ModId}}_Opossum_hired, !PLAYER_HAS_TRINKET Current {{ModId}}_Opossum",
+          "ActionsOnPurchase": [
+            "mushymato.TrinketTinker_EquipHiddenTrinket {{ModId}}_Opossum 0 0 1",
+            "AddMail Current {{ModId}}_Opossum_hired now",
+          ]
+        },
+        "{{ModId}}_Opossum_OneDay": {
+          "Id": "{{ModId}}_Opossum_OneDay",
+          "ItemId": "mushymato.TrinketTinker_HIRE_TRINKET {{ModId}}_Opossum",
+          "Price": 3000,
+          "ObjectDisplayName": "[LocalizedText {{ModId}}/i18n:Opossum.DisplayName][LocalizedText {{ModId}}/i18n:Opossum.DisplayName.OneDay]",
+          "Condition": "PLAYER_HAS_MAIL Current {{ModId}}_Opossum_hired, !PLAYER_HAS_TRINKET Current {{ModId}}_Opossum",
+          "ActionsOnPurchase": [
+            "mushymato.TrinketTinker_EquipHiddenTrinket {{ModId}}_Opossum 0 0 1"
+          ]
+        },
+        "{{ModId}}_Opossum_OneWeek": {
+          "Id": "{{ModId}}_Opossum_OneWeek",
+          "ItemId": "mushymato.TrinketTinker_HIRE_TRINKET {{ModId}}_Opossum",
+          "Price": 15000,
+          "ObjectDisplayName": "[LocalizedText {{ModId}}/i18n:Opossum.DisplayName][LocalizedText {{ModId}}/i18n:Opossum.DisplayName.OneWeek]",
+          "Condition": "PLAYER_HAS_MAIL Current {{ModId}}_Opossum_hired, !PLAYER_HAS_TRINKET Current {{ModId}}_Opossum",
+          "ActionsOnPurchase": [
+            "mushymato.TrinketTinker_EquipHiddenTrinket {{ModId}}_Opossum 0 0 7"
+          ]
+        },
+        "{{ModId}}_Opossum_OneSeason": {
+          "Id": "{{ModId}}_Opossum_OneSeason",
+          "ItemId": "mushymato.TrinketTinker_HIRE_TRINKET {{ModId}}_Opossum",
+          "Price": 50000,
+          "ObjectDisplayName": "[LocalizedText {{ModId}}/i18n:Opossum.DisplayName][LocalizedText {{ModId}}/i18n:Opossum.DisplayName.OneSeason]",
+          "Condition": "PLAYER_HAS_MAIL Current {{ModId}}_Opossum_hired, !PLAYER_HAS_TRINKET Current {{ModId}}_Opossum",
+          "ActionsOnPurchase": [
+            "mushymato.TrinketTinker_EquipHiddenTrinket {{ModId}}_Opossum 0 0 28"
+          ]
+        }
+      }
+    }
+  ]
+}
