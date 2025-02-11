@@ -13,7 +13,7 @@
 
 #### Fixed
 
-- Crash saving with more than 10 trinkets equipped
+- Crash on saving with more than 10 trinkets equipped
 - Duplicating vanilla trinket companions
 
 #### Changed

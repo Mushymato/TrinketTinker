@@ -33,9 +33,6 @@ public static class EquipTrinket
     /// <summary>When resizing trinketItems, do not reapply <seealso cref="Effects.Abilities.EquipTrinketAbility"/> </summary>
     internal static bool Resizing = false;
 
-    /// <summary>When resizing trinketItems, do not reapply <seealso cref="Effects.Abilities.EquipTrinketAbility"/> </summary>
-    internal static bool IsSaving = false;
-
     private static void ResizeTrinketItems(TrinketList trinketItems, int capacity)
     {
         ModEntry.Log($"ResizeTrinketItems {trinketItems.Capacity} => {capacity}");
