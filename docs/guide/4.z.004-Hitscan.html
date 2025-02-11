@@ -88,7 +88,6 @@
 <h1 id="hitscan">Hitscan</h1>
 
 <p>Do damage to a monster within range, can roll criticals, explode, and apply stun/knockback.</p>
-<p><em>Note:</em> <code>ProcTAS</code> has special behavior with Hitscan, it appears on the targeted enemy rather than the companion.</p>
 <h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.DamageArgs.html">Args</a></h2>
 <table>
 <thead>
@@ -155,10 +154,22 @@
 <td>Show this <a href="6-Temporary%20Animated%20Sprite.html">temporary animated sprite</a> while the enemy is stunned, calculate loop from stun time instead of loop value set in the TAS asset. When used with <a href="4.z.005-Projectile.html">Projectile</a>, the TAS's rotation is also overwritten with the projectile's rotation.</td>
 </tr>
 <tr>
+<td><code>HitTAS</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>Show this <a href="6-Temporary%20Animated%20Sprite.html">temporary animated sprite</a> on hit. When used with <a href="4.z.005-Projectile.html">Projectile</a>, the TAS's rotation is also overwritten with the projectile's rotation.</td>
+</tr>
+<tr>
 <td><code>Hits</code></td>
 <td>int</td>
 <td>0</td>
-<td>Number of hits to apply at once, monster will only get iframes after the final hit.</td>
+<td>Number of hits to apply at once (or with a delay), monsters do not get iframes from extra hits.</td>
+</tr>
+<tr>
+<td><code>HitsDelay</code></td>
+<td>int</td>
+<td>0</td>
+<td>Delay between hits, does nothing if Hits=0.</td>
 </tr>
 <tr>
 <td><code>ExplodeRadius</code></td>

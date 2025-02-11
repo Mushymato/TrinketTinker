@@ -375,6 +375,23 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.BaseLerpMotion(Of IArgs).GetRotation
   nameWithType: BaseLerpMotion<IArgs>.GetRotation
   nameWithType.vb: BaseLerpMotion(Of IArgs).GetRotation
+- uid: TrinketTinker.Companions.Motions.BaseLerpMotion`1.IsMoving
+  name: IsMoving()
+  href: api/TrinketTinker.Companions.Motions.BaseLerpMotion-1.html#TrinketTinker_Companions_Motions_BaseLerpMotion_1_IsMoving
+  commentId: M:TrinketTinker.Companions.Motions.BaseLerpMotion`1.IsMoving
+  fullName: TrinketTinker.Companions.Motions.BaseLerpMotion<IArgs>.IsMoving()
+  fullName.vb: TrinketTinker.Companions.Motions.BaseLerpMotion(Of IArgs).IsMoving()
+  nameWithType: BaseLerpMotion<IArgs>.IsMoving()
+  nameWithType.vb: BaseLerpMotion(Of IArgs).IsMoving()
+- uid: TrinketTinker.Companions.Motions.BaseLerpMotion`1.IsMoving*
+  name: IsMoving
+  href: api/TrinketTinker.Companions.Motions.BaseLerpMotion-1.html#TrinketTinker_Companions_Motions_BaseLerpMotion_1_IsMoving_
+  commentId: Overload:TrinketTinker.Companions.Motions.BaseLerpMotion`1.IsMoving
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.BaseLerpMotion<IArgs>.IsMoving
+  fullName.vb: TrinketTinker.Companions.Motions.BaseLerpMotion(Of IArgs).IsMoving
+  nameWithType: BaseLerpMotion<IArgs>.IsMoving
+  nameWithType.vb: BaseLerpMotion(Of IArgs).IsMoving
 - uid: TrinketTinker.Companions.Motions.BaseLerpMotion`1.Lerp
   name: Lerp
   href: api/TrinketTinker.Companions.Motions.BaseLerpMotion-1.html#TrinketTinker_Companions_Motions_BaseLerpMotion_1_Lerp
@@ -506,6 +523,23 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.BaseStaticMotion(Of IArgs).GetRotation
   nameWithType: BaseStaticMotion<IArgs>.GetRotation
   nameWithType.vb: BaseStaticMotion(Of IArgs).GetRotation
+- uid: TrinketTinker.Companions.Motions.BaseStaticMotion`1.IsMoving
+  name: IsMoving()
+  href: api/TrinketTinker.Companions.Motions.BaseStaticMotion-1.html#TrinketTinker_Companions_Motions_BaseStaticMotion_1_IsMoving
+  commentId: M:TrinketTinker.Companions.Motions.BaseStaticMotion`1.IsMoving
+  fullName: TrinketTinker.Companions.Motions.BaseStaticMotion<IArgs>.IsMoving()
+  fullName.vb: TrinketTinker.Companions.Motions.BaseStaticMotion(Of IArgs).IsMoving()
+  nameWithType: BaseStaticMotion<IArgs>.IsMoving()
+  nameWithType.vb: BaseStaticMotion(Of IArgs).IsMoving()
+- uid: TrinketTinker.Companions.Motions.BaseStaticMotion`1.IsMoving*
+  name: IsMoving
+  href: api/TrinketTinker.Companions.Motions.BaseStaticMotion-1.html#TrinketTinker_Companions_Motions_BaseStaticMotion_1_IsMoving_
+  commentId: Overload:TrinketTinker.Companions.Motions.BaseStaticMotion`1.IsMoving
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.BaseStaticMotion<IArgs>.IsMoving
+  fullName.vb: TrinketTinker.Companions.Motions.BaseStaticMotion(Of IArgs).IsMoving
+  nameWithType: BaseStaticMotion<IArgs>.IsMoving
+  nameWithType.vb: BaseStaticMotion(Of IArgs).IsMoving
 - uid: TrinketTinker.Companions.Motions.BaseStaticMotion`1.UpdateDirection
   name: UpdateDirection()
   href: api/TrinketTinker.Companions.Motions.BaseStaticMotion-1.html#TrinketTinker_Companions_Motions_BaseStaticMotion_1_UpdateDirection
@@ -3263,19 +3297,6 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.Abilities.HitscanAbility.ApplyEffect
   nameWithType: HitscanAbility.ApplyEffect
-- uid: TrinketTinker.Effects.Abilities.HitscanAbility.GetTASPosition(TrinketTinker.Effects.Support.ProcEventArgs)
-  name: GetTASPosition(ProcEventArgs)
-  href: api/TrinketTinker.Effects.Abilities.HitscanAbility.html#TrinketTinker_Effects_Abilities_HitscanAbility_GetTASPosition_TrinketTinker_Effects_Support_ProcEventArgs_
-  commentId: M:TrinketTinker.Effects.Abilities.HitscanAbility.GetTASPosition(TrinketTinker.Effects.Support.ProcEventArgs)
-  fullName: TrinketTinker.Effects.Abilities.HitscanAbility.GetTASPosition(TrinketTinker.Effects.Support.ProcEventArgs)
-  nameWithType: HitscanAbility.GetTASPosition(ProcEventArgs)
-- uid: TrinketTinker.Effects.Abilities.HitscanAbility.GetTASPosition*
-  name: GetTASPosition
-  href: api/TrinketTinker.Effects.Abilities.HitscanAbility.html#TrinketTinker_Effects_Abilities_HitscanAbility_GetTASPosition_
-  commentId: Overload:TrinketTinker.Effects.Abilities.HitscanAbility.GetTASPosition
-  isSpec: "True"
-  fullName: TrinketTinker.Effects.Abilities.HitscanAbility.GetTASPosition
-  nameWithType: HitscanAbility.GetTASPosition
 - uid: TrinketTinker.Effects.Abilities.HoeDirtAbility
   name: HoeDirtAbility
   href: api/TrinketTinker.Effects.Abilities.HoeDirtAbility.html
@@ -5481,6 +5502,19 @@ references:
   commentId: F:TrinketTinker.Models.AbilityArgs.DamageArgs.Filters
   fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.Filters
   nameWithType: DamageArgs.Filters
+- uid: TrinketTinker.Models.AbilityArgs.DamageArgs.HitTAS
+  name: HitTAS
+  href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_HitTAS
+  commentId: P:TrinketTinker.Models.AbilityArgs.DamageArgs.HitTAS
+  fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.HitTAS
+  nameWithType: DamageArgs.HitTAS
+- uid: TrinketTinker.Models.AbilityArgs.DamageArgs.HitTAS*
+  name: HitTAS
+  href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_HitTAS_
+  commentId: Overload:TrinketTinker.Models.AbilityArgs.DamageArgs.HitTAS
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.HitTAS
+  nameWithType: DamageArgs.HitTAS
 - uid: TrinketTinker.Models.AbilityArgs.DamageArgs.Hits
   name: Hits
   href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_Hits
@@ -5494,6 +5528,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.Hits
   nameWithType: DamageArgs.Hits
+- uid: TrinketTinker.Models.AbilityArgs.DamageArgs.HitsDelay
+  name: HitsDelay
+  href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_HitsDelay
+  commentId: P:TrinketTinker.Models.AbilityArgs.DamageArgs.HitsDelay
+  fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.HitsDelay
+  nameWithType: DamageArgs.HitsDelay
+- uid: TrinketTinker.Models.AbilityArgs.DamageArgs.HitsDelay*
+  name: HitsDelay
+  href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_HitsDelay_
+  commentId: Overload:TrinketTinker.Models.AbilityArgs.DamageArgs.HitsDelay
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.HitsDelay
+  nameWithType: DamageArgs.HitsDelay
 - uid: TrinketTinker.Models.AbilityArgs.DamageArgs.Knockback
   name: Knockback
   href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_Knockback

@@ -168,7 +168,7 @@ Class DamageArgs  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="TrinketTinker_Models_AbilityArgs_DamageArgs_Filters" data-uid="TrinketTinker.Models.AbilityArgs.DamageArgs.Filters">
   Filters
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/DamageArgs.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/DamageArgs.cs/#L64"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>List of monster types to avoid targeting.</p>
@@ -268,7 +268,7 @@ Class DamageArgs  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="TrinketTinker_Models_AbilityArgs_DamageArgs_ExplodeRadius" data-uid="TrinketTinker.Models.AbilityArgs.DamageArgs.ExplodeRadius">
   ExplodeRadius
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/DamageArgs.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/DamageArgs.cs/#L61"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>If this is non-zero, generate a explosion on hit.
@@ -298,11 +298,44 @@ Might damage another monster, but the monster that got hit would be in iframe at
 
 
 
+  <a id="TrinketTinker_Models_AbilityArgs_DamageArgs_HitTAS_" data-uid="TrinketTinker.Models.AbilityArgs.DamageArgs.HitTAS*"></a>
+
+  <h3 id="TrinketTinker_Models_AbilityArgs_DamageArgs_HitTAS" data-uid="TrinketTinker.Models.AbilityArgs.DamageArgs.HitTAS">
+  HitTAS
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/DamageArgs.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Temporary sprite to display on hit, must be defined in mushymato.TrinketTinker/TAS.
+Rotation will be overwritten if this is used for a projectile.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? HitTAS { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Models_AbilityArgs_DamageArgs_Hits_" data-uid="TrinketTinker.Models.AbilityArgs.DamageArgs.Hits*"></a>
 
   <h3 id="TrinketTinker_Models_AbilityArgs_DamageArgs_Hits" data-uid="TrinketTinker.Models.AbilityArgs.DamageArgs.Hits">
   Hits
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/DamageArgs.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/DamageArgs.cs/#L51"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Number of hits to perform</p>
@@ -311,6 +344,38 @@ Might damage another monster, but the monster that got hit would be in iframe at
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int Hits { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Models_AbilityArgs_DamageArgs_HitsDelay_" data-uid="TrinketTinker.Models.AbilityArgs.DamageArgs.HitsDelay*"></a>
+
+  <h3 id="TrinketTinker_Models_AbilityArgs_DamageArgs_HitsDelay" data-uid="TrinketTinker.Models.AbilityArgs.DamageArgs.HitsDelay">
+  HitsDelay
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/DamageArgs.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Delay between hits</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int HitsDelay { get; set; }</code></pre>
   </div>
 
 
@@ -564,7 +629,7 @@ Rotation will be overwritten if this is used for a projectile.</p>
 
   <h3 id="TrinketTinker_Models_AbilityArgs_DamageArgs_DamageMonster_TrinketTinker_Effects_Support_ProcEventArgs_StardewValley_Monsters_Monster_" data-uid="TrinketTinker.Models.AbilityArgs.DamageArgs.DamageMonster(TrinketTinker.Effects.Support.ProcEventArgs,StardewValley.Monsters.Monster)">
   DamageMonster(ProcEventArgs, Monster)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/DamageArgs.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/DamageArgs.cs/#L83"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Do damage and debuff on monster.</p>
@@ -598,7 +663,7 @@ Rotation will be overwritten if this is used for a projectile.</p>
 
   <h3 id="TrinketTinker_Models_AbilityArgs_DamageArgs_Validate" data-uid="TrinketTinker.Models.AbilityArgs.DamageArgs.Validate">
   Validate()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/DamageArgs.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/DamageArgs.cs/#L67"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if the given arguments are valid, potentially modify arguments to ensure they are valid</p>
