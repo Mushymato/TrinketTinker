@@ -43,7 +43,8 @@ public static class EquipTrinket
 
     private static void AddTrinket(TrinketList trinketItems, Trinket trinket)
     {
-        while (ModEntry.HasWearMoreRings && trinketItems.Count < 2)
+        int skipTo = ModEntry.HasWearMoreRings ? 2 : 1;
+        while (trinketItems.Count < skipTo)
             trinketItems.Add(null!);
         if (trinketItems.Capacity <= trinketItems.Count)
         {
