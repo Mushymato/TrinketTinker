@@ -27,8 +27,10 @@ public sealed class TinkerProjectile : Projectile
     internal readonly NetFloat critMultiplier = new(0f);
     internal readonly NetInt stunTime = new(0);
     internal readonly NetInt hits = new(0);
+    internal readonly NetInt hitsDelay = new(0);
     internal readonly NetInt explodeRadius = new(0);
     internal readonly NetString stunTAS = new(null);
+    internal readonly NetString hitTAS = new(null);
     internal readonly NetBool rotateToTarget = new(false);
     internal readonly NetInt homingRange = new(0);
     internal readonly NetStringList filters = new();
@@ -65,7 +67,9 @@ public sealed class TinkerProjectile : Projectile
         critMultiplier.Value = args.CritDamage;
         stunTime.Value = args.StunTime;
         stunTAS.Value = args.StunTAS;
+        hitTAS.Value = args.HitTAS;
         hits.Value = args.Hits;
+        hitsDelay.Value = args.HitsDelay;
         explodeRadius.Value = args.ExplodeRadius;
 
         if (args.Homing)
@@ -96,7 +100,9 @@ public sealed class TinkerProjectile : Projectile
             .AddField(critMultiplier, "critMultiplier")
             .AddField(stunTime, "stunTime")
             .AddField(stunTAS, "stunTAS")
+            .AddField(hitTAS, "hitTAS")
             .AddField(hits, "hits")
+            .AddField(hitsDelay, "hitsDelay")
             .AddField(explodeRadius, "explodeRadius")
             .AddField(homingRange, "homingRange")
             .AddField(rotateToTarget, "rotateToTarget")
@@ -205,23 +211,52 @@ public sealed class TinkerProjectile : Projectile
 
         if (n is Monster monster)
         {
+            Vector2 pos = monster.GetBoundingBox().Center.ToVector2();
             if (minDamage.Value > 0)
             {
-                for (int i = 1; i < hits.Value; i++)
+                if (hitsDelay.Value == 0)
                 {
-                    location.damageMonster(
-                        areaOfEffect: monster.GetBoundingBox(),
-                        minDamage: minDamage.Value,
-                        maxDamage: maxDamage.Value,
-                        isBomb: false,
-                        knockBackModifier: knockBackModifier.Value,
-                        addedPrecision: addedPrecision.Value,
-                        critChance: critChance.Value,
-                        critMultiplier: critMultiplier.Value,
-                        triggerMonsterInvincibleTimer: false,
-                        who: playerWhoFiredMe,
-                        isProjectile: true
-                    );
+                    for (int i = 1; i < hits.Value; i++)
+                    {
+                        location.damageMonster(
+                            areaOfEffect: monster.GetBoundingBox(),
+                            minDamage: minDamage.Value,
+                            maxDamage: maxDamage.Value,
+                            isBomb: false,
+                            knockBackModifier: knockBackModifier.Value,
+                            addedPrecision: addedPrecision.Value,
+                            critChance: critChance.Value,
+                            critMultiplier: critMultiplier.Value,
+                            triggerMonsterInvincibleTimer: false,
+                            who: playerWhoFiredMe,
+                            isProjectile: true
+                        );
+                    }
+                }
+                else
+                {
+                    for (int i = 1; i < hits.Value; i++)
+                    {
+                        DelayedAction.functionAfterDelay(
+                            () =>
+                            {
+                                location.damageMonster(
+                                    areaOfEffect: monster.GetBoundingBox(),
+                                    minDamage: minDamage.Value,
+                                    maxDamage: maxDamage.Value,
+                                    isBomb: false,
+                                    knockBackModifier: knockBackModifier.Value,
+                                    addedPrecision: addedPrecision.Value,
+                                    critChance: critChance.Value,
+                                    critMultiplier: critMultiplier.Value,
+                                    triggerMonsterInvincibleTimer: false,
+                                    who: playerWhoFiredMe,
+                                    isProjectile: true
+                                );
+                            },
+                            i * hitsDelay.Value
+                        );
+                    }
                 }
                 location.damageMonster(
                     areaOfEffect: monster.GetBoundingBox(),
@@ -236,13 +271,17 @@ public sealed class TinkerProjectile : Projectile
                     who: playerWhoFiredMe,
                     isProjectile: true
                 );
+                if (hitTAS.Value != null)
+                {
+                    if (!Visuals.BroadcastTAS(hitTAS.Value, pos, pos.Y / 10000f + 2E-06f, location, rotation: rotation))
+                        hitTAS.Value = null;
+                }
             }
             if (stunTime.Value > 0)
             {
                 monster.stunTime.Value = stunTime.Value;
                 if (stunTAS.Value != null)
                 {
-                    Vector2 pos = monster.GetBoundingBox().Center.ToVector2();
                     Visuals.BroadcastTAS(
                         stunTAS.Value,
                         pos,

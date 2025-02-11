@@ -34,10 +34,4 @@ public sealed class HitscanAbility(TrinketTinkerEffect effect, AbilityData data,
         base.args.DamageMonster(proc, target);
         return base.ApplyEffect(proc);
     }
-
-    /// <inheritdoc/>
-    protected override Vector2 GetTASPosition(ProcEventArgs proc)
-    {
-        return proc.Monster!.getStandingPosition();
-    }
 }

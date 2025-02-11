@@ -41,8 +41,17 @@ public class DamageArgs : IArgs
     /// </summary>
     public string? StunTAS { get; set; } = null;
 
+    /// <summary>
+    /// Temporary sprite to display on hit, must be defined in mushymato.TrinketTinker/TAS.
+    /// Rotation will be overwritten if this is used for a projectile.
+    /// </summary>
+    public string? HitTAS { get; set; } = null;
+
     /// <summary>Number of hits to perform</summary>
     public int Hits { get; set; } = 1;
+
+    /// <summary>Delay between hits</summary>
+    public int HitsDelay { get; set; } = 0;
 
     /// <summary>
     /// If this is non-zero, generate a explosion on hit.
@@ -73,23 +82,51 @@ public class DamageArgs : IArgs
     /// <param name="target"></param>
     public void DamageMonster(ProcEventArgs proc, Monster target)
     {
+        Vector2 pos = target.GetBoundingBox().Center.ToVector2();
+        float drawLayer = pos.Y / 10000f + 2E-06f;
         if (Min > 0)
         {
-            for (int i = 1; i < Hits; i++)
+            if (HitsDelay == 0)
+                for (int i = 1; i < Hits; i++)
+                {
+                    proc.LocationOrCurrent.damageMonster(
+                        areaOfEffect: target.GetBoundingBox(),
+                        minDamage: Min,
+                        maxDamage: Max,
+                        isBomb: false,
+                        knockBackModifier: Knockback,
+                        addedPrecision: Precision,
+                        critChance: CritChance,
+                        critMultiplier: CritDamage,
+                        triggerMonsterInvincibleTimer: false,
+                        who: proc.Farmer,
+                        isProjectile: false
+                    );
+                }
+            else
             {
-                proc.LocationOrCurrent.damageMonster(
-                    areaOfEffect: target.GetBoundingBox(),
-                    minDamage: Min,
-                    maxDamage: Max,
-                    isBomb: false,
-                    knockBackModifier: Knockback,
-                    addedPrecision: Precision,
-                    critChance: CritChance,
-                    critMultiplier: CritDamage,
-                    triggerMonsterInvincibleTimer: false,
-                    who: proc.Farmer,
-                    isProjectile: false
-                );
+                for (int i = 1; i < Hits; i++)
+                {
+                    DelayedAction.functionAfterDelay(
+                        () =>
+                        {
+                            proc.LocationOrCurrent.damageMonster(
+                                areaOfEffect: target.GetBoundingBox(),
+                                minDamage: Min,
+                                maxDamage: Max,
+                                isBomb: false,
+                                knockBackModifier: Knockback,
+                                addedPrecision: Precision,
+                                critChance: CritChance,
+                                critMultiplier: CritDamage,
+                                triggerMonsterInvincibleTimer: false,
+                                who: proc.Farmer,
+                                isProjectile: false
+                            );
+                        },
+                        i * HitsDelay
+                    );
+                }
             }
             proc.LocationOrCurrent.damageMonster(
                 areaOfEffect: target.GetBoundingBox(),
@@ -104,14 +141,17 @@ public class DamageArgs : IArgs
                 who: proc.Farmer,
                 isProjectile: false
             );
+            if (HitTAS != null)
+            {
+                if (!Visuals.BroadcastTAS(HitTAS, pos, drawLayer, target.currentLocation))
+                    HitTAS = null;
+            }
         }
         if (StunTime > 0)
         {
             target.stunTime.Value = StunTime;
             if (StunTAS != null)
             {
-                Vector2 pos = target.GetBoundingBox().Center.ToVector2();
-                float drawLayer = pos.Y / 10000f + 2E-06f;
                 if (!Visuals.BroadcastTAS(StunTAS, pos, drawLayer, target.currentLocation, duration: StunTime))
                     StunTAS = null;
             }

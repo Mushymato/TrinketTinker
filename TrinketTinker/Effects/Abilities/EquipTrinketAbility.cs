@@ -38,6 +38,8 @@ public sealed class EquipTrinketAbility : Ability<NoArgs>
     /// <returns></returns>
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
+        if (EquipTrinket.Resizing)
+            return false;
         if (e.GetInventory(proc.Farmer) is not Inventory trinketInv)
             return false;
         foreach (Item item in trinketInv)
@@ -54,9 +56,11 @@ public sealed class EquipTrinketAbility : Ability<NoArgs>
     /// <returns></returns>
     protected override void CleanupEffect(Farmer farmer)
     {
+        if (EquipTrinket.Resizing)
+            return;
         if (e.GetInventory(farmer) is not Inventory trinketInv)
             return;
-        foreach (Item item in trinketInv)
+        foreach (Item item in trinketInv.Reverse())
         {
             if (item == null || item is not Trinket trinket)
                 continue;

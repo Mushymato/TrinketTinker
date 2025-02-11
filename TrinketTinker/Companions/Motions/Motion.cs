@@ -442,8 +442,8 @@ public abstract class Motion<TArgs> : IMotion
         {
             return;
         }
-        // Moving: play while companion is moving, or if always moving is true
-        if (c.CompanionMoving || md.AlwaysMoving)
+        // Moving: play while moving
+        if (IsMoving())
         {
             // first, try anchor target based clip
             if (
@@ -470,10 +470,7 @@ public abstract class Motion<TArgs> : IMotion
 
     /// <summary>Moving flag used for basis of anim</summary>
     /// <returns></returns>
-    protected virtual bool IsMoving()
-    {
-        return md.AlwaysMoving || c.OwnerMoving;
-    }
+    protected abstract bool IsMoving();
 
     protected virtual bool ShouldMove()
     {

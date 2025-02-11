@@ -48,8 +48,8 @@ internal sealed class ModEntry : Mod
         // Events for abilities
         helper.Events.Player.Warped += OnPlayerWarped;
         helper.Events.Input.ButtonsChanged += OnButtonsChanged;
+        helper.Events.GameLoop.Saving += OnSaving;
         helper.Events.GameLoop.DayStarted += OnDayStarted;
-        helper.Events.GameLoop.DayEnding += OnDayEnding;
         helper.Events.Multiplayer.ModMessageReceived += OnModMessageReceived;
 
         helper.ConsoleCommands.Add(
@@ -74,6 +74,11 @@ internal sealed class ModEntry : Mod
         helper.ConsoleCommands.Add("tt_spawn_forage", "Spawn forage for testing.", ConsoleSpawnForage);
         // Print all global inventories that exist
         helper.ConsoleCommands.Add("tt_global_inv", "Check all global inventories.", ConsoleGlobalInv);
+        helper.ConsoleCommands.Add(
+            "tt_print_trinkets",
+            "Debug unequip all trinkets of current player and send the trinkets to lost and found.",
+            ConsolePrintTrinkets
+        );
 #endif
     }
 
@@ -153,15 +158,25 @@ internal sealed class ModEntry : Mod
         }
     }
 
-    private void OnDayStarted(object? sender, DayStartedEventArgs e)
+    private void OnSaving(object? sender, SavingEventArgs e)
     {
-        EquipTrinket.DayStartedEquip();
+        EquipTrinket.UnequipHiddenTrinkets();
+    }
+
+    private void OnSaveLoaded(object? sender, SaveLoadedEventArgs e)
+    {
+        EquipTrinket.ReequipHiddenTrinkets();
     }
 
     private void OnDayEnding(object? sender, DayEndingEventArgs e)
     {
-        EquipTrinket.DayEndingRemove();
         GlobalInventoryHandler.DayEndingCleanup();
+    }
+
+    private void OnDayStarted(object? sender, DayStartedEventArgs e)
+    {
+        EquipTrinket.ReequipHiddenTrinkets();
+        EquipTrinket.FixVanillaDupeCompanions();
     }
 
     private void OnModMessageReceived(object? sender, ModMessageReceivedEventArgs e)
@@ -206,6 +221,17 @@ internal sealed class ModEntry : Mod
         {
             if (typeInfo.IsAssignableTo(typeof(IAbility)) && typeInfo.AssemblyQualifiedName != null)
                 Log(typeInfo.AssemblyQualifiedName);
+        }
+    }
+
+    private void ConsolePrintTrinkets(string arg1, string[] arg2)
+    {
+        if (!Context.IsWorldReady)
+            return;
+        var trinketItems = Game1.player.trinketItems;
+        for (int i = 0; i < trinketItems.Count; i++)
+        {
+            Log($"trinketItems[{i}] is {trinketItems[i]?.QualifiedItemId ?? "NULL"}");
         }
     }
 
@@ -272,6 +298,7 @@ internal sealed class ModEntry : Mod
             Game1.player.team.newLostAndFoundItems.Value = true;
         }
         Game1.player.trinketItems.Clear();
+        Game1.player.companions.Clear();
     }
 
     /// Static helper functions

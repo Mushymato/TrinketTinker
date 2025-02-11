@@ -4,6 +4,22 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.5.2
+
+#### Added
+
+- HitTAS for Hitscan/Projectile, apply a TAS at the target on hit.
+- HitsDelay for Hitscan/Projectile, adds a delay between hits.
+
+#### Fixed
+
+- Crash saving with more than 10 trinkets equipped
+- Duplicating vanilla trinket companions
+
+#### Changed
+
+- Hitscan ProcTAS now fires at the companion's position, instead of the target position, this is because HitTAS was added
+
 ### 1.5.1
 
 #### Fixed

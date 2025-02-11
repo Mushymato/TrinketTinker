@@ -1,10 +1,16 @@
+using System.Reflection;
 using StardewModdingAPI;
 using StardewValley;
+using StardewValley.Companions;
 using StardewValley.Delegates;
 using StardewValley.Inventories;
 using StardewValley.Objects.Trinkets;
 using TrinketTinker.Effects;
 using TrinketTinker.Wheels;
+using TrinketList = Netcode.NetList<
+    StardewValley.Objects.Trinkets.Trinket,
+    Netcode.NetRef<StardewValley.Objects.Trinkets.Trinket>
+>;
 
 namespace TrinketTinker.Extras;
 
@@ -19,7 +25,37 @@ public static class EquipTrinket
     public static string Action_EquipHiddenTrinket => $"{ModEntry.ModId}_EquipHiddenTrinket";
     public static string Action_UnequipHiddenTrinket => $"{ModEntry.ModId}_UnequipHiddenTrinket";
 
-    internal static bool Equip(Farmer farmer, Trinket trinket)
+    private static readonly MethodInfo ResizeMethod = typeof(TrinketList).GetMethod(
+        "Resize",
+        BindingFlags.NonPublic | BindingFlags.Instance
+    )!;
+
+    /// <summary>When resizing trinketItems, do not reapply <seealso cref="Effects.Abilities.EquipTrinketAbility"/> </summary>
+    internal static bool Resizing = false;
+
+    /// <summary>When resizing trinketItems, do not reapply <seealso cref="Effects.Abilities.EquipTrinketAbility"/> </summary>
+    internal static bool IsSaving = false;
+
+    private static void ResizeTrinketItems(TrinketList trinketItems, int capacity)
+    {
+        ModEntry.Log($"ResizeTrinketItems {trinketItems.Capacity} => {capacity}");
+        Resizing = true;
+        ResizeMethod.Invoke(trinketItems, [capacity]);
+        Resizing = false;
+    }
+
+    private static void AddTrinket(TrinketList trinketItems, Trinket trinket)
+    {
+        while (ModEntry.HasWearMoreRings && trinketItems.Count < 2)
+            trinketItems.Add(null!);
+        if (trinketItems.Capacity <= trinketItems.Count)
+        {
+            ResizeTrinketItems(trinketItems, trinketItems.Capacity * 2);
+        }
+        trinketItems.Add(trinket);
+    }
+
+    internal static bool Equip(Farmer owner, Trinket trinket)
     {
         if (
             (
@@ -31,30 +67,25 @@ public static class EquipTrinket
             && directOnly != null
         )
             return false;
-        var trinketItems = farmer.trinketItems;
+        var trinketItems = owner.trinketItems;
         if (trinketItems.Contains(trinket))
             return false;
-        if (trinket.GetEffect() is TrinketTinkerEffect effect && !effect.CheckEnabled(farmer))
+        if (trinket.GetEffect() is TrinketTinkerEffect effect && !effect.CheckEnabled(owner))
             return false;
+        else if (trinket.GetEffect() is TrinketEffect effect2 && effect2.Companion != null)
+        {
+            effect2.Companion.CleanupCompanion();
+            effect2.Companion = null;
+        }
 
-        // wear more rings compat
-        if (ModEntry.HasWearMoreRings)
-        {
-            while (trinketItems.Count < 2)
-                trinketItems.Add(null);
-            farmer.trinketItems.Insert(2, trinket);
-        }
-        else
-        {
-            farmer.trinketItems.Add(trinket);
-        }
+        AddTrinket(trinketItems, trinket);
         trinket.modData[TinkerConst.ModData_IndirectEquip] = "T";
         return true;
     }
 
-    internal static bool Unequip(Farmer farmer, Trinket trinket)
+    internal static bool Unequip(Farmer owner, Trinket trinket)
     {
-        if (farmer.trinketItems.Remove(trinket))
+        if (owner.trinketItems.Remove(trinket))
         {
             trinket.modData.Remove(TinkerConst.ModData_IndirectEquip);
             return true;
@@ -155,8 +186,9 @@ public static class EquipTrinket
     /// Remove all hidden trinkets before save. This is because the trinket list can get reordered on reload (and expose the hidden trinket)
     /// </summary>
     /// <param name="decrement">indicates that this is called from day ending, decrement count by 1</param>
-    internal static void DayEndingRemove(bool decrement = true)
+    internal static void UnequipHiddenTrinkets(bool decrement = true)
     {
+        // hidden trinkets
         foreach (Item item in hiddenTrinketsInv.Value.Reverse())
         {
             if (item is Trinket trinket)
@@ -191,13 +223,33 @@ public static class EquipTrinket
         hiddenTrinketsInv.Value.RemoveEmptySlots();
     }
 
-    internal static void DayStartedEquip()
+    internal static void ReequipHiddenTrinkets()
     {
         foreach (Item item in hiddenTrinketsInv.Value)
         {
             if (item is Trinket trinket)
             {
                 Equip(Game1.player, trinket);
+            }
+        }
+    }
+
+    internal static void FixVanillaDupeCompanions()
+    {
+        // deal with vanilla dupe companions
+        List<Companion> validCompanions = [];
+        foreach (Trinket trinket in Game1.player.trinketItems)
+        {
+            if (trinket?.GetEffect()?.Companion is Companion cmp)
+            {
+                validCompanions.Add(cmp);
+            }
+        }
+        foreach (Companion cmp in Game1.player.companions.Reverse())
+        {
+            if (!validCompanions.Contains(cmp))
+            {
+                Game1.player.RemoveCompanion(cmp);
             }
         }
     }

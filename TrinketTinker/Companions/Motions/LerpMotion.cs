@@ -35,6 +35,13 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
         return false;
     }
 
+    /// <summary>Moving flag used for basis of anim</summary>
+    /// <returns></returns>
+    protected override bool IsMoving()
+    {
+        return c.CompanionMoving || md.AlwaysMoving;
+    }
+
     /// <inheritdoc/>
     public override void UpdateLocal(GameTime time, GameLocation location)
     {

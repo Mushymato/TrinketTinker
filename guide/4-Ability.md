@@ -1,6 +1,6 @@
 # Ability
 
-Ability describes the effects that occur when you equip the trinket, like getting healed, or attacking an enemy.
+Ability describes the effects that occur while the trinket is equipped. Such the healing the player, harvesting a crop, attacking an enemy, and so on.
 
 An ability is primarily defined by `AbilityClass` (what it does) and `Proc` (when does it activate). Following the successful proc of an ability, a number of proc effects can happen.
 

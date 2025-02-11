@@ -29,6 +29,12 @@ public class BaseStaticMotion<IArgs>(TrinketTinkerCompanion companion, MotionDat
     }
 
     /// <inheritdoc/>
+    protected override bool IsMoving()
+    {
+        return md.AlwaysMoving || c.OwnerMoving;
+    }
+
+    /// <inheritdoc/>
     protected override float GetPositionalLayerDepth(Vector2 offset)
     {
         return (c.direction.Value == 2) ? (c.Position.Y / 10000f) : 1f;
