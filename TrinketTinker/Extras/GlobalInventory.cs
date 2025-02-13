@@ -292,6 +292,8 @@ internal sealed class GlobalInventoryHandler
 
     private bool HighlightFunction(Item item)
     {
+        if (item == null)
+            return false;
         if (item is Trinket trinket)
         {
             if (Effect.Trinket == trinket)
@@ -356,6 +358,8 @@ internal sealed class GlobalInventoryHandler
 
     private void BehaviorOnItemSelectFunction(Item item, Farmer who)
     {
+        if (item == null)
+            return;
         if (item.Stack == 0)
         {
             item.Stack = 1;
@@ -399,7 +403,7 @@ internal sealed class GlobalInventoryHandler
     /// Ensure empty inventories are deleted, and inaccessable inventories have their contents put into lost and found
     /// Also do a check for trinketSlots and make sure people don't end up with a trinket in slot 1/2 and trinketSlots=0
     /// </summary>
-    internal static void DayEndingCleanup()
+    internal static void UnreachableInventoryCleanup()
     {
         var team = Game1.player.team;
         bool newLostAndFoundItems = false;

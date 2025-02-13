@@ -23,8 +23,10 @@ public static class EquipTrinket
                 $"{ModEntry.ModId}+{Game1.player.UniqueMultiplayerID}/HiddenTrinkets"
             )
         );
+
     /// <summary>Equip hidden trinket action name</summary>
     public static string Action_EquipHiddenTrinket => $"{ModEntry.ModId}_EquipHiddenTrinket";
+
     /// <summary>Unequip trinket action name</summary>
     public static string Action_UnequipHiddenTrinket => $"{ModEntry.ModId}_UnequipHiddenTrinket";
 

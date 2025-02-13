@@ -333,7 +333,7 @@ public class TrinketTinkerEffect : TrinketEffect
             Companion = null;
         }
 
-        if (farmer != Game1.player || MaxLevel <= GeneralStat)
+        if (farmer != Game1.player)
             return;
 
         foreach (IAbility ability in Abilities)

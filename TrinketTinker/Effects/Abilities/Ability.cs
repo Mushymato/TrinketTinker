@@ -122,7 +122,7 @@ public abstract class Ability<TArgs> : IAbility
         if (e.Abilities[foundIdx] == this)
         {
             ModEntry.Log(
-                $"{Name}: Cannot use {ProcOn.Sync} with self-referencing ProcSyncIndex={ProcSyncIndex}",
+                $"{Name}: Cannot use {ProcOn.Sync} with self-referencing ProcSyncIndex={foundIdx}",
                 LogLevel.Error
             );
             return -1;
@@ -238,6 +238,7 @@ public abstract class Ability<TArgs> : IAbility
             }
             Active = false;
             Allowed = false;
+            ProcTimer = -1;
             return true;
         }
         return false;
@@ -266,15 +267,6 @@ public abstract class Ability<TArgs> : IAbility
                 e.SetAltVariant(d.ProcAltVariant);
             if (!string.IsNullOrEmpty(d.ProcChatterKey))
                 e.NextChatterKey = d.ProcChatterKey;
-
-            if (EventAbilityProc != null && EventAbilityProc.GetInvocationList().Length > 0)
-            {
-                ModEntry.Log($"EventAbilityProc.Invoke: {Name}");
-                foreach (var del in EventAbilityProc.GetInvocationList())
-                {
-                    ModEntry.Log(del.ToString() ?? "NULL");
-                }
-            }
 
             if (d.ProcSyncDelay > 0)
                 DelayedAction.functionAfterDelay(() => EventAbilityProc?.Invoke(sender, proc), d.ProcSyncDelay);

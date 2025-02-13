@@ -161,16 +161,12 @@ internal sealed class ModEntry : Mod
     private void OnSaving(object? sender, SavingEventArgs e)
     {
         EquipTrinket.UnequipHiddenTrinkets();
+        GlobalInventoryHandler.UnreachableInventoryCleanup();
     }
 
     private void OnSaveLoaded(object? sender, SaveLoadedEventArgs e)
     {
         EquipTrinket.ReequipHiddenTrinkets();
-    }
-
-    private void OnDayEnding(object? sender, DayEndingEventArgs e)
-    {
-        GlobalInventoryHandler.DayEndingCleanup();
     }
 
     private void OnDayStarted(object? sender, DayStartedEventArgs e)

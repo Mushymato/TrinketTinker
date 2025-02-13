@@ -4,6 +4,23 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.5.3
+
+#### Added
+
+- Ability ProcSyncId is like ProcSyncIndex, but uses the Id to find what to Sync.
+
+#### Fixed
+
+- Null handling on add item to tinker inventory
+- Nop ignoring timer
+- Regression on global inventory cleanup
+
+#### Fixed
+
+- Crash on saving with more than 10 trinkets equipped
+- Duplicating vanilla trinket companions
+
 ### 1.5.2
 
 #### Added
