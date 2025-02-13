@@ -232,7 +232,7 @@ public class TrinketTinkerEffect : TrinketEffect
                             continue;
                         foundEquipTrinketAbility = true;
                     }
-                    IAbility? ability = (IAbility?)Activator.CreateInstance(abilityType, this, ab, GeneralStat);
+                    IAbility? ability = (IAbility?)Activator.CreateInstance(abilityType, this, ab, idx);
                     if (ability != null && ability.Valid)
                         initAblities.Add(ability);
                     else

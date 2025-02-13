@@ -331,6 +331,8 @@ internal sealed class GlobalInventoryHandler
 
     internal Item? AddItem(Item item)
     {
+        if (item == null)
+            return null;
         item.resetState();
         TrinketInv.RemoveEmptySlots();
         for (int i = 0; i < TrinketInv.Count; i++)

@@ -9,7 +9,14 @@ public interface IAbility
     /// <summary>Mark the new ability as valid, if this is false after constructor, the ability is discarded</summary>
     bool Valid { get; }
 
+    /// <inheritdoc cref="AbilityData.AbilityClass"/>
     string AbilityClass { get; }
+
+    /// <inheritdoc cref="AbilityData.Id"/>
+    string AbilityId { get; }
+
+    /// <summary>The resolved ProcSyncIndex for <see cref="Models.ProcOn.Sync"/>, only set to >0 if the ability is enabled</summary>
+    int ProcSyncIndex { get; }
 
     /// <summary>Proc event for use with sync procs</summary>
     event EventHandler<ProcEventArgs>? EventAbilityProc;

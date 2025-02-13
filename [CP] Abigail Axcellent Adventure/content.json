@@ -5,6 +5,10 @@
     "KrobusEatsRocks": {
       "AllowValues": "true, false",
       "Default": "true"
+    },
+    "TreeHuggers": {
+      "AllowValues": "true, false",
+      "Default": "true"
     }
   },
   "Changes": [
@@ -15,6 +19,25 @@
     {
       "Action": "Include",
       "FromFile": "data/krobus.json"
+    },
+    // Give abby the "shake tree drop wood" ability when TreeHuggers=True
+    {
+      "Action": "Include",
+      "FromFile": "data/reusable.json",
+      "LocalTokens": {
+        "L@TinkerTarget": "{{ModId}}_Abigail",
+      },
+      "When": {
+        "TreeHuggers": true
+      }
+    },
+    // Give krobus the "shake tree drop wood" ability always
+    {
+      "Action": "Include",
+      "FromFile": "data/reusable.json",
+      "LocalTokens": {
+        "L@TinkerTarget": "{{ModId}}_Krobus",
+      }
     },
   ]
 }

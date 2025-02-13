@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using StardewModdingAPI;
 using StardewValley;
 using TrinketTinker.Effects.Support;
 using TrinketTinker.Models;
@@ -20,10 +21,17 @@ public abstract class Ability<TArgs> : IAbility
     /// <summary>Ability name, default to type name.</summary>
     public readonly string Name;
 
+    /// <inheritdoc/>
     public string AbilityClass => d.AbilityClass;
 
     /// <inheritdoc/>
+    public string AbilityId => d.Id;
+
+    /// <inheritdoc/>
     public bool Valid { get; protected set; } = false;
+
+    /// <inheritdoc/>
+    public int ProcSyncIndex { get; protected set; } = -1;
 
     /// <inheritdoc/>
     public event EventHandler<ProcEventArgs>? EventAbilityProc;
@@ -63,8 +71,79 @@ public abstract class Ability<TArgs> : IAbility
         Valid = true;
         e = effect;
         d = data;
-        Name = $"{effect.Trinket.ItemId}:{GetType().Name}_lv{lvl}[{data.Proc}]";
+        Name = $"{effect.Trinket.ItemId}:{GetType().Name}.{data.Proc}[{lvl}]";
         ProcTimer = data.ProcTimer;
+    }
+
+    private int GetProcSyncIdx()
+    {
+        int foundIdx = -1;
+        if (string.IsNullOrEmpty(d.ProcSyncId))
+        {
+            foundIdx = d.ProcSyncIndex;
+            if (foundIdx < -1 || foundIdx > e.Abilities.Count)
+            {
+                ModEntry.Log(
+                    $"{Name}: Ability uses {ProcOn.Sync}, but ProcSyncIndex={foundIdx} is out of bounds",
+                    LogLevel.Error
+                );
+                return -1;
+            }
+        }
+        else
+        {
+            int idx = 0;
+            int foundCount = 0;
+            foreach (var ab in e.Abilities)
+            {
+                if (d.ProcSyncId == ab.AbilityId)
+                {
+                    if (foundIdx == -1)
+                        foundIdx = idx;
+                    foundCount++;
+                }
+                idx++;
+            }
+            if (foundCount > 1)
+            {
+                ModEntry.Log(
+                    $"{Name}: Multiple abilities with Id='{d.ProcSyncId}' found, only the first ability at index {foundIdx} will be used",
+                    LogLevel.Warn
+                );
+                return -1;
+            }
+            if (foundIdx == -1)
+            {
+                ModEntry.Log($"{Name}: No ability with Id='{d.ProcSyncId}' found.", LogLevel.Error);
+                return -1;
+            }
+        }
+
+        if (e.Abilities[foundIdx] == this)
+        {
+            ModEntry.Log(
+                $"{Name}: Cannot use {ProcOn.Sync} with self-referencing ProcSyncIndex={ProcSyncIndex}",
+                LogLevel.Error
+            );
+            return -1;
+        }
+        IAbility cycleChecking = e.Abilities[foundIdx];
+        List<int> cyclePath = [foundIdx];
+        while (cycleChecking.ProcSyncIndex != -1)
+        {
+            cyclePath.Add(cycleChecking.ProcSyncIndex);
+            cycleChecking = e.Abilities[cycleChecking.ProcSyncIndex];
+            if (cycleChecking == this)
+            {
+                ModEntry.Log(
+                    $"{Name}: {ProcOn.Sync} cycle detected (this->{string.Join("->", cyclePath)}->this)",
+                    LogLevel.Error
+                );
+                return -1;
+            }
+        }
+
+        return foundIdx;
     }
 
     /// <summary>Setup the ability, when trinket is equipped.</summary>
@@ -74,6 +153,12 @@ public abstract class Ability<TArgs> : IAbility
     {
         if (!Active)
         {
+            if (d.Proc == ProcOn.Sync)
+            {
+                ProcSyncIndex = GetProcSyncIdx();
+                if (ProcSyncIndex == -1)
+                    return false;
+            }
             Active = true;
             Allowed = d.Proc != ProcOn.Timer;
             ProcTimer = d.ProcTimer;
@@ -83,11 +168,7 @@ public abstract class Ability<TArgs> : IAbility
                     HandleProc(null, new(ProcOn.Always, farmer));
                     break;
                 case ProcOn.Sync:
-                    if (e.Abilities[d.ProcSyncIndex] == this)
-                        throw new ArgumentException(
-                            $"Cannot use {ProcOn.Sync} with self-referencing index {d.ProcSyncIndex}"
-                        );
-                    e.Abilities[d.ProcSyncIndex].EventAbilityProc += HandleProc;
+                    e.Abilities[ProcSyncIndex].EventAbilityProc += HandleProc;
                     break;
                 case ProcOn.Footstep:
                     e.EventFootstep += HandleProc;
@@ -129,7 +210,8 @@ public abstract class Ability<TArgs> : IAbility
                     CleanupEffect(farmer);
                     break;
                 case ProcOn.Sync:
-                    e.Abilities[d.ProcSyncIndex].EventAbilityProc -= HandleProc;
+                    e.Abilities[ProcSyncIndex].EventAbilityProc -= HandleProc;
+                    ProcSyncIndex = -1;
                     break;
                 case ProcOn.Footstep:
                     e.EventFootstep -= HandleProc;
@@ -184,6 +266,15 @@ public abstract class Ability<TArgs> : IAbility
                 e.SetAltVariant(d.ProcAltVariant);
             if (!string.IsNullOrEmpty(d.ProcChatterKey))
                 e.NextChatterKey = d.ProcChatterKey;
+
+            if (EventAbilityProc != null && EventAbilityProc.GetInvocationList().Length > 0)
+            {
+                ModEntry.Log($"EventAbilityProc.Invoke: {Name}");
+                foreach (var del in EventAbilityProc.GetInvocationList())
+                {
+                    ModEntry.Log(del.ToString() ?? "NULL");
+                }
+            }
 
             if (d.ProcSyncDelay > 0)
                 DelayedAction.functionAfterDelay(() => EventAbilityProc?.Invoke(sender, proc), d.ProcSyncDelay);

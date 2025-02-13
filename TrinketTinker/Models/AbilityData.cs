@@ -71,7 +71,10 @@ public sealed class ProcSoundData
 /// <summary>Data for <see cref="Effects.Abilities"/>, defines game effect that a trinket can provide.</summary>
 public sealed class AbilityData : IHaveArgs
 {
+    /// <summary>Backing Id value</summary>
     private string? id = null;
+
+    /// <summary>Id</summary>
     public string Id
     {
         get => id ?? AbilityClass;
@@ -89,6 +92,12 @@ public sealed class AbilityData : IHaveArgs
 
     /// <summary>Minimum cooldown time between ability activation, all <see cref="ProcOn"/> values respect this, not just <see cref="ProcOn.Timer"/>.</summary>
     public double ProcTimer { get; set; } = -1;
+
+    /// <summary>
+    /// For <see cref="ProcOn.Sync"/>, this is the ability id (on same level) to listen to.
+    /// If this is not null or empty, it takes preceedence over ProcSyncIndex and will simply give up if the Id is not found.
+    /// </summary>
+    public string? ProcSyncId { get; set; } = null;
 
     /// <summary>For <see cref="ProcOn.Sync"/>, this is the ability index (on same level) to listen to.</summary>
     public int ProcSyncIndex { get; set; } = 0;

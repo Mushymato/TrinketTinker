@@ -16,13 +16,16 @@ namespace TrinketTinker.Extras;
 
 public static class EquipTrinket
 {
+    /// <summary>Global inventory for holding all hidden trinkets</summary>
     private static readonly Lazy<Inventory> hiddenTrinketsInv =
         new(
             Game1.player.team.GetOrCreateGlobalInventory(
                 $"{ModEntry.ModId}+{Game1.player.UniqueMultiplayerID}/HiddenTrinkets"
             )
         );
+    /// <summary>Equip hidden trinket action name</summary>
     public static string Action_EquipHiddenTrinket => $"{ModEntry.ModId}_EquipHiddenTrinket";
+    /// <summary>Unequip trinket action name</summary>
     public static string Action_UnequipHiddenTrinket => $"{ModEntry.ModId}_UnequipHiddenTrinket";
 
     private static readonly MethodInfo ResizeMethod = typeof(TrinketList).GetMethod(

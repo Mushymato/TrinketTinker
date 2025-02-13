@@ -1,0 +1,57 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      // Example of sharing abilities across multiple trinkets
+      "LogName": "{{L@TinkerTarget}}",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "TargetField": [
+        "{{L@TinkerTarget}}",
+        "Abilities",
+        "#0" // this number is ability (internal) level, it can also be tokened
+      ],
+      "Entries": {
+        // Make sure your Key and the "Id" field match
+        "{{L@TinkerTarget}}-HarvestShakeable-Tree": {
+          "Id": "{{L@TinkerTarget}}-HarvestShakeable-Tree",
+          "AbilityClass": "HarvestShakeable",
+          "Proc": "Timer",
+          "ProcTimer": 500,
+          "ProcSound": "harvest",
+          "Args": {
+            "Range": 1,
+            "HarvestTo": "Debris",
+            "Filters": [
+              "Tree"
+            ]
+          },
+        },
+        "{{L@TinkerTarget}}-HarvestShakeable-ItemDrop": {
+          "Id": "{{L@TinkerTarget}}-HarvestShakeable-ItemDrop",
+          "AbilityClass": "ItemDrop",
+          "Proc": "Sync",
+          // Use ProcSyncId instead of ProcSyncIndex so that the Id is consistent
+          "ProcSyncId": "{{L@TinkerTarget}}-HarvestShakeable-Tree",
+          "Args": {
+            "RandomItemId": [
+              "(O)388",
+              "(O)388",
+              "(O)388",
+              "(O)388",
+              "(O)388",
+              "(O)388",
+              "(O)388",
+              "(O)388",
+              "(O)388",
+              "(O)388",
+              "(O)709"
+            ],
+            "MinStack": 5,
+            "MaxStack": 10
+          }
+        }
+      }
+    },
+  ]
+}
