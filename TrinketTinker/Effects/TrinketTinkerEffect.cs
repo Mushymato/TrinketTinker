@@ -279,6 +279,9 @@ public class TrinketTinkerEffect : TrinketEffect
         if (Data == null || Game1.gameMode != 3)
             return;
 
+        if (Enabled)
+            return;
+
         Enabled = CheckEnabled(farmer);
         if (!Enabled)
         {

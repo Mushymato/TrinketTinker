@@ -73,8 +73,6 @@ public static class EquipTrinket
         var trinketItems = owner.trinketItems;
         if (trinketItems.Contains(trinket))
             return false;
-        if (trinket.GetEffect() is TrinketTinkerEffect effect && !effect.CheckEnabled(owner))
-            return false;
         else if (trinket.GetEffect() is TrinketEffect effect2 && effect2.Companion != null)
         {
             effect2.Companion.CleanupCompanion();

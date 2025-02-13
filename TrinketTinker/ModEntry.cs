@@ -287,10 +287,11 @@ internal sealed class ModEntry : Mod
         {
             if (trinketItem == null)
                 continue;
-            if (trinketItem.GetEffect() is TrinketTinkerEffect effect && effect.HasEquipTrinketAbility)
-                Log($"UnequipTrinket: {trinketItem.QualifiedItemId}", LogLevel.Info);
             if (!trinketItem.modData.ContainsKey(TinkerConst.ModData_IndirectEquip))
+            {
                 Game1.player.team.returnedDonations.Add(trinketItem);
+                Log($"UnequipTrinket: {trinketItem.QualifiedItemId}", LogLevel.Info);
+            }
             Game1.player.team.newLostAndFoundItems.Value = true;
         }
         Game1.player.trinketItems.Clear();
