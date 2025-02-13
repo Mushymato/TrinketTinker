@@ -7,6 +7,7 @@ When a `mushymato.TrinketTinker/Tinker` entry exists, the `TrinketEffectClass` f
 
 > [!NOTE]
 > Trinkets can be reloaded with `patch reload <your content mod id>`, however the trinket must be unequipped and reequipped to get updates.
+> Content Patcher tokens might not updated even through a patch reload, in those case you must either spawn a new trinket or reload the save file.
 
 ## Structure
 

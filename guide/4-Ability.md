@@ -8,11 +8,13 @@ An ability is primarily defined by `AbilityClass` (what it does) and `Proc` (whe
 
 | Property | Type | Default | Notes |
 | -------- | ---- | ------- | ----- |
+| `Id` | string | _same as `AbilityClass`_ | The Id of this ability, used for `ProcSyncId` and content patcher EditData. |
 | `AbilityClass` | string | `"Nop"` | Type name of the motion class to use, can use short name like `"Buff"`. <br>Refer to docs under "Ability Classes" in the table of contents for details. |
 | `Description` | string | _null_ | String of the ability, will be used to substitute `"{1}"` in a [trinket's](0-Trinket.md) description. |
 | `Proc` | [ProcOn](4.0-Proc.md) | Footstep | Make ability activate (proc) when something happens. |
 | `ProcTimer` | double | -1 | After an ability proc, prevent further activations for this amount of time. |
-| `ProcSyncIndex`| int | 0 | For use with [Proc.Sync](4.0-Proc.md), makes this ability proc after another ability in the same level. Warning: you can get yourself into infinite loops with this, be careful. |
+| `ProcSyncId`| string | _null_ | For use with [Proc.Sync](4.0-Proc.md), makes this ability proc after another ability in the same level, by their Id. If set, this field takes precedence over `ProcSyncIndex`. |
+| `ProcSyncIndex`| int | 0 | For use with [Proc.Sync](4.0-Proc.md), makes this ability proc after another ability in the same level, by their order in the list of abilities. |
 | `ProcSyncDelay`| int | 0 | For use for other abilities with [Proc.Sync](4.0-Proc.md), add a delay between the proc of this ability and any sync ability listening to this one. |
 | `ProcSound` | string | _null_ | Play a sound cue when ability procs ([details](https://stardewvalleywiki.com/Modding:Audio)) |
 | `ProcTAS` | `List<string>` | _null_ | String Ids of [temporary animated sprites](6-Temporary%20Animated%20Sprite.md) to show when the ability activates. For most abilities, this TAS is drawn shown relative to the farmer. For Hitscan/Projectile, this TAS is shown on the targeted monster instead. |
