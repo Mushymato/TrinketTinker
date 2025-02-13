@@ -101,6 +101,12 @@
 </thead>
 <tbody>
 <tr>
+<td><code>Id</code></td>
+<td>string</td>
+<td><em>same as <code>AbilityClass</code></em></td>
+<td>The Id of this ability, used for <code>ProcSyncId</code> and content patcher EditData.</td>
+</tr>
+<tr>
 <td><code>AbilityClass</code></td>
 <td>string</td>
 <td><code>&quot;Nop&quot;</code></td>
@@ -125,10 +131,16 @@
 <td>After an ability proc, prevent further activations for this amount of time.</td>
 </tr>
 <tr>
+<td><code>ProcSyncId</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>For use with <a href="4.0-Proc.html">Proc.Sync</a>, makes this ability proc after another ability in the same level, by their Id. If set, this field takes precedence over <code>ProcSyncIndex</code>.</td>
+</tr>
+<tr>
 <td><code>ProcSyncIndex</code></td>
 <td>int</td>
 <td>0</td>
-<td>For use with <a href="4.0-Proc.html">Proc.Sync</a>, makes this ability proc after another ability in the same level. Warning: you can get yourself into infinite loops with this, be careful.</td>
+<td>For use with <a href="4.0-Proc.html">Proc.Sync</a>, makes this ability proc after another ability in the same level, by their order in the list of abilities.</td>
 </tr>
 <tr>
 <td><code>ProcSyncDelay</code></td>

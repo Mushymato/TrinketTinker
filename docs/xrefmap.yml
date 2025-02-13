@@ -2363,6 +2363,23 @@ references:
   fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).AbilityClass
   nameWithType: Ability<TArgs>.AbilityClass
   nameWithType.vb: Ability(Of TArgs).AbilityClass
+- uid: TrinketTinker.Effects.Abilities.Ability`1.AbilityId
+  name: AbilityId
+  href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_AbilityId
+  commentId: P:TrinketTinker.Effects.Abilities.Ability`1.AbilityId
+  fullName: TrinketTinker.Effects.Abilities.Ability<TArgs>.AbilityId
+  fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).AbilityId
+  nameWithType: Ability<TArgs>.AbilityId
+  nameWithType.vb: Ability(Of TArgs).AbilityId
+- uid: TrinketTinker.Effects.Abilities.Ability`1.AbilityId*
+  name: AbilityId
+  href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_AbilityId_
+  commentId: Overload:TrinketTinker.Effects.Abilities.Ability`1.AbilityId
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.Ability<TArgs>.AbilityId
+  fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).AbilityId
+  nameWithType: Ability<TArgs>.AbilityId
+  nameWithType.vb: Ability(Of TArgs).AbilityId
 - uid: TrinketTinker.Effects.Abilities.Ability`1.Activate(StardewValley.Farmer)
   name: Activate(Farmer)
   href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Activate_StardewValley_Farmer_
@@ -2516,6 +2533,23 @@ references:
   fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).Name
   nameWithType: Ability<TArgs>.Name
   nameWithType.vb: Ability(Of TArgs).Name
+- uid: TrinketTinker.Effects.Abilities.Ability`1.ProcSyncIndex
+  name: ProcSyncIndex
+  href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_ProcSyncIndex
+  commentId: P:TrinketTinker.Effects.Abilities.Ability`1.ProcSyncIndex
+  fullName: TrinketTinker.Effects.Abilities.Ability<TArgs>.ProcSyncIndex
+  fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).ProcSyncIndex
+  nameWithType: Ability<TArgs>.ProcSyncIndex
+  nameWithType.vb: Ability(Of TArgs).ProcSyncIndex
+- uid: TrinketTinker.Effects.Abilities.Ability`1.ProcSyncIndex*
+  name: ProcSyncIndex
+  href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_ProcSyncIndex_
+  commentId: Overload:TrinketTinker.Effects.Abilities.Ability`1.ProcSyncIndex
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.Ability<TArgs>.ProcSyncIndex
+  fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).ProcSyncIndex
+  nameWithType: Ability<TArgs>.ProcSyncIndex
+  nameWithType.vb: Ability(Of TArgs).ProcSyncIndex
 - uid: TrinketTinker.Effects.Abilities.Ability`1.ProcTimer
   name: ProcTimer
   href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_ProcTimer
@@ -3354,6 +3388,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.Abilities.IAbility.AbilityClass
   nameWithType: IAbility.AbilityClass
+- uid: TrinketTinker.Effects.Abilities.IAbility.AbilityId
+  name: AbilityId
+  href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_AbilityId
+  commentId: P:TrinketTinker.Effects.Abilities.IAbility.AbilityId
+  fullName: TrinketTinker.Effects.Abilities.IAbility.AbilityId
+  nameWithType: IAbility.AbilityId
+- uid: TrinketTinker.Effects.Abilities.IAbility.AbilityId*
+  name: AbilityId
+  href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_AbilityId_
+  commentId: Overload:TrinketTinker.Effects.Abilities.IAbility.AbilityId
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.IAbility.AbilityId
+  nameWithType: IAbility.AbilityId
 - uid: TrinketTinker.Effects.Abilities.IAbility.Activate(StardewValley.Farmer)
   name: Activate(Farmer)
   href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_Activate_StardewValley_Farmer_
@@ -3386,6 +3433,19 @@ references:
   commentId: E:TrinketTinker.Effects.Abilities.IAbility.EventAbilityProc
   fullName: TrinketTinker.Effects.Abilities.IAbility.EventAbilityProc
   nameWithType: IAbility.EventAbilityProc
+- uid: TrinketTinker.Effects.Abilities.IAbility.ProcSyncIndex
+  name: ProcSyncIndex
+  href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_ProcSyncIndex
+  commentId: P:TrinketTinker.Effects.Abilities.IAbility.ProcSyncIndex
+  fullName: TrinketTinker.Effects.Abilities.IAbility.ProcSyncIndex
+  nameWithType: IAbility.ProcSyncIndex
+- uid: TrinketTinker.Effects.Abilities.IAbility.ProcSyncIndex*
+  name: ProcSyncIndex
+  href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_ProcSyncIndex_
+  commentId: Overload:TrinketTinker.Effects.Abilities.IAbility.ProcSyncIndex
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.IAbility.ProcSyncIndex
+  nameWithType: IAbility.ProcSyncIndex
 - uid: TrinketTinker.Effects.Abilities.IAbility.Update(StardewValley.Farmer,Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)
   name: Update(Farmer, GameTime, GameLocation)
   href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_Update_StardewValley_Farmer_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_
@@ -3475,19 +3535,6 @@ references:
   fullName.vb: TrinketTinker.Effects.Abilities.NopAbility.New
   nameWithType: NopAbility.NopAbility
   nameWithType.vb: NopAbility.New
-- uid: TrinketTinker.Effects.Abilities.NopAbility.ApplyEffect(TrinketTinker.Effects.Support.ProcEventArgs)
-  name: ApplyEffect(ProcEventArgs)
-  href: api/TrinketTinker.Effects.Abilities.NopAbility.html#TrinketTinker_Effects_Abilities_NopAbility_ApplyEffect_TrinketTinker_Effects_Support_ProcEventArgs_
-  commentId: M:TrinketTinker.Effects.Abilities.NopAbility.ApplyEffect(TrinketTinker.Effects.Support.ProcEventArgs)
-  fullName: TrinketTinker.Effects.Abilities.NopAbility.ApplyEffect(TrinketTinker.Effects.Support.ProcEventArgs)
-  nameWithType: NopAbility.ApplyEffect(ProcEventArgs)
-- uid: TrinketTinker.Effects.Abilities.NopAbility.ApplyEffect*
-  name: ApplyEffect
-  href: api/TrinketTinker.Effects.Abilities.NopAbility.html#TrinketTinker_Effects_Abilities_NopAbility_ApplyEffect_
-  commentId: Overload:TrinketTinker.Effects.Abilities.NopAbility.ApplyEffect
-  isSpec: "True"
-  fullName: TrinketTinker.Effects.Abilities.NopAbility.ApplyEffect
-  nameWithType: NopAbility.ApplyEffect
 - uid: TrinketTinker.Effects.Abilities.ProjectileAbility
   name: ProjectileAbility
   href: api/TrinketTinker.Effects.Abilities.ProjectileAbility.html
@@ -6263,6 +6310,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AbilityData.ProcSyncDelay
   nameWithType: AbilityData.ProcSyncDelay
+- uid: TrinketTinker.Models.AbilityData.ProcSyncId
+  name: ProcSyncId
+  href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcSyncId
+  commentId: P:TrinketTinker.Models.AbilityData.ProcSyncId
+  fullName: TrinketTinker.Models.AbilityData.ProcSyncId
+  nameWithType: AbilityData.ProcSyncId
+- uid: TrinketTinker.Models.AbilityData.ProcSyncId*
+  name: ProcSyncId
+  href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcSyncId_
+  commentId: Overload:TrinketTinker.Models.AbilityData.ProcSyncId
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityData.ProcSyncId
+  nameWithType: AbilityData.ProcSyncId
 - uid: TrinketTinker.Models.AbilityData.ProcSyncIndex
   name: ProcSyncIndex
   href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcSyncIndex
