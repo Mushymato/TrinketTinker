@@ -88,7 +88,7 @@
 <h1 id="action">Action</h1>
 
 <p>Run an registered <a href="https://stardewvalleywiki.com/Modding:Trigger_actions">action</a>, either vanilla or mod provided.</p>
-<p><code>ActionEnd</code> and <code>ActionsEnd</code> are relevant when <code>ProcOn</code> is <code>Always</code>. These end actions are called when the player unequips a trinket, or overnight when the game unequip and reequips the trinket.</p>
+<p><code>ActionEnd</code> and <code>ActionsEnd</code> are relevant when <a href="4.0-Proc.html">ProcOn</a> is <code>Always</code>. These end actions are called when the player unequips a trinket, or overnight when the game unequip and reequips the trinket.</p>
 <h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.ActionArgs.html">Args</a></h2>
 <table>
 <thead>
@@ -103,26 +103,26 @@
 <tr>
 <td><code>Action</code></td>
 <td>string</td>
-<td><strong>required</strong></td>
-<td>An action to run.</td>
+<td><em>null</em></td>
+<td>An action to run, either this or <code>Actions</code> must be set for the ability to work.</td>
 </tr>
 <tr>
 <td><code>Actions</code></td>
 <td>string</td>
 <td><em>null</em></td>
-<td>Additional actions to run.</td>
+<td>Additional actions to run, either this or <code>Action</code> must be set for the ability to work.</td>
 </tr>
 <tr>
 <td><code>ActionEnd</code></td>
 <td>string</td>
 <td><em>null</em></td>
-<td>An action to run when the trinket is unequiped.</td>
+<td>An action to run when the trinket is unequiped, only used if <a href="4.0-Proc.html">ProcOn</a> is <code>Always</code>.</td>
 </tr>
 <tr>
 <td><code>ActionsEnd</code></td>
 <td>string</td>
 <td><em>null</em></td>
-<td>Additional actions to run.</td>
+<td>Additional actions to run when the trinket is unequiped, only used if <a href="4.0-Proc.html">ProcOn</a> is <code>Always</code>.</td>
 </tr>
 </tbody>
 </table>
