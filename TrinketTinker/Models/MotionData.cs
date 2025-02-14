@@ -52,6 +52,12 @@ public enum AnchorTarget
     /// <summary>Anchor to the nearest breakable stone</summary>
     Stone,
 
+    /// <summary>Anchor to the nearest breakable twig</summary>
+    Twig,
+
+    /// <summary>Anchor to the nearest breakable weed</summary>
+    Weed,
+
     /// <summary>Anchor to the nearest crop</summary>
     Crop,
 

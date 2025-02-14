@@ -122,10 +122,7 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
                 ProbeTile
             )
         )
-        {
-            ModEntry.Log($"IterateRandomTiles: {tile}");
-            harvested = harvested || DoHarvest(proc.LocationOrCurrent, proc.Farmer, tile);
-        }
+            harvested = DoHarvest(proc.LocationOrCurrent, proc.Farmer, tile) || harvested;
         return harvested && base.ApplyEffect(proc);
     }
 }
@@ -154,22 +151,91 @@ public sealed class HarvestStoneAbility(TrinketTinkerEffect effect, AbilityData 
         if (!location.objects.TryGetValue(tile, out SObject obj))
             return false;
 
-        if (
-            !CollectDebris(
-                args.HarvestTo,
-                location,
-                farmer,
-                e.InvHandler.Value,
-                () =>
-                {
-                    obj.MinutesUntilReady = 0;
-                    fakeTool.Value.DoFunction(location, (int)(tile.X * 64), (int)(tile.Y * 64), 1, farmer);
-                }
-            )
-        )
+        return CollectDebris(
+            args.HarvestTo,
+            location,
+            farmer,
+            e.InvHandler.Value,
+            () =>
+            {
+                obj.MinutesUntilReady = 0;
+                fakeTool.Value.lastUser = farmer;
+                fakeTool.Value.DoFunction(location, (int)(tile.X * 64), (int)(tile.Y * 64), 1, farmer);
+            }
+        );
+    }
+}
+
+/// <summary>Harvest twig</summary>
+public sealed class HarvestTwigAbility(TrinketTinkerEffect effect, AbilityData data, int level)
+    : BaseHarvestAbility<HarvestArgs>(effect, data, level)
+{
+    private static readonly Lazy<Axe> fakeTool =
+        new(() =>
+        {
+            Axe tool = new();
+            tool.isEfficient.Value = true;
+            return tool;
+        });
+
+    /// <inheritdocs/>
+    protected override bool ProbeTile(GameLocation location, Vector2 tile)
+    {
+        return location.objects.TryGetValue(tile, out var obj) && obj.IsTwig();
+    }
+
+    /// <inheritdocs/>
+    protected override bool DoHarvest(GameLocation location, Farmer farmer, Vector2 tile)
+    {
+        if (!location.objects.TryGetValue(tile, out SObject obj))
             return false;
 
-        return true;
+        return CollectDebris(
+            args.HarvestTo,
+            location,
+            farmer,
+            e.InvHandler.Value,
+            () =>
+            {
+                fakeTool.Value.lastUser = farmer;
+                if (obj.performToolAction(fakeTool.Value))
+                {
+                    obj.performRemoveAction();
+                    location.Objects.Remove(tile);
+                }
+            }
+        );
+    }
+}
+
+/// <summary>Harvest twig</summary>
+public sealed class HarvestWeedAbility(TrinketTinkerEffect effect, AbilityData data, int level)
+    : BaseHarvestAbility<HarvestArgs>(effect, data, level)
+{
+    /// <inheritdocs/>
+    protected override bool ProbeTile(GameLocation location, Vector2 tile)
+    {
+        return location.objects.TryGetValue(tile, out var obj) && obj.IsWeeds();
+    }
+
+    /// <inheritdocs/>
+    protected override bool DoHarvest(GameLocation location, Farmer farmer, Vector2 tile)
+    {
+        if (!location.objects.TryGetValue(tile, out SObject obj))
+            return false;
+
+        return CollectDebris(
+            args.HarvestTo,
+            location,
+            farmer,
+            e.InvHandler.Value,
+            () =>
+            {
+                obj.cutWeed(farmer);
+                obj.performRemoveAction();
+                location.Objects.Remove(tile);
+            }
+        );
     }
 }
 

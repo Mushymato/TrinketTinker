@@ -49,6 +49,14 @@
                 "Range": 300
               },
               {
+                "Mode": "Twig",
+                "Range": 300
+              },
+              {
+                "Mode": "Weed",
+                "Range": 300
+              },
+              {
                 "Mode": "Forage",
                 "Range": 300
               },
@@ -85,33 +93,51 @@
                   "HarvestTo": "{{L@HarvestTo}}"
                 },
               },
-              // {
-              //   "AbilityClass": "HarvestForage",
-              //   "Proc": "Timer",
-              //   "ProcTimer": 1000,
-              //   "Args": {
-              //     "Range": 1,
-              //     "HarvestTo": "{{L@HarvestTo}}"
-              //   },
-              // },
-              // {
-              //   "AbilityClass": "HarvestCrop",
-              //   "Proc": "Timer",
-              //   "ProcTimer": 1000,
-              //   "Args": {
-              //     "Range": 1,
-              //     "HarvestTo": "{{L@HarvestTo}}"
-              //   },
-              // },
-              // {
-              //   "AbilityClass": "HarvestShakeable",
-              //   "Proc": "Timer",
-              //   "ProcTimer": 1000,
-              //   "Args": {
-              //     "Range": 1,
-              //     "HarvestTo": "{{L@HarvestTo}}"
-              //   },
-              // },
+              {
+                "AbilityClass": "HarvestTwig",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "Args": {
+                  "Range": 0,
+                  "HarvestTo": "{{L@HarvestTo}}"
+                },
+              },
+              {
+                "AbilityClass": "HarvestWeed",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "Args": {
+                  "Range": 0,
+                  "HarvestTo": "{{L@HarvestTo}}"
+                },
+              },
+              {
+                "AbilityClass": "HarvestForage",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "Args": {
+                  "Range": 1,
+                  "HarvestTo": "{{L@HarvestTo}}"
+                },
+              },
+              {
+                "AbilityClass": "HarvestCrop",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "Args": {
+                  "Range": 1,
+                  "HarvestTo": "{{L@HarvestTo}}"
+                },
+              },
+              {
+                "AbilityClass": "HarvestShakeable",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "Args": {
+                  "Range": 1,
+                  "HarvestTo": "{{L@HarvestTo}}"
+                },
+              },
             ]
           ]
         },

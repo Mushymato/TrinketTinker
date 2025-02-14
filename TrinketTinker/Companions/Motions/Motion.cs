@@ -290,6 +290,12 @@ public abstract class Motion<TArgs> : IMotion
                 case AnchorTarget.Stone:
                     objMatch = (obj) => obj.IsBreakableStone();
                     goto case AnchorTarget.Object;
+                case AnchorTarget.Twig:
+                    objMatch = (obj) => obj.IsTwig();
+                    goto case AnchorTarget.Object;
+                case AnchorTarget.Weed:
+                    objMatch = (obj) => obj.IsWeeds();
+                    goto case AnchorTarget.Object;
                 case AnchorTarget.Object:
                     {
                         if (
