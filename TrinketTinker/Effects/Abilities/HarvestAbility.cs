@@ -239,6 +239,43 @@ public sealed class HarvestWeedAbility(TrinketTinkerEffect effect, AbilityData d
     }
 }
 
+/// <summary>Harvest twig</summary>
+public sealed class HarvestDigSpotAbility(TrinketTinkerEffect effect, AbilityData data, int level)
+    : BaseHarvestAbility<HarvestArgs>(effect, data, level)
+{
+    private static readonly Lazy<Hoe> fakeTool =
+        new(() =>
+        {
+            Hoe tool = new();
+            return tool;
+        });
+
+    /// <inheritdocs/>
+    protected override bool ProbeTile(GameLocation location, Vector2 tile)
+    {
+        return location.objects.TryGetValue(tile, out var obj) && obj.IsDigSpot();
+    }
+
+    /// <inheritdocs/>
+    protected override bool DoHarvest(GameLocation location, Farmer farmer, Vector2 tile)
+    {
+        if (!location.objects.TryGetValue(tile, out SObject obj))
+            return false;
+
+        return CollectDebris(
+            args.HarvestTo,
+            location,
+            farmer,
+            e.InvHandler.Value,
+            () =>
+            {
+                fakeTool.Value.lastUser = farmer;
+                obj.performToolAction(fakeTool.Value);
+            }
+        );
+    }
+}
+
 /// <summary>Harvest forage</summary>
 public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData data, int level)
     : BaseHarvestAbility<HarvestArgs>(effect, data, level)

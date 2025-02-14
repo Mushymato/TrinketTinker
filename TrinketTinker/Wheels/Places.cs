@@ -128,6 +128,11 @@ internal static class Places
         return true;
     }
 
+    public static bool IsDigSpot(this SObject obj)
+    {
+        return obj.QualifiedItemId == "(O)590" || obj.QualifiedItemId == "(O)SeedSpot";
+    }
+
     /// <summary>Disable all trinket abilities in certain locations</summary>
     /// <param name="location"></param>
     /// <returns></returns>

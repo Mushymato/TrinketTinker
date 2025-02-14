@@ -57,6 +57,10 @@
                 "Range": 300
               },
               {
+                "Mode": "DigSpot",
+                "Range": 300
+              },
+              {
                 "Mode": "Forage",
                 "Range": 300
               },
@@ -104,6 +108,15 @@
               },
               {
                 "AbilityClass": "HarvestWeed",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "Args": {
+                  "Range": 0,
+                  "HarvestTo": "{{L@HarvestTo}}"
+                },
+              },
+              {
+                "AbilityClass": "HarvestDigSpot",
                 "Proc": "Timer",
                 "ProcTimer": 1000,
                 "Args": {

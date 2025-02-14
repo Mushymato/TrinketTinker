@@ -58,6 +58,9 @@ public enum AnchorTarget
     /// <summary>Anchor to the nearest breakable weed</summary>
     Weed,
 
+    /// <summary>Anchor to the nearest dig spot ((O)590 or (O)SeedSpot)</summary>
+    DigSpot,
+
     /// <summary>Anchor to the nearest crop</summary>
     Crop,
 

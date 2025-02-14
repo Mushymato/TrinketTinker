@@ -296,6 +296,9 @@ public abstract class Motion<TArgs> : IMotion
                 case AnchorTarget.Weed:
                     objMatch = (obj) => obj.IsWeeds();
                     goto case AnchorTarget.Object;
+                case AnchorTarget.DigSpot:
+                    objMatch = (obj) => obj.IsDigSpot();
+                    goto case AnchorTarget.Object;
                 case AnchorTarget.Object:
                     {
                         if (
