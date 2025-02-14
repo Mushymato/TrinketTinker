@@ -208,7 +208,7 @@ public sealed class HarvestTwigAbility(TrinketTinkerEffect effect, AbilityData d
     }
 }
 
-/// <summary>Harvest twig</summary>
+/// <summary>Harvest weedses</summary>
 public sealed class HarvestWeedAbility(TrinketTinkerEffect effect, AbilityData data, int level)
     : BaseHarvestAbility<HarvestArgs>(effect, data, level)
 {
@@ -239,7 +239,7 @@ public sealed class HarvestWeedAbility(TrinketTinkerEffect effect, AbilityData d
     }
 }
 
-/// <summary>Harvest twig</summary>
+/// <summary>Harvest dig spot</summary>
 public sealed class HarvestDigSpotAbility(TrinketTinkerEffect effect, AbilityData data, int level)
     : BaseHarvestAbility<HarvestArgs>(effect, data, level)
 {

@@ -4,6 +4,20 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.5.4-wip
+
+#### Added
+
+- Several more Harvest* abilities, and matching AnchorTarget
+    - HarvestTwig & AnchorTarget Twig
+    - HarvestWeed & AnchorTarget Weed
+    - HarvestDigSpot * AnchorTarget DigSpot
+
+#### Fixed
+
+- Separated position from offset to make companions better at harvesting things at Range=0
+- HarvestCrop only harvesting to player inventory
+
 ### 1.5.3
 
 #### Added
@@ -19,7 +33,7 @@
 #### Fixed
 
 - Crash on saving with more than 10 trinkets equipped
-- Duplicating vanilla trinket companions
+- Duplicating vanilla trinket companions 2
 
 ### 1.5.2
 

@@ -113,10 +113,13 @@ public class AnchorTargetData
             return Mode switch
             {
                 AnchorTarget.Monster => ["Hitscan", "Projectile"],
-                AnchorTarget.Forage => ["HarvestForage"],
-                AnchorTarget.Stone => ["HarvestStone"],
-                AnchorTarget.Crop => ["HarvestCrop"],
-                AnchorTarget.Shakeable => ["HarvestShakeable"],
+                AnchorTarget.Forage
+                or AnchorTarget.Stone
+                or AnchorTarget.Twig
+                or AnchorTarget.Weed
+                or AnchorTarget.DigSpot
+                or AnchorTarget.Crop
+                or AnchorTarget.Shakeable => [$"Harvest{Mode}"],
                 _ => null,
             };
         }
