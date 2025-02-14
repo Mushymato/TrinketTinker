@@ -36,6 +36,7 @@ public sealed class ActionAbility(TrinketTinkerEffect effect, AbilityData data, 
             context.CustomFields[TinkerConst.CustomFields_Trinket] = e.Trinket;
             context.CustomFields[TinkerConst.CustomFields_Owner] = farmer;
             context.CustomFields[TinkerConst.CustomFields_Position] = e.CompanionPosition;
+            context.CustomFields[TinkerConst.CustomFields_PosOff] = e.CompanionPosOff;
             context.CustomFields[TinkerConst.CustomFields_Data] = d;
         }
 

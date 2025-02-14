@@ -298,7 +298,10 @@ public abstract class Motion<TArgs> : IMotion
                         )
                         {
                             currAnchorTarget = anchor.Mode;
-                            c.Anchor = Utility.PointToVector2(closest.GetBoundingBox().Center) - Vector2.One;
+                            c.Anchor =
+                                closest.TileLocation * Game1.tileSize
+                                + new Vector2(Game1.tileSize / 2, Game1.tileSize / 2)
+                                - Vector2.One;
                             return currAnchorTarget;
                         }
                     }

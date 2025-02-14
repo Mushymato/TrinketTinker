@@ -67,7 +67,6 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
             else if (distance > args.Min)
             {
                 c.startPosition = c.Position;
-                c.endPosition = c.Anchor;
                 c.endPosition =
                     c.Anchor
                     + 0.5f
@@ -116,7 +115,11 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
             }
             UpdateDirection();
             if (Lerp >= 1f)
+            {
+                c.NetPosition.X = c.endPosition.X;
+                c.NetPosition.Y = c.endPosition.Y;
                 Lerp = -1f;
+            }
         }
     }
 

@@ -23,7 +23,7 @@ public sealed class HitscanAbility(TrinketTinkerEffect effect, AbilityData data,
             proc.Monster
             ?? Utility.findClosestMonsterWithinRange(
                 proc.LocationOrCurrent,
-                e.CompanionPosition ?? proc.Farmer.Position,
+                e.CompanionPosOff ?? proc.Farmer.Position,
                 base.args.Range,
                 ignoreUntargetables: true,
                 match: args.Filters != null ? (m) => !args.Filters.Contains(m.Name) : null

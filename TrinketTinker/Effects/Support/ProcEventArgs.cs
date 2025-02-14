@@ -78,6 +78,7 @@ public sealed class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
         GSQContext = new(LocationOrCurrent, Farmer, e.Trinket, e.Trinket, null, null, []);
         GSQContext.CustomFields[TinkerConst.CustomFields_Data] = data;
         GSQContext.CustomFields[TinkerConst.CustomFields_Position] = e.CompanionPosition;
+        GSQContext.CustomFields[TinkerConst.CustomFields_PosOff] = e.CompanionPosOff;
         if (data.Condition != null)
         {
             return GameStateQuery.CheckConditions(data.Condition, GSQContext);

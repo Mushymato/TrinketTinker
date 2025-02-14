@@ -44,8 +44,19 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <summary>Abilities for this trinket.</summary>
     internal ImmutableList<IAbility> Abilities => abilities.Value;
 
-    /// <summary>Position of companion, including offset if applicable.</summary>
+    /// <summary>Position of companion without offset.</summary>
     public Vector2? CompanionPosition
+    {
+        get
+        {
+            if (Companion is TrinketTinkerCompanion cmp)
+                return cmp.Position;
+            return null;
+        }
+    }
+
+    /// <summary>Position of companion with offset.</summary>
+    public Vector2? CompanionPosOff
     {
         get
         {

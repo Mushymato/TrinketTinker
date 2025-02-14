@@ -46,7 +46,7 @@ public sealed class ItemDropAbility(TrinketTinkerEffect effect, AbilityData data
                             }
                         goto case HarvestDestination.Debris;
                     case HarvestDestination.Debris:
-                        Game1.createItemDebris(item, e.CompanionPosition ?? context.Player.position.Value, -1);
+                        Game1.createItemDebris(item, e.CompanionPosOff ?? context.Player.position.Value, -1);
                         spawned = true;
                         break;
                     default:

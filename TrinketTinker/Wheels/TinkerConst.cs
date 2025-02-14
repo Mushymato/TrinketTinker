@@ -27,6 +27,7 @@ public static class TinkerConst
     public static string CustomFields_Trinket => $"{ModEntry.ModId}/Trinket";
     public static string CustomFields_Data => $"{ModEntry.ModId}/Data";
     public static string CustomFields_Position => $"{ModEntry.ModId}/Position";
+    public static string CustomFields_PosOff => $"{ModEntry.ModId}/PosOff";
 
     internal static string GetClsPattern(Type cls, string suffix)
     {

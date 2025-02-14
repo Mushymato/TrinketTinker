@@ -1,0 +1,121 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "LogName": "Leah: Trinkets",
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_Leah": {
+          "Id": "{{ModId}}_Leah",
+          "DisplayName": "[LocalizedText Strings\\Weapons:LeahsWhittler_Name]",
+          "Description": "[LocalizedText Strings\\Weapons:LeahsWhittler_Description]",
+          "Texture": "TileSheets/weapons",
+          "SheetIndex": 39,
+          "DropsNaturally": false,
+          "CanBeReforged": false,
+        },
+      }
+    },
+    {
+      "LogName": "Leah: Tinker",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "LocalTokens": {
+        "L@HarvestTo": "TinkerInventory"
+      },
+      "Entries": {
+        "{{ModId}}_Leah": {
+          "EnableCondition": "mushymato.TrinketTinker_ENABLED_TRINKET_COUNT Target All <1",
+          "Variants": [
+            {
+              "Texture": "Characters/Leah",
+              "Width": 16,
+              "Height": 32
+            }
+          ],
+          "Inventory": {
+            "Capacity": 36
+          },
+          "Motion": {
+            "MotionClass": "Lerp",
+            "AlwaysMoving": false,
+            "DirectionMode": "DRUL",
+            "FrameLength": 4,
+            "Interval": 175,
+            "Anchors": [
+              {
+                "Mode": "Stone",
+                "Range": 300
+              },
+              {
+                "Mode": "Forage",
+                "Range": 300
+              },
+              {
+                "Mode": "Crop",
+                "Range": 300
+              },
+              {
+                "Mode": "Shakeable",
+                "Range": 300
+              }
+            ],
+            "Args": {
+              "Velocity": -1
+            }
+          },
+          "Abilities": [
+            [
+              {
+                "AbilityClass": "BroadcastAction",
+                "Proc": "Always",
+                "Args": {
+                  "Action": "SetNpcInvisible Leah 1",
+                  "ActionEnd": "SetNpcVisible Leah",
+                  "PlayerKey": "Host"
+                },
+              },
+              {
+                "AbilityClass": "HarvestStone",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "Args": {
+                  "Range": 0,
+                  "HarvestTo": "{{L@HarvestTo}}"
+                },
+              },
+              // {
+              //   "AbilityClass": "HarvestForage",
+              //   "Proc": "Timer",
+              //   "ProcTimer": 1000,
+              //   "Args": {
+              //     "Range": 1,
+              //     "HarvestTo": "{{L@HarvestTo}}"
+              //   },
+              // },
+              // {
+              //   "AbilityClass": "HarvestCrop",
+              //   "Proc": "Timer",
+              //   "ProcTimer": 1000,
+              //   "Args": {
+              //     "Range": 1,
+              //     "HarvestTo": "{{L@HarvestTo}}"
+              //   },
+              // },
+              // {
+              //   "AbilityClass": "HarvestShakeable",
+              //   "Proc": "Timer",
+              //   "ProcTimer": 1000,
+              //   "Args": {
+              //     "Range": 1,
+              //     "HarvestTo": "{{L@HarvestTo}}"
+              //   },
+              // },
+            ]
+          ]
+        },
+      }
+    },
+  ]
+}

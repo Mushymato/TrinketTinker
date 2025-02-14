@@ -279,7 +279,7 @@ public abstract class Ability<TArgs> : IAbility
     /// <returns></returns>
     protected virtual Vector2 GetTASPosition(ProcEventArgs proc)
     {
-        return e.CompanionPosition ?? e.CompanionAnchor ?? proc.Farmer.Position;
+        return e.CompanionPosOff ?? e.CompanionAnchor ?? proc.Farmer.Position;
     }
 
     /// <summary>Cleanup ability when trinket is unequipped, if is <see cref="ProcOn.Always"/></summary>

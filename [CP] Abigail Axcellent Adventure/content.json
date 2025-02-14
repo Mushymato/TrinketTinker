@@ -20,6 +20,10 @@
       "Action": "Include",
       "FromFile": "data/krobus.json"
     },
+    {
+      "Action": "Include",
+      "FromFile": "data/leah.json"
+    },
     // Give abby the "shake tree drop wood" ability when TreeHuggers=True
     {
       "Action": "Include",
