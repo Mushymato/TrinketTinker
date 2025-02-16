@@ -118,6 +118,21 @@
 <td><code>&quot;Shakeable&quot;</code></td>
 <td>Harvest shakeable things (tree, fruit tree, bush). Will not harvest golden walnut bush.</td>
 </tr>
+<tr>
+<td><code>&quot;HarvestTwig&quot;</code></td>
+<td><code>&quot;Twig&quot;</code></td>
+<td>Harvest twig debris.</td>
+</tr>
+<tr>
+<td><code>&quot;HarvestWeed&quot;</code></td>
+<td><code>&quot;Weed&quot;</code></td>
+<td>Harvest weeds debris.</td>
+</tr>
+<tr>
+<td><code>&quot;HarvestDigSpot&quot;</code></td>
+<td><code>&quot;DigSpot&quot;</code></td>
+<td>Harvest dig spots (artifact spot or seed spot).</td>
+</tr>
 </tbody>
 </table>
 <h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.HarvestArgs.html">Args</a></h2>
@@ -166,11 +181,10 @@
 <li><strong>TinkerInventory</strong>: An item is added to the <a href="5-Inventory.html">trinket's inventory</a>, if space allows. Otherwise the item either becomes debris or is not harvested (Forage).</li>
 </ul>
 <h2 id="filters">Filters</h2>
-<p>This arg allows certain harvestable targets to be excluded, exact effect depends on ability type.</p>
+<p>This arg allows certain harvestable targets to be excluded, exact effect depends on ability type. If an ability is not listed here, then it has no support for filters.</p>
 <ul>
 <li><code>&quot;HarvestCrop&quot;</code> &amp; <code>&quot;HarvestForage&quot;</code>: List of <a href="https://stardewvalleywiki.com/Modding:Common_data_field_types#Context_tag">context tags</a> to avoid harvesting, e.g. <code>&quot;category_flowers&quot;</code> (exclude flower category) or <code>&quot;color_orange season_summer&quot;</code> (exclude orange and summer). Each space separated sub list of tags act as AND while the overall list act as OR.</li>
 <li><code>&quot;HarvestShakeable&quot;</code>: Take list of <code>&quot;Bush&quot;</code>, <code>&quot;Tree&quot;</code>, <code>&quot;FruitTree&quot;</code>, indicating which of the 3 possible categories to avoid shaking.</li>
-<li><code>&quot;HarvestStone&quot;</code>: Does nothing.</li>
 </ul>
 
 </article>

@@ -292,6 +292,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Effects.Abilities.HarvestDigSpotAbility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Effects.Abilities.HarvestDigSpotAbility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Effects.Abilities.HarvestForageAbility.yml",
       "output": {
         ".html": {
@@ -316,6 +326,26 @@
       "output": {
         ".html": {
           "relative_path": "api/TrinketTinker.Effects.Abilities.HarvestStoneAbility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Effects.Abilities.HarvestTwigAbility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Effects.Abilities.HarvestTwigAbility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Effects.Abilities.HarvestWeedAbility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Effects.Abilities.HarvestWeedAbility.html"
         }
       },
       "version": ""
@@ -836,6 +866,16 @@
       "output": {
         ".html": {
           "relative_path": "api/TrinketTinker.Models.LoopMode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.Mixin.ArgsDict.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.Mixin.ArgsDict.html"
         }
       },
       "version": ""

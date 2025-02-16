@@ -116,12 +116,18 @@
 <td>The position of the companion, or <em>null</em> if there is no companion.</td>
 </tr>
 <tr>
+<td><code>mushymato.TrinketTinker/PosOff</code></td>
+<td><code>Microsoft.Xna.Framework.Vector2</code></td>
+<td>The position of the companion plus the visual offset, or <em>null</em> if there is no companion.</td>
+</tr>
+<tr>
 <td><code>mushymato.TrinketTinker/Data</code></td>
 <td><a href="../api/TrinketTinker.Models.AbilityData.html"><code>TrinketTinker.Models.AbilityData</code></a></td>
-<td>The trinket ability data model, this is not converted by pintail so you must use reflection to access any fields, potentially fragile.</td>
+<td>The trinket ability data model, this is not converted by pintail so you must use reflection to access any fields, fragile.</td>
 </tr>
 </tbody>
 </table>
+<p>These custom fields provide a way for C# mods to implement their own ability effects as actions, which can then be put into trinket tinker.</p>
 <p>Once again, <a href="4.z.101-BroadcastAction.html">BroadcastAction</a> do not benefit from these custom fields.</p>
 <h2 id="trigger-action">Trigger Action</h2>
 <p>The action <code>mushymato.TrinketTinker_ProcTrinket &lt;trinket id&gt;</code> can be run with <code>TriggerActionManager.TryRunAction</code> to activate an equipped trinket's <code>Proc=Trigger</code> ablities.
