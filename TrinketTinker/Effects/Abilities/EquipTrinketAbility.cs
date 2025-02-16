@@ -40,7 +40,7 @@ public sealed class EquipTrinketAbility : Ability<NoArgs>
     {
         if (EquipTrinket.Resizing)
             return false;
-        if (e.GetInventory(proc.Farmer) is not Inventory trinketInv)
+        if (e.GetInventory() is not Inventory trinketInv)
             return false;
         foreach (Item item in trinketInv)
         {
@@ -58,7 +58,7 @@ public sealed class EquipTrinketAbility : Ability<NoArgs>
     {
         if (EquipTrinket.Resizing)
             return;
-        if (e.GetInventory(farmer) is not Inventory trinketInv)
+        if (e.GetInventory() is not Inventory trinketInv)
             return;
         foreach (Item item in trinketInv.Reverse())
         {

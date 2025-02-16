@@ -331,29 +331,34 @@ internal sealed class GlobalInventoryHandler
         return true;
     }
 
-    internal Item? AddItem(Item item)
+    internal static Item? AddItem(Inventory trinketInv, int capacity, Item item)
     {
         if (item == null)
             return null;
         item.resetState();
-        TrinketInv.RemoveEmptySlots();
-        for (int i = 0; i < TrinketInv.Count; i++)
+        trinketInv.RemoveEmptySlots();
+        for (int i = 0; i < trinketInv.Count; i++)
         {
-            if (TrinketInv[i] != null && TrinketInv[i].canStackWith(item))
+            if (trinketInv[i] != null && trinketInv[i].canStackWith(item))
             {
-                int amount = item.Stack - TrinketInv[i].addToStack(item);
+                int amount = item.Stack - trinketInv[i].addToStack(item);
                 if (item.ConsumeStack(amount) == null)
                 {
                     return null;
                 }
             }
         }
-        if (TrinketInv.Count < Data.Capacity)
+        if (trinketInv.Count < capacity)
         {
-            TrinketInv.Add(item);
+            trinketInv.Add(item);
             return null;
         }
         return item;
+    }
+
+    internal Item? AddItem(Item item)
+    {
+        return AddItem(TrinketInv, Data.Capacity, item);
     }
 
     private void BehaviorOnItemSelectFunction(Item item, Farmer who)
@@ -478,7 +483,7 @@ internal sealed class GlobalInventoryHandler
         team.newLostAndFoundItems.Value = newLostAndFoundItems;
     }
 
-    internal bool CanAcceptThisItem(Item item)
+    internal static bool CanAcceptThisItem(Inventory trinketInv, int capacity, Item item)
     {
         if (item == null)
         {
@@ -497,13 +502,13 @@ internal sealed class GlobalInventoryHandler
             case "(O)GoldCoin":
                 return true;
             default:
-                TrinketInv.RemoveEmptySlots();
-                if (TrinketInv.Count < Data.Capacity)
+                trinketInv.RemoveEmptySlots();
+                if (trinketInv.Count < capacity)
                     return true;
-                for (int i = 0; i < Data.Capacity; i++)
+                for (int i = 0; i < capacity; i++)
                 {
                     if (
-                        TrinketInv[i] is Item stored
+                        trinketInv[i] is Item stored
                         && stored.canStackWith(item)
                         && stored.Stack + item.Stack < stored.maximumStackSize()
                     )

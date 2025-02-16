@@ -22,16 +22,22 @@ public abstract class Motion<TArgs> : IMotion
     protected readonly TrinketTinkerCompanion c;
 
     /// <summary>Data for this motion.</summary>
-    protected readonly MotionData md;
+    protected MotionData md;
+
+    /// <inheritdoc/>
+    public string MotionClass => md.MotionClass;
 
     /// <summary>Data for this motion.</summary>
-    protected readonly VariantData vd;
+    protected VariantData vd;
+
+    /// <summary>Companion animation controller</summary>
+    protected TinkerAnimSprite cs;
 
     /// <summary>Light source ID, generated if LightRadius is set in <see cref="MotionData"/>.</summary>
     protected string lightId = "";
 
     /// <summary>Class dependent arguments for subclasses</summary>
-    protected readonly TArgs args = default!;
+    internal readonly TArgs args = default!;
 
     /// <summary>Anchors update every 50ms</summary>
     private const double ANCHOR_UPDATE_RATE = 50;
@@ -47,9 +53,6 @@ public abstract class Motion<TArgs> : IMotion
 
     /// <summary>Anchor changed during this tick</summary>s
     protected bool AnchorChanged => prevAnchorTarget != currAnchorTarget;
-
-    /// <summary>Companion animation controller</summary>
-    protected readonly TinkerAnimSprite cs;
 
     /// <summary>Oneshot anim clip key</summary>
     private string? oneshotClipKey = null;
@@ -73,7 +76,7 @@ public abstract class Motion<TArgs> : IMotion
     private readonly PriorityQueue<DrawSnapshot, long> drawSnapshotQueue = new();
 
     /// <summary>Number of frames in 1 set, used for Repeat and <see cref="SerpentMotion"/></summary>
-    protected readonly int framesetLength = 1;
+    protected int framesetLength = 1;
 
     /// <summary>Actual total frame used for Repeat, equal to frame length</summary>
     protected virtual int TotalFrames => framesetLength;
@@ -96,15 +99,26 @@ public abstract class Motion<TArgs> : IMotion
     {
         if (typeof(TArgs) != typeof(NoArgs))
         {
-            if (mdata.ParseArgs<TArgs>() is TArgs parsed && parsed.Validate())
+            if (mdata.Args != null && mdata.Args.Parse<TArgs>() is TArgs parsed && parsed.Validate())
                 args = parsed;
             else
                 args = (TArgs)Activator.CreateInstance(typeof(TArgs))!;
         }
         c = companion;
+
+        // this is just to prevent IDE from yelling
         md = mdata;
         vd = vdata;
         cs = new TinkerAnimSprite(vdata);
+        // actual setter to use
+        SetMotionVariantData(mdata, vdata);
+    }
+
+    public virtual void SetMotionVariantData(MotionData mdata, VariantData vdata)
+    {
+        md = mdata;
+        vd = vdata;
+        cs.SetFullVariant(vdata, c._altVariantKey.Value);
 
         framesetLength = md.DirectionMode switch
         {

@@ -262,7 +262,7 @@ public class AnimClipDictionary : Dictionary<string, AnimClipData?>
 public sealed class MotionData : IHaveArgs
 {
     /// <summary>Type name of the motion, can use short form like "Hover" for hover motion.</summary>
-    public string? MotionClass { get; set; } = null;
+    public string MotionClass { get; set; } = "Lerp";
 
     /// <summary>Direction mode, determines how sprites should be arranged.</summary>
     public DirectionMode DirectionMode { get; set; } = DirectionMode.Single;
@@ -329,4 +329,7 @@ public sealed class MotionData : IHaveArgs
     /// Can be proc'd by ability activation.
     /// </summary>
     public Dictionary<string, SpeechBubbleData> SpeechBubbles { get; set; } = [];
+
+    /// <inheritdocs/>
+    public ArgsDict? Args { get; set; } = null;
 }

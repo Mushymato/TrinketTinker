@@ -58,15 +58,10 @@ public abstract class Ability<TArgs> : IAbility
     {
         if (typeof(TArgs) != typeof(NoArgs))
         {
-            if (data.ParseArgs<TArgs>() is TArgs parsed)
-            {
+            if (data.Args != null && data.Args.Parse<TArgs>() is TArgs parsed && parsed.Validate())
                 args = parsed;
-                Valid = parsed.Validate();
-            }
             else
-            {
                 args = (TArgs)Activator.CreateInstance(typeof(TArgs))!;
-            }
         }
         Valid = true;
         e = effect;

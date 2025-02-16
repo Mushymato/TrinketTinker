@@ -168,7 +168,7 @@ public static class EquipTrinket
                     var team = Game1.player.team;
                     if (
                         trinket.GetEffect() is TrinketTinkerEffect effect2
-                        && effect2.GetInventory(Game1.player) is Inventory trinketInv
+                        && effect2.GetInventory() is Inventory trinketInv
                     )
                     {
                         trinketInv.RemoveEmptySlots();

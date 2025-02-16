@@ -1,7 +1,10 @@
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
+using StardewValley.Companions;
 using StardewValley.GameData;
+using StardewValley.Objects.Trinkets;
+using TrinketTinker.Companions;
 using TrinketTinker.Effects;
 using TrinketTinker.Models;
 
@@ -61,7 +64,31 @@ internal static class AssetManager
             _tasData = null;
         if (e.NamesWithoutLocale.Any(an => an.IsEquivalentTo(TinkerAsset)))
         {
+            ModEntry.Log($"Invalidate {TinkerAsset} on screen {Context.ScreenId}");
             _tinkerData = null;
+            foreach (Farmer onlineFarmer in Game1.getOnlineFarmers())
+            {
+                foreach (Trinket trinket in onlineFarmer.trinketItems)
+                {
+                    if (trinket?.GetEffect() is TrinketTinkerEffect effect)
+                    {
+                        ModEntry.Log(
+                            $"Mark {trinket.QualifiedItemId} as dirty for player {onlineFarmer.UniqueMultiplayerID} ({onlineFarmer.IsLocalPlayer})"
+                        );
+                        effect.IsDirty = true;
+                    }
+                }
+                foreach (Companion companion in onlineFarmer.companions)
+                {
+                    if (companion is TrinketTinkerCompanion ttCmp)
+                    {
+                        ModEntry.Log(
+                            $"Mark {ttCmp} as dirty for player {onlineFarmer.UniqueMultiplayerID} ({onlineFarmer.IsLocalPlayer})"
+                        );
+                        ttCmp.IsDirty = true;
+                    }
+                }
+            }
             return true;
         }
         return false;

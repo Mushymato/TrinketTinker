@@ -20,6 +20,7 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
     }
     private double pauseTimer = 0;
     private float lerpLength = 0;
+    private float easeFactor = 1;
 
     public bool CheckOverlap()
     {
@@ -53,6 +54,7 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
 
         if ((Lerp < 0f || AnchorChanged) && !CheckOverlap())
         {
+            easeFactor = 1;
             pauseTimer += time.ElapsedGameTime.TotalMilliseconds;
             if (pauseTimer < args.Pause)
                 return;
@@ -93,9 +95,14 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
         {
             if (CheckOverlap())
             {
-                Lerp = -1f;
-                return;
+                if (!c.OwnerMoving)
+                {
+                    Lerp = -1f;
+                    return;
+                }
+                easeFactor = MathF.Min(2, easeFactor + 0.1f);
             }
+            double lerpRate = args.Rate * easeFactor;
             // velocity is like reverse lerp and therefore I don't need to rename this motion :)
             if (args.Velocity >= -1)
             {
@@ -109,15 +116,15 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
             }
             else
             {
-                Lerp = MathF.Min(1f, Lerp + (float)(time.ElapsedGameTime.TotalMilliseconds / args.Rate));
+                Lerp = MathF.Min(1f, Lerp + (float)(time.ElapsedGameTime.TotalMilliseconds / lerpRate));
                 c.NetPosition.X = Utility.Lerp(c.startPosition.X, c.endPosition.X, Lerp);
                 c.NetPosition.Y = Utility.Lerp(c.startPosition.Y, c.endPosition.Y, Lerp);
             }
             UpdateDirection();
             if (Lerp >= 1f)
             {
-                c.NetPosition.X = c.endPosition.X;
-                c.NetPosition.Y = c.endPosition.Y;
+                // c.NetPosition.X = c.endPosition.X;
+                // c.NetPosition.Y = c.endPosition.Y;
                 Lerp = -1f;
             }
         }

@@ -24,6 +24,7 @@
       "LogName": "Abigail: Tinker",
       "Action": "EditData",
       "Target": "mushymato.TrinketTinker/Tinker",
+      "Update": "OnLocationChange",
       "Entries": {
         "{{ModId}}_Abigail": {
           "EnableCondition": "mushymato.TrinketTinker_ENABLED_TRINKET_COUNT Target All <1",
@@ -33,9 +34,9 @@
               "Width": 16,
               "Height": 32,
               "AltVariants": {
-                "BIG": {
-                  "TextureScale": 16
-                },
+                // "BIG": {
+                //   "TextureScale": 16
+                // },
                 "WINTER": {
                   "Texture": "Characters/Abigail_Winter",
                   "Condition": "RANDOM .6",

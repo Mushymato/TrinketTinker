@@ -17,6 +17,8 @@
 
 - Separated position from offset to make companions better at harvesting things at Range=0
 - HarvestCrop only harvesting to player inventory
+- Jittery movement on Lerp with no overlap and velocity = -2 is now wobbly movement
+- Content patcher consistently apply on equipped trinkets
 
 ### 1.5.3
 

@@ -38,12 +38,12 @@ public sealed class ItemDropAbility(TrinketTinkerEffect effect, AbilityData data
                         }
                         goto case HarvestDestination.Debris;
                     case HarvestDestination.TinkerInventory:
-                        if (e.InvHandler.Value != null)
-                            if (e.InvHandler.Value.AddItem(item) == null)
-                            {
-                                spawned = true;
-                                break;
-                            }
+                        if ((item = e.AddItemToInventory(item)!) == null)
+                        {
+                            spawned = true;
+                            break;
+                        }
+                        // can have case where inventory is full and item is returned, only partially added
                         goto case HarvestDestination.Debris;
                     case HarvestDestination.Debris:
                         Game1.createItemDebris(item, e.CompanionPosOff ?? context.Player.position.Value, -1);

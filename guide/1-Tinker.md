@@ -6,8 +6,7 @@ The key used must match the __unqualified ID__ of the trinket, e.g. `{{ModId}}_T
 When a `mushymato.TrinketTinker/Tinker` entry exists, the `TrinketEffectClass` field on `Data/Trinkets` will be set to `TrinketTinker.Effects.TrinketTinkerEffect` from this mod.
 
 > [!NOTE]
-> Trinkets can be reloaded with `patch reload <your content mod id>`, however the trinket must be unequipped and reequipped to get updates.
-> Content Patcher tokens might not updated even through a patch reload, in those case you must either spawn a new trinket or reload the save file.
+> Trinkets can be reloaded with `patch reload <your content mod id>`.
 
 ## Structure
 

@@ -411,7 +411,7 @@ public static class GameItemQuery
         if (
             TryGetTinkerTrinket(query, context, 1, out Trinket? _, out TrinketTinkerEffect? effect, createFromId: false)
             && ArgUtility.TryGetOptional(query, 2, out string itemId, out string _, "string itemId")
-            && effect.GetInventory(context.Player) is Inventory trinketInv
+            && effect.GetInventory() is Inventory trinketInv
         )
         {
             return CompareIntegerQ(query, 3, trinketInv.CountId(itemId));

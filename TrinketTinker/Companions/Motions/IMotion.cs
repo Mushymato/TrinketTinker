@@ -8,6 +8,9 @@ namespace TrinketTinker.Companions.Motions;
 
 public interface IMotion
 {
+    /// <inheritdoc cref="MotionData.MotionClass"/>
+    string MotionClass { get; }
+
     /// <summary>Random used for anim clips</summary>
     Random NetRand { get; set; }
 
@@ -80,4 +83,6 @@ public interface IMotion
     /// <summary>Get position offset of motion</summary>
     /// <returns>offset</returns>
     Vector2 GetOffset();
+
+    void SetMotionVariantData(MotionData mdata, VariantData vdata);
 }

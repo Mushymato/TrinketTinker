@@ -20,7 +20,9 @@ using TrinketTinker.Wheels;
 namespace TrinketTinker.Effects;
 
 /// <summary>Base class for TrinketTinker trinkets, allows extensible companions with extensible abilities.</summary>
-public class TrinketTinkerEffect : TrinketEffect
+/// <remarks>Constructor</remarks>
+/// <param name="trinket"></param>
+public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
 {
     /// <summary>Miliseconds</summary>
     public const double IN_COMBAT_CD = 10000;
@@ -37,12 +39,33 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <summary>ModData inventory guid</summary>
     public static readonly string ModData_Enabled = $"{ModEntry.ModId}/Enabled";
 
+    /// <summary>Marks data associated with this instance as dirty, must reload data and abilities</summary>
+    internal bool IsDirty { get; set; }
+
+    // private TinkerData? data = null;
+
     /// <summary>Companion data with matching ID</summary>
-    internal TinkerData? Data;
-    private readonly Lazy<ImmutableList<IAbility>> abilities;
+    internal TinkerData? Data
+    {
+        get
+        {
+            if (AssetManager.TinkerData.TryGetValue(Trinket.ItemId, out TinkerData? data))
+                return data;
+            return null;
+        }
+    }
+
+    private IReadOnlyList<IAbility>? abilities = null;
 
     /// <summary>Abilities for this trinket.</summary>
-    internal ImmutableList<IAbility> Abilities => abilities.Value;
+    internal IReadOnlyList<IAbility> Abilities
+    {
+        get
+        {
+            abilities ??= InitAbilities();
+            return abilities;
+        }
+    }
 
     /// <summary>Position of companion without offset.</summary>
     public Vector2? CompanionPosition
@@ -148,9 +171,6 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <summary>Full ID, including mod id item id and guid</summary>
     public string? FullInventoryId => InventoryId == null ? null : $"{ModEntry.ModId}/{Trinket.ItemId}/{InventoryId}";
 
-    internal Lazy<GlobalInventoryHandler?> InvHandler =>
-        new(() => Data?.Inventory == null ? null : new(this, Data.Inventory, FullInventoryId!));
-
     /// <summary>Track if this trinket is enabled (for local player)</summary>
     internal bool? enabledLocal = null;
 
@@ -200,20 +220,11 @@ public class TrinketTinkerEffect : TrinketEffect
     internal event EventHandler<ProcEventArgs>? EventPlayerWarped;
     internal event EventHandler<ProcEventArgs>? EventInteract;
 
-    /// <summary>Constructor</summary>
-    /// <param name="trinket"></param>
-    public TrinketTinkerEffect(Trinket trinket)
-        : base(trinket)
-    {
-        AssetManager.TinkerData.TryGetValue(trinket.ItemId, out Data);
-        abilities = new(InitAbilities, false);
-    }
-
     /// <summary>
     /// Lazy init of abilities, which depend on <see cref="GeneralStat"/> being set
     /// </summary>
     /// <returns></returns>
-    private ImmutableList<IAbility> InitAbilities()
+    private IReadOnlyList<IAbility> InitAbilities()
     {
         List<IAbility> initAblities = [];
         if (Data != null && Data.Abilities.Count != 0)
@@ -262,7 +273,7 @@ public class TrinketTinkerEffect : TrinketEffect
                 idx++;
             }
         }
-        return initAblities.ToImmutableList();
+        return initAblities;
     }
 
     public void SetOneshotClip(string? clipKey)
@@ -322,7 +333,16 @@ public class TrinketTinkerEffect : TrinketEffect
         // Only activate ability for local player
         if (Game1.player != farmer)
             return;
+        if (IsDirty)
+        {
+            abilities = InitAbilities();
+            IsDirty = false;
+        }
+        ApplyAbilities(farmer);
+    }
 
+    private void ApplyAbilities(Farmer farmer)
+    {
         foreach (IAbility ability in Abilities)
         {
             ability.Activate(farmer);
@@ -349,7 +369,11 @@ public class TrinketTinkerEffect : TrinketEffect
 
         if (farmer != Game1.player)
             return;
+        UnapplyAbilities(farmer);
+    }
 
+    private void UnapplyAbilities(Farmer farmer)
+    {
         foreach (IAbility ability in Abilities)
         {
             ability.Deactivate(farmer);
@@ -361,11 +385,11 @@ public class TrinketTinkerEffect : TrinketEffect
         if (
             Game1.activeClickableMenu == null
             && Data?.Inventory != null
-            && InvHandler.Value != null
             && GameStateQuery.CheckConditions(Data.Inventory.OpenCondition, player: farmer, inputItem: Trinket)
         )
         {
-            Game1.activeClickableMenu = InvHandler.Value.GetMenu();
+            GlobalInventoryHandler handler = new(this, Data.Inventory, FullInventoryId!);
+            Game1.activeClickableMenu = handler.GetMenu();
         }
     }
 
@@ -470,6 +494,15 @@ public class TrinketTinkerEffect : TrinketEffect
     {
         if (!Enabled)
             return;
+
+        if (IsDirty && Game1.player == farmer)
+        {
+            ModEntry.Log($"Reload dirty ability {Trinket.QualifiedItemId}");
+            UnapplyAbilities(farmer);
+            abilities = InitAbilities();
+            ApplyAbilities(farmer);
+            IsDirty = false;
+        }
 
         foreach (IAbility ability in Abilities)
             ability.Update(farmer, time, location);
@@ -640,13 +673,37 @@ public class TrinketTinkerEffect : TrinketEffect
     /// <summary>Get inventory of trinket, if there is one</summary>
     /// <param name="farmer"></param>
     /// <returns></returns>
-    public Inventory? GetInventory(Farmer farmer)
+    public Inventory? GetInventory()
     {
         if (
-            InventoryId != null
-            && farmer.team.globalInventories.TryGetValue(FullInventoryId, out Inventory? trinketInv)
+            FullInventoryId != null
+            && Game1.player.team.globalInventories.TryGetValue(FullInventoryId, out Inventory? trinketInv)
         )
             return trinketInv;
+        return null;
+    }
+
+    public bool CanAcceptThisItem(Item item)
+    {
+        int capacity;
+        if (
+            (capacity = Data?.Inventory?.Capacity ?? 0) > 0
+            && FullInventoryId != null
+            && Game1.player.team.GetOrCreateGlobalInventory(FullInventoryId) is Inventory trinketInv
+        )
+            return GlobalInventoryHandler.CanAcceptThisItem(trinketInv, capacity, item);
+        return false;
+    }
+
+    public Item? AddItemToInventory(Item item)
+    {
+        int capacity;
+        if (
+            (capacity = Data?.Inventory?.Capacity ?? 0) > 0
+            && FullInventoryId != null
+            && Game1.player.team.GetOrCreateGlobalInventory(FullInventoryId) is Inventory trinketInv
+        )
+            return GlobalInventoryHandler.AddItem(trinketInv, capacity, item);
         return null;
     }
 }

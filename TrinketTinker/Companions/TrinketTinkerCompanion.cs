@@ -63,8 +63,9 @@ public class TrinketTinkerCompanion : Companion
     internal readonly NetString _altVariantKey = new(null);
 
     // Derived
-    /// <summary>Backing companion data from content.</summary>
-    public TinkerData? Data;
+
+    /// <summary>Marks data associated with this instance as dirty, must reload motion</summary>
+    internal bool IsDirty { get; set; } = false;
 
     /// <summary>Motion class that controls how the companion moves.</summary>
     public IMotion? Motion { get; private set; }
@@ -146,11 +147,8 @@ public class TrinketTinkerCompanion : Companion
     public override void CleanupCompanion()
     {
         base.CleanupCompanion();
-        if (Motion != null)
-        {
-            Motion.Cleanup();
-            Motion = null;
-        }
+        Motion?.Cleanup();
+        Motion = null;
     }
 
     /// <summary>Setup net fields.</summary>
@@ -169,15 +167,11 @@ public class TrinketTinkerCompanion : Companion
             .AddField(_speechSeed, "_speechSeed")
             .AddField(_currAnchorTarget, "_currAnchorTarget");
         _id.fieldChangeVisibleEvent += InitCompanionData;
-        _oneshotKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
-            Motion?.SetOneshotClip(newValue);
-        _overrideKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
-            Motion?.SetOverrideClip(newValue);
-        _speechBubbleKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
-            Motion?.SetSpeechBubble(newValue);
-        _altVariantKey.fieldChangeVisibleEvent += (NetString field, string oldValue, string newValue) =>
-            Motion?.SetAltVariant(newValue);
-        _netRandSeed.fieldChangeVisibleEvent += (NetInt field, int oldValue, int newValue) =>
+        _oneshotKey.fieldChangeVisibleEvent += (field, oldValue, newValue) => Motion?.SetOneshotClip(newValue);
+        _overrideKey.fieldChangeVisibleEvent += (field, oldValue, newValue) => Motion?.SetOverrideClip(newValue);
+        _speechBubbleKey.fieldChangeVisibleEvent += (field, oldValue, newValue) => Motion?.SetSpeechBubble(newValue);
+        _altVariantKey.fieldChangeVisibleEvent += (field, oldValue, newValue) => Motion?.SetAltVariant(newValue);
+        _netRandSeed.fieldChangeVisibleEvent += (field, oldValue, newValue) =>
         {
             if (Motion != null)
                 Motion.NetRand = new Random(newValue);
@@ -195,29 +189,59 @@ public class TrinketTinkerCompanion : Companion
     private void InitCompanionData(NetString field, string oldValue, string newValue)
     {
         // _id.Value = newValue;
-        if (!AssetManager.TinkerData.TryGetValue(_id.Value, out Data))
+        if (!AssetManager.TinkerData.TryGetValue(_id.Value, out TinkerData? Data))
         {
             ModEntry.Log($"Failed to get companion data for ${_id.Value}", LogLevel.Error);
             return;
         }
 
-        if (Data.Motion != null)
+        if (Data?.Motion == null || whichVariant.Value >= Data.Variants.Count)
+            return;
+
+        VariantData vdata = Data.Variants[whichVariant.Value];
+        MotionData mdata = Data.Motion;
+        Motion = CreateMotionInstance(mdata, vdata);
+    }
+
+    private void ReloadCompanionData()
+    {
+        Motion?.Cleanup();
+        ModEntry.Log($"Reload dirty companion {_id.Value}");
+        if (!AssetManager.TinkerData.TryGetValue(_id.Value, out TinkerData? Data))
         {
-            VariantData vdata = Data.Variants[whichVariant.Value];
-            MotionData mdata = Data.Motion;
-            if (mdata.MotionClass == null)
-            {
-                Motion = new LerpMotion(this, mdata, vdata);
-            }
-            if (Reflect.TryGetType(mdata.MotionClass, out Type? motionCls, TinkerConst.MOTION_CLS))
-            {
-                Motion = (IMotion?)Activator.CreateInstance(motionCls, this, mdata, vdata);
-            }
-            else
-            {
-                ModEntry.LogOnce($"Could not get motion class {mdata.MotionClass}", LogLevel.Error);
-            }
+            ModEntry.Log($"Failed to get companion data for ${_id.Value}", LogLevel.Error);
+            Motion = null;
+            return;
         }
+        if (Data?.Motion == null || whichVariant.Value >= Data.Variants.Count)
+            return;
+
+        VariantData vdata = Data.Variants[whichVariant.Value];
+        MotionData mdata = Data.Motion;
+        if (mdata.MotionClass == Motion?.MotionClass)
+        {
+            Motion.SetMotionVariantData(mdata, vdata);
+        }
+        else
+        {
+            Motion = CreateMotionInstance(mdata, vdata);
+        }
+        Motion?.Initialize(Owner);
+    }
+
+    private IMotion? CreateMotionInstance(MotionData mdata, VariantData vdata)
+    {
+        if (mdata.MotionClass == null)
+        {
+            return new LerpMotion(this, mdata, vdata);
+        }
+        if (Reflect.TryGetType(mdata.MotionClass, out Type? motionCls, TinkerConst.MOTION_CLS))
+        {
+            ModEntry.Log($"Create new Motion of type {motionCls}");
+            return (IMotion?)Activator.CreateInstance(motionCls, this, mdata, vdata);
+        }
+        ModEntry.LogOnce($"Could not get motion class {mdata.MotionClass}", LogLevel.Error);
+        return null;
     }
 
     /// <summary>Draw using <see cref="Motion"/>.</summary>
@@ -241,6 +265,11 @@ public class TrinketTinkerCompanion : Companion
     /// <param name="location">Current map location</param>
     public override void Update(GameTime time, GameLocation location)
     {
+        if (IsDirty)
+        {
+            ReloadCompanionData();
+            IsDirty = false;
+        }
         ownerMoving = prevOwnerPosition != OwnerPosition;
         CompanionMoving = prevPosition != Position;
         prevOwnerPosition = OwnerPosition;

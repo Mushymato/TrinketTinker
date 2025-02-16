@@ -148,4 +148,7 @@ public sealed class AbilityData : IHaveArgs
     /// Check if the player is in-combat, which is defined in this mod as "location has monster" and have dealt damage/taken damage in the last 10 seconds
     /// </summary>
     public bool? InCombat { get; set; } = null;
+
+    /// <inheritdocs/>
+    public ArgsDict? Args { get; set; } = null;
 }

@@ -27,7 +27,7 @@ public sealed class TinkerAnimSprite
     private IVariantData vd;
 
     /// <summary>full variant data</summary>
-    private readonly VariantData fullVd;
+    private VariantData fullVd;
 
     /// <summary>Middle point of the sprite, based on width and height.</summary>
     internal Vector2 Origin;
@@ -76,6 +76,13 @@ public sealed class TinkerAnimSprite
         vd = fullVd;
         TextureBase = UpdateVariantFields();
         UpdateSourceRect();
+    }
+
+    public void SetFullVariant(VariantData vdata, string? altVariantKey = null)
+    {
+        fullVd = vdata;
+        vd = fullVd;
+        SetAltVariant(altVariantKey);
     }
 
     public void SetAltVariant(string? altVariantKey)
@@ -139,7 +146,7 @@ public sealed class TinkerAnimSprite
                 (int)(Width * drawScale.X),
                 (int)(Height * drawScale.Y)
             );
-        if (shadowDrawPos == Vector2.Zero)
+        if (shadowScale.X <= 0 && shadowScale.Y <= 0)
             return textureBox;
         Rectangle shadowBox =
             new(
