@@ -29,7 +29,7 @@
           // "EnableCondition": "mushymato.TrinketTinker_ENABLED_TRINKET_COUNT Target All <1",
           "Variants": [
             {
-              "Texture": "Characters/Leah",
+              "Texture": "Characters/Leah_Winter",
               "Width": 16,
               "Height": 32
             }

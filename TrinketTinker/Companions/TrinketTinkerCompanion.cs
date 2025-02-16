@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Netcode;
 using StardewModdingAPI;
+using StardewModdingAPI.Utilities;
 using StardewValley;
 using StardewValley.Companions;
 using StardewValley.Network;
@@ -65,7 +66,7 @@ public class TrinketTinkerCompanion : Companion
     // Derived
 
     /// <summary>Marks data associated with this instance as dirty, must reload motion</summary>
-    internal bool IsDirty { get; set; } = false;
+    internal PerScreen<bool> IsDirty { get; set; } = new();
 
     /// <summary>Motion class that controls how the companion moves.</summary>
     public IMotion? Motion { get; private set; }
@@ -205,6 +206,7 @@ public class TrinketTinkerCompanion : Companion
 
     private void ReloadCompanionData()
     {
+        IsDirty.Value = false;
         Motion?.Cleanup();
         ModEntry.Log($"Reload dirty companion {_id.Value}");
         if (!AssetManager.TinkerData.TryGetValue(_id.Value, out TinkerData? Data))
@@ -237,7 +239,6 @@ public class TrinketTinkerCompanion : Companion
         }
         if (Reflect.TryGetType(mdata.MotionClass, out Type? motionCls, TinkerConst.MOTION_CLS))
         {
-            ModEntry.Log($"Create new Motion of type {motionCls}");
             return (IMotion?)Activator.CreateInstance(motionCls, this, mdata, vdata);
         }
         ModEntry.LogOnce($"Could not get motion class {mdata.MotionClass}", LogLevel.Error);
@@ -265,11 +266,9 @@ public class TrinketTinkerCompanion : Companion
     /// <param name="location">Current map location</param>
     public override void Update(GameTime time, GameLocation location)
     {
-        if (IsDirty)
-        {
+        if (IsDirty.Value)
             ReloadCompanionData();
-            IsDirty = false;
-        }
+
         ownerMoving = prevOwnerPosition != OwnerPosition;
         CompanionMoving = prevPosition != Position;
         prevOwnerPosition = OwnerPosition;

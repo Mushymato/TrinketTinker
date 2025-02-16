@@ -2,6 +2,7 @@ using System.Collections.Immutable;
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
+using StardewModdingAPI.Utilities;
 using StardewValley;
 using StardewValley.Companions;
 using StardewValley.Delegates;
@@ -40,7 +41,7 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
     public static readonly string ModData_Enabled = $"{ModEntry.ModId}/Enabled";
 
     /// <summary>Marks data associated with this instance as dirty, must reload data and abilities</summary>
-    internal bool IsDirty { get; set; }
+    internal PerScreen<bool> IsDirty { get; set; } = new();
 
     // private TinkerData? data = null;
 
@@ -273,6 +274,7 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
                 idx++;
             }
         }
+        IsDirty.Value = false;
         return initAblities;
     }
 
@@ -333,11 +335,8 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
         // Only activate ability for local player
         if (Game1.player != farmer)
             return;
-        if (IsDirty)
-        {
-            abilities = InitAbilities();
-            IsDirty = false;
-        }
+        abilities = InitAbilities();
+        IsDirty.Value = false;
         ApplyAbilities(farmer);
     }
 
@@ -370,6 +369,7 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
         if (farmer != Game1.player)
             return;
         UnapplyAbilities(farmer);
+        abilities = null;
     }
 
     private void UnapplyAbilities(Farmer farmer)
@@ -495,13 +495,12 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
         if (!Enabled)
             return;
 
-        if (IsDirty && Game1.player == farmer)
+        if (IsDirty.Value && Game1.player == farmer)
         {
             ModEntry.Log($"Reload dirty ability {Trinket.QualifiedItemId}");
             UnapplyAbilities(farmer);
             abilities = InitAbilities();
             ApplyAbilities(farmer);
-            IsDirty = false;
         }
 
         foreach (IAbility ability in Abilities)

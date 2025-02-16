@@ -66,29 +66,36 @@ internal static class AssetManager
         {
             ModEntry.Log($"Invalidate {TinkerAsset} on screen {Context.ScreenId}");
             _tinkerData = null;
-            foreach (Farmer onlineFarmer in Game1.getOnlineFarmers())
-            {
-                foreach (Trinket trinket in onlineFarmer.trinketItems)
+            GameRunner.instance.ExecuteForInstances(
+                (instance) =>
                 {
-                    if (trinket?.GetEffect() is TrinketTinkerEffect effect)
+                    foreach (Farmer onlineFarmer in Game1.getOnlineFarmers())
                     {
-                        ModEntry.Log(
-                            $"Mark {trinket.QualifiedItemId} as dirty for player {onlineFarmer.UniqueMultiplayerID} ({onlineFarmer.IsLocalPlayer})"
-                        );
-                        effect.IsDirty = true;
+                        foreach (Trinket trinket in onlineFarmer.trinketItems)
+                        {
+                            if (trinket?.GetEffect() is TrinketTinkerEffect effect)
+                            {
+                                ModEntry.Log(
+                                    $"Mark {trinket.QualifiedItemId} as dirty for player {onlineFarmer.UniqueMultiplayerID} ({onlineFarmer.IsLocalPlayer})"
+                                );
+                                effect.IsDirty.Value = true;
+                            }
+                        }
+                        foreach (Companion companion in onlineFarmer.companions)
+                        {
+                            if (companion is TrinketTinkerCompanion ttCmp)
+                            {
+                                ModEntry.Log(
+                                    $"Mark {ttCmp} as dirty for player {onlineFarmer.UniqueMultiplayerID} ({onlineFarmer.IsLocalPlayer})"
+                                );
+
+                                ttCmp.IsDirty.Value = true;
+                            }
+                        }
                     }
                 }
-                foreach (Companion companion in onlineFarmer.companions)
-                {
-                    if (companion is TrinketTinkerCompanion ttCmp)
-                    {
-                        ModEntry.Log(
-                            $"Mark {ttCmp} as dirty for player {onlineFarmer.UniqueMultiplayerID} ({onlineFarmer.IsLocalPlayer})"
-                        );
-                        ttCmp.IsDirty = true;
-                    }
-                }
-            }
+            );
+
             return true;
         }
         return false;
