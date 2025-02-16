@@ -51,6 +51,8 @@ internal static class Visuals
         float? rotation = null
     )
     {
+        if (!GameStateQuery.CheckConditions(tasDef.Condition, location: location))
+            return;
         // TemporaryAnimatedSprite temporaryAnimatedSprite = new(
         TemporaryAnimatedSprite temporaryAnimatedSprite = TemporaryAnimatedSprite.GetTemporaryAnimatedSprite(
             tasDef.Texture,

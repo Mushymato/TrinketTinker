@@ -21,6 +21,15 @@ This mod is licensed under MIT, contributions are welcome.
 - [[CP] Abigail Axcellent Adventure](https://github.com/Mushymato/TrinketTinker/tree/main/%5BCP%5D%20Abigail%20Axcellent%20Adventure): Example mod for a NPC style trinket, which are unique across the world and hides the corresponding NPC.
 - [[CP] Trinket Tinker Examples](https://github.com/Mushymato/TrinketTinker/tree/main/%5BCP%5D%20Trinket%20Tinker%20Examples): Test mod, a bit messy.
 
+## User Configuration
+
+These keybinds are shared across mods using this framework, for the user to set to their liking.
+
+- `Do Interact Key`: Press this key to interact with your companion, while you are close enough.
+- `Open Tinker Inventory Key`: Press this key to open the inventory of your equipped trinket(s).
+- `Tinker Inventory Next Key`: While a Tinker Inventory is open and multiple trinkets with inventory are equipped, press this to go to the next inventory.
+- `Tinker Inventory Prev Key`: While a Tinker Inventory is open and multiple trinkets with inventory are equipped, press this to go to the previous inventory.
+
 ## Translations
 
 - English [default.json](https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/i18n/default.json)
