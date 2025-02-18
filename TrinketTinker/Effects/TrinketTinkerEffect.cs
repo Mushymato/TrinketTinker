@@ -470,7 +470,7 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
         inCombatTimer = 0;
     }
 
-    public virtual void OnButtonsChanged(Farmer farmer, ButtonsChangedEventArgs e)
+    public virtual void OnInteract(Farmer farmer)
     {
         if (
             !Enabled
@@ -480,7 +480,7 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
             || farmer.usingSlingshot
         )
             return;
-        if (ModEntry.Config.DoInteractKey.JustPressed() && farmer.GetBoundingBox().Intersects(CompanionBoundingBox))
+        if (farmer.GetBoundingBox().Intersects(CompanionBoundingBox))
         {
             EventInteract?.Invoke(this, new(ProcOn.Interact, farmer));
         }

@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using TrinketTinker.Models.Mixin;
 
@@ -138,6 +139,9 @@ public class AnimClipData : WeightedRandData
 
     /// <summary>Anim clip loop mode</summary>
     public LoopMode LoopMode { get; set; } = LoopMode.Standard;
+
+    /// <summary>Sprite flip to apply to this anim clip, falls back to <see cref="MotionData.Flip"/> if not set.</summary>
+    public SpriteEffects? Flip { get; set; } = null;
 
     /// <summary>Anim clip interval, fall back to <see cref="MotionData.Interval"/> if not set.</summary>
     public double? Interval { get; set; } = null;
@@ -293,6 +297,9 @@ public sealed class MotionData : IHaveArgs
 
     /// <summary>Position offset.</summary>
     public Vector2 Offset { get; set; } = Vector2.Zero;
+
+    /// <summary>Sprite flip to apply to the directional animation</summary>
+    public SpriteEffects Flip { get; set; } = SpriteEffects.None;
 
     /// <summary>Layer depth mode.</summary>
     public LayerDepth LayerDepth { get; set; } = LayerDepth.Position;

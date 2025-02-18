@@ -65,6 +65,7 @@ public sealed class TinkerAnimSprite
     internal bool Hidden => currentFrame == -1;
     internal ChatterSpeaker Speaker =>
         new(vd.Portrait ?? fullVd.Portrait, vd.Name ?? fullVd.Name, vd.NPC ?? fullVd.NPC);
+    public SpriteEffects Flip { get; internal set; }
 
     private double timer = 0f;
     internal int currentFrame = 0;
@@ -196,7 +197,15 @@ public sealed class TinkerAnimSprite
             }
             return TinkerAnimState.InNop;
         }
-        return Animate(clip.LoopMode, time, clip.FrameStart, clip.FrameLength, interval, useExtra: clip.UseExtra);
+        return Animate(
+            clip.LoopMode,
+            time,
+            clip.FrameStart,
+            clip.FrameLength,
+            interval,
+            useExtra: clip.UseExtra,
+            spriteEffects: clip.Flip ?? Flip
+        );
     }
 
     /// <summary>
@@ -214,9 +223,11 @@ public sealed class TinkerAnimSprite
         int startFrame,
         int numberOfFrames,
         double interval,
-        bool useExtra = false
+        bool useExtra = false,
+        SpriteEffects spriteEffects = SpriteEffects.None
     )
     {
+        Flip = spriteEffects;
         UseExtra = useExtra;
         if (numberOfFrames == 0)
         {

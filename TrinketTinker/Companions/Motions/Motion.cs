@@ -478,7 +478,14 @@ public abstract class Motion<TArgs> : IMotion
             )
             {
                 // then play the default directional clip
-                cs.Animate(md.LoopMode, time, DirectionFrameStart(), md.FrameLength, md.Interval);
+                cs.Animate(
+                    md.LoopMode,
+                    time,
+                    DirectionFrameStart(),
+                    md.FrameLength,
+                    md.Interval,
+                    spriteEffects: md.Flip
+                );
             }
             return;
         }
@@ -592,7 +599,7 @@ public abstract class Motion<TArgs> : IMotion
                 GetRotation(),
                 cs.Origin,
                 scale,
-                (c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
+                cs.Flip ^ ((c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None),
                 layerDepth,
                 CurrentFrame: cs.currentFrame
             );

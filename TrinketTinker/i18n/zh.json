@@ -6,7 +6,7 @@
     "b-c.trinket-colorizer.no-recolor": "这个饰品无法更改外观。",
     "effect.not-allowed": "{{trinketName}}没有回应你...",
     "config.section.keybindings": "键位",
-    "config.DoInteractKey.name": "互动",
+    "config.DoInteractKey.name": "同伴互动",
     "config.DoInteractKey.description": "当你距离同伴足够近时，按此键触发同伴的互动能力",
     "config.OpenTinkerInventoryKey.name": "打开Tinker背包",
     "config.OpenTinkerInventoryKey.description": "按下此键可以打开你装备的饰品的背包",

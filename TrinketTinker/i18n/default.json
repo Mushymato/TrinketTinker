@@ -6,7 +6,7 @@
     "b-c.trinket-colorizer.no-recolor": "This trinket cannot be re-colored.",
     "effect.not-allowed": "You are not worthy of {{trinketName}}...",
     "config.section.keybindings": "Keybindings",
-    "config.DoInteractKey.name": "Do Interaction",
+    "config.DoInteractKey.name": "Do Companion Interaction",
     "config.DoInteractKey.description": "Press this key to activate any interact abilities on your companion, while you are close enough.",
     "config.OpenTinkerInventoryKey.name": "Open Tinker Inventory",
     "config.OpenTinkerInventoryKey.description": "Press this key to open the inventory of your equipped trinket(s).",

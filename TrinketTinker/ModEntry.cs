@@ -98,6 +98,33 @@ internal sealed class ModEntry : Mod
         // Check for WearMoreRings, which adds a 2nd trinket slot
         HasWearMoreRings = Helper.ModRegistry.IsLoaded("bcmpinc.WearMoreRings");
         Config.Register(Helper, ModManifest);
+        // Register CMCT actions
+        if (
+            Helper.ModRegistry.GetApi<Wheels.Integration.ICrossModCompatibilityToolsAPI>("Spiderbuttons.CMCT")
+            is Wheels.Integration.ICrossModCompatibilityToolsAPI cmctApi
+        )
+        {
+            cmctApi.RegisterAction(
+                ModManifest,
+                "DoInteract",
+                "Default",
+                I18n.Config_DoInteractKey_Name,
+                I18n.Config_DoInteractKey_Description,
+                DoInteract,
+                null,
+                null
+            );
+            cmctApi.RegisterAction(
+                ModManifest,
+                "OpenTinkerInventory",
+                "Menu",
+                I18n.Config_OpenTinkerInventoryKey_Name,
+                I18n.Config_OpenTinkerInventoryKey_Description,
+                OpenTinkerInventory,
+                null,
+                null
+            );
+        }
     }
 
     private static void OnAssetRequested(object? sender, AssetRequestedEventArgs e)
@@ -132,7 +159,26 @@ internal sealed class ModEntry : Mod
 
     private void OnButtonsChanged(object? sender, ButtonsChangedEventArgs e)
     {
-        if (Game1.activeClickableMenu == null && Config.OpenTinkerInventoryKey.JustPressed())
+        if (Game1.activeClickableMenu is TinkerInventoryMenu menu && menu.pageMethod != null)
+        {
+            if (Config.TinkerInventoryNextKey.JustPressed())
+                menu.pageMethod(1);
+            else if (Config.TinkerInventoryPrevKey.JustPressed())
+                menu.pageMethod(-1);
+        }
+        else if (Config.OpenTinkerInventoryKey.JustPressed())
+        {
+            OpenTinkerInventory();
+        }
+        else if (Config.DoInteractKey.JustPressed())
+        {
+            DoInteract();
+        }
+    }
+
+    private static void OpenTinkerInventory()
+    {
+        if (Game1.activeClickableMenu == null)
         {
             GlobalInventoryHandler pagedInvHandler = new(Game1.player);
             if (pagedInvHandler.pagedInfo.Count > 0)
@@ -141,19 +187,15 @@ internal sealed class ModEntry : Mod
             }
             return;
         }
-        if (Game1.activeClickableMenu is TinkerInventoryMenu menu && menu.pageMethod != null)
-        {
-            if (Config.TinkerInventoryNextKey.JustPressed())
-                menu.pageMethod(1);
-            else if (Config.TinkerInventoryPrevKey.JustPressed())
-                menu.pageMethod(-1);
-            return;
-        }
+    }
+
+    private static void DoInteract()
+    {
         foreach (Trinket trinketItem in Game1.player.trinketItems)
         {
             if (trinketItem != null && trinketItem.GetEffect() is TrinketTinkerEffect effect)
             {
-                effect.OnButtonsChanged(Game1.player, e);
+                effect.OnInteract(Game1.player);
             }
         }
     }
