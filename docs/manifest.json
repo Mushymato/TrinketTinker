@@ -1,5 +1,5 @@
 {
-  "source_base_path": "/home/michelle/Spaget/sv/TrinketTinker",
+  "source_base_path": "/home/mush/Spaget/sv/TrinketTinker",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -452,30 +452,10 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TrinketTinker.Effects.Support.EquipTrinket.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TrinketTinker.Effects.Support.EquipTrinket.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Effects.Support.ProcEventArgs.yml",
       "output": {
         ".html": {
           "relative_path": "api/TrinketTinker.Effects.Support.ProcEventArgs.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TrinketTinker.Effects.Support.TinkerInventoryMenu.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TrinketTinker.Effects.Support.TinkerInventoryMenu.html"
         }
       },
       "version": ""
@@ -1144,11 +1124,11 @@
       "type": "Toc",
       "source_relative_path": "api/toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "api/toc.json"
-        },
         ".html": {
           "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
         }
       },
       "version": ""
@@ -1587,11 +1567,11 @@
       "type": "Toc",
       "source_relative_path": "guide/toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "guide/toc.json"
-        },
         ".html": {
           "relative_path": "guide/toc.html"
+        },
+        ".json": {
+          "relative_path": "guide/toc.json"
         }
       },
       "version": ""
@@ -1690,11 +1670,11 @@
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "toc.json"
-        },
         ".html": {
           "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
         }
       },
       "version": ""

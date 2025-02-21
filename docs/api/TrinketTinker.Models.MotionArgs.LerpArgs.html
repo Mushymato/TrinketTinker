@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -172,7 +172,7 @@ Class LerpArgs  <a class="header-action link-secondary" title="View source" href
 
   <h3 id="TrinketTinker_Models_MotionArgs_LerpArgs_Jitter" data-uid="TrinketTinker.Models.MotionArgs.LerpArgs.Jitter">
   Jitter
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionArgs/LerpArgs.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionArgs/LerpArgs.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>While within the minimum range, randomly move around a little bit.</p>
@@ -271,7 +271,7 @@ Class LerpArgs  <a class="header-action link-secondary" title="View source" href
   <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionArgs/LerpArgs.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Stop moving as soon as the player stops moving.</p>
+  <div class="markdown level1 summary"><p>Stop moving as soon as the player stops moving, only if the anchor is <a class="xref" href="TrinketTinker.Models.AnchorTarget.html#TrinketTinker_Models_AnchorTarget_Owner">Owner</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -296,11 +296,43 @@ Class LerpArgs  <a class="header-action link-secondary" title="View source" href
 
 
 
+  <a id="TrinketTinker_Models_MotionArgs_LerpArgs_MoveSyncAll_" data-uid="TrinketTinker.Models.MotionArgs.LerpArgs.MoveSyncAll*"></a>
+
+  <h3 id="TrinketTinker_Models_MotionArgs_LerpArgs_MoveSyncAll" data-uid="TrinketTinker.Models.MotionArgs.LerpArgs.MoveSyncAll">
+  MoveSyncAll
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionArgs/LerpArgs.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Stop moving as soon as the player stops moving.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool MoveSyncAll { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Models_MotionArgs_LerpArgs_NoOverlap_" data-uid="TrinketTinker.Models.MotionArgs.LerpArgs.NoOverlap*"></a>
 
   <h3 id="TrinketTinker_Models_MotionArgs_LerpArgs_NoOverlap" data-uid="TrinketTinker.Models.MotionArgs.LerpArgs.NoOverlap">
   NoOverlap
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionArgs/LerpArgs.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionArgs/LerpArgs.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>When the player has multiple companions, avoid moving into the bounding box of another</p>
@@ -396,7 +428,7 @@ Class LerpArgs  <a class="header-action link-secondary" title="View source" href
 
   <h3 id="TrinketTinker_Models_MotionArgs_LerpArgs_Velocity" data-uid="TrinketTinker.Models.MotionArgs.LerpArgs.Velocity">
   Velocity
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionArgs/LerpArgs.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionArgs/LerpArgs.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Max velocity, -1 to match farmer, -2 for unlimited</p>
@@ -432,7 +464,7 @@ Class LerpArgs  <a class="header-action link-secondary" title="View source" href
 
   <h3 id="TrinketTinker_Models_MotionArgs_LerpArgs_Validate" data-uid="TrinketTinker.Models.MotionArgs.LerpArgs.Validate">
   Validate()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionArgs/LerpArgs.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionArgs/LerpArgs.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if the given arguments are valid, potentially modify arguments to ensure they are valid</p>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -77,7 +77,18 @@
 <p>All notable changes to this project will be documented here.</p>
 <p>The format is based on <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</a>, and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 </blockquote>
-<h3 id="154-wip">1.5.4-wip</h3>
+<h3 id="155">1.5.5</h3>
+<h4 id="changed">Changed</h4>
+<ul>
+<li>MoveSync now only sync movement with owner when anchor mode is owner, use MoveSyncAll for old behavior.</li>
+<li>Serpent alt segment layer depth changes to make them consistent, this is entirely by vibes and implementation detail subject to change</li>
+</ul>
+<h4 id="fixed">Fixed</h4>
+<ul>
+<li>HarvestTo TrinketInventory not harvesting custom bush drops properly</li>
+<li>Temporary Animated Sprite now checks Condition, if given</li>
+</ul>
+<h3 id="154">1.5.4</h3>
 <h4 id="added">Added</h4>
 <ul>
 <li>Several more Harvest* abilities, and matching AnchorTarget
@@ -88,7 +99,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="fixed">Fixed</h4>
+<h4 id="fixed-1">Fixed</h4>
 <ul>
 <li>Separated position from offset to make companions better at harvesting things at Range=0</li>
 <li>HarvestCrop only harvesting to player inventory</li>
@@ -100,13 +111,13 @@
 <ul>
 <li>Ability ProcSyncId is like ProcSyncIndex, but uses the Id to find what to Sync.</li>
 </ul>
-<h4 id="fixed-1">Fixed</h4>
+<h4 id="fixed-2">Fixed</h4>
 <ul>
 <li>Null handling on add item to tinker inventory</li>
 <li>Nop ignoring timer</li>
 <li>Regression on global inventory cleanup</li>
 </ul>
-<h4 id="fixed-2">Fixed</h4>
+<h4 id="fixed-3">Fixed</h4>
 <ul>
 <li>Crash on saving with more than 10 trinkets equipped</li>
 <li>Duplicating vanilla trinket companions 2</li>
@@ -117,17 +128,17 @@
 <li>HitTAS for Hitscan/Projectile, apply a TAS at the target on hit.</li>
 <li>HitsDelay for Hitscan/Projectile, adds a delay between hits.</li>
 </ul>
-<h4 id="fixed-3">Fixed</h4>
+<h4 id="fixed-4">Fixed</h4>
 <ul>
 <li>Crash on saving with more than 10 trinkets equipped</li>
 <li>Duplicating vanilla trinket companions</li>
 </ul>
-<h4 id="changed">Changed</h4>
+<h4 id="changed-1">Changed</h4>
 <ul>
 <li>Hitscan ProcTAS now fires at the companion's position, instead of the target position, this is because HitTAS was added</li>
 </ul>
 <h3 id="151">1.5.1</h3>
-<h4 id="fixed-4">Fixed</h4>
+<h4 id="fixed-5">Fixed</h4>
 <ul>
 <li>Crash on day ending</li>
 </ul>
@@ -177,7 +188,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="fixed-5">Fixed</h4>
+<h4 id="fixed-6">Fixed</h4>
 <ul>
 <li>Made a bunch of lists in the data model nullable</li>
 <li>Deprecated Motions</li>
@@ -244,12 +255,12 @@
 </ul>
 </li>
 </ul>
-<h4 id="fixed-6">Fixed</h4>
+<h4 id="fixed-7">Fixed</h4>
 <ul>
 <li>Some abilities did not apply due to an incorrect check for max level</li>
 </ul>
 <h3 id="145">1.4.5</h3>
-<h4 id="fixed-7">Fixed</h4>
+<h4 id="fixed-8">Fixed</h4>
 <ul>
 <li>Error with filtering for certain types of crops (ginger?).</li>
 </ul>
@@ -258,7 +269,7 @@
 <ul>
 <li>Draw debug mode that shows the sprite index of the companion on screen. Toggle with command tt_draw_debug.</li>
 </ul>
-<h4 id="fixed-8">Fixed</h4>
+<h4 id="fixed-9">Fixed</h4>
 <ul>
 <li>Companions not appearing in volcano and farm buildings.</li>
 </ul>
@@ -275,7 +286,7 @@
 <li>fr.json by by <a href="https://next.nexusmods.com/profile/Caranud">Caranud</a></li>
 </ul>
 <h3 id="142">1.4.2</h3>
-<h4 id="fixed-9">Fixed</h4>
+<h4 id="fixed-10">Fixed</h4>
 <ul>
 <li>Hopefully fix a crash after some events, very strange.</li>
 </ul>
@@ -285,7 +296,7 @@
 <li>Add support for randomized speech bubbles.</li>
 <li>Add &quot;Swim&quot; anim clip key for when the player is swimming.</li>
 </ul>
-<h4 id="fixed-10">Fixed</h4>
+<h4 id="fixed-11">Fixed</h4>
 <ul>
 <li>Companions duplicating when farmhand is exiting an event.</li>
 </ul>
@@ -297,7 +308,7 @@
 <li>Allow one shot clips to pause movement.</li>
 <li>Changed perching clip to behave by static motion rules (check against player facing direction), rather than lerp motion rules (check against companion facing).</li>
 </ul>
-<h4 id="fixed-11">Fixed</h4>
+<h4 id="fixed-12">Fixed</h4>
 <ul>
 <li>AbilityProc clips not playing in multiplayer.</li>
 </ul>
@@ -307,12 +318,12 @@
 <li>Additional HarvestTo field for Harvest type abilities to determine where the harvested item go (inventory, debris, none).</li>
 <li>New field Filter on Anchors and on Hitscan/Projectile ability. If set, the enemy types listed will not be targeted.</li>
 </ul>
-<h4 id="fixed-12">Fixed</h4>
+<h4 id="fixed-13">Fixed</h4>
 <ul>
 <li>Lerp MoveSync companions moving when a weapon is swung. They are now prevented from moving while a tool is being used. Also applies to check for perching.</li>
 </ul>
 <h3 id="121">1.2.1</h3>
-<h4 id="fixed-13">Fixed</h4>
+<h4 id="fixed-14">Fixed</h4>
 <ul>
 <li>Prevent trinket tinker anvil output method from affecting non trinket tinker items.</li>
 </ul>
@@ -321,22 +332,22 @@
 <ul>
 <li>New &quot;Homing&quot; argument on projectile to make projectile recheck target midflight.</li>
 </ul>
-<h4 id="fixed-14">Fixed</h4>
+<h4 id="fixed-15">Fixed</h4>
 <ul>
 <li>Projectile used wrong target point, change to bounding box center.</li>
 </ul>
 <h3 id="110">1.1.0</h3>
-<h4 id="fixed-15">Fixed</h4>
+<h4 id="fixed-16">Fixed</h4>
 <ul>
 <li>Update for SDV 1.6.14, add new &quot;sourceChange&quot; argument in ItemQueryContext.</li>
 </ul>
 <h3 id="102">1.0.2</h3>
-<h4 id="fixed-16">Fixed</h4>
+<h4 id="fixed-17">Fixed</h4>
 <ul>
 <li>Correctly invalidate Data/Trinkets whenever the Tinker asset gets invalidated.</li>
 </ul>
 <h3 id="101">1.0.1</h3>
-<h4 id="fixed-17">Fixed</h4>
+<h4 id="fixed-18">Fixed</h4>
 <ul>
 <li>Add workaround for issue where <code>TrinketEffectClass</code> ends up being null.</li>
 </ul>
