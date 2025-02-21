@@ -1,0 +1,113 @@
+{
+  // modified serpent example from sinister servants
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "LogName": "Serp: Sprites",
+      "Action": "Load",
+      "Target": "Mods/{{ModId}}/serp",
+      "FromFile": "sprites/{{TargetWithoutPath}}.png"
+    },
+    {
+      "LogName": "Serp: Trinkets",
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_Serp": {
+          "Id": "{{ModId}}_Serp",
+          "DisplayName": "Serp",
+          "Description": "Serp",
+          "Texture": "Mods/{{ModId}}/serp",
+          "SheetIndex": 0,
+          "DropsNaturally": false,
+          "CanBeReforged": true
+        },
+      }
+    },
+    {
+      "LogName": "Serp: Tinker",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        "{{ModId}}_Serp": {
+          "MinLevel": 7,
+          "Variants": [
+            {
+              "Texture": "Mods/{{ModId}}/serp",
+              "Width": 32,
+              "Height": 32,
+            },
+          ],
+          "Motion": {
+            "MotionClass": "Serpent",
+            "DirectionMode": "Single",
+            "DirectionRotate": true,
+            "FrameLength": 1,
+            "Offset": "0,-128",
+            "Anchors": [
+              {
+                "Mode": "Monster",
+                "Range": 1280,
+                "Filters": [
+                  "Dust Spirit"
+                ]
+              }
+            ],
+            "SpeechBubbles": {
+              "Speech1": {
+                "Text": "hiiiiisssssss",
+                "Timer": 1000
+              },
+              "Speech2": {
+                "Text": "i am serp.",
+                "Timer": 1000,
+              }
+            },
+            "Args": {
+              "Max": 2048,
+              "Rate": 600,
+              "SegmentCount": 24,
+              "SegmentAlts": 2,
+              "Sparcity": 1
+            },
+          },
+          "Abilities": [
+            [
+              // {
+              //   "AbilityClass": "Nop",
+              //   "Proc": "Footstep",
+              //   "ProcSyncDelay": 2000,
+              //   "ProcSpeechBubble": "Speech1"
+              // },
+              // {
+              //   "AbilityClass": "Nop",
+              //   "Proc": "Sync",
+              //   "ProcSyncIndex": 0,
+              //   "ProcSpeechBubble": "Speech2"
+              // }
+              // {
+              //   "AbilityClass": "Hitscan",
+              //   "Description": "{{i18n:Serp.AbilityDescription.1}}",
+              //   "Proc": "Timer",
+              //   "ProcTimer": 3000,
+              //   "Args": {
+              //     "Min": 77,
+              //     "ExplodeRadius": 7
+              //   },
+              // },
+              // {
+              //   "AbilityClass": "Health",
+              //   "Proc": "Sync",
+              //   "Args": {
+              //     "ValueMode": "Number",
+              //     "Min": -7,
+              //     "Max": -7,
+              //   },
+              // }
+            ]
+          ]
+        },
+      }
+    }
+  ]
+}

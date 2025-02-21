@@ -273,7 +273,15 @@ public sealed class TinkerProjectile : Projectile
                 );
                 if (hitTAS.Value != null)
                 {
-                    if (!Visuals.BroadcastTAS(hitTAS.Value, pos, pos.Y / 10000f + 2E-06f, location, rotation: rotation))
+                    if (
+                        !Visuals.BroadcastTAS(
+                            hitTAS.Value,
+                            pos,
+                            pos.Y / 10000f + Visuals.LAYER_OFFSET,
+                            location,
+                            rotation: rotation
+                        )
+                    )
                         hitTAS.Value = null;
                 }
             }

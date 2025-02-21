@@ -27,6 +27,10 @@
       "Action": "Include",
       "FromFile": "data/lerp/snek.json"
     },
+    {
+      "Action": "Include",
+      "FromFile": "data/lerp/serp.json"
+    },
     // Projectile
     {
       "Action": "Include",

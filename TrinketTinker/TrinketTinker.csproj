@@ -24,9 +24,6 @@
     <MinimumGameVersion_Behavior>UpdateFull</MinimumGameVersion_Behavior>
     <Dependencies_VersionBehavior>UpdateFull</Dependencies_VersionBehavior>
   </PropertyGroup>
-  <ItemGroup>
-    <SMAPIDependency Include="Spiderbuttons.CMCT" Required="False" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Leclair.Stardew.ModManifestBuilder" Version="2.4.0" />

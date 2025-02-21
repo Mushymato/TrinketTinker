@@ -64,6 +64,7 @@ public sealed class SerpentMotion(TrinketTinkerCompanion companion, MotionData m
         DrawSnapshot segSnapshot;
         // segments
         int altIdx = 1;
+        int segTotal = args.SegmentAlts + 1;
         for (int i = 0; i < segments.Count - 1; i++)
         {
             int newFrame = cs.currentFrame + framesetLength * altIdx;
@@ -71,7 +72,10 @@ public sealed class SerpentMotion(TrinketTinkerCompanion companion, MotionData m
                 position: segments[i].AsVec2() + c.Owner.drawOffset + offset,
                 sourceRect: cs.GetSourceRect(newFrame),
                 rotation: segments[i].Z,
-                currentFrame: newFrame
+                currentFrame: newFrame,
+                layerDepth: snapshot.LayerDepth
+                    - (i + 1) * Visuals.LAYER_OFFSET
+                    - 2 * (segTotal + 1 - altIdx) * Visuals.LAYER_OFFSET
             );
             segSnapshot.Draw(b);
             EnqueueRepeatDraws(segSnapshot, false);
@@ -82,12 +86,13 @@ public sealed class SerpentMotion(TrinketTinkerCompanion companion, MotionData m
         if (args.HasTail)
         {
             // tail
-            int newFrame = cs.currentFrame + framesetLength * (args.SegmentAlts + 1);
+            int newFrame = cs.currentFrame + framesetLength * segTotal;
             segSnapshot = snapshot.CloneWithChanges(
                 position: segments.Last().AsVec2() + c.Owner.drawOffset + offset,
-                sourceRect: cs.GetSourceRect(cs.currentFrame + framesetLength * (args.SegmentAlts + 1)),
+                sourceRect: cs.GetSourceRect(cs.currentFrame + framesetLength * segTotal),
                 rotation: segments.Last().Z,
-                currentFrame: newFrame
+                currentFrame: newFrame,
+                layerDepth: snapshot.LayerDepth - (segments.Count + 1) * Visuals.LAYER_OFFSET - 2 * Visuals.LAYER_OFFSET
             );
             segSnapshot.Draw(b);
             EnqueueRepeatDraws(segSnapshot, false);

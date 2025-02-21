@@ -98,33 +98,6 @@ internal sealed class ModEntry : Mod
         // Check for WearMoreRings, which adds a 2nd trinket slot
         HasWearMoreRings = Helper.ModRegistry.IsLoaded("bcmpinc.WearMoreRings");
         Config.Register(Helper, ModManifest);
-        // Register CMCT actions
-        if (
-            Helper.ModRegistry.GetApi<Wheels.Integration.ICrossModCompatibilityToolsAPI>("Spiderbuttons.CMCT")
-            is Wheels.Integration.ICrossModCompatibilityToolsAPI cmctApi
-        )
-        {
-            cmctApi.RegisterAction(
-                ModManifest,
-                "DoInteract",
-                "Default",
-                I18n.Config_DoInteractKey_Name,
-                I18n.Config_DoInteractKey_Description,
-                DoInteract,
-                null,
-                null
-            );
-            cmctApi.RegisterAction(
-                ModManifest,
-                "OpenTinkerInventory",
-                "Menu",
-                I18n.Config_OpenTinkerInventoryKey_Name,
-                I18n.Config_OpenTinkerInventoryKey_Description,
-                OpenTinkerInventory,
-                null,
-                null
-            );
-        }
     }
 
     private static void OnAssetRequested(object? sender, AssetRequestedEventArgs e)

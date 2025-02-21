@@ -17,8 +17,11 @@ public class LerpArgs : IArgs
     /// <summary>Pause between lerp retargeting, in ms</summary>
     public float Pause { get; set; } = 0f;
 
-    /// <summary>Stop moving as soon as the player stops moving.</summary>
+    /// <summary>Stop moving as soon as the player stops moving, only if the anchor is <see cref="AnchorTarget.Owner"/>.</summary>
     public bool MoveSync { get; set; } = false;
+
+    /// <summary>Stop moving as soon as the player stops moving.</summary>
+    public bool MoveSyncAll { get; set; } = false;
 
     /// <summary>While within the minimum range, randomly move around a little bit.</summary>
     public float Jitter { get; set; } = 0f;

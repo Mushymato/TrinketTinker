@@ -39,7 +39,8 @@ public sealed record DrawSnapshot(
         Vector2? position = null,
         Rectangle? sourceRect = null,
         float? rotation = null,
-        int? currentFrame = null
+        int? currentFrame = null,
+        float? layerDepth = null
     )
     {
         return new(
@@ -51,7 +52,7 @@ public sealed record DrawSnapshot(
             Origin,
             TextureScale,
             Effects,
-            LayerDepth,
+            layerDepth ?? LayerDepth,
             CurrentFrame: currentFrame ?? CurrentFrame
         );
     }

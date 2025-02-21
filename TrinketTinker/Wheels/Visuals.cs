@@ -8,6 +8,8 @@ namespace TrinketTinker.Wheels;
 /// <summary>Helper methods for visual effects</summary>
 internal static class Visuals
 {
+    internal const float LAYER_OFFSET = 2E-06f;
+
     /// <summary>
     /// Get a monogame color from string.
     /// Supports <see cref="TinkerConst.COLOR_PRISMATIC"/> for animated color.

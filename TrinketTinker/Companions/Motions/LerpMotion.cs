@@ -36,6 +36,13 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
         return false;
     }
 
+    protected override bool ShouldMove()
+    {
+        if (!c.OwnerMoving && (args.MoveSyncAll || (args.MoveSync && currAnchorTarget == AnchorTarget.Owner)))
+            return false;
+        return base.ShouldMove();
+    }
+
     /// <summary>Moving flag used for basis of anim</summary>
     /// <returns></returns>
     protected override bool IsMoving()
@@ -47,9 +54,6 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
     public override void UpdateLocal(GameTime time, GameLocation location)
     {
         if (!ShouldMove())
-            return;
-
-        if (args.MoveSync && !c.OwnerMoving)
             return;
 
         if ((Lerp < 0f || AnchorChanged) && !CheckOverlap())

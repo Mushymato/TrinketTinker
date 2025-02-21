@@ -21,6 +21,15 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
                 or Debris.DebrisType.ARCHAEOLOGY
                 or Debris.DebrisType.RESOURCE;
 
+    private static Item? GetDebrisItem(Debris debris)
+    {
+        if (debris.item != null)
+            return debris.item;
+        if (debris.debrisType.Value != 0 || debris.chunkType.Value != 8)
+            return ItemRegistry.Create(debris.itemId.Value, 1, debris.itemQuality, allowNull: true);
+        return null;
+    }
+
     private static void CollectDebrisToNone(Debris debris, GameLocation location)
     {
         location.debris.Remove(debris);
@@ -38,9 +47,12 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
         Func<Item, Item?> addToTrinketInv
     )
     {
-        debris.item = addToTrinketInv(debris.item);
-        if (debris.item == null)
-            location.debris.Remove(debris);
+        if (GetDebrisItem(debris) is Item item)
+        {
+            debris.item = addToTrinketInv(item);
+            if (debris.item == null)
+                location.debris.Remove(debris);
+        }
     }
 
     internal static bool CollectDebris(

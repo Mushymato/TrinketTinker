@@ -10,7 +10,7 @@ public sealed class SerpentArgs : LerpArgs
     public int SegmentAlts { get; set; } = 1;
 
     /// <summary>Whether the serpent has a tail</summary>
-    public bool HasTail = true;
+    public bool HasTail { get; set; } = true;
 
     /// <summary>How spaced out each segment is</summary>
     public float Sparcity { get; set; } = 3.5f;

@@ -83,7 +83,7 @@ public class DamageArgs : IArgs
     public void DamageMonster(ProcEventArgs proc, Monster target)
     {
         Vector2 pos = target.GetBoundingBox().Center.ToVector2();
-        float drawLayer = pos.Y / 10000f + 2E-06f;
+        float drawLayer = pos.Y / 10000f + Visuals.LAYER_OFFSET;
         if (Min > 0)
         {
             if (HitsDelay == 0)

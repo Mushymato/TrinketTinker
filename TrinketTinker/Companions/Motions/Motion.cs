@@ -583,8 +583,8 @@ public abstract class Motion<TArgs> : IMotion
         Vector2 offset = GetOffset();
         float layerDepth = md.LayerDepth switch
         {
-            LayerDepth.Behind => c.Owner.getDrawLayer() - 2 * 2E-06f,
-            LayerDepth.InFront => c.Owner.getDrawLayer() + 2 * 2E-06f,
+            LayerDepth.Behind => c.Owner.getDrawLayer() - 2 * Visuals.LAYER_OFFSET,
+            LayerDepth.InFront => c.Owner.getDrawLayer() + 2 * Visuals.LAYER_OFFSET,
             _ => GetPositionalLayerDepth(offset),
         };
 
@@ -620,7 +620,7 @@ public abstract class Motion<TArgs> : IMotion
                     new Vector2(Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y),
                     shadowScale,
                     SpriteEffects.None,
-                    layerDepth - 2E-06f
+                    layerDepth - Visuals.LAYER_OFFSET
                 );
             DrawShadow(b, shadowSnapshot);
         }

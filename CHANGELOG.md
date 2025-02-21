@@ -4,7 +4,19 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-### 1.5.4-wip
+### 1.5.5
+
+#### Changed
+
+- MoveSync now only sync movement with owner when anchor mode is owner, use MoveSyncAll for old behavior.
+- Serpent alt segment layer depth changes to make them consistent, this is entirely by vibes and implementation detail subject to change
+
+#### Fixed
+
+- HarvestTo TrinketInventory not harvesting custom bush drops properly
+- Temporary Animated Sprite now checks Condition, if given
+
+### 1.5.4
 
 #### Added
 
