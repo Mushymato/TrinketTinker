@@ -18,7 +18,7 @@ public sealed class ProjectileAbility(TrinketTinkerEffect effect, AbilityData da
 {
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
-        Vector2 sourcePosition = e.CompanionPosOff ?? proc.Farmer.Position;
+        Vector2 sourcePosition = e.CompanionPosition ?? proc.Farmer.Position;
         Monster? target =
             proc.Monster
             ?? Utility.findClosestMonsterWithinRange(

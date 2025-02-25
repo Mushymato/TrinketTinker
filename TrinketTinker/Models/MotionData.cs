@@ -91,8 +91,11 @@ public class AnchorTargetData
     /// <summary>Targeting mode, see <see cref="AnchorTarget"/>.</summary>
     public AnchorTarget Mode { get; set; } = AnchorTarget.Owner;
 
-    /// <summary>Search range, applicable to <see cref="AnchorTarget.Monster"/>.</summary>
+    /// <summary>Search range.</summary>
     public int Range { get; set; } = Game1.tileSize * 10;
+
+    /// <summary>Stop moving once companion is this distance away.</summary>
+    public int StopRange { get; set; } = 0;
 
     /// <summary>
     /// Additional filters to apply, specific behavior depends on the anchor mode.
@@ -102,6 +105,9 @@ public class AnchorTargetData
     /// </summary>
     public List<string>? Filters { get; set; } = null;
 
+    /// <summary>
+    ///
+    /// </summary>
     private List<string>? requiredAbilities = null;
 
     /// <summary>Enable this anchor only if the companion has matching ability type.</summary>

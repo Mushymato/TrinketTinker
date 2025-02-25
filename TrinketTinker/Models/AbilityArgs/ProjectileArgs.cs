@@ -14,6 +14,9 @@ public sealed class ProjectileArgs : DamageArgs
     /// <summary>Projectile texture sprite height</summary>
     public int SpriteHeight { get; set; } = 16;
 
+    /// <summary>Projectile height from ground, non-zero value draws a shadow</summary>
+    public int Height { get; set; } = 0;
+
     /// <summary>Number of trailing sprites to draw</summary>
     public int TailCount { get; set; } = 0;
 

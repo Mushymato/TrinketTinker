@@ -54,22 +54,24 @@
             "Anchors": [
               {
                 "Mode": "Monster",
-                "Range": 1024
+                "Range": 640,
+                "StopRange": 320,
               }
             ],
             "AnimClips": {
               "abbyFlute": {
                 "FrameStart": 16,
                 "FrameLength": 4,
+                "Interval": 350,
                 "PauseMovement": true,
-                "RandomClips": [
-                  {
-                    "FrameStart": 32,
-                    "FrameLength": 1,
-                    "Interval": 700,
-                    "PauseMovement": true,
-                  }
-                ]
+                // "RandomClips": [
+                //   {
+                //     "FrameStart": 32,
+                //     "FrameLength": 1,
+                //     "Interval": 700,
+                //     "PauseMovement": true,
+                //   }
+                // ]
               },
               "Idle": {
                 "Nop": true,
@@ -174,9 +176,10 @@
                   "Min": 5,
                   "Max": 10,
                   "Knockback": 2,
-                  "Range": 4096,
+                  "Range": 320,
                   "Texture": "Maps/springobjects",
                   "SpriteIndex": 788,
+                  "Height": 64,
                   "Acceleration": 2,
                   "MinVelocity": 2,
                   "MaxVelocity": 24,

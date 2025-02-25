@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Netcode;
 using StardewValley;
+using StardewValley.GameData;
 using StardewValley.Monsters;
 using StardewValley.Projectiles;
 using StardewValley.TerrainFeatures;
@@ -48,6 +49,7 @@ public sealed class TinkerProjectile : Projectile
         currentTileSheetIndex.Value = args.SpriteIndex;
         projectileSpriteWidth.Value = args.SpriteWidth;
         projectileSpriteHeight.Value = args.SpriteHeight;
+        height.Value = args.Height;
 
         position.Value = sourcePosition;
         UpdateVelocityAndAcceleration(target.GetBoundingBox().Center.ToVector2(), args.MinVelocity, args.Acceleration);
@@ -149,9 +151,11 @@ public sealed class TinkerProjectile : Projectile
         Texture2D texture = GetCustomTexture();
         Rectangle sourceRect = GetCustomSourceRect(texture);
         Vector2 value = position.Value;
+        Vector2 offsetByHeight = new(0f, -height.Value);
+        Vector2 offsetToCenter = new(projectileSpriteWidth.Value / 2, projectileSpriteHeight.Value / 2);
         b.Draw(
             texture,
-            Game1.GlobalToLocal(Game1.viewport, value + new Vector2(0f, 0f - height.Value) + new Vector2(32f, 32f)),
+            Game1.GlobalToLocal(Game1.viewport, value + offsetByHeight + offsetToCenter),
             sourceRect,
             color.Value * alpha.Value,
             rotation,
@@ -160,16 +164,16 @@ public sealed class TinkerProjectile : Projectile
             SpriteEffects.None,
             (value.Y + 96f) / 10000f
         );
-        if (height.Value > 0f)
+        if (projectileSpriteHeight.Value > 0f)
         {
             b.Draw(
                 Game1.shadowTexture,
-                Game1.GlobalToLocal(Game1.viewport, value + new Vector2(32f, 32f)),
+                Game1.GlobalToLocal(Game1.viewport, value + offsetToCenter),
                 Game1.shadowTexture.Bounds,
                 Color.White * alpha.Value * 0.75f,
                 0f,
                 new Vector2(Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y),
-                2f,
+                2f * new Vector2(projectileSpriteWidth.Value / 16f, projectileSpriteHeight.Value / 16f),
                 SpriteEffects.None,
                 (value.Y - 1f) / 10000f
             );
@@ -184,10 +188,10 @@ public sealed class TinkerProjectile : Projectile
                     Vector2.Lerp(
                         (num2 == tail.Count - 1) ? value : tail.ElementAt(num2 + 1),
                         tail.ElementAt(num2),
-                        (float)tailCounter / 50f
+                        tailCounter / 50f
                     )
-                        + new Vector2(0f, 0f - height.Value)
-                        + new Vector2(32f, 32f)
+                        + offsetByHeight
+                        + offsetToCenter
                 ),
                 sourceRect,
                 color.Value * num,
@@ -195,11 +199,31 @@ public sealed class TinkerProjectile : Projectile
                 new Vector2(8f, 8f),
                 scale,
                 SpriteEffects.None,
-                (value.Y - (float)(tail.Count - num2) + 96f) / 10000f
+                (value.Y - (tail.Count - num2) + 96f) / 10000f
             );
-            num -= 1f / (float)tail.Count;
-            scale = 0.8f * (float)(4 - 4 / (num2 + 4));
+            num -= 1f / tail.Count;
+            scale = 0.8f * (4 - 4 / (num2 + 4));
         }
+
+        if (ModEntry.Config.DrawDebugMode)
+        {
+            Rectangle boundingBox = getBoundingBox();
+            Utility.DrawSquare(
+                b,
+                Game1.GlobalToLocal(Game1.viewport, boundingBox),
+                0,
+                backgroundColor: Color.BlueViolet
+            );
+        }
+    }
+
+    public override Rectangle getBoundingBox()
+    {
+        Vector2 value = position.Value;
+        float scale = localScale;
+        float width = projectileSpriteWidth.Value * scale;
+        float height = projectileSpriteHeight.Value * scale;
+        return new Rectangle((int)(value.X - (width / 2)), (int)(value.Y - (height / 2)), (int)width, (int)height);
     }
 
     /// <summary>Deal damage to monster.</summary>
@@ -273,16 +297,20 @@ public sealed class TinkerProjectile : Projectile
                 );
                 if (hitTAS.Value != null)
                 {
-                    if (
-                        !Visuals.BroadcastTAS(
-                            hitTAS.Value,
-                            pos,
-                            pos.Y / 10000f + Visuals.LAYER_OFFSET,
-                            location,
-                            rotation: rotation
+                    float drawLayer = pos.Y / 10000f + Visuals.LAYER_OFFSET;
+                    foreach (string tasId in hitTAS.Value.Split(','))
+                    {
+                        if (
+                            AssetManager.TASData.TryGetValue(
+                                tasId.Trim(),
+                                out TemporaryAnimatedSpriteDefinition? tasDef
+                            )
                         )
-                    )
-                        hitTAS.Value = null;
+                        {
+                            Visuals.BroadcastTAS(tasDef, pos, drawLayer, location, null, rotation);
+                            drawLayer += Visuals.LAYER_OFFSET;
+                        }
+                    }
                 }
             }
             if (stunTime.Value > 0)

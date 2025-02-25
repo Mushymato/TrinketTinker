@@ -267,6 +267,14 @@ public abstract class Motion<TArgs> : IMotion
         return UpdateAnchor(location);
     }
 
+    private AnchorTarget SetAnchor(AnchorTargetData anchor, Vector2 anchorPos)
+    {
+        currAnchorTarget = anchor.Mode;
+        if ((anchorPos - c.Position).Length() > anchor.StopRange)
+            c.Anchor = anchorPos;
+        return anchor.Mode;
+    }
+
     /// <summary>Changes the position of the anchor that the companion moves relative to, based on <see cref="MotionData.Anchors"/>.</summary>
     /// <param name="time"></param>
     /// <param name="location"></param>
@@ -291,11 +299,7 @@ public abstract class Motion<TArgs> : IMotion
                             match: anchor.Filters != null ? (m) => !anchor.Filters.Contains(m.Name) : null
                         );
                         if (closest != null)
-                        {
-                            currAnchorTarget = AnchorTarget.Monster;
-                            c.Anchor = Utility.PointToVector2(closest.GetBoundingBox().Center);
-                            return currAnchorTarget;
-                        }
+                            return SetAnchor(anchor, Utility.PointToVector2(closest.GetBoundingBox().Center));
                     }
                     break;
                 case AnchorTarget.Forage:
@@ -320,12 +324,12 @@ public abstract class Motion<TArgs> : IMotion
                             is SObject closest
                         )
                         {
-                            currAnchorTarget = anchor.Mode;
-                            c.Anchor =
+                            return SetAnchor(
+                                anchor,
                                 closest.TileLocation * Game1.tileSize
-                                + new Vector2(Game1.tileSize / 2, Game1.tileSize / 2)
-                                - Vector2.One;
-                            return currAnchorTarget;
+                                    + new Vector2(Game1.tileSize / 2, Game1.tileSize / 2)
+                                    - Vector2.One
+                            );
                         }
                     }
                     break;
@@ -349,19 +353,17 @@ public abstract class Motion<TArgs> : IMotion
                             is TerrainFeature closest
                         )
                         {
-                            currAnchorTarget = anchor.Mode;
-                            c.Anchor =
+                            return SetAnchor(
+                                anchor,
                                 closest.Tile * Game1.tileSize
-                                + new Vector2(Game1.tileSize / 2, Game1.tileSize / 2)
-                                - Vector2.One;
-                            return currAnchorTarget;
+                                    + new Vector2(Game1.tileSize / 2, Game1.tileSize / 2)
+                                    - Vector2.One
+                            );
                         }
                     }
                     break;
                 case AnchorTarget.Owner:
-                    currAnchorTarget = AnchorTarget.Owner;
-                    c.Anchor = Utility.PointToVector2(c.Owner.GetBoundingBox().Center);
-                    return currAnchorTarget;
+                    return SetAnchor(anchor, Utility.PointToVector2(c.Owner.GetBoundingBox().Center));
             }
         }
         // base case is Owner
