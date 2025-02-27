@@ -49,7 +49,10 @@ internal sealed class ModEntry : Mod
         helper.Events.Player.Warped += OnPlayerWarped;
         helper.Events.Input.ButtonsChanged += OnButtonsChanged;
         helper.Events.GameLoop.Saving += OnSaving;
+        helper.Events.GameLoop.ReturnedToTitle += OnReturnedToTitle;
+        helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
         helper.Events.GameLoop.DayStarted += OnDayStarted;
+        helper.Events.GameLoop.DayEnding += OnDayEnding;
         helper.Events.Multiplayer.ModMessageReceived += OnModMessageReceived;
 
         helper.ConsoleCommands.Add(
@@ -176,18 +179,28 @@ internal sealed class ModEntry : Mod
     private void OnSaving(object? sender, SavingEventArgs e)
     {
         EquipTrinket.UnequipHiddenTrinkets();
-        GlobalInventoryHandler.UnreachableInventoryCleanup();
+    }
+
+    private void OnReturnedToTitle(object? sender, ReturnedToTitleEventArgs e)
+    {
+        EquipTrinket.UnequipHiddenTrinkets();
     }
 
     private void OnSaveLoaded(object? sender, SaveLoadedEventArgs e)
     {
         EquipTrinket.ReequipHiddenTrinkets();
+        EquipTrinket.FixVanillaDupeCompanions();
     }
 
     private void OnDayStarted(object? sender, DayStartedEventArgs e)
     {
         EquipTrinket.ReequipHiddenTrinkets();
         EquipTrinket.FixVanillaDupeCompanions();
+    }
+
+    private void OnDayEnding(object? sender, DayEndingEventArgs e)
+    {
+        GlobalInventoryHandler.UnreachableInventoryCleanup();
     }
 
     private void OnModMessageReceived(object? sender, ModMessageReceivedEventArgs e)
