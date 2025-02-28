@@ -16,22 +16,24 @@ namespace TrinketTinker.Effects.Support;
 /// </summary>
 public sealed class TinkerProjectile : Projectile
 {
+    private ProjectileArgs? args = null;
     internal readonly NetString projectileTexture = new("");
     private Texture2D? loadedProjectileTexture = null;
     internal readonly NetInt projectileSpriteWidth = new(16);
     internal readonly NetInt projectileSpriteHeight = new(16);
-    internal readonly NetInt minDamage = new(0);
-    internal readonly NetInt maxDamage = new(0);
-    internal readonly NetFloat knockBackModifier = new(0f);
-    internal readonly NetInt addedPrecision = new(0);
-    internal readonly NetFloat critChance = new(0f);
-    internal readonly NetFloat critMultiplier = new(0f);
-    internal readonly NetInt stunTime = new(0);
-    internal readonly NetInt hits = new(0);
-    internal readonly NetInt hitsDelay = new(0);
-    internal readonly NetInt explodeRadius = new(0);
-    internal readonly NetString stunTAS = new(null);
-    internal readonly NetString hitTAS = new(null);
+
+    // internal readonly NetInt minDamage = new(0);
+    // internal readonly NetInt maxDamage = new(0);
+    // internal readonly NetFloat knockBackModifier = new(0f);
+    // internal readonly NetInt addedPrecision = new(0);
+    // internal readonly NetFloat critChance = new(0f);
+    // internal readonly NetFloat critMultiplier = new(0f);
+    // internal readonly NetInt stunTime = new(0);
+    // internal readonly NetInt hits = new(0);
+    // internal readonly NetInt hitsDelay = new(0);
+    // internal readonly NetInt explodeRadius = new(0);
+    // internal readonly NetString stunTAS = new(null);
+    // internal readonly NetString hitTAS = new(null);
     internal readonly NetBool rotateToTarget = new(false);
     internal readonly NetInt homingRange = new(0);
     internal readonly NetStringList filters = new();
@@ -44,6 +46,7 @@ public sealed class TinkerProjectile : Projectile
     public TinkerProjectile(ProjectileArgs args, ProcEventArgs proc, Monster target, Vector2 sourcePosition)
         : this()
     {
+        this.args = args;
         if (args.Texture != null)
             projectileTexture.Value = args.Texture;
         currentTileSheetIndex.Value = args.SpriteIndex;
@@ -61,18 +64,18 @@ public sealed class TinkerProjectile : Projectile
         ignoreLocationCollision.Value = args.IgnoreLocationCollisions;
         theOneWhoFiredMe.Set(proc.Location, proc.Farmer);
 
-        minDamage.Value = args.Min;
-        maxDamage.Value = args.Max;
-        knockBackModifier.Value = args.Knockback;
-        addedPrecision.Value = args.Precision;
-        critChance.Value = args.CritChance;
-        critMultiplier.Value = args.CritDamage;
-        stunTime.Value = args.StunTime;
-        stunTAS.Value = args.StunTAS;
-        hitTAS.Value = args.HitTAS;
-        hits.Value = args.Hits;
-        hitsDelay.Value = args.HitsDelay;
-        explodeRadius.Value = args.ExplodeRadius;
+        // minDamage.Value = args.Min;
+        // maxDamage.Value = args.Max;
+        // knockBackModifier.Value = args.Knockback;
+        // addedPrecision.Value = args.Precision;
+        // critChance.Value = args.CritChance;
+        // critMultiplier.Value = args.CritDamage;
+        // stunTime.Value = args.StunTime;
+        // stunTAS.Value = args.StunTAS;
+        // hitTAS.Value = args.HitTAS;
+        // hits.Value = args.Hits;
+        // hitsDelay.Value = args.HitsDelay;
+        // explodeRadius.Value = args.ExplodeRadius;
 
         if (args.Homing)
         {
@@ -94,18 +97,18 @@ public sealed class TinkerProjectile : Projectile
             .AddField(projectileTexture, "projectileTexture")
             .AddField(projectileSpriteWidth, "projectileSpriteWidth")
             .AddField(projectileSpriteHeight, "projectileSpriteHeight")
-            .AddField(minDamage, "minDamage")
-            .AddField(maxDamage, "maxDamage")
-            .AddField(knockBackModifier, "knockBackModifier")
-            .AddField(addedPrecision, "addedPrecision")
-            .AddField(critChance, "critChance")
-            .AddField(critMultiplier, "critMultiplier")
-            .AddField(stunTime, "stunTime")
-            .AddField(stunTAS, "stunTAS")
-            .AddField(hitTAS, "hitTAS")
-            .AddField(hits, "hits")
-            .AddField(hitsDelay, "hitsDelay")
-            .AddField(explodeRadius, "explodeRadius")
+            // .AddField(minDamage, "minDamage")
+            // .AddField(maxDamage, "maxDamage")
+            // .AddField(knockBackModifier, "knockBackModifier")
+            // .AddField(addedPrecision, "addedPrecision")
+            // .AddField(critChance, "critChance")
+            // .AddField(critMultiplier, "critMultiplier")
+            // .AddField(stunTime, "stunTime")
+            // .AddField(stunTAS, "stunTAS")
+            // .AddField(hitTAS, "hitTAS")
+            // .AddField(hits, "hits")
+            // .AddField(hitsDelay, "hitsDelay")
+            // .AddField(explodeRadius, "explodeRadius")
             .AddField(homingRange, "homingRange")
             .AddField(rotateToTarget, "rotateToTarget")
             .AddField(filters, "filters");
@@ -232,115 +235,13 @@ public sealed class TinkerProjectile : Projectile
     public override void behaviorOnCollisionWithMonster(NPC n, GameLocation location)
     {
         Farmer playerWhoFiredMe = (theOneWhoFiredMe.Get(location) as Farmer) ?? Game1.player;
-
         if (n is Monster monster)
         {
-            Vector2 pos = monster.GetBoundingBox().Center.ToVector2();
-            if (minDamage.Value > 0)
-            {
-                if (hitsDelay.Value == 0)
-                {
-                    for (int i = 1; i < hits.Value; i++)
-                    {
-                        location.damageMonster(
-                            areaOfEffect: monster.GetBoundingBox(),
-                            minDamage: minDamage.Value,
-                            maxDamage: maxDamage.Value,
-                            isBomb: false,
-                            knockBackModifier: knockBackModifier.Value,
-                            addedPrecision: addedPrecision.Value,
-                            critChance: critChance.Value,
-                            critMultiplier: critMultiplier.Value,
-                            triggerMonsterInvincibleTimer: false,
-                            who: playerWhoFiredMe,
-                            isProjectile: true
-                        );
-                    }
-                }
-                else
-                {
-                    for (int i = 1; i < hits.Value; i++)
-                    {
-                        DelayedAction.functionAfterDelay(
-                            () =>
-                            {
-                                location.damageMonster(
-                                    areaOfEffect: monster.GetBoundingBox(),
-                                    minDamage: minDamage.Value,
-                                    maxDamage: maxDamage.Value,
-                                    isBomb: false,
-                                    knockBackModifier: knockBackModifier.Value,
-                                    addedPrecision: addedPrecision.Value,
-                                    critChance: critChance.Value,
-                                    critMultiplier: critMultiplier.Value,
-                                    triggerMonsterInvincibleTimer: false,
-                                    who: playerWhoFiredMe,
-                                    isProjectile: true
-                                );
-                            },
-                            i * hitsDelay.Value
-                        );
-                    }
-                }
-                location.damageMonster(
-                    areaOfEffect: monster.GetBoundingBox(),
-                    minDamage: minDamage.Value,
-                    maxDamage: maxDamage.Value,
-                    isBomb: false,
-                    knockBackModifier: knockBackModifier.Value,
-                    addedPrecision: addedPrecision.Value,
-                    critChance: critChance.Value,
-                    critMultiplier: critMultiplier.Value,
-                    triggerMonsterInvincibleTimer: true,
-                    who: playerWhoFiredMe,
-                    isProjectile: true
-                );
-                if (hitTAS.Value != null)
-                {
-                    float drawLayer = pos.Y / 10000f + Visuals.LAYER_OFFSET;
-                    foreach (string tasId in hitTAS.Value.Split(','))
-                    {
-                        if (
-                            AssetManager.TASData.TryGetValue(
-                                tasId.Trim(),
-                                out TemporaryAnimatedSpriteDefinition? tasDef
-                            )
-                        )
-                        {
-                            Visuals.BroadcastTAS(tasDef, pos, drawLayer, location, null, rotation);
-                            drawLayer += Visuals.LAYER_OFFSET;
-                        }
-                    }
-                }
-            }
-            if (stunTime.Value > 0)
-            {
-                monster.stunTime.Value = stunTime.Value;
-                if (stunTAS.Value != null)
-                {
-                    Visuals.BroadcastTAS(
-                        stunTAS.Value,
-                        pos,
-                        (pos.Y + 96f) / 10000f,
-                        location,
-                        duration: stunTime.Value,
-                        rotation: rotation
-                    );
-                }
-            }
-            if (explodeRadius.Value > 0)
-            {
-                location.explode(
-                    monster.TilePoint.ToVector2(),
-                    explodeRadius.Value,
-                    playerWhoFiredMe,
-                    damage_amount: minDamage.Value
-                );
-            }
             if (!monster.IsInvisible)
-            {
                 UpdatePiercesLeft(location);
-            }
+            if (!playerWhoFiredMe.IsLocalPlayer)
+                return;
+            args?.DamageMonster(location, playerWhoFiredMe, monster);
         }
     }
 

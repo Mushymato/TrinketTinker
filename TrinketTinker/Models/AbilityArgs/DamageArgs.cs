@@ -80,7 +80,7 @@ public class DamageArgs : IArgs
     /// <summary>Do damage and debuff on monster.</summary>
     /// <param name="proc"></param>
     /// <param name="target"></param>
-    public void DamageMonster(ProcEventArgs proc, Monster target)
+    public void DamageMonster(GameLocation location, Farmer farmer, Monster target)
     {
         Vector2 pos = target.GetBoundingBox().Center.ToVector2();
         float drawLayer = pos.Y / 10000f + Visuals.LAYER_OFFSET;
@@ -89,7 +89,7 @@ public class DamageArgs : IArgs
             if (HitsDelay == 0)
                 for (int i = 1; i < Hits; i++)
                 {
-                    proc.LocationOrCurrent.damageMonster(
+                    location.damageMonster(
                         areaOfEffect: target.GetBoundingBox(),
                         minDamage: Min,
                         maxDamage: Max,
@@ -99,7 +99,7 @@ public class DamageArgs : IArgs
                         critChance: CritChance,
                         critMultiplier: CritDamage,
                         triggerMonsterInvincibleTimer: false,
-                        who: proc.Farmer,
+                        who: farmer,
                         isProjectile: false
                     );
                 }
@@ -110,7 +110,7 @@ public class DamageArgs : IArgs
                     DelayedAction.functionAfterDelay(
                         () =>
                         {
-                            proc.LocationOrCurrent.damageMonster(
+                            location.damageMonster(
                                 areaOfEffect: target.GetBoundingBox(),
                                 minDamage: Min,
                                 maxDamage: Max,
@@ -120,7 +120,7 @@ public class DamageArgs : IArgs
                                 critChance: CritChance,
                                 critMultiplier: CritDamage,
                                 triggerMonsterInvincibleTimer: false,
-                                who: proc.Farmer,
+                                who: farmer,
                                 isProjectile: false
                             );
                         },
@@ -128,7 +128,7 @@ public class DamageArgs : IArgs
                     );
                 }
             }
-            proc.LocationOrCurrent.damageMonster(
+            location.damageMonster(
                 areaOfEffect: target.GetBoundingBox(),
                 minDamage: Min,
                 maxDamage: Max,
@@ -138,7 +138,7 @@ public class DamageArgs : IArgs
                 critChance: CritChance,
                 critMultiplier: CritDamage,
                 triggerMonsterInvincibleTimer: true,
-                who: proc.Farmer,
+                who: farmer,
                 isProjectile: false
             );
             if (HitTAS != null)
@@ -158,12 +158,7 @@ public class DamageArgs : IArgs
         }
         if (ExplodeRadius > 0)
         {
-            proc.LocationOrCurrent.explode(
-                target.TilePoint.ToVector2(),
-                ExplodeRadius,
-                proc.Farmer,
-                damage_amount: Min
-            );
+            location.explode(target.TilePoint.ToVector2(), ExplodeRadius, farmer, damage_amount: Min);
         }
     }
 }
