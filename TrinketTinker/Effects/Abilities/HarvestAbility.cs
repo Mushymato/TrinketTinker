@@ -30,38 +30,55 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
         return null;
     }
 
-    private static void CollectDebrisToNone(Debris debris, GameLocation location)
+    protected void HarvestTAS(Item? item, GameLocation location, Farmer farmer)
+    {
+        if (args.ShowHarvestedItem && item != null)
+        {
+            Vector2 tasPos;
+            Vector2 tasOff;
+            if (e.CompanionPosition is Vector2 cPos)
+            {
+                tasPos = cPos;
+                tasOff = new Vector2(0, e.CompanionBoundingBox.Top - tasPos.Y);
+            }
+            else
+            {
+                tasPos = farmer.Position;
+                tasOff = new Vector2(0, -128);
+            }
+            Visuals.BroadcastItemGetTAS(item, location, tasPos, tasOff);
+        }
+    }
+
+    private void CollectDebrisToNone(Debris debris, GameLocation location)
     {
         location.debris.Remove(debris);
     }
 
-    private static void CollectDebrisToPlayer(Debris debris, GameLocation location, Farmer farmer)
+    private void CollectDebrisToPlayer(Debris debris, GameLocation location, Farmer farmer)
     {
+        Item? item = GetDebrisItem(debris);
         if (debris.collect(farmer))
-            location.debris.Remove(debris);
-    }
-
-    private static void CollectDebrisToTinkerInventory(
-        Debris debris,
-        GameLocation location,
-        Func<Item, Item?> addToTrinketInv
-    )
-    {
-        if (GetDebrisItem(debris) is Item item)
         {
-            debris.item = addToTrinketInv(item);
-            if (debris.item == null)
-                location.debris.Remove(debris);
+            location.debris.Remove(debris);
+            HarvestTAS(item, location, farmer);
         }
     }
 
-    internal static bool CollectDebris(
-        HarvestDestination harvestTo,
-        GameLocation location,
-        Farmer farmer,
-        Func<Item, Item?> addToTrinketInv,
-        Action harvestFunc
-    )
+    private void CollectDebrisToTinkerInventory(Debris debris, GameLocation location, Farmer farmer)
+    {
+        if (GetDebrisItem(debris) is Item item)
+        {
+            debris.item = e.AddItemToInventory(item);
+            if (debris.item == null)
+            {
+                location.debris.Remove(debris);
+                HarvestTAS(item, location, farmer);
+            }
+        }
+    }
+
+    internal bool CollectDebris(HarvestDestination harvestTo, GameLocation location, Farmer farmer, Action harvestFunc)
     {
         if (harvestTo == HarvestDestination.Debris)
         {
@@ -79,7 +96,8 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
                     CollectDebrisToNone(debris, location);
                     harvested = true;
                 }
-            },
+            }
+            ,
             HarvestDestination.Player => debris =>
             {
                 if (ShouldCollectDebris(debris))
@@ -87,15 +105,17 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
                     CollectDebrisToPlayer(debris, location, farmer);
                     harvested = true;
                 }
-            },
+            }
+            ,
             HarvestDestination.TinkerInventory => debris =>
             {
                 if (ShouldCollectDebris(debris))
                 {
-                    CollectDebrisToTinkerInventory(debris, location, addToTrinketInv);
+                    CollectDebrisToTinkerInventory(debris, location, farmer);
                     harvested = true;
                 }
-            },
+            }
+            ,
             _ => throw new NotImplementedException(),
         };
         location.debris.OnValueAdded += OnDebrisAdded;
@@ -163,7 +183,6 @@ public sealed class HarvestStoneAbility(TrinketTinkerEffect effect, AbilityData 
             args.HarvestTo,
             location,
             farmer,
-            e.AddItemToInventory,
             () =>
             {
                 obj.MinutesUntilReady = 0;
@@ -202,7 +221,6 @@ public sealed class HarvestTwigAbility(TrinketTinkerEffect effect, AbilityData d
             args.HarvestTo,
             location,
             farmer,
-            e.AddItemToInventory,
             () =>
             {
                 fakeTool.Value.lastUser = farmer;
@@ -236,7 +254,6 @@ public sealed class HarvestWeedAbility(TrinketTinkerEffect effect, AbilityData d
             args.HarvestTo,
             location,
             farmer,
-            e.AddItemToInventory,
             () =>
             {
                 obj.cutWeed(farmer);
@@ -274,7 +291,6 @@ public sealed class HarvestDigSpotAbility(TrinketTinkerEffect effect, AbilityDat
             args.HarvestTo,
             location,
             farmer,
-            e.AddItemToInventory,
             () =>
             {
                 fakeTool.Value.lastUser = farmer;
@@ -347,6 +363,10 @@ public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData
                         {
                             Game1.createItemDebris(item, new Vector2(tile.X * 64f + 32f, tile.Y * 64f + 32f), -1);
                         }
+                        else
+                        {
+                            HarvestTAS(obj, location, farmer);
+                        }
                     };
                 else
                     harvestMethod = () =>
@@ -354,6 +374,10 @@ public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData
                         if (farmer.addItemToInventory(obj.getOne()) is Item item)
                         {
                             Game1.createItemDebris(item, new Vector2(tile.X * 64f + 32f, tile.Y * 64f + 32f), -1);
+                        }
+                        else
+                        {
+                            HarvestTAS(obj, location, farmer);
                         }
                     };
                 harvestMethod();
@@ -418,7 +442,6 @@ public sealed class HarvestCropAbility(TrinketTinkerEffect effect, AbilityData d
             args.HarvestTo,
             location,
             farmer,
-            e.AddItemToInventory,
             () =>
             {
                 if (dirt.crop.harvest((int)tile.X, (int)tile.Y, dirt, null, true))
@@ -499,6 +522,6 @@ public sealed class HarvestShakeableAbility(TrinketTinkerEffect effect, AbilityD
         if (shakeFunc == null)
             return false;
 
-        return CollectDebris(args.HarvestTo, location, farmer, e.AddItemToInventory, () => shakeFunc(tile, false));
+        return CollectDebris(args.HarvestTo, location, farmer, () => shakeFunc(tile, false));
     }
 }

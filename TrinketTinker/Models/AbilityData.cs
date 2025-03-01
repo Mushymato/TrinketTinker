@@ -1,6 +1,7 @@
 using StardewValley;
 using StardewValley.Extensions;
 using TrinketTinker.Models.Mixin;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Models;
 
@@ -53,16 +54,23 @@ public sealed class ProcSoundData
     {
         if (!string.IsNullOrEmpty(CueName))
         {
-            if (Game1.soundBank.Exists(CueName))
+            if (Reflect.Try_SoundBank_Exists(Game1.soundBank, CueName))
             {
                 Game1.playSound(CueName, 0, out ICue sound);
                 // weird Pitch nonsense
                 if (Pitch != null)
                     sound.Pitch = Random.Shared.ChooseFrom(Pitch) / 2400f;
             }
-            else if (logName != null)
+            else
             {
-                ModEntry.LogOnce($"{logName}: ProcSound '{CueName}' does not exist", StardewModdingAPI.LogLevel.Warn);
+                if (logName != null)
+                {
+                    ModEntry.LogOnce(
+                        $"{logName}: ProcSound '{CueName}' does not exist",
+                        StardewModdingAPI.LogLevel.Warn
+                    );
+                }
+                CueName = null;
             }
         }
     }

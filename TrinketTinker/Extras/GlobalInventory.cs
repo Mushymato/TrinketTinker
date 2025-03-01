@@ -83,16 +83,19 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
             if (rows > 3)
             {
                 yPositionOnScreen += 42;
-                base.inventory.SetPosition(base.inventory.xPositionOnScreen, base.inventory.yPositionOnScreen + 38 + 4);
-                ItemsToGrabMenu.SetPosition(
+                Reflect.Try_InventoryMenu_SetPosition(
+                    base.inventory,
+                    base.inventory.xPositionOnScreen,
+                    base.inventory.yPositionOnScreen + 38 + 4
+                );
+                Reflect.Try_InventoryMenu_SetPosition(
+                    ItemsToGrabMenu,
                     ItemsToGrabMenu.xPositionOnScreen - 32 + 8,
                     ItemsToGrabMenu.yPositionOnScreen
                 );
-                storageSpaceTopBorderOffset = 20;
-                trashCan.bounds.X =
-                    ItemsToGrabMenu.width + ItemsToGrabMenu.xPositionOnScreen + IClickableMenu.borderWidth * 2;
-                okButton.bounds.X =
-                    ItemsToGrabMenu.width + ItemsToGrabMenu.xPositionOnScreen + IClickableMenu.borderWidth * 2;
+                Reflect.Try_ItemGrabMenu_storageSpaceTopBorderOffset_Set(this, 20);
+                trashCan.bounds.X = ItemsToGrabMenu.width + ItemsToGrabMenu.xPositionOnScreen + borderWidth * 2;
+                okButton.bounds.X = ItemsToGrabMenu.width + ItemsToGrabMenu.xPositionOnScreen + borderWidth * 2;
             }
         }
         else
@@ -167,7 +170,7 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
             ItemsToGrabMenu.yPositionOnScreen
             - borderWidth
             - spaceToClearTopBorder
-            + storageSpaceTopBorderOffset
+            + Reflect.Try_ItemGrabMenu_storageSpaceTopBorderOffset_Get(this)
             + TITLE_TM;
         if (drawBG && !Game1.options.showClearBackgrounds)
         {

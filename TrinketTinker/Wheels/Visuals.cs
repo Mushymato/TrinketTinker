@@ -138,6 +138,36 @@ internal static class Visuals
         }
     }
 
+    public static void BroadcastItemGetTAS(Item? item, GameLocation location, Vector2 position, Vector2 offset)
+    {
+        if (item == null)
+            return;
+        Vector2 startPos = position + offset;
+        TemporaryAnimatedSprite temporaryAnimatedSprite =
+            new(
+                null,
+                Rectangle.Empty,
+                750f,
+                1,
+                0,
+                startPos,
+                flicker: false,
+                flipped: false,
+                position.Y / 10000f,
+                0.005f,
+                Color.White,
+                1f,
+                -0.005f,
+                0f,
+                0f
+            );
+        temporaryAnimatedSprite.CopyAppearanceFromItemId(item?.QualifiedItemId);
+        temporaryAnimatedSprite.motion.Y = -1f;
+        temporaryAnimatedSprite.layerDepth = 1f - Game1.random.Next(100) / 10000f;
+        temporaryAnimatedSprite.delayBeforeAnimationStart = Game1.random.Next(350);
+        Game1.Multiplayer.broadcastSprites(location, temporaryAnimatedSprite);
+    }
+
     /// <summary>Quadratic ease out function</summary>
     /// <param name="a">Starting value</param>
     /// <param name="b">Ending value</param>

@@ -50,7 +50,6 @@ internal sealed class ModEntry : Mod
         helper.Events.Input.ButtonsChanged += OnButtonsChanged;
         helper.Events.GameLoop.Saving += OnSaving;
         helper.Events.GameLoop.ReturnedToTitle += OnReturnedToTitle;
-        helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
         helper.Events.GameLoop.DayStarted += OnDayStarted;
         helper.Events.GameLoop.DayEnding += OnDayEnding;
         helper.Events.Multiplayer.ModMessageReceived += OnModMessageReceived;
@@ -183,13 +182,7 @@ internal sealed class ModEntry : Mod
 
     private void OnReturnedToTitle(object? sender, ReturnedToTitleEventArgs e)
     {
-        EquipTrinket.UnequipHiddenTrinkets();
-    }
-
-    private void OnSaveLoaded(object? sender, SaveLoadedEventArgs e)
-    {
-        EquipTrinket.ReequipHiddenTrinkets();
-        EquipTrinket.FixVanillaDupeCompanions();
+        EquipTrinket.UnequipHiddenTrinkets(decrement: false);
     }
 
     private void OnDayStarted(object? sender, DayStartedEventArgs e)

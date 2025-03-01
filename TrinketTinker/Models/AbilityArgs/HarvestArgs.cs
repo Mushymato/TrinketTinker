@@ -12,8 +12,14 @@ public enum HarvestDestination
 public class HarvestArgs : TileArgs
 {
     /// <summary>Where to deposit the harvested item</summary>
-    public HarvestDestination HarvestTo = HarvestDestination.Player;
+    public HarvestDestination HarvestTo { get; set; } = HarvestDestination.Player;
 
     /// <summary>Context tags to exclude from harvest</summary>
-    public List<string>? Filters = null;
+    public List<string>? Filters { get; set; } = null;
+
+    /// <summary>
+    /// Show the item that was harvested as a temporary animated sprite above the companion or the player
+    /// Only applies when <seealso cref="HarvestTo"/> is <see cref="HarvestDestination.Player"/> or <see cref="HarvestDestination.TinkerInventory"/>
+    /// </summary>
+    public bool ShowHarvestedItem { get; set; } = true;
 }
