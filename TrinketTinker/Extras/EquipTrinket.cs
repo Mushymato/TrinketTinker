@@ -18,9 +18,7 @@ public static class EquipTrinket
 {
     /// <summary>Global inventory for holding all hidden trinkets</summary>
     private static Inventory GetHiddenTrinketsInv(Farmer player) =>
-        Game1.player.team.GetOrCreateGlobalInventory(
-            $"{ModEntry.ModId}+{player.UniqueMultiplayerID}/HiddenTrinkets"
-        );
+        Game1.player.team.GetOrCreateGlobalInventory($"{ModEntry.ModId}+{player.UniqueMultiplayerID}/HiddenTrinkets");
 
     /// <summary>Equip hidden trinket action name</summary>
     public static string Action_EquipHiddenTrinket => $"{ModEntry.ModId}_EquipHiddenTrinket";

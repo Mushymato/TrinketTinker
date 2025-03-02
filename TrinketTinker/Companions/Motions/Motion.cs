@@ -303,7 +303,7 @@ public abstract class Motion<TArgs> : IMotion
                     }
                     break;
                 case AnchorTarget.Forage:
-                    objMatch = (obj) => HarvestForageAbility.IsForage(obj, anchor.Filters);
+                    objMatch = (obj) => HarvestForageAbility.IsSpawnedItem(obj, anchor.Filters);
                     goto case AnchorTarget.Object;
                 case AnchorTarget.Stone:
                     objMatch = (obj) => obj.IsBreakableStone();

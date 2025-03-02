@@ -96,8 +96,7 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
                     CollectDebrisToNone(debris, location);
                     harvested = true;
                 }
-            }
-            ,
+            },
             HarvestDestination.Player => debris =>
             {
                 if (ShouldCollectDebris(debris))
@@ -105,8 +104,7 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
                     CollectDebrisToPlayer(debris, location, farmer);
                     harvested = true;
                 }
-            }
-            ,
+            },
             HarvestDestination.TinkerInventory => debris =>
             {
                 if (ShouldCollectDebris(debris))
@@ -114,8 +112,7 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
                     CollectDebrisToTinkerInventory(debris, location, farmer);
                     harvested = true;
                 }
-            }
-            ,
+            },
             _ => throw new NotImplementedException(),
         };
         location.debris.OnValueAdded += OnDebrisAdded;
@@ -300,23 +297,25 @@ public sealed class HarvestDigSpotAbility(TrinketTinkerEffect effect, AbilityDat
     }
 }
 
-/// <summary>Harvest forage</summary>
+/// <summary>Harvest forage (and other kinds of spawn item)</summary>
 public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData data, int level)
     : BaseHarvestAbility<HarvestArgs>(effect, data, level)
 {
     /// <inheritdocs/>
     protected override bool ProbeTile(GameLocation location, Vector2 tile)
     {
-        return location.objects.TryGetValue(tile, out SObject obj) && IsForage(obj, args.Filters);
+        if (Name.Equals("LewisBasement"))
+            return false;
+        return location.objects.TryGetValue(tile, out SObject obj) && IsSpawnedItem(obj, args.Filters);
     }
 
     /// <summary>Check if an object is forage</summary>
     /// <param name="obj"></param>
     /// <param name="filters"></param>
     /// <returns></returns>
-    public static bool IsForage(SObject obj, IList<string>? filters)
+    public static bool IsSpawnedItem(SObject obj, IList<string>? filters)
     {
-        return obj.isForage() && (filters == null || Places.CheckContextTagFilter(obj, filters));
+        return obj.IsSpawnedObject && (filters == null || Places.CheckContextTagFilter(obj, filters));
     }
 
     /// <summary>Check if farmer has room in inventory</summary>
@@ -338,17 +337,13 @@ public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData
     {
         if (
             location.objects.TryGetValue(tile, out SObject obj)
-            && obj.isForage()
+            && obj.IsSpawnedObject
             && !obj.questItem.Value
             && CanTargetAccept(farmer, obj)
         )
         {
-            obj.Quality = location.GetHarvestSpawnedObjectQuality(
-                farmer,
-                obj.isForage(),
-                obj.TileLocation,
-                Random.Shared
-            );
+            bool isForage = obj.isForage();
+            obj.Quality = location.GetHarvestSpawnedObjectQuality(farmer, isForage, obj.TileLocation, Random.Shared);
 
             if (args.HarvestTo != HarvestDestination.None)
             {
@@ -381,7 +376,7 @@ public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData
                         }
                     };
                 harvestMethod();
-                if (!location.isFarmBuildingInterior())
+                if (!location.isFarmBuildingInterior() && isForage)
                 {
                     if (
                         farmer.professions.Contains(Farmer.gatherer)
@@ -393,7 +388,8 @@ public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData
                         harvestMethod();
                         farmer.gainExperience(2, 7);
                     }
-                    location.OnHarvestedForage(farmer, obj);
+                    if (isForage)
+                        location.OnHarvestedForage(farmer, obj);
                 }
                 else
                 {
