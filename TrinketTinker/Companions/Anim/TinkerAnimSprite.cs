@@ -56,7 +56,17 @@ public sealed class TinkerAnimSprite
     internal Texture2D Texture => UseExtra ? TextureExtra ?? TextureBase : TextureBase;
     internal Texture2D TextureBase;
     internal Texture2D? TextureExtra = null;
-    private bool UseExtra = false;
+    private bool useExtra = false;
+    internal bool UseExtra
+    {
+        get => useExtra;
+        set
+        {
+            if (value != useExtra)
+                SetCurrentFrame(0);
+            useExtra = value;
+        }
+    }
     internal int Width;
     internal int Height;
     internal float TextureScale;

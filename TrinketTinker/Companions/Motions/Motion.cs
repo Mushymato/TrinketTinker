@@ -45,6 +45,12 @@ public abstract class Motion<TArgs> : IMotion
     /// <summary>Anchor timer</summary>
     private double anchorTimer = 0;
 
+    /// <summary>Idle is "has not moved for at least 100ms"</summary>
+    private const double IDLE_UPDATE_RATE = 100;
+
+    /// <summary>Anchor timer</summary>
+    private double idleTimer = IDLE_UPDATE_RATE;
+
     /// <summary>The previous anchor target</summary>
     protected AnchorTarget prevAnchorTarget = AnchorTarget.Owner;
 
@@ -253,15 +259,11 @@ public abstract class Motion<TArgs> : IMotion
     /// <param name="location"></param>
     public virtual AnchorTarget UpdateAnchor(GameTime time, GameLocation location)
     {
-        if (anchorTimer > 0)
+        if ((anchorTimer -= time.ElapsedGameTime.TotalMilliseconds) > 0)
         {
-            anchorTimer -= time.ElapsedGameTime.TotalMilliseconds;
-            if (anchorTimer > 0)
-            {
-                if (currAnchorTarget == AnchorTarget.Owner)
-                    c.Anchor = Utility.PointToVector2(c.Owner.GetBoundingBox().Center);
-                return currAnchorTarget;
-            }
+            if (currAnchorTarget == AnchorTarget.Owner)
+                c.Anchor = Utility.PointToVector2(c.Owner.GetBoundingBox().Center);
+            return currAnchorTarget;
         }
         anchorTimer = ANCHOR_UPDATE_RATE;
         return UpdateAnchor(location);
@@ -491,16 +493,22 @@ public abstract class Motion<TArgs> : IMotion
             }
             return;
         }
-        // Idle: play while companion is not moving
-        if (TinkerAnimState.Playing.HasFlag(AnimateClip(time, AnimClipDictionary.IDLE)))
+        else if (c.OwnerMoving)
+            return;
+        if ((idleTimer -= time.ElapsedGameTime.Milliseconds) > 0)
         {
             return;
         }
-        if (md.FrameLength > 0)
-            // Default: Use first frame of the current direction as fallback
-            cs.SetCurrentFrame(DirectionFrameStart());
-        else
-            cs.SetCurrentFrame(-1);
+        // Idle: play while companion is not moving
+        if (!TinkerAnimState.Playing.HasFlag(AnimateClip(time, AnimClipDictionary.IDLE)))
+        {
+            if (md.FrameLength > 0)
+                // Default: Use first frame of the current direction as fallback
+                cs.SetCurrentFrame(DirectionFrameStart());
+            else
+                cs.SetCurrentFrame(-1);
+        }
+        idleTimer = IDLE_UPDATE_RATE;
     }
 
     /// <summary>Moving flag used for basis of anim</summary>
@@ -631,7 +639,12 @@ public abstract class Motion<TArgs> : IMotion
         BoundingBox = cs.GetBoundingBox(drawPos, scale, shadowDrawPos, shadowScale);
         if (ModEntry.Config.DrawDebugMode)
         {
-            Utility.DrawSquare(b, Game1.GlobalToLocal(Game1.viewport, BoundingBox), 0, backgroundColor: Color.Magenta);
+            Utility.DrawSquare(
+                b,
+                Game1.GlobalToLocal(Game1.viewport, BoundingBox),
+                0,
+                backgroundColor: cs.UseExtra ? Color.Maroon : Color.Magenta
+            );
             Utility.DrawSquare(
                 b,
                 Game1.GlobalToLocal(Game1.viewport, c.Owner.GetBoundingBox()),
