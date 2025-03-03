@@ -152,7 +152,6 @@ public sealed class VariantData : IVariantData
                 .FirstOrDefault((kv) => GameStateQuery.CheckConditions(kv.Value.Condition, player: farmer))
                 is KeyValuePair<string, AltVariantData> foundAltVariant
             && !string.IsNullOrEmpty(foundAltVariant.Key)
-            && foundAltVariant.Key != prevKey
         )
         {
             nextKey = foundAltVariant.Key;

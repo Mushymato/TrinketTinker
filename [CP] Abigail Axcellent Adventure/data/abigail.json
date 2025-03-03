@@ -39,7 +39,12 @@
                 // },
                 "WINTER": {
                   "Texture": "Characters/Abigail_Winter",
-                  "Condition": "RANDOM .6",
+                  "Condition": "SEASON Winter",
+                  "Priority": 2
+                },
+                "beach": {
+                  "Texture": "Characters/Abigail_Beach",
+                  "Condition": "PLAYER_LOCATION_NAME Current Beach IslandSouth",
                   "Priority": 1
                 }
               }
@@ -148,12 +153,6 @@
                   "Range": 1,
                   "HarvestTo": "None"
                 },
-              },
-              {
-                "AbilityClass": "Nop",
-                "Proc": "Footstep",
-                "ProcTimer": 2100,
-                "ProcAltVariant": "RECHECK"
               },
               {
                 "Proc": "Timer",
