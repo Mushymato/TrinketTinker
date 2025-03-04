@@ -129,6 +129,43 @@
 </table>
 <p>These custom fields provide a way for C# mods to implement their own ability effects as actions, which can then be put into trinket tinker.</p>
 <p>Once again, <a href="4.z.101-BroadcastAction.html">BroadcastAction</a> do not benefit from these custom fields.</p>
+<p>An example implementation:</p>
+<h3 id="c-side">C# Side</h3>
+<pre><code class="lang-cs">internal sealed class ModEntry : Mod
+{
+    public override void Entry(IModHelper helper)
+    {
+        // ... other Entry stuff ...
+
+        TriggerActionManager.RegisterAction(
+            &quot;author.ModName_SpecialAction&quot;,
+            DoMySpecialAction
+        );
+    }
+
+    // Somewhere in your mod
+    private static bool DoMySpecialAction(string[] args, TriggerActionContext context, out string error)
+    {
+        if (context.CustomFields.TryGetValue(&quot;mushymato.TrinketTinker/Position&quot;, out object? vectObj))
+        {
+            Vector2 position = (Vector2)vectObj;
+            // do things given the companion position here
+        }
+        return true;
+    }
+}
+</code></pre>
+<h3 id="content-side">Content Side</h3>
+<pre><code class="lang-json">// Under &quot;Abilities&quot;
+{
+    &quot;AbilityClass&quot;: &quot;Action&quot;,
+    &quot;Proc&quot;: &quot;Timer&quot;,
+    &quot;ProcTimer&quot;: 250,
+    &quot;Args&quot;: {
+        &quot;Action&quot;: &quot;author.ModName_SpecialAction arg1 arg2 arg3&quot;
+    },
+}
+</code></pre>
 <h2 id="trigger-action">Trigger Action</h2>
 <p>The action <code>mushymato.TrinketTinker_ProcTrinket &lt;trinket id&gt;</code> can be run with <code>TriggerActionManager.TryRunAction</code> to activate an equipped trinket's <code>Proc=Trigger</code> ablities.
 The <code>TriggerContext</code> provided to the action will be passed through to any action ran by <a href="4.z.100-Action.html">Action ability</a>. If <code>TriggerContext.CustomFields</code> is not null, trinket tinker will fill in the aformentioned custom fields for the <code>TriggerContext</code>.</p>
