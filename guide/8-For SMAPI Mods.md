@@ -36,10 +36,10 @@ internal sealed class ModEntry : Mod
         );
     }
 
-    // Somewhere in your mod
+    // handler for your action
     private static bool DoMySpecialAction(string[] args, TriggerActionContext context, out string error)
     {
-        if (context.CustomFields.TryGetValue("mushymato.TrinketTinker/Position", out object? vectObj))
+        if (context.CustomFields?.TryGetValue("mushymato.TrinketTinker/Position", out object? vectObj) ?? false)
         {
             Vector2 position = (Vector2)vectObj;
             // do things given the companion position here

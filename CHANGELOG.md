@@ -21,6 +21,7 @@
 
 - Hidden trinkets disappearing for 1 day when returning to menu and loading save again.
 - Android sorta compatible-ish now, except for backpack related stuff which I can't fix at all.
+- Make projectile hitbox based directly on the size of texture, which should hopefully make it more reliable.
 
 ### 1.5.5
 
