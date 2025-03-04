@@ -18,8 +18,51 @@ As mentioned in the [Action ability](4.z.100-Action.md), `TriggerActionContext.C
 
 These custom fields provide a way for C# mods to implement their own ability effects as actions, which can then be put into trinket tinker.
 
-
 Once again, [BroadcastAction](4.z.101-BroadcastAction.md) do not benefit from these custom fields.
+
+An example implementation:
+
+### C\# Side
+```cs
+internal sealed class ModEntry : Mod
+{
+    public override void Entry(IModHelper helper)
+    {
+        // ... other Entry stuff ...
+
+        TriggerActionManager.RegisterAction(
+            "author.ModName_SpecialAction",
+            DoMySpecialAction
+        );
+    }
+
+    // Somewhere in your mod
+    private static bool DoMySpecialAction(string[] args, TriggerActionContext context, out string error)
+    {
+        if (context.CustomFields.TryGetValue("mushymato.TrinketTinker/Position", out object? vectObj))
+        {
+            Vector2 position = (Vector2)vectObj;
+            // do things given the companion position here
+        }
+        return true;
+    }
+}
+```
+
+### Content Side
+
+```json
+// Under "Abilities"
+{
+    "AbilityClass": "Action",
+    "Proc": "Timer",
+    "ProcTimer": 250,
+    "Args": {
+        "Action": "author.ModName_SpecialAction arg1 arg2 arg3"
+    },
+}
+```
+
 
 ## Trigger Action
 
