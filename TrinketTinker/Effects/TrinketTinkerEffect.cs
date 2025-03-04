@@ -126,6 +126,14 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
         }
     }
 
+    /// <summary>Companion is facing a particl.</summary>
+    public bool CompanionIsFacing(Vector2 pos)
+    {
+        if (Companion is TrinketTinkerCompanion cmp)
+            return cmp.Motion?.IsFacing(pos) ?? true;
+        return true;
+    }
+
     /// <summary>Number of ability levels</summary>
     public int MaxLevel => Data?.Abilities.Count ?? 0;
 

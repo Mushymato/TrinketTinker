@@ -46,10 +46,10 @@ public abstract class Motion<TArgs> : IMotion
     private double anchorTimer = 0;
 
     /// <summary>Idle is "has not moved for at least 100ms"</summary>
-    private const double IDLE_UPDATE_RATE = 100;
+    private const double IDLE_CD = 100;
 
     /// <summary>Anchor timer</summary>
-    private double idleTimer = IDLE_UPDATE_RATE;
+    private double idleTimer = IDLE_CD;
 
     /// <summary>The previous anchor target</summary>
     protected AnchorTarget prevAnchorTarget = AnchorTarget.Owner;
@@ -475,6 +475,7 @@ public abstract class Motion<TArgs> : IMotion
         // Moving: play while moving
         if (IsMoving())
         {
+            idleTimer = IDLE_CD;
             // first, try anchor target based clip
             if (
                 currAnchorTarget == AnchorTarget.Owner
@@ -494,7 +495,10 @@ public abstract class Motion<TArgs> : IMotion
             return;
         }
         else if (c.OwnerMoving)
+        {
+            idleTimer = IDLE_CD;
             return;
+        }
         if ((idleTimer -= time.ElapsedGameTime.Milliseconds) > 0)
         {
             return;
@@ -508,7 +512,6 @@ public abstract class Motion<TArgs> : IMotion
             else
                 cs.SetCurrentFrame(-1);
         }
-        idleTimer = IDLE_UPDATE_RATE;
     }
 
     /// <summary>Moving flag used for basis of anim</summary>
@@ -744,34 +747,90 @@ public abstract class Motion<TArgs> : IMotion
     /// <param name="position"></param>
     protected virtual void UpdateDirection()
     {
-        Vector2 position = c.Position;
-        Vector2 posDelta = c.Anchor - position;
+        Vector2 posDelta = c.Anchor - c.Position;
         switch (md.DirectionMode)
         {
             case DirectionMode.DRUL:
                 if (Math.Abs(posDelta.X) - Math.Abs(posDelta.Y) > TinkerConst.TURN_LEEWAY)
-                    c.direction.Value = (c.Anchor.X > position.X) ? 2 : 4;
+                    c.direction.Value = posDelta.X > 0 ? 2 : 4;
                 else
-                    c.direction.Value = (c.Anchor.Y > position.Y) ? 1 : 3;
+                    c.direction.Value = posDelta.Y > 0 ? 1 : 3;
                 break;
             case DirectionMode.DRU:
                 if (Math.Abs(posDelta.X) - Math.Abs(posDelta.Y) > TinkerConst.TURN_LEEWAY)
-                    c.direction.Value = (c.Anchor.X > position.X) ? 2 : -2;
+                    c.direction.Value = posDelta.X > 0 ? 2 : -2;
                 else
-                    c.direction.Value = (c.Anchor.Y > position.Y) ? 1 : 3;
+                    c.direction.Value = posDelta.Y > 0 ? 1 : 3;
                 break;
             case DirectionMode.RL:
                 if (Math.Abs(posDelta.X) > TinkerConst.TURN_LEEWAY)
-                    c.direction.Value = (c.Anchor.X > position.X) ? 1 : 2;
+                    c.direction.Value = posDelta.X > 0 ? 1 : 2;
                 break;
             case DirectionMode.R:
                 if (Math.Abs(posDelta.X) > TinkerConst.TURN_LEEWAY)
-                    c.direction.Value = (c.Anchor.X > position.X) ? 1 : -1;
+                    c.direction.Value = posDelta.X > 0 ? 1 : -1;
                 break;
             default:
                 c.direction.Value = 1;
                 break;
         }
+    }
+
+    public virtual bool IsFacing(Vector2 target)
+    {
+        Vector2 position = c.Position;
+        Vector2 posDirection = target - position;
+        int direction = c.direction.Value;
+        switch (md.DirectionMode)
+        {
+            case DirectionMode.DRUL:
+                switch (direction)
+                {
+                    case 1:
+                        return posDirection.Y > 0;
+                    case 2:
+                        return posDirection.X > 0;
+                    case 3:
+                        return posDirection.Y < 0;
+                    case 4:
+                        return posDirection.X < 0;
+                }
+                break;
+            case DirectionMode.DRU:
+                switch (direction)
+                {
+                    case 1:
+                        return posDirection.Y > 0;
+                    case 2:
+                        return posDirection.X > 0;
+                    case 3:
+                        return posDirection.Y < 0;
+                    case -2:
+                        return posDirection.X < 0;
+                }
+                break;
+            case DirectionMode.RL:
+                switch (direction)
+                {
+                    case 1:
+                        return posDirection.X > 0;
+                    case 2:
+                        return posDirection.X < 0;
+                }
+                break;
+            case DirectionMode.R:
+                switch (direction)
+                {
+                    case 1:
+                        return posDirection.X > 0;
+                    case -1:
+                        return posDirection.X < 0;
+                }
+                break;
+            default:
+                return false;
+        }
+        return false;
     }
 
     /// <summary>First frame of animation, depending on direction.</summary>

@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Monsters;
-using TrinketTinker.Effects.Support;
 using TrinketTinker.Models.Mixin;
 using TrinketTinker.Wheels;
 
@@ -18,6 +17,9 @@ public class DamageArgs : IArgs
 
     /// <summary>Pixel range for finding monsters</summary>
     public int Range { get; set; } = Game1.tileSize;
+
+    /// <summary>Restrict monster picks to facing direction only</summary>
+    public bool FacingDirectionOnly { get; set; } = false;
 
     /// <summary>Knockback modifier</summary>
     public float Knockback { get; set; } = 0f;

@@ -254,4 +254,10 @@ public static class EquipTrinket
             }
         }
     }
+
+    internal static void ClearHiddenInventory()
+    {
+        Inventory hiddenTrinketsInv = GetHiddenTrinketsInv(Game1.player);
+        hiddenTrinketsInv.Clear();
+    }
 }

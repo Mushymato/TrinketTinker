@@ -16,6 +16,9 @@ namespace TrinketTinker.Effects.Abilities;
 public sealed class ProjectileAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
     : Ability<ProjectileArgs>(effect, data, lvl)
 {
+    public bool FilterMonster(Monster m) =>
+        (!args.FacingDirectionOnly || e.CompanionIsFacing(m.Position)) && !(args.Filters?.Contains(m.Name) ?? false);
+
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
         Vector2 sourcePosition = e.CompanionPosition ?? proc.Farmer.Position;
@@ -26,7 +29,7 @@ public sealed class ProjectileAbility(TrinketTinkerEffect effect, AbilityData da
                 sourcePosition,
                 args.Range,
                 ignoreUntargetables: true,
-                match: args.Filters != null ? (m) => !args.Filters.Contains(m.Name) : null
+                match: FilterMonster
             );
         if (target == null)
             return false;

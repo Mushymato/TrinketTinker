@@ -16,6 +16,9 @@ namespace TrinketTinker.Effects.Abilities;
 public sealed class HitscanAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
     : Ability<DamageArgs>(effect, data, lvl)
 {
+    public bool FilterMonster(Monster m) =>
+        (!args.FacingDirectionOnly || e.CompanionIsFacing(m.Position)) && !(args.Filters?.Contains(m.Name) ?? false);
+
     /// <inheritdoc/>
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
@@ -24,14 +27,14 @@ public sealed class HitscanAbility(TrinketTinkerEffect effect, AbilityData data,
             ?? Utility.findClosestMonsterWithinRange(
                 proc.LocationOrCurrent,
                 e.CompanionPosOff ?? proc.Farmer.Position,
-                base.args.Range,
+                args.Range,
                 ignoreUntargetables: true,
-                match: args.Filters != null ? (m) => !args.Filters.Contains(m.Name) : null
+                match: FilterMonster
             );
         if (target == null)
             return false;
         proc.Monster = target;
-        base.args.DamageMonster(proc.LocationOrCurrent, proc.Farmer, target);
+        args.DamageMonster(proc.LocationOrCurrent, proc.Farmer, target);
         return base.ApplyEffect(proc);
     }
 }

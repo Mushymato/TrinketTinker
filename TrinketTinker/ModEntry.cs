@@ -317,6 +317,7 @@ internal sealed class ModEntry : Mod
         }
         Game1.player.trinketItems.Clear();
         Game1.player.companions.Clear();
+        EquipTrinket.ClearHiddenInventory();
     }
 
     /// Static helper functions

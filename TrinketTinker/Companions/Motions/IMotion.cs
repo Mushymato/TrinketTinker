@@ -84,5 +84,12 @@ public interface IMotion
     /// <returns>offset</returns>
     Vector2 GetOffset();
 
+    /// <summary>Update motion and variant data, when invalidate</summary>
+    /// <param name="mdata"></param>
+    /// <param name="vdata"></param>
     void SetMotionVariantData(MotionData mdata, VariantData vdata);
+
+    /// <summary>Check is facing</summary>
+    /// <param name="pos"></param>
+    bool IsFacing(Vector2 pos);
 }

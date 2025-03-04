@@ -40,12 +40,12 @@
                 "WINTER": {
                   "Texture": "Characters/Abigail_Winter",
                   "Condition": "SEASON Winter",
-                  "Priority": 2
+                  "Priority": 1
                 },
                 "beach": {
                   "Texture": "Characters/Abigail_Beach",
                   "Condition": "PLAYER_LOCATION_NAME Current Beach IslandSouth",
-                  "Priority": 1
+                  "Priority": 2
                 }
               }
             }
@@ -56,13 +56,13 @@
             "DirectionMode": "DRUL",
             "FrameLength": 4,
             "Interval": 175,
-            "Anchors": [
-              {
-                "Mode": "Monster",
-                "Range": 640,
-                "StopRange": 320,
-              }
-            ],
+            // "Anchors": [
+            //   {
+            //     "Mode": "Monster",
+            //     "Range": 640,
+            //     "StopRange": 320,
+            //   }
+            // ],
             "AnimClips": {
               "abbyFlute": {
                 "FrameStart": 16,
@@ -182,7 +182,8 @@
                   "Acceleration": 2,
                   "MinVelocity": 2,
                   "MaxVelocity": 24,
-                  "Homing": true,
+                  // "Homing": true,
+                  "FacingDirectionOnly": true
                 }
               },
             ]

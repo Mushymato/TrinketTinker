@@ -128,6 +128,11 @@ internal static class Places
         return true;
     }
 
+    /// <summary>
+    /// Check that this is a digspot
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <returns></returns>
     public static bool IsDigSpot(this SObject obj)
     {
         return obj.QualifiedItemId == "(O)590" || obj.QualifiedItemId == "(O)SeedSpot";
