@@ -117,12 +117,12 @@
   "guide/4.z.002-Health.html": {
     "href": "guide/4.z.002-Health.html",
     "title": "Health | TrinketTinker",
-    "keywords": "Health Recover some amount of HP. If Min and Max are negative, this ability will damage the player instead. Args Property Type Default Notes ValueMode ValueMode \"Percent\" Treat the range as either percent or a true value Min double 0 Minimum value. Max double 0 Maximum value."
+    "keywords": "Health Recover some amount of HP. If Min and Max are negative, this ability will damage the player instead. The Min and Max values is a double, meaning: If you want 5% of current HP, use \"Percent\" (default value) and 0.05 If you want 5 HP, use \"Number\" and 5 If this is used with a Proc that involves damage (ReceiveDamage, DamageMonster, SlayMonster), then the Percent is relative to the damage. Otherwise it is relative to the player's max HP. Health is an integer and will always be a whole number, this ability will round up the healed value. Args Property Type Default Notes ValueMode ValueMode \"Percent\" Treat the range as either percent or a true value Min double 0 Minimum value. Max double 0 Maximum value."
   },
   "guide/4.z.003-Stamina.html": {
     "href": "guide/4.z.003-Stamina.html",
     "title": "Stamina | TrinketTinker",
-    "keywords": "Stamina Recover some amount of energy. If Min and Max are negative, this ability will drain the player's energy instead. Args Property Type Default Notes ValueMode ValueMode \"Percent\" Treat the range as either percent or a true value Min double 0 Minimum value. Max double 0 Maximum value."
+    "keywords": "Stamina Recover some amount of energy. If Min and Max are negative, this ability will drain the player's energy instead. The Min and Max values is a double, meaning: If you want 5.5% of current Stamina, use \"Percent\" (default value) and 0.055 If you want 5.5 stamina, use \"Number\" and 5.5 If this is used with a Proc that involves damage (ReceiveDamage, DamageMonster, SlayMonster), then the Percent is relative to the damage. Otherwise it is relative to the player's max stamina. Stamina is a float, so you can recover/lose 1.5 stamina (the visual number on screen rounds down and shows 1 in that case). Args Property Type Default Notes ValueMode ValueMode \"Percent\" Treat the range as either percent or a true value Min double 0 Minimum value. Max double 0 Maximum value."
   },
   "guide/4.z.004-Hitscan.html": {
     "href": "guide/4.z.004-Hitscan.html",

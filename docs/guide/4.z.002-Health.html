@@ -88,6 +88,13 @@
 <h1 id="health">Health</h1>
 
 <p>Recover some amount of HP. If Min and Max are negative, this ability will damage the player instead.</p>
+<p>The <code>Min</code> and <code>Max</code> values is a double, meaning:</p>
+<ul>
+<li>If you want 5% of current HP, use <code>&quot;Percent&quot;</code> (default value) and <code>0.05</code></li>
+<li>If you want 5 HP, use <code>&quot;Number&quot;</code> and <code>5</code></li>
+</ul>
+<p>If this is used with a <a href="4.0-Proc.html">Proc</a> that involves damage (<code>ReceiveDamage</code>, <code>DamageMonster</code>, <code>SlayMonster</code>), then the Percent is relative to the damage. Otherwise it is relative to the player's max HP.</p>
+<p>Health is an integer and will always be a whole number, this ability will round up the healed value.</p>
 <h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.RangeArgs.html">Args</a></h2>
 <table>
 <thead>
@@ -102,7 +109,7 @@
 <tr>
 <td><code>ValueMode</code></td>
 <td><a href="../api/TrinketTinker.Models.AbilityArgs.ValueMode.html">ValueMode</a></td>
-<td>&quot;Percent&quot;</td>
+<td><code>&quot;Percent&quot;</code></td>
 <td>Treat the range as either percent or a true value</td>
 </tr>
 <tr>

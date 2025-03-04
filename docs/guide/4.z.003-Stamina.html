@@ -88,6 +88,13 @@
 <h1 id="stamina">Stamina</h1>
 
 <p>Recover some amount of energy. If Min and Max are negative, this ability will drain the player's energy instead.</p>
+<p>The <code>Min</code> and <code>Max</code> values is a double, meaning:</p>
+<ul>
+<li>If you want 5.5% of current Stamina, use <code>&quot;Percent&quot;</code> (default value) and <code>0.055</code></li>
+<li>If you want 5.5 stamina, use <code>&quot;Number&quot;</code> and <code>5.5</code></li>
+</ul>
+<p>If this is used with a <a href="4.0-Proc.html">Proc</a> that involves damage (<code>ReceiveDamage</code>, <code>DamageMonster</code>, <code>SlayMonster</code>), then the Percent is relative to the damage. Otherwise it is relative to the player's max stamina.</p>
+<p>Stamina is a float, so you can recover/lose 1.5 stamina (the visual number on screen rounds down and shows 1 in that case).</p>
 <h2 id="args"><a href="../api/TrinketTinker.Models.AbilityArgs.RangeArgs.html">Args</a></h2>
 <table>
 <thead>
