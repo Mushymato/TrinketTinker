@@ -137,6 +137,9 @@ Class ProjectileArgs  <a class="header-action link-secondary" title="View source
       <a class="xref" href="TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_Range">DamageArgs.Range</a>
     </div>
     <div>
+      <a class="xref" href="TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_FacingDirectionOnly">DamageArgs.FacingDirectionOnly</a>
+    </div>
+    <div>
       <a class="xref" href="TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_Knockback">DamageArgs.Knockback</a>
     </div>
     <div>
@@ -173,7 +176,7 @@ Class ProjectileArgs  <a class="header-action link-secondary" title="View source
       <a class="xref" href="TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_Validate">DamageArgs.Validate()</a>
     </div>
     <div>
-      <a class="xref" href="TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_DamageMonster_TrinketTinker_Effects_Support_ProcEventArgs_StardewValley_Monsters_Monster_">DamageArgs.DamageMonster(ProcEventArgs, Monster)</a>
+      <a class="xref" href="TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_DamageMonster_StardewValley_GameLocation_StardewValley_Farmer_StardewValley_Monsters_Monster_">DamageArgs.DamageMonster(GameLocation, Farmer, Monster)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -208,7 +211,7 @@ Class ProjectileArgs  <a class="header-action link-secondary" title="View source
 
   <h3 id="TrinketTinker_Models_AbilityArgs_ProjectileArgs_Acceleration" data-uid="TrinketTinker.Models.AbilityArgs.ProjectileArgs.Acceleration">
   Acceleration
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/ProjectileArgs.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/ProjectileArgs.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Acceleration per tick</p>
@@ -236,11 +239,43 @@ Class ProjectileArgs  <a class="header-action link-secondary" title="View source
 
 
 
+  <a id="TrinketTinker_Models_AbilityArgs_ProjectileArgs_Height_" data-uid="TrinketTinker.Models.AbilityArgs.ProjectileArgs.Height*"></a>
+
+  <h3 id="TrinketTinker_Models_AbilityArgs_ProjectileArgs_Height" data-uid="TrinketTinker.Models.AbilityArgs.ProjectileArgs.Height">
+  Height
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/ProjectileArgs.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Projectile height from ground, non-zero value draws a shadow</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Height { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Models_AbilityArgs_ProjectileArgs_Homing_" data-uid="TrinketTinker.Models.AbilityArgs.ProjectileArgs.Homing*"></a>
 
   <h3 id="TrinketTinker_Models_AbilityArgs_ProjectileArgs_Homing" data-uid="TrinketTinker.Models.AbilityArgs.ProjectileArgs.Homing">
   Homing
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/ProjectileArgs.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/ProjectileArgs.cs/#L45"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Recheck target and adjust trajectory midflight.</p>
@@ -272,7 +307,7 @@ Class ProjectileArgs  <a class="header-action link-secondary" title="View source
 
   <h3 id="TrinketTinker_Models_AbilityArgs_ProjectileArgs_IgnoreLocationCollisions" data-uid="TrinketTinker.Models.AbilityArgs.ProjectileArgs.IgnoreLocationCollisions">
   IgnoreLocationCollisions
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/ProjectileArgs.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/ProjectileArgs.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Let projectile pass through location walls</p>
@@ -304,7 +339,7 @@ Class ProjectileArgs  <a class="header-action link-secondary" title="View source
 
   <h3 id="TrinketTinker_Models_AbilityArgs_ProjectileArgs_IgnoreObjectCollisions" data-uid="TrinketTinker.Models.AbilityArgs.ProjectileArgs.IgnoreObjectCollisions">
   IgnoreObjectCollisions
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/ProjectileArgs.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/ProjectileArgs.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Let projectile pass through objects/terrain feature</p>
@@ -336,7 +371,7 @@ Class ProjectileArgs  <a class="header-action link-secondary" title="View source
 
   <h3 id="TrinketTinker_Models_AbilityArgs_ProjectileArgs_MaxVelocity" data-uid="TrinketTinker.Models.AbilityArgs.ProjectileArgs.MaxVelocity">
   MaxVelocity
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/ProjectileArgs.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/ProjectileArgs.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Maximum velocity or -1 if not capped</p>
@@ -368,7 +403,7 @@ Class ProjectileArgs  <a class="header-action link-secondary" title="View source
 
   <h3 id="TrinketTinker_Models_AbilityArgs_ProjectileArgs_MinVelocity" data-uid="TrinketTinker.Models.AbilityArgs.ProjectileArgs.MinVelocity">
   MinVelocity
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/ProjectileArgs.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/ProjectileArgs.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initial velocity for projectile</p>
@@ -400,7 +435,7 @@ Class ProjectileArgs  <a class="header-action link-secondary" title="View source
 
   <h3 id="TrinketTinker_Models_AbilityArgs_ProjectileArgs_Pierce" data-uid="TrinketTinker.Models.AbilityArgs.ProjectileArgs.Pierce">
   Pierce
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/ProjectileArgs.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/ProjectileArgs.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Number of enemies the projectile can pass through before it is destroyed</p>
@@ -432,7 +467,7 @@ Class ProjectileArgs  <a class="header-action link-secondary" title="View source
 
   <h3 id="TrinketTinker_Models_AbilityArgs_ProjectileArgs_RotateToTarget" data-uid="TrinketTinker.Models.AbilityArgs.ProjectileArgs.RotateToTarget">
   RotateToTarget
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/ProjectileArgs.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/ProjectileArgs.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Rotate the rightside of sprite towards target</p>
@@ -560,7 +595,7 @@ Class ProjectileArgs  <a class="header-action link-secondary" title="View source
 
   <h3 id="TrinketTinker_Models_AbilityArgs_ProjectileArgs_TailCount" data-uid="TrinketTinker.Models.AbilityArgs.ProjectileArgs.TailCount">
   TailCount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/ProjectileArgs.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/ProjectileArgs.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Number of trailing sprites to draw</p>

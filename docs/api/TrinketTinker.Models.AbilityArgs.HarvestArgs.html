@@ -165,10 +165,11 @@ Class HarvestArgs  <a class="header-action link-secondary" title="View source" h
 
 
 
-  <h2 class="section" id="fields">Fields
+  <h2 class="section" id="properties">Properties
 </h2>
 
 
+  <a id="TrinketTinker_Models_AbilityArgs_HarvestArgs_Filters_" data-uid="TrinketTinker.Models.AbilityArgs.HarvestArgs.Filters*"></a>
 
   <h3 id="TrinketTinker_Models_AbilityArgs_HarvestArgs_Filters" data-uid="TrinketTinker.Models.AbilityArgs.HarvestArgs.Filters">
   Filters
@@ -180,13 +181,14 @@ Class HarvestArgs  <a class="header-action link-secondary" title="View source" h
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;string&gt;? Filters</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt;? Filters { get; set; }</code></pre>
   </div>
 
 
 
 
-  <h4 class="section">Field Value</h4>
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
     <dd></dd>
@@ -199,7 +201,7 @@ Class HarvestArgs  <a class="header-action link-secondary" title="View source" h
 
 
 
-
+  <a id="TrinketTinker_Models_AbilityArgs_HarvestArgs_HarvestTo_" data-uid="TrinketTinker.Models.AbilityArgs.HarvestArgs.HarvestTo*"></a>
 
   <h3 id="TrinketTinker_Models_AbilityArgs_HarvestArgs_HarvestTo" data-uid="TrinketTinker.Models.AbilityArgs.HarvestArgs.HarvestTo">
   HarvestTo
@@ -211,18 +213,51 @@ Class HarvestArgs  <a class="header-action link-secondary" title="View source" h
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public HarvestDestination HarvestTo</code></pre>
+    <pre><code class="lang-csharp hljs">public HarvestDestination HarvestTo { get; set; }</code></pre>
   </div>
 
 
 
 
-  <h4 class="section">Field Value</h4>
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="TrinketTinker.Models.AbilityArgs.HarvestDestination.html">HarvestDestination</a></dt>
     <dd></dd>
   </dl>
 
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Models_AbilityArgs_HarvestArgs_ShowHarvestedItem_" data-uid="TrinketTinker.Models.AbilityArgs.HarvestArgs.ShowHarvestedItem*"></a>
+
+  <h3 id="TrinketTinker_Models_AbilityArgs_HarvestArgs_ShowHarvestedItem" data-uid="TrinketTinker.Models.AbilityArgs.HarvestArgs.ShowHarvestedItem">
+  ShowHarvestedItem
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/HarvestArgs.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Show the item that was harvested as a temporary animated sprite above the companion or the player
+Only applies when <a class="xref" href="TrinketTinker.Models.AbilityArgs.HarvestArgs.html#TrinketTinker_Models_AbilityArgs_HarvestArgs_HarvestTo">HarvestTo</a> is <a class="xref" href="TrinketTinker.Models.AbilityArgs.HarvestDestination.html#TrinketTinker_Models_AbilityArgs_HarvestDestination_Player">Player</a> or <a class="xref" href="TrinketTinker.Models.AbilityArgs.HarvestDestination.html#TrinketTinker_Models_AbilityArgs_HarvestDestination_TinkerInventory">TinkerInventory</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ShowHarvestedItem { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
