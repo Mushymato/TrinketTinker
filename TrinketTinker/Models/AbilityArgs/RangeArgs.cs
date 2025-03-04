@@ -14,10 +14,10 @@ public sealed class RangeArgs : IArgs
     /// <summary>Determine how to interpret the value</summary>
     public ValueMode ValueMode { get; set; } = ValueMode.Percent;
 
-    /// <summary>Min, out of 1</summary>
+    /// <summary>Min value</summary>
     public double Min { get; set; } = 0;
 
-    /// <summary>Max, out of 1</summary>
+    /// <summary>Max value</summary>
     public double Max { get; set; } = 0;
 
     /// <summary>Random value between min and max</summary>
