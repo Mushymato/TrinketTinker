@@ -4,6 +4,24 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.5.6
+
+#### Added
+
+- Hitscan and Projectile can now have FacingDirectionOnly which makes them only attack monsters in the direction the companion is facing.
+- Projectile can now have Height which are different than offset in that they do not actually become different position.
+- Harvest* abilities will now show the item harvested in a short TAS over the companion, for HarvestTo Player and TinkerInventory, disable this with ShowHarvestedItem.
+- Anchors now have StopRange, which defines how far away to stop moving towards target.
+
+#### Changed
+
+- HarvestForage now also harvest spawned items like quartz in the mines.
+
+#### Fixed
+
+- Hidden trinkets disappearing for 1 day when returning to menu and loading save again.
+- Android sorta compatible-ish now, except for backpack related stuff which I can't fix at all.
+
 ### 1.5.5
 
 #### Changed
