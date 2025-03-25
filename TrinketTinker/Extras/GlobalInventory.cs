@@ -413,10 +413,8 @@ internal sealed class GlobalInventoryHandler
     /// </summary>
     internal static void UnreachableInventoryCleanup()
     {
-        if (!Context.IsMainPlayer)
-            return;
-        var team = Game1.player.team;
         bool newLostAndFoundItems = false;
+        var team = Game1.player.team;
         // check if the player somehow lost their trinketSlots stat
         bool hasTrinketSlot = Game1.player.stats.Get("trinketSlots") != 0;
 
@@ -434,6 +432,14 @@ internal sealed class GlobalInventoryHandler
                 }
             }
         }
+
+        // only run the rest on main host
+        if (!Context.IsMainPlayer && Context.ScreenId == 0)
+        {
+            team.newLostAndFoundItems.Value = newLostAndFoundItems;
+            return;
+        }
+
         // check for missing trinkets to global inv
         HashSet<string> missingTrinketInvs = [];
         foreach (var key in team.globalInventories.Keys)
@@ -464,14 +470,17 @@ internal sealed class GlobalInventoryHandler
                 return missingTrinketInvs.Any();
             }
         );
-        foreach (Trinket trinketItem in Game1.player.trinketItems.Skip(toSkip))
+        foreach (Farmer farmer in Game1.getAllFarmers())
         {
-            if (
-                trinketItem != null
-                && trinketItem.GetEffect() is TrinketTinkerEffect effect
-                && effect.InventoryId != null
-            )
-                missingTrinketInvs.Remove(effect.FullInventoryId!);
+            foreach (Trinket trinketItem in farmer.trinketItems.Skip(toSkip))
+            {
+                if (
+                    trinketItem != null
+                    && trinketItem.GetEffect() is TrinketTinkerEffect effect
+                    && effect.InventoryId != null
+                )
+                    missingTrinketInvs.Remove(effect.FullInventoryId!);
+            }
         }
         newLostAndFoundItems = newLostAndFoundItems || missingTrinketInvs.Any();
         foreach (string key in missingTrinketInvs)
