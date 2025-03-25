@@ -29,9 +29,8 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
         BindingFlags.NonPublic | BindingFlags.Instance
     )!;
 
-    private string GetText(string text)
+    private static string GetText(string text)
     {
-        // object[] subs = args.Substitutions?.ToArray() ?? [];
         if (Game1.content.IsValidTranslationKey(text))
             return Game1.content.LoadString(text);
         return TokenParser.ParseText(text) ?? "CHATTER ERROR";

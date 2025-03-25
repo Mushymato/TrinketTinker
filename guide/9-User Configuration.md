@@ -2,6 +2,12 @@
 
 Most things in trinket tinker are for mod authors of specific content mods to decide, while these settings are universal for all trinket tinker mods and up to the user to set.
 
+## General
+
+| Property | Type | Default | Notes |
+| -------- | ---- | ------- | ----- |
+| `HideAllCompanionsDuringEvents` | bool | `false` | Hide all trinket companions during events. Only affects trinkets added via trinket tinker. |
+
 ## Keybindings
 
 | Property | Type | Default | Notes |

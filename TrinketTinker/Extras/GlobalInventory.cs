@@ -413,6 +413,8 @@ internal sealed class GlobalInventoryHandler
     /// </summary>
     internal static void UnreachableInventoryCleanup()
     {
+        if (!Context.IsMainPlayer)
+            return;
         var team = Game1.player.team;
         bool newLostAndFoundItems = false;
         // check if the player somehow lost their trinketSlots stat
@@ -440,7 +442,7 @@ internal sealed class GlobalInventoryHandler
             if (value == null)
                 continue;
             value.RemoveEmptySlots();
-            if (key.StartsWith($"{ModEntry.ModId}/"))
+            if (key.StartsWith(string.Concat(ModEntry.ModId, "/")))
             {
                 if (value.Count == 0)
                     team.globalInventories.Remove(key);

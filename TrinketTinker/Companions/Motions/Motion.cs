@@ -577,8 +577,8 @@ public abstract class Motion<TArgs> : IMotion
     public void Draw(SpriteBatch b)
     {
         if (
-            Game1.eventUp
-            && (md.HideDuringEvents || (Game1.CurrentEvent != null && Game1.CurrentEvent.id == "MovieTheaterScreening"))
+            Game1.eventUp && (ModEntry.Config.HideAllCompanionsDuringEvents || md.HideDuringEvents)
+            || (Game1.CurrentEvent != null && Game1.CurrentEvent.id == "MovieTheaterScreening")
         )
             return;
 

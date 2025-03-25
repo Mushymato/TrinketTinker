@@ -4,11 +4,30 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-### 1.5.6
+### 1.5.8
+
+#### Added
+
+- New user config setting, global disable showing companions in events.
+
+#### Fixed
+
+- Trinket global inventory cleaning being incorrectly ran on farmhands as well.
+
+### 1.5.7
 
 #### Added
 
 - Hitscan and Projectile can now have FacingDirectionOnly which makes them only attack monsters in the direction the companion is facing.
+
+#### Fixed
+
+- Alt variants swapping between 2 most valid alt variants rather than keeping 1.
+
+### 1.5.6
+
+#### Added
+
 - Projectile can now have Height which are different than offset in that they do not actually become different position.
 - Harvest* abilities will now show the item harvested in a short TAS over the companion, for HarvestTo Player and TinkerInventory, disable this with ShowHarvestedItem.
 - Anchors now have StopRange, which defines how far away to stop moving towards target.

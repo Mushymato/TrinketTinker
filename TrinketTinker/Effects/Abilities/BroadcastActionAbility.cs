@@ -16,7 +16,11 @@ public sealed class BroadcastActionAbility(TrinketTinkerEffect effect, AbilityDa
 
     private void BroadcastByPlayerKey(Farmer farmer, IEnumerable<string> Actions)
     {
-        if (args.PlayerKey == "Current" || args.PlayerKey == "All" || (args.PlayerKey == "Host" && Game1.IsMasterGame))
+        if (
+            args.PlayerKey == "Current"
+            || args.PlayerKey == "All"
+            || (args.PlayerKey == "Host" && Context.IsMainPlayer)
+        )
         {
             if (Actions.Any() && GameStateQuery.CheckConditions(args.Condition, player: Game1.player))
             {

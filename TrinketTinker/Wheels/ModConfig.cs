@@ -5,6 +5,7 @@ namespace TrinketTinker.Wheels;
 
 internal sealed class ModConfig
 {
+    public bool HideAllCompanionsDuringEvents = false;
     public KeybindList DoInteractKey = KeybindList.Parse("LeftAlt+MouseRight, LeftStick+ControllerA");
     public KeybindList OpenTinkerInventoryKey = KeybindList.Parse("RightAlt+OemPeriod, LeftStick+ControllerX");
     public KeybindList TinkerInventoryNextKey = KeybindList.Parse("PageUp, RightShoulder");
@@ -49,6 +50,16 @@ internal sealed class ModConfig
             },
             titleScreenOnly: false
         );
+
+        GMCM.AddSectionTitle(mod, I18n.Config_Section_General);
+        GMCM.AddBoolOption(
+            mod,
+            getValue: () => HideAllCompanionsDuringEvents,
+            setValue: (value) => HideAllCompanionsDuringEvents = value,
+            name: I18n.Config_HideAllCompanionsDuringEvents_Name,
+            tooltip: I18n.Config_HideAllCompanionsDuringEvents_Description
+        );
+
         GMCM.AddSectionTitle(mod, I18n.Config_Section_Keybindings);
         GMCM.AddKeybindList(
             mod,
