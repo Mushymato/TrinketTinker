@@ -11,7 +11,15 @@ public class ArgsDict : Dictionary<string, object>
     internal T? Parse<T>()
         where T : IArgs
     {
-        return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(this));
+        try
+        {
+            return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(this));
+        }
+        catch (Exception ex)
+        {
+            ModEntry.LogOnce($"Failed to convert args to {typeof(T)}, this is caused by invalid data in a content pack using TrinketTinker:\n{ex}");
+            return default;
+        }
     }
 }
 
