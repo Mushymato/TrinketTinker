@@ -1,0 +1,142 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "LogName": "RobinAndDemetrius: Trinkets",
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_RobinAndDemetrius": {
+          "Id": "{{ModId}}_RobinAndDemetrius",
+          "DisplayName": "[LocalizedText Strings\\Objects:LostAxe_Name]",
+          "Description": "[LocalizedText Strings\\Objects:LostAxe_Description]",
+          "Texture": "Maps/springobjects",
+          "SheetIndex": 788,
+          "DropsNaturally": false,
+          "CanBeReforged": false
+        },
+      }
+    },
+    {
+      "LogName": "RobinAndDemetrius: Tinker",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        "{{ModId}}_RobinAndDemetrius": {
+          "EnableCondition": "mushymato.TrinketTinker_ENABLED_TRINKET_COUNT Target All <1",
+          "Variants": [
+            {
+              // all trinkets need a base variant
+              "Texture": "Characters/Robin",
+              "Width": 16,
+              "Height": 32,
+              // for Chatter
+              "NPC": "Robin",
+              // "Name": "[LocalizedText Strings\\NPCNames:RobinAndDemetrius]",
+              "Portrait": "Portraits/Robin",
+              "AltVariants": {
+                "Demetrius": {
+                  "Texture": "Characters/Demetrius",
+                  "Width": 16,
+                  "Height": 32,
+                  "NPC": "Demetrius",
+                  "Portrait": "Portraits/Demetrius",
+                  // mark this as false so that it can only be activated by ability
+                  "Condition": "FALSE"
+                },
+                "Robin": {
+                  "Texture": "Characters/Robin",
+                  "Width": 16,
+                  "Height": 32,
+                  "NPC": "Robin",
+                  "Portrait": "Portraits/Robin",
+                  // mark this as false so that it can only be activated by ability
+                  "Condition": "FALSE"
+                }
+              }
+            }
+          ],
+          "Chatter": {
+            "Robin_BasicLine": {
+              // one line will be picked from these at random
+              "Lines": [
+                "This is Robin's dialogue Line",
+              ],
+            },
+            "Demetrius_BasicLine": {
+              // one line will be picked from these at random
+              "Lines": [
+                "This is Demetrius's dialogue Line",
+              ],
+            },
+          },
+          "Motion": {
+            "MotionClass": "Lerp",
+            "AlwaysMoving": false,
+            "DirectionMode": "DRUL",
+            "FrameLength": 4,
+            "Interval": 175,
+          },
+          "Abilities": [
+            [
+              // make both robin and demetrius invisible on equip
+              // set the alt variant to "Robin"
+              {
+                "AbilityClass": "BroadcastAction",
+                "Proc": "Always",
+                "ProcAltVariant": "Robin",
+                "Args": {
+                  "Actions": [
+                    "SetNpcInvisible Robin 1",
+                    "SetNpcInvisible Demetrius 1"
+                  ],
+                  "ActionsEnd": [
+                    "SetNpcVisible Robin",
+                    "SetNpcVisible Demetrius"
+                  ],
+                  "PlayerKey": "Host"
+                },
+              },
+              // chatter ability for Robin
+              // TODO: change how proc delay works for Chatter so that it actually procs upon menu exit
+              {
+                "Id": "Chatter-Robin",
+                "AbilityClass": "Chatter",
+                "Proc": "Interact",
+                "ProcTimer": 1000,
+                "Condition": "mushymato.TrinketTinker_IN_ALT_VARIANT Target Robin",
+                "Args": {
+                  "ChatterPrefix": "Robin_"
+                }
+              },
+              // after chatter with robin toggle to demetrius
+              {
+                "AbilityClass": "Nop",
+                "Proc": "Sync",
+                "ProcSyncId": "Chatter-Robin",
+                "ProcAltVariant": "Demetrius"
+              },
+              // chatter ability for Demetrius
+              {
+                "Id": "Chatter-Demetrius",
+                "AbilityClass": "Chatter",
+                "Proc": "Interact",
+                "ProcTimer": 1000,
+                "Condition": "mushymato.TrinketTinker_IN_ALT_VARIANT Target Demetrius",
+                "Args": {
+                  "ChatterPrefix": "Demetrius_"
+                }
+              },
+              {
+                "AbilityClass": "Nop",
+                "Proc": "Sync",
+                "ProcSyncId": "Chatter-Demetrius",
+                "ProcAltVariant": "Robin"
+              },
+            ]
+          ]
+        },
+      },
+    }
+  ]
+}

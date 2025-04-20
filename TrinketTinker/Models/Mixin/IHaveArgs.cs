@@ -17,7 +17,9 @@ public class ArgsDict : Dictionary<string, object>
         }
         catch (Exception ex)
         {
-            ModEntry.LogOnce($"Failed to convert args to {typeof(T)}, this is caused by invalid data in a content pack using TrinketTinker:\n{ex}");
+            ModEntry.LogOnce(
+                $"Failed to convert args to {typeof(T)}, this is caused by invalid data in a content pack using TrinketTinker:\n{ex}"
+            );
             return default;
         }
     }
