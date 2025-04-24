@@ -71,7 +71,8 @@
             "Args": {
               "Squash": 2,
               "Jitter": 64,
-              "MoveSync": false
+              "MoveSync": false,
+              "NoOverlap": false
             }
           },
           "Abilities": [

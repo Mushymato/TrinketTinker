@@ -494,6 +494,10 @@ internal sealed class GlobalInventoryHandler
                 team.returnedDonations.Add(item);
             team.globalInventories.Remove(key);
         }
+        if (newLostAndFoundItems && team.newLostAndFoundItems.Value != newLostAndFoundItems)
+        {
+            Game1.showGlobalMessage(Game1.content.LoadString("Strings\\StringsFromCSFiles:NewLostAndFoundItems"));
+        }
         team.newLostAndFoundItems.Value = newLostAndFoundItems;
     }
 

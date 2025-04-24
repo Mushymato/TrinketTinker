@@ -51,7 +51,6 @@ internal sealed class ModEntry : Mod
         helper.Events.GameLoop.Saving += OnSaving;
         helper.Events.GameLoop.ReturnedToTitle += OnReturnedToTitle;
         helper.Events.GameLoop.DayStarted += OnDayStarted;
-        helper.Events.GameLoop.DayEnding += OnDayEnding;
         helper.Events.Multiplayer.ModMessageReceived += OnModMessageReceived;
 
         helper.ConsoleCommands.Add(
@@ -189,10 +188,6 @@ internal sealed class ModEntry : Mod
     {
         EquipTrinket.ReequipHiddenTrinkets();
         EquipTrinket.FixVanillaDupeCompanions();
-    }
-
-    private void OnDayEnding(object? sender, DayEndingEventArgs e)
-    {
         GlobalInventoryHandler.UnreachableInventoryCleanup();
     }
 
