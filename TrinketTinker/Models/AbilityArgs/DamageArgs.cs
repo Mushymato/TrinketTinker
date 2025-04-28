@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
+using StardewValley.Delegates;
 using StardewValley.Monsters;
 using TrinketTinker.Models.Mixin;
 using TrinketTinker.Wheels;
@@ -82,7 +83,7 @@ public class DamageArgs : IArgs
     /// <summary>Do damage and debuff on monster.</summary>
     /// <param name="proc"></param>
     /// <param name="target"></param>
-    public void DamageMonster(GameLocation location, Farmer farmer, Monster target)
+    public void DamageMonster(GameStateQueryContext context, Monster target)
     {
         Vector2 pos = target.GetBoundingBox().Center.ToVector2();
         float drawLayer = pos.Y / 10000f + Visuals.LAYER_OFFSET;
@@ -91,7 +92,7 @@ public class DamageArgs : IArgs
             if (HitsDelay == 0)
                 for (int i = 1; i < Hits; i++)
                 {
-                    location.damageMonster(
+                    context.Location.damageMonster(
                         areaOfEffect: target.GetBoundingBox(),
                         minDamage: Min,
                         maxDamage: Max,
@@ -101,7 +102,7 @@ public class DamageArgs : IArgs
                         critChance: CritChance,
                         critMultiplier: CritDamage,
                         triggerMonsterInvincibleTimer: false,
-                        who: farmer,
+                        who: context.Player,
                         isProjectile: false
                     );
                 }
@@ -112,7 +113,7 @@ public class DamageArgs : IArgs
                     DelayedAction.functionAfterDelay(
                         () =>
                         {
-                            location.damageMonster(
+                            context.Location.damageMonster(
                                 areaOfEffect: target.GetBoundingBox(),
                                 minDamage: Min,
                                 maxDamage: Max,
@@ -122,7 +123,7 @@ public class DamageArgs : IArgs
                                 critChance: CritChance,
                                 critMultiplier: CritDamage,
                                 triggerMonsterInvincibleTimer: false,
-                                who: farmer,
+                                who: context.Player,
                                 isProjectile: false
                             );
                         },
@@ -130,7 +131,7 @@ public class DamageArgs : IArgs
                     );
                 }
             }
-            location.damageMonster(
+            context.Location.damageMonster(
                 areaOfEffect: target.GetBoundingBox(),
                 minDamage: Min,
                 maxDamage: Max,
@@ -140,12 +141,12 @@ public class DamageArgs : IArgs
                 critChance: CritChance,
                 critMultiplier: CritDamage,
                 triggerMonsterInvincibleTimer: true,
-                who: farmer,
+                who: context.Player,
                 isProjectile: false
             );
             if (HitTAS != null)
             {
-                if (!Visuals.BroadcastTAS(HitTAS, pos, drawLayer, target.currentLocation))
+                if (!Visuals.BroadcastTAS(HitTAS, pos, drawLayer, context))
                     HitTAS = null;
             }
         }
@@ -154,13 +155,13 @@ public class DamageArgs : IArgs
             target.stunTime.Value = StunTime;
             if (StunTAS != null)
             {
-                if (!Visuals.BroadcastTAS(StunTAS, pos, drawLayer, target.currentLocation, duration: StunTime))
+                if (!Visuals.BroadcastTAS(StunTAS, pos, drawLayer, context, duration: StunTime))
                     StunTAS = null;
             }
         }
         if (ExplodeRadius > 0)
         {
-            location.explode(target.TilePoint.ToVector2(), ExplodeRadius, farmer, damage_amount: Min);
+            context.Location.explode(target.TilePoint.ToVector2(), ExplodeRadius, context.Player, damage_amount: Min);
         }
     }
 }

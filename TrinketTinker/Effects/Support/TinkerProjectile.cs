@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Netcode;
 using StardewValley;
+using StardewValley.Delegates;
 using StardewValley.GameData;
 using StardewValley.Monsters;
 using StardewValley.Projectiles;
@@ -37,6 +38,7 @@ public sealed class TinkerProjectile : Projectile
     internal readonly NetBool rotateToTarget = new(false);
     internal readonly NetInt homingRange = new(0);
     internal readonly NetStringList filters = new();
+    internal readonly GameStateQueryContext context;
     private double homingTimer = 0;
 
     /// <summary>Construct an empty instance.</summary>
@@ -63,6 +65,7 @@ public sealed class TinkerProjectile : Projectile
         ignoreObjectCollisions.Value = args.IgnoreObjectCollisions;
         ignoreLocationCollision.Value = args.IgnoreLocationCollisions;
         theOneWhoFiredMe.Set(proc.Location, proc.Farmer);
+        context = proc.GSQContext;
 
         // minDamage.Value = args.Min;
         // maxDamage.Value = args.Max;
@@ -241,7 +244,7 @@ public sealed class TinkerProjectile : Projectile
                 UpdatePiercesLeft(location);
             if (!playerWhoFiredMe.IsLocalPlayer)
                 return;
-            args?.DamageMonster(location, playerWhoFiredMe, monster);
+            args?.DamageMonster(context, monster);
         }
     }
 

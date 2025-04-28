@@ -250,12 +250,7 @@ public abstract class Ability<TArgs> : IAbility
             if (!string.IsNullOrEmpty(d.ProcOneshotAnim))
                 e.SetOneshotClip(d.ProcOneshotAnim);
             if (d.ProcTAS != null)
-                Visuals.BroadcastTASList(
-                    d.ProcTAS,
-                    GetTASPosition(proc),
-                    e.CompanionOwnerDrawLayer,
-                    proc.LocationOrCurrent
-                );
+                Visuals.BroadcastTASList(d.ProcTAS, GetTASPosition(proc), e.CompanionOwnerDrawLayer, proc.GSQContext);
             if (!string.IsNullOrEmpty(d.ProcSpeechBubble))
                 e.SetSpeechBubble(d.ProcSpeechBubble);
             if (!string.IsNullOrEmpty(d.ProcAltVariant))

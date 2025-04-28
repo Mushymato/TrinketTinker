@@ -1,3 +1,4 @@
+using Mushymato.ExtendedTAS;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
@@ -19,9 +20,6 @@ internal static class AssetManager
     /// <summary>Tinker asset target</summary>
     internal static string TinkerAsset => $"{ModEntry.ModId}/Tinker";
 
-    /// <summary>TAS (TemporaryAnimatedSprite) asset target</summary>
-    internal static string TASAsset => $"{ModEntry.ModId}/TAS";
-
     /// <summary>Backing field for tinker data</summary>
     private static Dictionary<string, TinkerData>? _tinkerData = null;
 
@@ -35,33 +33,18 @@ internal static class AssetManager
         }
     }
 
-    /// <summary>Backing field for temporary animated sprite data</summary>
-    private static Dictionary<string, TemporaryAnimatedSpriteDefinition>? _tasData = null;
-
-    /// <summary>Temporary animated sprite data</summary>
-    internal static Dictionary<string, TemporaryAnimatedSpriteDefinition> TASData
-    {
-        get
-        {
-            _tasData ??= Game1.content.Load<Dictionary<string, TemporaryAnimatedSpriteDefinition>>(TASAsset);
-            return _tasData;
-        }
-    }
+    internal static TASAssetManager TAS = null!;
 
     internal static void OnAssetRequested(AssetRequestedEventArgs e)
     {
         if (e.Name.IsEquivalentTo(TinkerAsset))
             e.LoadFrom(() => new Dictionary<string, TinkerData>(), AssetLoadPriority.Exclusive);
-        if (e.Name.IsEquivalentTo(TASAsset))
-            e.LoadFrom(() => new Dictionary<string, TemporaryAnimatedSpriteDefinition>(), AssetLoadPriority.Exclusive);
         if (e.Name.IsEquivalentTo(TRINKET_TARGET))
             e.Edit(Edit_Trinkets_EffectClass, AssetEditPriority.Late + 100);
     }
 
     internal static bool OnAssetInvalidated(AssetsInvalidatedEventArgs e)
     {
-        if (e.NamesWithoutLocale.Any(an => an.IsEquivalentTo(TASAsset)))
-            _tasData = null;
         if (e.NamesWithoutLocale.Any(an => an.IsEquivalentTo(TinkerAsset)))
         {
             ModEntry.Log($"Invalidate {TinkerAsset} on screen {Context.ScreenId}");

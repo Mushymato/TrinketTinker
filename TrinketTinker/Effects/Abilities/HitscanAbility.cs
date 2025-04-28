@@ -34,7 +34,7 @@ public sealed class HitscanAbility(TrinketTinkerEffect effect, AbilityData data,
         if (target == null)
             return false;
         proc.Monster = target;
-        args.DamageMonster(proc.LocationOrCurrent, proc.Farmer, target);
+        args.DamageMonster(proc.GSQContext, target);
         return base.ApplyEffect(proc);
     }
 }

@@ -1,0 +1,3 @@
+[submodule "ExtendedTAS"]
+	path = ExtendedTAS
+	url = https://github.com/Mushymato/ExtendedTAS.git

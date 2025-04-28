@@ -1,6 +1,8 @@
 using Microsoft.Xna.Framework;
+using Mushymato.ExtendedTAS;
 using StardewModdingAPI;
 using StardewValley;
+using StardewValley.Delegates;
 using StardewValley.GameData;
 
 namespace TrinketTinker.Wheels;
@@ -37,45 +39,6 @@ internal static class Visuals
         return result;
     }
 
-    /// <summary>Broadcast a <see cref="TemporaryAnimatedSprite"/> from <see cref="TemporaryAnimatedSpriteDefinition"/> to all players</summary>
-    /// <param name="tasDef">TAS definition</param>
-    /// <param name="position">origin of TAS</param>
-    /// <param name="drawLayer">base draw layer</param>
-    /// <param name="location">sprite broadcast location</param>
-    /// <param name="duration"></param>
-    /// <param name="rotation"></param>
-    public static void BroadcastTAS(
-        TemporaryAnimatedSpriteDefinition tasDef,
-        Vector2 position,
-        float drawLayer,
-        GameLocation location,
-        float? duration = null,
-        float? rotation = null
-    )
-    {
-        if (!GameStateQuery.CheckConditions(tasDef.Condition, location: location))
-            return;
-        // TemporaryAnimatedSprite temporaryAnimatedSprite = new(
-        TemporaryAnimatedSprite temporaryAnimatedSprite = TemporaryAnimatedSprite.GetTemporaryAnimatedSprite(
-            tasDef.Texture,
-            tasDef.SourceRect,
-            tasDef.Interval,
-            tasDef.Frames,
-            (duration != null) ? (int)(duration / (tasDef.Frames * tasDef.Interval)) : tasDef.Loops,
-            position + tasDef.PositionOffset * 4f,
-            tasDef.Flicker,
-            tasDef.Flip,
-            drawLayer + tasDef.SortOffset,
-            tasDef.AlphaFade,
-            Utility.StringToColor(tasDef.Color) ?? Color.White,
-            tasDef.Scale * 4f,
-            tasDef.ScaleChange,
-            rotation ?? tasDef.Rotation,
-            tasDef.RotationChange
-        );
-        Game1.Multiplayer.broadcastSprites(location, temporaryAnimatedSprite);
-    }
-
     /// <summary>Broadcast TAS using the string id</summary>
     /// <param name="tasId"></param>
     /// <param name="position"></param>
@@ -88,14 +51,22 @@ internal static class Visuals
         string tasId,
         Vector2 position,
         float drawLayer,
-        GameLocation location,
+        GameStateQueryContext context,
         float? duration = null,
         float? rotation = null
     )
     {
-        if (AssetManager.TASData.TryGetValue(tasId, out TemporaryAnimatedSpriteDefinition? tasDef))
+        if (AssetManager.TAS.TryGetTASExt(tasId, out TASExt? tasExt))
         {
-            BroadcastTAS(tasDef, position, drawLayer, location, duration, rotation);
+            TASContext tasCtx =
+                new(tasExt)
+                {
+                    Pos = position,
+                    OverrideDrawLayer = drawLayer,
+                    OverrideLoops = duration != null ? (int)(duration / (tasExt.Frames * tasExt.Interval)) : null,
+                    OverrideRotation = rotation,
+                };
+            tasCtx.TryCreate(context, out TemporaryAnimatedSprite? tas);
             return true;
         }
         return false;
@@ -111,7 +82,7 @@ internal static class Visuals
         List<string> tasIds,
         Vector2 position,
         float drawLayer,
-        GameLocation location,
+        GameStateQueryContext context,
         float? duration = null,
         float? rotation = null
     )
@@ -119,11 +90,7 @@ internal static class Visuals
         HashSet<string> invalidTASIds = [];
         foreach (string tasId in tasIds)
         {
-            if (AssetManager.TASData.TryGetValue(tasId, out TemporaryAnimatedSpriteDefinition? tasDef))
-            {
-                BroadcastTAS(tasDef, position, drawLayer, location, duration, rotation);
-            }
-            else
+            if (!BroadcastTAS(tasId, position, drawLayer, context, duration, rotation))
             {
                 invalidTASIds.Add(tasId);
             }
@@ -131,13 +98,21 @@ internal static class Visuals
         if (invalidTASIds.Count > 0)
         {
             ModEntry.LogOnce(
-                $"No {AssetManager.TASAsset} entry found for: {string.Join(',', invalidTASIds)}",
+                $"No {AssetManager.TAS.AssetName} entry found for: {string.Join(',', invalidTASIds)}",
                 LogLevel.Warn
             );
             tasIds.RemoveAll(invalidTASIds.Contains);
         }
     }
 
+    /// <summary>
+    /// Broadcast item get TAS
+    /// This one is not a custom defined TAS, instead it is based entirely on the item.
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="location"></param>
+    /// <param name="position"></param>
+    /// <param name="offset"></param>
     public static void BroadcastItemGetTAS(Item? item, GameLocation location, Vector2 position, Vector2 offset)
     {
         if (item == null)

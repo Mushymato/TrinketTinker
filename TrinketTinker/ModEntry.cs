@@ -53,6 +53,8 @@ internal sealed class ModEntry : Mod
         helper.Events.GameLoop.DayStarted += OnDayStarted;
         helper.Events.Multiplayer.ModMessageReceived += OnModMessageReceived;
 
+        AssetManager.TAS = new(helper, $"{ModId}/TAS");
+
         helper.ConsoleCommands.Add(
             "tt_draw_debug",
             "Toggle drawing of the sprite index when drawing companions.",
