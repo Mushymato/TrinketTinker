@@ -262,7 +262,7 @@ public static class TrinketColorizer
         if (!t.GetTrinketData().CanBeReforged)
         {
             if (!probe)
-                Game1.showRedMessage(Game1.content.LoadString("Strings\\1_6_Strings:Anvil_wrongtrinket"));
+                Game1.showRedMessage(Game1.content.LoadString("Strings/1_6_Strings:Anvil_wrongtrinket"));
             return null;
         }
 

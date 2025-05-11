@@ -28,7 +28,7 @@ internal static class AssetManager
     {
         get
         {
-            _tinkerData ??= Game1.content.Load<Dictionary<string, TinkerData>>(TinkerAsset);
+            _tinkerData ??= ModEntry.Help.GameContent.Load<Dictionary<string, TinkerData>>(TinkerAsset);
             return _tinkerData;
         }
     }

@@ -112,7 +112,11 @@ public sealed class TinkerAnimSprite
     /// <summary>Load the texture.</summary>
     internal static Texture2D? LoadTexture(string? texture)
     {
-        return string.IsNullOrEmpty(texture) ? null : Game1.content.Load<Texture2D>(texture);
+        return
+            string.IsNullOrEmpty(texture)
+            || !ModEntry.Help.GameContent.DoesAssetExist<Texture2D>(ModEntry.Help.GameContent.ParseAssetName(texture))
+            ? null
+            : ModEntry.Help.GameContent.Load<Texture2D>(texture);
     }
 
     /// <summary>Update fields according to selected variant</summary>
