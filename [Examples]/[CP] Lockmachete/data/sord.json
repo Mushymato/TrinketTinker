@@ -49,14 +49,14 @@
             "Interval": 100,
             // repeat: draw 4 sords total, 1 original, 1 copy of next set of frames, 1 original again, 1 next set again
             "RepeatCount": 1,
-            "RepeatInterval": 1000,
+            "RepeatInterval": 500,
             "RepeatFrameSets": 1,
             "RepeatUseGlobalPos": false,
             "Args": {
               // offset from ground
               "Height": 72,
-              // time in ms of each orbit
-              "Period": 2000
+              // orbit period
+              "Period": 1000
             }
           },
           "Abilities": [
@@ -68,16 +68,14 @@
                 "AbilityClass": "Hitscan",
                 "Proc": "Timer",
                 "ProcTimer": 1000,
-                "ProcTAS": [
-                  "{{ModId}}_Fireball"
-                ],
                 "Args": {
                   "Min": 40,
                   "Max": 50,
                   "Knockback": 2.4,
                   "Range": 192,
                   "Hits": 2,
-                  "HitsDelay": 2000
+                  "HitsDelay": 500,
+                  "HitTAS": "{{ModId}}_Fireball|{{ModId}}_Fireball|{{ModId}}_Fireball|{{ModId}}_Fireball"
                 },
               },
               // this ability only happens on sunday (checked with a GSQ)
@@ -118,7 +116,6 @@
           "SortOffset": 0.0,
           "AlphaFade": 0.005,
           "Scale": 0.25,
-          "ScaleChange": 0.02,
           "Rotation": 0.0,
           "RotationChange": 0.00,
           "RandMin": {

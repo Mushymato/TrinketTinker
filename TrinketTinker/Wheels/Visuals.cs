@@ -79,7 +79,7 @@ internal static class Visuals
     /// <param name="duration"></param>
     /// <param name="rotation"></param>
     public static void BroadcastTASList(
-        List<string> tasIds,
+        IEnumerable<string> tasIds,
         Vector2 position,
         float drawLayer,
         GameStateQueryContext context,
@@ -101,7 +101,7 @@ internal static class Visuals
                 $"No {AssetManager.TAS.AssetName} entry found for: {string.Join(',', invalidTASIds)}",
                 LogLevel.Warn
             );
-            tasIds.RemoveAll(invalidTASIds.Contains);
+            // tasIds.RemoveAll(invalidTASIds.Contains);
         }
     }
 

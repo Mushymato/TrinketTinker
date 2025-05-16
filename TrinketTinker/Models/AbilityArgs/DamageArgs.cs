@@ -146,8 +146,7 @@ public class DamageArgs : IArgs
             );
             if (HitTAS != null)
             {
-                if (!Visuals.BroadcastTAS(HitTAS, pos, drawLayer, context))
-                    HitTAS = null;
+                Visuals.BroadcastTASList(HitTAS.Split('|'), pos, drawLayer, context);
             }
         }
         if (StunTime > 0)
