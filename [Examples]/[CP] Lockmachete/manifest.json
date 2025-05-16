@@ -1,0 +1,24 @@
+{
+    "Name": "[CP] Lockmachete",
+    "Author": "mushymato",
+    "Version": "1.0.0",
+    "Description": "Floating sords, no relation to K<redacted> H<redacted>",
+    "UniqueID": "mushymato.Lockmachete",
+    "MinimumApiVersion": "4.0.0",
+    "UpdateKeys": [
+        "???"
+    ],
+    "ContentPackFor": {
+        "UniqueID": "Pathoschild.ContentPatcher"
+    },
+    "Dependencies": [
+        {
+            "UniqueID": "mushymato.TrinketTinker",
+            "MinimumVersion": "1.6.0-beta.0"
+        }
+    ]
+    /*
+    * sord.png edited from
+    * https://www.spriters-resource.com/game_boy_advance/cvhod/sheet/13995/
+    */
+}

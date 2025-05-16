@@ -66,7 +66,7 @@ internal static class Visuals
                     OverrideLoops = duration != null ? (int)(duration / (tasExt.Frames * tasExt.Interval)) : null,
                     OverrideRotation = rotation,
                 };
-            tasCtx.TryCreate(context, out TemporaryAnimatedSprite? tas);
+            tasCtx.TryCreate(context, (tas) => Game1.Multiplayer.broadcastSprites(context.Location, tas));
             return true;
         }
         return false;

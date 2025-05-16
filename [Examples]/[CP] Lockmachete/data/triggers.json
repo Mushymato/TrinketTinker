@@ -1,0 +1,31 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    // {
+    //   "Action": "EditData",
+    //   "Target": "spacechase0.SpaceCore/ObjectExtensionData",
+    //   "Entries": {
+    //     "209": {
+    //       "UseForTriggerAction": true,
+    //       "ConsumeForTriggerAction": true
+    //     }
+    //   }
+    // },
+    {
+      "Action": "EditData",
+      "Target": "Data/TriggerActions",
+      "Entries": {
+        // when you eat (O)209 carp surprise, get swords for 1 day
+        "{{ModId}}_SordActivation": {
+          "Id": "{{ModId}}_SordActivation",
+          "Trigger": "spacechase0.SpaceCore_OnItemEaten",
+          "Condition": "ITEM_ID Input (O)209",
+          "HostOnly": false,
+          "Action": "mushymato.TrinketTinker_EquipHiddenTrinket {{ModId}}_Sord 0 0 1",
+          // there is a matching mushymato.TrinketTinker_UnequipHiddenTrinket for unequip but this example uses the day timeout
+          "MarkActionApplied": false
+        }
+      }
+    }
+  ]
+}

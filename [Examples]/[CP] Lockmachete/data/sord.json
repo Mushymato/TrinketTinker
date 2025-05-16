@@ -1,0 +1,138 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "Action": "Load",
+      "Target": "{{ModId}}/sord",
+      "FromFile": "assets/sord.png"
+    },
+    // Edit Data/Trinkets 
+    {
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_Sord": {
+          "Id": "{{ModId}}_Sord",
+          "DisplayName": "Trinket Tinker - Orbit with Repeat example",
+          "Description": "Companion with 4 sets of movement animation in order of Down, Right, Up, Left.",
+          "Texture": "TileSheets\\Objects_2",
+          "SheetIndex": 94,
+          "DropsNaturally": false,
+          "CanBeReforged": false,
+        }
+      }
+    },
+    // Edit Mods/mushymato.TrinketTinker
+    {
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        // ID must match trinket
+        "{{ModId}}_Sord": {
+          "Variants": [
+            {
+              // 32x64 texture drawn at 3x scale
+              "Texture": "{{ModId}}/sord",
+              "Width": 32,
+              "Height": 64,
+              "TextureScale": 3
+            },
+          ],
+          // Orbit around the player in a ellipse
+          "Motion": {
+            "MotionClass": "Orbit",
+            "AlwaysMoving": true,
+            // 1 set of 5 frame animation ping pong, 100ms interval
+            "DirectionMode": "R",
+            "LoopMode": "PingPong",
+            "FrameLength": 5,
+            "Interval": 100,
+            // repeat: draw 4 sords total, 1 original, 1 copy of next set of frames, 1 original again, 1 next set again
+            "RepeatCount": 1,
+            "RepeatInterval": 1000,
+            "RepeatFrameSets": 1,
+            "RepeatUseGlobalPos": false,
+            "Args": {
+              // offset from ground
+              "Height": 72,
+              // time in ms of each orbit
+              "Period": 2000
+            }
+          },
+          "Abilities": [
+            // level 0
+            [
+              // this ability is always active and will hit any monsters coming over
+              {
+                "Id": "Basic-Hitscan",
+                "AbilityClass": "Hitscan",
+                "Proc": "Timer",
+                "ProcTimer": 1000,
+                "ProcTAS": [
+                  "{{ModId}}_Fireball"
+                ],
+                "Args": {
+                  "Min": 40,
+                  "Max": 50,
+                  "Knockback": 2.4,
+                  "Range": 192,
+                  "Hits": 2,
+                  "HitsDelay": 2000
+                },
+              },
+              // this ability only happens on sunday (checked with a GSQ)
+              {
+                "AbilityClass": "Buff",
+                "Proc": "Sync",
+                "ProcSyncId": "Basic-Hitscan",
+                "Condition": "DAY_OF_WEEK sunday",
+                "Args": {
+                  "BuffId": 22
+                }
+              },
+            ]
+          ]
+        },
+      }
+    },
+    // make little fireball on hit
+    {
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/TAS",
+      "Entries": {
+        "{{ModId}}_Fireball": {
+          "Id": "Default",
+          "Texture": "TileSheets\\animations",
+          "SourceRect": {
+            "X": 0,
+            "Y": 1920,
+            "Width": 64,
+            "Height": 64
+          },
+          "Interval": 80.0,
+          "Frames": 4,
+          "Loops": 999999,
+          "PositionOffset": "0,0",
+          "Flicker": false,
+          "Flip": false,
+          "SortOffset": 0.0,
+          "AlphaFade": 0.005,
+          "Scale": 0.25,
+          "ScaleChange": 0.02,
+          "Rotation": 0.0,
+          "RotationChange": 0.00,
+          "RandMin": {
+            "Motion": "-4,-4",
+            "Rotation": 0.1,
+            "RotationChange": -0.02
+          },
+          "RandMax": {
+            "Motion": "4,4",
+            "Rotation": -0.1,
+            "RotationChange": 0.02
+          }
+        }
+      }
+    },
+  ]
+}

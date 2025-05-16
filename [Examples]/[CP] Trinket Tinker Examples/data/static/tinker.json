@@ -201,7 +201,7 @@
           ],
           // Orbit around the player in a ellipse
           "Motion": {
-            "MotionClass": "Static",
+            "MotionClass": "Orbit",
             "AlwaysMoving": true,
             "DirectionMode": "RL",
             "FrameLength": 4,

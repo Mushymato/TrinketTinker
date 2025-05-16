@@ -16,10 +16,10 @@ This mod is licensed under MIT, contributions are welcome.
 
 ## Example Mods for TrinketTinker
 
-- [[CP] Sinister Servants](https://github.com/Mushymato/TrinketTinker/tree/main/%5BCP%5D%20Sinister%20Servants): Playable mod for TrinketTinker, adds 6 monster trinkets.
-- [[CP] Pack Possum and Critter Cages](https://github.com/Mushymato/TrinketTinker/tree/main/%5BCP%5D%20Pack%20Possum%20and%20Critter%20Cages): Playable mod for TrinketTinker, adds 3 "box" trinkets that hold more trinkets, and a hireable opossum.
-- [[CP] Abigail Axcellent Adventure](https://github.com/Mushymato/TrinketTinker/tree/main/%5BCP%5D%20Abigail%20Axcellent%20Adventure): Example mod for a NPC style trinket, which are unique across the world and hides the corresponding NPC.
-- [[CP] Trinket Tinker Examples](https://github.com/Mushymato/TrinketTinker/tree/main/%5BCP%5D%20Trinket%20Tinker%20Examples): Test mod, a bit messy.
+- [[CP] Sinister Servants](\[FullMod\]/\[CP\]%20Sinister%20Servants): Playable mod for TrinketTinker, adds 6 monster trinkets.
+- [[CP] Pack Possum and Critter Cages](\[FullMod\]/\[CP\]%20Pack%20Possum%20and%20Critter%20Cages): Playable mod for TrinketTinker, adds 3 "box" trinkets that hold more trinkets, and a hireable opossum.
+- [[CP] Abigail Axcellent Adventure](\[Examples\]/\[CP\]%20Abigail%20Axcellent%20Adventure): Example mod for a NPC style trinket, which are unique across the world and hides the corresponding NPC.
+- [[CP] Trinket Tinker Examples](\[Examples\]/\[CP\]%20Trinket%20Tinker%20Examples): Test mod, a bit messy.
 
 ## User Configuration
 

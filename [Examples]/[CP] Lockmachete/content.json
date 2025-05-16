@@ -1,0 +1,16 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Format": "2.6.0",
+  "Changes": [
+    // trinkets
+    {
+      "Action": "Include",
+      "FromFile": "data/sord.json"
+    },
+    // trigger for hidden trinket
+    {
+      "Action": "Include",
+      "FromFile": "data/triggers.json"
+    },
+  ]
+}
