@@ -30,6 +30,7 @@
           "EnableCondition": "mushymato.TrinketTinker_ENABLED_TRINKET_COUNT Target All <1",
           "Variants": [
             {
+              "NPC": "Abigail",
               "Texture": "Characters/Abigail",
               "Width": 16,
               "Height": 32,

@@ -617,6 +617,36 @@ public abstract class Motion<TArgs> : IMotion
                 CurrentFrame: cs.currentFrame
             );
         DrawCompanion(b, snapshot);
+        if (cs.Breather != null)
+        {
+            float breathing = Math.Max(
+                0f,
+                (float)
+                    Math.Ceiling(
+                        Math.Sin(
+                            Game1.currentGameTime.TotalGameTime.TotalMilliseconds / 600.0 + (double)(c.Position.X * 20f)
+                        )
+                    ) / 4f
+            );
+            DrawSnapshot breatherSnapshot =
+                new(
+                    cs.Texture,
+                    drawPos + cs.Breather.Pos,
+                    new(
+                        cs.SourceRect.X + cs.Breather.Rect.X,
+                        cs.SourceRect.Y + cs.Breather.Rect.Y,
+                        cs.Breather.Rect.Width,
+                        cs.Breather.Rect.Height
+                    ),
+                    cs.DrawColor,
+                    GetRotation(),
+                    new(cs.Breather.Rect.Width / 2, cs.Breather.Rect.Height / 2 + 1),
+                    new(scale.X + breathing, scale.Y + breathing),
+                    cs.Flip ^ ((c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None),
+                    layerDepth + Visuals.LAYER_OFFSET
+                );
+            DrawCompanionBreathing(b, breatherSnapshot);
+        }
 
         Vector2 shadowScale = GetShadowScale();
         Vector2 shadowDrawPos = Vector2.Zero;
@@ -687,6 +717,15 @@ public abstract class Motion<TArgs> : IMotion
     /// <param name="b"></param>
     /// <param name="snapshot"></param>
     protected virtual void DrawCompanion(SpriteBatch b, DrawSnapshot snapshot)
+    {
+        snapshot.Draw(b);
+        EnqueueRepeatDraws(snapshot, false);
+    }
+
+    /// <summary>Draw companion breathing from snapshot, enqueue repeat as required</summary>
+    /// <param name="b"></param>
+    /// <param name="snapshot"></param>
+    protected virtual void DrawCompanionBreathing(SpriteBatch b, DrawSnapshot snapshot)
     {
         snapshot.Draw(b);
         EnqueueRepeatDraws(snapshot, false);

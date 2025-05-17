@@ -99,6 +99,14 @@ public sealed class SerpentMotion(TrinketTinkerCompanion companion, MotionData m
         }
     }
 
+    /// <summary>Do not draw breathing for this motion type it looks bad.</summary>
+    /// <param name="b"></param>
+    /// <param name="snapshot"></param>
+    protected override void DrawCompanionBreathing(SpriteBatch b, DrawSnapshot snapshot)
+    {
+        return;
+    }
+
     /// <summary>Do not draw shadow for this motion type it looks bad.</summary>
     /// <param name="b"></param>
     /// <param name="snapshot"></param>

@@ -51,6 +51,9 @@ public interface IVariantData
 
     /// <summary>Variant portrait content path, for chatter ability.</summary>
     public string? Portrait { get; set; }
+
+    /// <summary>Show NPC breathing, only usable if NPC is a real NPC.</summary>
+    public bool? ShowBreathing { get; set; }
 }
 
 /// <summary>Additional variant data, kind of like NPC appearance</summary>
@@ -85,6 +88,9 @@ public class AltVariantData : IVariantData
 
     /// <inheritdoc/>
     public string? Portrait { get; set; } = null;
+
+    /// <inheritdoc/>
+    public bool? ShowBreathing { get; set; } = null;
 
     /// <summary>Game state query condition</summary>
     public string? Condition { get; set; } = null;
@@ -125,6 +131,9 @@ public sealed class VariantData : IVariantData
 
     /// <inheritdoc/>
     public string? Portrait { get; set; } = null;
+
+    /// <inheritdoc/>
+    public bool? ShowBreathing { get; set; } = true;
 
     /// <summary>If set, add a light with given radius. Note that the light is only visible to local player.</summary>
     public LightSourceData? LightSource { get; set; } = null;

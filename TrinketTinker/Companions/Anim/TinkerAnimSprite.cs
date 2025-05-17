@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
+using StardewValley.GameData.Characters;
 using TrinketTinker.Models;
 using TrinketTinker.Models.AbilityArgs;
 using TrinketTinker.Wheels;
@@ -16,6 +17,11 @@ public enum TinkerAnimState
     InNop = 1 << 3,
     Playing = InProgress | Complete,
 }
+
+/// <summary>Breather information for a NPC style trinket</summary>
+/// <param name="Pos"></param>
+/// <param name="Rect"></param>
+public sealed record BreatherPositionAndRectangle(Vector2 Pos, Rectangle Rect);
 
 /// <summary>
 /// Simplified animated sprite controller.
@@ -71,6 +77,7 @@ public sealed class TinkerAnimSprite
     internal int Height;
     internal float TextureScale;
     internal float ShadowScale;
+    internal BreatherPositionAndRectangle? Breather;
     internal Rectangle SourceRect { get; private set; } = Rectangle.Empty;
     internal bool Hidden => currentFrame == -1;
     internal ChatterSpeaker Speaker =>
@@ -119,6 +126,57 @@ public sealed class TinkerAnimSprite
             : ModEntry.Help.GameContent.Load<Texture2D>(texture);
     }
 
+    /// <summary>Get breathing data for an npc.</summary>
+    internal static BreatherPositionAndRectangle? GetBreatherPositionAndRectangle(
+        int width,
+        int height,
+        string? npcName
+    )
+    {
+        if (width > 16 || height > 32)
+            return null;
+        if (!Game1.characterData.TryGetValue(npcName, out CharacterData? data) || !data.Breather)
+            return null;
+        Rectangle breathingRect;
+        if (data.BreathChestRect != null)
+        {
+            breathingRect = data.BreathChestRect.Value;
+        }
+        else
+        {
+            breathingRect = new Rectangle(width / 4, height / 2 + height / 32, height / 4, width / 2);
+            if (data.Age == NpcAge.Child)
+            {
+                breathingRect.Y += height / 6 + 1;
+                breathingRect.Height /= 2;
+            }
+            else if (data.Gender == Gender.Female)
+            {
+                breathingRect.Y++;
+                breathingRect.Height /= 2;
+            }
+        }
+        Vector2 breathingPos;
+        if (data.BreathChestPosition != null)
+        {
+            breathingPos = Utility.PointToVector2(data.BreathChestPosition.Value);
+        }
+        else
+        {
+            breathingPos = new Vector2(width * 4 / 2, 8f);
+            if (data.Age == NpcAge.Child)
+            {
+                breathingPos.Y += height / 8 * 4;
+            }
+            else if (data.Gender == Gender.Female)
+            {
+                breathingPos.Y -= 4f;
+            }
+        }
+        breathingPos = new(breathingPos.X - 32, breathingPos.Y + height / 2);
+        return new(breathingPos, breathingRect);
+    }
+
     /// <summary>Update fields according to selected variant</summary>
     /// <returns></returns>
     private Texture2D UpdateVariantFields()
@@ -132,6 +190,10 @@ public sealed class TinkerAnimSprite
         drawColorIsConstant = false;
         TextureBase = LoadTexture(vd.Texture) ?? LoadTexture(fullVd.Texture) ?? LoadTexture("Animals/Error")!;
         TextureExtra = LoadTexture(vd.TextureExtra) ?? LoadTexture(fullVd.TextureExtra) ?? null;
+        Breather =
+            (vd.ShowBreathing ?? fullVd.ShowBreathing ?? false)
+                ? GetBreatherPositionAndRectangle(Width, Height, vd.NPC ?? fullVd.NPC)
+                : null;
         return TextureBase;
     }
 
