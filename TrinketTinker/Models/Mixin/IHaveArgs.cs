@@ -1,19 +1,21 @@
-using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace TrinketTinker.Models.Mixin;
 
 /// <summary>Arbitrary arguments to be deserialized later.</summary>
-public class ArgsDict : Dictionary<string, object>
+public static class ArgsDictExtension
 {
     /// <summary>Tries to parse this dict to target model of type <see cref="IArgs"/></summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    internal T? Parse<T>()
+    internal static T? Parse<T>(this Dictionary<string, object>? args)
         where T : IArgs
     {
         try
         {
-            return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(this));
+            if (args == null)
+                return default;
+            return JToken.FromObject(args).ToObject<T>();
         }
         catch (Exception ex)
         {
@@ -28,5 +30,5 @@ public class ArgsDict : Dictionary<string, object>
 public interface IHaveArgs
 {
     /// <summary>Arbitrary arguments to be deserialized later.</summary>
-    public ArgsDict? Args { get; set; }
+    public Dictionary<string, object>? Args { get; set; }
 }

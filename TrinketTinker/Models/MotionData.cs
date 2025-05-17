@@ -344,5 +344,5 @@ public sealed class MotionData : IHaveArgs
     public Dictionary<string, SpeechBubbleData> SpeechBubbles { get; set; } = [];
 
     /// <inheritdocs/>
-    public ArgsDict? Args { get; set; } = null;
+    public Dictionary<string, object>? Args { get; set; } = null;
 }

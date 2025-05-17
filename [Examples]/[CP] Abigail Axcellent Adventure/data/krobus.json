@@ -240,25 +240,40 @@
       "When": {
         "KrobusEatsRocks": true
       }
+    },
+    {
+      "LogName": "Krobus: HarvestStone",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "TargetField": [
+        "{{ModId}}_Krobus",
+        "Motion",
+        "Args"
+      ],
+      "Entries": {
+        "Velocity": -1,
+      },
+      "When": {
+        "KrobusEatsRocks": true
+      }
+    },
+    {
+      "LogName": "Krobus: HarvestStone",
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "TargetField": [
+        "{{ModId}}_Krobus",
+        "Abilities",
+        "#0",
+        "#4",
+        "Args"
+      ],
+      "Entries": {
+        "HarvestTo": "TinkerInventory",
+      },
+      "When": {
+        "KrobusEatsRocks": true
+      }
     }
-    // this is illegal, cannot target all the way into Args because of [REDACTED]
-    // {
-    //   "LogName": "Krobus: HarvestStone",
-    //   "Action": "EditData",
-    //   "Target": "mushymato.TrinketTinker/Tinker",
-    //   "TargetField": [
-    //     "{{ModId}}_Krobus",
-    //     "Abilities",
-    //     "#0",
-    //     "#4",
-    //     "Args"
-    //   ],
-    //   "Entries": {
-    //     "HarvestTo": "TinkerInventory",
-    //   },
-    //   "When": {
-    //     "KrobusEatsRocks": true
-    //   }
-    // }
   ]
 }
