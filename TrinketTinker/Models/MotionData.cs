@@ -85,6 +85,13 @@ public enum LayerDepth
     InFront,
 }
 
+/// <summary>Whether to enable</summary>
+public enum CollisionMode
+{
+    None,
+    Line,
+}
+
 /// <summary>Model defining how companions pick anchor target</summary>
 public class AnchorTargetData
 {
@@ -291,6 +298,9 @@ public sealed class MotionData : IHaveArgs
 
     /// <summary>If true, continue the moving animation when not owner is not moving.</summary>
     public bool AlwaysMoving { get; set; } = false;
+
+    /// <summary>Collision mode</summary>
+    public CollisionMode Collision { get; set; } = CollisionMode.None;
 
     /// <summary>First frame of the animation.</summary>
     public int FrameStart { get; set; } = 0;

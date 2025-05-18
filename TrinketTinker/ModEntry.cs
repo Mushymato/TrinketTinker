@@ -82,6 +82,7 @@ internal sealed class ModEntry : Mod
             "Debug unequip all trinkets of current player and send the trinkets to lost and found.",
             ConsolePrintTrinkets
         );
+        helper.ConsoleCommands.Add("tt_cc", "Test the dumb collision thingy.", ConsoleCheckCollision);
 #endif
     }
 
@@ -284,6 +285,28 @@ internal sealed class ModEntry : Mod
                 Log($"- {item.QualifiedItemId} {item.Stack}");
             }
         }
+    }
+
+    private void ConsoleCheckCollision(string arg1, string[] arg2)
+    {
+        if (!Context.IsWorldReady)
+            return;
+
+        if (
+            !ArgUtility.TryGetPoint(arg2, 0, out Point current, out string error, name: "Point current")
+            || !ArgUtility.TryGetPoint(arg2, 2, out Point target, out error, name: "Point current")
+            || !ArgUtility.TryGetInt(arg2, 4, out int step, out error, "int step")
+        )
+        {
+            Log(error, LogLevel.Info);
+            return;
+        }
+        Vector2 currentV =
+            new(current.X * Game1.tileSize + Game1.tileSize / 2, current.Y * Game1.tileSize + Game1.tileSize / 2);
+        Vector2 targetV =
+            new(target.X * Game1.tileSize + Game1.tileSize / 2, target.Y * Game1.tileSize + Game1.tileSize / 2);
+        bool canReach = LerpMotion.CanReachTarget(Game1.currentLocation, currentV, targetV);
+        Log($"{currentV} -> {targetV} ({step}): {canReach}");
     }
 #endif
 

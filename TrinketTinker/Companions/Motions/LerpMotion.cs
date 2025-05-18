@@ -36,6 +36,7 @@ public class BaseLerpMotion<IArgs>(TrinketTinkerCompanion companion, MotionData 
         return false;
     }
 
+    /// <inheritdoc/>
     protected override bool ShouldMove()
     {
         if (!c.OwnerMoving && (args.MoveSyncAll || (args.MoveSync && currAnchorTarget == AnchorTarget.Owner)))

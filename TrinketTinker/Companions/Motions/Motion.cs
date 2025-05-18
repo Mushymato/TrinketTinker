@@ -254,6 +254,34 @@ public abstract class Motion<TArgs> : IMotion
         DoRecheckAltVariant();
     }
 
+    /// <summary>does a simple straight line collision check</summary>
+    /// <param name="location"></param>
+    /// <param name="farmer"></param>
+    /// <param name="current"></param>
+    /// <param name="target"></param>
+    /// <param name="collisionStep"></param>
+    /// <param name="collidingOn"></param>
+    /// <returns></returns>
+    internal static bool CanReachTarget(GameLocation location, Vector2 current, Vector2 target, int collisionStep = 64)
+    {
+        if (collisionStep < 1 || target == current)
+            return true;
+        Vector2 travel = target - current;
+        float distance = travel.Length();
+        if (distance <= collisionStep)
+            return true;
+        travel.Normalize();
+        int idx = 0;
+        do
+        {
+            Vector2 probe = current + idx * collisionStep * travel;
+            if (!location.isTilePassable(Vector2.Round(probe / Game1.tileSize)))
+                return false;
+            idx++;
+        } while (idx * collisionStep <= distance);
+        return true;
+    }
+
     /// <summary>Changes the position of the anchor that the companion moves relative to, based on <see cref="MotionData.Anchors"/>.</summary>
     /// <param name="time"></param>
     /// <param name="location"></param>
@@ -269,12 +297,23 @@ public abstract class Motion<TArgs> : IMotion
         return UpdateAnchor(location);
     }
 
-    private AnchorTarget SetAnchor(AnchorTargetData anchor, Vector2 anchorPos)
+    /// <summary>Set the current anchor position</summary>
+    /// <param name="anchor"></param>
+    /// <param name="location"></param>
+    /// <param name="anchorPos"></param>
+    /// <returns></returns>
+    private bool SetAnchor(AnchorTargetData anchor, GameLocation location, Vector2 anchorPos)
     {
+        if (
+            md.Collision != CollisionMode.None
+            && anchor.Mode != AnchorTarget.Owner
+            && !CanReachTarget(location, c.Position, anchorPos)
+        )
+            return false;
         currAnchorTarget = anchor.Mode;
         if ((anchorPos - c.Position).Length() > anchor.StopRange)
             c.Anchor = anchorPos;
-        return anchor.Mode;
+        return true;
     }
 
     /// <summary>Changes the position of the anchor that the companion moves relative to, based on <see cref="MotionData.Anchors"/>.</summary>
@@ -300,8 +339,11 @@ public abstract class Motion<TArgs> : IMotion
                             ignoreUntargetables: true,
                             match: anchor.Filters != null ? (m) => !anchor.Filters.Contains(m.Name) : null
                         );
-                        if (closest != null)
-                            return SetAnchor(anchor, Utility.PointToVector2(closest.GetBoundingBox().Center));
+                        if (
+                            closest != null
+                            && SetAnchor(anchor, location, Utility.PointToVector2(closest.GetBoundingBox().Center))
+                        )
+                            return anchor.Mode;
                     }
                     break;
                 case AnchorTarget.Forage:
@@ -323,15 +365,17 @@ public abstract class Motion<TArgs> : IMotion
                     {
                         if (
                             Places.ClosestMatchingObject(location, originPoint, anchor.Range, objMatch)
-                            is SObject closest
-                        )
-                        {
-                            return SetAnchor(
+                                is SObject closest
+                            && SetAnchor(
                                 anchor,
+                                location,
                                 closest.TileLocation * Game1.tileSize
                                     + new Vector2(Game1.tileSize / 2, Game1.tileSize / 2)
                                     - Vector2.One
-                            );
+                            )
+                        )
+                        {
+                            return anchor.Mode;
                         }
                     }
                     break;
@@ -352,20 +396,24 @@ public abstract class Motion<TArgs> : IMotion
                                 includeLarge,
                                 terrainMatch
                             )
-                            is TerrainFeature closest
-                        )
-                        {
-                            return SetAnchor(
+                                is TerrainFeature closest
+                            && SetAnchor(
                                 anchor,
+                                location,
                                 closest.Tile * Game1.tileSize
                                     + new Vector2(Game1.tileSize / 2, Game1.tileSize / 2)
                                     - Vector2.One
-                            );
+                            )
+                        )
+                        {
+                            return anchor.Mode;
                         }
                     }
                     break;
                 case AnchorTarget.Owner:
-                    return SetAnchor(anchor, Utility.PointToVector2(c.Owner.GetBoundingBox().Center));
+                    if (SetAnchor(anchor, location, Utility.PointToVector2(c.Owner.GetBoundingBox().Center)))
+                        return anchor.Mode;
+                    break;
             }
         }
         // base case is Owner
@@ -518,6 +566,8 @@ public abstract class Motion<TArgs> : IMotion
     /// <returns></returns>
     protected abstract bool IsMoving();
 
+    /// <summary>Whether the companion should attempt to move this frame</summary>
+    /// <returns></returns>
     protected virtual bool ShouldMove()
     {
         return !PauseMovementByAnimClip;
