@@ -135,7 +135,7 @@ public sealed class TinkerAnimSprite
     {
         if (width > 16 || height > 32)
             return null;
-        if (!Game1.characterData.TryGetValue(npcName, out CharacterData? data) || !data.Breather)
+        if (npcName == null || !Game1.characterData.TryGetValue(npcName, out CharacterData? data) || !data.Breather)
             return null;
         Rectangle breathingRect;
         if (data.BreathChestRect != null)
