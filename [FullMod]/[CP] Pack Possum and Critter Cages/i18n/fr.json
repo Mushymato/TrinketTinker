@@ -1,0 +1,22 @@
+{
+    "$schema": "https://smapi.io/schemas/i18n.json",
+    "Box.0.DisplayName": "Cage à créature (Iridium)",
+    "Box.1.DisplayName": "Cage à créature (radioactive)",
+    "Box.2.DisplayName": "Cage à créature (prismatique)",
+    "Box.Shared.Description": "Méfiez-vous des bestioles à l'intérieur. Utilisez ce bijou pour ouvrir un inventaire ({0}emplacements), les bibelots placés à l'intérieur seront équipés.",
+    "Opossum.DisplayName": "Engagez l'opossum",
+    "Opossum.DisplayName.OneDay": "(1 jour)",
+    "Opossum.DisplayName.OneWeek": "(1 semaine)",
+    "Opossum.DisplayName.OneSeason": "(1 saison)",
+    "Opossum.Description": "Marlon m'a présenté un opossum qualifié et ingénieux, elle travaille dur pour ses 36 enfants.",
+    "Opossum.Chatter.0.0": "Bonjour! Je suis le pack Possum. Je vais secouer les arbres et les buissons, faire la cueillette et porter vos affaires.",
+    "Opossum.Chatter.0.1": "Vous pouvez ouvrir mon pack avec la touche \"Ouvrir l’inventaire\". (Par défaut RightAlt & Point, ou LeftStick & ControllerX, réglé via l’interface GMCM de TrinkeTinker)",
+    "Opossum.Chatter.0.2": "Vous pouvez également me parler avec le bouton \"Interaction\", bien que je ne sois pas très causant. (Leftalt & Bouton droit par défaut, ou LeftStick & ControllerA, réglé via l’interface GMCM de TrinketTinker)",
+    "Opossum.Chatter.0.3": "Si vous avez oublié de prendre vos affaires avant que je vous quitte, ne vous inquiétez pas! Ils seront livrés en toute sécurité aux objets perdus.",
+    "Opossum.Chatter.1": "Belle journée, n'est-ce pas ?",
+    "Opossum.Chatter.2": "Vous avez fait de bons plats ?",
+    "Opossum.Chatter.3": "N'oubliez pas vos affaire s${mon gars^ma fille^mon canard}$.",
+    "Opossum.Chatter.4": "Votre grand-père était un homme bon, il m'a embauché plusieurs fois.",
+    "config.EarlyTrinketSlot.name": "Emplacement anticipé",
+    "config.EarlyTrinketSlot.description": "Activer l’emplacement du bibelot plus tôt, ce qui fait également que les bibelots des monstres apparaissent sur les monstres plus tôt. Cette option prend 1 sauvegarde / chargement pour être effectif, et si vous avez oublié votre bibelot, il faut un autre jour avant qu'il n'apparaît dans les objets perdus et trouvés."
+}
