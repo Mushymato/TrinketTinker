@@ -246,8 +246,8 @@
           "Variants": [
             {
               "Texture": "Mods/{{ModId}}/drul",
-              "Width": 16,
-              "Height": 32
+              "Width": 8,
+              "Height": 8
             },
           ],
           "Motion": {
@@ -263,6 +263,22 @@
             "Interval": 100,
             "Args": {
               "Max": 1280
+            },
+            "AnimClips": {
+              "Idle": {
+                "FrameStart": 28,
+                "FrameLength": 31,
+                "RandomWeight": 1,
+                "Interval": 150,
+                "RandomClips": [
+                  {
+                    "FrameStart": 18,
+                    "FrameLength": 2,
+                    "RandomWeight": 1,
+                    "Interval": 500
+                  }
+                ]
+              }
             }
           },
           "Abilities": [

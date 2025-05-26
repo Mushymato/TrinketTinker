@@ -38,7 +38,7 @@ The term "anchor" refers to a position that the companion derives it's own posit
 
 The default animation behavior for a companion is to animate while the player is moving according to [direction mode](3.0-Direction.md), and display static first frame when player is still.
 
-To use a special animation while player is still, add an `AnimClip` named `"Idle.0"`. If the idle animation should change according to direction, add `"Idle.X"` where `"X"` is a number between 1 to 4, depending on how many directions are available for the chosen `DirectionMode`. See [animation clips](3.2-Animation%20Clips.md) for details.
+To use a special animation while player is still, add an `AnimClip` named `"Idle"`. If the idle animation should change according to direction, add `"Idle.X"` where `"X"` is a number between 1 to 4, depending on how many directions are available for the chosen `DirectionMode`. See [animation clips](3.2-Animation%20Clips.md) for details.
 
 To have the directional animation continue regardless of player motion, set `AlwaysMoving` to true.
 

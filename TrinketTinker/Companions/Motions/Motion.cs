@@ -451,6 +451,7 @@ public abstract class Motion<TArgs> : IMotion
         {
             if (!clip.TryPickRand(NetRand, c.Owner, out clip))
                 return TinkerAnimState.None;
+            cs.SetCurrentFrame(clip.FrameStart);
             currentClipKey = key;
         }
         else
