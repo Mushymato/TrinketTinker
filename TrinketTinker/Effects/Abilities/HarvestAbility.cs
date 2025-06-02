@@ -15,6 +15,8 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
     : Ability<TArgs>(effect, data, lvl)
     where TArgs : HarvestArgs
 {
+    internal const int UPGRADE_LEVEL = 32;
+
     private static bool ShouldCollectDebris(Debris debris) =>
         debris.debrisType.Value
             is Debris.DebrisType.OBJECT
@@ -159,7 +161,7 @@ public sealed class HarvestStoneAbility(TrinketTinkerEffect effect, AbilityData 
     private static readonly Lazy<Pickaxe> fakeTool =
         new(() =>
         {
-            Pickaxe tool = new();
+            Pickaxe tool = new() { UpgradeLevel = UPGRADE_LEVEL };
             tool.isEfficient.Value = true;
             return tool;
         });
@@ -197,7 +199,7 @@ public sealed class HarvestTwigAbility(TrinketTinkerEffect effect, AbilityData d
     private static readonly Lazy<Axe> fakeTool =
         new(() =>
         {
-            Axe tool = new();
+            Axe tool = new() { UpgradeLevel = UPGRADE_LEVEL };
             tool.isEfficient.Value = true;
             return tool;
         });
@@ -268,7 +270,7 @@ public sealed class HarvestDigSpotAbility(TrinketTinkerEffect effect, AbilityDat
     private static readonly Lazy<Hoe> fakeTool =
         new(() =>
         {
-            Hoe tool = new();
+            Hoe tool = new() { UpgradeLevel = UPGRADE_LEVEL };
             return tool;
         });
 
