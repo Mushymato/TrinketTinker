@@ -15,7 +15,7 @@ An ability is primarily defined by `AbilityClass` (what it does) and `Proc` (whe
 | `ProcTimer` | double | -1 | After an ability proc, prevent further activations for this amount of time. |
 | `ProcSyncId`| string | _null_ | For use with [Proc.Sync](4.0-Proc.md), makes this ability proc after another ability in the same level, by their Id. If set, this field takes precedence over `ProcSyncIndex`. |
 | `ProcSyncIndex`| int | 0 | For use with [Proc.Sync](4.0-Proc.md), makes this ability proc after another ability in the same level, by their order in the list of abilities. |
-| `ProcSyncDelay`| int | 0 | For use for other abilities with [Proc.Sync](4.0-Proc.md), add a delay between the proc of this ability and any sync ability listening to this one. |
+| `ProcSyncDelay`| int | 0 | For use with other abilities with [Proc.Sync](4.0-Proc.md), add a delay between the proc of this ability and any sync ability listening to this one. |
 | `ProcSound` | string | _null_ | Play a sound cue when ability procs ([details](https://stardewvalleywiki.com/Modding:Audio)) |
 | `ProcTAS` | List\<string\> | _null_ | String Ids of [temporary animated sprites](6-Temporary%20Animated%20Sprite.md) to show when the ability activates. For most abilities, this TAS is drawn shown relative to the farmer. For Hitscan/Projectile, this TAS is shown on the targeted monster instead. |
 | `ProcOneshotAnim` | string | _null_ | Play the matching [anim clip](3.2-Animation%20Clips.md) on proc, return to normal animation after 1 cycle. |

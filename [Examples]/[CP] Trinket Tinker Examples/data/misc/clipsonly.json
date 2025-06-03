@@ -7,7 +7,7 @@
         "{{ModId}}_ClipsOnly": {
           "Id": "{{ModId}}_ClipsOnly",
           "DisplayName": "Trinket Tinker - Clips Only",
-          "Description": "Example of using trinket tinker with no regular anim, only clips. Lv.{0}",
+          "Description": "Example of using Trinket Tinker with no regular anim, only clips. Lv.{0}",
           "Texture": "TileSheets\\Objects_2",
           "SheetIndex": 75,
           "DropsNaturally": false,

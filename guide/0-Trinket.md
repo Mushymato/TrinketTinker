@@ -2,11 +2,11 @@
 
 > [!NOTE]
 > The following page covers how trinkets are added in the base game, regardless of whether TrinketTinker is being used.
-> You must add trinket items before you can extend it with trinket tinker data.
+> You must add trinket items before you can extend it with Trinket Tinker data.
 
-Trinkets can be added with by editing `Data/Trinkets`, generally with [Content Patcher](https://github.com/Pathoschild/StardewMods/tree/stable/ContentPatcher).
+Trinkets can be added with by editing `Data/Trinkets`, generally with [Content Patcher](https://github.com/Pathoschild/StardewMods/tree/stable/ContentPatcher). See wiki for [full description of` Data/Trinket`](https://stardewvalleywiki.com/Modding:Trinkets).
 
-## Example
+## Sample
 
 ```json
 {
@@ -52,11 +52,12 @@ Trinkets can be added with by editing `Data/Trinkets`, generally with [Content P
 ```
 
 > [!TIP]
-> Refer to content patcher docs for more details about [EditData](https://github.com/Pathoschild/StardewMods/blob/stable/ContentPatcher/docs/author-guide/action-load.md) and [Load](https://github.com/Pathoschild/StardewMods/blob/stable/ContentPatcher/docs/author-guide/action-load.md)
+> Refer to content patcher docs for more details about [EditData](https://github.com/Pathoschild/StardewMods/blob/stable/ContentPatcher/docs/author-guide/action-load.md) and [Load](https://github.com/Pathoschild/StardewMods/blob/stable/ContentPatcher/docs/author-guide/action-load.md).
+> Samples in this guide are usually examples of a single content patcher [EditData](https://github.com/Pathoschild/StardewMods/blob/stable/ContentPatcher/docs/author-guide/action-load.md) patch, or the contents of a content patcher [Include](https://github.com/Pathoschild/StardewMods/blob/stable/ContentPatcher/docs/author-guide/action-include.md) patch.
 
 ## TrinketEffectClass
 
-The vanilla game provide these trinket effect classes:
+The base game provide these trinket effect classes:
 
 | Type Name | Notes |
 | --------- | ----- |
@@ -69,4 +70,4 @@ The vanilla game provide these trinket effect classes:
 
 The Golden Spur and Basilisk Paw effects are not implemented through an effect class, instead certain parts of game simply checks if the player has a specific trinket equipped.
 
-Trinket tinker uses a specific TrinketEffectClass, it is automatically set so there is no need to provide when editing Data/Trinkets.
+Trinket Tinker uses a specific TrinketEffectClass, it is automatically set if there is a matching [`mushymato.TrinketTinker/Tinker`](1-Tinker.md) entry so there is no need to explictly provide this when editing `Data/Trinkets`.

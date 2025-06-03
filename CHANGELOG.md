@@ -85,7 +85,7 @@
 #### Fixed
 
 - Crash on saving with more than 10 trinkets equipped
-- Duplicating vanilla trinket companions 2
+- Duplicating base game trinket companions 2
 
 ### 1.5.2
 
@@ -97,7 +97,7 @@
 #### Fixed
 
 - Crash on saving with more than 10 trinkets equipped
-- Duplicating vanilla trinket companions
+- Duplicating base game trinket companions
 
 #### Changed
 
@@ -275,7 +275,7 @@
 
 #### Fixed
 
-- Prevent trinket tinker anvil output method from affecting non trinket tinker items.
+- Prevent Trinket Tinker anvil output method from affecting non Trinket Tinker items.
 
 ### 1.2.0
 

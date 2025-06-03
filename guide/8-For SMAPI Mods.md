@@ -2,7 +2,7 @@
 
 Trinket Tinker has no API at the moment as it is primarily meant to be interacted with a content editing framework like Content Patcher.
 
-Still, trinket tinker may not have implemented everything you need, here are ways SMAPI mods can interface with Trinket Tinker.
+Still, Trinket Tinker may not have implemented everything you need, here are ways SMAPI mods can interface with Trinket Tinker.
 
 ## Custom Trigger Action in Ability Action
 
@@ -16,7 +16,7 @@ As mentioned in the [Action ability](4.z.100-Action.md), `TriggerActionContext.C
 | `mushymato.TrinketTinker/PosOff` | `Microsoft.Xna.Framework.Vector2` | The position of the companion plus the visual offset, or _null_ if there is no companion. |
 | `mushymato.TrinketTinker/Data` | [`TrinketTinker.Models.AbilityData`](~/api/TrinketTinker.Models.AbilityData.yml) | The trinket ability data model, this is not converted by pintail so you must use reflection to access any fields, fragile. |
 
-These custom fields provide a way for C# mods to implement their own ability effects as actions, which can then be put into trinket tinker.
+These custom fields provide a way for C# mods to implement their own ability effects as actions, which can then be put into Trinket Tinker.
 
 Once again, [BroadcastAction](4.z.101-BroadcastAction.md) do not benefit from these custom fields.
 
@@ -67,7 +67,7 @@ internal sealed class ModEntry : Mod
 ## Trigger Action
 
 The action `mushymato.TrinketTinker_ProcTrinket <trinket id>` can be run with `TriggerActionManager.TryRunAction` to activate an equipped trinket's `Proc=Trigger` ablities.
-The `TriggerContext` provided to the action will be passed through to any action ran by [Action ability](4.z.100-Action.md). If `TriggerContext.CustomFields` is not null, trinket tinker will fill in the aformentioned custom fields for the `TriggerContext`.
+The `TriggerContext` provided to the action will be passed through to any action ran by [Action ability](4.z.100-Action.md). If `TriggerContext.CustomFields` is not null, Trinket Tinker will fill in the aformentioned custom fields for the `TriggerContext`.
 
 To ensure CustomFields is not null, call the action like this:
 ```cs
@@ -104,7 +104,7 @@ While it's possible to do this by hard DLL reference, it's not recommended as im
 
 ## Compatibility
 
-Trinkets are equippped onto the player by appending to `Farmer.trinketItems`, which is a list of trinkets. Normally this list only ever has 1 trinket, but trinket tinker will add indirectly equipped trinkets to the list as well.
+Trinkets are equippped onto the player by appending to `Farmer.trinketItems`, which is a list of trinkets. Normally this list only ever has 1 trinket, but Trinket Tinker will add indirectly equipped trinkets to the list as well.
 
 These trinkets have mod data set to:
 - `mushymato.TrinketTinker/IndirectEquip` = `"T"`

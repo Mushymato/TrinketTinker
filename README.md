@@ -16,10 +16,11 @@ This mod is licensed under MIT, contributions are welcome.
 
 ## Example Mods for TrinketTinker
 
-- [[CP] Sinister Servants](\[FullMod\]/\[CP\]%20Sinister%20Servants): Playable mod for TrinketTinker, adds 6 monster trinkets.
-- [[CP] Pack Possum and Critter Cages](\[FullMod\]/\[CP\]%20Pack%20Possum%20and%20Critter%20Cages): Playable mod for TrinketTinker, adds 3 "box" trinkets that hold more trinkets, and a hireable opossum.
-- [[CP] Abigail Axcellent Adventure](\[Examples\]/\[CP\]%20Abigail%20Axcellent%20Adventure): Example mod for a NPC style trinket, which are unique across the world and hides the corresponding NPC.
-- [[CP] Trinket Tinker Examples](\[Examples\]/\[CP\]%20Trinket%20Tinker%20Examples): Test mod, a bit messy.
+- [[CP] Sinister Servants](https://github.com/Mushymato/TrinketTinker/tree/main/%5BFullMod%5D/%5BCP%5D%20Sinister%20Servants): Playable mod for TrinketTinker, adds 6 monster trinkets.
+- [[CP] Pack Possum and Critter Cages](https://github.com/Mushymato/TrinketTinker/tree/main/%5BFullMod%5D/%5BCP%5D%20Pack%20Possum%20and%20Critter%20Cages): Playable mod for TrinketTinker, adds 3 "box" trinkets that hold more trinkets, and a hireable opossum.
+- [[CP] Abigail Axcellent Adventure](https://github.com/Mushymato/TrinketTinker/tree/main/%5BExamples%5D/%5BCP%5D%20Abigail%20Axcellent%20Adventure): Example mod for a NPC style trinket, which are unique across the world and hides the corresponding NPC.
+- [[CP] Lockmachete](https://github.com/Mushymato/TrinketTinker/tree/main/%5BExamples%5D/%5BCP%5D%20Lockmachete): Example mod showing how frame set repeat animation works.
+- [[CP] Trinket Tinker Examples](https://github.com/Mushymato/TrinketTinker/tree/main/%5BExamples%5D/%5BCP%5D%20Trinket%20Tinker%20Examples): Test mod, a bit messy.
 
 ## User Configuration
 
@@ -29,6 +30,12 @@ These keybinds are shared across mods using this framework, for the user to set 
 - `Open Tinker Inventory Key`: Press this key to open the inventory of your equipped trinket(s).
 - `Tinker Inventory Next Key`: While a Tinker Inventory is open and multiple trinkets with inventory are equipped, press this to go to the next inventory.
 - `Tinker Inventory Prev Key`: While a Tinker Inventory is open and multiple trinkets with inventory are equipped, press this to go to the previous inventory.
+
+These settings are global across all trinkets created using this framework, but have no effect on other trinkets (base game, added via other C# mods).
+
+- `Hide During Events`: Trinket companions appear in events by default, the user can hide all by unchecking this.
+- `Draw Debug Mode`: Enable a draw debug mode that higlights the bounds of the companion and show their current frame number.
+
 
 ## Translations
 

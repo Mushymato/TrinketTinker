@@ -14,10 +14,10 @@ public static class TinkerConst
     /// <summary>Special color name for the animated prismatic color mask.</summary>
     public const string COLOR_PRISMATIC = "Prismatic";
 
-    /// <summary>String pattern for trinket tinker motion classes.</summary>
+    /// <summary>String pattern for Trinket Tinker motion classes.</summary>
     internal static readonly string MOTION_CLS = GetClsPattern(typeof(LerpMotion), "Motion");
 
-    /// <summary>String pattern for trinket tinker ability classes</summary>
+    /// <summary>String pattern for Trinket Tinker ability classes</summary>
     internal static readonly string ABILITY_CLS = GetClsPattern(typeof(BuffAbility), "Ability");
 
     public static string CustomFields_DirectEquipOnly => $"{ModEntry.ModId}/DirectEquipOnly";

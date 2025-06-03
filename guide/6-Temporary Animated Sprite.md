@@ -2,7 +2,7 @@
 
 Temporary animated sprites are ways to show animated effects on screen temporarily. They existed prior to 1.6, but was given a proper data model to use in [Data/Machines](https://wiki.stardewvalley.net/Modding:Machines#Audio_.26_visuals).
 
-For trinket tinker, any field that calls for temporary animated sprites takes string ids corresponding to an entry in `mushymato.TrinketTinker/TAS` rather than the full definition. This let you reuse the same TAS in multiple places.
+For Trinket Tinker, any field that calls for temporary animated sprites takes string ids corresponding to an entry in `mushymato.TrinketTinker/TAS` rather than the full definition. This let you reuse the same TAS in multiple places.
 
 ## TemporaryAnimatedSpriteDefinition
 

@@ -13,7 +13,7 @@ When a `mushymato.TrinketTinker/Tinker` entry exists, the `TrinketEffectClass` f
 | Property | Type | Default | Notes |
 | -------- | ---- | ------- | ----- |
 | `EnableCondition` | string | _null_ | A [game state query](https://stardewvalleywiki.com/Modding:Game_state_queries) used to check if the trinket should be enabled. This is checked on equip, it can only be rechecked by reequipping the trinket. The check also happens every night, when the trinket is unequipped/reequipped by the game. |
-| `EnableFailMessage` | string | _null_ | When `EnableCondition` is false, this message will be displayed upon equipping the trinket.<br/>Default message: ` "You are not worthy of {{trinketName}}..."` |
+| `EnableFailMessage` | string | _null_ | When `EnableCondition` is false, this message will be displayed upon equipping the trinket. Supports tokenized text.<br/>Default message: ` "You are not worthy of {{trinketName}}..."` |
 | `MinLevel` | int | 1 | Changes the level value that will replace `{0}` in `DisplayName`. |
 | `Variants` | [List\<VariantData\>](2-Variant.md) | _null_ | Defines the sprites of the companion. |
 | `Motion` | [MotionData](3-Motion.md) | _null_ | Defines how the companion moves. |
@@ -23,11 +23,61 @@ When a `mushymato.TrinketTinker/Tinker` entry exists, the `TrinketEffectClass` f
 | `Inventory` | [TinkerInventoryData](5-Inventory.md) | _null_ | Gives the trinket an inventory that can be opened by the "use" button (RightClick/X) over the trinket item. |
 | `Chatter` | [Dictionary\<string, ChatterLinesData\>](4.z.201-Chatter.md) | _null_ | Gives the trinket dialogue for use with the [Chatter ability](4.z.201-Chatter.md). |
 
+### DEPRECATED
+- `Motions`, previously a list of `MotionData` that is unused except for the first element. It has been removed since 1.5.0, please use only `Motion` from now on.
+
+## Sample
+
+```json
+{
+  "Action": "EditData",
+  "Target": "mushymato.TrinketTinker/Tinker",
+  "Entries": {
+    "{{ModId}}_Sample": {
+      "EnableCondition": "<game state query>",
+      "EnableFailMessage": "<message>",
+      "MinLevel": 1,
+      "Variants": [
+        { /* variant data */ },
+        { /* more variant data */ },
+        //...
+      ],
+      "Motion": { /* motion data */ },
+      "Abilities": [
+        [ /* first level abilities */ ],
+        [ /* second level abilities */ ],
+        //...
+      ],
+      "VariantUnlockConditions": [
+        null,
+        "<game state query>",
+        // ...
+      ],
+      "AbilityUnlockConditions": [
+        null,
+        "<game state query>",
+        // ...
+      ],
+      "Inventory": { /* inventory data */ },
+      "Chatter": {
+        "<chatter key 1>": { /* chatter data */ },
+        "<chatter key 2>": { /* chatter data */ },
+        //...
+      },
+    }
+  }
+}
+```
+
 ### This is a lot of stuff, what do I need to define?
 
-Technically all fields here are optional, but in that case there'd be little point to using this framework at all. To display a companion, at least Motion and 1 Variant must be defined. To have the trinket do things after equippping, at least 1 list of abilities must be defined. For `Inventory` and `Chatter` usage, refer to their subpages.
+Trinket Tinker data fields are optional unless explictly marked as **required**. This applies even to the top level TinkerData, but skipping every field means there's little point to using this framework at all.
 
-Trinkets are created with the first variant and at minimum level. The item query [mushymato.TrinketTinker_CREATE_TRINKET](7-Utility.md) is needed to create trinket at other variants/levels.
+To display a companion, at least Motion and 1 Variant must be defined.
+
+To have the trinket do things after equippping, at least 1 list of abilities must be defined. For `Inventory` and `Chatter` usage, refer to their subpages.
+
+Unlike base game trinkets, TrinketTinker trinkets always spawn with the first variant and at minimum level. The item query [mushymato.TrinketTinker_CREATE_TRINKET](7-Utility.md) is needed to create trinket at other variants/levels.
 
 ### Unlock Conditions
 
@@ -49,6 +99,20 @@ Example usage with 4 abilities (lv1 to lv4):
 ],
 ```
 
-### Deprecated
+## Integrating Trinket Tinker
 
-- `Motions`, previously unused but exists, is deprecated as of 1.5.0
+As a custom asset based framework, you can put all trinket related edits in a json separate from the rest of the mod like so. This helps turn trinkets into an optional feature for your mod.
+
+```json
+{
+  "Action": "Include",
+  "FromFile": "data/trinkets.json",
+  "When": {
+    "HasMod": "mushymato.TrinketTinker"
+  }
+}
+```
+
+Special behavior as an equipment aside, trinkets are items with qualified item id like `(TR){{ModId}}_Sample`. Besides the base game random drops after combat mastery (if `DropsNaturally` is set to true), you can grant a trinket to the player via any usual means of granting an item via their qualified item id. This includes shops, events, machine output, Farm Type Manager/Spacecore monster drops, and so on.
+
+While content patcher remains the most popular way to edit data, trinket

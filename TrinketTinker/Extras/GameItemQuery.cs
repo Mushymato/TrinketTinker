@@ -130,7 +130,7 @@ public static class GameItemQuery
         return int.TryParse(qStr, out compValue) && value == compValue;
     }
 
-    /// <summary>Check for a input or target item, assert that it is a trinket tinker trinket</summary>
+    /// <summary>Check for a input or target item, assert that it is a Trinket Tinker trinket</summary>
     /// <param name="query"></param>
     /// <param name="context"></param>
     /// <param name="idx"></param>
@@ -239,7 +239,7 @@ public static class GameItemQuery
 
     /// <summary>
     /// mushymato.TrinketTinker_CREATE_TRINKET_ALL_VARIANTS UnqualifiedId [Level]<br/>
-    /// If the trinket has trinket tinker data, create one of each variant.
+    /// If the trinket has Trinket Tinker data, create one of each variant.
     /// If level="R", roll a random level and apply it to every created trinket.
     /// </summary>
     /// <param name="key"></param>

@@ -7,7 +7,7 @@
     "effect.not-allowed": "You are not worthy of {{trinketName}}...",
     "config.section.general": "General",
     "config.HideAllCompanionsDuringEvents.name": "Hide During Events",
-    "config.HideAllCompanionsDuringEvents.description": "Hide all trinket companions during events. Only affects trinkets added via trinket tinker.",
+    "config.HideAllCompanionsDuringEvents.description": "Hide all trinket companions during events. Only affects trinkets added via Trinket Tinker.",
     "config.section.keybindings": "Keybindings",
     "config.DoInteractKey.name": "Do Companion Interaction",
     "config.DoInteractKey.description": "Press this key to activate any interact abilities on your companion, while you are close enough.",

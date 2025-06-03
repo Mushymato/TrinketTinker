@@ -100,7 +100,7 @@ An example: Change the companion's appearance during winter.
 | Property | Type | Default | Notes |
 | -------- | ---- | ------- | ----- |
 | `Radius` | float | 2 | Size of light source. |
-| `Index` | int | 1 | Vanilla light source texture index. |
+| `Index` | int | 1 | Base game light source texture index. |
 | `Texture` | string | 1 | Custom light map, must be loaded into game content. |
 | `Color` | string | _null_ | Light color name, accepts same values as `ColorMask`. |
 

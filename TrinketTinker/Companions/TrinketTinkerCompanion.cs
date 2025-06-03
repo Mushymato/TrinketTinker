@@ -13,7 +13,7 @@ using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Companions;
 
-/// <summary>Main companion class for trinket tinker.</summary>
+/// <summary>Main companion class for Trinket Tinker.</summary>
 public class TrinketTinkerCompanion : Companion
 {
     // NetFields + Getters
