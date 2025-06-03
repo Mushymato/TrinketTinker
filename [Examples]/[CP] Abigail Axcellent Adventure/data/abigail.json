@@ -108,6 +108,7 @@
                   }
                 ]
               },
+              // up
               "abbyAttack.3": {
                 "FrameStart": 3,
                 "FrameLength": 1,
@@ -125,6 +126,7 @@
                   }
                 ]
               },
+              // left
               "abbyAttack.4": {
                 "FrameStart": 4,
                 "FrameLength": 1,
