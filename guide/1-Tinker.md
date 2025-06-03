@@ -19,7 +19,7 @@ When a `mushymato.TrinketTinker/Tinker` entry exists, the `TrinketEffectClass` f
 | `Motion` | [MotionData](3-Motion.md) | _null_ | Defines how the companion moves. |
 | `Abilities` | [List\<List\<AbilityData\>\>](4-Ability.md) | _null_ | Defines what effects are activated, and when. Each list in the list of lists represents 1 ability level. |
 | `VariantUnlockConditions` | List\<string\> | _null_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many variants are unlocked. |
-| `AbilityUnlockConditions` | List\<string\> | _null_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many abilities are unlocked. |
+| `AbilityUnlockConditions` | List\<string\> | _null_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many abilities are unlocked. 
 | `Inventory` | [TinkerInventoryData](5-Inventory.md) | _null_ | Gives the trinket an inventory that can be opened by the "use" button (RightClick/X) over the trinket item. |
 | `Chatter` | [Dictionary\<string, ChatterLinesData\>](4.z.201-Chatter.md) | _null_ | Gives the trinket dialogue for use with the [Chatter ability](4.z.201-Chatter.md). |
 
@@ -73,9 +73,9 @@ When a `mushymato.TrinketTinker/Tinker` entry exists, the `TrinketEffectClass` f
 
 Trinket Tinker data fields are optional unless explictly marked as **required**. This applies even to the top level TinkerData, but skipping every field means there's little point to using this framework at all.
 
-To display a companion, at least Motion and 1 Variant must be defined.
+To display a companion, you need a `Motion` and at least 1 entry in `Variants`.
 
-To have the trinket do things after equippping, at least 1 list of abilities must be defined. For `Inventory` and `Chatter` usage, refer to their subpages.
+To have the trinket do things after being equipped, at least 1 list of `Abilities` must be defined. `Inventory` and `Chatter` abilities also require the top level `Inventory` and `Chatter` data, refer to their subpages for details.
 
 Unlike base game trinkets, TrinketTinker trinkets always spawn with the first variant and at minimum level. The item query [mushymato.TrinketTinker_CREATE_TRINKET](7-Utility.md) is needed to create trinket at other variants/levels.
 
@@ -114,5 +114,3 @@ As a custom asset based framework, you can put all trinket related edits in a js
 ```
 
 Special behavior as an equipment aside, trinkets are items with qualified item id like `(TR){{ModId}}_Sample`. Besides the base game random drops after combat mastery (if `DropsNaturally` is set to true), you can grant a trinket to the player via any usual means of granting an item via their qualified item id. This includes shops, events, machine output, Farm Type Manager/Spacecore monster drops, and so on.
-
-While content patcher remains the most popular way to edit data, trinket

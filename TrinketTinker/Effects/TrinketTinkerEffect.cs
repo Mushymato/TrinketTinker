@@ -482,13 +482,12 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
     {
         if (
             !Enabled
-            || Companion is not TrinketTinkerCompanion
             || Game1.activeClickableMenu != null
             || farmer.UsingTool
             || farmer.usingSlingshot
         )
             return;
-        if (farmer.GetBoundingBox().Intersects(CompanionBoundingBox))
+        if (Companion == null || farmer.GetBoundingBox().Intersects(CompanionBoundingBox))
         {
             EventInteract?.Invoke(this, new(ProcOn.Interact, farmer));
         }

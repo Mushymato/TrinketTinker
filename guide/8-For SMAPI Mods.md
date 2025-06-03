@@ -104,7 +104,7 @@ While it's possible to do this by hard DLL reference, it's not recommended as im
 
 ## Compatibility
 
-Trinkets are equippped onto the player by appending to `Farmer.trinketItems`, which is a list of trinkets. Normally this list only ever has 1 trinket, but Trinket Tinker will add indirectly equipped trinkets to the list as well.
+Trinkets are equipped onto the player by appending to `Farmer.trinketItems`, which is a list of trinkets. Normally this list only ever has 1 trinket, but Trinket Tinker will add indirectly equipped trinkets to the list as well.
 
 These trinkets have mod data set to:
 - `mushymato.TrinketTinker/IndirectEquip` = `"T"`

@@ -10,7 +10,7 @@ This is a framework for creating trinkets that can have advanced abilities using
 - Support for custom effects from other C# mods, through the use of actions.
 - Have the player obtain trinket effects without actually having the trinket slot unlocked, through the use of special trigger actions.
 
-If you are looking to make mods using this framework, [start here](guide/0-Trinket.md).
+If you are looking to make mods using this framework, [start here](https://mushymato.github.io/TrinketTinker/guide/0-Trinket.html).
 
 This mod is licensed under MIT, contributions are welcome.
 
