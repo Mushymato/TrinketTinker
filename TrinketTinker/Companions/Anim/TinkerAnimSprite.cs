@@ -83,6 +83,16 @@ public sealed class TinkerAnimSprite
     internal ChatterSpeaker Speaker =>
         new(vd.Portrait ?? fullVd.Portrait, vd.Name ?? fullVd.Name, vd.NPC ?? fullVd.NPC);
     public SpriteEffects Flip { get; internal set; }
+    private AnimClipData? currentClip = null;
+    internal AnimClipData? CurrentClip
+    {
+        get => currentClip;
+        set
+        {
+            UseExtra = value?.UseExtra ?? false;
+            currentClip = value;
+        }
+    }
 
     private double timer = 0f;
     internal int currentFrame = 0;
@@ -220,8 +230,8 @@ public sealed class TinkerAnimSprite
             new(
                 (int)(drawPos.X - Origin.X * drawScale.X),
                 (int)(drawPos.Y - Origin.Y * drawScale.Y),
-                (int)(Width * drawScale.X),
-                (int)(Height * drawScale.Y)
+                (int)(SourceRect.Width * drawScale.X),
+                (int)(SourceRect.Height * drawScale.Y)
             );
         if (shadowScale.X <= 0 && shadowScale.Y <= 0)
             return textureBox;
@@ -238,6 +248,12 @@ public sealed class TinkerAnimSprite
     /// <summary>Move source rect to current frame</summary>
     private void UpdateSourceRect()
     {
+        if (CurrentClip?.GetFrameOverride(currentFrame) is FrameOverrideData overrideData)
+        {
+            if (overrideData.SourceRect.HasValue)
+                SourceRect = overrideData.SourceRect.Value;
+            return;
+        }
         SourceRect = GetSourceRect(currentFrame);
     }
 
@@ -262,9 +278,9 @@ public sealed class TinkerAnimSprite
     /// <param name="interval">default miliseconds between frames, if the clip did not set one</param>
     internal TinkerAnimState AnimateClip(GameTime time, AnimClipData clip, double interval)
     {
-        interval = clip.Interval ?? interval;
         if (clip.Nop)
         {
+            CurrentClip = null;
             timer += time.ElapsedGameTime.TotalMilliseconds;
             if (clip.FrameLength * interval <= timer)
             {
@@ -273,15 +289,10 @@ public sealed class TinkerAnimSprite
             }
             return TinkerAnimState.InNop;
         }
-        return Animate(
-            clip.LoopMode,
-            time,
-            clip.FrameStart,
-            clip.FrameLength,
-            interval,
-            useExtra: clip.UseExtra,
-            spriteEffects: clip.Flip ?? Flip
-        );
+        TinkerAnimState result = Animate(clip.LoopMode, time, clip.FrameStart, clip.FrameLength, interval, clip);
+        if (result == TinkerAnimState.Complete)
+            CurrentClip = null;
+        return result;
     }
 
     /// <summary>
@@ -299,17 +310,20 @@ public sealed class TinkerAnimSprite
         int startFrame,
         int numberOfFrames,
         double interval,
-        bool useExtra = false,
+        AnimClipData? clip = null,
         SpriteEffects spriteEffects = SpriteEffects.None
     )
     {
+        CurrentClip = clip;
         Flip = spriteEffects;
-        UseExtra = useExtra;
         if (numberOfFrames == 0)
         {
             SetCurrentFrame(-1);
             return TinkerAnimState.Complete;
         }
+        interval = clip?.Interval ?? interval;
+        if (clip?.GetFrameOverride(currentFrame) is FrameOverrideData overrideData)
+            interval = overrideData.Interval ?? interval;
         return loopMode switch
         {
             LoopMode.PingPong => AnimatePingPong(time, startFrame, numberOfFrames, interval),

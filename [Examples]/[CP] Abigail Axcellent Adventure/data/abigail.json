@@ -2,6 +2,11 @@
   "$schema": "https://smapi.io/schemas/content-patcher.json",
   "Changes": [
     {
+      "Action": "Load",
+      "Target": "{{ModId}}/sord",
+      "FromFile": "assets/sord.png",
+    },
+    {
       "LogName": "Abigail: Trinkets",
       "Action": "EditData",
       "Target": "Data/Trinkets",
@@ -32,6 +37,7 @@
             {
               "NPC": "Abigail",
               "Texture": "Characters/Abigail",
+              "TextureExtra": "{{ModId}}/sord",
               "Width": 16,
               "Height": 32,
               "AltVariants": {
@@ -65,19 +71,90 @@
             //   }
             // ],
             "AnimClips": {
-              "abbyFlute": {
+              // down
+              "abbyAttack.1": {
+                // FrameStart not used for determining where the frame since FrameOverrides takes over completely, but helpful to set for draw debug mode
+                "FrameStart": 1,
+                "FrameLength": 1,
+                "UseExtra": true,
+                "PauseMovement": true,
+                "FrameOverrides": [
+                  {
+                    "SourceRect": {
+                      "X": 0,
+                      "Y": 0,
+                      "Width": 32,
+                      "Height": 64
+                    },
+                    "Interval": 300
+                  }
+                ]
+              },
+              // right
+              "abbyAttack.2": {
+                "FrameStart": 2,
+                "FrameLength": 1,
+                "UseExtra": true,
+                "PauseMovement": true,
+                "FrameOverrides": [
+                  {
+                    "SourceRect": {
+                      "X": 32,
+                      "Y": 0,
+                      "Width": 64,
+                      "Height": 32
+                    },
+                    "Interval": 300
+                  }
+                ]
+              },
+              "abbyAttack.3": {
+                "FrameStart": 3,
+                "FrameLength": 1,
+                "UseExtra": true,
+                "PauseMovement": true,
+                "FrameOverrides": [
+                  {
+                    "SourceRect": {
+                      "X": 96,
+                      "Y": 0,
+                      "Width": 32,
+                      "Height": 64
+                    },
+                    "Interval": 300
+                  }
+                ]
+              },
+              "abbyAttack.4": {
+                "FrameStart": 4,
+                "FrameLength": 1,
+                "UseExtra": true,
+                "PauseMovement": true,
+                "FrameOverrides": [
+                  {
+                    "SourceRect": {
+                      "X": 32,
+                      "Y": 32,
+                      "Width": 64,
+                      "Height": 32
+                    },
+                    "Interval": 300
+                  }
+                ]
+              },
+              "abbyAttack": {
                 "FrameStart": 16,
                 "FrameLength": 4,
                 "Interval": 350,
                 "PauseMovement": true,
-                // "RandomClips": [
-                //   {
-                //     "FrameStart": 32,
-                //     "FrameLength": 1,
-                //     "Interval": 700,
-                //     "PauseMovement": true,
-                //   }
-                // ]
+                "RandomClips": [
+                  {
+                    "FrameStart": 0,
+                    "FrameLength": 4,
+                    "Interval": 700,
+                    "PauseMovement": true,
+                  }
+                ]
               },
               "Idle": {
                 "Nop": true,
@@ -170,7 +247,7 @@
                     2400
                   ]
                 },
-                "ProcOneshotAnim": "abbyFlute",
+                "ProcOneshotAnim": "abbyAttack",
                 "AbilityClass": "Projectile",
                 "Args": {
                   "Min": 5,

@@ -93,7 +93,7 @@ public enum CollisionMode
 }
 
 /// <summary>Model defining how companions pick anchor target</summary>
-public class AnchorTargetData
+public sealed class AnchorTargetData
 {
     /// <summary>Targeting mode, see <see cref="AnchorTarget"/>.</summary>
     public AnchorTarget Mode { get; set; } = AnchorTarget.Owner;
@@ -141,8 +141,17 @@ public class AnchorTargetData
     }
 }
 
+public sealed class FrameOverrideData
+{
+    /// <summary>Non-standard explicitly provided source rect to use in place of normal frame logic</summary>
+    public Rectangle? SourceRect { get; set; } = null;
+
+    /// <summary>Frame interval, falls back to <see cref="AnimClipData.Interval"/> and then fall back to <see cref="MotionData.Interval"/> if not set.</summary>
+    public double? Interval { get; set; } = null;
+}
+
 /// <summary>Model for additional animation</summary>
-public class AnimClipData : WeightedRandData
+public sealed class AnimClipData : WeightedRandData
 {
     /// <summary>Anim clip frame start</summary>
     public int FrameStart { get; set; } = 0;
@@ -164,6 +173,20 @@ public class AnimClipData : WeightedRandData
 
     /// <summary>If set, use <see cref="VariantData.TextureExtra"/> instead of <see cref="VariantData.Texture"/>.</summary>
     public bool UseExtra { get; set; } = false;
+
+    /// <summary>Non-standard frame overrides</summary>
+    public List<FrameOverrideData>? FrameOverrides { get; set; } = null;
+
+    /// <summary>Get the frame override data for a particular frame, if it exists</summary>
+    internal FrameOverrideData? GetFrameOverride(int currentFrame)
+    {
+        if (FrameOverrides == null)
+            return null;
+        int idx = currentFrame - FrameStart;
+        if (idx >= 0 && idx < FrameOverrides.Count)
+            return FrameOverrides[idx];
+        return null;
+    }
 
     /// <summary>Additional clips that may randomly be called, only valid for the top level clip.</summary>
     public IReadOnlyList<AnimClipData>? RandomClips
@@ -240,7 +263,7 @@ public sealed class SpeechBubbleData : WeightedRandData
     }
 }
 
-public class AnimClipDictionary : Dictionary<string, AnimClipData?>
+public sealed class AnimClipDictionary : Dictionary<string, AnimClipData?>
 {
     public const string IDLE = "Idle";
     public const string SWIM = "Swim";

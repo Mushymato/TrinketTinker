@@ -555,6 +555,7 @@ public abstract class Motion<TArgs> : IMotion
         // Idle: play while companion is not moving
         if (!TinkerAnimState.Playing.HasFlag(AnimateClip(time, AnimClipDictionary.IDLE)))
         {
+            cs.CurrentClip = null;
             if (md.FrameLength > 0)
                 // Default: Use first frame of the current direction as fallback
                 cs.SetCurrentFrame(DirectionFrameStart());
