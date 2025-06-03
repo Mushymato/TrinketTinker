@@ -146,6 +146,9 @@ public sealed class FrameOverrideData
     /// <summary>Non-standard explicitly provided source rect to use in place of normal frame logic</summary>
     public Rectangle? SourceRect { get; set; } = null;
 
+    /// <summary>Non-standard explicitly provided origin to use in place of normal width/2 height/2</summary>
+    public Vector2? Origin { get; set; } = null;
+
     /// <summary>Frame interval, falls back to <see cref="AnimClipData.Interval"/> and then fall back to <see cref="MotionData.Interval"/> if not set.</summary>
     public double? Interval { get; set; } = null;
 }

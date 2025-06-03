@@ -35,7 +35,7 @@ public sealed class TinkerAnimSprite
     /// <summary>full variant data</summary>
     private VariantData fullVd;
 
-    /// <summary>Middle point of the sprite, based on width and height.</summary>
+    /// <summary>Draw origin of the sprite.</summary>
     internal Vector2 Origin;
 
     /// <summary>Backing draw color field.</summary>
@@ -89,8 +89,12 @@ public sealed class TinkerAnimSprite
         get => currentClip;
         set
         {
-            UseExtra = value?.UseExtra ?? false;
-            currentClip = value;
+            if (value != currentClip)
+            {
+                UseExtra = value?.UseExtra ?? false;
+                currentClip = value;
+                UpdateSourceRect();
+            }
         }
     }
 
@@ -245,16 +249,21 @@ public sealed class TinkerAnimSprite
         return Rectangle.Union(textureBox, shadowBox);
     }
 
-    /// <summary>Move source rect to current frame</summary>
+    /// <summary>
+    // Move source rect to current frame.
+    // If a frame override is present, potentially pick that over the default source rect.
+    // Update origin accordingly
+    // </summary>
     private void UpdateSourceRect()
     {
         if (CurrentClip?.GetFrameOverride(currentFrame) is FrameOverrideData overrideData)
         {
-            if (overrideData.SourceRect.HasValue)
-                SourceRect = overrideData.SourceRect.Value;
+            SourceRect = overrideData.SourceRect ?? GetSourceRect(currentFrame);
+            Origin = overrideData.Origin ?? new Vector2(SourceRect.Width / 2, SourceRect.Height / 2);
             return;
         }
         SourceRect = GetSourceRect(currentFrame);
+        Origin = new Vector2(SourceRect.Width / 2, SourceRect.Height / 2);
     }
 
     /// <summary>Set sprite to specific frame</summary>
