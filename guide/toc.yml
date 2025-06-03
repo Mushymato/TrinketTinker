@@ -1,89 +1,91 @@
-- href: 0-Trinket.md
+- href: 000-Trinket.md
   name: Trinket
-- href: 1-Tinker.md
+- href: 001-Tinker.md
   name: Tinker
-- href: 2-Variant.md
+- href: 002-Variant.md
   name: Variant
-- href: 3-Motion.md
+- href: 003-Motion.md
   items:
-  - href: 3.0-Direction.md
+  - href: 003.0-Direction.md
     name: Direction
-  - href: 3.1-Anchors.md
+  - href: 003.1-Anchors.md
     name: Anchors
-  - href: 3.2-Animation Clips.md
+  - href: 003.2-Animation Clips.md
     name: Animation Clips
-  - href: 3.3-Speech Bubbles.md
+  - href: 003.3-Speech Bubbles.md
     name: Speech Bubbles
   - items:
-    - href: 3.z.000-Lerp.md
+    - href: 003.z.000-Lerp.md
       name: Lerp
-    - href: 3.z.001-Hover.md
+    - href: 003.z.001-Hover.md
       name: Hover
-    - href: 3.z.002-Bounce.md
+    - href: 003.z.002-Bounce.md
       name: Bounce
-    - href: 3.z.003-Hop.md
+    - href: 003.z.003-Hop.md
       name: Hop
-    - href: 3.z.004-Serpent.md
+    - href: 003.z.004-Serpent.md
       name: Serpent
-    - href: 3.z.100-Static.md
+    - href: 003.z.100-Static.md
       name: Static
-    - href: 3.z.101-Orbit.md
+    - href: 003.z.101-Orbit.md
       name: Orbit
-    - href: 3.z.102-Relative.md
+    - href: 003.z.102-Relative.md
       name: Relative
     name: Motion Classes
   name: Motion
-- href: 4-Ability.md
+- href: 004-Ability.md
   items:
-  - href: 4.0-Proc.md
+  - href: 004.0-Proc.md
     name: Proc
   - items:
-    - href: 4.z.000-Nop.md
+    - href: 004.z.000-Nop.md
       name: Nop
-    - href: 4.z.001-Buff.md
+    - href: 004.z.001-Buff.md
       name: Buff
-    - href: 4.z.002-Health.md
+    - href: 004.z.002-Health.md
       name: Health
-    - href: 4.z.003-Stamina.md
+    - href: 004.z.003-Stamina.md
       name: Stamina
-    - href: 4.z.004-Hitscan.md
+    - href: 004.z.004-Hitscan.md
       name: Hitscan
-    - href: 4.z.005-Projectile.md
+    - href: 004.z.005-Projectile.md
       name: Projectile
-    - href: 4.z.006-HoeDirt.md
+    - href: 004.z.006-HoeDirt.md
       name: HoeDirt
-    - href: 4.z.007-ItemDrop.md
+    - href: 004.z.007-ItemDrop.md
       name: ItemDrop
-    - href: 4.z.008-Harvest.md
+    - href: 004.z.008-Harvest.md
       name: Harvest
-    - href: 4.z.100-Action.md
+    - href: 004.z.100-Action.md
       name: Action
-    - href: 4.z.101-BroadcastAction.md
+    - href: 004.z.101-BroadcastAction.md
       name: BroadcastAction
-    - href: 4.z.102-RaiseTrigger.md
+    - href: 004.z.102-RaiseTrigger.md
       name: RaiseTrigger
-    - href: 4.z.200-EquipTrinket.md
+    - href: 004.z.200-EquipTrinket.md
       name: EquipTrinket
-    - href: 4.z.201-Chatter.md
+    - href: 004.z.201-Chatter.md
       name: Chatter
     name: Ability Classes
   name: Ability
-- href: 5-Inventory.md
+- href: 005-Inventory.md
   name: Inventory
-- href: 6-Temporary Animated Sprite.md
+- href: 006-Temporary Animated Sprite.md
   name: Temporary Animated Sprite
-- href: 7-Utility.md
+- href: 007-Utility.md
   items:
-  - href: 7.0-Item Queries.md
+  - href: 007.0-Item Queries.md
     name: Item Queries
-  - href: 7.1-Game State Queries.md
+  - href: 007.1-Game State Queries.md
     name: Game State Queries
-  - href: 7.2-Actions.md
+  - href: 007.2-Actions.md
     name: Actions
-  - href: 7.3-Trinket Colorizer and Anvil.md
+  - href: 007.3-Trinket Colorizer and Anvil.md
     name: Trinket Colorizer and Anvil
   name: Utility
-- href: 8-For SMAPI Mods.md
+- href: 008-For SMAPI Mods.md
   name: For SMAPI Mods
-- href: 9-User Configuration.md
+- href: 009-User Configuration.md
   name: User Configuration
+- href: 010-Appendix.md
+  name: Appendix
