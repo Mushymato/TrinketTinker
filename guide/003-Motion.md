@@ -10,6 +10,64 @@ Each of these have sub types like Hover for Lerp motion that hovers, see the ind
 
 The term "anchor" refers to a position that the companion derives it's own position from. By default this is the player, but it can also be other entities like a monster.
 
+## Sample
+
+```json
+{
+  "Action": "EditData",
+  "Target": "mushymato.TrinketTinker/Tinker",
+  "TargetField": [
+    "{{ModId}}_Sample"
+  ],
+  "Entries": {
+    "Motion": {
+      // movement logic
+      "MotionClass": "<motion class string>",
+      "DirectionMode": "<direction mode enum>",
+      "DirectionRotate": true|false,
+      "LoopMode": "Standard",
+      "Anchors": [
+        { /* anchor target data */ },
+        { /* anchor target data */ },
+        //...
+      ],
+      // animation and display
+      "AlwaysMoving": <boolean moving>,
+      "FrameStart": <int start frame>,
+      "FrameLength": <int frame length per direction>,
+      "Interval": <double interval in miliseconds>,
+      "Offset": "<x>,<y>",
+      "LayerDepth": "<layer depth enum>",
+      "HideDuringEvents": true|false,
+      // advanced: repeat draw settings
+      "RepeatCount": <int how many times to repeat>,
+      "RepeatInterval": <int miliseconds between repeat draws>,
+      "RepeatFrameSets": <int frameset offset>,
+      "AnimClips": {
+        "<anim clip key>.1": {
+          /* anim clip data 1 */
+        },
+        "<anim clip key>.2": {
+          /* anim clip data 2 */
+        },
+        //...
+      },
+      "SpeechBubbles": {
+        "<speech bubble 1>": {
+          /* speech bubble data 1 */
+        },
+        "<speech bubble 2>": {
+          /* speech bubble data 2 */
+        },
+        //...
+      },
+      "Args": {
+        /* MotionClass dependent arguments */
+      }
+    }
+  }
+}
+```
 
 ## Structure
 

@@ -53,7 +53,7 @@ Trinkets can be added with by editing `Data/Trinkets`, generally with [Content P
 
 > [!TIP]
 > Refer to content patcher docs for more details about [EditData](https://github.com/Pathoschild/StardewMods/blob/stable/ContentPatcher/docs/author-guide/action-load.md) and [Load](https://github.com/Pathoschild/StardewMods/blob/stable/ContentPatcher/docs/author-guide/action-load.md).
-> Samples in this guide are usually examples of a single content patcher [EditData](https://github.com/Pathoschild/StardewMods/blob/stable/ContentPatcher/docs/author-guide/action-load.md) patch, or the contents of a content patcher [Include](https://github.com/Pathoschild/StardewMods/blob/stable/ContentPatcher/docs/author-guide/action-include.md) patch.
+> Samples in this guide are usually examples of a single content patcher [EditData](https://github.com/Pathoschild/StardewMods/blob/stable/ContentPatcher/docs/author-guide/action-load.md) patch, or the contents of a content patcher [Include](https://github.com/Pathoschild/StardewMods/blob/stable/ContentPatcher/docs/author-guide/action-include.md) patch. `TargetField` is used extensively to drill down to the particular model, but there's no hard requirement to use these.
 
 ## TrinketEffectClass
 

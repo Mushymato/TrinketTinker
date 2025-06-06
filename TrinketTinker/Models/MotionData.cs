@@ -335,7 +335,7 @@ public sealed class MotionData : IHaveArgs
     public int FrameLength { get; set; } = 4;
 
     /// <summary>Miliseconds between frames.</summary>
-    public double Interval { get; set; } = 100f;
+    public double Interval { get; set; } = 100.0;
 
     /// <summary>Position offset.</summary>
     public Vector2 Offset { get; set; } = Vector2.Zero;

@@ -8,24 +8,6 @@ When a `Data/Trinkets` entry has a matching `mushymato.TrinketTinker/Tinker` ent
 > [!NOTE]
 > Trinkets can be reloaded with `patch reload <your content mod id>`.
 
-## Structure
-
-| Property | Type | Default | Notes |
-| -------- | ---- | ------- | ----- |
-| `EnableCondition` | string | _null_ | A [game state query](https://stardewvalleywiki.com/Modding:Game_state_queries) used to check if the trinket should be enabled. This is checked on equip, it can only be rechecked by reequipping the trinket. The check also happens every night, when the trinket is unequipped/reequipped by the game. |
-| `EnableFailMessage` | string | _null_ | When `EnableCondition` is false, this message will be displayed upon equipping the trinket. Supports tokenized text.<br/>Default message: ` "You are not worthy of {{trinketName}}..."` |
-| `MinLevel` | int | 1 | Changes the level value that will replace `{0}` in `DisplayName`. |
-| `Variants` | [List\<VariantData\>](002-Variant.md) | _null_ | Defines the sprites of the companion. |
-| `Motion` | [MotionData](003-Motion.md) | _null_ | Defines how the companion moves. |
-| `Abilities` | [List\<List\<AbilityData\>\>](004-Ability.md) | _null_ | Defines what effects are activated, and when. Each list in the list of lists represents 1 ability level. |
-| `VariantUnlockConditions` | List\<string\> | _null_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many variants are unlocked. |
-| `AbilityUnlockConditions` | List\<string\> | _null_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many abilities are unlocked. 
-| `Inventory` | [TinkerInventoryData](005-Inventory.md) | _null_ | Gives the trinket an inventory that can be opened by the "use" button (RightClick/X) over the trinket item. |
-| `Chatter` | [Dictionary\<string, ChatterLinesData\>](004.z.201-Chatter.md) | _null_ | Gives the trinket dialogue for use with the [Chatter ability](004.z.201-Chatter.md). |
-
-### DEPRECATED
-- `Motions`, previously a list of `MotionData` that is unused except for the first element. It has been removed since 1.5.0, please use only `Motion` from now on.
-
 ## Sample
 
 ```json
@@ -36,7 +18,7 @@ When a `Data/Trinkets` entry has a matching `mushymato.TrinketTinker/Tinker` ent
     "{{ModId}}_Sample": {
       "EnableCondition": "<game state query>",
       "EnableFailMessage": "<message>",
-      "MinLevel": 1,
+      "MinLevel": <number level>,
       "Variants": [
         { /* variant data */ },
         { /* more variant data */ },
@@ -77,6 +59,24 @@ When a `Data/Trinkets` entry has a matching `mushymato.TrinketTinker/Tinker` ent
 }
 ```
 
+## Structure
+
+| Property | Type | Default | Notes |
+| -------- | ---- | ------- | ----- |
+| `EnableCondition` | string | _null_ | A [game state query](https://stardewvalleywiki.com/Modding:Game_state_queries) used to check if the trinket should be enabled. This is checked on equip, it can only be rechecked by reequipping the trinket. The check also happens every night, when the trinket is unequipped/reequipped by the game. |
+| `EnableFailMessage` | string | _null_ | When `EnableCondition` is false, this message will be displayed upon equipping the trinket. Supports tokenized text.<br/>Default message: ` "You are not worthy of {{trinketName}}..."` |
+| `MinLevel` | int | 1 | Changes the level value that will replace `{0}` in `DisplayName`. |
+| `Variants` | [List\<VariantData\>](002-Variant.md) | _null_ | Defines the sprites of the companion. |
+| `Motion` | [MotionData](003-Motion.md) | _null_ | Defines how the companion moves. |
+| `Abilities` | [List\<List\<AbilityData\>\>](004-Ability.md) | _null_ | Defines what effects are activated, and when. Each list in the list of lists represents 1 ability level. |
+| `VariantUnlockConditions` | List\<string\> | _null_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many variants are unlocked. |
+| `AbilityUnlockConditions` | List\<string\> | _null_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many abilities are unlocked. 
+| `Inventory` | [TinkerInventoryData](005-Inventory.md) | _null_ | Gives the trinket an inventory that can be opened by the "use" button (RightClick/X) over the trinket item. |
+| `Chatter` | [Dictionary\<string, ChatterLinesData\>](004.z.201-Chatter.md) | _null_ | Gives the trinket dialogue for use with the [Chatter ability](004.z.201-Chatter.md). |
+
+### DEPRECATED
+- `Motions`, previously a list of `MotionData` that is unused except for the first element. It has been removed since 1.5.0, please use only `Motion` from now on.
+
 ### This is a lot of stuff, what do I need to define?
 
 Trinket Tinker data fields are optional unless explictly marked as **required**. This applies even to the top level TinkerData, but skipping every field means there's little point to using this framework at all.
@@ -94,17 +94,25 @@ Unlike base game trinkets, TrinketTinker trinkets always spawn with the first va
 Example usage with 4 abilities (lv1 to lv4):
 
 ```json
-"AbilityUnlockConditions": [
-    // level 1 is always unlocked
-    // level 2 is unconditionally unlocked
-    null,
-    // level 3 unlocked if player has a gold ore in inventory
-    "PLAYER_HAS_ITEM Current (O)384",
-    // level 4 is also unconditionally unlocked once 3 is unlocked
-    null,
-    // there is no level 5, so this value is meaningless
-    "FALSE",
-],
+{
+  "Action": "EditData",
+  "Target": "mushymato.TrinketTinker/Tinker",
+  "Fields": {
+    "{{ModId}}_Sample": {
+      "AbilityUnlockConditions": [
+          // level 1 is always unlocked
+          // level 2 is unconditionally unlocked
+          null,
+          // level 3 unlocked if player has a gold ore in inventory
+          "PLAYER_HAS_ITEM Current (O)384",
+          // level 4 is also unconditionally unlocked once 3 is unlocked
+          null,
+          // there is no level 5, so this value is meaningless
+          "FALSE",
+      ],
+    }
+  }
+}
 ```
 
 ## Integrating Trinket Tinker

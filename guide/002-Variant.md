@@ -4,14 +4,76 @@ In the base game certain companions such as the frog have different color varian
 
 Variants can have alternate variants, which are automatically rechecked whenever the player changes locations, or when an [ability](004-Ability.md) has `ProcAltVariant` set.
 
+## Sample
+
+```json
+{
+  "Action": "EditData",
+  "Target": "mushymato.TrinketTinker/Tinker",
+  "TargetField": [
+    "{{ModId}}_Sample"
+  ],
+  "Entries": {
+    "Variants": [
+      // This block is the top level Variant
+      {
+        "Texture": "<texture asset name>",
+        "TextureExtra": "<additional texture asset name>",
+        "ColorMask": "<hex color or monogame color name>",
+        "Width": <int width>,
+        "Height": <int height>,
+        "TextureScale": <int scale>,
+        "ShadowScale": <int sclae>,
+        "NPC": "{{ModId}}_SampleNPC",
+        "Name": "[LocalizedText Strings/NPCNames:{{ModId}}_SampleNPC]",
+        "Portrait": "Portrait/{{ModId}}_SampleNPC",
+        "ShowBreathing": true|false,
+        "LightSource": {
+          // This block is LightSourceData
+          "Radius": <float radius(size)>,
+          "Index": <int base game light map texture index>,
+          "Texture": "<light map texture>",
+          "Color": "<hex color or monogame color name>",
+        },
+        "TrinketSpriteIndex": <int sprite index for trinket item when in this variant>,
+        "TrinketNameArguments": [
+          "<trinket name substitution 1>",
+          "<trinket name substitution 2>",
+          //...
+        ],
+        "AltVariants": {
+          // These blocks are AltVariant
+          "<alt variant key>": {
+            "Texture": "<texture asset name>",
+            "TextureExtra": "<additional texture asset name>",
+            "ColorMask": "<hex color or monogame color name>",
+            "Width": <int width>,
+            "Height": <int height>,
+            "TextureScale": <float scale>,
+            "ShadowScale": <float scale>,
+            "NPC": "{{ModId}}_SampleNPC",
+            "Name": "[LocalizedText Strings/NPCNames:{{ModId}}_SampleNPC]",
+            "Portrait": "Portrait/{{ModId}}_SampleNPC",
+            "ShowBreathing": true|false,
+            "Condition": "<game state query>",
+            "Priority": <int priority>
+          },
+          // more alt variants...
+        }
+      }
+    ]
+  }
+}
+```
+
 ## Shared Fields
 
 These fields are valid for both variant and alt variant.
 
 | Property | Type | Default | Notes |
 | -------- | ---- | ------- | ----- |
-| `Texture` | string | **required** | Asset target of the loaded texture, should be a sprite sheet. |
-| `TextureExtra` | string | _null_ | Additional sprites of the same dimension as the original, for use in [AnimClip](003.2-Animation%20Clips.md). |
+| `Texture` | string | **required** | Asset target of the loaded texture, should be a sprite sheet and needs to contain the relevant [directional animation frames](003.0-Direction.md) for the motion. |
+| `TextureExtra` | string | _null_ | Texture holding additional sprites for use in [AnimClip](003.2-Animation%20Clips.md). |
 | `ColorMask` | string | _null_ | Color to apply on draw, for use with grayscale sprites.<br>Aside from RGB and hex values, monogame accepts [named colors](https://docs.monogame.net/api/Microsoft.Xna.Framework.Color.html) and this mod accepts special value `"Prismatic"` for an animated color cycle. |
 | `Width` | int | 16 | Width of 1 sprite on the sprite sheet. |
 | `Height` | int | 16 | Height of 1 sprite on the sprite sheet. |
@@ -32,35 +94,6 @@ The top level variant can have all shared fields, as well as:
 | `TrinketSpriteIndex` | int | -1 | If set, alters the trinket item's sprite index to this. This is used to give the trinket different icon depending on the variant. |
 | `TrinketNameArguments` | List\<string\> | _null_ | If set, use these strings as the argument to the item name. |
 | `AltVariants` | Dictionary\<string, AltVariantData\> | _null_ | A dictionary of alternate variants. |
-
-### TrinketSpriteIndex and TrinketNameArguments
-
-These two fields are used to allow variants to have different name and icons.
-
-_TrinketSpriteIndex_: Changes the sprite index along with variant, meaning that if your trinket's texture is a sprite sheet with multiple item icon sprites, this can be used to point to a specific one. To make this work, put every icon associated with the variants of 1 trinket on 1 texture. You cannot change to a completely different texture, or use color masks.
-
-_TrinketNameArguments_: Adds substitute strings for use with `{0}` in `DisplayName`, for example:
-```json
-// Data/Trinkets
-"DisplayName": "My Trinket {0} {1}",
-// mushymato.TrinketTinker/Tinker
-"Variants": [
-  {
-    "Texture": "{{ModId}}/trinkets/red/water",
-    "TrinketNameArguments": ["Red", "Water"],
-  },
-  {
-    "Texture": "{{ModId}}/trinkets/blue/fire",
-    "TrinketNameArguments": ["Blue", "Fire"],
-  }
-]
-```
-
-The resulting trinket can have these names:
-
-- `"My Trinket Red Water"`, for the first Variant
-- `"My Trinket Blue Fire"`, for the second Variant
-
 
 ### Alt Variant Only
 
@@ -106,4 +139,4 @@ An example: Change the companion's appearance during winter.
 
 ## Notes
 
-- There's no need to have the same width and height in all variants, or the same scale. What does matter is having the right number of sprites for all your animation.
+- Usually, there's no need to have the same width and height in all variants, or the same scale. What does matter is having the right number of sprites for all your animation. That said Width and Height do come up when using [FrameOverrides on AnimClip, which is discussed on that page](003.2-Animation%20Clips.md).
