@@ -452,12 +452,12 @@ public abstract class Motion<TArgs> : IMotion
             if (!clip.TryPickRand(NetRand, c.Owner, out clip))
                 return TinkerAnimState.None;
             cs.SetCurrentFrame(clip.FrameStart);
-            currentClipKey = key;
         }
         else
         {
             clip = clip.Selected;
         }
+        currentClipKey = key;
         var animState = cs.AnimateClip(time, clip, md.Interval, md.Flip);
         // reset currentClipKey, allow the clip to be rerolled next time it is chosen
         if (animState == TinkerAnimState.Complete)
@@ -532,6 +532,7 @@ public abstract class Motion<TArgs> : IMotion
             )
             {
                 // then play the default directional clip
+                cs.UseExtra = false;
                 cs.Animate(
                     md.LoopMode,
                     time,
@@ -555,7 +556,8 @@ public abstract class Motion<TArgs> : IMotion
         // Idle: play while companion is not moving
         if (!TinkerAnimState.Playing.HasFlag(AnimateClip(time, AnimClipDictionary.IDLE)))
         {
-            cs.CurrentClip = null;
+            // cs.CurrentClip = null;
+            cs.UseExtra = false;
             if (md.FrameLength > 0)
                 // Default: Use first frame of the current direction as fallback
                 cs.SetCurrentFrame(DirectionFrameStart());

@@ -66,12 +66,7 @@ public sealed class TinkerAnimSprite
     internal bool UseExtra
     {
         get => useExtra;
-        set
-        {
-            if (value != useExtra)
-                SetCurrentFrame(0);
-            useExtra = value;
-        }
+        set => useExtra = value;
     }
     internal int Width;
     internal int Height;
@@ -298,9 +293,15 @@ public sealed class TinkerAnimSprite
             }
             return TinkerAnimState.InNop;
         }
-        TinkerAnimState result = Animate(clip.LoopMode, time, clip.FrameStart, clip.FrameLength, interval, clip, clip.Flip ?? flip);
-        if (result == TinkerAnimState.Complete)
-            CurrentClip = null;
+        TinkerAnimState result = Animate(
+            clip.LoopMode,
+            time,
+            clip.FrameStart,
+            clip.FrameLength,
+            interval,
+            clip,
+            clip.Flip ?? flip
+        );
         return result;
     }
 

@@ -23,17 +23,17 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
         int actualCapacity,
         IList<Item> inventory,
         Action<int>? pageMethod,
-        bool reverseGrab,
-        bool showReceivingMenu,
         InventoryMenu.highlightThisItem highlightFunction,
         behaviorOnItemSelect behaviorOnItemSelectFunction,
         string message,
         behaviorOnItemSelect? behaviorOnItemGrab = null,
+        bool reverseGrab = false,
+        bool showReceivingMenu = true,
         bool snapToBottom = false,
-        bool canBeExitedWithKey = false,
+        bool canBeExitedWithKey = true,
         bool playRightClickSound = true,
         bool allowRightClick = true,
-        bool showOrganizeButton = false,
+        bool showOrganizeButton = true,
         int source = 0,
         Item? sourceItem = null,
         int whichSpecialButton = -1,
@@ -123,6 +123,12 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
                 ItemsToGrabMenu.inventory[i].fullyImmutable = true;
             }
         }
+
+        if (specialButton != null)
+            specialButton = null;
+        if (junimoNoteIcon != null)
+            junimoNoteIcon = null;
+
         // more neighbour nonsense
         if (
             ItemsToGrabMenu.GetBorder(InventoryMenu.BorderSide.Right).FirstOrDefault()
@@ -133,20 +139,9 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
             {
                 organizeButton.leftNeighborID = clickableComponent.myID;
             }
-
-            if (specialButton != null)
-            {
-                specialButton.leftNeighborID = clickableComponent.myID;
-            }
-
             if (fillStacksButton != null)
             {
                 fillStacksButton.leftNeighborID = clickableComponent.myID;
-            }
-
-            if (junimoNoteIcon != null)
-            {
-                junimoNoteIcon.leftNeighborID = clickableComponent.myID;
             }
         }
     }
@@ -204,6 +199,19 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
         drawBG = false;
         drawMethod(b);
         drawBG = drawBGOrig;
+    }
+
+    public override void receiveLeftClick(int x, int y, bool playSound = true)
+    {
+        if (organizeButton != null && organizeButton.containsPoint(x, y))
+        {
+            organizeItemsInList(ItemsToGrabMenu.actualInventory);
+            Game1.playSound("Ship");
+        }
+        else
+        {
+            base.receiveLeftClick(x, y, !destroyItemOnClick);
+        }
     }
 }
 
@@ -265,17 +273,10 @@ internal sealed class GlobalInventoryHandler
             Data.Capacity,
             TrinketInv,
             CanPage ? MovePage : null,
-            reverseGrab: false,
-            showReceivingMenu: true,
             HighlightFunction,
             BehaviorOnItemSelectFunction,
             FullInventoryId,
             BehaviorOnItemGrab,
-            snapToBottom: false,
-            canBeExitedWithKey: true,
-            playRightClickSound: true,
-            allowRightClick: false,
-            showOrganizeButton: false,
             sourceItem: Effect.Trinket
         );
     }
