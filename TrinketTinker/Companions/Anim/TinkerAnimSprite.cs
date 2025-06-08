@@ -285,7 +285,7 @@ public sealed class TinkerAnimSprite
     /// <param name="time">current game time</param>
     /// <param name="clip">animation clip object</param>
     /// <param name="interval">default miliseconds between frames, if the clip did not set one</param>
-    internal TinkerAnimState AnimateClip(GameTime time, AnimClipData clip, double interval)
+    internal TinkerAnimState AnimateClip(GameTime time, AnimClipData clip, double interval, SpriteEffects flip)
     {
         if (clip.Nop)
         {
@@ -298,7 +298,7 @@ public sealed class TinkerAnimSprite
             }
             return TinkerAnimState.InNop;
         }
-        TinkerAnimState result = Animate(clip.LoopMode, time, clip.FrameStart, clip.FrameLength, interval, clip);
+        TinkerAnimState result = Animate(clip.LoopMode, time, clip.FrameStart, clip.FrameLength, interval, clip, clip.Flip ?? flip);
         if (result == TinkerAnimState.Complete)
             CurrentClip = null;
         return result;

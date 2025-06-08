@@ -56,29 +56,28 @@ internal sealed class ModEntry : Mod
         AssetManager.TAS = new(helper, $"{ModId}/TAS");
 
         helper.ConsoleCommands.Add(
-            "tt_draw_debug",
+            "tt.draw_debug",
             "Toggle drawing of the sprite index when drawing companions.",
             ConsoleDrawDebugToggle
         );
         helper.ConsoleCommands.Add(
-            "tt_unequip_trinket",
+            "tt.unequip_trinket",
             "Debug unequip all trinkets of current player and send the trinkets to lost and found.",
             ConsoleUnequipTrinkets
         );
-
 #if DEBUG
         // Print all types
         helper.ConsoleCommands.Add(
-            "tt_print_types",
+            "tt.print_types",
             "Print valid Effect, Companion, Motion, and Ability types.",
             ConsolePrintTypenames
         );
         // Spawn a bunch of forage around the player
-        helper.ConsoleCommands.Add("tt_spawn_forage", "Spawn forage for testing.", ConsoleSpawnForage);
+        helper.ConsoleCommands.Add("tt.spawn_forage", "Spawn forage for testing.", ConsoleSpawnForage);
         // Print all global inventories that exist
-        helper.ConsoleCommands.Add("tt_global_inv", "Check all global inventories.", ConsoleGlobalInv);
+        helper.ConsoleCommands.Add("tt.global_inv", "Check all global inventories.", ConsoleGlobalInv);
         helper.ConsoleCommands.Add(
-            "tt_print_trinkets",
+            "tt.print_trinkets",
             "Debug unequip all trinkets of current player and send the trinkets to lost and found.",
             ConsolePrintTrinkets
         );

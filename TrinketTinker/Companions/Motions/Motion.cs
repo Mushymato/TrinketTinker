@@ -458,7 +458,7 @@ public abstract class Motion<TArgs> : IMotion
         {
             clip = clip.Selected;
         }
-        var animState = cs.AnimateClip(time, clip, md.Interval);
+        var animState = cs.AnimateClip(time, clip, md.Interval, md.Flip);
         // reset currentClipKey, allow the clip to be rerolled next time it is chosen
         if (animState == TinkerAnimState.Complete)
             currentClipKey = null;

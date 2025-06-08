@@ -95,6 +95,16 @@ public enum CollisionMode
 /// <summary>Model defining how companions pick anchor target</summary>
 public sealed class AnchorTargetData
 {
+    /// <summary>Backing field for <see cref="Id"/>.</summary>
+    private string? IdImpl = null;
+
+    /// <summary>Id for this anchor target, defaults to Mode.</summary>
+    public string Id
+    {
+        get => IdImpl ??= Mode.ToString();
+        set => IdImpl = value;
+    }
+
     /// <summary>Targeting mode, see <see cref="AnchorTarget"/>.</summary>
     public AnchorTarget Mode { get; set; } = AnchorTarget.Owner;
 

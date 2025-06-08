@@ -21,4 +21,4 @@ Most things in Trinket Tinker are for mod authors of specific content mods to de
 
 | Property | Type | Default | Notes |
 | -------- | ---- | ------- | ----- |
-| `DrawDebugMode` | bool | `false` | Enable/Disable [draw debug mode](007-Utility.md#tt_draw_debug). |
+| `DrawDebugMode` | bool | `false` | Enable/Disable [draw debug mode](007-Utility.md#tt.draw_debug). |

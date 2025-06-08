@@ -480,12 +480,7 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
 
     public virtual void OnInteract(Farmer farmer)
     {
-        if (
-            !Enabled
-            || Game1.activeClickableMenu != null
-            || farmer.UsingTool
-            || farmer.usingSlingshot
-        )
+        if (!Enabled || Game1.activeClickableMenu != null || farmer.UsingTool || farmer.usingSlingshot)
             return;
         if (Companion == null || farmer.GetBoundingBox().Intersects(CompanionBoundingBox))
         {

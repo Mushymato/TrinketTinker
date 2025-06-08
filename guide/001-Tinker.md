@@ -59,6 +59,16 @@ When a `Data/Trinkets` entry has a matching `mushymato.TrinketTinker/Tinker` ent
 }
 ```
 
+### This is a lot of stuff, what do I actually need to have?
+
+Trinket Tinker data fields are optional unless explictly marked as **required** in the tables that describe what each field does. This applies even to the top level TinkerData, but skipping every field means there's little point to using this framework at all.
+
+To display a companion, you need a `Motion` and at least 1 entry in `Variants`.
+
+To have the trinket do things after being equipped, at least 1 list of `Abilities` must be defined. `Inventory` and `Chatter` abilities also require the top level `Inventory` and `Chatter` data, refer to their subpages for details.
+
+Unlike base game trinkets, TrinketTinker trinkets always spawn with the first variant and at minimum level. The item query [mushymato.TrinketTinker_CREATE_TRINKET](007-Utility.md) is needed to create trinket at other variants/levels.
+
 ## Structure
 
 | Property | Type | Default | Notes |
@@ -75,17 +85,7 @@ When a `Data/Trinkets` entry has a matching `mushymato.TrinketTinker/Tinker` ent
 | `Chatter` | [Dictionary\<string, ChatterLinesData\>](004.z.201-Chatter.md) | _null_ | Gives the trinket dialogue for use with the [Chatter ability](004.z.201-Chatter.md). |
 
 ### DEPRECATED
-- `Motions`, previously a list of `MotionData` that is unused except for the first element. It has been removed since 1.5.0, please use only `Motion` from now on.
-
-### This is a lot of stuff, what do I need to define?
-
-Trinket Tinker data fields are optional unless explictly marked as **required**. This applies even to the top level TinkerData, but skipping every field means there's little point to using this framework at all.
-
-To display a companion, you need a `Motion` and at least 1 entry in `Variants`.
-
-To have the trinket do things after being equipped, at least 1 list of `Abilities` must be defined. `Inventory` and `Chatter` abilities also require the top level `Inventory` and `Chatter` data, refer to their subpages for details.
-
-Unlike base game trinkets, TrinketTinker trinkets always spawn with the first variant and at minimum level. The item query [mushymato.TrinketTinker_CREATE_TRINKET](007-Utility.md) is needed to create trinket at other variants/levels.
+- `Motions`, previously a list of `MotionData` that is unused except for the first element. It has been removed since 1.5.0, please use only `Motion` from now on
 
 ### Unlock Conditions
 

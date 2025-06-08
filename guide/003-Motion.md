@@ -22,10 +22,10 @@ The term "anchor" refers to a position that the companion derives it's own posit
   "Entries": {
     "Motion": {
       // movement logic
-      "MotionClass": "<motion class string>",
-      "DirectionMode": "<direction mode enum>",
+      "MotionClass": "<string motion class>",
+      "DirectionMode": "<enum direction mode>",
       "DirectionRotate": true|false,
-      "LoopMode": "Standard",
+      "LoopMode": "<enum loop mode>",
       "Anchors": [
         { /* anchor target data */ },
         { /* anchor target data */ },
