@@ -74,15 +74,15 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
             if (
                 chatter
                     .OrderByDescending((kv) => kv.Value?.Priority ?? 0)
-                    .FirstOrDefault(
+                    .Where(
                         (kv) =>
                             (args.ChatterPrefix == null || kv.Key.StartsWith(args.ChatterPrefix ?? ""))
                             && GameStateQuery.CheckConditions(kv.Value.Condition, proc.GSQContext)
                             && kv.Value.Lines != null
                     )
-                is KeyValuePair<string, ChatterLinesData> foundLinesKV
+                is IEnumerable<KeyValuePair<string, ChatterLinesData>> foundLinesKV && foundLinesKV.Any()
             )
-                foundLines = foundLinesKV.Value;
+                foundLines = Random.Shared.ChooseFrom(foundLinesKV.ToList()).Value;
             else
                 return false;
         }

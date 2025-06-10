@@ -278,7 +278,6 @@ public class TrinketTinkerCompanion : Companion
         }
         else
         {
-            ModEntry.Log($"AttachedTAS: NULL");
             AttachedTAS = null;
         }
     }
