@@ -52,7 +52,7 @@ public interface IVariantData
     /// <summary>Variant portrait content path, for chatter ability.</summary>
     public string? Portrait { get; set; }
 
-    /// <summary>Show NPC breathing, only usable if NPC is a real NPC.</summary>
+    /// <summary>Show NPC breathing, only usable if NPC is a real NPC with standard 16x32 or smaller sprite.</summary>
     public bool? ShowBreathing { get; set; }
 }
 

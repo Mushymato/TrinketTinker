@@ -80,7 +80,8 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
                             && GameStateQuery.CheckConditions(kv.Value.Condition, proc.GSQContext)
                             && kv.Value.Lines != null
                     )
-                is IEnumerable<KeyValuePair<string, ChatterLinesData>> foundLinesKV && foundLinesKV.Any()
+                    is IEnumerable<KeyValuePair<string, ChatterLinesData>> foundLinesKV
+                && foundLinesKV.Any()
             )
                 foundLines = Random.Shared.ChooseFrom(foundLinesKV.ToList()).Value;
             else

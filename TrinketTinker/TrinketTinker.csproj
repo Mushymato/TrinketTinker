@@ -19,7 +19,7 @@
     <Description>Trinket &amp; Companion framework.</Description>
     <UniqueId>mushymato.TrinketTinker</UniqueId>
     <UpdateKeys>Nexus:29073;GitHub:Mushymato/TrinketTinker</UpdateKeys>
-    <Version>1.6.0-beta.2</Version>
+    <Version>1.6.0-beta.3</Version>
     <MinimumApiVersion_Behavior>UpdateFull</MinimumApiVersion_Behavior>
     <MinimumGameVersion_Behavior>UpdateFull</MinimumGameVersion_Behavior>
     <Dependencies_VersionBehavior>UpdateFull</Dependencies_VersionBehavior>
