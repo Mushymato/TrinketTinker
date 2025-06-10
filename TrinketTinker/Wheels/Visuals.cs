@@ -101,7 +101,6 @@ internal static class Visuals
                 $"No {AssetManager.TAS.AssetName} entry found for: {string.Join(',', invalidTASIds)}",
                 LogLevel.Warn
             );
-            // tasIds.RemoveAll(invalidTASIds.Contains);
         }
     }
 

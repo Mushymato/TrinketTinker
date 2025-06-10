@@ -1,10 +1,12 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Mushymato.ExtendedTAS;
 using Netcode;
 using StardewModdingAPI;
 using StardewModdingAPI.Utilities;
 using StardewValley;
 using StardewValley.Companions;
+using StardewValley.Delegates;
 using StardewValley.Network;
 using TrinketTinker.Companions.Motions;
 using TrinketTinker.Models;
@@ -121,7 +123,11 @@ public class TrinketTinkerCompanion : Companion
     /// <summary>Bounding box of companion</summary>
     public Rectangle BoundingBox => Motion?.BoundingBox ?? Rectangle.Empty;
 
+    /// <summary>Speaker data for Chatter ability</summary>
     public ChatterSpeaker? Speaker => Motion?.Speaker;
+
+    /// <summary>A TAS associated with the companion and will move alongside it.</summary>
+    internal List<TASContext>? AttachedTAS { get; set; } = null;
 
     /// <summary>Argumentless constructor for netcode deserialization.</summary>
     public TrinketTinkerCompanion()
@@ -142,6 +148,14 @@ public class TrinketTinkerCompanion : Companion
         _disableCompanion.Value = Places.LocationDisableTrinketCompanions(Owner.currentLocation);
         Anchor = Utility.PointToVector2(farmer.GetBoundingBox().Center);
         Motion?.Initialize(farmer);
+        if (
+            Motion != null
+            && AssetManager.TinkerData.TryGetValue(_id.Value, out TinkerData? Data)
+            && Data.Motion != null
+        )
+        {
+            InitializeAttachedTAS(Data.Motion);
+        }
     }
 
     /// <summary>Cleanup Motion class.</summary>
@@ -228,7 +242,45 @@ public class TrinketTinkerCompanion : Companion
         {
             Motion = CreateMotionInstance(mdata, vdata);
         }
-        Motion?.Initialize(Owner);
+        if (Motion != null)
+        {
+            Motion.Initialize(Owner);
+            InitializeAttachedTAS(mdata);
+        }
+    }
+
+    private void SetTASPosition(TemporaryAnimatedSprite tas) => tas.Position = Position;
+
+    private void SetTASPositionWithOffset(TemporaryAnimatedSprite tas) => tas.Position = Position + Offset;
+
+    private void InitializeAttachedTAS(MotionData mdata)
+    {
+        if (mdata.AttachedTAS != null)
+        {
+            AttachedTAS = [];
+            foreach (string tasId in mdata.AttachedTAS)
+            {
+                GameStateQueryContext queryContext = new();
+                if (AssetManager.TAS.TryGetTASContext(tasId, out TASContext? tasCtx))
+                {
+                    if (tasCtx.Def.SpawnInterval <= 0)
+                    {
+                        if (!tasCtx.TryCreate(queryContext, SetTASPosition))
+                            continue;
+                    }
+                    else
+                    {
+                        tasCtx.TryCreateRespawning(Game1.currentGameTime, queryContext, SetTASPositionWithOffset);
+                    }
+                    AttachedTAS.Add(tasCtx);
+                }
+            }
+        }
+        else
+        {
+            ModEntry.Log($"AttachedTAS: NULL");
+            AttachedTAS = null;
+        }
     }
 
     private IMotion? CreateMotionInstance(MotionData mdata, VariantData vdata)
@@ -254,7 +306,28 @@ public class TrinketTinkerCompanion : Companion
         if (!Visuals.ShouldDraw())
             return;
 
-        Motion?.Draw(b);
+        if (Motion == null)
+            return;
+
+        Motion.Draw(b);
+        if (AttachedTAS != null)
+        {
+            Vector2 tasOffset = Offset - Motion.CompanionAnimSprite.Origin * Motion.CompanionAnimSprite.TextureScale;
+            foreach (TASContext tasCtx in AttachedTAS)
+            {
+                foreach (TemporaryAnimatedSprite spawned in tasCtx.Spawned)
+                {
+                    if (tasCtx.Def.SpawnInterval <= 0)
+                    {
+                        spawned.draw(b, xOffset: (int)tasOffset.X, yOffset: (int)tasOffset.Y);
+                    }
+                    else
+                    {
+                        spawned.draw(b);
+                    }
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -287,6 +360,26 @@ public class TrinketTinkerCompanion : Companion
         }
         Motion?.UpdateGlobal(time, location);
         Motion?.UpdateLightSource(time, location);
+        if (AttachedTAS != null)
+        {
+            GameStateQueryContext queryContext = new();
+            foreach (TASContext tasCtx in AttachedTAS)
+            {
+                if (tasCtx.Def.SpawnInterval <= 0)
+                {
+                    foreach (TemporaryAnimatedSprite spawned in tasCtx.Spawned)
+                        spawned.Position += Position - (prevPosition ?? Position);
+                }
+                else
+                {
+                    tasCtx.TryCreateRespawning(Game1.currentGameTime, queryContext, SetTASPositionWithOffset);
+                }
+                foreach (TemporaryAnimatedSprite spawned in tasCtx.Spawned)
+                {
+                    spawned.update(Game1.currentGameTime);
+                }
+            }
+        }
     }
 
     /// <summary>Reset position and display status on warp</summary>

@@ -33,6 +33,8 @@ public abstract class Motion<TArgs> : IMotion
     /// <summary>Companion animation controller</summary>
     protected TinkerAnimSprite cs;
 
+    public TinkerAnimSprite CompanionAnimSprite => cs;
+
     /// <summary>Light source ID, generated if LightRadius is set in <see cref="MotionData"/>.</summary>
     protected string lightId = "";
 
