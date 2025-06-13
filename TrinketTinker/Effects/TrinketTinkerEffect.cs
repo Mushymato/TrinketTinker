@@ -332,7 +332,7 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
         // Companion
         if (Data.Variants.Count > 0 && Data.Motion != null)
         {
-            Companion ??= new TrinketTinkerCompanion(Trinket.ItemId, variant);
+            Companion ??= new TrinketTinkerCompanion(Trinket, variant);
             farmer.AddCompanion(Companion);
         }
         else

@@ -8,6 +8,7 @@ using StardewValley;
 using StardewValley.Companions;
 using StardewValley.Delegates;
 using StardewValley.Network;
+using StardewValley.Objects.Trinkets;
 using TrinketTinker.Companions.Motions;
 using TrinketTinker.Models;
 using TrinketTinker.Models.AbilityArgs;
@@ -129,16 +130,19 @@ public class TrinketTinkerCompanion : Companion
     /// <summary>A TAS associated with the companion and will move alongside it.</summary>
     internal List<TASContext>? AttachedTAS { get; set; } = null;
 
+    internal readonly Trinket? trinketItem = null;
+
     /// <summary>Argumentless constructor for netcode deserialization.</summary>
     public TrinketTinkerCompanion()
         : base() { }
 
     /// <summary>Construct new companion using companion ID.</summary>
-    public TrinketTinkerCompanion(string companionId, int variant)
+    public TrinketTinkerCompanion(Trinket trinketItem, int variant)
     {
         // _moving.Value = false;
         whichVariant.Value = variant;
-        _id.Value = companionId;
+        _id.Value = trinketItem.ItemId;
+        this.trinketItem = trinketItem;
     }
 
     /// <summary>Initialize Motion class.</summary>
@@ -185,7 +189,8 @@ public class TrinketTinkerCompanion : Companion
         _oneshotKey.fieldChangeVisibleEvent += (field, oldValue, newValue) => Motion?.SetOneshotClip(newValue);
         _overrideKey.fieldChangeVisibleEvent += (field, oldValue, newValue) => Motion?.SetOverrideClip(newValue);
         _speechBubbleKey.fieldChangeVisibleEvent += (field, oldValue, newValue) => Motion?.SetSpeechBubble(newValue);
-        _altVariantKey.fieldChangeVisibleEvent += (field, oldValue, newValue) => Motion?.SetAltVariant(newValue);
+        _altVariantKey.fieldChangeVisibleEvent += (field, oldValue, newValue) =>
+            Motion?.SetAltVariant(newValue, this.trinketItem);
         _netRandSeed.fieldChangeVisibleEvent += (field, oldValue, newValue) =>
         {
             if (Motion != null)
@@ -408,7 +413,7 @@ public class TrinketTinkerCompanion : Companion
     /// <summary>Set alt variant, or "RECHECK" to reroll</summary>
     internal void SetAltVariant(string altVariantKey)
     {
-        Motion?.SetAltVariant(altVariantKey);
+        Motion?.SetAltVariant(altVariantKey, trinketItem);
     }
 
     /// <summary>Vanilla hop event handler, not using.</summary>

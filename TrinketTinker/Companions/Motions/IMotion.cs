@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
+using StardewValley.Objects.Trinkets;
 using TrinketTinker.Companions.Anim;
 using TrinketTinker.Models;
 using TrinketTinker.Models.AbilityArgs;
@@ -46,7 +47,7 @@ public interface IMotion
 
     /// <summary>Set an alt variant.</summary>
     /// <returns>offset</returns>
-    void SetAltVariant(string? altVariantKey);
+    void SetAltVariant(string? altVariantKey, Trinket? trinketItem);
 
     /// <summary>Initialize motion, setup light source if needed.</summary>
     /// <param name="farmer"></param>

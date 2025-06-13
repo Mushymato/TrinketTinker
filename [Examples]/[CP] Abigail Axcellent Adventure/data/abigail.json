@@ -45,7 +45,8 @@
                 // },
                 "WINTER": {
                   "Texture": "Characters/Abigail_Winter",
-                  "Condition": "SEASON Winter",
+                  // "Condition": "SEASON Winter",
+                  "Condition": "mushymato.TrinketTinker_IS_TINKER Target",
                   "Priority": 1
                 },
                 "beach": {

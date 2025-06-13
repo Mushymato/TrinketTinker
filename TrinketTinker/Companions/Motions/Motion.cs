@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StardewValley.BellsAndWhistles;
 using StardewValley.Monsters;
+using StardewValley.Objects.Trinkets;
 using StardewValley.TerrainFeatures;
 using StardewValley.TokenizableStrings;
 using TrinketTinker.Companions.Anim;
@@ -179,20 +180,20 @@ public abstract class Motion<TArgs> : IMotion
     }
 
     /// <summary>Do the thing where I recheck me alt variants</summary>
-    private void DoRecheckAltVariant()
+    private void DoRecheckAltVariant(Trinket? trinketItem)
     {
-        if (vd.TryRecheckAltVariant(c.Owner, c._altVariantKey.Value, out string? newAltVariantKey))
+        if (vd.TryRecheckAltVariant(c.Owner, c._altVariantKey.Value, trinketItem, out string? newAltVariantKey))
         {
             c._altVariantKey.Value = newAltVariantKey;
         }
     }
 
     /// <inheritdoc/>
-    public void SetAltVariant(string? altVariantKey)
+    public void SetAltVariant(string? altVariantKey, Trinket? trinketItem)
     {
         if (altVariantKey == "RECHECK")
         {
-            DoRecheckAltVariant();
+            DoRecheckAltVariant(trinketItem);
         }
         else
         {
@@ -231,7 +232,7 @@ public abstract class Motion<TArgs> : IMotion
             if (!Game1.currentLightSources.ContainsKey(lightId))
                 Game1.currentLightSources.Add(lightId, new TinkerLightSource(lightId, c.Position + GetOffset(), ldata));
         }
-        DoRecheckAltVariant();
+        DoRecheckAltVariant(c.trinketItem);
     }
 
     /// <inheritdoc/>
@@ -253,7 +254,7 @@ public abstract class Motion<TArgs> : IMotion
         {
             Game1.currentLightSources.Add(lightId, new TinkerLightSource(lightId, c.Position + GetOffset(), ldata));
         }
-        DoRecheckAltVariant();
+        DoRecheckAltVariant(c.trinketItem);
     }
 
     /// <summary>does a simple straight line collision check</summary>

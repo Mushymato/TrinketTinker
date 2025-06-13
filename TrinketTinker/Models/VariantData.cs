@@ -152,13 +152,26 @@ public sealed class VariantData : IVariantData
     /// <param name="prevKey"></param>
     /// <param name="nextKey"></param>
     /// <returns>True if sub variant is different</returns>
-    internal bool TryRecheckAltVariant(Farmer farmer, string? prevKey, out string? nextKey)
+    internal bool TryRecheckAltVariant(
+        Farmer farmer,
+        string? prevKey,
+        StardewValley.Objects.Trinkets.Trinket? trinketItem,
+        out string? nextKey
+    )
     {
         nextKey = null;
         if (
             AltVariants
                 ?.OrderByDescending((kv) => kv.Value.Priority)
-                .FirstOrDefault((kv) => GameStateQuery.CheckConditions(kv.Value.Condition, player: farmer))
+                .FirstOrDefault(
+                    (kv) =>
+                        GameStateQuery.CheckConditions(
+                            kv.Value.Condition,
+                            player: farmer,
+                            targetItem: trinketItem,
+                            inputItem: trinketItem
+                        )
+                )
                 is KeyValuePair<string, AltVariantData> foundAltVariant
             && !string.IsNullOrEmpty(foundAltVariant.Key)
         )
