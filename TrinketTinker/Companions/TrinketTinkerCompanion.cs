@@ -263,6 +263,9 @@ public class TrinketTinkerCompanion : Companion
                 GameStateQueryContext queryContext = new();
                 if (AssetManager.TAS.TryGetTASContext(tasId, out TASContext? tasCtx))
                 {
+                    if (Motion?.GetDrawLayer() is float drawLayer)
+                        tasCtx.OverrideDrawLayer = drawLayer;
+
                     if (tasCtx.Def.SpawnInterval <= 0)
                     {
                         if (!tasCtx.TryCreate(queryContext, SetTASPosition))

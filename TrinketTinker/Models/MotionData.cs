@@ -44,6 +44,12 @@ public enum AnchorTarget
     /// <summary>Anchor to the nearest monster</summary>
     Monster,
 
+    /// <summary>Anchor to the nearest farm animal</summary>
+    FarmAnimal,
+
+    /// <summary>Anchor to the nearest NPC</summary>
+    NPC,
+
     /// <summary>Anchor to the nearest placed object</summary>
     Object,
 
@@ -137,6 +143,7 @@ public sealed class AnchorTargetData
             return Mode switch
             {
                 AnchorTarget.Monster => ["Hitscan", "Projectile"],
+                AnchorTarget.FarmAnimal => ["PetFarmAnimal"],
                 AnchorTarget.Forage
                 or AnchorTarget.Stone
                 or AnchorTarget.Twig

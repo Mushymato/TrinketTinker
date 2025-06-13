@@ -71,6 +71,10 @@
               {
                 "Mode": "Shakeable",
                 "Range": 300
+              },
+              {
+                "Mode": "FarmAnimal",
+                "Range": 300
               }
             ],
             "Args": {
@@ -151,6 +155,11 @@
                   "HarvestTo": "{{L@HarvestTo}}"
                 },
               },
+              {
+                "AbilityClass": "PetFarmAnimal",
+                "Proc": "Timer",
+                "ProcTimer": 1000
+              }
             ]
           ]
         },

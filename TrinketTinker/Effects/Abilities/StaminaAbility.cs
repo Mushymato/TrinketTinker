@@ -8,7 +8,7 @@ namespace TrinketTinker.Effects.Abilities;
 
 /// <summary>Recover some percent of stamina.</summary>
 public sealed class StaminaAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
-    : Ability<RangeArgs>(effect, data, lvl)
+    : Ability<ValueRangeArgs>(effect, data, lvl)
 {
     /// <summary>
     /// Recover % stamina.

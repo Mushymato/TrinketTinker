@@ -82,13 +82,17 @@
     {
       "Action": "Load",
       "Target": "{{ModId}}/i18n",
-      "FromFile": "i18n/default.json"
+      "FromFile": "i18n/default.json",
+      "Priority": "Low"
     },
     {
       "Action": "Load",
       "Target": "{{ModId}}/i18n",
-      "TargetLocale": "zh-CN",
-      "FromFile": "i18n/zh.json",
+      "FromFile": "i18n/{{Language}}.json",
+      "Priority": "Medium",
+      "When": {
+        "HasFile: i18n/{{Language}}.json": true
+      }
     }
   ]
 }

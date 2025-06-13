@@ -88,6 +88,10 @@ public interface IMotion
     /// <returns>offset</returns>
     Vector2 GetOffset();
 
+    /// <summary>Get draw layer of motion</summary>
+    /// <returns>offset</returns>
+    float GetDrawLayer();
+
     /// <summary>Update motion and variant data, when invalidate</summary>
     /// <param name="mdata"></param>
     /// <param name="vdata"></param>

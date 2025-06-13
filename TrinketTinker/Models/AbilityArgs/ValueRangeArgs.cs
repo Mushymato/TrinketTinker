@@ -9,7 +9,7 @@ public enum ValueMode
 }
 
 /// <summary>Generic range argument</summary>
-public sealed class RangeArgs : IArgs
+public sealed class ValueRangeArgs : IArgs
 {
     /// <summary>Determine how to interpret the value</summary>
     public ValueMode ValueMode { get; set; } = ValueMode.Percent;

@@ -13,6 +13,68 @@ internal static class Places
     public static readonly string Field_DisableTrinketAbilities = $"{ModEntry.ModId}/disableAbilities";
     public static readonly string Field_DisableTrinketCompanions = $"{ModEntry.ModId}/disableCompanions";
 
+    /// <summary>Find closest matching farm animal within range</summary>
+    /// <param name="location"></param>
+    /// <param name="originPoint"></param>
+    /// <param name="range"></param>
+    /// <param name="ignoreUntargetables"></param>
+    /// <param name="match"></param>
+    /// <returns></returns>
+    public static FarmAnimal? ClosestMatchingFarmAnimal(
+        GameLocation location,
+        Vector2 originPoint,
+        int range,
+        Func<FarmAnimal, bool>? match = null
+    )
+    {
+        FarmAnimal? result = null;
+        float num = range + 1;
+        foreach (FarmAnimal animal in location.animals.Values)
+        {
+            if (match == null || match(animal))
+            {
+                float num2 = Vector2.Distance(originPoint, animal.getStandingPosition());
+                if (num2 <= range && num2 < num)
+                {
+                    result = animal;
+                    num = num2;
+                }
+            }
+        }
+        return result;
+    }
+
+    /// <summary>Find closest matching NPC within range</summary>
+    /// <param name="location"></param>
+    /// <param name="originPoint"></param>
+    /// <param name="range"></param>
+    /// <param name="ignoreUntargetables"></param>
+    /// <param name="match"></param>
+    /// <returns></returns>
+    public static NPC? ClosestMatchingCharacter(
+        GameLocation location,
+        Vector2 originPoint,
+        int range,
+        Func<NPC, bool>? match
+    )
+    {
+        NPC? result = null;
+        float num = range + 1;
+        foreach (NPC character in location.characters)
+        {
+            if (match == null || match(character))
+            {
+                float num2 = Vector2.Distance(originPoint, character.getStandingPosition());
+                if (num2 <= range && num2 < num && !character.IsInvisible)
+                {
+                    result = character;
+                    num = num2;
+                }
+            }
+        }
+        return result;
+    }
+
     /// <summary>Find nearest placed object within range.</summary>
     /// <param name="location">Current location</param>
     /// <param name="originPoint">Position to search from</param>

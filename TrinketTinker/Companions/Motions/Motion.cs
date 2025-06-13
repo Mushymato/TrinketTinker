@@ -334,6 +334,7 @@ public abstract class Motion<TArgs> : IMotion
             {
                 case AnchorTarget.Monster:
                     {
+                        // continue to use the base game version of this method for monsters, even tho I wrote a similar thing
                         Monster closest = Utility.findClosestMonsterWithinRange(
                             location,
                             originPoint,
@@ -343,6 +344,36 @@ public abstract class Motion<TArgs> : IMotion
                         );
                         if (
                             closest != null
+                            && SetAnchor(anchor, location, Utility.PointToVector2(closest.GetBoundingBox().Center))
+                        )
+                            return anchor.Mode;
+                    }
+                    break;
+                case AnchorTarget.FarmAnimal:
+                    {
+                        if (
+                            Places.ClosestMatchingFarmAnimal(
+                                location,
+                                originPoint,
+                                anchor.Range,
+                                PetFarmAnimalAbility.IsFarmAnimalInNeedOfPetting
+                            )
+                                is Character closest
+                            && SetAnchor(anchor, location, Utility.PointToVector2(closest.GetBoundingBox().Center))
+                        )
+                            return anchor.Mode;
+                    }
+                    break;
+                case AnchorTarget.NPC:
+                    {
+                        if (
+                            Places.ClosestMatchingCharacter(
+                                location,
+                                originPoint,
+                                anchor.Range,
+                                anchor.Filters != null ? (npc) => !anchor.Filters.Contains(npc.Name) : null
+                            )
+                                is Character closest
                             && SetAnchor(anchor, location, Utility.PointToVector2(closest.GetBoundingBox().Center))
                         )
                             return anchor.Mode;
@@ -629,6 +660,16 @@ public abstract class Motion<TArgs> : IMotion
         return new Vector2(offset.X, 0);
     }
 
+    public virtual float GetDrawLayer()
+    {
+        return md.LayerDepth switch
+        {
+            LayerDepth.Behind => c.Owner.getDrawLayer() - 2 * Visuals.LAYER_OFFSET,
+            LayerDepth.InFront => c.Owner.getDrawLayer() + 2 * Visuals.LAYER_OFFSET,
+            _ => GetPositionalLayerDepth(GetOffset()),
+        };
+    }
+
     /// <inheritdoc/>
     public void Draw(SpriteBatch b)
     {
@@ -650,12 +691,7 @@ public abstract class Motion<TArgs> : IMotion
         }
 
         Vector2 offset = GetOffset();
-        float layerDepth = md.LayerDepth switch
-        {
-            LayerDepth.Behind => c.Owner.getDrawLayer() - 2 * Visuals.LAYER_OFFSET,
-            LayerDepth.InFront => c.Owner.getDrawLayer() + 2 * Visuals.LAYER_OFFSET,
-            _ => GetPositionalLayerDepth(offset),
-        };
+        float layerDepth = GetDrawLayer();
 
         Vector2 drawPos = c.Position + c.Owner.drawOffset + offset;
         Vector2 scale = GetTextureScale();
@@ -699,7 +735,7 @@ public abstract class Motion<TArgs> : IMotion
                     new(cs.Breather.Rect.Width / 2, cs.Breather.Rect.Height / 2 + 1),
                     new(scale.X + breathing, scale.Y + breathing),
                     cs.Flip ^ ((c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None),
-                    layerDepth + Visuals.LAYER_OFFSET
+                    layerDepth + Visuals.LAYER_OFFSET / 2
                 );
             DrawCompanionBreathing(b, breatherSnapshot);
         }

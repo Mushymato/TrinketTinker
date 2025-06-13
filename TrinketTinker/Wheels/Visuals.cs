@@ -3,7 +3,6 @@ using Mushymato.ExtendedTAS;
 using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Delegates;
-using StardewValley.GameData;
 
 namespace TrinketTinker.Wheels;
 

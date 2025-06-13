@@ -12,7 +12,7 @@ namespace TrinketTinker.Effects.Abilities;
 /// healing is based on damage recieved or dealt instead of percent HP.
 /// </summary>
 public sealed class HealthAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
-    : Ability<RangeArgs>(effect, data, lvl)
+    : Ability<ValueRangeArgs>(effect, data, lvl)
 {
     /// <summary>
     /// Heal the player.
