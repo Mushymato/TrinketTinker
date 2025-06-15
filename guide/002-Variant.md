@@ -41,6 +41,10 @@ Variants can have alternate variants, which are automatically rechecked whenever
           "<trinket name substitution 2>",
           //...
         ],
+        "AttachedTAS": [
+          "<tas id>",
+          //...
+        ]
         "AltVariants": {
           // These blocks are AltVariant
           "<alt variant key>": {
@@ -93,6 +97,7 @@ The top level variant can have all shared fields, as well as:
 | `LightSource` | `LightSourceData` | _null_ | If set, display a light source. This light source is only visible to the owner. |
 | `TrinketSpriteIndex` | int | -1 | If set, alters the trinket item's sprite index to this. This is used to give the trinket different icon depending on the variant. |
 | `TrinketNameArguments` | List\<string\> | _null_ | If set, use these strings as the argument to the item name. |
+| `AttachedTAS` | List\<string\> | _null_ | If set, show [temporary animated sprites](006-Temporary%20Animated%20Sprite.md) associated with this companion that follow them around. |
 | `AltVariants` | Dictionary\<string, AltVariantData\> | _null_ | A dictionary of alternate variants. |
 
 ### Alt Variant Only
