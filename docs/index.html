@@ -82,14 +82,15 @@
 <li>Support for custom effects from other C# mods, through the use of actions.</li>
 <li>Have the player obtain trinket effects without actually having the trinket slot unlocked, through the use of special trigger actions.</li>
 </ul>
-<p>If you are looking to make mods using this framework, <a href="guide/0-Trinket.html">start here</a>.</p>
+<p>If you are looking to make mods using this framework, <a href="https://mushymato.github.io/TrinketTinker/guide/0-Trinket.html">start here</a>.</p>
 <p>This mod is licensed under MIT, contributions are welcome.</p>
 <h2 id="example-mods-for-trinkettinker">Example Mods for TrinketTinker</h2>
 <ul>
-<li><a href="https://github.com/Mushymato/TrinketTinker/tree/main/%5BCP%5D%20Sinister%20Servants">[CP] Sinister Servants</a>: Playable mod for TrinketTinker, adds 6 monster trinkets.</li>
-<li><a href="https://github.com/Mushymato/TrinketTinker/tree/main/%5BCP%5D%20Pack%20Possum%20and%20Critter%20Cages">[CP] Pack Possum and Critter Cages</a>: Playable mod for TrinketTinker, adds 3 &quot;box&quot; trinkets that hold more trinkets, and a hireable opossum.</li>
-<li><a href="https://github.com/Mushymato/TrinketTinker/tree/main/%5BCP%5D%20Abigail%20Axcellent%20Adventure">[CP] Abigail Axcellent Adventure</a>: Example mod for a NPC style trinket, which are unique across the world and hides the corresponding NPC.</li>
-<li><a href="https://github.com/Mushymato/TrinketTinker/tree/main/%5BCP%5D%20Trinket%20Tinker%20Examples">[CP] Trinket Tinker Examples</a>: Test mod, a bit messy.</li>
+<li><a href="https://github.com/Mushymato/TrinketTinker/tree/main/%5BFullMod%5D/%5BCP%5D%20Sinister%20Servants">[CP] Sinister Servants</a>: Playable mod for TrinketTinker, adds 6 monster trinkets.</li>
+<li><a href="https://github.com/Mushymato/TrinketTinker/tree/main/%5BFullMod%5D/%5BCP%5D%20Pack%20Possum%20and%20Critter%20Cages">[CP] Pack Possum and Critter Cages</a>: Playable mod for TrinketTinker, adds 3 &quot;box&quot; trinkets that hold more trinkets, and a hireable opossum.</li>
+<li><a href="https://github.com/Mushymato/TrinketTinker/tree/main/%5BExamples%5D/%5BCP%5D%20Abigail%20Axcellent%20Adventure">[CP] Abigail Axcellent Adventure</a>: Example mod for a NPC style trinket, which are unique across the world and hides the corresponding NPC.</li>
+<li><a href="https://github.com/Mushymato/TrinketTinker/tree/main/%5BExamples%5D/%5BCP%5D%20Lockmachete">[CP] Lockmachete</a>: Example mod showing how frame set repeat animation works.</li>
+<li><a href="https://github.com/Mushymato/TrinketTinker/tree/main/%5BExamples%5D/%5BCP%5D%20Trinket%20Tinker%20Examples">[CP] Trinket Tinker Examples</a>: Test mod, a bit messy.</li>
 </ul>
 <h2 id="user-configuration">User Configuration</h2>
 <p>These keybinds are shared across mods using this framework, for the user to set to their liking.</p>
@@ -98,6 +99,11 @@
 <li><code>Open Tinker Inventory Key</code>: Press this key to open the inventory of your equipped trinket(s).</li>
 <li><code>Tinker Inventory Next Key</code>: While a Tinker Inventory is open and multiple trinkets with inventory are equipped, press this to go to the next inventory.</li>
 <li><code>Tinker Inventory Prev Key</code>: While a Tinker Inventory is open and multiple trinkets with inventory are equipped, press this to go to the previous inventory.</li>
+</ul>
+<p>These settings are global across all trinkets created using this framework, but have no effect on other trinkets (base game, added via other C# mods).</p>
+<ul>
+<li><code>Hide During Events</code>: Trinket companions appear in events by default, the user can hide all by unchecking this.</li>
+<li><code>Draw Debug Mode</code>: Enable a draw debug mode that highlights the bounds of the companion and show their current frame number. If you are not a mod developer and you see a magenta background around your trinkets, turn this off.</li>
 </ul>
 <h2 id="translations">Translations</h2>
 <ul>
@@ -112,8 +118,27 @@
 <p>All notable changes to this project will be documented here.</p>
 <p>The format is based on <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</a>, and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 </blockquote>
-<h3 id="158">1.5.8</h3>
+<h3 id="160">1.6.0</h3>
 <h4 id="added">Added</h4>
+<ul>
+<li>TemporaryAnimatedSprite now shares some code with MMAP and can use (most of) the funny MMAP TAS features. The custom assets remain separate.</li>
+<li>HitTAS now takes a list of pipe (<code>|</code>) separated TAS</li>
+<li>With Motion <code>Collision: Line</code>, will now check walls before going towards an anchor point.</li>
+<li>Companions that are tied to an NPC can now breathe (if the NPC themselves can breathe).</li>
+<li>Updated <code>fr.json</code> thanks to Caranud</li>
+<li>AnimClips can now have full frame source rect overrides. This essentially allows modder to do anything with anim clip frames.</li>
+<li>TinkerInventory menu now has Stack and Organize buttons.</li>
+<li>Companions can now have an <code>AttachedTAS</code> which is a temporary animate spirte that follows them around.</li>
+<li>New ability <code>PetFarmAnimal</code> and corresponding anchor mode <code>FarmAnimal</code>, go to nearest farm animal and pet them.</li>
+<li>New anchor mode <code>NPC</code>, go to nearest NPC.</li>
+</ul>
+<h4 id="changed">Changed</h4>
+<ul>
+<li>AnimClips now reset to start frame when switched over, instead of attempting to keep previous frame if possible.</li>
+<li>Harvest abilities now have higher tool power.</li>
+</ul>
+<h3 id="158">1.5.8</h3>
+<h4 id="added-1">Added</h4>
 <ul>
 <li>New user config setting, global disable showing companions in events.</li>
 </ul>
@@ -122,7 +147,7 @@
 <li>Trinket global inventory cleaning being incorrectly ran on farmhands as well.</li>
 </ul>
 <h3 id="157">1.5.7</h3>
-<h4 id="added-1">Added</h4>
+<h4 id="added-2">Added</h4>
 <ul>
 <li>Hitscan and Projectile can now have FacingDirectionOnly which makes them only attack monsters in the direction the companion is facing.</li>
 </ul>
@@ -131,13 +156,13 @@
 <li>Alt variants swapping between 2 most valid alt variants rather than keeping 1.</li>
 </ul>
 <h3 id="156">1.5.6</h3>
-<h4 id="added-2">Added</h4>
+<h4 id="added-3">Added</h4>
 <ul>
 <li>Projectile can now have Height which are different than offset in that they do not actually become different position.</li>
 <li>Harvest* abilities will now show the item harvested in a short TAS over the companion, for HarvestTo Player and TinkerInventory, disable this with ShowHarvestedItem.</li>
 <li>Anchors now have StopRange, which defines how far away to stop moving towards target.</li>
 </ul>
-<h4 id="changed">Changed</h4>
+<h4 id="changed-1">Changed</h4>
 <ul>
 <li>HarvestForage now also harvest spawned items like quartz in the mines.</li>
 </ul>
@@ -148,7 +173,7 @@
 <li>Make projectile hitbox based directly on the size of texture, which should hopefully make it more reliable.</li>
 </ul>
 <h3 id="155">1.5.5</h3>
-<h4 id="changed-1">Changed</h4>
+<h4 id="changed-2">Changed</h4>
 <ul>
 <li>MoveSync now only sync movement with owner when anchor mode is owner, use MoveSyncAll for old behavior.</li>
 <li>Serpent alt segment layer depth changes to make them consistent, this is entirely by vibes and implementation detail subject to change</li>
@@ -159,7 +184,7 @@
 <li>Temporary Animated Sprite now checks Condition, if given</li>
 </ul>
 <h3 id="154">1.5.4</h3>
-<h4 id="added-3">Added</h4>
+<h4 id="added-4">Added</h4>
 <ul>
 <li>Several more Harvest* abilities, and matching AnchorTarget
 <ul>
@@ -177,7 +202,7 @@
 <li>Content patcher consistently apply on equipped trinkets</li>
 </ul>
 <h3 id="153">1.5.3</h3>
-<h4 id="added-4">Added</h4>
+<h4 id="added-5">Added</h4>
 <ul>
 <li>Ability ProcSyncId is like ProcSyncIndex, but uses the Id to find what to Sync.</li>
 </ul>
@@ -190,10 +215,10 @@
 <h4 id="fixed-6">Fixed</h4>
 <ul>
 <li>Crash on saving with more than 10 trinkets equipped</li>
-<li>Duplicating vanilla trinket companions 2</li>
+<li>Duplicating base game trinket companions 2</li>
 </ul>
 <h3 id="152">1.5.2</h3>
-<h4 id="added-5">Added</h4>
+<h4 id="added-6">Added</h4>
 <ul>
 <li>HitTAS for Hitscan/Projectile, apply a TAS at the target on hit.</li>
 <li>HitsDelay for Hitscan/Projectile, adds a delay between hits.</li>
@@ -201,9 +226,9 @@
 <h4 id="fixed-7">Fixed</h4>
 <ul>
 <li>Crash on saving with more than 10 trinkets equipped</li>
-<li>Duplicating vanilla trinket companions</li>
+<li>Duplicating base game trinket companions</li>
 </ul>
-<h4 id="changed-2">Changed</h4>
+<h4 id="changed-3">Changed</h4>
 <ul>
 <li>Hitscan ProcTAS now fires at the companion's position, instead of the target position, this is because HitTAS was added</li>
 </ul>
@@ -213,7 +238,7 @@
 <li>Crash on day ending</li>
 </ul>
 <h3 id="150">1.5.0</h3>
-<h4 id="added-6">Added</h4>
+<h4 id="added-7">Added</h4>
 <ul>
 <li>Interact now uses a keybind, configurable in GMCM</li>
 <li>Inventories of equipped trinkets can now be opened with a keybind, configurable in GMCM</li>
@@ -232,7 +257,7 @@
 <li>Allow Proc Always to respect Condition</li>
 </ul>
 <h3 id="150-beta2">1.5.0-beta.2</h3>
-<h4 id="added-7">Added</h4>
+<h4 id="added-8">Added</h4>
 <ul>
 <li>Make sure your trinkets get unequipped if you end the day with trinketSlots=0 for some reason, unfortunately won't catch case where the trinketSlots stat changed after DayEnding</li>
 <li>Change ProcSound to a model with these 2 fields
@@ -265,7 +290,7 @@
 <li>Draw for 36 slot trinket inventory</li>
 </ul>
 <h3 id="150-beta1">1.5.0-beta.1</h3>
-<h4 id="added-8">Added</h4>
+<h4 id="added-9">Added</h4>
 <ul>
 <li>New ability BroadcastAction, it's like action but it runs the action on multiplayer, useful with SetNpcInvisible and Host</li>
 <li>New Proc Interact which fires when player right clicks when overlapping with companion enough, as well as debug draw for bounding boxes.</li>
@@ -282,7 +307,7 @@
 </li>
 </ul>
 <h3 id="150-beta0">1.5.0-beta.0</h3>
-<h4 id="added-9">Added</h4>
+<h4 id="added-10">Added</h4>
 <ul>
 <li>Allow HarvestShakeable to target larger bushes (but not walnut bush), handle BushBloomMod integration</li>
 <li>New game state queries
@@ -335,7 +360,7 @@
 <li>Error with filtering for certain types of crops (ginger?).</li>
 </ul>
 <h3 id="144">1.4.4</h3>
-<h4 id="added-10">Added</h4>
+<h4 id="added-11">Added</h4>
 <ul>
 <li>Draw debug mode that shows the sprite index of the companion on screen. Toggle with command tt_draw_debug.</li>
 </ul>
@@ -344,7 +369,7 @@
 <li>Companions not appearing in volcano and farm buildings.</li>
 </ul>
 <h3 id="143">1.4.3</h3>
-<h4 id="added-11">Added</h4>
+<h4 id="added-12">Added</h4>
 <ul>
 <li>New HarvestShakeable ability to shake trees bushes and fruit trees.</li>
 <li>New Shakeable anchor target.</li>
@@ -361,7 +386,7 @@
 <li>Hopefully fix a crash after some events, very strange.</li>
 </ul>
 <h3 id="141">1.4.1</h3>
-<h4 id="added-12">Added</h4>
+<h4 id="added-13">Added</h4>
 <ul>
 <li>Add support for randomized speech bubbles.</li>
 <li>Add &quot;Swim&quot; anim clip key for when the player is swimming.</li>
@@ -371,7 +396,7 @@
 <li>Companions duplicating when farmhand is exiting an event.</li>
 </ul>
 <h3 id="140">1.4.0</h3>
-<h4 id="added-13">Added</h4>
+<h4 id="added-14">Added</h4>
 <ul>
 <li>Add support for randomized anim clips.</li>
 <li>Add speech bubble feature.</li>
@@ -383,7 +408,7 @@
 <li>AbilityProc clips not playing in multiplayer.</li>
 </ul>
 <h3 id="130">1.3.0</h3>
-<h4 id="added-14">Added</h4>
+<h4 id="added-15">Added</h4>
 <ul>
 <li>Additional HarvestTo field for Harvest type abilities to determine where the harvested item go (inventory, debris, none).</li>
 <li>New field Filter on Anchors and on Hitscan/Projectile ability. If set, the enemy types listed will not be targeted.</li>
@@ -395,10 +420,10 @@
 <h3 id="121">1.2.1</h3>
 <h4 id="fixed-17">Fixed</h4>
 <ul>
-<li>Prevent trinket tinker anvil output method from affecting non trinket tinker items.</li>
+<li>Prevent Trinket Tinker anvil output method from affecting non Trinket Tinker items.</li>
 </ul>
 <h3 id="120">1.2.0</h3>
-<h4 id="added-15">Added</h4>
+<h4 id="added-16">Added</h4>
 <ul>
 <li>New &quot;Homing&quot; argument on projectile to make projectile recheck target midflight.</li>
 </ul>
@@ -422,7 +447,7 @@
 <li>Add workaround for issue where <code>TrinketEffectClass</code> ends up being null.</li>
 </ul>
 <h3 id="100">1.0.0</h3>
-<h4 id="added-16">Added</h4>
+<h4 id="added-17">Added</h4>
 <ul>
 <li>Implement all the things.</li>
 </ul>

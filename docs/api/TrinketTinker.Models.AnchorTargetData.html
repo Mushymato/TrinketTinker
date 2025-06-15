@@ -89,7 +89,7 @@
 
 
   <h1 id="TrinketTinker_Models_AnchorTargetData" data-uid="TrinketTinker.Models.AnchorTargetData" class="text-break">
-Class AnchorTargetData  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L89"><i class="bi bi-code-slash"></i></a>
+Class AnchorTargetData  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L102"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -102,7 +102,7 @@ Class AnchorTargetData  <a class="header-action link-secondary" title="View sour
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AnchorTargetData</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class AnchorTargetData</code></pre>
   </div>
 
 
@@ -134,9 +134,6 @@ Class AnchorTargetData  <a class="header-action link-secondary" title="View sour
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
-    </div>
-    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
     </div>
     <div>
@@ -157,7 +154,7 @@ Class AnchorTargetData  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TrinketTinker_Models_AnchorTargetData_Filters" data-uid="TrinketTinker.Models.AnchorTargetData.Filters">
   Filters
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L129"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Additional filters to apply, specific behavior depends on the anchor mode.</p>
@@ -186,11 +183,43 @@ Class AnchorTargetData  <a class="header-action link-secondary" title="View sour
 
 
 
+  <a id="TrinketTinker_Models_AnchorTargetData_Id_" data-uid="TrinketTinker.Models.AnchorTargetData.Id*"></a>
+
+  <h3 id="TrinketTinker_Models_AnchorTargetData_Id" data-uid="TrinketTinker.Models.AnchorTargetData.Id">
+  Id
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Id for this anchor target, defaults to Mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Id { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Models_AnchorTargetData_Mode_" data-uid="TrinketTinker.Models.AnchorTargetData.Mode*"></a>
 
   <h3 id="TrinketTinker_Models_AnchorTargetData_Mode" data-uid="TrinketTinker.Models.AnchorTargetData.Mode">
   Mode
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L115"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Targeting mode, see <a class="xref" href="TrinketTinker.Models.AnchorTarget.html">AnchorTarget</a>.</p>
@@ -222,7 +251,7 @@ Class AnchorTargetData  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TrinketTinker_Models_AnchorTargetData_Range" data-uid="TrinketTinker.Models.AnchorTargetData.Range">
   Range
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L118"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Search range.</p>
@@ -254,7 +283,7 @@ Class AnchorTargetData  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TrinketTinker_Models_AnchorTargetData_RequiredAbilities" data-uid="TrinketTinker.Models.AnchorTargetData.RequiredAbilities">
   RequiredAbilities
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L137"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Enable this anchor only if the companion has matching ability type.</p>
@@ -286,7 +315,7 @@ Class AnchorTargetData  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TrinketTinker_Models_AnchorTargetData_StopRange" data-uid="TrinketTinker.Models.AnchorTargetData.StopRange">
   StopRange
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/MotionData.cs/#L121"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Stop moving once companion is this distance away.</p>

@@ -304,9 +304,6 @@ Class TinkerInventoryMenu  <a class="header-action link-secondary" title="View s
       <span class="xref">ItemGrabMenu.gameWindowSizeChanged(Rectangle, Rectangle)</span>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">ItemGrabMenu.receiveLeftClick(int, int, bool)</a>
-    </div>
-    <div>
       <span class="xref">ItemGrabMenu.FillOutStacks()</span>
     </div>
     <div>
@@ -622,8 +619,8 @@ Class TinkerInventoryMenu  <a class="header-action link-secondary" title="View s
 
   <a id="TrinketTinker_Extras_TinkerInventoryMenu__ctor_" data-uid="TrinketTinker.Extras.TinkerInventoryMenu.#ctor*"></a>
 
-  <h3 id="TrinketTinker_Extras_TinkerInventoryMenu__ctor_System_Int32_System_Collections_Generic_IList_StardewValley_Item__System_Action_System_Int32__System_Boolean_System_Boolean_StardewValley_Menus_InventoryMenu_highlightThisItem_StardewValley_Menus_ItemGrabMenu_behaviorOnItemSelect_System_String_StardewValley_Menus_ItemGrabMenu_behaviorOnItemSelect_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Int32_StardewValley_Item_System_Int32_System_Object_StardewValley_Menus_ItemExitBehavior_System_Boolean_" data-uid="TrinketTinker.Extras.TinkerInventoryMenu.#ctor(System.Int32,System.Collections.Generic.IList{StardewValley.Item},System.Action{System.Int32},System.Boolean,System.Boolean,StardewValley.Menus.InventoryMenu.highlightThisItem,StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect,System.String,StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32,StardewValley.Item,System.Int32,System.Object,StardewValley.Menus.ItemExitBehavior,System.Boolean)">
-  TinkerInventoryMenu(int, IList&lt;Item&gt;, Action&lt;int&gt;?, bool, bool, highlightThisItem, behaviorOnItemSelect, string, behaviorOnItemSelect?, bool, bool, bool, bool, bool, int, Item?, int, object?, ItemExitBehavior, bool)
+  <h3 id="TrinketTinker_Extras_TinkerInventoryMenu__ctor_System_Int32_System_Collections_Generic_IList_StardewValley_Item__System_Action_System_Int32__StardewValley_Menus_InventoryMenu_highlightThisItem_StardewValley_Menus_ItemGrabMenu_behaviorOnItemSelect_System_String_StardewValley_Menus_ItemGrabMenu_behaviorOnItemSelect_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Int32_StardewValley_Item_System_Int32_System_Object_StardewValley_Menus_ItemExitBehavior_System_Boolean_" data-uid="TrinketTinker.Extras.TinkerInventoryMenu.#ctor(System.Int32,System.Collections.Generic.IList{StardewValley.Item},System.Action{System.Int32},StardewValley.Menus.InventoryMenu.highlightThisItem,StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect,System.String,StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32,StardewValley.Item,System.Int32,System.Object,StardewValley.Menus.ItemExitBehavior,System.Boolean)">
+  TinkerInventoryMenu(int, IList&lt;Item&gt;, Action&lt;int&gt;?, highlightThisItem, behaviorOnItemSelect, string, behaviorOnItemSelect?, bool, bool, bool, bool, bool, bool, bool, int, Item?, int, object?, ItemExitBehavior, bool)
   <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Extras/GlobalInventory.cs/#L22"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -631,7 +628,7 @@ Class TinkerInventoryMenu  <a class="header-action link-secondary" title="View s
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TinkerInventoryMenu(int actualCapacity, IList&lt;Item&gt; inventory, Action&lt;int&gt;? pageMethod, bool reverseGrab, bool showReceivingMenu, InventoryMenu.highlightThisItem highlightFunction, ItemGrabMenu.behaviorOnItemSelect behaviorOnItemSelectFunction, string message, ItemGrabMenu.behaviorOnItemSelect? behaviorOnItemGrab = null, bool snapToBottom = false, bool canBeExitedWithKey = false, bool playRightClickSound = true, bool allowRightClick = true, bool showOrganizeButton = false, int source = 0, Item? sourceItem = null, int whichSpecialButton = -1, object? context = null, ItemExitBehavior heldItemExitBehavior = ItemExitBehavior.ReturnToPlayer, bool allowExitWithHeldItem = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public TinkerInventoryMenu(int actualCapacity, IList&lt;Item&gt; inventory, Action&lt;int&gt;? pageMethod, InventoryMenu.highlightThisItem highlightFunction, ItemGrabMenu.behaviorOnItemSelect behaviorOnItemSelectFunction, string message, ItemGrabMenu.behaviorOnItemSelect? behaviorOnItemGrab = null, bool reverseGrab = false, bool showReceivingMenu = true, bool snapToBottom = false, bool canBeExitedWithKey = true, bool playRightClickSound = true, bool allowRightClick = true, bool showOrganizeButton = true, int source = 0, Item? sourceItem = null, int whichSpecialButton = -1, object? context = null, ItemExitBehavior heldItemExitBehavior = ItemExitBehavior.ReturnToPlayer, bool allowExitWithHeldItem = false)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -642,10 +639,6 @@ Class TinkerInventoryMenu  <a class="header-action link-secondary" title="View s
     <dd></dd>
     <dt><code>pageMethod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
     <dd></dd>
-    <dt><code>reverseGrab</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-    <dt><code>showReceivingMenu</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
     <dt><code>highlightFunction</code> <span class="xref">InventoryMenu</span>.<span class="xref">highlightThisItem</span></dt>
     <dd></dd>
     <dt><code>behaviorOnItemSelectFunction</code> <span class="xref">ItemGrabMenu</span>.<span class="xref">behaviorOnItemSelect</span></dt>
@@ -653,6 +646,10 @@ Class TinkerInventoryMenu  <a class="header-action link-secondary" title="View s
     <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
     <dt><code>behaviorOnItemGrab</code> <span class="xref">ItemGrabMenu</span>.<span class="xref">behaviorOnItemSelect</span></dt>
+    <dd></dd>
+    <dt><code>reverseGrab</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>showReceivingMenu</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
     <dt><code>snapToBottom</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
@@ -731,7 +728,7 @@ Class TinkerInventoryMenu  <a class="header-action link-secondary" title="View s
 
   <h3 id="TrinketTinker_Extras_TinkerInventoryMenu_draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_" data-uid="TrinketTinker.Extras.TinkerInventoryMenu.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
   draw(SpriteBatch)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Extras/GlobalInventory.cs/#L156"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Extras/GlobalInventory.cs/#L151"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Render the UI, draw the trinket item that spawned this menu</p>
@@ -746,6 +743,45 @@ Class TinkerInventoryMenu  <a class="header-action link-secondary" title="View s
   <dl class="parameters">
     <dt><code>b</code> <span class="xref">SpriteBatch</span></dt>
     <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Extras_TinkerInventoryMenu_receiveLeftClick_" data-uid="TrinketTinker.Extras.TinkerInventoryMenu.receiveLeftClick*"></a>
+
+  <h3 id="TrinketTinker_Extras_TinkerInventoryMenu_receiveLeftClick_System_Int32_System_Int32_System_Boolean_" data-uid="TrinketTinker.Extras.TinkerInventoryMenu.receiveLeftClick(System.Int32,System.Int32,System.Boolean)">
+  receiveLeftClick(int, int, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Extras/GlobalInventory.cs/#L204"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Handle a user left-click in the UI (including a 'click' through controller selection).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void receiveLeftClick(int x, int y, bool playSound = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The pixel X coordinate that was clicked.</p>
+</dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The pixel Y coordinate that was clicked.</p>
+</dd>
+    <dt><code>playSound</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Whether to play sounds in response to the click, if applicable.</p>
+</dd>
   </dl>
 
 

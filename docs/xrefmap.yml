@@ -1,6 +1,192 @@
 ### YamlMime:XRefMap
 sorted: true
 references:
+- uid: Mushymato.ExtendedTAS
+  name: Mushymato.ExtendedTAS
+  href: api/Mushymato.ExtendedTAS.html
+  commentId: N:Mushymato.ExtendedTAS
+  fullName: Mushymato.ExtendedTAS
+  nameWithType: Mushymato.ExtendedTAS
+- uid: Mushymato.ExtendedTAS.TASExt
+  name: TASExt
+  href: api/Mushymato.ExtendedTAS.TASExt.html
+  commentId: T:Mushymato.ExtendedTAS.TASExt
+  fullName: Mushymato.ExtendedTAS.TASExt
+  nameWithType: TASExt
+- uid: Mushymato.ExtendedTAS.TASExt.Acceleration
+  name: Acceleration
+  href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_Acceleration
+  commentId: F:Mushymato.ExtendedTAS.TASExt.Acceleration
+  fullName: Mushymato.ExtendedTAS.TASExt.Acceleration
+  nameWithType: TASExt.Acceleration
+- uid: Mushymato.ExtendedTAS.TASExt.AccelerationChange
+  name: AccelerationChange
+  href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_AccelerationChange
+  commentId: F:Mushymato.ExtendedTAS.TASExt.AccelerationChange
+  fullName: Mushymato.ExtendedTAS.TASExt.AccelerationChange
+  nameWithType: TASExt.AccelerationChange
+- uid: Mushymato.ExtendedTAS.TASExt.Alpha
+  name: Alpha
+  href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_Alpha
+  commentId: F:Mushymato.ExtendedTAS.TASExt.Alpha
+  fullName: Mushymato.ExtendedTAS.TASExt.Alpha
+  nameWithType: TASExt.Alpha
+- uid: Mushymato.ExtendedTAS.TASExt.ApplyEndActionsOnForceRemove
+  name: ApplyEndActionsOnForceRemove
+  href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_ApplyEndActionsOnForceRemove
+  commentId: F:Mushymato.ExtendedTAS.TASExt.ApplyEndActionsOnForceRemove
+  fullName: Mushymato.ExtendedTAS.TASExt.ApplyEndActionsOnForceRemove
+  nameWithType: TASExt.ApplyEndActionsOnForceRemove
+- uid: Mushymato.ExtendedTAS.TASExt.ConditionInterval
+  name: ConditionInterval
+  href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_ConditionInterval
+  commentId: F:Mushymato.ExtendedTAS.TASExt.ConditionInterval
+  fullName: Mushymato.ExtendedTAS.TASExt.ConditionInterval
+  nameWithType: TASExt.ConditionInterval
+- uid: Mushymato.ExtendedTAS.TASExt.EndActions
+  name: EndActions
+  href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_EndActions
+  commentId: F:Mushymato.ExtendedTAS.TASExt.EndActions
+  fullName: Mushymato.ExtendedTAS.TASExt.EndActions
+  nameWithType: TASExt.EndActions
+- uid: Mushymato.ExtendedTAS.TASExt.LayerDepth
+  name: LayerDepth
+  href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_LayerDepth
+  commentId: F:Mushymato.ExtendedTAS.TASExt.LayerDepth
+  fullName: Mushymato.ExtendedTAS.TASExt.LayerDepth
+  nameWithType: TASExt.LayerDepth
+- uid: Mushymato.ExtendedTAS.TASExt.Motion
+  name: Motion
+  href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_Motion
+  commentId: F:Mushymato.ExtendedTAS.TASExt.Motion
+  fullName: Mushymato.ExtendedTAS.TASExt.Motion
+  nameWithType: TASExt.Motion
+- uid: Mushymato.ExtendedTAS.TASExt.PingPong
+  name: PingPong
+  href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_PingPong
+  commentId: F:Mushymato.ExtendedTAS.TASExt.PingPong
+  fullName: Mushymato.ExtendedTAS.TASExt.PingPong
+  nameWithType: TASExt.PingPong
+- uid: Mushymato.ExtendedTAS.TASExt.RandMax
+  name: RandMax
+  href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_RandMax
+  commentId: F:Mushymato.ExtendedTAS.TASExt.RandMax
+  fullName: Mushymato.ExtendedTAS.TASExt.RandMax
+  nameWithType: TASExt.RandMax
+- uid: Mushymato.ExtendedTAS.TASExt.RandMin
+  name: RandMin
+  href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_RandMin
+  commentId: F:Mushymato.ExtendedTAS.TASExt.RandMin
+  fullName: Mushymato.ExtendedTAS.TASExt.RandMin
+  nameWithType: TASExt.RandMin
+- uid: Mushymato.ExtendedTAS.TASExt.ScaleChangeChange
+  name: ScaleChangeChange
+  href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_ScaleChangeChange
+  commentId: F:Mushymato.ExtendedTAS.TASExt.ScaleChangeChange
+  fullName: Mushymato.ExtendedTAS.TASExt.ScaleChangeChange
+  nameWithType: TASExt.ScaleChangeChange
+- uid: Mushymato.ExtendedTAS.TASExt.SpawnDelay
+  name: SpawnDelay
+  href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_SpawnDelay
+  commentId: F:Mushymato.ExtendedTAS.TASExt.SpawnDelay
+  fullName: Mushymato.ExtendedTAS.TASExt.SpawnDelay
+  nameWithType: TASExt.SpawnDelay
+- uid: Mushymato.ExtendedTAS.TASExt.SpawnInterval
+  name: SpawnInterval
+  href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_SpawnInterval
+  commentId: F:Mushymato.ExtendedTAS.TASExt.SpawnInterval
+  fullName: Mushymato.ExtendedTAS.TASExt.SpawnInterval
+  nameWithType: TASExt.SpawnInterval
+- uid: Mushymato.ExtendedTAS.TASExtRand
+  name: TASExtRand
+  href: api/Mushymato.ExtendedTAS.TASExtRand.html
+  commentId: T:Mushymato.ExtendedTAS.TASExtRand
+  fullName: Mushymato.ExtendedTAS.TASExtRand
+  nameWithType: TASExtRand
+- uid: Mushymato.ExtendedTAS.TASExtRand.Acceleration
+  name: Acceleration
+  href: api/Mushymato.ExtendedTAS.TASExtRand.html#Mushymato_ExtendedTAS_TASExtRand_Acceleration
+  commentId: F:Mushymato.ExtendedTAS.TASExtRand.Acceleration
+  fullName: Mushymato.ExtendedTAS.TASExtRand.Acceleration
+  nameWithType: TASExtRand.Acceleration
+- uid: Mushymato.ExtendedTAS.TASExtRand.AccelerationChange
+  name: AccelerationChange
+  href: api/Mushymato.ExtendedTAS.TASExtRand.html#Mushymato_ExtendedTAS_TASExtRand_AccelerationChange
+  commentId: F:Mushymato.ExtendedTAS.TASExtRand.AccelerationChange
+  fullName: Mushymato.ExtendedTAS.TASExtRand.AccelerationChange
+  nameWithType: TASExtRand.AccelerationChange
+- uid: Mushymato.ExtendedTAS.TASExtRand.Alpha
+  name: Alpha
+  href: api/Mushymato.ExtendedTAS.TASExtRand.html#Mushymato_ExtendedTAS_TASExtRand_Alpha
+  commentId: F:Mushymato.ExtendedTAS.TASExtRand.Alpha
+  fullName: Mushymato.ExtendedTAS.TASExtRand.Alpha
+  nameWithType: TASExtRand.Alpha
+- uid: Mushymato.ExtendedTAS.TASExtRand.AlphaFade
+  name: AlphaFade
+  href: api/Mushymato.ExtendedTAS.TASExtRand.html#Mushymato_ExtendedTAS_TASExtRand_AlphaFade
+  commentId: F:Mushymato.ExtendedTAS.TASExtRand.AlphaFade
+  fullName: Mushymato.ExtendedTAS.TASExtRand.AlphaFade
+  nameWithType: TASExtRand.AlphaFade
+- uid: Mushymato.ExtendedTAS.TASExtRand.Motion
+  name: Motion
+  href: api/Mushymato.ExtendedTAS.TASExtRand.html#Mushymato_ExtendedTAS_TASExtRand_Motion
+  commentId: F:Mushymato.ExtendedTAS.TASExtRand.Motion
+  fullName: Mushymato.ExtendedTAS.TASExtRand.Motion
+  nameWithType: TASExtRand.Motion
+- uid: Mushymato.ExtendedTAS.TASExtRand.PositionOffset
+  name: PositionOffset
+  href: api/Mushymato.ExtendedTAS.TASExtRand.html#Mushymato_ExtendedTAS_TASExtRand_PositionOffset
+  commentId: F:Mushymato.ExtendedTAS.TASExtRand.PositionOffset
+  fullName: Mushymato.ExtendedTAS.TASExtRand.PositionOffset
+  nameWithType: TASExtRand.PositionOffset
+- uid: Mushymato.ExtendedTAS.TASExtRand.Rotation
+  name: Rotation
+  href: api/Mushymato.ExtendedTAS.TASExtRand.html#Mushymato_ExtendedTAS_TASExtRand_Rotation
+  commentId: F:Mushymato.ExtendedTAS.TASExtRand.Rotation
+  fullName: Mushymato.ExtendedTAS.TASExtRand.Rotation
+  nameWithType: TASExtRand.Rotation
+- uid: Mushymato.ExtendedTAS.TASExtRand.RotationChange
+  name: RotationChange
+  href: api/Mushymato.ExtendedTAS.TASExtRand.html#Mushymato_ExtendedTAS_TASExtRand_RotationChange
+  commentId: F:Mushymato.ExtendedTAS.TASExtRand.RotationChange
+  fullName: Mushymato.ExtendedTAS.TASExtRand.RotationChange
+  nameWithType: TASExtRand.RotationChange
+- uid: Mushymato.ExtendedTAS.TASExtRand.Scale
+  name: Scale
+  href: api/Mushymato.ExtendedTAS.TASExtRand.html#Mushymato_ExtendedTAS_TASExtRand_Scale
+  commentId: F:Mushymato.ExtendedTAS.TASExtRand.Scale
+  fullName: Mushymato.ExtendedTAS.TASExtRand.Scale
+  nameWithType: TASExtRand.Scale
+- uid: Mushymato.ExtendedTAS.TASExtRand.ScaleChange
+  name: ScaleChange
+  href: api/Mushymato.ExtendedTAS.TASExtRand.html#Mushymato_ExtendedTAS_TASExtRand_ScaleChange
+  commentId: F:Mushymato.ExtendedTAS.TASExtRand.ScaleChange
+  fullName: Mushymato.ExtendedTAS.TASExtRand.ScaleChange
+  nameWithType: TASExtRand.ScaleChange
+- uid: Mushymato.ExtendedTAS.TASExtRand.ScaleChangeChange
+  name: ScaleChangeChange
+  href: api/Mushymato.ExtendedTAS.TASExtRand.html#Mushymato_ExtendedTAS_TASExtRand_ScaleChangeChange
+  commentId: F:Mushymato.ExtendedTAS.TASExtRand.ScaleChangeChange
+  fullName: Mushymato.ExtendedTAS.TASExtRand.ScaleChangeChange
+  nameWithType: TASExtRand.ScaleChangeChange
+- uid: Mushymato.ExtendedTAS.TASExtRand.SortOffset
+  name: SortOffset
+  href: api/Mushymato.ExtendedTAS.TASExtRand.html#Mushymato_ExtendedTAS_TASExtRand_SortOffset
+  commentId: F:Mushymato.ExtendedTAS.TASExtRand.SortOffset
+  fullName: Mushymato.ExtendedTAS.TASExtRand.SortOffset
+  nameWithType: TASExtRand.SortOffset
+- uid: Mushymato.ExtendedTAS.TASExtRand.SpawnDelay
+  name: SpawnDelay
+  href: api/Mushymato.ExtendedTAS.TASExtRand.html#Mushymato_ExtendedTAS_TASExtRand_SpawnDelay
+  commentId: F:Mushymato.ExtendedTAS.TASExtRand.SpawnDelay
+  fullName: Mushymato.ExtendedTAS.TASExtRand.SpawnDelay
+  nameWithType: TASExtRand.SpawnDelay
+- uid: Mushymato.ExtendedTAS.TASExtRand.SpawnInterval
+  name: SpawnInterval
+  href: api/Mushymato.ExtendedTAS.TASExtRand.html#Mushymato_ExtendedTAS_TASExtRand_SpawnInterval
+  commentId: F:Mushymato.ExtendedTAS.TASExtRand.SpawnInterval
+  fullName: Mushymato.ExtendedTAS.TASExtRand.SpawnInterval
+  nameWithType: TASExtRand.SpawnInterval
 - uid: TrinketTinker.Companions
   name: TrinketTinker.Companions
   href: api/TrinketTinker.Companions.html
@@ -13,6 +199,57 @@ references:
   commentId: N:TrinketTinker.Companions.Anim
   fullName: TrinketTinker.Companions.Anim
   nameWithType: TrinketTinker.Companions.Anim
+- uid: TrinketTinker.Companions.Anim.BreatherPositionAndRectangle
+  name: BreatherPositionAndRectangle
+  href: api/TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.html
+  commentId: T:TrinketTinker.Companions.Anim.BreatherPositionAndRectangle
+  fullName: TrinketTinker.Companions.Anim.BreatherPositionAndRectangle
+  nameWithType: BreatherPositionAndRectangle
+- uid: TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.#ctor(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Rectangle)
+  name: BreatherPositionAndRectangle(Vector2, Rectangle)
+  href: api/TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.html#TrinketTinker_Companions_Anim_BreatherPositionAndRectangle__ctor_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Rectangle_
+  commentId: M:TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.#ctor(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Rectangle)
+  name.vb: New(Vector2, Rectangle)
+  fullName: TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.BreatherPositionAndRectangle(Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Rectangle)
+  fullName.vb: TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.New(Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Rectangle)
+  nameWithType: BreatherPositionAndRectangle.BreatherPositionAndRectangle(Vector2, Rectangle)
+  nameWithType.vb: BreatherPositionAndRectangle.New(Vector2, Rectangle)
+- uid: TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.#ctor*
+  name: BreatherPositionAndRectangle
+  href: api/TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.html#TrinketTinker_Companions_Anim_BreatherPositionAndRectangle__ctor_
+  commentId: Overload:TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.BreatherPositionAndRectangle
+  fullName.vb: TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.New
+  nameWithType: BreatherPositionAndRectangle.BreatherPositionAndRectangle
+  nameWithType.vb: BreatherPositionAndRectangle.New
+- uid: TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.Pos
+  name: Pos
+  href: api/TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.html#TrinketTinker_Companions_Anim_BreatherPositionAndRectangle_Pos
+  commentId: P:TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.Pos
+  fullName: TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.Pos
+  nameWithType: BreatherPositionAndRectangle.Pos
+- uid: TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.Pos*
+  name: Pos
+  href: api/TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.html#TrinketTinker_Companions_Anim_BreatherPositionAndRectangle_Pos_
+  commentId: Overload:TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.Pos
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.Pos
+  nameWithType: BreatherPositionAndRectangle.Pos
+- uid: TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.Rect
+  name: Rect
+  href: api/TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.html#TrinketTinker_Companions_Anim_BreatherPositionAndRectangle_Rect
+  commentId: P:TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.Rect
+  fullName: TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.Rect
+  nameWithType: BreatherPositionAndRectangle.Rect
+- uid: TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.Rect*
+  name: Rect
+  href: api/TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.html#TrinketTinker_Companions_Anim_BreatherPositionAndRectangle_Rect_
+  commentId: Overload:TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.Rect
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Anim.BreatherPositionAndRectangle.Rect
+  nameWithType: BreatherPositionAndRectangle.Rect
 - uid: TrinketTinker.Companions.Anim.DrawSnapshot
   name: DrawSnapshot
   href: api/TrinketTinker.Companions.Anim.DrawSnapshot.html
@@ -876,6 +1113,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Companions.Motions.IMotion.Cleanup
   nameWithType: IMotion.Cleanup
+- uid: TrinketTinker.Companions.Motions.IMotion.CompanionAnimSprite
+  name: CompanionAnimSprite
+  href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_CompanionAnimSprite
+  commentId: P:TrinketTinker.Companions.Motions.IMotion.CompanionAnimSprite
+  fullName: TrinketTinker.Companions.Motions.IMotion.CompanionAnimSprite
+  nameWithType: IMotion.CompanionAnimSprite
+- uid: TrinketTinker.Companions.Motions.IMotion.CompanionAnimSprite*
+  name: CompanionAnimSprite
+  href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_CompanionAnimSprite_
+  commentId: Overload:TrinketTinker.Companions.Motions.IMotion.CompanionAnimSprite
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.IMotion.CompanionAnimSprite
+  nameWithType: IMotion.CompanionAnimSprite
 - uid: TrinketTinker.Companions.Motions.IMotion.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
   name: Draw(SpriteBatch)
   href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_
@@ -889,6 +1139,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Companions.Motions.IMotion.Draw
   nameWithType: IMotion.Draw
+- uid: TrinketTinker.Companions.Motions.IMotion.GetDrawLayer
+  name: GetDrawLayer()
+  href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_GetDrawLayer
+  commentId: M:TrinketTinker.Companions.Motions.IMotion.GetDrawLayer
+  fullName: TrinketTinker.Companions.Motions.IMotion.GetDrawLayer()
+  nameWithType: IMotion.GetDrawLayer()
+- uid: TrinketTinker.Companions.Motions.IMotion.GetDrawLayer*
+  name: GetDrawLayer
+  href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_GetDrawLayer_
+  commentId: Overload:TrinketTinker.Companions.Motions.IMotion.GetDrawLayer
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.IMotion.GetDrawLayer
+  nameWithType: IMotion.GetDrawLayer
 - uid: TrinketTinker.Companions.Motions.IMotion.GetOffset
   name: GetOffset()
   href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_GetOffset
@@ -983,15 +1246,15 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Companions.Motions.IMotion.SetActiveAnchors
   nameWithType: IMotion.SetActiveAnchors
-- uid: TrinketTinker.Companions.Motions.IMotion.SetAltVariant(System.String)
-  name: SetAltVariant(string?)
-  href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_SetAltVariant_System_String_
-  commentId: M:TrinketTinker.Companions.Motions.IMotion.SetAltVariant(System.String)
-  name.vb: SetAltVariant(String)
-  fullName: TrinketTinker.Companions.Motions.IMotion.SetAltVariant(string?)
-  fullName.vb: TrinketTinker.Companions.Motions.IMotion.SetAltVariant(String)
-  nameWithType: IMotion.SetAltVariant(string?)
-  nameWithType.vb: IMotion.SetAltVariant(String)
+- uid: TrinketTinker.Companions.Motions.IMotion.SetAltVariant(System.String,StardewValley.Objects.Trinkets.Trinket)
+  name: SetAltVariant(string?, Trinket?)
+  href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_SetAltVariant_System_String_StardewValley_Objects_Trinkets_Trinket_
+  commentId: M:TrinketTinker.Companions.Motions.IMotion.SetAltVariant(System.String,StardewValley.Objects.Trinkets.Trinket)
+  name.vb: SetAltVariant(String, Trinket)
+  fullName: TrinketTinker.Companions.Motions.IMotion.SetAltVariant(string?, StardewValley.Objects.Trinkets.Trinket?)
+  fullName.vb: TrinketTinker.Companions.Motions.IMotion.SetAltVariant(String, StardewValley.Objects.Trinkets.Trinket)
+  nameWithType: IMotion.SetAltVariant(string?, Trinket?)
+  nameWithType.vb: IMotion.SetAltVariant(String, Trinket)
 - uid: TrinketTinker.Companions.Motions.IMotion.SetAltVariant*
   name: SetAltVariant
   href: api/TrinketTinker.Companions.Motions.IMotion.html#TrinketTinker_Companions_Motions_IMotion_SetAltVariant_
@@ -1245,6 +1508,23 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).Cleanup
   nameWithType: Motion<TArgs>.Cleanup
   nameWithType.vb: Motion(Of TArgs).Cleanup
+- uid: TrinketTinker.Companions.Motions.Motion`1.CompanionAnimSprite
+  name: CompanionAnimSprite
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_CompanionAnimSprite
+  commentId: P:TrinketTinker.Companions.Motions.Motion`1.CompanionAnimSprite
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.CompanionAnimSprite
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).CompanionAnimSprite
+  nameWithType: Motion<TArgs>.CompanionAnimSprite
+  nameWithType.vb: Motion(Of TArgs).CompanionAnimSprite
+- uid: TrinketTinker.Companions.Motions.Motion`1.CompanionAnimSprite*
+  name: CompanionAnimSprite
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_CompanionAnimSprite_
+  commentId: Overload:TrinketTinker.Companions.Motions.Motion`1.CompanionAnimSprite
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.CompanionAnimSprite
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).CompanionAnimSprite
+  nameWithType: Motion<TArgs>.CompanionAnimSprite
+  nameWithType.vb: Motion(Of TArgs).CompanionAnimSprite
 - uid: TrinketTinker.Companions.Motions.Motion`1.DirectionFrameStart
   name: DirectionFrameStart()
   href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_DirectionFrameStart
@@ -1296,6 +1576,23 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).DrawCompanion
   nameWithType: Motion<TArgs>.DrawCompanion
   nameWithType.vb: Motion(Of TArgs).DrawCompanion
+- uid: TrinketTinker.Companions.Motions.Motion`1.DrawCompanionBreathing(Microsoft.Xna.Framework.Graphics.SpriteBatch,TrinketTinker.Companions.Anim.DrawSnapshot)
+  name: DrawCompanionBreathing(SpriteBatch, DrawSnapshot)
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_DrawCompanionBreathing_Microsoft_Xna_Framework_Graphics_SpriteBatch_TrinketTinker_Companions_Anim_DrawSnapshot_
+  commentId: M:TrinketTinker.Companions.Motions.Motion`1.DrawCompanionBreathing(Microsoft.Xna.Framework.Graphics.SpriteBatch,TrinketTinker.Companions.Anim.DrawSnapshot)
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.DrawCompanionBreathing(Microsoft.Xna.Framework.Graphics.SpriteBatch, TrinketTinker.Companions.Anim.DrawSnapshot)
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).DrawCompanionBreathing(Microsoft.Xna.Framework.Graphics.SpriteBatch, TrinketTinker.Companions.Anim.DrawSnapshot)
+  nameWithType: Motion<TArgs>.DrawCompanionBreathing(SpriteBatch, DrawSnapshot)
+  nameWithType.vb: Motion(Of TArgs).DrawCompanionBreathing(SpriteBatch, DrawSnapshot)
+- uid: TrinketTinker.Companions.Motions.Motion`1.DrawCompanionBreathing*
+  name: DrawCompanionBreathing
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_DrawCompanionBreathing_
+  commentId: Overload:TrinketTinker.Companions.Motions.Motion`1.DrawCompanionBreathing
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.DrawCompanionBreathing
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).DrawCompanionBreathing
+  nameWithType: Motion<TArgs>.DrawCompanionBreathing
+  nameWithType.vb: Motion(Of TArgs).DrawCompanionBreathing
 - uid: TrinketTinker.Companions.Motions.Motion`1.DrawShadow(Microsoft.Xna.Framework.Graphics.SpriteBatch,TrinketTinker.Companions.Anim.DrawSnapshot)
   name: DrawShadow(SpriteBatch, DrawSnapshot)
   href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_DrawShadow_Microsoft_Xna_Framework_Graphics_SpriteBatch_TrinketTinker_Companions_Anim_DrawSnapshot_
@@ -1331,6 +1628,23 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).EnqueueRepeatDraws
   nameWithType: Motion<TArgs>.EnqueueRepeatDraws
   nameWithType.vb: Motion(Of TArgs).EnqueueRepeatDraws
+- uid: TrinketTinker.Companions.Motions.Motion`1.GetDrawLayer
+  name: GetDrawLayer()
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_GetDrawLayer
+  commentId: M:TrinketTinker.Companions.Motions.Motion`1.GetDrawLayer
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.GetDrawLayer()
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).GetDrawLayer()
+  nameWithType: Motion<TArgs>.GetDrawLayer()
+  nameWithType.vb: Motion(Of TArgs).GetDrawLayer()
+- uid: TrinketTinker.Companions.Motions.Motion`1.GetDrawLayer*
+  name: GetDrawLayer
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_GetDrawLayer_
+  commentId: Overload:TrinketTinker.Companions.Motions.Motion`1.GetDrawLayer
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.GetDrawLayer
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).GetDrawLayer
+  nameWithType: Motion<TArgs>.GetDrawLayer
+  nameWithType.vb: Motion(Of TArgs).GetDrawLayer
 - uid: TrinketTinker.Companions.Motions.Motion`1.GetOffset
   name: GetOffset()
   href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_GetOffset
@@ -1561,15 +1875,15 @@ references:
   fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).SetActiveAnchors
   nameWithType: Motion<TArgs>.SetActiveAnchors
   nameWithType.vb: Motion(Of TArgs).SetActiveAnchors
-- uid: TrinketTinker.Companions.Motions.Motion`1.SetAltVariant(System.String)
-  name: SetAltVariant(string?)
-  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetAltVariant_System_String_
-  commentId: M:TrinketTinker.Companions.Motions.Motion`1.SetAltVariant(System.String)
-  name.vb: SetAltVariant(String)
-  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.SetAltVariant(string?)
-  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).SetAltVariant(String)
-  nameWithType: Motion<TArgs>.SetAltVariant(string?)
-  nameWithType.vb: Motion(Of TArgs).SetAltVariant(String)
+- uid: TrinketTinker.Companions.Motions.Motion`1.SetAltVariant(System.String,StardewValley.Objects.Trinkets.Trinket)
+  name: SetAltVariant(string?, Trinket?)
+  href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetAltVariant_System_String_StardewValley_Objects_Trinkets_Trinket_
+  commentId: M:TrinketTinker.Companions.Motions.Motion`1.SetAltVariant(System.String,StardewValley.Objects.Trinkets.Trinket)
+  name.vb: SetAltVariant(String, Trinket)
+  fullName: TrinketTinker.Companions.Motions.Motion<TArgs>.SetAltVariant(string?, StardewValley.Objects.Trinkets.Trinket?)
+  fullName.vb: TrinketTinker.Companions.Motions.Motion(Of TArgs).SetAltVariant(String, StardewValley.Objects.Trinkets.Trinket)
+  nameWithType: Motion<TArgs>.SetAltVariant(string?, Trinket?)
+  nameWithType.vb: Motion(Of TArgs).SetAltVariant(String, Trinket)
 - uid: TrinketTinker.Companions.Motions.Motion`1.SetAltVariant*
   name: SetAltVariant
   href: api/TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetAltVariant_
@@ -2055,6 +2369,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Companions.Motions.SerpentMotion.DrawCompanion
   nameWithType: SerpentMotion.DrawCompanion
+- uid: TrinketTinker.Companions.Motions.SerpentMotion.DrawCompanionBreathing(Microsoft.Xna.Framework.Graphics.SpriteBatch,TrinketTinker.Companions.Anim.DrawSnapshot)
+  name: DrawCompanionBreathing(SpriteBatch, DrawSnapshot)
+  href: api/TrinketTinker.Companions.Motions.SerpentMotion.html#TrinketTinker_Companions_Motions_SerpentMotion_DrawCompanionBreathing_Microsoft_Xna_Framework_Graphics_SpriteBatch_TrinketTinker_Companions_Anim_DrawSnapshot_
+  commentId: M:TrinketTinker.Companions.Motions.SerpentMotion.DrawCompanionBreathing(Microsoft.Xna.Framework.Graphics.SpriteBatch,TrinketTinker.Companions.Anim.DrawSnapshot)
+  fullName: TrinketTinker.Companions.Motions.SerpentMotion.DrawCompanionBreathing(Microsoft.Xna.Framework.Graphics.SpriteBatch, TrinketTinker.Companions.Anim.DrawSnapshot)
+  nameWithType: SerpentMotion.DrawCompanionBreathing(SpriteBatch, DrawSnapshot)
+- uid: TrinketTinker.Companions.Motions.SerpentMotion.DrawCompanionBreathing*
+  name: DrawCompanionBreathing
+  href: api/TrinketTinker.Companions.Motions.SerpentMotion.html#TrinketTinker_Companions_Motions_SerpentMotion_DrawCompanionBreathing_
+  commentId: Overload:TrinketTinker.Companions.Motions.SerpentMotion.DrawCompanionBreathing
+  isSpec: "True"
+  fullName: TrinketTinker.Companions.Motions.SerpentMotion.DrawCompanionBreathing
+  nameWithType: SerpentMotion.DrawCompanionBreathing
 - uid: TrinketTinker.Companions.Motions.SerpentMotion.DrawShadow(Microsoft.Xna.Framework.Graphics.SpriteBatch,TrinketTinker.Companions.Anim.DrawSnapshot)
   name: DrawShadow(SpriteBatch, DrawSnapshot)
   href: api/TrinketTinker.Companions.Motions.SerpentMotion.html#TrinketTinker_Companions_Motions_SerpentMotion_DrawShadow_Microsoft_Xna_Framework_Graphics_SpriteBatch_TrinketTinker_Companions_Anim_DrawSnapshot_
@@ -2134,15 +2461,15 @@ references:
   fullName.vb: TrinketTinker.Companions.TrinketTinkerCompanion.New()
   nameWithType: TrinketTinkerCompanion.TrinketTinkerCompanion()
   nameWithType.vb: TrinketTinkerCompanion.New()
-- uid: TrinketTinker.Companions.TrinketTinkerCompanion.#ctor(System.String,System.Int32)
-  name: TrinketTinkerCompanion(string, int)
-  href: api/TrinketTinker.Companions.TrinketTinkerCompanion.html#TrinketTinker_Companions_TrinketTinkerCompanion__ctor_System_String_System_Int32_
-  commentId: M:TrinketTinker.Companions.TrinketTinkerCompanion.#ctor(System.String,System.Int32)
-  name.vb: New(String, Integer)
-  fullName: TrinketTinker.Companions.TrinketTinkerCompanion.TrinketTinkerCompanion(string, int)
-  fullName.vb: TrinketTinker.Companions.TrinketTinkerCompanion.New(String, Integer)
-  nameWithType: TrinketTinkerCompanion.TrinketTinkerCompanion(string, int)
-  nameWithType.vb: TrinketTinkerCompanion.New(String, Integer)
+- uid: TrinketTinker.Companions.TrinketTinkerCompanion.#ctor(StardewValley.Objects.Trinkets.Trinket,System.Int32)
+  name: TrinketTinkerCompanion(Trinket, int)
+  href: api/TrinketTinker.Companions.TrinketTinkerCompanion.html#TrinketTinker_Companions_TrinketTinkerCompanion__ctor_StardewValley_Objects_Trinkets_Trinket_System_Int32_
+  commentId: M:TrinketTinker.Companions.TrinketTinkerCompanion.#ctor(StardewValley.Objects.Trinkets.Trinket,System.Int32)
+  name.vb: New(Trinket, Integer)
+  fullName: TrinketTinker.Companions.TrinketTinkerCompanion.TrinketTinkerCompanion(StardewValley.Objects.Trinkets.Trinket, int)
+  fullName.vb: TrinketTinker.Companions.TrinketTinkerCompanion.New(StardewValley.Objects.Trinkets.Trinket, Integer)
+  nameWithType: TrinketTinkerCompanion.TrinketTinkerCompanion(Trinket, int)
+  nameWithType.vb: TrinketTinkerCompanion.New(Trinket, Integer)
 - uid: TrinketTinker.Companions.TrinketTinkerCompanion.#ctor*
   name: TrinketTinkerCompanion
   href: api/TrinketTinker.Companions.TrinketTinkerCompanion.html#TrinketTinker_Companions_TrinketTinkerCompanion__ctor_
@@ -3841,6 +4168,44 @@ references:
   fullName.vb: TrinketTinker.Effects.Abilities.NopAbility.New
   nameWithType: NopAbility.NopAbility
   nameWithType.vb: NopAbility.New
+- uid: TrinketTinker.Effects.Abilities.PetFarmAnimalAbility
+  name: PetFarmAnimalAbility
+  href: api/TrinketTinker.Effects.Abilities.PetFarmAnimalAbility.html
+  commentId: T:TrinketTinker.Effects.Abilities.PetFarmAnimalAbility
+  fullName: TrinketTinker.Effects.Abilities.PetFarmAnimalAbility
+  nameWithType: PetFarmAnimalAbility
+- uid: TrinketTinker.Effects.Abilities.PetFarmAnimalAbility.#ctor(TrinketTinker.Effects.TrinketTinkerEffect,TrinketTinker.Models.AbilityData,System.Int32)
+  name: PetFarmAnimalAbility(TrinketTinkerEffect, AbilityData, int)
+  href: api/TrinketTinker.Effects.Abilities.PetFarmAnimalAbility.html#TrinketTinker_Effects_Abilities_PetFarmAnimalAbility__ctor_TrinketTinker_Effects_TrinketTinkerEffect_TrinketTinker_Models_AbilityData_System_Int32_
+  commentId: M:TrinketTinker.Effects.Abilities.PetFarmAnimalAbility.#ctor(TrinketTinker.Effects.TrinketTinkerEffect,TrinketTinker.Models.AbilityData,System.Int32)
+  name.vb: New(TrinketTinkerEffect, AbilityData, Integer)
+  fullName: TrinketTinker.Effects.Abilities.PetFarmAnimalAbility.PetFarmAnimalAbility(TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker.Models.AbilityData, int)
+  fullName.vb: TrinketTinker.Effects.Abilities.PetFarmAnimalAbility.New(TrinketTinker.Effects.TrinketTinkerEffect, TrinketTinker.Models.AbilityData, Integer)
+  nameWithType: PetFarmAnimalAbility.PetFarmAnimalAbility(TrinketTinkerEffect, AbilityData, int)
+  nameWithType.vb: PetFarmAnimalAbility.New(TrinketTinkerEffect, AbilityData, Integer)
+- uid: TrinketTinker.Effects.Abilities.PetFarmAnimalAbility.#ctor*
+  name: PetFarmAnimalAbility
+  href: api/TrinketTinker.Effects.Abilities.PetFarmAnimalAbility.html#TrinketTinker_Effects_Abilities_PetFarmAnimalAbility__ctor_
+  commentId: Overload:TrinketTinker.Effects.Abilities.PetFarmAnimalAbility.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TrinketTinker.Effects.Abilities.PetFarmAnimalAbility.PetFarmAnimalAbility
+  fullName.vb: TrinketTinker.Effects.Abilities.PetFarmAnimalAbility.New
+  nameWithType: PetFarmAnimalAbility.PetFarmAnimalAbility
+  nameWithType.vb: PetFarmAnimalAbility.New
+- uid: TrinketTinker.Effects.Abilities.PetFarmAnimalAbility.ApplyEffect(TrinketTinker.Effects.Support.ProcEventArgs)
+  name: ApplyEffect(ProcEventArgs)
+  href: api/TrinketTinker.Effects.Abilities.PetFarmAnimalAbility.html#TrinketTinker_Effects_Abilities_PetFarmAnimalAbility_ApplyEffect_TrinketTinker_Effects_Support_ProcEventArgs_
+  commentId: M:TrinketTinker.Effects.Abilities.PetFarmAnimalAbility.ApplyEffect(TrinketTinker.Effects.Support.ProcEventArgs)
+  fullName: TrinketTinker.Effects.Abilities.PetFarmAnimalAbility.ApplyEffect(TrinketTinker.Effects.Support.ProcEventArgs)
+  nameWithType: PetFarmAnimalAbility.ApplyEffect(ProcEventArgs)
+- uid: TrinketTinker.Effects.Abilities.PetFarmAnimalAbility.ApplyEffect*
+  name: ApplyEffect
+  href: api/TrinketTinker.Effects.Abilities.PetFarmAnimalAbility.html#TrinketTinker_Effects_Abilities_PetFarmAnimalAbility_ApplyEffect_
+  commentId: Overload:TrinketTinker.Effects.Abilities.PetFarmAnimalAbility.ApplyEffect
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.PetFarmAnimalAbility.ApplyEffect
+  nameWithType: PetFarmAnimalAbility.ApplyEffect
 - uid: TrinketTinker.Effects.Abilities.ProjectileAbility
   name: ProjectileAbility
   href: api/TrinketTinker.Effects.Abilities.ProjectileAbility.html
@@ -5326,15 +5691,15 @@ references:
   commentId: T:TrinketTinker.Extras.TinkerInventoryMenu
   fullName: TrinketTinker.Extras.TinkerInventoryMenu
   nameWithType: TinkerInventoryMenu
-- uid: TrinketTinker.Extras.TinkerInventoryMenu.#ctor(System.Int32,System.Collections.Generic.IList{StardewValley.Item},System.Action{System.Int32},System.Boolean,System.Boolean,StardewValley.Menus.InventoryMenu.highlightThisItem,StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect,System.String,StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32,StardewValley.Item,System.Int32,System.Object,StardewValley.Menus.ItemExitBehavior,System.Boolean)
-  name: TinkerInventoryMenu(int, IList<Item>, Action<int>?, bool, bool, highlightThisItem, behaviorOnItemSelect, string, behaviorOnItemSelect?, bool, bool, bool, bool, bool, int, Item?, int, object?, ItemExitBehavior, bool)
-  href: api/TrinketTinker.Extras.TinkerInventoryMenu.html#TrinketTinker_Extras_TinkerInventoryMenu__ctor_System_Int32_System_Collections_Generic_IList_StardewValley_Item__System_Action_System_Int32__System_Boolean_System_Boolean_StardewValley_Menus_InventoryMenu_highlightThisItem_StardewValley_Menus_ItemGrabMenu_behaviorOnItemSelect_System_String_StardewValley_Menus_ItemGrabMenu_behaviorOnItemSelect_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Int32_StardewValley_Item_System_Int32_System_Object_StardewValley_Menus_ItemExitBehavior_System_Boolean_
-  commentId: M:TrinketTinker.Extras.TinkerInventoryMenu.#ctor(System.Int32,System.Collections.Generic.IList{StardewValley.Item},System.Action{System.Int32},System.Boolean,System.Boolean,StardewValley.Menus.InventoryMenu.highlightThisItem,StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect,System.String,StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32,StardewValley.Item,System.Int32,System.Object,StardewValley.Menus.ItemExitBehavior,System.Boolean)
-  name.vb: New(Integer, IList(Of Item), Action(Of Integer), Boolean, Boolean, highlightThisItem, behaviorOnItemSelect, String, behaviorOnItemSelect, Boolean, Boolean, Boolean, Boolean, Boolean, Integer, Item, Integer, Object, ItemExitBehavior, Boolean)
-  fullName: TrinketTinker.Extras.TinkerInventoryMenu.TinkerInventoryMenu(int, System.Collections.Generic.IList<StardewValley.Item>, System.Action<int>?, bool, bool, StardewValley.Menus.InventoryMenu.highlightThisItem, StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect, string, StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect?, bool, bool, bool, bool, bool, int, StardewValley.Item?, int, object?, StardewValley.Menus.ItemExitBehavior, bool)
-  fullName.vb: TrinketTinker.Extras.TinkerInventoryMenu.New(Integer, System.Collections.Generic.IList(Of StardewValley.Item), System.Action(Of Integer), Boolean, Boolean, StardewValley.Menus.InventoryMenu.highlightThisItem, StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect, String, StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect, Boolean, Boolean, Boolean, Boolean, Boolean, Integer, StardewValley.Item, Integer, Object, StardewValley.Menus.ItemExitBehavior, Boolean)
-  nameWithType: TinkerInventoryMenu.TinkerInventoryMenu(int, IList<Item>, Action<int>?, bool, bool, InventoryMenu.highlightThisItem, ItemGrabMenu.behaviorOnItemSelect, string, ItemGrabMenu.behaviorOnItemSelect?, bool, bool, bool, bool, bool, int, Item?, int, object?, ItemExitBehavior, bool)
-  nameWithType.vb: TinkerInventoryMenu.New(Integer, IList(Of Item), Action(Of Integer), Boolean, Boolean, InventoryMenu.highlightThisItem, ItemGrabMenu.behaviorOnItemSelect, String, ItemGrabMenu.behaviorOnItemSelect, Boolean, Boolean, Boolean, Boolean, Boolean, Integer, Item, Integer, Object, ItemExitBehavior, Boolean)
+- uid: TrinketTinker.Extras.TinkerInventoryMenu.#ctor(System.Int32,System.Collections.Generic.IList{StardewValley.Item},System.Action{System.Int32},StardewValley.Menus.InventoryMenu.highlightThisItem,StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect,System.String,StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32,StardewValley.Item,System.Int32,System.Object,StardewValley.Menus.ItemExitBehavior,System.Boolean)
+  name: TinkerInventoryMenu(int, IList<Item>, Action<int>?, highlightThisItem, behaviorOnItemSelect, string, behaviorOnItemSelect?, bool, bool, bool, bool, bool, bool, bool, int, Item?, int, object?, ItemExitBehavior, bool)
+  href: api/TrinketTinker.Extras.TinkerInventoryMenu.html#TrinketTinker_Extras_TinkerInventoryMenu__ctor_System_Int32_System_Collections_Generic_IList_StardewValley_Item__System_Action_System_Int32__StardewValley_Menus_InventoryMenu_highlightThisItem_StardewValley_Menus_ItemGrabMenu_behaviorOnItemSelect_System_String_StardewValley_Menus_ItemGrabMenu_behaviorOnItemSelect_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Int32_StardewValley_Item_System_Int32_System_Object_StardewValley_Menus_ItemExitBehavior_System_Boolean_
+  commentId: M:TrinketTinker.Extras.TinkerInventoryMenu.#ctor(System.Int32,System.Collections.Generic.IList{StardewValley.Item},System.Action{System.Int32},StardewValley.Menus.InventoryMenu.highlightThisItem,StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect,System.String,StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32,StardewValley.Item,System.Int32,System.Object,StardewValley.Menus.ItemExitBehavior,System.Boolean)
+  name.vb: New(Integer, IList(Of Item), Action(Of Integer), highlightThisItem, behaviorOnItemSelect, String, behaviorOnItemSelect, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Integer, Item, Integer, Object, ItemExitBehavior, Boolean)
+  fullName: TrinketTinker.Extras.TinkerInventoryMenu.TinkerInventoryMenu(int, System.Collections.Generic.IList<StardewValley.Item>, System.Action<int>?, StardewValley.Menus.InventoryMenu.highlightThisItem, StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect, string, StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect?, bool, bool, bool, bool, bool, bool, bool, int, StardewValley.Item?, int, object?, StardewValley.Menus.ItemExitBehavior, bool)
+  fullName.vb: TrinketTinker.Extras.TinkerInventoryMenu.New(Integer, System.Collections.Generic.IList(Of StardewValley.Item), System.Action(Of Integer), StardewValley.Menus.InventoryMenu.highlightThisItem, StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect, String, StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Integer, StardewValley.Item, Integer, Object, StardewValley.Menus.ItemExitBehavior, Boolean)
+  nameWithType: TinkerInventoryMenu.TinkerInventoryMenu(int, IList<Item>, Action<int>?, InventoryMenu.highlightThisItem, ItemGrabMenu.behaviorOnItemSelect, string, ItemGrabMenu.behaviorOnItemSelect?, bool, bool, bool, bool, bool, bool, bool, int, Item?, int, object?, ItemExitBehavior, bool)
+  nameWithType.vb: TinkerInventoryMenu.New(Integer, IList(Of Item), Action(Of Integer), InventoryMenu.highlightThisItem, ItemGrabMenu.behaviorOnItemSelect, String, ItemGrabMenu.behaviorOnItemSelect, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Integer, Item, Integer, Object, ItemExitBehavior, Boolean)
 - uid: TrinketTinker.Extras.TinkerInventoryMenu.#ctor*
   name: TinkerInventoryMenu
   href: api/TrinketTinker.Extras.TinkerInventoryMenu.html#TrinketTinker_Extras_TinkerInventoryMenu__ctor_
@@ -5364,6 +5729,22 @@ references:
   commentId: F:TrinketTinker.Extras.TinkerInventoryMenu.pageMethod
   fullName: TrinketTinker.Extras.TinkerInventoryMenu.pageMethod
   nameWithType: TinkerInventoryMenu.pageMethod
+- uid: TrinketTinker.Extras.TinkerInventoryMenu.receiveLeftClick(System.Int32,System.Int32,System.Boolean)
+  name: receiveLeftClick(int, int, bool)
+  href: api/TrinketTinker.Extras.TinkerInventoryMenu.html#TrinketTinker_Extras_TinkerInventoryMenu_receiveLeftClick_System_Int32_System_Int32_System_Boolean_
+  commentId: M:TrinketTinker.Extras.TinkerInventoryMenu.receiveLeftClick(System.Int32,System.Int32,System.Boolean)
+  name.vb: receiveLeftClick(Integer, Integer, Boolean)
+  fullName: TrinketTinker.Extras.TinkerInventoryMenu.receiveLeftClick(int, int, bool)
+  fullName.vb: TrinketTinker.Extras.TinkerInventoryMenu.receiveLeftClick(Integer, Integer, Boolean)
+  nameWithType: TinkerInventoryMenu.receiveLeftClick(int, int, bool)
+  nameWithType.vb: TinkerInventoryMenu.receiveLeftClick(Integer, Integer, Boolean)
+- uid: TrinketTinker.Extras.TinkerInventoryMenu.receiveLeftClick*
+  name: receiveLeftClick
+  href: api/TrinketTinker.Extras.TinkerInventoryMenu.html#TrinketTinker_Extras_TinkerInventoryMenu_receiveLeftClick_
+  commentId: Overload:TrinketTinker.Extras.TinkerInventoryMenu.receiveLeftClick
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.TinkerInventoryMenu.receiveLeftClick
+  nameWithType: TinkerInventoryMenu.receiveLeftClick
 - uid: TrinketTinker.Extras.TrinketColorizer
   name: TrinketColorizer
   href: api/TrinketTinker.Extras.TrinketColorizer.html
@@ -5799,12 +6180,12 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.CritDamage
   nameWithType: DamageArgs.CritDamage
-- uid: TrinketTinker.Models.AbilityArgs.DamageArgs.DamageMonster(StardewValley.GameLocation,StardewValley.Farmer,StardewValley.Monsters.Monster)
-  name: DamageMonster(GameLocation, Farmer, Monster)
-  href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_DamageMonster_StardewValley_GameLocation_StardewValley_Farmer_StardewValley_Monsters_Monster_
-  commentId: M:TrinketTinker.Models.AbilityArgs.DamageArgs.DamageMonster(StardewValley.GameLocation,StardewValley.Farmer,StardewValley.Monsters.Monster)
-  fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.DamageMonster(StardewValley.GameLocation, StardewValley.Farmer, StardewValley.Monsters.Monster)
-  nameWithType: DamageArgs.DamageMonster(GameLocation, Farmer, Monster)
+- uid: TrinketTinker.Models.AbilityArgs.DamageArgs.DamageMonster(StardewValley.Delegates.GameStateQueryContext,StardewValley.Monsters.Monster)
+  name: DamageMonster(GameStateQueryContext, Monster)
+  href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_DamageMonster_StardewValley_Delegates_GameStateQueryContext_StardewValley_Monsters_Monster_
+  commentId: M:TrinketTinker.Models.AbilityArgs.DamageArgs.DamageMonster(StardewValley.Delegates.GameStateQueryContext,StardewValley.Monsters.Monster)
+  fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.DamageMonster(StardewValley.Delegates.GameStateQueryContext, StardewValley.Monsters.Monster)
+  nameWithType: DamageArgs.DamageMonster(GameStateQueryContext, Monster)
 - uid: TrinketTinker.Models.AbilityArgs.DamageArgs.DamageMonster*
   name: DamageMonster
   href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_DamageMonster_
@@ -6074,6 +6455,38 @@ references:
   commentId: F:TrinketTinker.Models.AbilityArgs.HoeDirtArgs.Watering
   fullName: TrinketTinker.Models.AbilityArgs.HoeDirtArgs.Watering
   nameWithType: HoeDirtArgs.Watering
+- uid: TrinketTinker.Models.AbilityArgs.PosRangeArgs
+  name: PosRangeArgs
+  href: api/TrinketTinker.Models.AbilityArgs.PosRangeArgs.html
+  commentId: T:TrinketTinker.Models.AbilityArgs.PosRangeArgs
+  fullName: TrinketTinker.Models.AbilityArgs.PosRangeArgs
+  nameWithType: PosRangeArgs
+- uid: TrinketTinker.Models.AbilityArgs.PosRangeArgs.Range
+  name: Range
+  href: api/TrinketTinker.Models.AbilityArgs.PosRangeArgs.html#TrinketTinker_Models_AbilityArgs_PosRangeArgs_Range
+  commentId: P:TrinketTinker.Models.AbilityArgs.PosRangeArgs.Range
+  fullName: TrinketTinker.Models.AbilityArgs.PosRangeArgs.Range
+  nameWithType: PosRangeArgs.Range
+- uid: TrinketTinker.Models.AbilityArgs.PosRangeArgs.Range*
+  name: Range
+  href: api/TrinketTinker.Models.AbilityArgs.PosRangeArgs.html#TrinketTinker_Models_AbilityArgs_PosRangeArgs_Range_
+  commentId: Overload:TrinketTinker.Models.AbilityArgs.PosRangeArgs.Range
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityArgs.PosRangeArgs.Range
+  nameWithType: PosRangeArgs.Range
+- uid: TrinketTinker.Models.AbilityArgs.PosRangeArgs.Validate
+  name: Validate()
+  href: api/TrinketTinker.Models.AbilityArgs.PosRangeArgs.html#TrinketTinker_Models_AbilityArgs_PosRangeArgs_Validate
+  commentId: M:TrinketTinker.Models.AbilityArgs.PosRangeArgs.Validate
+  fullName: TrinketTinker.Models.AbilityArgs.PosRangeArgs.Validate()
+  nameWithType: PosRangeArgs.Validate()
+- uid: TrinketTinker.Models.AbilityArgs.PosRangeArgs.Validate*
+  name: Validate
+  href: api/TrinketTinker.Models.AbilityArgs.PosRangeArgs.html#TrinketTinker_Models_AbilityArgs_PosRangeArgs_Validate_
+  commentId: Overload:TrinketTinker.Models.AbilityArgs.PosRangeArgs.Validate
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityArgs.PosRangeArgs.Validate
+  nameWithType: PosRangeArgs.Validate
 - uid: TrinketTinker.Models.AbilityArgs.ProjectileArgs
   name: ProjectileArgs
   href: api/TrinketTinker.Models.AbilityArgs.ProjectileArgs.html
@@ -6444,6 +6857,80 @@ references:
   commentId: F:TrinketTinker.Models.AbilityArgs.ValueMode.Percent
   fullName: TrinketTinker.Models.AbilityArgs.ValueMode.Percent
   nameWithType: ValueMode.Percent
+- uid: TrinketTinker.Models.AbilityArgs.ValueRangeArgs
+  name: ValueRangeArgs
+  href: api/TrinketTinker.Models.AbilityArgs.ValueRangeArgs.html
+  commentId: T:TrinketTinker.Models.AbilityArgs.ValueRangeArgs
+  fullName: TrinketTinker.Models.AbilityArgs.ValueRangeArgs
+  nameWithType: ValueRangeArgs
+- uid: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Max
+  name: Max
+  href: api/TrinketTinker.Models.AbilityArgs.ValueRangeArgs.html#TrinketTinker_Models_AbilityArgs_ValueRangeArgs_Max
+  commentId: P:TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Max
+  fullName: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Max
+  nameWithType: ValueRangeArgs.Max
+- uid: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Max*
+  name: Max
+  href: api/TrinketTinker.Models.AbilityArgs.ValueRangeArgs.html#TrinketTinker_Models_AbilityArgs_ValueRangeArgs_Max_
+  commentId: Overload:TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Max
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Max
+  nameWithType: ValueRangeArgs.Max
+- uid: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Min
+  name: Min
+  href: api/TrinketTinker.Models.AbilityArgs.ValueRangeArgs.html#TrinketTinker_Models_AbilityArgs_ValueRangeArgs_Min
+  commentId: P:TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Min
+  fullName: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Min
+  nameWithType: ValueRangeArgs.Min
+- uid: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Min*
+  name: Min
+  href: api/TrinketTinker.Models.AbilityArgs.ValueRangeArgs.html#TrinketTinker_Models_AbilityArgs_ValueRangeArgs_Min_
+  commentId: Overload:TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Min
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Min
+  nameWithType: ValueRangeArgs.Min
+- uid: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Rand(System.Double)
+  name: Rand(double)
+  href: api/TrinketTinker.Models.AbilityArgs.ValueRangeArgs.html#TrinketTinker_Models_AbilityArgs_ValueRangeArgs_Rand_System_Double_
+  commentId: M:TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Rand(System.Double)
+  name.vb: Rand(Double)
+  fullName: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Rand(double)
+  fullName.vb: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Rand(Double)
+  nameWithType: ValueRangeArgs.Rand(double)
+  nameWithType.vb: ValueRangeArgs.Rand(Double)
+- uid: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Rand*
+  name: Rand
+  href: api/TrinketTinker.Models.AbilityArgs.ValueRangeArgs.html#TrinketTinker_Models_AbilityArgs_ValueRangeArgs_Rand_
+  commentId: Overload:TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Rand
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Rand
+  nameWithType: ValueRangeArgs.Rand
+- uid: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Validate
+  name: Validate()
+  href: api/TrinketTinker.Models.AbilityArgs.ValueRangeArgs.html#TrinketTinker_Models_AbilityArgs_ValueRangeArgs_Validate
+  commentId: M:TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Validate
+  fullName: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Validate()
+  nameWithType: ValueRangeArgs.Validate()
+- uid: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Validate*
+  name: Validate
+  href: api/TrinketTinker.Models.AbilityArgs.ValueRangeArgs.html#TrinketTinker_Models_AbilityArgs_ValueRangeArgs_Validate_
+  commentId: Overload:TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Validate
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.Validate
+  nameWithType: ValueRangeArgs.Validate
+- uid: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.ValueMode
+  name: ValueMode
+  href: api/TrinketTinker.Models.AbilityArgs.ValueRangeArgs.html#TrinketTinker_Models_AbilityArgs_ValueRangeArgs_ValueMode
+  commentId: P:TrinketTinker.Models.AbilityArgs.ValueRangeArgs.ValueMode
+  fullName: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.ValueMode
+  nameWithType: ValueRangeArgs.ValueMode
+- uid: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.ValueMode*
+  name: ValueMode
+  href: api/TrinketTinker.Models.AbilityArgs.ValueRangeArgs.html#TrinketTinker_Models_AbilityArgs_ValueRangeArgs_ValueMode_
+  commentId: Overload:TrinketTinker.Models.AbilityArgs.ValueRangeArgs.ValueMode
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityArgs.ValueRangeArgs.ValueMode
+  nameWithType: ValueRangeArgs.ValueMode
 - uid: TrinketTinker.Models.AbilityData
   name: AbilityData
   href: api/TrinketTinker.Models.AbilityData.html
@@ -6820,6 +7307,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AltVariantData.ShadowScale
   nameWithType: AltVariantData.ShadowScale
+- uid: TrinketTinker.Models.AltVariantData.ShowBreathing
+  name: ShowBreathing
+  href: api/TrinketTinker.Models.AltVariantData.html#TrinketTinker_Models_AltVariantData_ShowBreathing
+  commentId: P:TrinketTinker.Models.AltVariantData.ShowBreathing
+  fullName: TrinketTinker.Models.AltVariantData.ShowBreathing
+  nameWithType: AltVariantData.ShowBreathing
+- uid: TrinketTinker.Models.AltVariantData.ShowBreathing*
+  name: ShowBreathing
+  href: api/TrinketTinker.Models.AltVariantData.html#TrinketTinker_Models_AltVariantData_ShowBreathing_
+  commentId: Overload:TrinketTinker.Models.AltVariantData.ShowBreathing
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AltVariantData.ShowBreathing
+  nameWithType: AltVariantData.ShowBreathing
 - uid: TrinketTinker.Models.AltVariantData.Texture
   name: Texture
   href: api/TrinketTinker.Models.AltVariantData.html#TrinketTinker_Models_AltVariantData_Texture
@@ -6890,6 +7390,12 @@ references:
   commentId: F:TrinketTinker.Models.AnchorTarget.DigSpot
   fullName: TrinketTinker.Models.AnchorTarget.DigSpot
   nameWithType: AnchorTarget.DigSpot
+- uid: TrinketTinker.Models.AnchorTarget.FarmAnimal
+  name: FarmAnimal
+  href: api/TrinketTinker.Models.AnchorTarget.html#TrinketTinker_Models_AnchorTarget_FarmAnimal
+  commentId: F:TrinketTinker.Models.AnchorTarget.FarmAnimal
+  fullName: TrinketTinker.Models.AnchorTarget.FarmAnimal
+  nameWithType: AnchorTarget.FarmAnimal
 - uid: TrinketTinker.Models.AnchorTarget.Forage
   name: Forage
   href: api/TrinketTinker.Models.AnchorTarget.html#TrinketTinker_Models_AnchorTarget_Forage
@@ -6902,6 +7408,12 @@ references:
   commentId: F:TrinketTinker.Models.AnchorTarget.Monster
   fullName: TrinketTinker.Models.AnchorTarget.Monster
   nameWithType: AnchorTarget.Monster
+- uid: TrinketTinker.Models.AnchorTarget.NPC
+  name: NPC
+  href: api/TrinketTinker.Models.AnchorTarget.html#TrinketTinker_Models_AnchorTarget_NPC
+  commentId: F:TrinketTinker.Models.AnchorTarget.NPC
+  fullName: TrinketTinker.Models.AnchorTarget.NPC
+  nameWithType: AnchorTarget.NPC
 - uid: TrinketTinker.Models.AnchorTarget.Object
   name: Object
   href: api/TrinketTinker.Models.AnchorTarget.html#TrinketTinker_Models_AnchorTarget_Object
@@ -6963,6 +7475,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AnchorTargetData.Filters
   nameWithType: AnchorTargetData.Filters
+- uid: TrinketTinker.Models.AnchorTargetData.Id
+  name: Id
+  href: api/TrinketTinker.Models.AnchorTargetData.html#TrinketTinker_Models_AnchorTargetData_Id
+  commentId: P:TrinketTinker.Models.AnchorTargetData.Id
+  fullName: TrinketTinker.Models.AnchorTargetData.Id
+  nameWithType: AnchorTargetData.Id
+- uid: TrinketTinker.Models.AnchorTargetData.Id*
+  name: Id
+  href: api/TrinketTinker.Models.AnchorTargetData.html#TrinketTinker_Models_AnchorTargetData_Id_
+  commentId: Overload:TrinketTinker.Models.AnchorTargetData.Id
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AnchorTargetData.Id
+  nameWithType: AnchorTargetData.Id
 - uid: TrinketTinker.Models.AnchorTargetData.Mode
   name: Mode
   href: api/TrinketTinker.Models.AnchorTargetData.html#TrinketTinker_Models_AnchorTargetData_Mode
@@ -7047,6 +7572,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AnimClipData.FrameLength
   nameWithType: AnimClipData.FrameLength
+- uid: TrinketTinker.Models.AnimClipData.FrameOverrides
+  name: FrameOverrides
+  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_FrameOverrides
+  commentId: P:TrinketTinker.Models.AnimClipData.FrameOverrides
+  fullName: TrinketTinker.Models.AnimClipData.FrameOverrides
+  nameWithType: AnimClipData.FrameOverrides
+- uid: TrinketTinker.Models.AnimClipData.FrameOverrides*
+  name: FrameOverrides
+  href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_FrameOverrides_
+  commentId: Overload:TrinketTinker.Models.AnimClipData.FrameOverrides
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AnimClipData.FrameOverrides
+  nameWithType: AnimClipData.FrameOverrides
 - uid: TrinketTinker.Models.AnimClipData.FrameStart
   name: FrameStart
   href: api/TrinketTinker.Models.AnimClipData.html#TrinketTinker_Models_AnimClipData_FrameStart
@@ -7233,6 +7771,24 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.ChatterLinesData.Responses
   nameWithType: ChatterLinesData.Responses
+- uid: TrinketTinker.Models.CollisionMode
+  name: CollisionMode
+  href: api/TrinketTinker.Models.CollisionMode.html
+  commentId: T:TrinketTinker.Models.CollisionMode
+  fullName: TrinketTinker.Models.CollisionMode
+  nameWithType: CollisionMode
+- uid: TrinketTinker.Models.CollisionMode.Line
+  name: Line
+  href: api/TrinketTinker.Models.CollisionMode.html#TrinketTinker_Models_CollisionMode_Line
+  commentId: F:TrinketTinker.Models.CollisionMode.Line
+  fullName: TrinketTinker.Models.CollisionMode.Line
+  nameWithType: CollisionMode.Line
+- uid: TrinketTinker.Models.CollisionMode.None
+  name: None
+  href: api/TrinketTinker.Models.CollisionMode.html#TrinketTinker_Models_CollisionMode_None
+  commentId: F:TrinketTinker.Models.CollisionMode.None
+  fullName: TrinketTinker.Models.CollisionMode.None
+  nameWithType: CollisionMode.None
 - uid: TrinketTinker.Models.DirectionMode
   name: DirectionMode
   href: api/TrinketTinker.Models.DirectionMode.html
@@ -7269,6 +7825,51 @@ references:
   commentId: F:TrinketTinker.Models.DirectionMode.Single
   fullName: TrinketTinker.Models.DirectionMode.Single
   nameWithType: DirectionMode.Single
+- uid: TrinketTinker.Models.FrameOverrideData
+  name: FrameOverrideData
+  href: api/TrinketTinker.Models.FrameOverrideData.html
+  commentId: T:TrinketTinker.Models.FrameOverrideData
+  fullName: TrinketTinker.Models.FrameOverrideData
+  nameWithType: FrameOverrideData
+- uid: TrinketTinker.Models.FrameOverrideData.Interval
+  name: Interval
+  href: api/TrinketTinker.Models.FrameOverrideData.html#TrinketTinker_Models_FrameOverrideData_Interval
+  commentId: P:TrinketTinker.Models.FrameOverrideData.Interval
+  fullName: TrinketTinker.Models.FrameOverrideData.Interval
+  nameWithType: FrameOverrideData.Interval
+- uid: TrinketTinker.Models.FrameOverrideData.Interval*
+  name: Interval
+  href: api/TrinketTinker.Models.FrameOverrideData.html#TrinketTinker_Models_FrameOverrideData_Interval_
+  commentId: Overload:TrinketTinker.Models.FrameOverrideData.Interval
+  isSpec: "True"
+  fullName: TrinketTinker.Models.FrameOverrideData.Interval
+  nameWithType: FrameOverrideData.Interval
+- uid: TrinketTinker.Models.FrameOverrideData.Origin
+  name: Origin
+  href: api/TrinketTinker.Models.FrameOverrideData.html#TrinketTinker_Models_FrameOverrideData_Origin
+  commentId: P:TrinketTinker.Models.FrameOverrideData.Origin
+  fullName: TrinketTinker.Models.FrameOverrideData.Origin
+  nameWithType: FrameOverrideData.Origin
+- uid: TrinketTinker.Models.FrameOverrideData.Origin*
+  name: Origin
+  href: api/TrinketTinker.Models.FrameOverrideData.html#TrinketTinker_Models_FrameOverrideData_Origin_
+  commentId: Overload:TrinketTinker.Models.FrameOverrideData.Origin
+  isSpec: "True"
+  fullName: TrinketTinker.Models.FrameOverrideData.Origin
+  nameWithType: FrameOverrideData.Origin
+- uid: TrinketTinker.Models.FrameOverrideData.SourceRect
+  name: SourceRect
+  href: api/TrinketTinker.Models.FrameOverrideData.html#TrinketTinker_Models_FrameOverrideData_SourceRect
+  commentId: P:TrinketTinker.Models.FrameOverrideData.SourceRect
+  fullName: TrinketTinker.Models.FrameOverrideData.SourceRect
+  nameWithType: FrameOverrideData.SourceRect
+- uid: TrinketTinker.Models.FrameOverrideData.SourceRect*
+  name: SourceRect
+  href: api/TrinketTinker.Models.FrameOverrideData.html#TrinketTinker_Models_FrameOverrideData_SourceRect_
+  commentId: Overload:TrinketTinker.Models.FrameOverrideData.SourceRect
+  isSpec: "True"
+  fullName: TrinketTinker.Models.FrameOverrideData.SourceRect
+  nameWithType: FrameOverrideData.SourceRect
 - uid: TrinketTinker.Models.IVariantData
   name: IVariantData
   href: api/TrinketTinker.Models.IVariantData.html
@@ -7353,6 +7954,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.IVariantData.ShadowScale
   nameWithType: IVariantData.ShadowScale
+- uid: TrinketTinker.Models.IVariantData.ShowBreathing
+  name: ShowBreathing
+  href: api/TrinketTinker.Models.IVariantData.html#TrinketTinker_Models_IVariantData_ShowBreathing
+  commentId: P:TrinketTinker.Models.IVariantData.ShowBreathing
+  fullName: TrinketTinker.Models.IVariantData.ShowBreathing
+  nameWithType: IVariantData.ShowBreathing
+- uid: TrinketTinker.Models.IVariantData.ShowBreathing*
+  name: ShowBreathing
+  href: api/TrinketTinker.Models.IVariantData.html#TrinketTinker_Models_IVariantData_ShowBreathing_
+  commentId: Overload:TrinketTinker.Models.IVariantData.ShowBreathing
+  isSpec: "True"
+  fullName: TrinketTinker.Models.IVariantData.ShowBreathing
+  nameWithType: IVariantData.ShowBreathing
 - uid: TrinketTinker.Models.IVariantData.Texture
   name: Texture
   href: api/TrinketTinker.Models.IVariantData.html#TrinketTinker_Models_IVariantData_Texture
@@ -7503,6 +8117,12 @@ references:
   commentId: T:TrinketTinker.Models.Mixin.ArgsDict
   fullName: TrinketTinker.Models.Mixin.ArgsDict
   nameWithType: ArgsDict
+- uid: TrinketTinker.Models.Mixin.ArgsDictExtension
+  name: ArgsDictExtension
+  href: api/TrinketTinker.Models.Mixin.ArgsDictExtension.html
+  commentId: T:TrinketTinker.Models.Mixin.ArgsDictExtension
+  fullName: TrinketTinker.Models.Mixin.ArgsDictExtension
+  nameWithType: ArgsDictExtension
 - uid: TrinketTinker.Models.Mixin.IArgs
   name: IArgs
   href: api/TrinketTinker.Models.Mixin.IArgs.html
@@ -8223,6 +8843,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.MotionData.Args
   nameWithType: MotionData.Args
+- uid: TrinketTinker.Models.MotionData.Collision
+  name: Collision
+  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_Collision
+  commentId: P:TrinketTinker.Models.MotionData.Collision
+  fullName: TrinketTinker.Models.MotionData.Collision
+  nameWithType: MotionData.Collision
+- uid: TrinketTinker.Models.MotionData.Collision*
+  name: Collision
+  href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_Collision_
+  commentId: Overload:TrinketTinker.Models.MotionData.Collision
+  isSpec: "True"
+  fullName: TrinketTinker.Models.MotionData.Collision
+  nameWithType: MotionData.Collision
 - uid: TrinketTinker.Models.MotionData.DirectionMode
   name: DirectionMode
   href: api/TrinketTinker.Models.MotionData.html#TrinketTinker_Models_MotionData_DirectionMode
@@ -8859,6 +9492,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.VariantData.AltVariants
   nameWithType: VariantData.AltVariants
+- uid: TrinketTinker.Models.VariantData.AttachedTAS
+  name: AttachedTAS
+  href: api/TrinketTinker.Models.VariantData.html#TrinketTinker_Models_VariantData_AttachedTAS
+  commentId: P:TrinketTinker.Models.VariantData.AttachedTAS
+  fullName: TrinketTinker.Models.VariantData.AttachedTAS
+  nameWithType: VariantData.AttachedTAS
+- uid: TrinketTinker.Models.VariantData.AttachedTAS*
+  name: AttachedTAS
+  href: api/TrinketTinker.Models.VariantData.html#TrinketTinker_Models_VariantData_AttachedTAS_
+  commentId: Overload:TrinketTinker.Models.VariantData.AttachedTAS
+  isSpec: "True"
+  fullName: TrinketTinker.Models.VariantData.AttachedTAS
+  nameWithType: VariantData.AttachedTAS
 - uid: TrinketTinker.Models.VariantData.ColorMask
   name: ColorMask
   href: api/TrinketTinker.Models.VariantData.html#TrinketTinker_Models_VariantData_ColorMask
@@ -8950,6 +9596,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.VariantData.ShadowScale
   nameWithType: VariantData.ShadowScale
+- uid: TrinketTinker.Models.VariantData.ShowBreathing
+  name: ShowBreathing
+  href: api/TrinketTinker.Models.VariantData.html#TrinketTinker_Models_VariantData_ShowBreathing
+  commentId: P:TrinketTinker.Models.VariantData.ShowBreathing
+  fullName: TrinketTinker.Models.VariantData.ShowBreathing
+  nameWithType: VariantData.ShowBreathing
+- uid: TrinketTinker.Models.VariantData.ShowBreathing*
+  name: ShowBreathing
+  href: api/TrinketTinker.Models.VariantData.html#TrinketTinker_Models_VariantData_ShowBreathing_
+  commentId: Overload:TrinketTinker.Models.VariantData.ShowBreathing
+  isSpec: "True"
+  fullName: TrinketTinker.Models.VariantData.ShowBreathing
+  nameWithType: VariantData.ShowBreathing
 - uid: TrinketTinker.Models.VariantData.Texture
   name: Texture
   href: api/TrinketTinker.Models.VariantData.html#TrinketTinker_Models_VariantData_Texture

@@ -146,6 +146,9 @@ Needs additional sets of sprites for segment(s) and tail.</p>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_MotionClass">Motion&lt;SerpentArgs&gt;.MotionClass</a>
     </div>
     <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_CompanionAnimSprite">Motion&lt;SerpentArgs&gt;.CompanionAnimSprite</a>
+    </div>
+    <div>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_PauseMovementByAnimClip">Motion&lt;SerpentArgs&gt;.PauseMovementByAnimClip</a>
     </div>
     <div>
@@ -170,7 +173,7 @@ Needs additional sets of sprites for segment(s) and tail.</p>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetSpeechBubble_System_String_">Motion&lt;SerpentArgs&gt;.SetSpeechBubble(string)</a>
     </div>
     <div>
-      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetAltVariant_System_String_">Motion&lt;SerpentArgs&gt;.SetAltVariant(string)</a>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetAltVariant_System_String_StardewValley_Objects_Trinkets_Trinket_">Motion&lt;SerpentArgs&gt;.SetAltVariant(string, Trinket)</a>
     </div>
     <div>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_SetActiveAnchors_System_Collections_Generic_IEnumerable_System_String__">Motion&lt;SerpentArgs&gt;.SetActiveAnchors(IEnumerable&lt;string&gt;)</a>
@@ -192,6 +195,9 @@ Needs additional sets of sprites for segment(s) and tail.</p>
     </div>
     <div>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_GetShadowOffset_Microsoft_Xna_Framework_Vector2_">Motion&lt;SerpentArgs&gt;.GetShadowOffset(Vector2)</a>
+    </div>
+    <div>
+      <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_GetDrawLayer">Motion&lt;SerpentArgs&gt;.GetDrawLayer()</a>
     </div>
     <div>
       <a class="xref" href="TrinketTinker.Companions.Motions.Motion-1.html#TrinketTinker_Companions_Motions_Motion_1_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_">Motion&lt;SerpentArgs&gt;.Draw(SpriteBatch)</a>
@@ -339,11 +345,45 @@ Needs additional sets of sprites for segment(s) and tail.</p>
 
 
 
+  <a id="TrinketTinker_Companions_Motions_SerpentMotion_DrawCompanionBreathing_" data-uid="TrinketTinker.Companions.Motions.SerpentMotion.DrawCompanionBreathing*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_SerpentMotion_DrawCompanionBreathing_Microsoft_Xna_Framework_Graphics_SpriteBatch_TrinketTinker_Companions_Anim_DrawSnapshot_" data-uid="TrinketTinker.Companions.Motions.SerpentMotion.DrawCompanionBreathing(Microsoft.Xna.Framework.Graphics.SpriteBatch,TrinketTinker.Companions.Anim.DrawSnapshot)">
+  DrawCompanionBreathing(SpriteBatch, DrawSnapshot)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/SerpentMotion.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Do not draw breathing for this motion type it looks bad.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void DrawCompanionBreathing(SpriteBatch b, DrawSnapshot snapshot)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>b</code> <span class="xref">SpriteBatch</span></dt>
+    <dd></dd>
+    <dt><code>snapshot</code> <a class="xref" href="TrinketTinker.Companions.Anim.DrawSnapshot.html">DrawSnapshot</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Companions_Motions_SerpentMotion_DrawShadow_" data-uid="TrinketTinker.Companions.Motions.SerpentMotion.DrawShadow*"></a>
 
   <h3 id="TrinketTinker_Companions_Motions_SerpentMotion_DrawShadow_Microsoft_Xna_Framework_Graphics_SpriteBatch_TrinketTinker_Companions_Anim_DrawSnapshot_" data-uid="TrinketTinker.Companions.Motions.SerpentMotion.DrawShadow(Microsoft.Xna.Framework.Graphics.SpriteBatch,TrinketTinker.Companions.Anim.DrawSnapshot)">
   DrawShadow(SpriteBatch, DrawSnapshot)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/SerpentMotion.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/SerpentMotion.cs/#L113"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Do not draw shadow for this motion type it looks bad.</p>
