@@ -14,7 +14,9 @@
 - Updated `fr.json` thanks to Caranud
 - AnimClips can now have full frame source rect overrides. This essentially allows modder to do anything with anim clip frames.
 - TinkerInventory menu now has Stack and Organize buttons.
-- Companions can now have an `AttachedTAS`
+- Companions can now have an `AttachedTAS` which is a temporary animate spirte that follows them around.
+- New ability `PetFarmAnimal` and corresponding anchor mode `FarmAnimal`, go to nearest farm animal and pet them.
+- New anchor mode `NPC`, go to nearest NPC.
 
 #### Changed
 - AnimClips now reset to start frame when switched over, instead of attempting to keep previous frame if possible.
