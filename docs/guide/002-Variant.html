@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Variant | TrinketTinker </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Variant | TrinketTinker ">
+      
+      
+      <link rel="icon" href="../images/favicon.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/002-Variant.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/favicon.png" alt="TrinketTinker">
+            TrinketTinker
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="variant">Variant</h1>
+
+<p>In the base game certain companions such as the frog have different color variants. With this model, you can explicitly define a sprite sheet, texture size, and optionally a color for mask. The <a href="007.3-Trinket%20Colorizer%20and%20Anvil.html">trinket colorizer</a> can be used to reroll the trinket variable, but you can also add other machine rules or shop entries for purpose of obtaining trinket in a specific variant.</p>
+<p>Variants can have alternate variants, which are automatically rechecked whenever the player changes locations, or when an <a href="004-Ability.html">ability</a> has <code>ProcAltVariant</code> set.</p>
+<h2 id="sample">Sample</h2>
+<pre><code class="lang-json">{
+  &quot;Action&quot;: &quot;EditData&quot;,
+  &quot;Target&quot;: &quot;mushymato.TrinketTinker/Tinker&quot;,
+  &quot;TargetField&quot;: [
+    &quot;{{ModId}}_Sample&quot;
+  ],
+  &quot;Entries&quot;: {
+    &quot;Variants&quot;: [
+      // This block is the top level Variant
+      {
+        &quot;Texture&quot;: &quot;&lt;texture asset name&gt;&quot;,
+        &quot;TextureExtra&quot;: &quot;&lt;additional texture asset name&gt;&quot;,
+        &quot;ColorMask&quot;: &quot;&lt;hex color or monogame color name&gt;&quot;,
+        &quot;Width&quot;: &lt;int width&gt;,
+        &quot;Height&quot;: &lt;int height&gt;,
+        &quot;TextureScale&quot;: &lt;int scale&gt;,
+        &quot;ShadowScale&quot;: &lt;int sclae&gt;,
+        &quot;NPC&quot;: &quot;{{ModId}}_SampleNPC&quot;,
+        &quot;Name&quot;: &quot;[LocalizedText Strings/NPCNames:{{ModId}}_SampleNPC]&quot;,
+        &quot;Portrait&quot;: &quot;Portrait/{{ModId}}_SampleNPC&quot;,
+        &quot;ShowBreathing&quot;: true|false,
+        &quot;LightSource&quot;: {
+          // This block is LightSourceData
+          &quot;Radius&quot;: &lt;float radius(size)&gt;,
+          &quot;Index&quot;: &lt;int base game light map texture index&gt;,
+          &quot;Texture&quot;: &quot;&lt;light map texture&gt;&quot;,
+          &quot;Color&quot;: &quot;&lt;hex color or monogame color name&gt;&quot;,
+        },
+        &quot;TrinketSpriteIndex&quot;: &lt;int sprite index for trinket item when in this variant&gt;,
+        &quot;TrinketNameArguments&quot;: [
+          &quot;&lt;trinket name substitution 1&gt;&quot;,
+          &quot;&lt;trinket name substitution 2&gt;&quot;,
+          //...
+        ],
+        &quot;AltVariants&quot;: {
+          // These blocks are AltVariant
+          &quot;&lt;alt variant key&gt;&quot;: {
+            &quot;Texture&quot;: &quot;&lt;texture asset name&gt;&quot;,
+            &quot;TextureExtra&quot;: &quot;&lt;additional texture asset name&gt;&quot;,
+            &quot;ColorMask&quot;: &quot;&lt;hex color or monogame color name&gt;&quot;,
+            &quot;Width&quot;: &lt;int width&gt;,
+            &quot;Height&quot;: &lt;int height&gt;,
+            &quot;TextureScale&quot;: &lt;float scale&gt;,
+            &quot;ShadowScale&quot;: &lt;float scale&gt;,
+            &quot;NPC&quot;: &quot;{{ModId}}_SampleNPC&quot;,
+            &quot;Name&quot;: &quot;[LocalizedText Strings/NPCNames:{{ModId}}_SampleNPC]&quot;,
+            &quot;Portrait&quot;: &quot;Portrait/{{ModId}}_SampleNPC&quot;,
+            &quot;ShowBreathing&quot;: true|false,
+            &quot;Condition&quot;: &quot;&lt;game state query&gt;&quot;,
+            &quot;Priority&quot;: &lt;int priority&gt;
+          },
+          // more alt variants...
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<h2 id="shared-fields">Shared Fields</h2>
+<p>These fields are valid for both variant and alt variant.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Texture</code></td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td>Asset target of the loaded texture, should be a sprite sheet and needs to contain the relevant <a href="003.0-Direction.html">directional animation frames</a> for the motion.</td>
+</tr>
+<tr>
+<td><code>TextureExtra</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>Texture holding additional sprites for use in <a href="003.2-Animation%20Clips.html">AnimClip</a>. This allows you to keep trinket specific sprites on a separate asset, but conversely you cannot put basic directional animation sprites on this sheet, only anim clips.</td>
+</tr>
+<tr>
+<td><code>ColorMask</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>Color to apply on draw, for use with grayscale sprites.<br>Aside from RGB and hex values, monogame accepts <a href="https://docs.monogame.net/api/Microsoft.Xna.Framework.Color.html">named colors</a> and this mod accepts special value <code>&quot;Prismatic&quot;</code> for an animated color cycle.</td>
+</tr>
+<tr>
+<td><code>Width</code></td>
+<td>int</td>
+<td>16</td>
+<td>Width of 1 sprite on the sprite sheet.</td>
+</tr>
+<tr>
+<td><code>Height</code></td>
+<td>int</td>
+<td>16</td>
+<td>Height of 1 sprite on the sprite sheet.</td>
+</tr>
+<tr>
+<td><code>TextureScale</code></td>
+<td>float</td>
+<td>4</td>
+<td>Texture draw scale, default is 4 like most things in the game.</td>
+</tr>
+<tr>
+<td><code>ShadowScale</code></td>
+<td>float</td>
+<td>3</td>
+<td>Size of the shadow to draw, 0 to disable shadow.</td>
+</tr>
+<tr>
+<td><code>Portrait</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>A portrait texture for the <a href="004.z.201-Chatter.html">Chatter ability</a>, required to display a portrait and a name.</td>
+</tr>
+<tr>
+<td><code>NPC</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>An NPC name (key of <code>Data/Characters</code>) to associate this variant with, used for the <a href="004.z.201-Chatter.html">Chatter ability</a>.</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>A display name for the <a href="004.z.201-Chatter.html">Chatter ability</a>, used if there's no real <code>NPC</code>.</td>
+</tr>
+<tr>
+<td><code>ShowBreathing</code></td>
+<td>bool</td>
+<td><em>null</em></td>
+<td>If the NPC name is set and they have <code>Breather=true</code> along with a sprite size less than 16x32, apply the NPC &quot;breathing&quot; effect on this trinket companion.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="top-level-variant">Top Level Variant</h3>
+<p>The top level variant can have all shared fields, as well as:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LightSource</code></td>
+<td><code>LightSourceData</code></td>
+<td><em>null</em></td>
+<td>If set, display a light source. This light source is only visible to the owner.</td>
+</tr>
+<tr>
+<td><code>TrinketSpriteIndex</code></td>
+<td>int</td>
+<td>-1</td>
+<td>If set, alters the trinket item's sprite index to this. This is used to give the trinket different icon depending on the variant.</td>
+</tr>
+<tr>
+<td><code>TrinketNameArguments</code></td>
+<td>List&lt;string&gt;</td>
+<td><em>null</em></td>
+<td>If set, use these strings as the argument to the item name.</td>
+</tr>
+<tr>
+<td><code>AltVariants</code></td>
+<td>Dictionary&lt;string, AltVariantData&gt;</td>
+<td><em>null</em></td>
+<td>A dictionary of alternate variants.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="alt-variant-only">Alt Variant Only</h3>
+<p>The alt variant in <code>AltVariants</code> can have all shared fields, as well as:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Condition</code></td>
+<td>string</td>
+<td><code>&quot;FALSE&quot;</code></td>
+<td>A <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state query</a> used to check if this alt variant should be selected. If you want to have an alt variant exclusively activate through <a href="004-Ability.html">ability</a> with <code>ProcAltVariant</code>, use <code>&quot;FALSE&quot;</code>.</td>
+</tr>
+<tr>
+<td><code>Priority</code></td>
+<td>int</td>
+<td>0</td>
+<td>Sort priority of this variant, higher number have their conditions checked first.</td>
+</tr>
+</tbody>
+</table>
+<p>Note that not all shared fields are required in alt variant, and any not set field will simply fall back to the value found in top level.</p>
+<p>An example: Change the companion's appearance during winter.</p>
+<pre><code class="lang-json">// assuming &quot;{{ModId}}/Companion&quot; and &quot;{{ModId}}/Companion_Winter&quot; are loaded
+&quot;Variants&quot;: [
+  {
+    &quot;Texture&quot;: &quot;{{ModId}}/Companion&quot;,
+    &quot;Width&quot;: 16,
+    &quot;Height&quot;: 32,
+    &quot;AltVariants&quot;: {
+      &quot;WINTER&quot;: {
+        // Since Width and Height is not set,
+        // The alt variant inherits 16x36 from the base variant.
+        &quot;Texture&quot;: &quot;{{ModId}}/Companion_Winter&quot;,
+        &quot;Condition&quot;: &quot;SEASON Winter&quot;
+      }
+    }
+  }
+],
+</code></pre>
+<p><a href="004-Ability.html">Abilities</a> can explicitly set a specific variant, which bypasses <code>Condition</code>. If you want to make a special variant that only activates by ability proc, set the <code>Condition</code> to <code>&quot;FALSE&quot;</code> to exclude it from standard checks.</p>
+<h3 id="lightsourcedata">LightSourceData</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Radius</code></td>
+<td>float</td>
+<td>2</td>
+<td>Size of light source.</td>
+</tr>
+<tr>
+<td><code>Index</code></td>
+<td>int</td>
+<td>1</td>
+<td>Base game light source texture index.</td>
+</tr>
+<tr>
+<td><code>Texture</code></td>
+<td>string</td>
+<td>1</td>
+<td>Custom light map, must be loaded into game content.</td>
+</tr>
+<tr>
+<td><code>Color</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>Light color name, accepts same values as <code>ColorMask</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Usually, there's no need to have the same width and height in all variants, or the same scale. What does matter is having the right number of sprites for all your animation. That said Width and Height do come up when using <a href="003.2-Animation%20Clips.html">FrameOverrides on AnimClip, which is discussed on that page</a>.</li>
+</ul>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <a href="https://github.com/Mushymato/TrinketTinker">Source</a>   <a href="https://www.nexusmods.com/stardewvalley/mods/29073">Nexus</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

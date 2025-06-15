@@ -56,6 +56,8 @@
       name: ItemDrop
     - href: 004.z.008-Harvest.md
       name: Harvest
+    - href: 004.z.009-PetFarmAnimal.md
+      name: PetFarmAnimal
     - href: 004.z.100-Action.md
       name: Action
     - href: 004.z.101-BroadcastAction.md
@@ -87,5 +89,5 @@
   name: For SMAPI Mods
 - href: 009-User Configuration.md
   name: User Configuration
-- href: 010-Appendix.md
+- href: 099-Appendix.md
   name: Appendix

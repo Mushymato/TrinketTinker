@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IMotion | TrinketTinker </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IMotion | TrinketTinker ">
+      
+      
+      <link rel="icon" href="../images/favicon.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      <meta name="searchOption" content="noindex">
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/new/main/apiSpec/new?filename=TrinketTinker_Companions_Motions_IMotion.md&amp;value=---%0Auid%3A%20TrinketTinker.Companions.Motions.IMotion%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/favicon.png" alt="TrinketTinker">
+            TrinketTinker
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="TrinketTinker.Companions.Motions.IMotion">
+
+
+
+  <h1 id="TrinketTinker_Companions_Motions_IMotion" data-uid="TrinketTinker.Companions.Motions.IMotion" class="text-break">
+Interface IMotion  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="TrinketTinker.html">TrinketTinker</a>.<a class="xref" href="TrinketTinker.Companions.html">Companions</a>.<a class="xref" href="TrinketTinker.Companions.Motions.html">Motions</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>TrinketTinker.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IMotion</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_BoundingBox_" data-uid="TrinketTinker.Companions.Motions.IMotion.BoundingBox*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_BoundingBox" data-uid="TrinketTinker.Companions.Motions.IMotion.BoundingBox">
+  BoundingBox
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Anim sprite bounding box</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Rectangle BoundingBox { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Rectangle</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_CompanionAnimSprite_" data-uid="TrinketTinker.Companions.Motions.IMotion.CompanionAnimSprite*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_CompanionAnimSprite" data-uid="TrinketTinker.Companions.Motions.IMotion.CompanionAnimSprite">
+  CompanionAnimSprite
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current variant data</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">TinkerAnimSprite CompanionAnimSprite { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TrinketTinker.Companions.Anim.TinkerAnimSprite.html">TinkerAnimSprite</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_MotionClass_" data-uid="TrinketTinker.Companions.Motions.IMotion.MotionClass*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_MotionClass" data-uid="TrinketTinker.Companions.Motions.IMotion.MotionClass">
+  MotionClass
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Type name of the motion, can use short form like &quot;Hover&quot; for hover motion.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string MotionClass { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_NetRand_" data-uid="TrinketTinker.Companions.Motions.IMotion.NetRand*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_NetRand" data-uid="TrinketTinker.Companions.Motions.IMotion.NetRand">
+  NetRand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Random used for anim clips</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Random NetRand { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.random">Random</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_Speaker_" data-uid="TrinketTinker.Companions.Motions.IMotion.Speaker*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_Speaker" data-uid="TrinketTinker.Companions.Motions.IMotion.Speaker">
+  Speaker
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current variant data</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ChatterSpeaker Speaker { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TrinketTinker.Models.AbilityArgs.ChatterSpeaker.html">ChatterSpeaker</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_Cleanup_" data-uid="TrinketTinker.Companions.Motions.IMotion.Cleanup*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_Cleanup" data-uid="TrinketTinker.Companions.Motions.IMotion.Cleanup">
+  Cleanup()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Cleanup motion, remove light source.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Cleanup()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_Draw_" data-uid="TrinketTinker.Companions.Motions.IMotion.Draw*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_" data-uid="TrinketTinker.Companions.Motions.IMotion.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+  Draw(SpriteBatch)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Draws the companion, for all game instances in multiplayer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Draw(SpriteBatch b)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>b</code> <span class="xref">SpriteBatch</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_GetDrawLayer_" data-uid="TrinketTinker.Companions.Motions.IMotion.GetDrawLayer*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_GetDrawLayer" data-uid="TrinketTinker.Companions.Motions.IMotion.GetDrawLayer">
+  GetDrawLayer()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L94"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get draw layer of motion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float GetDrawLayer()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>offset</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_GetOffset_" data-uid="TrinketTinker.Companions.Motions.IMotion.GetOffset*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_GetOffset" data-uid="TrinketTinker.Companions.Motions.IMotion.GetOffset">
+  GetOffset()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get position offset of motion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Vector2 GetOffset()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector2</span></dt>
+    <dd><p>offset</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_Initialize_" data-uid="TrinketTinker.Companions.Motions.IMotion.Initialize*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_Initialize_StardewValley_Farmer_" data-uid="TrinketTinker.Companions.Motions.IMotion.Initialize(StardewValley.Farmer)">
+  Initialize(Farmer)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initialize motion, setup light source if needed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Initialize(Farmer farmer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>farmer</code> <span class="xref">Farmer</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_IsFacing_" data-uid="TrinketTinker.Companions.Motions.IMotion.IsFacing*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_IsFacing_Microsoft_Xna_Framework_Vector2_" data-uid="TrinketTinker.Companions.Motions.IMotion.IsFacing(Microsoft.Xna.Framework.Vector2)">
+  IsFacing(Vector2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Check is facing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsFacing(Vector2 pos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_OnOwnerWarp_" data-uid="TrinketTinker.Companions.Motions.IMotion.OnOwnerWarp*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_OnOwnerWarp" data-uid="TrinketTinker.Companions.Motions.IMotion.OnOwnerWarp">
+  OnOwnerWarp()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Update light source when owner changes location</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnOwnerWarp()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_SetActiveAnchors_" data-uid="TrinketTinker.Companions.Motions.IMotion.SetActiveAnchors*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_SetActiveAnchors_System_Collections_Generic_IEnumerable_System_String__" data-uid="TrinketTinker.Companions.Motions.IMotion.SetActiveAnchors(System.Collections.Generic.IEnumerable{System.String})">
+  SetActiveAnchors(IEnumerable&lt;string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Rebuild the list of active anchors.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetActiveAnchors(IEnumerable&lt;string&gt; strings)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>strings</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_SetAltVariant_" data-uid="TrinketTinker.Companions.Motions.IMotion.SetAltVariant*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_SetAltVariant_System_String_StardewValley_Objects_Trinkets_Trinket_" data-uid="TrinketTinker.Companions.Motions.IMotion.SetAltVariant(System.String,StardewValley.Objects.Trinkets.Trinket)">
+  SetAltVariant(string?, Trinket?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set an alt variant.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetAltVariant(string? altVariantKey, Trinket? trinketItem)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>altVariantKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>trinketItem</code> <span class="xref">Trinket</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_SetCurrAnchorTarget_" data-uid="TrinketTinker.Companions.Motions.IMotion.SetCurrAnchorTarget*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_SetCurrAnchorTarget_System_Int32_" data-uid="TrinketTinker.Companions.Motions.IMotion.SetCurrAnchorTarget(System.Int32)">
+  SetCurrAnchorTarget(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sync curr anchor target value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetCurrAnchorTarget(int newValue)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>newValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_SetMotionVariantData_" data-uid="TrinketTinker.Companions.Motions.IMotion.SetMotionVariantData*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_SetMotionVariantData_TrinketTinker_Models_MotionData_TrinketTinker_Models_VariantData_" data-uid="TrinketTinker.Companions.Motions.IMotion.SetMotionVariantData(TrinketTinker.Models.MotionData,TrinketTinker.Models.VariantData)">
+  SetMotionVariantData(MotionData, VariantData)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Update motion and variant data, when invalidate</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetMotionVariantData(MotionData mdata, VariantData vdata)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mdata</code> <a class="xref" href="TrinketTinker.Models.MotionData.html">MotionData</a></dt>
+    <dd></dd>
+    <dt><code>vdata</code> <a class="xref" href="TrinketTinker.Models.VariantData.html">VariantData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_SetOneshotClip_" data-uid="TrinketTinker.Companions.Motions.IMotion.SetOneshotClip*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_SetOneshotClip_System_String_" data-uid="TrinketTinker.Companions.Motions.IMotion.SetOneshotClip(System.String)">
+  SetOneshotClip(string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set an oneshot clip, to play once until end</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetOneshotClip(string? clipKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>clipKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_SetOverrideClip_" data-uid="TrinketTinker.Companions.Motions.IMotion.SetOverrideClip*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_SetOverrideClip_System_String_" data-uid="TrinketTinker.Companions.Motions.IMotion.SetOverrideClip(System.String)">
+  SetOverrideClip(string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set an override clip, to play instead of normal directional animation</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetOverrideClip(string? clipKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>clipKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_SetSpeechBubble_" data-uid="TrinketTinker.Companions.Motions.IMotion.SetSpeechBubble*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_SetSpeechBubble_System_String_" data-uid="TrinketTinker.Companions.Motions.IMotion.SetSpeechBubble(System.String)">
+  SetSpeechBubble(string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set a speech bubble to call, usually on ability proc.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetSpeechBubble(string? speechBubbleKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>speechBubbleKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_UpdateAnchor_" data-uid="TrinketTinker.Companions.Motions.IMotion.UpdateAnchor*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_UpdateAnchor_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Companions.Motions.IMotion.UpdateAnchor(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
+  UpdateAnchor(GameTime, GameLocation)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Changes the position of the anchor that the companion moves relative to.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">AnchorTarget UpdateAnchor(GameTime time, GameLocation location)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>time</code> <span class="xref">GameTime</span></dt>
+    <dd></dd>
+    <dt><code>location</code> <span class="xref">GameLocation</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TrinketTinker.Models.AnchorTarget.html">AnchorTarget</a></dt>
+    <dd><p>post update anchor target</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_UpdateGlobal_" data-uid="TrinketTinker.Companions.Motions.IMotion.UpdateGlobal*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_UpdateGlobal_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Companions.Motions.IMotion.UpdateGlobal(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
+  UpdateGlobal(GameTime, GameLocation)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Update info that should change every tick, for all game instances in multiplayer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void UpdateGlobal(GameTime time, GameLocation location)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>time</code> <span class="xref">GameTime</span></dt>
+    <dd></dd>
+    <dt><code>location</code> <span class="xref">GameLocation</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_UpdateLightSource_" data-uid="TrinketTinker.Companions.Motions.IMotion.UpdateLightSource*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_UpdateLightSource_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Companions.Motions.IMotion.UpdateLightSource(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
+  UpdateLightSource(GameTime, GameLocation)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reposition the lightsource.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void UpdateLightSource(GameTime time, GameLocation location)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>time</code> <span class="xref">GameTime</span></dt>
+    <dd></dd>
+    <dt><code>location</code> <span class="xref">GameLocation</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Companions_Motions_IMotion_UpdateLocal_" data-uid="TrinketTinker.Companions.Motions.IMotion.UpdateLocal*"></a>
+
+  <h3 id="TrinketTinker_Companions_Motions_IMotion_UpdateLocal_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Companions.Motions.IMotion.UpdateLocal(Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
+  UpdateLocal(GameTime, GameLocation)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Companions/Motions/IMotion.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Update info that should change every tick, for owner only. Netfield changes should happen here.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void UpdateLocal(GameTime time, GameLocation location)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>time</code> <span class="xref">GameTime</span></dt>
+    <dd></dd>
+    <dt><code>location</code> <span class="xref">GameLocation</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <a href="https://github.com/Mushymato/TrinketTinker">Source</a>   <a href="https://www.nexusmods.com/stardewvalley/mods/29073">Nexus</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
