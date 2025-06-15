@@ -33,6 +33,7 @@ The term "anchor" refers to a position that the companion derives it's own posit
       ],
       // animation and display
       "AlwaysMoving": <boolean moving>,
+      "Collision": "<collision enum>",
       "FrameStart": <int start frame>,
       "FrameLength": <int frame length per direction>,
       "Interval": <double interval in miliseconds>,
@@ -79,6 +80,7 @@ The term "anchor" refers to a position that the companion derives it's own posit
 | `LoopMode` | [LoopMode](~/api/TrinketTinker.Models.LoopMode.yml) | Standard | Control animation playback. <ul><li>Standard: 1 2 3 4 1 2 3 4</li><li>PingPong:  1 2 3 4 3 2 1</li><ul> |
 | `Anchors` | List\<[AnchorTargetData](003.1-Anchors.md)\> | _null_ | Ordered list of anchors to follow, if not set, fall back to following the player |
 | `AlwaysMoving` | bool | false | By default the companion only animates while the player is moving, setting this to true makes the companion continue their animation. |
+| `Collision` | [CollisionMode](~/api/TrinketTinker.Models.CollisionMode.yml) | None | By default the companion ignores walls when switching anchors and will walk right through cliffs, using `Line` makes them check walls before proceeding, unless the anchor target is `Owner`. |
 | `FrameStart` | int | 0 | First frame/sprite index of the directional animations, set this if you want to put multiple companions on 1 file. |
 | `FrameLength` | int | 4 | Length of each cycle for directional animations. |
 | `Interval` | float | 100 | Milisecond Interval between animation frames. |

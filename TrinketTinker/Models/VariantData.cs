@@ -144,6 +144,9 @@ public sealed class VariantData : IVariantData
     /// <summary>Display name override</summary>
     public List<string>? TrinketNameArguments { get; set; } = null;
 
+    /// <summary>Temporary animated sprite to attach to the companion, these will follow them around. DOES NOT SYNC IN MULTIPLAYER.</summary>
+    public List<string>? AttachedTAS { get; set; } = null;
+
     /// <summary>Alternate variants dict</summary>
     public Dictionary<string, AltVariantData>? AltVariants { get; set; } = null;
 

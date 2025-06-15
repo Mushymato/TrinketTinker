@@ -4,6 +4,22 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.6.0
+
+#### Added
+- TemporaryAnimatedSprite now shares some code with MMAP and can use (most of) the funny MMAP TAS features. The custom assets remain separate.
+- HitTAS now takes a list of pipe (`|`) separated TAS
+- With Motion `Collision: Line`, will now check walls before going towards an anchor point.
+- Companions that are tied to an NPC can now breathe (if the NPC themselves can breathe).
+- Updated `fr.json` thanks to Caranud
+- AnimClips can now have full frame source rect overrides. This essentially allows modder to do anything with anim clip frames.
+- TinkerInventory menu now has Stack and Organize buttons.
+- Companions can now have an `AttachedTAS`
+
+#### Changed
+- AnimClips now reset to start frame when switched over, instead of attempting to keep previous frame if possible.
+- Harvest abilities now have higher tool power.
+
 ### 1.5.8
 
 #### Added

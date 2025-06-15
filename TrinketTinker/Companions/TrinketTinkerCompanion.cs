@@ -158,7 +158,7 @@ public class TrinketTinkerCompanion : Companion
             && Data.Motion != null
         )
         {
-            InitializeAttachedTAS(Data.Motion);
+            InitializeAttachedTAS(Motion.CompanionAnimSprite.FullVd);
         }
     }
 
@@ -250,7 +250,7 @@ public class TrinketTinkerCompanion : Companion
         if (Motion != null)
         {
             Motion.Initialize(Owner);
-            InitializeAttachedTAS(mdata);
+            InitializeAttachedTAS(vdata);
         }
     }
 
@@ -258,12 +258,12 @@ public class TrinketTinkerCompanion : Companion
 
     private void SetTASPositionWithOffset(TemporaryAnimatedSprite tas) => tas.Position = Position + Offset;
 
-    private void InitializeAttachedTAS(MotionData mdata)
+    private void InitializeAttachedTAS(VariantData vdata)
     {
-        if (mdata.AttachedTAS != null)
+        if (vdata.AttachedTAS != null)
         {
             AttachedTAS = [];
-            foreach (string tasId in mdata.AttachedTAS)
+            foreach (string tasId in vdata.AttachedTAS)
             {
                 GameStateQueryContext queryContext = new();
                 if (AssetManager.TAS.TryGetTASContext(tasId, out TASContext? tasCtx))

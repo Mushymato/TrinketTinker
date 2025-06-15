@@ -396,9 +396,6 @@ public sealed class MotionData : IHaveArgs
     /// </summary>
     public Dictionary<string, SpeechBubbleData> SpeechBubbles { get; set; } = [];
 
-    /// <summary>Temporary animated sprite to attach to the companion, these will follow them around. DOES NOT SYNC IN MULTIPLAYER.</summary>
-    public List<string>? AttachedTAS { get; set; } = null;
-
     /// <inheritdocs/>
     public Dictionary<string, object>? Args { get; set; } = null;
 }

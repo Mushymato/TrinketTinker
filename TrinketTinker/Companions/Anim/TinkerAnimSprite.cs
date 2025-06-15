@@ -35,6 +35,9 @@ public sealed class TinkerAnimSprite
     /// <summary>full variant data</summary>
     private VariantData fullVd;
 
+    /// <summary>full variant data</summary>
+    internal VariantData FullVd => fullVd;
+
     /// <summary>Draw origin of the sprite.</summary>
     internal Vector2 Origin;
 

@@ -82,7 +82,7 @@ These fields are valid for both variant and alt variant.
 | `Portrait` | string | _null_ | A portrait texture for the [Chatter ability](004.z.201-Chatter.md), required to display a portrait and a name. |
 | `NPC` | string | _null_ | An NPC name (key of `Data/Characters`) to associate this variant with, used for the [Chatter ability](004.z.201-Chatter.md). |
 | `Name` | string | _null_ | A display name for the [Chatter ability](004.z.201-Chatter.md), used if there's no real `NPC`. |
-| `ShowBreathing` | bool | _null_ | If the NPC name is set and they have `Breather=true` along with a sprite size less than 16x32, apply the NPC "breathing" effect on this trinket companion. |
+| `ShowBreathing` | bool | _null_ (true) | If the NPC name is set and they have `Breather=true` along with a sprite size less than 16x32, apply the NPC "breathing" effect on this trinket companion. |
 
 ### Top Level Variant
 
