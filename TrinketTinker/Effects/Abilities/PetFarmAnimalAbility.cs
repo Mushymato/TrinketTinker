@@ -21,7 +21,7 @@ public sealed class PetFarmAnimalAbility(TrinketTinkerEffect effect, AbilityData
     }
 
     /// <summary>Apply or refreshes the buff.</summary>
-    /// <parwam name="proc"></param>
+    /// <param name="proc"></param>
     /// <returns></returns>
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
