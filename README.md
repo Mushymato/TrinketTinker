@@ -34,8 +34,7 @@ These keybinds are shared across mods using this framework, for the user to set 
 These settings are global across all trinkets created using this framework, but have no effect on other trinkets (base game, added via other C# mods).
 
 - `Hide During Events`: Trinket companions appear in events by default, the user can hide all by unchecking this.
-- `Draw Debug Mode`: Enable a draw debug mode that higlights the bounds of the companion and show their current frame number.
-
+- `Draw Debug Mode`: Enable a draw debug mode that highlights the bounds of the companion and show their current frame number. If you are not a mod developer and you see a magenta background around your trinkets, turn this off.
 
 ## Translations
 
