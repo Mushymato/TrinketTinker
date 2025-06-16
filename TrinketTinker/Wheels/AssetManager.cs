@@ -18,7 +18,7 @@ internal static class AssetManager
     internal const string TRINKET_TARGET = "Data/Trinkets";
 
     /// <summary>Tinker asset target</summary>
-    internal static string TinkerAsset => $"{ModEntry.ModId}/Tinker";
+    internal const string TinkerAsset = $"{ModEntry.ModId}/Tinker";
 
     /// <summary>Backing field for tinker data</summary>
     private static Dictionary<string, TinkerData>? _tinkerData = null;

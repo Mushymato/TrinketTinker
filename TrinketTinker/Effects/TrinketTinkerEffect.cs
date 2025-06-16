@@ -29,16 +29,16 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
     public const double IN_COMBAT_CD = 10000;
 
     /// <summary>ModData variant key</summary>
-    public static readonly string ModData_Variant = $"{ModEntry.ModId}/Variant";
+    public const string ModData_Variant = $"{ModEntry.ModId}/Variant";
 
     /// <summary>ModData variant key</summary>
-    public static readonly string ModData_Level = $"{ModEntry.ModId}/Level";
+    public const string ModData_Level = $"{ModEntry.ModId}/Level";
 
     /// <summary>ModData inventory guid</summary>
-    public static readonly string ModData_Inventory = $"{ModEntry.ModId}/Inventory";
+    public const string ModData_Inventory = $"{ModEntry.ModId}/Inventory";
 
     /// <summary>ModData inventory guid</summary>
-    public static readonly string ModData_Enabled = $"{ModEntry.ModId}/Enabled";
+    public const string ModData_Enabled = $"{ModEntry.ModId}/Enabled";
 
     /// <summary>Marks data associated with this instance as dirty, must reload data and abilities</summary>
     internal PerScreen<bool> IsDirty { get; set; } = new();

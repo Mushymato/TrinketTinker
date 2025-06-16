@@ -100,6 +100,35 @@ The top level variant can have all shared fields, as well as:
 | `AttachedTAS` | List\<string\> | _null_ | If set, show [temporary animated sprites](006-Temporary%20Animated%20Sprite.md) associated with this companion that follow them around. |
 | `AltVariants` | Dictionary\<string, AltVariantData\> | _null_ | A dictionary of alternate variants. |
 
+### TrinketSpriteIndex and TrinketNameArguments
+
+These two fields are used to allow variants to have different name and icons.
+
+_TrinketSpriteIndex_: Changes the sprite index along with variant, meaning that if your trinket's texture is a sprite sheet with multiple item icon sprites, this can be used to point to a specific one. To make this work, put every icon associated with the variants of 1 trinket on 1 texture. You cannot change to a completely different texture, or use color masks.
+
+_TrinketNameArguments_: Adds substitute strings for use with `{0}` in `DisplayName`, for example:
+```json
+// Data/Trinkets
+"DisplayName": "My Trinket {0} {1}",
+// mushymato.TrinketTinker/Tinker
+"Variants": [
+  {
+    "Texture": "{{ModId}}/trinkets/red/water",
+    "TrinketNameArguments": ["Red", "Water"],
+  },
+  {
+    "Texture": "{{ModId}}/trinkets/blue/fire",
+    "TrinketNameArguments": ["Blue", "Fire"],
+  }
+]
+```
+
+The resulting trinket can have these names:
+
+- `"My Trinket Red Water"`, for the first Variant
+- `"My Trinket Blue Fire"`, for the second Variant
+
+
 ### Alt Variant Only
 
 The alt variant in `AltVariants` can have all shared fields, as well as:

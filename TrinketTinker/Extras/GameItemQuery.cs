@@ -7,6 +7,7 @@ using StardewValley.Internal;
 using StardewValley.Inventories;
 using StardewValley.Objects.Trinkets;
 using StardewValley.TokenizableStrings;
+using StardewValley.Triggers;
 using TrinketTinker.Companions;
 using TrinketTinker.Effects;
 
@@ -29,15 +30,16 @@ public class HiredTrinket(string itemId, int generationSeed) : Trinket(itemId, g
 
 public static class GameItemQuery
 {
-    public static string ItemQuery_CREATE_TRINKET => $"{ModEntry.ModId}_CREATE_TRINKET";
-    public static string ItemQuery_CREATE_TRINKET_ALL_VARIANTS => $"{ModEntry.ModId}_CREATE_TRINKET_ALL_VARIANTS";
-    public static string ItemQuery_HIRE_TRINKET => $"{ModEntry.ModId}_HIRE_TRINKET";
-    public static string GameStateQuery_IS_TINKER => $"{ModEntry.ModId}_IS_TINKER";
-    public static string GameStateQuery_HAS_LEVELS => $"{ModEntry.ModId}_HAS_LEVELS";
-    public static string GameStateQuery_HAS_VARIANTS => $"{ModEntry.ModId}_HAS_VARIANTS";
-    public static string GameStateQuery_ENABLED_TRINKET_COUNT => $"{ModEntry.ModId}_ENABLED_TRINKET_COUNT";
-    public static string GameStateQuery_IN_ALT_VARIANT => $"{ModEntry.ModId}_IN_ALT_VARIANT";
-    public static string GameStateQuery_TRINKET_HAS_ITEM => $"{ModEntry.ModId}_TRINKET_HAS_ITEM";
+    public const string ItemQuery_CREATE_TRINKET = $"{ModEntry.ModId}_CREATE_TRINKET";
+    public const string ItemQuery_CREATE_TRINKET_ALL_VARIANTS = $"{ModEntry.ModId}_CREATE_TRINKET_ALL_VARIANTS";
+    public const string ItemQuery_HIRE_TRINKET = $"{ModEntry.ModId}_HIRE_TRINKET";
+    public const string GameStateQuery_IS_TINKER = $"{ModEntry.ModId}_IS_TINKER";
+    public const string GameStateQuery_HAS_LEVELS = $"{ModEntry.ModId}_HAS_LEVELS";
+    public const string GameStateQuery_HAS_VARIANTS = $"{ModEntry.ModId}_HAS_VARIANTS";
+    public const string GameStateQuery_ENABLED_TRINKET_COUNT = $"{ModEntry.ModId}_ENABLED_TRINKET_COUNT";
+    public const string GameStateQuery_IN_ALT_VARIANT = $"{ModEntry.ModId}_IN_ALT_VARIANT";
+    public const string GameStateQuery_TRINKET_HAS_ITEM = $"{ModEntry.ModId}_TRINKET_HAS_ITEM";
+    public const string TriggerAction_SetCompanionVisible = $"{ModEntry.ModId}_SetCompanionVisible";
 
     private const string RANDOM = "R";
     private const string MAX = "M";
@@ -47,17 +49,20 @@ public static class GameItemQuery
     public static void Register()
     {
         // Add item queries
-        ItemQueryResolver.Register(ItemQuery_CREATE_TRINKET, CREATE_TRINKET);
-        ItemQueryResolver.Register(ItemQuery_CREATE_TRINKET_ALL_VARIANTS, CREATE_TRINKET_ALL_VARIANTS);
-        ItemQueryResolver.Register(ItemQuery_HIRE_TRINKET, HIRE_TRINKET);
+        ItemQueryResolver.Register(ItemQuery_CREATE_TRINKET, IQ_CREATE_TRINKET);
+        ItemQueryResolver.Register(ItemQuery_CREATE_TRINKET_ALL_VARIANTS, IQ_CREATE_TRINKET_ALL_VARIANTS);
+        ItemQueryResolver.Register(ItemQuery_HIRE_TRINKET, IQ_HIRE_TRINKET);
 
         // Add GSQs
-        GameStateQuery.Register(GameStateQuery_IS_TINKER, IS_TINKER);
-        GameStateQuery.Register(GameStateQuery_HAS_LEVELS, HAS_LEVELS);
-        GameStateQuery.Register(GameStateQuery_HAS_VARIANTS, HAS_VARIANTS);
-        GameStateQuery.Register(GameStateQuery_ENABLED_TRINKET_COUNT, ENABLED_TRINKET_COUNT);
-        GameStateQuery.Register(GameStateQuery_IN_ALT_VARIANT, IN_ALT_VARIANT);
-        GameStateQuery.Register(GameStateQuery_TRINKET_HAS_ITEM, TRINKET_HAS_ITEM);
+        GameStateQuery.Register(GameStateQuery_IS_TINKER, GSQ_IS_TINKER);
+        GameStateQuery.Register(GameStateQuery_HAS_LEVELS, GSQ_HAS_LEVELS);
+        GameStateQuery.Register(GameStateQuery_HAS_VARIANTS, GSQ_HAS_VARIANTS);
+        GameStateQuery.Register(GameStateQuery_ENABLED_TRINKET_COUNT, GSQ_ENABLED_TRINKET_COUNT);
+        GameStateQuery.Register(GameStateQuery_IN_ALT_VARIANT, GSQ_IN_ALT_VARIANT);
+        GameStateQuery.Register(GameStateQuery_TRINKET_HAS_ITEM, GSQ_TRINKET_HAS_ITEM);
+
+        // Add trigger action to hide trinket, mainly for usage in events
+        TriggerActionManager.RegisterAction(TriggerAction_SetCompanionVisible, TA_SetEnabled);
     }
 
     /// <summary>
@@ -199,7 +204,7 @@ public static class GameItemQuery
     /// <param name="avoidItemIds">ignored</param>
     /// <param name="logError"></param>
     /// <returns></returns>
-    public static IEnumerable<ItemQueryResult> CREATE_TRINKET(
+    public static IEnumerable<ItemQueryResult> IQ_CREATE_TRINKET(
         string key,
         string arguments,
         ItemQueryContext context,
@@ -249,7 +254,7 @@ public static class GameItemQuery
     /// <param name="avoidItemIds">ignored</param>
     /// <param name="logError"></param>
     /// <returns></returns>
-    public static IEnumerable<ItemQueryResult> CREATE_TRINKET_ALL_VARIANTS(
+    public static IEnumerable<ItemQueryResult> IQ_CREATE_TRINKET_ALL_VARIANTS(
         string key,
         string arguments,
         ItemQueryContext context,
@@ -285,7 +290,7 @@ public static class GameItemQuery
         return createdTrinkets;
     }
 
-    public static IEnumerable<ItemQueryResult> HIRE_TRINKET(
+    public static IEnumerable<ItemQueryResult> IQ_HIRE_TRINKET(
         string key,
         string arguments,
         ItemQueryContext context,
@@ -307,7 +312,7 @@ public static class GameItemQuery
     /// <param name="query"></param>
     /// <param name="context"></param>
     /// <returns></returns>
-    public static bool IS_TINKER(string[] query, GameStateQueryContext context)
+    public static bool GSQ_IS_TINKER(string[] query, GameStateQueryContext context)
     {
         if (TryGetTinkerTrinket(query, context, 1, out Trinket? trinket, out TrinketTinkerEffect? effect))
         {
@@ -324,7 +329,7 @@ public static class GameItemQuery
     /// <param name="query"></param>
     /// <param name="context"></param>
     /// <returns></returns>
-    public static bool HAS_LEVELS(string[] query, GameStateQueryContext context)
+    public static bool GSQ_HAS_LEVELS(string[] query, GameStateQueryContext context)
     {
         if (TryGetTinkerTrinket(query, context, 1, out Trinket? trinket, out TrinketTinkerEffect? effect))
         {
@@ -340,7 +345,7 @@ public static class GameItemQuery
     /// <param name="query"></param>
     /// <param name="context"></param>
     /// <returns></returns>
-    public static bool HAS_VARIANTS(string[] query, GameStateQueryContext context)
+    public static bool GSQ_HAS_VARIANTS(string[] query, GameStateQueryContext context)
     {
         if (TryGetTinkerTrinket(query, context, 1, out Trinket? trinket, out TrinketTinkerEffect? effect))
         {
@@ -355,7 +360,7 @@ public static class GameItemQuery
     /// <param name="context"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    private static bool ENABLED_TRINKET_COUNT(string[] query, GameStateQueryContext context)
+    private static bool GSQ_ENABLED_TRINKET_COUNT(string[] query, GameStateQueryContext context)
     {
         if (!TryGetTinkerTrinket(query, context, 1, out Trinket? trinket, out TrinketTinkerEffect? effect))
             return false;
@@ -388,7 +393,11 @@ public static class GameItemQuery
         return CompareIntegerQ(query, 3, count);
     }
 
-    private static bool IN_ALT_VARIANT(string[] query, GameStateQueryContext context)
+    /// <summary>Check if the trinket is in an alt variant</summary>
+    /// <param name="query"></param>
+    /// <param name="context"></param>
+    /// <returns></returns>
+    private static bool GSQ_IN_ALT_VARIANT(string[] query, GameStateQueryContext context)
     {
         if (
             TryGetTinkerTrinket(query, context, 1, out Trinket? _, out TrinketTinkerEffect? effect, createFromId: false)
@@ -406,7 +415,11 @@ public static class GameItemQuery
         return false;
     }
 
-    private static bool TRINKET_HAS_ITEM(string[] query, GameStateQueryContext context)
+    /// <summary>Check if the trinket's inventory has a specific item</summary>
+    /// <param name="query"></param>
+    /// <param name="context"></param>
+    /// <returns></returns>
+    private static bool GSQ_TRINKET_HAS_ITEM(string[] query, GameStateQueryContext context)
     {
         if (
             TryGetTinkerTrinket(query, context, 1, out Trinket? _, out TrinketTinkerEffect? effect, createFromId: false)
@@ -415,6 +428,38 @@ public static class GameItemQuery
         )
         {
             return CompareIntegerQ(query, 3, trinketInv.CountId(itemId));
+        }
+        return false;
+    }
+
+    /// <summary></summary>
+    /// <param name="args"></param>
+    /// <param name="context"></param>
+    /// <param name="error"></param>
+    /// <returns></returns>
+    private static bool TA_SetEnabled(string[] args, TriggerActionContext context, out string error)
+    {
+        if (
+            !ArgUtility.TryGet(args, 1, out string trinketId, out error, allowBlank: false, "string trinketId")
+            || !ArgUtility.TryGetOptionalInt(args, 2, out int level, out error, defaultValue: -1, name: "int level")
+            || !ArgUtility.TryGetOptionalInt(args, 3, out int variant, out error, defaultValue: -1, name: "int variant")
+        )
+        {
+            ModEntry.Log(error, LogLevel.Error);
+            return false;
+        }
+
+        foreach (Trinket trinketItem in Game1.player.trinketItems)
+        {
+            if (
+                trinketItem?.ItemId == trinketId
+                && trinketItem.GetEffect() is TrinketTinkerEffect effect
+                && ((level != -1 && effect.Level != level) || (variant != -1 && effect.Variant != variant))
+                && effect.Companion is TrinketTinkerCompanion companion
+            )
+            {
+                companion.ToggleDisableCompanion(2);
+            }
         }
         return false;
     }

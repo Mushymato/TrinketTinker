@@ -24,7 +24,7 @@ internal sealed class ModEntry : Mod
 #endif
 
     private static IMonitor? mon;
-    public static string ModId { get; set; } = "";
+    public const string ModId = "mushymato.TrinketTinker";
 
     public static ModConfig Config { get; set; } = null!;
     internal static IModHelper Help { get; set; } = null!;
@@ -36,7 +36,6 @@ internal sealed class ModEntry : Mod
         I18n.Init(helper.Translation);
         mon = Monitor;
         Help = Helper;
-        ModId = ModManifest.UniqueID;
 
         // Config is not player facing atm, just holds whether draw debug mode is on.
         Config = Helper.ReadConfig<ModConfig>();

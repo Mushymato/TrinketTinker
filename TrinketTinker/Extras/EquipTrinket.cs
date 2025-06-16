@@ -21,10 +21,10 @@ public static class EquipTrinket
         Game1.player.team.GetOrCreateGlobalInventory($"{ModEntry.ModId}+{player.UniqueMultiplayerID}/HiddenTrinkets");
 
     /// <summary>Equip hidden trinket action name</summary>
-    public static string Action_EquipHiddenTrinket => $"{ModEntry.ModId}_EquipHiddenTrinket";
+    public const string Action_EquipHiddenTrinket = $"{ModEntry.ModId}_EquipHiddenTrinket";
 
     /// <summary>Unequip trinket action name</summary>
-    public static string Action_UnequipHiddenTrinket => $"{ModEntry.ModId}_UnequipHiddenTrinket";
+    public const string Action_UnequipHiddenTrinket = $"{ModEntry.ModId}_UnequipHiddenTrinket";
 
     private static readonly MethodInfo ResizeMethod = typeof(TrinketList).GetMethod(
         "Resize",

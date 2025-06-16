@@ -12,7 +12,7 @@ namespace TrinketTinker.Effects.Abilities;
 public sealed class RaiseTriggerAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
     : Ability<NoArgs>(effect, data, lvl)
 {
-    public static readonly string TriggerEventName = $"{ModEntry.ModId}/TrinketProc";
+    public const string TriggerEventName = $"{ModEntry.ModId}/TrinketProc";
 
     /// <summary>Raise the trigger <see cref="TriggerEventName"/></summary>
     /// <param name="proc"></param>

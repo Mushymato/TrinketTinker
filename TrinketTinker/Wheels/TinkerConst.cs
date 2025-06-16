@@ -20,14 +20,14 @@ public static class TinkerConst
     /// <summary>String pattern for Trinket Tinker ability classes</summary>
     internal static readonly string ABILITY_CLS = GetClsPattern(typeof(BuffAbility), "Ability");
 
-    public static string CustomFields_DirectEquipOnly => $"{ModEntry.ModId}/DirectEquipOnly";
-    public static string ModData_IndirectEquip => $"{ModEntry.ModId}/IndirectEquip";
-    public static string ModData_HiddenEquip => $"{ModEntry.ModId}/HiddenEquip";
-    public static string CustomFields_Owner => $"{ModEntry.ModId}/Owner";
-    public static string CustomFields_Trinket => $"{ModEntry.ModId}/Trinket";
-    public static string CustomFields_Data => $"{ModEntry.ModId}/Data";
-    public static string CustomFields_Position => $"{ModEntry.ModId}/Position";
-    public static string CustomFields_PosOff => $"{ModEntry.ModId}/PosOff";
+    public const string CustomFields_DirectEquipOnly = $"{ModEntry.ModId}/DirectEquipOnly";
+    public const string ModData_IndirectEquip = $"{ModEntry.ModId}/IndirectEquip";
+    public const string ModData_HiddenEquip = $"{ModEntry.ModId}/HiddenEquip";
+    public const string CustomFields_Owner = $"{ModEntry.ModId}/Owner";
+    public const string CustomFields_Trinket = $"{ModEntry.ModId}/Trinket";
+    public const string CustomFields_Data = $"{ModEntry.ModId}/Data";
+    public const string CustomFields_Position = $"{ModEntry.ModId}/Position";
+    public const string CustomFields_PosOff = $"{ModEntry.ModId}/PosOff";
 
     internal static string GetClsPattern(Type cls, string suffix)
     {

@@ -108,8 +108,12 @@ public class TrinketTinkerCompanion : Companion
         }
     }
 
-    /// <summary>Should draw in current location, rechecked on warp</summary>
-    private readonly NetBool _disableCompanion = new(false);
+    /// <summary>
+    // Whether companion should draw, is bitmap
+    // 0: yes should draw
+    // 1-3: should not draw
+    // </summary>
+    private readonly NetByte _disableCompanion = new(0);
 
     /// <summary>Net sync'd currAnchorTarget, for use in anim clip</summary>
     private readonly NetInt _currAnchorTarget = new(0);
@@ -145,11 +149,35 @@ public class TrinketTinkerCompanion : Companion
         this.trinketItem = trinketItem;
     }
 
+    /// <summary>
+    /// Update disable companion at offset
+    /// - 1: disabled by location
+    /// - 2: disabled by trigger
+    /// </summary>
+    /// <param name="state"></param>
+    /// <param name="offset"></param>
+    internal void SetDisableCompanion(bool state, byte offset)
+    {
+        if (state)
+            _disableCompanion.Value |= (byte)(1 << offset);
+        else
+            _disableCompanion.Value &= (byte)~(1 << offset);
+    }
+
+    /// <summary>
+    /// Toggle disable companion at offset
+    /// - 1: disabled by location
+    /// - 2: disabled by trigger
+    /// </summary>
+    /// <param name="state"></param>
+    /// <param name="offset"></param>
+    internal void ToggleDisableCompanion(byte offset) => _disableCompanion.Value ^= (byte)(1 << offset);
+
     /// <summary>Initialize Motion class.</summary>
     public override void InitializeCompanion(Farmer farmer)
     {
         base.InitializeCompanion(farmer);
-        _disableCompanion.Value = Places.LocationDisableTrinketCompanions(Owner.currentLocation);
+        SetDisableCompanion(Places.LocationDisableTrinketCompanions(Owner.currentLocation), 1);
         Anchor = Utility.PointToVector2(farmer.GetBoundingBox().Center);
         Motion?.Initialize(farmer);
         if (
@@ -308,7 +336,7 @@ public class TrinketTinkerCompanion : Companion
     /// <param name="b">SpriteBatch</param>
     public override void Draw(SpriteBatch b)
     {
-        if (Owner == null || _disableCompanion.Value)
+        if (Owner == null || _disableCompanion.Value != 0)
             return;
         if (!Visuals.ShouldDraw())
             return;
@@ -395,7 +423,7 @@ public class TrinketTinkerCompanion : Companion
         base.OnOwnerWarp();
         _position.Value = _owner.Value.Position;
         Motion?.OnOwnerWarp();
-        _disableCompanion.Value = Places.LocationDisableTrinketCompanions(Owner.currentLocation);
+        SetDisableCompanion(Places.LocationDisableTrinketCompanions(Owner.currentLocation), 1);
     }
 
     /// <summary>Set speech bubble key</summary>

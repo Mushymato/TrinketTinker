@@ -10,8 +10,8 @@ namespace TrinketTinker.Wheels;
 internal static class Places
 {
     /// <summary>Custom</summary>
-    public static readonly string Field_DisableTrinketAbilities = $"{ModEntry.ModId}/disableAbilities";
-    public static readonly string Field_DisableTrinketCompanions = $"{ModEntry.ModId}/disableCompanions";
+    public const string Field_DisableTrinketAbilities = $"{ModEntry.ModId}/disableAbilities";
+    public const string Field_DisableTrinketCompanions = $"{ModEntry.ModId}/disableCompanions";
 
     /// <summary>Find closest matching farm animal within range</summary>
     /// <param name="location"></param>

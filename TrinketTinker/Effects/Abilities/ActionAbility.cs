@@ -13,7 +13,7 @@ namespace TrinketTinker.Effects.Abilities;
 public sealed class ActionAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
     : Ability<ActionArgs>(effect, data, lvl)
 {
-    internal static readonly string TriggerContextName = $"{ModEntry.ModId}/Action";
+    internal const string TriggerContextName = $"{ModEntry.ModId}/Action";
     internal bool activatedByAlways = false;
 
     /// <summary>Parse and call the action</summary>

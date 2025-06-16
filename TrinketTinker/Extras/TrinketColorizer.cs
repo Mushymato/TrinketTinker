@@ -14,11 +14,11 @@ namespace TrinketTinker.Extras;
 public static class TrinketColorizer
 {
     public const string TrinketColorizerTextureFile = "assets/trinketcolorizer.png";
-    public static string TrinketColorizerTexture => $"Mods/{ModEntry.ModId}/TrinketColorizer";
-    public static string TrinketColorizerId => $"{ModEntry.ModId}_TrinketColorizer";
-    public static string TrinketColorizerQId => $"(BC){ModEntry.ModId}_TrinketColorizer";
-    public static string CustomData_LevelPlus => $"{ModEntry.ModId}/Level+";
-    public static string CustomData_VariantPlus => $"{ModEntry.ModId}/Variant+";
+    public const string TrinketColorizerTexture = $"Mods/{ModEntry.ModId}/TrinketColorizer";
+    public const string TrinketColorizerId = $"{ModEntry.ModId}_TrinketColorizer";
+    public const string TrinketColorizerQId = $"(BC){ModEntry.ModId}_TrinketColorizer";
+    public const string CustomData_LevelPlus = $"{ModEntry.ModId}/Level+";
+    public const string CustomData_VariantPlus = $"{ModEntry.ModId}/Variant+";
 
     public static void OnAssetRequested(AssetRequestedEventArgs e)
     {
