@@ -1,20 +1,20 @@
 {
-    "Name": "[CP] Sinister Servants",
-    "Author": "mushymato",
-    "Version": "1.1.0",
-    "Description": "Adds 6 monster trinkets",
-    "UniqueID": "mushymato.SinisterServants",
-    "MinimumApiVersion": "4.0.0",
-    "UpdateKeys": [
-        "Nexus:29074"
-    ],
-    "ContentPackFor": {
-        "UniqueID": "Pathoschild.ContentPatcher"
-    },
-    "Dependencies": [
-        {
-            "UniqueID": "mushymato.TrinketTinker",
-            "MinimumVersion": "1.4.3"
-        }
-    ]
+  "Name": "[CP] Sinister Servants",
+  "Author": "mushymato",
+  "Version": "1.2.0",
+  "Description": "Adds 6 monster trinkets",
+  "UniqueID": "mushymato.SinisterServants",
+  "MinimumApiVersion": "4.0.0",
+  "UpdateKeys": [
+    "Nexus:29074"
+  ],
+  "ContentPackFor": {
+    "UniqueID": "Pathoschild.ContentPatcher"
+  },
+  "Dependencies": [
+    {
+      "UniqueID": "mushymato.TrinketTinker",
+      "MinimumVersion": "1.4.3"
+    }
+  ]
 }

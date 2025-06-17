@@ -341,7 +341,7 @@ public abstract class Motion<TArgs> : IMotion
                             originPoint,
                             anchor.Range,
                             ignoreUntargetables: true,
-                            match: anchor.Filters != null ? (m) => !anchor.Filters.Contains(m.Name) : null
+                            match: anchor.Filters != null ? (m) => Places.FilterStringId(anchor.Filters, m.Name) : null
                         );
                         if (
                             closest != null
@@ -372,7 +372,7 @@ public abstract class Motion<TArgs> : IMotion
                                 location,
                                 originPoint,
                                 anchor.Range,
-                                anchor.Filters != null ? (npc) => !anchor.Filters.Contains(npc.Name) : null
+                                anchor.Filters != null ? (npc) => Places.FilterStringId(anchor.Filters, npc.Name) : null
                             )
                                 is Character closest
                             && SetAnchor(anchor, location, Utility.PointToVector2(closest.GetBoundingBox().Center))

@@ -223,4 +223,15 @@ internal static class Places
         return (data.CustomFields?.TryGetValue(Field_DisableTrinketCompanions, out string? value) ?? false)
             && value.EqualsIgnoreCase("true");
     }
+
+    /// <summary>Filter on a string id against a list of string ids</summary>
+    /// <param name="Filters"></param>
+    /// <param name="checkId"></param>
+    /// <returns></returns>
+    public static bool FilterStringId(List<string>? Filters, string checkId)
+    {
+        if (Filters == null)
+            return true;
+        return Filters.Contains(checkId) && Filters[0] == "!";
+    }
 }

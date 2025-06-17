@@ -39,7 +39,7 @@ public static class GameItemQuery
     public const string GameStateQuery_ENABLED_TRINKET_COUNT = $"{ModEntry.ModId}_ENABLED_TRINKET_COUNT";
     public const string GameStateQuery_IN_ALT_VARIANT = $"{ModEntry.ModId}_IN_ALT_VARIANT";
     public const string GameStateQuery_TRINKET_HAS_ITEM = $"{ModEntry.ModId}_TRINKET_HAS_ITEM";
-    public const string TriggerAction_SetCompanionVisible = $"{ModEntry.ModId}_SetCompanionVisible";
+    public const string TriggerAction_ToggleCompanion = $"{ModEntry.ModId}_ToggleCompanion";
 
     private const string RANDOM = "R";
     private const string MAX = "M";
@@ -62,7 +62,7 @@ public static class GameItemQuery
         GameStateQuery.Register(GameStateQuery_TRINKET_HAS_ITEM, GSQ_TRINKET_HAS_ITEM);
 
         // Add trigger action to hide trinket, mainly for usage in events
-        TriggerActionManager.RegisterAction(TriggerAction_SetCompanionVisible, TA_SetEnabled);
+        TriggerActionManager.RegisterAction(TriggerAction_ToggleCompanion, TA_ToggleCompanion);
     }
 
     /// <summary>
@@ -437,7 +437,7 @@ public static class GameItemQuery
     /// <param name="context"></param>
     /// <param name="error"></param>
     /// <returns></returns>
-    private static bool TA_SetEnabled(string[] args, TriggerActionContext context, out string error)
+    private static bool TA_ToggleCompanion(string[] args, TriggerActionContext context, out string error)
     {
         if (
             !ArgUtility.TryGet(args, 1, out string trinketId, out error, allowBlank: false, "string trinketId")
