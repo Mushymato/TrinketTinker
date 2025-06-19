@@ -4,6 +4,13 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.6.1 (wip)
+
+#### Added
+- Use "!" at first position to invert the filter on Monster and NPC anchors.
+- Trigger action `mushymato.TrinketTinker_ToggleCompanion`, toggle companion visibility (the abilities still work atm).
+- Allow abilities to consume fuel items from the tinker inventory.
+
 ### 1.6.0
 
 #### Added
