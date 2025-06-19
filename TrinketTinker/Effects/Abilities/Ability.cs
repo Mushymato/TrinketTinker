@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewValley;
+using StardewValley.Inventories;
 using TrinketTinker.Effects.Support;
 using TrinketTinker.Models;
 using TrinketTinker.Models.Mixin;
@@ -186,7 +187,7 @@ public abstract class Ability<TArgs> : IAbility
                 case ProcOn.Interact:
                     e.EventInteract += HandleProc;
                     break;
-                // remember to add to Deactivate too
+                    // remember to add to Deactivate too
             }
         }
         return Active;
@@ -229,7 +230,7 @@ public abstract class Ability<TArgs> : IAbility
                 case ProcOn.Interact:
                     e.EventInteract -= HandleProc;
                     break;
-                // remember to add to Activate too
+                    // remember to add to Activate too
             }
             Active = false;
             Allowed = false;
@@ -239,12 +240,45 @@ public abstract class Ability<TArgs> : IAbility
         return false;
     }
 
+    /// <summary>Tries to consume fuel from the trinket inventory, return false if there's not enough fuel</summary>
+    /// <returns>true if fuel consumed successfully</returns>
+    protected virtual bool ConsumeFuel()
+    {
+        if (d.ProcFuel == null || e.GetInventory() is not Inventory inventory)
+            return true;
+        int required = d.ProcFuel.RequiredCount;
+        List<(int, int)> shouldConsume = [];
+        for (int i = 0; i < inventory.Count && required > 0; i++)
+        {
+            if (inventory[i] is not Item item || !d.ProcFuel.CheckItem(item))
+                continue;
+            if (item.Stack >= required)
+            {
+                shouldConsume.Add(new(i, required));
+                required = 0;
+            }
+            else
+            {
+                shouldConsume.Add(new(i, item.Stack));
+                required -= item.Stack;
+            }
+        }
+        if (required > 0)
+            return false;
+        foreach ((int idx, int count) in shouldConsume)
+        {
+            inventory[idx] = inventory[idx].ConsumeStack(count);
+        }
+        inventory.RemoveEmptySlots();
+        return true;
+    }
+
     /// <summary>Handle proc of ability</summary>
     /// <param name="sender"></param>
     /// <param name="proc"></param>
     protected virtual void HandleProc(object? sender, ProcEventArgs proc)
     {
-        if (Active && Allowed && proc.Check(d, e) && ApplyEffect(proc))
+        if (Active && Allowed && proc.Check(d, e) && ConsumeFuel() && ApplyEffect(proc))
         {
             d.ProcSound?.PlaySound(Name);
             if (!string.IsNullOrEmpty(d.ProcOneshotAnim))

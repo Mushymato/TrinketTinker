@@ -4,6 +4,55 @@ Ability describes the effects that occur while the trinket is equipped. Such the
 
 An ability is primarily defined by `AbilityClass` (what it does) and `Proc` (when does it activate). Following the successful proc of an ability, a number of proc effects can happen.
 
+```json
+{
+  "Action": "EditData",
+  "Target": "mushymato.TrinketTinker/Tinker",
+  "TargetField": [
+    "{{ModId}}_Sample",
+  ],
+  "Entries": {
+    "Abilities": [
+      [
+        {
+          "Id": "<string ability id>",
+          "AbilityClass": "<string ability class>",
+          "Description": null|"<string description class>",
+          "Proc": "<emu proc on>",
+          "ProcTimer": <double timer miliseconds>,
+          "ProcSyncId": null|"<string proc sync ability id>",
+          "ProcSyncIndex": <int proc sync index in list>,
+          "ProcSyncDelay": 0,
+          "ProcFuel": {
+            "RequiredItemId": "<string qualified item id>",
+            "RequiredTags": [/* string context tags */],
+            "Condition": "<string game state query>",
+            "RequiredCount" <int required item count>
+          },
+          "ProcSound": {
+            "CueName": "<string sound cue>",
+            "Pitch": [/* int pitch values */],
+          }, // OR just "<string sound cue>"
+          "ProcTAS": [/* TemporaryAnimatedSprite ids */],
+          "ProcOneshotAnim": "<string anim clip key>",
+          "ProcSpeechBubble": "<string speech bubble key>",
+          "ProcAltVariant": "<string alt variant key>",
+          "ProcChatterKey": "<string next chatter key>",
+          "Condition": "<string game state query>",
+          "DamageThreshold": <int damage threshold (for ReceiveDamage|DamageMonster only)>,
+          "IsBomb": <bool damage came from explosion (for DamageMonster|SlayMonster only)>,
+          "IsCriticalHit": <bool if damage is a crit>,
+          "InCombat": <bool if player is in combat>,
+          "Args": {
+              /* AbilityClass dependent arguments */
+          }
+        },
+      ]
+    ]
+  }
+}
+```
+
 ## Structure
 
 | Property | Type | Default | Notes |
@@ -16,6 +65,7 @@ An ability is primarily defined by `AbilityClass` (what it does) and `Proc` (whe
 | `ProcSyncId`| string | _null_ | For use with [Proc.Sync](004.0-Proc.md), makes this ability proc after another ability in the same level, by their Id. If set, this field takes precedence over `ProcSyncIndex`. |
 | `ProcSyncIndex`| int | 0 | For use with [Proc.Sync](004.0-Proc.md), makes this ability proc after another ability in the same level, by their order in the list of abilities. |
 | `ProcSyncDelay`| int | 0 | For use with other abilities with [Proc.Sync](004.0-Proc.md), add a delay between the proc of this ability and any sync ability listening to this one. |
+| `ProcFuel` | RequiredFuelData | _null_ | A model defining what items will be consumed by each activation of this ability. The fule item comes from a [trinket inventory](005-Inventory.md). |
 | `ProcSound` | string | _null_ | Play a sound cue when ability procs ([details](https://stardewvalleywiki.com/Modding:Audio)) |
 | `ProcTAS` | List\<string\> | _null_ | String Ids of [temporary animated sprites](006-Temporary%20Animated%20Sprite.md) to show when the ability activates. For most abilities, this TAS is drawn shown relative to the farmer. For Hitscan/Projectile, this TAS is shown on the targeted monster instead. |
 | `ProcOneshotAnim` | string | _null_ | Play the matching [anim clip](003.2-Animation%20Clips.md) on proc, return to normal animation after 1 cycle. |
@@ -26,7 +76,7 @@ An ability is primarily defined by `AbilityClass` (what it does) and `Proc` (whe
 | `DamageThreshold` | int | -1 | Must receive or deal this much damage before proc.<br>For ReceiveDamage & DamageMonster |
 | `IsBomb` | bool? | _null_ | Must deal damage with(true)/not with(false) a bomb.<br>For DamageMonster & SlayMonster |
 | `IsCriticalHit` | bool? | _null_ | Must (true)/must not(false) deal a critical hit.<br>For DamageMonster & SlayMonster |
-| `InCombat` | bool? | _null_ | Must (true)/must not(false) be in combat.<br>"In combat" is defined as monsters in the same location, and having dealt or taken damage in the last 10 seconds. |
+| `InCombat` | bool? | _null_ | Must (true)/must not(false) be in combat.<br>"In combat" is defined as there being monsters in the same location, and the player has or taken damage in the last 10 seconds. |
 | `Args` | Dictionary | _varies_ | Arguments specific to an ability class, see respective page for details. |
 
 ## Ability Descriptions
@@ -71,3 +121,15 @@ My trinket 3:
 first ability C
 second ability D
 ```
+
+## Fuel Item
+
+| Property | Type | Default | Notes |
+| -------- | ---- | ------- | ----- |
+| `RequiredItemId` | string | _null_ | Required item id, to target a specific item. |
+| `RequiredTags` | List<string> | _null_ | Required item context tag, target all items that have all of these tags. |
+| `Condition` | string | _null_ | Required item [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) condition. |
+| `RequiredCount` | int | Total required fuel item count. |
+
+An item must qualify for at least one of `RequiredItemId`, `RequiredTags`, and `Condition` to be considered fuel to be consumed.
+If not enough fuel items, nothing is consumed and the ability does not activate.

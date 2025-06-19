@@ -76,6 +76,34 @@ public sealed class ProcSoundData
     }
 }
 
+/// <summary>Data for fuel required to activate an ability.</summary>
+public sealed class RequiredFuelData
+{
+    /// <summary>Specific item id required</summary>
+    public string? RequiredItemId { get; set; } = null;
+
+    /// <summary>Tags required (all tags must be on item)</summary>
+    public List<string>? RequiredTags { get; set; } = null;
+
+    /// <summary>GSQ check on item</summary>
+    public string? Condition { get; set; } = null;
+
+    /// <summary>Amount to consume on proc</summary>
+    public int RequiredCount { get; set; } = 1;
+
+    /// <summary>Amount to consume on proc</summary>
+    internal bool CheckItem(Item item)
+    {
+        if (item.QualifiedItemId == RequiredItemId)
+            return true;
+        if (RequiredTags?.All(item.HasContextTag) ?? false)
+            return true;
+        if (GameStateQuery.CheckConditions(Condition, new(Game1.currentLocation, Game1.player, item, item, null)))
+            return true;
+        return false;
+    }
+}
+
 /// <summary>Data for <see cref="Effects.Abilities"/>, defines game effect that a trinket can provide.</summary>
 public sealed class AbilityData : IHaveArgs
 {
@@ -112,6 +140,9 @@ public sealed class AbilityData : IHaveArgs
 
     /// <summary>For <see cref="ProcOn.Sync"/>, this is the delay between this ability's proc and the proc on any sync abilities.</summary>
     public int ProcSyncDelay { get; set; } = 0;
+
+    /// <summary>Fuel that needs to be consumed from the tinker inventory.</summary>
+    public RequiredFuelData? ProcFuel { get; set; } = null;
 
     /// <summary>Sound cue to play on proc.</summary>
     public ProcSoundData? ProcSound { get; set; } = null;

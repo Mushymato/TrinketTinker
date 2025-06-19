@@ -1,5 +1,6 @@
 namespace TrinketTinker.Models.AbilityArgs;
 
+/// <summary>Where the harvested item go</summary>
 public enum HarvestDestination
 {
     None,

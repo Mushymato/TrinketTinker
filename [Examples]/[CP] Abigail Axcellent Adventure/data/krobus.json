@@ -144,8 +144,13 @@
                 "ProcTimer": 15000,
                 "ProcSpeechBubble": "IHaveStone",
                 "ProcChatterKey": "Subby",
+                // consumes 2 stone every 15s to tell you that he has stone
+                "ProcFuel": {
+                  "RequiredItemId": "(O)390",
+                  "RequiredCount": 2
+                },
                 "InCombat": false,
-                "Condition": "mushymato.TrinketTinker_TRINKET_HAS_ITEM Target (O)390 >0",
+                // "Condition": "mushymato.TrinketTinker_TRINKET_HAS_ITEM Target (O)390 >0",
               },
               {
                 "AbilityClass": "HarvestForage",
