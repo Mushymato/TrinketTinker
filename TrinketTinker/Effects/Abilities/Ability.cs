@@ -187,7 +187,7 @@ public abstract class Ability<TArgs> : IAbility
                 case ProcOn.Interact:
                     e.EventInteract += HandleProc;
                     break;
-                    // remember to add to Deactivate too
+                // remember to add to Deactivate too
             }
         }
         return Active;
@@ -230,7 +230,7 @@ public abstract class Ability<TArgs> : IAbility
                 case ProcOn.Interact:
                     e.EventInteract -= HandleProc;
                     break;
-                    // remember to add to Activate too
+                // remember to add to Activate too
             }
             Active = false;
             Allowed = false;

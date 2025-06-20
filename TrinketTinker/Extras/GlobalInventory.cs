@@ -188,7 +188,12 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
                 Color.Black * 0.5f
             );
         }
-        b.DrawString(Game1.dialogueFont, sourceItem.DisplayName, new(sourceItemPosX, sourceItemPosY), Color.White);
+        string displayText = sourceItem.DisplayName;
+        if ((sourceItem is Trinket trinket) && trinket.TryGetDaysLeft(out int daysDuration) && daysDuration > 0)
+        {
+            displayText = I18n.Effect_DaysLeft(displayText, daysDuration);
+        }
+        b.DrawString(Game1.dialogueFont, displayText, new(sourceItemPosX, sourceItemPosY), Color.White);
         sourceItem.drawInMenu(
             b,
             new(sourceItemPosX - TEXT_M - Game1.tileSize, sourceItemPosY - Game1.tileSize + nameSize.Y),

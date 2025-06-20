@@ -181,6 +181,23 @@ public static class EquipTrinket
         return false;
     }
 
+    /// <summary>Get days left of a trigger equipped trinket</summary>
+    /// <param name="trinketItem"></param>
+    /// <returns></returns>
+    internal static bool TryGetDaysLeft(this Trinket trinketItem, out int daysLeft)
+    {
+        if (
+            trinketItem.modData.TryGetValue(TinkerConst.ModData_HiddenEquip, out string daysDurationStr)
+            && int.TryParse(daysDurationStr, out int daysDuration)
+        )
+        {
+            daysLeft = daysDuration;
+            return true;
+        }
+        daysLeft = -1;
+        return false;
+    }
+
     /// <summary>
     /// Remove all hidden trinkets before save. This is because the trinket list can get reordered on reload (and expose the hidden trinket)
     /// </summary>
@@ -193,10 +210,7 @@ public static class EquipTrinket
         {
             if (item is Trinket trinket)
             {
-                if (
-                    trinket.modData.TryGetValue(TinkerConst.ModData_HiddenEquip, out string daysDurationStr)
-                    && int.TryParse(daysDurationStr, out int daysDuration)
-                )
+                if (trinket.TryGetDaysLeft(out int daysDuration))
                 {
                     if (decrement && daysDuration != -1)
                         daysDuration--;
