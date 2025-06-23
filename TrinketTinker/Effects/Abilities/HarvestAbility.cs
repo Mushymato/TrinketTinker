@@ -17,21 +17,6 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
 {
     internal const int UPGRADE_LEVEL = 32;
 
-    private static bool ShouldCollectDebris(Debris debris) =>
-        debris.debrisType.Value
-            is Debris.DebrisType.OBJECT
-                or Debris.DebrisType.ARCHAEOLOGY
-                or Debris.DebrisType.RESOURCE;
-
-    private static Item? GetDebrisItem(Debris debris)
-    {
-        if (debris.item != null)
-            return debris.item;
-        if (debris.debrisType.Value != 0 || debris.chunkType.Value != 8)
-            return ItemRegistry.Create(debris.itemId.Value, 1, debris.itemQuality, allowNull: true);
-        return null;
-    }
-
     protected void HarvestTAS(Item? item, GameLocation location, Farmer farmer)
     {
         if (args.ShowHarvestedItem && item != null)
@@ -59,7 +44,7 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
 
     private void CollectDebrisToPlayer(Debris debris, GameLocation location, Farmer farmer)
     {
-        Item? item = GetDebrisItem(debris);
+        Item? item = Places.GetDebrisItem(debris);
         if (debris.collect(farmer))
         {
             location.debris.Remove(debris);
@@ -69,7 +54,7 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
 
     private void CollectDebrisToTinkerInventory(Debris debris, GameLocation location, Farmer farmer)
     {
-        if (GetDebrisItem(debris) is Item item)
+        if (Places.GetDebrisItem(debris) is Item item)
         {
             debris.item = e.AddItemToInventory(item);
             if (debris.item == null)
@@ -93,7 +78,7 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
         {
             HarvestDestination.None => debris =>
             {
-                if (ShouldCollectDebris(debris))
+                if (Places.ShouldCollectDebris(debris))
                 {
                     CollectDebrisToNone(debris, location);
                     harvested = true;
@@ -101,7 +86,7 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
             },
             HarvestDestination.Player => debris =>
             {
-                if (ShouldCollectDebris(debris))
+                if (Places.ShouldCollectDebris(debris))
                 {
                     CollectDebrisToPlayer(debris, location, farmer);
                     harvested = true;
@@ -109,7 +94,7 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
             },
             HarvestDestination.TinkerInventory => debris =>
             {
-                if (ShouldCollectDebris(debris))
+                if (Places.ShouldCollectDebris(debris))
                 {
                     CollectDebrisToTinkerInventory(debris, location, farmer);
                     harvested = true;

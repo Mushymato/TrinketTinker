@@ -1,6 +1,6 @@
 {
   "$schema": "https://smapi.io/schemas/content-patcher.json",
-  "Format": "2.5.1",
+  "Format": "2.7.0",
   "ConfigSchema": {
     "EarlyTrinketSlot": {
       "AllowValues": "true, false",
@@ -11,10 +11,10 @@
     {
       "LogName": "Sprites",
       "Action": "Load",
-      "Target": "{{ModId}}/trinketbox, {{ModId}}/opossum, {{ModId}}/opossum-2, {{ModId}}/opossum-icon",
+      "Target": "{{ModId}}/trinketbox, {{ModId}}/bagofholding, {{ModId}}/opossum, {{ModId}}/opossum-2, {{ModId}}/opossum-icon",
       "FromFile": "assets/{{TargetWithoutPath}}.png"
     },
-    // boxes
+    // Boxes
     {
       // Iridium
       "Action": "Include",
@@ -41,6 +41,11 @@
         "L@Capacity": 6,
         "L@SheetIndex": 2,
       }
+    },
+    // Bag of Holding
+    {
+      "Action": "Include",
+      "FromFile": "data/bagofholding.json"
     },
     // Pack Possum
     {

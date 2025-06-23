@@ -234,4 +234,25 @@ internal static class Places
             return true;
         return Filters.Contains(checkId) && Filters[0] == "!";
     }
+
+    /// <summary>Whether the debris should be redirected</summary>
+    /// <param name="debris"></param>
+    /// <returns></returns>
+    internal static bool ShouldCollectDebris(Debris debris) =>
+        debris.debrisType.Value
+            is Debris.DebrisType.OBJECT
+                or Debris.DebrisType.ARCHAEOLOGY
+                or Debris.DebrisType.RESOURCE;
+
+    /// <summary>Get debris item</summary>
+    /// <param name="debris"></param>
+    /// <returns></returns>
+    internal static Item? GetDebrisItem(Debris debris)
+    {
+        if (debris.item != null)
+            return debris.item;
+        if (debris.debrisType.Value != 0 || debris.chunkType.Value != 8)
+            return ItemRegistry.Create(debris.itemId.Value, 1, debris.itemQuality, allowNull: true);
+        return null;
+    }
 }

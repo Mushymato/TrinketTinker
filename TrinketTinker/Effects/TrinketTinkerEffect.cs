@@ -676,11 +676,8 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
     /// <returns></returns>
     public Inventory? GetInventory()
     {
-        if (
-            FullInventoryId != null
-            && Game1.player.team.globalInventories.TryGetValue(FullInventoryId, out Inventory? trinketInv)
-        )
-            return trinketInv;
+        if (FullInventoryId != null)
+            return Game1.player.team.GetOrCreateGlobalInventory(FullInventoryId);
         return null;
     }
 

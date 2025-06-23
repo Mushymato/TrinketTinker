@@ -330,14 +330,8 @@ internal sealed class GlobalInventoryHandler
         {
             return false;
         }
-        if (Data.RequiredTags != null && !Places.CheckContextTagFilter(item, Data.RequiredTags))
-            return false;
-        if (
-            Data.RequiredItemCondition != null
-            && !GameStateQuery.CheckConditions(Data.RequiredItemCondition, inputItem: item, targetItem: item)
-        )
-            return false;
-        return true;
+
+        return ValidForInventory(item, Data);
     }
 
     internal static Item? AddItem(Inventory trinketInv, int capacity, Item item)
@@ -507,15 +501,25 @@ internal sealed class GlobalInventoryHandler
         team.newLostAndFoundItems.Value = newLostAndFoundItems;
     }
 
+    internal static bool ValidForInventory(Item item, TinkerInventoryData? data)
+    {
+        if (data == null)
+            return true;
+        if (data.RequiredTags != null && !Places.CheckContextTagFilter(item, data.RequiredTags))
+            return false;
+        if (
+            data.RequiredItemCondition != null
+            && !GameStateQuery.CheckConditions(data.RequiredItemCondition, inputItem: item, targetItem: item)
+        )
+            return false;
+        return true;
+    }
+
     internal static bool CanAcceptThisItem(Inventory trinketInv, int capacity, Item item)
     {
-        if (item == null)
+        if (item == null || item.IsRecipe || capacity <= 0)
         {
             return false;
-        }
-        if (item.IsRecipe)
-        {
-            return true;
         }
         switch (item.QualifiedItemId)
         {
