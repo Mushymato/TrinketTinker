@@ -11,7 +11,8 @@
 - Trigger action `mushymato.TrinketTinker_ToggleCompanion`, toggle companion visibility (the abilities still work atm).
 - Allow abilities to consume fuel items from the tinker inventory.
 - For hidden trinkets with a inventory, show the number of days left there.
-- New C# facing API
+- New C# facing API with 2 methods `TryEquipHiddenTrinket` and `TryUnequipHiddenTrinket`.
+- New GSQ `mushymato.TrinketTinker_DIRECT_EQUIP_ONLY`, returns true if it is a trinket tinker trinket not available for indirect equip.
 
 ### 1.6.0
 

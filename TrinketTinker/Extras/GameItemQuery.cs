@@ -338,7 +338,11 @@ public static class GameItemQuery
 
     public static bool GSQ_DIRECT_EQUIP_ONLY(string[] query, GameStateQueryContext context)
     {
-        throw new NotImplementedException();
+        if (TryGetTinkerTrinket(query, context, 1, out Trinket? trinket, out _))
+        {
+            return IsDirectEquipOnly(trinket);
+        }
+        return false;
     }
 
     /// <summary>
