@@ -27,24 +27,26 @@ public sealed class TrinketTinkerAPI : ITrinketTinkerAPI
         return false;
     }
 
-    public bool TryUnequipHiddenTrinket(string guid)
+    public bool TryUnequipHiddenTrinket(string guid, [NotNullWhen(true)] out Trinket? trinket)
     {
+        trinket = null;
         if (!Context.IsWorldReady)
             return false;
 
         if (guid == null)
             return false;
-        foreach (Trinket trinket in Game1.player.trinketItems)
+        foreach (Trinket trinketItem in Game1.player.trinketItems)
         {
             if (
-                trinket != null
-                && trinket.modData.TryGetValue(TinkerConst.ModData_IndirectEquipFromAPI, out string? existingGuid)
+                trinketItem != null
+                && trinketItem.modData.TryGetValue(TinkerConst.ModData_IndirectEquipFromAPI, out string? existingGuid)
                 && guid == existingGuid
             )
             {
-                if (EquipTrinket.Unequip(Game1.player, trinket))
+                if (EquipTrinket.Unequip(Game1.player, trinketItem))
                 {
-                    trinket.modData.Remove(TinkerConst.ModData_IndirectEquipFromAPI);
+                    trinketItem.modData.Remove(TinkerConst.ModData_IndirectEquipFromAPI);
+                    trinket = trinketItem;
                     return true;
                 }
             }

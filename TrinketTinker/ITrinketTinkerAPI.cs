@@ -23,8 +23,8 @@ public interface ITrinketTinkerAPI
     /// Attempts to unequip a trinket equipped via TryEquipHiddenTrinket
     /// This analogous to trigger action mushymato.TrinketTinker_UnequipHiddenTrinket, but requires the guid given by TryEquipHiddenTrinket
     /// </summary>
-    /// <param name="trinket"></param>
-    /// <param name="guid"></param>
+    /// <param name="guid">the guid from TryEquipHiddenTrinket that you should manage for unequip</param>
+    /// <param name="trinket">trinket that was equipped, returned if successfully unequipped</param>
     /// <returns></returns>
-    public bool TryUnequipHiddenTrinket(string guid);
+    public bool TryUnequipHiddenTrinket(string guid, [NotNullWhen(true)] out Trinket? trinket);
 }

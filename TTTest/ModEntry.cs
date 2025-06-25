@@ -7,11 +7,7 @@ namespace TTTest;
 
 public sealed class ModEntry : Mod
 {
-#if DEBUG
     private const LogLevel DEFAULT_LOG_LEVEL = LogLevel.Debug;
-#else
-    private const LogLevel DEFAULT_LOG_LEVEL = LogLevel.Trace;
-#endif
 
     public const string ModId = "mushymato.TTTest";
     private static IMonitor? mon;
@@ -36,9 +32,9 @@ public sealed class ModEntry : Mod
             DelayedAction.functionAfterDelay(
                 () =>
                 {
-                    if (tt.TryUnequipHiddenTrinket(guid))
+                    if (tt.TryUnequipHiddenTrinket(guid, out Trinket? trinket2))
                     {
-                        Log($"Unequipped {trinket.QualifiedItemId}");
+                        Log($"Unequipped {trinket2.QualifiedItemId} ({trinket == trinket2})");
                     }
                     else
                     {
