@@ -56,15 +56,7 @@ public static class EquipTrinket
 
     internal static bool Equip(Farmer owner, Trinket trinket)
     {
-        if (
-            (
-                trinket
-                    .GetTrinketData()
-                    ?.CustomFields?.TryGetValue(TinkerConst.CustomFields_DirectEquipOnly, out string? directOnly)
-                ?? false
-            )
-            && directOnly != null
-        )
+        if (GameItemQuery.IsDirectEquipOnly(trinket))
             return false;
         var trinketItems = owner.trinketItems;
         if (trinketItems.Contains(trinket))

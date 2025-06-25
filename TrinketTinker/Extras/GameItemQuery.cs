@@ -10,6 +10,7 @@ using StardewValley.TokenizableStrings;
 using StardewValley.Triggers;
 using TrinketTinker.Companions;
 using TrinketTinker.Effects;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Extras;
 
@@ -34,6 +35,7 @@ public static class GameItemQuery
     public const string ItemQuery_CREATE_TRINKET_ALL_VARIANTS = $"{ModEntry.ModId}_CREATE_TRINKET_ALL_VARIANTS";
     public const string ItemQuery_HIRE_TRINKET = $"{ModEntry.ModId}_HIRE_TRINKET";
     public const string GameStateQuery_IS_TINKER = $"{ModEntry.ModId}_IS_TINKER";
+    public const string GameStateQuery_DIRECT_EQUIP_ONLY = $"{ModEntry.ModId}_DIRECT_EQUIP_ONLY";
     public const string GameStateQuery_HAS_LEVELS = $"{ModEntry.ModId}_HAS_LEVELS";
     public const string GameStateQuery_HAS_VARIANTS = $"{ModEntry.ModId}_HAS_VARIANTS";
     public const string GameStateQuery_ENABLED_TRINKET_COUNT = $"{ModEntry.ModId}_ENABLED_TRINKET_COUNT";
@@ -55,6 +57,7 @@ public static class GameItemQuery
 
         // Add GSQs
         GameStateQuery.Register(GameStateQuery_IS_TINKER, GSQ_IS_TINKER);
+        GameStateQuery.Register(GameStateQuery_DIRECT_EQUIP_ONLY, GSQ_DIRECT_EQUIP_ONLY);
         GameStateQuery.Register(GameStateQuery_HAS_LEVELS, GSQ_HAS_LEVELS);
         GameStateQuery.Register(GameStateQuery_HAS_VARIANTS, GSQ_HAS_VARIANTS);
         GameStateQuery.Register(GameStateQuery_ENABLED_TRINKET_COUNT, GSQ_ENABLED_TRINKET_COUNT);
@@ -321,6 +324,21 @@ public static class GameItemQuery
                 && CompareIntegerQ(query, 3, effect.Variant, maxValue: effect.MaxVariant);
         }
         return false;
+    }
+
+    internal static bool IsDirectEquipOnly(Trinket trinket) =>
+        (
+            (
+                trinket
+                    .GetTrinketData()
+                    ?.CustomFields?.TryGetValue(TinkerConst.CustomFields_DirectEquipOnly, out string? directOnly)
+            ) ?? false
+        )
+        && directOnly != null;
+
+    public static bool GSQ_DIRECT_EQUIP_ONLY(string[] query, GameStateQueryContext context)
+    {
+        throw new NotImplementedException();
     }
 
     /// <summary>

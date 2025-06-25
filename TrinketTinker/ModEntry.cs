@@ -204,6 +204,11 @@ internal sealed class ModEntry : Mod
         ProcTrinket.BroadcastedAction(e);
     }
 
+    public override object GetApi()
+    {
+        return new TrinketTinkerAPI();
+    }
+
 #if DEBUG
     private void ConsolePrintTypenames(string command, string[] args)
     {

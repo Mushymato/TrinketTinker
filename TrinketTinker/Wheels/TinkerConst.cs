@@ -22,6 +22,7 @@ public static class TinkerConst
 
     public const string CustomFields_DirectEquipOnly = $"{ModEntry.ModId}/DirectEquipOnly";
     public const string ModData_IndirectEquip = $"{ModEntry.ModId}/IndirectEquip";
+    public const string ModData_IndirectEquipFromAPI = $"{ModEntry.ModId}/IndirectEquipFromAPI";
     public const string ModData_HiddenEquip = $"{ModEntry.ModId}/HiddenEquip";
     public const string CustomFields_Owner = $"{ModEntry.ModId}/Owner";
     public const string CustomFields_Trinket = $"{ModEntry.ModId}/Trinket";

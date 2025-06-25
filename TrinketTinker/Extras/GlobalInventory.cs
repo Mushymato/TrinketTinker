@@ -311,18 +311,7 @@ internal sealed class GlobalInventoryHandler
             {
                 if (otherEffect.HasEquipTrinketAbility)
                     return false;
-                if (
-                    Effect.HasEquipTrinketAbility
-                    && (
-                        trinket
-                            .GetTrinketData()
-                            ?.CustomFields?.TryGetValue(
-                                TinkerConst.CustomFields_DirectEquipOnly,
-                                out string? directOnly
-                            ) ?? false
-                    )
-                    && directOnly != null
-                )
+                if (Effect.HasEquipTrinketAbility && GameItemQuery.IsDirectEquipOnly(trinket))
                     return false;
             }
         }

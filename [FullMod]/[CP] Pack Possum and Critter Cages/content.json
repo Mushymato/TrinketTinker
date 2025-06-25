@@ -11,7 +11,7 @@
     {
       "LogName": "Sprites",
       "Action": "Load",
-      "Target": "{{ModId}}/trinketbox, {{ModId}}/bagofholding, {{ModId}}/opossum, {{ModId}}/opossum-2, {{ModId}}/opossum-icon",
+      "Target": "{{ModId}}/trinketbox, {{ModId}}/opossum, {{ModId}}/opossum-2, {{ModId}}/opossum-icon",
       "FromFile": "assets/{{TargetWithoutPath}}.png"
     },
     // Boxes
@@ -41,11 +41,6 @@
         "L@Capacity": 6,
         "L@SheetIndex": 2,
       }
-    },
-    // Bag of Holding
-    {
-      "Action": "Include",
-      "FromFile": "data/bagofholding.json"
     },
     // Pack Possum
     {
@@ -96,7 +91,7 @@
       "FromFile": "i18n/{{Language}}.json",
       "Priority": "Medium",
       "When": {
-        "HasFile: i18n/{{Language}}.json": true
+        "HasFile: {{FromFile}}": true
       }
     }
   ]
