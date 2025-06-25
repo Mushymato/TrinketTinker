@@ -10,6 +10,8 @@
 - Use "!" at first position to invert the filter on Monster and NPC anchors.
 - Trigger action `mushymato.TrinketTinker_ToggleCompanion`, toggle companion visibility (the abilities still work atm).
 - Allow abilities to consume fuel items from the tinker inventory.
+- For hidden trinkets with a inventory, show the number of days left there.
+- New C# facing API
 
 ### 1.6.0
 
