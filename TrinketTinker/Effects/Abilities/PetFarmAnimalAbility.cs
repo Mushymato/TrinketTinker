@@ -10,9 +10,7 @@ namespace TrinketTinker.Effects.Abilities;
 public sealed class PetFarmAnimalAbility(TrinketTinkerEffect effect, AbilityData data, int lvl)
     : Ability<PosRangeArgs>(effect, data, lvl)
 {
-    /// <summary>
-    /// Check that this is a farm animal in need of petting
-    /// </summary>
+    /// <summary>Check that this is a farm animal in need of petting</summary>
     /// <param name="chara"></param>
     /// <returns></returns>
     internal static bool IsFarmAnimalInNeedOfPetting(Character chara)
@@ -20,7 +18,7 @@ public sealed class PetFarmAnimalAbility(TrinketTinkerEffect effect, AbilityData
         return chara is FarmAnimal farmAnimal && !farmAnimal.wasPet.Value;
     }
 
-    /// <summary>Apply or refreshes the buff.</summary>
+    /// <summary>Pet the farm animal.</summary>
     /// <param name="proc"></param>
     /// <returns></returns>
     protected override bool ApplyEffect(ProcEventArgs proc)

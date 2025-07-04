@@ -4,15 +4,15 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-### 1.6.1 (wip)
+### 1.6.1
 
 #### Added
 - Use "!" at first position to invert the filter on Monster and NPC anchors.
-- Trigger action `mushymato.TrinketTinker_ToggleCompanion`, toggle companion visibility (the abilities still work atm).
+- Trigger action `mushymato.TrinketTinker_ToggleCompanion`, toggle companion visibility (abilities still work).
 - Allow abilities to consume fuel items from the tinker inventory.
 - For hidden trinkets with a inventory, show the number of days left there.
-- New C# facing API with 2 methods `TryEquipHiddenTrinket` and `TryUnequipHiddenTrinket`.
-- New GSQ `mushymato.TrinketTinker_DIRECT_EQUIP_ONLY`, returns true if it is a trinket tinker trinket not available for indirect equip.
+- New GSQ `mushymato.TrinketTinker_DIRECT_EQUIP_ONLY`, returns true if it is a trinket is not available for indirect equip.
+- [ExtendedTAS] add AlphaFadeFade and DrawAboveAlwaysFront
 
 ### 1.6.0
 
