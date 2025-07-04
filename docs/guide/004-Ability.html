@@ -89,6 +89,53 @@
 
 <p>Ability describes the effects that occur while the trinket is equipped. Such the healing the player, harvesting a crop, attacking an enemy, and so on.</p>
 <p>An ability is primarily defined by <code>AbilityClass</code> (what it does) and <code>Proc</code> (when does it activate). Following the successful proc of an ability, a number of proc effects can happen.</p>
+<pre><code class="lang-json">{
+  &quot;Action&quot;: &quot;EditData&quot;,
+  &quot;Target&quot;: &quot;mushymato.TrinketTinker/Tinker&quot;,
+  &quot;TargetField&quot;: [
+    &quot;{{ModId}}_Sample&quot;,
+  ],
+  &quot;Entries&quot;: {
+    &quot;Abilities&quot;: [
+      [
+        {
+          &quot;Id&quot;: &quot;&lt;string ability id&gt;&quot;,
+          &quot;AbilityClass&quot;: &quot;&lt;string ability class&gt;&quot;,
+          &quot;Description&quot;: null|&quot;&lt;string description class&gt;&quot;,
+          &quot;Proc&quot;: &quot;&lt;emu proc on&gt;&quot;,
+          &quot;ProcTimer&quot;: &lt;double timer miliseconds&gt;,
+          &quot;ProcSyncId&quot;: null|&quot;&lt;string proc sync ability id&gt;&quot;,
+          &quot;ProcSyncIndex&quot;: &lt;int proc sync index in list&gt;,
+          &quot;ProcSyncDelay&quot;: 0,
+          &quot;ProcFuel&quot;: {
+            &quot;RequiredItemId&quot;: &quot;&lt;string qualified item id&gt;&quot;,
+            &quot;RequiredTags&quot;: [/* string context tags */],
+            &quot;Condition&quot;: &quot;&lt;string game state query&gt;&quot;,
+            &quot;RequiredCount&quot; &lt;int required item count&gt;
+          },
+          &quot;ProcSound&quot;: {
+            &quot;CueName&quot;: &quot;&lt;string sound cue&gt;&quot;,
+            &quot;Pitch&quot;: [/* int pitch values */],
+          }, // OR just &quot;&lt;string sound cue&gt;&quot;
+          &quot;ProcTAS&quot;: [/* TemporaryAnimatedSprite ids */],
+          &quot;ProcOneshotAnim&quot;: &quot;&lt;string anim clip key&gt;&quot;,
+          &quot;ProcSpeechBubble&quot;: &quot;&lt;string speech bubble key&gt;&quot;,
+          &quot;ProcAltVariant&quot;: &quot;&lt;string alt variant key&gt;&quot;,
+          &quot;ProcChatterKey&quot;: &quot;&lt;string next chatter key&gt;&quot;,
+          &quot;Condition&quot;: &quot;&lt;string game state query&gt;&quot;,
+          &quot;DamageThreshold&quot;: &lt;int damage threshold (for ReceiveDamage|DamageMonster only)&gt;,
+          &quot;IsBomb&quot;: &lt;bool damage came from explosion (for DamageMonster|SlayMonster only)&gt;,
+          &quot;IsCriticalHit&quot;: &lt;bool if damage is a crit&gt;,
+          &quot;InCombat&quot;: &lt;bool if player is in combat&gt;,
+          &quot;Args&quot;: {
+              /* AbilityClass dependent arguments */
+          }
+        },
+      ]
+    ]
+  }
+}
+</code></pre>
 <h2 id="structure">Structure</h2>
 <table>
 <thead>
@@ -147,6 +194,12 @@
 <td>int</td>
 <td>0</td>
 <td>For use with other abilities with <a href="004.0-Proc.html">Proc.Sync</a>, add a delay between the proc of this ability and any sync ability listening to this one.</td>
+</tr>
+<tr>
+<td><code>ProcFuel</code></td>
+<td>RequiredFuelData</td>
+<td><em>null</em></td>
+<td>A model defining what items will be consumed by each activation of this ability. The fule item comes from a <a href="005-Inventory.html">trinket inventory</a>.</td>
 </tr>
 <tr>
 <td><code>ProcSound</code></td>
@@ -212,7 +265,7 @@
 <td><code>InCombat</code></td>
 <td>bool?</td>
 <td><em>null</em></td>
-<td>Must (true)/must not(false) be in combat.<br>&quot;In combat&quot; is defined as monsters in the same location, and having dealt or taken damage in the last 10 seconds.</td>
+<td>Must (true)/must not(false) be in combat.<br>&quot;In combat&quot; is defined as there being monsters in the same location, and the player has or taken damage in the last 10 seconds.</td>
 </tr>
 <tr>
 <td><code>Args</code></td>
@@ -255,6 +308,45 @@ second ability B
 first ability C
 second ability D
 </code></pre>
+<h2 id="fuel-item">Fuel Item</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RequiredItemId</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>Required item id, to target a specific item.</td>
+</tr>
+<tr>
+<td><code>RequiredTags</code></td>
+<td>List<string></string></td>
+<td><em>null</em></td>
+<td>Required item context tag, target all items that have all of these tags.</td>
+</tr>
+<tr>
+<td><code>Condition</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>Required item <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state queries</a> condition.</td>
+</tr>
+<tr>
+<td><code>RequiredCount</code></td>
+<td>int</td>
+<td>Total required fuel item count.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>An item must qualify for at least one of <code>RequiredItemId</code>, <code>RequiredTags</code>, and <code>Condition</code> to be considered fuel to be consumed.
+If not enough fuel items, nothing is consumed and the ability does not activate.</p>
 
 </article>
 

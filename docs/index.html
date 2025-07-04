@@ -82,7 +82,7 @@
 <li>Support for custom effects from other C# mods, through the use of actions.</li>
 <li>Have the player obtain trinket effects without actually having the trinket slot unlocked, through the use of special trigger actions.</li>
 </ul>
-<p>If you are looking to make mods using this framework, <a href="https://mushymato.github.io/TrinketTinker/guide/0-Trinket.html">start here</a>.</p>
+<p>If you are looking to make mods using this framework, <a href="https://mushymato.github.io/TrinketTinker/guide/000-Trinket.html">start here</a>.</p>
 <p>This mod is licensed under MIT, contributions are welcome.</p>
 <h2 id="example-mods-for-trinkettinker">Example Mods for TrinketTinker</h2>
 <ul>
@@ -118,8 +118,18 @@
 <p>All notable changes to this project will be documented here.</p>
 <p>The format is based on <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</a>, and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 </blockquote>
-<h3 id="160">1.6.0</h3>
+<h3 id="161">1.6.1</h3>
 <h4 id="added">Added</h4>
+<ul>
+<li>Use &quot;!&quot; at first position to invert the filter on Monster and NPC anchors.</li>
+<li>Trigger action <code>mushymato.TrinketTinker_ToggleCompanion</code>, toggle companion visibility (abilities still work).</li>
+<li>Allow abilities to consume fuel items from the tinker inventory.</li>
+<li>For hidden trinkets with a inventory, show the number of days left there.</li>
+<li>New GSQ <code>mushymato.TrinketTinker_DIRECT_EQUIP_ONLY</code>, returns true if it is a trinket is not available for indirect equip.</li>
+<li>[ExtendedTAS] add AlphaFadeFade and DrawAboveAlwaysFront</li>
+</ul>
+<h3 id="160">1.6.0</h3>
+<h4 id="added-1">Added</h4>
 <ul>
 <li>TemporaryAnimatedSprite now shares some code with MMAP and can use (most of) the funny MMAP TAS features. The custom assets remain separate.</li>
 <li>HitTAS now takes a list of pipe (<code>|</code>) separated TAS</li>
@@ -138,7 +148,7 @@
 <li>Harvest abilities now have higher tool power.</li>
 </ul>
 <h3 id="158">1.5.8</h3>
-<h4 id="added-1">Added</h4>
+<h4 id="added-2">Added</h4>
 <ul>
 <li>New user config setting, global disable showing companions in events.</li>
 </ul>
@@ -147,7 +157,7 @@
 <li>Trinket global inventory cleaning being incorrectly ran on farmhands as well.</li>
 </ul>
 <h3 id="157">1.5.7</h3>
-<h4 id="added-2">Added</h4>
+<h4 id="added-3">Added</h4>
 <ul>
 <li>Hitscan and Projectile can now have FacingDirectionOnly which makes them only attack monsters in the direction the companion is facing.</li>
 </ul>
@@ -156,7 +166,7 @@
 <li>Alt variants swapping between 2 most valid alt variants rather than keeping 1.</li>
 </ul>
 <h3 id="156">1.5.6</h3>
-<h4 id="added-3">Added</h4>
+<h4 id="added-4">Added</h4>
 <ul>
 <li>Projectile can now have Height which are different than offset in that they do not actually become different position.</li>
 <li>Harvest* abilities will now show the item harvested in a short TAS over the companion, for HarvestTo Player and TinkerInventory, disable this with ShowHarvestedItem.</li>
@@ -184,7 +194,7 @@
 <li>Temporary Animated Sprite now checks Condition, if given</li>
 </ul>
 <h3 id="154">1.5.4</h3>
-<h4 id="added-4">Added</h4>
+<h4 id="added-5">Added</h4>
 <ul>
 <li>Several more Harvest* abilities, and matching AnchorTarget
 <ul>
@@ -202,7 +212,7 @@
 <li>Content patcher consistently apply on equipped trinkets</li>
 </ul>
 <h3 id="153">1.5.3</h3>
-<h4 id="added-5">Added</h4>
+<h4 id="added-6">Added</h4>
 <ul>
 <li>Ability ProcSyncId is like ProcSyncIndex, but uses the Id to find what to Sync.</li>
 </ul>
@@ -218,7 +228,7 @@
 <li>Duplicating base game trinket companions 2</li>
 </ul>
 <h3 id="152">1.5.2</h3>
-<h4 id="added-6">Added</h4>
+<h4 id="added-7">Added</h4>
 <ul>
 <li>HitTAS for Hitscan/Projectile, apply a TAS at the target on hit.</li>
 <li>HitsDelay for Hitscan/Projectile, adds a delay between hits.</li>
@@ -238,7 +248,7 @@
 <li>Crash on day ending</li>
 </ul>
 <h3 id="150">1.5.0</h3>
-<h4 id="added-7">Added</h4>
+<h4 id="added-8">Added</h4>
 <ul>
 <li>Interact now uses a keybind, configurable in GMCM</li>
 <li>Inventories of equipped trinkets can now be opened with a keybind, configurable in GMCM</li>
@@ -257,7 +267,7 @@
 <li>Allow Proc Always to respect Condition</li>
 </ul>
 <h3 id="150-beta2">1.5.0-beta.2</h3>
-<h4 id="added-8">Added</h4>
+<h4 id="added-9">Added</h4>
 <ul>
 <li>Make sure your trinkets get unequipped if you end the day with trinketSlots=0 for some reason, unfortunately won't catch case where the trinketSlots stat changed after DayEnding</li>
 <li>Change ProcSound to a model with these 2 fields
@@ -290,7 +300,7 @@
 <li>Draw for 36 slot trinket inventory</li>
 </ul>
 <h3 id="150-beta1">1.5.0-beta.1</h3>
-<h4 id="added-9">Added</h4>
+<h4 id="added-10">Added</h4>
 <ul>
 <li>New ability BroadcastAction, it's like action but it runs the action on multiplayer, useful with SetNpcInvisible and Host</li>
 <li>New Proc Interact which fires when player right clicks when overlapping with companion enough, as well as debug draw for bounding boxes.</li>
@@ -307,7 +317,7 @@
 </li>
 </ul>
 <h3 id="150-beta0">1.5.0-beta.0</h3>
-<h4 id="added-10">Added</h4>
+<h4 id="added-11">Added</h4>
 <ul>
 <li>Allow HarvestShakeable to target larger bushes (but not walnut bush), handle BushBloomMod integration</li>
 <li>New game state queries
@@ -360,7 +370,7 @@
 <li>Error with filtering for certain types of crops (ginger?).</li>
 </ul>
 <h3 id="144">1.4.4</h3>
-<h4 id="added-11">Added</h4>
+<h4 id="added-12">Added</h4>
 <ul>
 <li>Draw debug mode that shows the sprite index of the companion on screen. Toggle with command tt_draw_debug.</li>
 </ul>
@@ -369,7 +379,7 @@
 <li>Companions not appearing in volcano and farm buildings.</li>
 </ul>
 <h3 id="143">1.4.3</h3>
-<h4 id="added-12">Added</h4>
+<h4 id="added-13">Added</h4>
 <ul>
 <li>New HarvestShakeable ability to shake trees bushes and fruit trees.</li>
 <li>New Shakeable anchor target.</li>
@@ -386,7 +396,7 @@
 <li>Hopefully fix a crash after some events, very strange.</li>
 </ul>
 <h3 id="141">1.4.1</h3>
-<h4 id="added-13">Added</h4>
+<h4 id="added-14">Added</h4>
 <ul>
 <li>Add support for randomized speech bubbles.</li>
 <li>Add &quot;Swim&quot; anim clip key for when the player is swimming.</li>
@@ -396,7 +406,7 @@
 <li>Companions duplicating when farmhand is exiting an event.</li>
 </ul>
 <h3 id="140">1.4.0</h3>
-<h4 id="added-14">Added</h4>
+<h4 id="added-15">Added</h4>
 <ul>
 <li>Add support for randomized anim clips.</li>
 <li>Add speech bubble feature.</li>
@@ -408,7 +418,7 @@
 <li>AbilityProc clips not playing in multiplayer.</li>
 </ul>
 <h3 id="130">1.3.0</h3>
-<h4 id="added-15">Added</h4>
+<h4 id="added-16">Added</h4>
 <ul>
 <li>Additional HarvestTo field for Harvest type abilities to determine where the harvested item go (inventory, debris, none).</li>
 <li>New field Filter on Anchors and on Hitscan/Projectile ability. If set, the enemy types listed will not be targeted.</li>
@@ -423,7 +433,7 @@
 <li>Prevent Trinket Tinker anvil output method from affecting non Trinket Tinker items.</li>
 </ul>
 <h3 id="120">1.2.0</h3>
-<h4 id="added-16">Added</h4>
+<h4 id="added-17">Added</h4>
 <ul>
 <li>New &quot;Homing&quot; argument on projectile to make projectile recheck target midflight.</li>
 </ul>
@@ -447,7 +457,7 @@
 <li>Add workaround for issue where <code>TrinketEffectClass</code> ends up being null.</li>
 </ul>
 <h3 id="100">1.0.0</h3>
-<h4 id="added-17">Added</h4>
+<h4 id="added-18">Added</h4>
 <ul>
 <li>Implement all the things.</li>
 </ul>

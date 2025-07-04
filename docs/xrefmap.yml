@@ -31,6 +31,12 @@ references:
   commentId: F:Mushymato.ExtendedTAS.TASExt.Alpha
   fullName: Mushymato.ExtendedTAS.TASExt.Alpha
   nameWithType: TASExt.Alpha
+- uid: Mushymato.ExtendedTAS.TASExt.AlphaFadeFade
+  name: AlphaFadeFade
+  href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_AlphaFadeFade
+  commentId: F:Mushymato.ExtendedTAS.TASExt.AlphaFadeFade
+  fullName: Mushymato.ExtendedTAS.TASExt.AlphaFadeFade
+  nameWithType: TASExt.AlphaFadeFade
 - uid: Mushymato.ExtendedTAS.TASExt.ApplyEndActionsOnForceRemove
   name: ApplyEndActionsOnForceRemove
   href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_ApplyEndActionsOnForceRemove
@@ -43,6 +49,12 @@ references:
   commentId: F:Mushymato.ExtendedTAS.TASExt.ConditionInterval
   fullName: Mushymato.ExtendedTAS.TASExt.ConditionInterval
   nameWithType: TASExt.ConditionInterval
+- uid: Mushymato.ExtendedTAS.TASExt.DrawAboveAlwaysFront
+  name: DrawAboveAlwaysFront
+  href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_DrawAboveAlwaysFront
+  commentId: F:Mushymato.ExtendedTAS.TASExt.DrawAboveAlwaysFront
+  fullName: Mushymato.ExtendedTAS.TASExt.DrawAboveAlwaysFront
+  nameWithType: TASExt.DrawAboveAlwaysFront
 - uid: Mushymato.ExtendedTAS.TASExt.EndActions
   name: EndActions
   href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_EndActions
@@ -127,6 +139,12 @@ references:
   commentId: F:Mushymato.ExtendedTAS.TASExtRand.AlphaFade
   fullName: Mushymato.ExtendedTAS.TASExtRand.AlphaFade
   nameWithType: TASExtRand.AlphaFade
+- uid: Mushymato.ExtendedTAS.TASExtRand.AlphaFadeFade
+  name: AlphaFadeFade
+  href: api/Mushymato.ExtendedTAS.TASExtRand.html#Mushymato_ExtendedTAS_TASExtRand_AlphaFadeFade
+  commentId: F:Mushymato.ExtendedTAS.TASExtRand.AlphaFadeFade
+  fullName: Mushymato.ExtendedTAS.TASExtRand.AlphaFadeFade
+  nameWithType: TASExtRand.AlphaFadeFade
 - uid: Mushymato.ExtendedTAS.TASExtRand.Motion
   name: Motion
   href: api/Mushymato.ExtendedTAS.TASExtRand.html#Mushymato_ExtendedTAS_TASExtRand_Motion
@@ -2914,6 +2932,23 @@ references:
   fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).CleanupEffect
   nameWithType: Ability<TArgs>.CleanupEffect
   nameWithType.vb: Ability(Of TArgs).CleanupEffect
+- uid: TrinketTinker.Effects.Abilities.Ability`1.ConsumeFuel
+  name: ConsumeFuel()
+  href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_ConsumeFuel
+  commentId: M:TrinketTinker.Effects.Abilities.Ability`1.ConsumeFuel
+  fullName: TrinketTinker.Effects.Abilities.Ability<TArgs>.ConsumeFuel()
+  fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).ConsumeFuel()
+  nameWithType: Ability<TArgs>.ConsumeFuel()
+  nameWithType.vb: Ability(Of TArgs).ConsumeFuel()
+- uid: TrinketTinker.Effects.Abilities.Ability`1.ConsumeFuel*
+  name: ConsumeFuel
+  href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_ConsumeFuel_
+  commentId: Overload:TrinketTinker.Effects.Abilities.Ability`1.ConsumeFuel
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.Ability<TArgs>.ConsumeFuel
+  fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).ConsumeFuel
+  nameWithType: Ability<TArgs>.ConsumeFuel
+  nameWithType.vb: Ability(Of TArgs).ConsumeFuel
 - uid: TrinketTinker.Effects.Abilities.Ability`1.Deactivate(StardewValley.Farmer)
   name: Deactivate(Farmer)
   href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Deactivate_StardewValley_Farmer_
@@ -5296,27 +5331,13 @@ references:
 - uid: TrinketTinker.Extras.EquipTrinket.Action_EquipHiddenTrinket
   name: Action_EquipHiddenTrinket
   href: api/TrinketTinker.Extras.EquipTrinket.html#TrinketTinker_Extras_EquipTrinket_Action_EquipHiddenTrinket
-  commentId: P:TrinketTinker.Extras.EquipTrinket.Action_EquipHiddenTrinket
-  fullName: TrinketTinker.Extras.EquipTrinket.Action_EquipHiddenTrinket
-  nameWithType: EquipTrinket.Action_EquipHiddenTrinket
-- uid: TrinketTinker.Extras.EquipTrinket.Action_EquipHiddenTrinket*
-  name: Action_EquipHiddenTrinket
-  href: api/TrinketTinker.Extras.EquipTrinket.html#TrinketTinker_Extras_EquipTrinket_Action_EquipHiddenTrinket_
-  commentId: Overload:TrinketTinker.Extras.EquipTrinket.Action_EquipHiddenTrinket
-  isSpec: "True"
+  commentId: F:TrinketTinker.Extras.EquipTrinket.Action_EquipHiddenTrinket
   fullName: TrinketTinker.Extras.EquipTrinket.Action_EquipHiddenTrinket
   nameWithType: EquipTrinket.Action_EquipHiddenTrinket
 - uid: TrinketTinker.Extras.EquipTrinket.Action_UnequipHiddenTrinket
   name: Action_UnequipHiddenTrinket
   href: api/TrinketTinker.Extras.EquipTrinket.html#TrinketTinker_Extras_EquipTrinket_Action_UnequipHiddenTrinket
-  commentId: P:TrinketTinker.Extras.EquipTrinket.Action_UnequipHiddenTrinket
-  fullName: TrinketTinker.Extras.EquipTrinket.Action_UnequipHiddenTrinket
-  nameWithType: EquipTrinket.Action_UnequipHiddenTrinket
-- uid: TrinketTinker.Extras.EquipTrinket.Action_UnequipHiddenTrinket*
-  name: Action_UnequipHiddenTrinket
-  href: api/TrinketTinker.Extras.EquipTrinket.html#TrinketTinker_Extras_EquipTrinket_Action_UnequipHiddenTrinket_
-  commentId: Overload:TrinketTinker.Extras.EquipTrinket.Action_UnequipHiddenTrinket
-  isSpec: "True"
+  commentId: F:TrinketTinker.Extras.EquipTrinket.Action_UnequipHiddenTrinket
   fullName: TrinketTinker.Extras.EquipTrinket.Action_UnequipHiddenTrinket
   nameWithType: EquipTrinket.Action_UnequipHiddenTrinket
 - uid: TrinketTinker.Extras.EquipTrinket.EquipHiddenTrinket(System.String[],StardewValley.Delegates.TriggerActionContext,System.String@)
@@ -5357,217 +5378,176 @@ references:
   commentId: T:TrinketTinker.Extras.GameItemQuery
   fullName: TrinketTinker.Extras.GameItemQuery
   nameWithType: GameItemQuery
-- uid: TrinketTinker.Extras.GameItemQuery.CREATE_TRINKET(System.String,System.String,StardewValley.Internal.ItemQueryContext,System.Boolean,System.Collections.Generic.HashSet{System.String},System.Action{System.String,System.String})
-  name: CREATE_TRINKET(string, string, ItemQueryContext, bool, HashSet<string>, Action<string, string>)
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_CREATE_TRINKET_System_String_System_String_StardewValley_Internal_ItemQueryContext_System_Boolean_System_Collections_Generic_HashSet_System_String__System_Action_System_String_System_String__
-  commentId: M:TrinketTinker.Extras.GameItemQuery.CREATE_TRINKET(System.String,System.String,StardewValley.Internal.ItemQueryContext,System.Boolean,System.Collections.Generic.HashSet{System.String},System.Action{System.String,System.String})
-  name.vb: CREATE_TRINKET(String, String, ItemQueryContext, Boolean, HashSet(Of String), Action(Of String, String))
-  fullName: TrinketTinker.Extras.GameItemQuery.CREATE_TRINKET(string, string, StardewValley.Internal.ItemQueryContext, bool, System.Collections.Generic.HashSet<string>, System.Action<string, string>)
-  fullName.vb: TrinketTinker.Extras.GameItemQuery.CREATE_TRINKET(String, String, StardewValley.Internal.ItemQueryContext, Boolean, System.Collections.Generic.HashSet(Of String), System.Action(Of String, String))
-  nameWithType: GameItemQuery.CREATE_TRINKET(string, string, ItemQueryContext, bool, HashSet<string>, Action<string, string>)
-  nameWithType.vb: GameItemQuery.CREATE_TRINKET(String, String, ItemQueryContext, Boolean, HashSet(Of String), Action(Of String, String))
-- uid: TrinketTinker.Extras.GameItemQuery.CREATE_TRINKET*
-  name: CREATE_TRINKET
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_CREATE_TRINKET_
-  commentId: Overload:TrinketTinker.Extras.GameItemQuery.CREATE_TRINKET
+- uid: TrinketTinker.Extras.GameItemQuery.GSQ_DIRECT_EQUIP_ONLY(System.String[],StardewValley.Delegates.GameStateQueryContext)
+  name: GSQ_DIRECT_EQUIP_ONLY(string[], GameStateQueryContext)
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GSQ_DIRECT_EQUIP_ONLY_System_String___StardewValley_Delegates_GameStateQueryContext_
+  commentId: M:TrinketTinker.Extras.GameItemQuery.GSQ_DIRECT_EQUIP_ONLY(System.String[],StardewValley.Delegates.GameStateQueryContext)
+  name.vb: GSQ_DIRECT_EQUIP_ONLY(String(), GameStateQueryContext)
+  fullName: TrinketTinker.Extras.GameItemQuery.GSQ_DIRECT_EQUIP_ONLY(string[], StardewValley.Delegates.GameStateQueryContext)
+  fullName.vb: TrinketTinker.Extras.GameItemQuery.GSQ_DIRECT_EQUIP_ONLY(String(), StardewValley.Delegates.GameStateQueryContext)
+  nameWithType: GameItemQuery.GSQ_DIRECT_EQUIP_ONLY(string[], GameStateQueryContext)
+  nameWithType.vb: GameItemQuery.GSQ_DIRECT_EQUIP_ONLY(String(), GameStateQueryContext)
+- uid: TrinketTinker.Extras.GameItemQuery.GSQ_DIRECT_EQUIP_ONLY*
+  name: GSQ_DIRECT_EQUIP_ONLY
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GSQ_DIRECT_EQUIP_ONLY_
+  commentId: Overload:TrinketTinker.Extras.GameItemQuery.GSQ_DIRECT_EQUIP_ONLY
   isSpec: "True"
-  fullName: TrinketTinker.Extras.GameItemQuery.CREATE_TRINKET
-  nameWithType: GameItemQuery.CREATE_TRINKET
-- uid: TrinketTinker.Extras.GameItemQuery.CREATE_TRINKET_ALL_VARIANTS(System.String,System.String,StardewValley.Internal.ItemQueryContext,System.Boolean,System.Collections.Generic.HashSet{System.String},System.Action{System.String,System.String})
-  name: CREATE_TRINKET_ALL_VARIANTS(string, string, ItemQueryContext, bool, HashSet<string>, Action<string, string>)
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_CREATE_TRINKET_ALL_VARIANTS_System_String_System_String_StardewValley_Internal_ItemQueryContext_System_Boolean_System_Collections_Generic_HashSet_System_String__System_Action_System_String_System_String__
-  commentId: M:TrinketTinker.Extras.GameItemQuery.CREATE_TRINKET_ALL_VARIANTS(System.String,System.String,StardewValley.Internal.ItemQueryContext,System.Boolean,System.Collections.Generic.HashSet{System.String},System.Action{System.String,System.String})
-  name.vb: CREATE_TRINKET_ALL_VARIANTS(String, String, ItemQueryContext, Boolean, HashSet(Of String), Action(Of String, String))
-  fullName: TrinketTinker.Extras.GameItemQuery.CREATE_TRINKET_ALL_VARIANTS(string, string, StardewValley.Internal.ItemQueryContext, bool, System.Collections.Generic.HashSet<string>, System.Action<string, string>)
-  fullName.vb: TrinketTinker.Extras.GameItemQuery.CREATE_TRINKET_ALL_VARIANTS(String, String, StardewValley.Internal.ItemQueryContext, Boolean, System.Collections.Generic.HashSet(Of String), System.Action(Of String, String))
-  nameWithType: GameItemQuery.CREATE_TRINKET_ALL_VARIANTS(string, string, ItemQueryContext, bool, HashSet<string>, Action<string, string>)
-  nameWithType.vb: GameItemQuery.CREATE_TRINKET_ALL_VARIANTS(String, String, ItemQueryContext, Boolean, HashSet(Of String), Action(Of String, String))
-- uid: TrinketTinker.Extras.GameItemQuery.CREATE_TRINKET_ALL_VARIANTS*
-  name: CREATE_TRINKET_ALL_VARIANTS
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_CREATE_TRINKET_ALL_VARIANTS_
-  commentId: Overload:TrinketTinker.Extras.GameItemQuery.CREATE_TRINKET_ALL_VARIANTS
+  fullName: TrinketTinker.Extras.GameItemQuery.GSQ_DIRECT_EQUIP_ONLY
+  nameWithType: GameItemQuery.GSQ_DIRECT_EQUIP_ONLY
+- uid: TrinketTinker.Extras.GameItemQuery.GSQ_HAS_LEVELS(System.String[],StardewValley.Delegates.GameStateQueryContext)
+  name: GSQ_HAS_LEVELS(string[], GameStateQueryContext)
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GSQ_HAS_LEVELS_System_String___StardewValley_Delegates_GameStateQueryContext_
+  commentId: M:TrinketTinker.Extras.GameItemQuery.GSQ_HAS_LEVELS(System.String[],StardewValley.Delegates.GameStateQueryContext)
+  name.vb: GSQ_HAS_LEVELS(String(), GameStateQueryContext)
+  fullName: TrinketTinker.Extras.GameItemQuery.GSQ_HAS_LEVELS(string[], StardewValley.Delegates.GameStateQueryContext)
+  fullName.vb: TrinketTinker.Extras.GameItemQuery.GSQ_HAS_LEVELS(String(), StardewValley.Delegates.GameStateQueryContext)
+  nameWithType: GameItemQuery.GSQ_HAS_LEVELS(string[], GameStateQueryContext)
+  nameWithType.vb: GameItemQuery.GSQ_HAS_LEVELS(String(), GameStateQueryContext)
+- uid: TrinketTinker.Extras.GameItemQuery.GSQ_HAS_LEVELS*
+  name: GSQ_HAS_LEVELS
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GSQ_HAS_LEVELS_
+  commentId: Overload:TrinketTinker.Extras.GameItemQuery.GSQ_HAS_LEVELS
   isSpec: "True"
-  fullName: TrinketTinker.Extras.GameItemQuery.CREATE_TRINKET_ALL_VARIANTS
-  nameWithType: GameItemQuery.CREATE_TRINKET_ALL_VARIANTS
+  fullName: TrinketTinker.Extras.GameItemQuery.GSQ_HAS_LEVELS
+  nameWithType: GameItemQuery.GSQ_HAS_LEVELS
+- uid: TrinketTinker.Extras.GameItemQuery.GSQ_HAS_VARIANTS(System.String[],StardewValley.Delegates.GameStateQueryContext)
+  name: GSQ_HAS_VARIANTS(string[], GameStateQueryContext)
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GSQ_HAS_VARIANTS_System_String___StardewValley_Delegates_GameStateQueryContext_
+  commentId: M:TrinketTinker.Extras.GameItemQuery.GSQ_HAS_VARIANTS(System.String[],StardewValley.Delegates.GameStateQueryContext)
+  name.vb: GSQ_HAS_VARIANTS(String(), GameStateQueryContext)
+  fullName: TrinketTinker.Extras.GameItemQuery.GSQ_HAS_VARIANTS(string[], StardewValley.Delegates.GameStateQueryContext)
+  fullName.vb: TrinketTinker.Extras.GameItemQuery.GSQ_HAS_VARIANTS(String(), StardewValley.Delegates.GameStateQueryContext)
+  nameWithType: GameItemQuery.GSQ_HAS_VARIANTS(string[], GameStateQueryContext)
+  nameWithType.vb: GameItemQuery.GSQ_HAS_VARIANTS(String(), GameStateQueryContext)
+- uid: TrinketTinker.Extras.GameItemQuery.GSQ_HAS_VARIANTS*
+  name: GSQ_HAS_VARIANTS
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GSQ_HAS_VARIANTS_
+  commentId: Overload:TrinketTinker.Extras.GameItemQuery.GSQ_HAS_VARIANTS
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.GameItemQuery.GSQ_HAS_VARIANTS
+  nameWithType: GameItemQuery.GSQ_HAS_VARIANTS
+- uid: TrinketTinker.Extras.GameItemQuery.GSQ_IS_TINKER(System.String[],StardewValley.Delegates.GameStateQueryContext)
+  name: GSQ_IS_TINKER(string[], GameStateQueryContext)
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GSQ_IS_TINKER_System_String___StardewValley_Delegates_GameStateQueryContext_
+  commentId: M:TrinketTinker.Extras.GameItemQuery.GSQ_IS_TINKER(System.String[],StardewValley.Delegates.GameStateQueryContext)
+  name.vb: GSQ_IS_TINKER(String(), GameStateQueryContext)
+  fullName: TrinketTinker.Extras.GameItemQuery.GSQ_IS_TINKER(string[], StardewValley.Delegates.GameStateQueryContext)
+  fullName.vb: TrinketTinker.Extras.GameItemQuery.GSQ_IS_TINKER(String(), StardewValley.Delegates.GameStateQueryContext)
+  nameWithType: GameItemQuery.GSQ_IS_TINKER(string[], GameStateQueryContext)
+  nameWithType.vb: GameItemQuery.GSQ_IS_TINKER(String(), GameStateQueryContext)
+- uid: TrinketTinker.Extras.GameItemQuery.GSQ_IS_TINKER*
+  name: GSQ_IS_TINKER
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GSQ_IS_TINKER_
+  commentId: Overload:TrinketTinker.Extras.GameItemQuery.GSQ_IS_TINKER
+  isSpec: "True"
+  fullName: TrinketTinker.Extras.GameItemQuery.GSQ_IS_TINKER
+  nameWithType: GameItemQuery.GSQ_IS_TINKER
+- uid: TrinketTinker.Extras.GameItemQuery.GameStateQuery_DIRECT_EQUIP_ONLY
+  name: GameStateQuery_DIRECT_EQUIP_ONLY
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GameStateQuery_DIRECT_EQUIP_ONLY
+  commentId: F:TrinketTinker.Extras.GameItemQuery.GameStateQuery_DIRECT_EQUIP_ONLY
+  fullName: TrinketTinker.Extras.GameItemQuery.GameStateQuery_DIRECT_EQUIP_ONLY
+  nameWithType: GameItemQuery.GameStateQuery_DIRECT_EQUIP_ONLY
 - uid: TrinketTinker.Extras.GameItemQuery.GameStateQuery_ENABLED_TRINKET_COUNT
   name: GameStateQuery_ENABLED_TRINKET_COUNT
   href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GameStateQuery_ENABLED_TRINKET_COUNT
-  commentId: P:TrinketTinker.Extras.GameItemQuery.GameStateQuery_ENABLED_TRINKET_COUNT
-  fullName: TrinketTinker.Extras.GameItemQuery.GameStateQuery_ENABLED_TRINKET_COUNT
-  nameWithType: GameItemQuery.GameStateQuery_ENABLED_TRINKET_COUNT
-- uid: TrinketTinker.Extras.GameItemQuery.GameStateQuery_ENABLED_TRINKET_COUNT*
-  name: GameStateQuery_ENABLED_TRINKET_COUNT
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GameStateQuery_ENABLED_TRINKET_COUNT_
-  commentId: Overload:TrinketTinker.Extras.GameItemQuery.GameStateQuery_ENABLED_TRINKET_COUNT
-  isSpec: "True"
+  commentId: F:TrinketTinker.Extras.GameItemQuery.GameStateQuery_ENABLED_TRINKET_COUNT
   fullName: TrinketTinker.Extras.GameItemQuery.GameStateQuery_ENABLED_TRINKET_COUNT
   nameWithType: GameItemQuery.GameStateQuery_ENABLED_TRINKET_COUNT
 - uid: TrinketTinker.Extras.GameItemQuery.GameStateQuery_HAS_LEVELS
   name: GameStateQuery_HAS_LEVELS
   href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GameStateQuery_HAS_LEVELS
-  commentId: P:TrinketTinker.Extras.GameItemQuery.GameStateQuery_HAS_LEVELS
-  fullName: TrinketTinker.Extras.GameItemQuery.GameStateQuery_HAS_LEVELS
-  nameWithType: GameItemQuery.GameStateQuery_HAS_LEVELS
-- uid: TrinketTinker.Extras.GameItemQuery.GameStateQuery_HAS_LEVELS*
-  name: GameStateQuery_HAS_LEVELS
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GameStateQuery_HAS_LEVELS_
-  commentId: Overload:TrinketTinker.Extras.GameItemQuery.GameStateQuery_HAS_LEVELS
-  isSpec: "True"
+  commentId: F:TrinketTinker.Extras.GameItemQuery.GameStateQuery_HAS_LEVELS
   fullName: TrinketTinker.Extras.GameItemQuery.GameStateQuery_HAS_LEVELS
   nameWithType: GameItemQuery.GameStateQuery_HAS_LEVELS
 - uid: TrinketTinker.Extras.GameItemQuery.GameStateQuery_HAS_VARIANTS
   name: GameStateQuery_HAS_VARIANTS
   href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GameStateQuery_HAS_VARIANTS
-  commentId: P:TrinketTinker.Extras.GameItemQuery.GameStateQuery_HAS_VARIANTS
-  fullName: TrinketTinker.Extras.GameItemQuery.GameStateQuery_HAS_VARIANTS
-  nameWithType: GameItemQuery.GameStateQuery_HAS_VARIANTS
-- uid: TrinketTinker.Extras.GameItemQuery.GameStateQuery_HAS_VARIANTS*
-  name: GameStateQuery_HAS_VARIANTS
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GameStateQuery_HAS_VARIANTS_
-  commentId: Overload:TrinketTinker.Extras.GameItemQuery.GameStateQuery_HAS_VARIANTS
-  isSpec: "True"
+  commentId: F:TrinketTinker.Extras.GameItemQuery.GameStateQuery_HAS_VARIANTS
   fullName: TrinketTinker.Extras.GameItemQuery.GameStateQuery_HAS_VARIANTS
   nameWithType: GameItemQuery.GameStateQuery_HAS_VARIANTS
 - uid: TrinketTinker.Extras.GameItemQuery.GameStateQuery_IN_ALT_VARIANT
   name: GameStateQuery_IN_ALT_VARIANT
   href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GameStateQuery_IN_ALT_VARIANT
-  commentId: P:TrinketTinker.Extras.GameItemQuery.GameStateQuery_IN_ALT_VARIANT
-  fullName: TrinketTinker.Extras.GameItemQuery.GameStateQuery_IN_ALT_VARIANT
-  nameWithType: GameItemQuery.GameStateQuery_IN_ALT_VARIANT
-- uid: TrinketTinker.Extras.GameItemQuery.GameStateQuery_IN_ALT_VARIANT*
-  name: GameStateQuery_IN_ALT_VARIANT
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GameStateQuery_IN_ALT_VARIANT_
-  commentId: Overload:TrinketTinker.Extras.GameItemQuery.GameStateQuery_IN_ALT_VARIANT
-  isSpec: "True"
+  commentId: F:TrinketTinker.Extras.GameItemQuery.GameStateQuery_IN_ALT_VARIANT
   fullName: TrinketTinker.Extras.GameItemQuery.GameStateQuery_IN_ALT_VARIANT
   nameWithType: GameItemQuery.GameStateQuery_IN_ALT_VARIANT
 - uid: TrinketTinker.Extras.GameItemQuery.GameStateQuery_IS_TINKER
   name: GameStateQuery_IS_TINKER
   href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GameStateQuery_IS_TINKER
-  commentId: P:TrinketTinker.Extras.GameItemQuery.GameStateQuery_IS_TINKER
-  fullName: TrinketTinker.Extras.GameItemQuery.GameStateQuery_IS_TINKER
-  nameWithType: GameItemQuery.GameStateQuery_IS_TINKER
-- uid: TrinketTinker.Extras.GameItemQuery.GameStateQuery_IS_TINKER*
-  name: GameStateQuery_IS_TINKER
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GameStateQuery_IS_TINKER_
-  commentId: Overload:TrinketTinker.Extras.GameItemQuery.GameStateQuery_IS_TINKER
-  isSpec: "True"
+  commentId: F:TrinketTinker.Extras.GameItemQuery.GameStateQuery_IS_TINKER
   fullName: TrinketTinker.Extras.GameItemQuery.GameStateQuery_IS_TINKER
   nameWithType: GameItemQuery.GameStateQuery_IS_TINKER
 - uid: TrinketTinker.Extras.GameItemQuery.GameStateQuery_TRINKET_HAS_ITEM
   name: GameStateQuery_TRINKET_HAS_ITEM
   href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GameStateQuery_TRINKET_HAS_ITEM
-  commentId: P:TrinketTinker.Extras.GameItemQuery.GameStateQuery_TRINKET_HAS_ITEM
+  commentId: F:TrinketTinker.Extras.GameItemQuery.GameStateQuery_TRINKET_HAS_ITEM
   fullName: TrinketTinker.Extras.GameItemQuery.GameStateQuery_TRINKET_HAS_ITEM
   nameWithType: GameItemQuery.GameStateQuery_TRINKET_HAS_ITEM
-- uid: TrinketTinker.Extras.GameItemQuery.GameStateQuery_TRINKET_HAS_ITEM*
-  name: GameStateQuery_TRINKET_HAS_ITEM
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GameStateQuery_TRINKET_HAS_ITEM_
-  commentId: Overload:TrinketTinker.Extras.GameItemQuery.GameStateQuery_TRINKET_HAS_ITEM
+- uid: TrinketTinker.Extras.GameItemQuery.IQ_CREATE_TRINKET(System.String,System.String,StardewValley.Internal.ItemQueryContext,System.Boolean,System.Collections.Generic.HashSet{System.String},System.Action{System.String,System.String})
+  name: IQ_CREATE_TRINKET(string, string, ItemQueryContext, bool, HashSet<string>, Action<string, string>)
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_IQ_CREATE_TRINKET_System_String_System_String_StardewValley_Internal_ItemQueryContext_System_Boolean_System_Collections_Generic_HashSet_System_String__System_Action_System_String_System_String__
+  commentId: M:TrinketTinker.Extras.GameItemQuery.IQ_CREATE_TRINKET(System.String,System.String,StardewValley.Internal.ItemQueryContext,System.Boolean,System.Collections.Generic.HashSet{System.String},System.Action{System.String,System.String})
+  name.vb: IQ_CREATE_TRINKET(String, String, ItemQueryContext, Boolean, HashSet(Of String), Action(Of String, String))
+  fullName: TrinketTinker.Extras.GameItemQuery.IQ_CREATE_TRINKET(string, string, StardewValley.Internal.ItemQueryContext, bool, System.Collections.Generic.HashSet<string>, System.Action<string, string>)
+  fullName.vb: TrinketTinker.Extras.GameItemQuery.IQ_CREATE_TRINKET(String, String, StardewValley.Internal.ItemQueryContext, Boolean, System.Collections.Generic.HashSet(Of String), System.Action(Of String, String))
+  nameWithType: GameItemQuery.IQ_CREATE_TRINKET(string, string, ItemQueryContext, bool, HashSet<string>, Action<string, string>)
+  nameWithType.vb: GameItemQuery.IQ_CREATE_TRINKET(String, String, ItemQueryContext, Boolean, HashSet(Of String), Action(Of String, String))
+- uid: TrinketTinker.Extras.GameItemQuery.IQ_CREATE_TRINKET*
+  name: IQ_CREATE_TRINKET
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_IQ_CREATE_TRINKET_
+  commentId: Overload:TrinketTinker.Extras.GameItemQuery.IQ_CREATE_TRINKET
   isSpec: "True"
-  fullName: TrinketTinker.Extras.GameItemQuery.GameStateQuery_TRINKET_HAS_ITEM
-  nameWithType: GameItemQuery.GameStateQuery_TRINKET_HAS_ITEM
-- uid: TrinketTinker.Extras.GameItemQuery.HAS_LEVELS(System.String[],StardewValley.Delegates.GameStateQueryContext)
-  name: HAS_LEVELS(string[], GameStateQueryContext)
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_HAS_LEVELS_System_String___StardewValley_Delegates_GameStateQueryContext_
-  commentId: M:TrinketTinker.Extras.GameItemQuery.HAS_LEVELS(System.String[],StardewValley.Delegates.GameStateQueryContext)
-  name.vb: HAS_LEVELS(String(), GameStateQueryContext)
-  fullName: TrinketTinker.Extras.GameItemQuery.HAS_LEVELS(string[], StardewValley.Delegates.GameStateQueryContext)
-  fullName.vb: TrinketTinker.Extras.GameItemQuery.HAS_LEVELS(String(), StardewValley.Delegates.GameStateQueryContext)
-  nameWithType: GameItemQuery.HAS_LEVELS(string[], GameStateQueryContext)
-  nameWithType.vb: GameItemQuery.HAS_LEVELS(String(), GameStateQueryContext)
-- uid: TrinketTinker.Extras.GameItemQuery.HAS_LEVELS*
-  name: HAS_LEVELS
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_HAS_LEVELS_
-  commentId: Overload:TrinketTinker.Extras.GameItemQuery.HAS_LEVELS
+  fullName: TrinketTinker.Extras.GameItemQuery.IQ_CREATE_TRINKET
+  nameWithType: GameItemQuery.IQ_CREATE_TRINKET
+- uid: TrinketTinker.Extras.GameItemQuery.IQ_CREATE_TRINKET_ALL_VARIANTS(System.String,System.String,StardewValley.Internal.ItemQueryContext,System.Boolean,System.Collections.Generic.HashSet{System.String},System.Action{System.String,System.String})
+  name: IQ_CREATE_TRINKET_ALL_VARIANTS(string, string, ItemQueryContext, bool, HashSet<string>, Action<string, string>)
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_IQ_CREATE_TRINKET_ALL_VARIANTS_System_String_System_String_StardewValley_Internal_ItemQueryContext_System_Boolean_System_Collections_Generic_HashSet_System_String__System_Action_System_String_System_String__
+  commentId: M:TrinketTinker.Extras.GameItemQuery.IQ_CREATE_TRINKET_ALL_VARIANTS(System.String,System.String,StardewValley.Internal.ItemQueryContext,System.Boolean,System.Collections.Generic.HashSet{System.String},System.Action{System.String,System.String})
+  name.vb: IQ_CREATE_TRINKET_ALL_VARIANTS(String, String, ItemQueryContext, Boolean, HashSet(Of String), Action(Of String, String))
+  fullName: TrinketTinker.Extras.GameItemQuery.IQ_CREATE_TRINKET_ALL_VARIANTS(string, string, StardewValley.Internal.ItemQueryContext, bool, System.Collections.Generic.HashSet<string>, System.Action<string, string>)
+  fullName.vb: TrinketTinker.Extras.GameItemQuery.IQ_CREATE_TRINKET_ALL_VARIANTS(String, String, StardewValley.Internal.ItemQueryContext, Boolean, System.Collections.Generic.HashSet(Of String), System.Action(Of String, String))
+  nameWithType: GameItemQuery.IQ_CREATE_TRINKET_ALL_VARIANTS(string, string, ItemQueryContext, bool, HashSet<string>, Action<string, string>)
+  nameWithType.vb: GameItemQuery.IQ_CREATE_TRINKET_ALL_VARIANTS(String, String, ItemQueryContext, Boolean, HashSet(Of String), Action(Of String, String))
+- uid: TrinketTinker.Extras.GameItemQuery.IQ_CREATE_TRINKET_ALL_VARIANTS*
+  name: IQ_CREATE_TRINKET_ALL_VARIANTS
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_IQ_CREATE_TRINKET_ALL_VARIANTS_
+  commentId: Overload:TrinketTinker.Extras.GameItemQuery.IQ_CREATE_TRINKET_ALL_VARIANTS
   isSpec: "True"
-  fullName: TrinketTinker.Extras.GameItemQuery.HAS_LEVELS
-  nameWithType: GameItemQuery.HAS_LEVELS
-- uid: TrinketTinker.Extras.GameItemQuery.HAS_VARIANTS(System.String[],StardewValley.Delegates.GameStateQueryContext)
-  name: HAS_VARIANTS(string[], GameStateQueryContext)
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_HAS_VARIANTS_System_String___StardewValley_Delegates_GameStateQueryContext_
-  commentId: M:TrinketTinker.Extras.GameItemQuery.HAS_VARIANTS(System.String[],StardewValley.Delegates.GameStateQueryContext)
-  name.vb: HAS_VARIANTS(String(), GameStateQueryContext)
-  fullName: TrinketTinker.Extras.GameItemQuery.HAS_VARIANTS(string[], StardewValley.Delegates.GameStateQueryContext)
-  fullName.vb: TrinketTinker.Extras.GameItemQuery.HAS_VARIANTS(String(), StardewValley.Delegates.GameStateQueryContext)
-  nameWithType: GameItemQuery.HAS_VARIANTS(string[], GameStateQueryContext)
-  nameWithType.vb: GameItemQuery.HAS_VARIANTS(String(), GameStateQueryContext)
-- uid: TrinketTinker.Extras.GameItemQuery.HAS_VARIANTS*
-  name: HAS_VARIANTS
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_HAS_VARIANTS_
-  commentId: Overload:TrinketTinker.Extras.GameItemQuery.HAS_VARIANTS
+  fullName: TrinketTinker.Extras.GameItemQuery.IQ_CREATE_TRINKET_ALL_VARIANTS
+  nameWithType: GameItemQuery.IQ_CREATE_TRINKET_ALL_VARIANTS
+- uid: TrinketTinker.Extras.GameItemQuery.IQ_HIRE_TRINKET(System.String,System.String,StardewValley.Internal.ItemQueryContext,System.Boolean,System.Collections.Generic.HashSet{System.String},System.Action{System.String,System.String})
+  name: IQ_HIRE_TRINKET(string, string, ItemQueryContext, bool, HashSet<string>, Action<string, string>)
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_IQ_HIRE_TRINKET_System_String_System_String_StardewValley_Internal_ItemQueryContext_System_Boolean_System_Collections_Generic_HashSet_System_String__System_Action_System_String_System_String__
+  commentId: M:TrinketTinker.Extras.GameItemQuery.IQ_HIRE_TRINKET(System.String,System.String,StardewValley.Internal.ItemQueryContext,System.Boolean,System.Collections.Generic.HashSet{System.String},System.Action{System.String,System.String})
+  name.vb: IQ_HIRE_TRINKET(String, String, ItemQueryContext, Boolean, HashSet(Of String), Action(Of String, String))
+  fullName: TrinketTinker.Extras.GameItemQuery.IQ_HIRE_TRINKET(string, string, StardewValley.Internal.ItemQueryContext, bool, System.Collections.Generic.HashSet<string>, System.Action<string, string>)
+  fullName.vb: TrinketTinker.Extras.GameItemQuery.IQ_HIRE_TRINKET(String, String, StardewValley.Internal.ItemQueryContext, Boolean, System.Collections.Generic.HashSet(Of String), System.Action(Of String, String))
+  nameWithType: GameItemQuery.IQ_HIRE_TRINKET(string, string, ItemQueryContext, bool, HashSet<string>, Action<string, string>)
+  nameWithType.vb: GameItemQuery.IQ_HIRE_TRINKET(String, String, ItemQueryContext, Boolean, HashSet(Of String), Action(Of String, String))
+- uid: TrinketTinker.Extras.GameItemQuery.IQ_HIRE_TRINKET*
+  name: IQ_HIRE_TRINKET
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_IQ_HIRE_TRINKET_
+  commentId: Overload:TrinketTinker.Extras.GameItemQuery.IQ_HIRE_TRINKET
   isSpec: "True"
-  fullName: TrinketTinker.Extras.GameItemQuery.HAS_VARIANTS
-  nameWithType: GameItemQuery.HAS_VARIANTS
-- uid: TrinketTinker.Extras.GameItemQuery.HIRE_TRINKET(System.String,System.String,StardewValley.Internal.ItemQueryContext,System.Boolean,System.Collections.Generic.HashSet{System.String},System.Action{System.String,System.String})
-  name: HIRE_TRINKET(string, string, ItemQueryContext, bool, HashSet<string>, Action<string, string>)
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_HIRE_TRINKET_System_String_System_String_StardewValley_Internal_ItemQueryContext_System_Boolean_System_Collections_Generic_HashSet_System_String__System_Action_System_String_System_String__
-  commentId: M:TrinketTinker.Extras.GameItemQuery.HIRE_TRINKET(System.String,System.String,StardewValley.Internal.ItemQueryContext,System.Boolean,System.Collections.Generic.HashSet{System.String},System.Action{System.String,System.String})
-  name.vb: HIRE_TRINKET(String, String, ItemQueryContext, Boolean, HashSet(Of String), Action(Of String, String))
-  fullName: TrinketTinker.Extras.GameItemQuery.HIRE_TRINKET(string, string, StardewValley.Internal.ItemQueryContext, bool, System.Collections.Generic.HashSet<string>, System.Action<string, string>)
-  fullName.vb: TrinketTinker.Extras.GameItemQuery.HIRE_TRINKET(String, String, StardewValley.Internal.ItemQueryContext, Boolean, System.Collections.Generic.HashSet(Of String), System.Action(Of String, String))
-  nameWithType: GameItemQuery.HIRE_TRINKET(string, string, ItemQueryContext, bool, HashSet<string>, Action<string, string>)
-  nameWithType.vb: GameItemQuery.HIRE_TRINKET(String, String, ItemQueryContext, Boolean, HashSet(Of String), Action(Of String, String))
-- uid: TrinketTinker.Extras.GameItemQuery.HIRE_TRINKET*
-  name: HIRE_TRINKET
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_HIRE_TRINKET_
-  commentId: Overload:TrinketTinker.Extras.GameItemQuery.HIRE_TRINKET
-  isSpec: "True"
-  fullName: TrinketTinker.Extras.GameItemQuery.HIRE_TRINKET
-  nameWithType: GameItemQuery.HIRE_TRINKET
-- uid: TrinketTinker.Extras.GameItemQuery.IS_TINKER(System.String[],StardewValley.Delegates.GameStateQueryContext)
-  name: IS_TINKER(string[], GameStateQueryContext)
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_IS_TINKER_System_String___StardewValley_Delegates_GameStateQueryContext_
-  commentId: M:TrinketTinker.Extras.GameItemQuery.IS_TINKER(System.String[],StardewValley.Delegates.GameStateQueryContext)
-  name.vb: IS_TINKER(String(), GameStateQueryContext)
-  fullName: TrinketTinker.Extras.GameItemQuery.IS_TINKER(string[], StardewValley.Delegates.GameStateQueryContext)
-  fullName.vb: TrinketTinker.Extras.GameItemQuery.IS_TINKER(String(), StardewValley.Delegates.GameStateQueryContext)
-  nameWithType: GameItemQuery.IS_TINKER(string[], GameStateQueryContext)
-  nameWithType.vb: GameItemQuery.IS_TINKER(String(), GameStateQueryContext)
-- uid: TrinketTinker.Extras.GameItemQuery.IS_TINKER*
-  name: IS_TINKER
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_IS_TINKER_
-  commentId: Overload:TrinketTinker.Extras.GameItemQuery.IS_TINKER
-  isSpec: "True"
-  fullName: TrinketTinker.Extras.GameItemQuery.IS_TINKER
-  nameWithType: GameItemQuery.IS_TINKER
+  fullName: TrinketTinker.Extras.GameItemQuery.IQ_HIRE_TRINKET
+  nameWithType: GameItemQuery.IQ_HIRE_TRINKET
 - uid: TrinketTinker.Extras.GameItemQuery.ItemQuery_CREATE_TRINKET
   name: ItemQuery_CREATE_TRINKET
   href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_ItemQuery_CREATE_TRINKET
-  commentId: P:TrinketTinker.Extras.GameItemQuery.ItemQuery_CREATE_TRINKET
-  fullName: TrinketTinker.Extras.GameItemQuery.ItemQuery_CREATE_TRINKET
-  nameWithType: GameItemQuery.ItemQuery_CREATE_TRINKET
-- uid: TrinketTinker.Extras.GameItemQuery.ItemQuery_CREATE_TRINKET*
-  name: ItemQuery_CREATE_TRINKET
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_ItemQuery_CREATE_TRINKET_
-  commentId: Overload:TrinketTinker.Extras.GameItemQuery.ItemQuery_CREATE_TRINKET
-  isSpec: "True"
+  commentId: F:TrinketTinker.Extras.GameItemQuery.ItemQuery_CREATE_TRINKET
   fullName: TrinketTinker.Extras.GameItemQuery.ItemQuery_CREATE_TRINKET
   nameWithType: GameItemQuery.ItemQuery_CREATE_TRINKET
 - uid: TrinketTinker.Extras.GameItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS
   name: ItemQuery_CREATE_TRINKET_ALL_VARIANTS
   href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_ItemQuery_CREATE_TRINKET_ALL_VARIANTS
-  commentId: P:TrinketTinker.Extras.GameItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS
-  fullName: TrinketTinker.Extras.GameItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS
-  nameWithType: GameItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS
-- uid: TrinketTinker.Extras.GameItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS*
-  name: ItemQuery_CREATE_TRINKET_ALL_VARIANTS
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_ItemQuery_CREATE_TRINKET_ALL_VARIANTS_
-  commentId: Overload:TrinketTinker.Extras.GameItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS
-  isSpec: "True"
+  commentId: F:TrinketTinker.Extras.GameItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS
   fullName: TrinketTinker.Extras.GameItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS
   nameWithType: GameItemQuery.ItemQuery_CREATE_TRINKET_ALL_VARIANTS
 - uid: TrinketTinker.Extras.GameItemQuery.ItemQuery_HIRE_TRINKET
   name: ItemQuery_HIRE_TRINKET
   href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_ItemQuery_HIRE_TRINKET
-  commentId: P:TrinketTinker.Extras.GameItemQuery.ItemQuery_HIRE_TRINKET
-  fullName: TrinketTinker.Extras.GameItemQuery.ItemQuery_HIRE_TRINKET
-  nameWithType: GameItemQuery.ItemQuery_HIRE_TRINKET
-- uid: TrinketTinker.Extras.GameItemQuery.ItemQuery_HIRE_TRINKET*
-  name: ItemQuery_HIRE_TRINKET
-  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_ItemQuery_HIRE_TRINKET_
-  commentId: Overload:TrinketTinker.Extras.GameItemQuery.ItemQuery_HIRE_TRINKET
-  isSpec: "True"
+  commentId: F:TrinketTinker.Extras.GameItemQuery.ItemQuery_HIRE_TRINKET
   fullName: TrinketTinker.Extras.GameItemQuery.ItemQuery_HIRE_TRINKET
   nameWithType: GameItemQuery.ItemQuery_HIRE_TRINKET
 - uid: TrinketTinker.Extras.GameItemQuery.Register
@@ -5583,6 +5563,12 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Extras.GameItemQuery.Register
   nameWithType: GameItemQuery.Register
+- uid: TrinketTinker.Extras.GameItemQuery.TriggerAction_ToggleCompanion
+  name: TriggerAction_ToggleCompanion
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_TriggerAction_ToggleCompanion
+  commentId: F:TrinketTinker.Extras.GameItemQuery.TriggerAction_ToggleCompanion
+  fullName: TrinketTinker.Extras.GameItemQuery.TriggerAction_ToggleCompanion
+  nameWithType: GameItemQuery.TriggerAction_ToggleCompanion
 - uid: TrinketTinker.Extras.HiredTrinket
   name: HiredTrinket
   href: api/TrinketTinker.Extras.HiredTrinket.html
@@ -5662,27 +5648,13 @@ references:
 - uid: TrinketTinker.Extras.ProcTrinket.TriggerActionName
   name: TriggerActionName
   href: api/TrinketTinker.Extras.ProcTrinket.html#TrinketTinker_Extras_ProcTrinket_TriggerActionName
-  commentId: P:TrinketTinker.Extras.ProcTrinket.TriggerActionName
-  fullName: TrinketTinker.Extras.ProcTrinket.TriggerActionName
-  nameWithType: ProcTrinket.TriggerActionName
-- uid: TrinketTinker.Extras.ProcTrinket.TriggerActionName*
-  name: TriggerActionName
-  href: api/TrinketTinker.Extras.ProcTrinket.html#TrinketTinker_Extras_ProcTrinket_TriggerActionName_
-  commentId: Overload:TrinketTinker.Extras.ProcTrinket.TriggerActionName
-  isSpec: "True"
+  commentId: F:TrinketTinker.Extras.ProcTrinket.TriggerActionName
   fullName: TrinketTinker.Extras.ProcTrinket.TriggerActionName
   nameWithType: ProcTrinket.TriggerActionName
 - uid: TrinketTinker.Extras.ProcTrinket.TriggerActionNameOld
   name: TriggerActionNameOld
   href: api/TrinketTinker.Extras.ProcTrinket.html#TrinketTinker_Extras_ProcTrinket_TriggerActionNameOld
-  commentId: P:TrinketTinker.Extras.ProcTrinket.TriggerActionNameOld
-  fullName: TrinketTinker.Extras.ProcTrinket.TriggerActionNameOld
-  nameWithType: ProcTrinket.TriggerActionNameOld
-- uid: TrinketTinker.Extras.ProcTrinket.TriggerActionNameOld*
-  name: TriggerActionNameOld
-  href: api/TrinketTinker.Extras.ProcTrinket.html#TrinketTinker_Extras_ProcTrinket_TriggerActionNameOld_
-  commentId: Overload:TrinketTinker.Extras.ProcTrinket.TriggerActionNameOld
-  isSpec: "True"
+  commentId: F:TrinketTinker.Extras.ProcTrinket.TriggerActionNameOld
   fullName: TrinketTinker.Extras.ProcTrinket.TriggerActionNameOld
   nameWithType: ProcTrinket.TriggerActionNameOld
 - uid: TrinketTinker.Extras.TinkerInventoryMenu
@@ -5754,27 +5726,13 @@ references:
 - uid: TrinketTinker.Extras.TrinketColorizer.CustomData_LevelPlus
   name: CustomData_LevelPlus
   href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_CustomData_LevelPlus
-  commentId: P:TrinketTinker.Extras.TrinketColorizer.CustomData_LevelPlus
-  fullName: TrinketTinker.Extras.TrinketColorizer.CustomData_LevelPlus
-  nameWithType: TrinketColorizer.CustomData_LevelPlus
-- uid: TrinketTinker.Extras.TrinketColorizer.CustomData_LevelPlus*
-  name: CustomData_LevelPlus
-  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_CustomData_LevelPlus_
-  commentId: Overload:TrinketTinker.Extras.TrinketColorizer.CustomData_LevelPlus
-  isSpec: "True"
+  commentId: F:TrinketTinker.Extras.TrinketColorizer.CustomData_LevelPlus
   fullName: TrinketTinker.Extras.TrinketColorizer.CustomData_LevelPlus
   nameWithType: TrinketColorizer.CustomData_LevelPlus
 - uid: TrinketTinker.Extras.TrinketColorizer.CustomData_VariantPlus
   name: CustomData_VariantPlus
   href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_CustomData_VariantPlus
-  commentId: P:TrinketTinker.Extras.TrinketColorizer.CustomData_VariantPlus
-  fullName: TrinketTinker.Extras.TrinketColorizer.CustomData_VariantPlus
-  nameWithType: TrinketColorizer.CustomData_VariantPlus
-- uid: TrinketTinker.Extras.TrinketColorizer.CustomData_VariantPlus*
-  name: CustomData_VariantPlus
-  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_CustomData_VariantPlus_
-  commentId: Overload:TrinketTinker.Extras.TrinketColorizer.CustomData_VariantPlus
-  isSpec: "True"
+  commentId: F:TrinketTinker.Extras.TrinketColorizer.CustomData_VariantPlus
   fullName: TrinketTinker.Extras.TrinketColorizer.CustomData_VariantPlus
   nameWithType: TrinketColorizer.CustomData_VariantPlus
 - uid: TrinketTinker.Extras.TrinketColorizer.Edit_BigCraftables(StardewModdingAPI.IAssetData)
@@ -5864,40 +5822,19 @@ references:
 - uid: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerId
   name: TrinketColorizerId
   href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_TrinketColorizerId
-  commentId: P:TrinketTinker.Extras.TrinketColorizer.TrinketColorizerId
-  fullName: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerId
-  nameWithType: TrinketColorizer.TrinketColorizerId
-- uid: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerId*
-  name: TrinketColorizerId
-  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_TrinketColorizerId_
-  commentId: Overload:TrinketTinker.Extras.TrinketColorizer.TrinketColorizerId
-  isSpec: "True"
+  commentId: F:TrinketTinker.Extras.TrinketColorizer.TrinketColorizerId
   fullName: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerId
   nameWithType: TrinketColorizer.TrinketColorizerId
 - uid: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerQId
   name: TrinketColorizerQId
   href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_TrinketColorizerQId
-  commentId: P:TrinketTinker.Extras.TrinketColorizer.TrinketColorizerQId
-  fullName: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerQId
-  nameWithType: TrinketColorizer.TrinketColorizerQId
-- uid: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerQId*
-  name: TrinketColorizerQId
-  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_TrinketColorizerQId_
-  commentId: Overload:TrinketTinker.Extras.TrinketColorizer.TrinketColorizerQId
-  isSpec: "True"
+  commentId: F:TrinketTinker.Extras.TrinketColorizer.TrinketColorizerQId
   fullName: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerQId
   nameWithType: TrinketColorizer.TrinketColorizerQId
 - uid: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerTexture
   name: TrinketColorizerTexture
   href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_TrinketColorizerTexture
-  commentId: P:TrinketTinker.Extras.TrinketColorizer.TrinketColorizerTexture
-  fullName: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerTexture
-  nameWithType: TrinketColorizer.TrinketColorizerTexture
-- uid: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerTexture*
-  name: TrinketColorizerTexture
-  href: api/TrinketTinker.Extras.TrinketColorizer.html#TrinketTinker_Extras_TrinketColorizer_TrinketColorizerTexture_
-  commentId: Overload:TrinketTinker.Extras.TrinketColorizer.TrinketColorizerTexture
-  isSpec: "True"
+  commentId: F:TrinketTinker.Extras.TrinketColorizer.TrinketColorizerTexture
   fullName: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerTexture
   nameWithType: TrinketColorizer.TrinketColorizerTexture
 - uid: TrinketTinker.Extras.TrinketColorizer.TrinketColorizerTextureFile
@@ -7093,6 +7030,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AbilityData.ProcChatterKey
   nameWithType: AbilityData.ProcChatterKey
+- uid: TrinketTinker.Models.AbilityData.ProcFuel
+  name: ProcFuel
+  href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcFuel
+  commentId: P:TrinketTinker.Models.AbilityData.ProcFuel
+  fullName: TrinketTinker.Models.AbilityData.ProcFuel
+  nameWithType: AbilityData.ProcFuel
+- uid: TrinketTinker.Models.AbilityData.ProcFuel*
+  name: ProcFuel
+  href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcFuel_
+  commentId: Overload:TrinketTinker.Models.AbilityData.ProcFuel
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityData.ProcFuel
+  nameWithType: AbilityData.ProcFuel
 - uid: TrinketTinker.Models.AbilityData.ProcOneshotAnim
   name: ProcOneshotAnim
   href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcOneshotAnim
@@ -9170,6 +9120,64 @@ references:
   fullName.vb: TrinketTinker.Models.ProcSoundData.CType
   nameWithType: ProcSoundData.implicit operator
   nameWithType.vb: ProcSoundData.CType
+- uid: TrinketTinker.Models.RequiredFuelData
+  name: RequiredFuelData
+  href: api/TrinketTinker.Models.RequiredFuelData.html
+  commentId: T:TrinketTinker.Models.RequiredFuelData
+  fullName: TrinketTinker.Models.RequiredFuelData
+  nameWithType: RequiredFuelData
+- uid: TrinketTinker.Models.RequiredFuelData.Condition
+  name: Condition
+  href: api/TrinketTinker.Models.RequiredFuelData.html#TrinketTinker_Models_RequiredFuelData_Condition
+  commentId: P:TrinketTinker.Models.RequiredFuelData.Condition
+  fullName: TrinketTinker.Models.RequiredFuelData.Condition
+  nameWithType: RequiredFuelData.Condition
+- uid: TrinketTinker.Models.RequiredFuelData.Condition*
+  name: Condition
+  href: api/TrinketTinker.Models.RequiredFuelData.html#TrinketTinker_Models_RequiredFuelData_Condition_
+  commentId: Overload:TrinketTinker.Models.RequiredFuelData.Condition
+  isSpec: "True"
+  fullName: TrinketTinker.Models.RequiredFuelData.Condition
+  nameWithType: RequiredFuelData.Condition
+- uid: TrinketTinker.Models.RequiredFuelData.RequiredCount
+  name: RequiredCount
+  href: api/TrinketTinker.Models.RequiredFuelData.html#TrinketTinker_Models_RequiredFuelData_RequiredCount
+  commentId: P:TrinketTinker.Models.RequiredFuelData.RequiredCount
+  fullName: TrinketTinker.Models.RequiredFuelData.RequiredCount
+  nameWithType: RequiredFuelData.RequiredCount
+- uid: TrinketTinker.Models.RequiredFuelData.RequiredCount*
+  name: RequiredCount
+  href: api/TrinketTinker.Models.RequiredFuelData.html#TrinketTinker_Models_RequiredFuelData_RequiredCount_
+  commentId: Overload:TrinketTinker.Models.RequiredFuelData.RequiredCount
+  isSpec: "True"
+  fullName: TrinketTinker.Models.RequiredFuelData.RequiredCount
+  nameWithType: RequiredFuelData.RequiredCount
+- uid: TrinketTinker.Models.RequiredFuelData.RequiredItemId
+  name: RequiredItemId
+  href: api/TrinketTinker.Models.RequiredFuelData.html#TrinketTinker_Models_RequiredFuelData_RequiredItemId
+  commentId: P:TrinketTinker.Models.RequiredFuelData.RequiredItemId
+  fullName: TrinketTinker.Models.RequiredFuelData.RequiredItemId
+  nameWithType: RequiredFuelData.RequiredItemId
+- uid: TrinketTinker.Models.RequiredFuelData.RequiredItemId*
+  name: RequiredItemId
+  href: api/TrinketTinker.Models.RequiredFuelData.html#TrinketTinker_Models_RequiredFuelData_RequiredItemId_
+  commentId: Overload:TrinketTinker.Models.RequiredFuelData.RequiredItemId
+  isSpec: "True"
+  fullName: TrinketTinker.Models.RequiredFuelData.RequiredItemId
+  nameWithType: RequiredFuelData.RequiredItemId
+- uid: TrinketTinker.Models.RequiredFuelData.RequiredTags
+  name: RequiredTags
+  href: api/TrinketTinker.Models.RequiredFuelData.html#TrinketTinker_Models_RequiredFuelData_RequiredTags
+  commentId: P:TrinketTinker.Models.RequiredFuelData.RequiredTags
+  fullName: TrinketTinker.Models.RequiredFuelData.RequiredTags
+  nameWithType: RequiredFuelData.RequiredTags
+- uid: TrinketTinker.Models.RequiredFuelData.RequiredTags*
+  name: RequiredTags
+  href: api/TrinketTinker.Models.RequiredFuelData.html#TrinketTinker_Models_RequiredFuelData_RequiredTags_
+  commentId: Overload:TrinketTinker.Models.RequiredFuelData.RequiredTags
+  isSpec: "True"
+  fullName: TrinketTinker.Models.RequiredFuelData.RequiredTags
+  nameWithType: RequiredFuelData.RequiredTags
 - uid: TrinketTinker.Models.SpeechBubbleData
   name: SpeechBubbleData
   href: api/TrinketTinker.Models.SpeechBubbleData.html
@@ -9995,107 +10003,57 @@ references:
 - uid: TrinketTinker.Wheels.TinkerConst.CustomFields_Data
   name: CustomFields_Data
   href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_CustomFields_Data
-  commentId: P:TrinketTinker.Wheels.TinkerConst.CustomFields_Data
-  fullName: TrinketTinker.Wheels.TinkerConst.CustomFields_Data
-  nameWithType: TinkerConst.CustomFields_Data
-- uid: TrinketTinker.Wheels.TinkerConst.CustomFields_Data*
-  name: CustomFields_Data
-  href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_CustomFields_Data_
-  commentId: Overload:TrinketTinker.Wheels.TinkerConst.CustomFields_Data
-  isSpec: "True"
+  commentId: F:TrinketTinker.Wheels.TinkerConst.CustomFields_Data
   fullName: TrinketTinker.Wheels.TinkerConst.CustomFields_Data
   nameWithType: TinkerConst.CustomFields_Data
 - uid: TrinketTinker.Wheels.TinkerConst.CustomFields_DirectEquipOnly
   name: CustomFields_DirectEquipOnly
   href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_CustomFields_DirectEquipOnly
-  commentId: P:TrinketTinker.Wheels.TinkerConst.CustomFields_DirectEquipOnly
-  fullName: TrinketTinker.Wheels.TinkerConst.CustomFields_DirectEquipOnly
-  nameWithType: TinkerConst.CustomFields_DirectEquipOnly
-- uid: TrinketTinker.Wheels.TinkerConst.CustomFields_DirectEquipOnly*
-  name: CustomFields_DirectEquipOnly
-  href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_CustomFields_DirectEquipOnly_
-  commentId: Overload:TrinketTinker.Wheels.TinkerConst.CustomFields_DirectEquipOnly
-  isSpec: "True"
+  commentId: F:TrinketTinker.Wheels.TinkerConst.CustomFields_DirectEquipOnly
   fullName: TrinketTinker.Wheels.TinkerConst.CustomFields_DirectEquipOnly
   nameWithType: TinkerConst.CustomFields_DirectEquipOnly
 - uid: TrinketTinker.Wheels.TinkerConst.CustomFields_Owner
   name: CustomFields_Owner
   href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_CustomFields_Owner
-  commentId: P:TrinketTinker.Wheels.TinkerConst.CustomFields_Owner
-  fullName: TrinketTinker.Wheels.TinkerConst.CustomFields_Owner
-  nameWithType: TinkerConst.CustomFields_Owner
-- uid: TrinketTinker.Wheels.TinkerConst.CustomFields_Owner*
-  name: CustomFields_Owner
-  href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_CustomFields_Owner_
-  commentId: Overload:TrinketTinker.Wheels.TinkerConst.CustomFields_Owner
-  isSpec: "True"
+  commentId: F:TrinketTinker.Wheels.TinkerConst.CustomFields_Owner
   fullName: TrinketTinker.Wheels.TinkerConst.CustomFields_Owner
   nameWithType: TinkerConst.CustomFields_Owner
 - uid: TrinketTinker.Wheels.TinkerConst.CustomFields_PosOff
   name: CustomFields_PosOff
   href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_CustomFields_PosOff
-  commentId: P:TrinketTinker.Wheels.TinkerConst.CustomFields_PosOff
-  fullName: TrinketTinker.Wheels.TinkerConst.CustomFields_PosOff
-  nameWithType: TinkerConst.CustomFields_PosOff
-- uid: TrinketTinker.Wheels.TinkerConst.CustomFields_PosOff*
-  name: CustomFields_PosOff
-  href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_CustomFields_PosOff_
-  commentId: Overload:TrinketTinker.Wheels.TinkerConst.CustomFields_PosOff
-  isSpec: "True"
+  commentId: F:TrinketTinker.Wheels.TinkerConst.CustomFields_PosOff
   fullName: TrinketTinker.Wheels.TinkerConst.CustomFields_PosOff
   nameWithType: TinkerConst.CustomFields_PosOff
 - uid: TrinketTinker.Wheels.TinkerConst.CustomFields_Position
   name: CustomFields_Position
   href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_CustomFields_Position
-  commentId: P:TrinketTinker.Wheels.TinkerConst.CustomFields_Position
-  fullName: TrinketTinker.Wheels.TinkerConst.CustomFields_Position
-  nameWithType: TinkerConst.CustomFields_Position
-- uid: TrinketTinker.Wheels.TinkerConst.CustomFields_Position*
-  name: CustomFields_Position
-  href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_CustomFields_Position_
-  commentId: Overload:TrinketTinker.Wheels.TinkerConst.CustomFields_Position
-  isSpec: "True"
+  commentId: F:TrinketTinker.Wheels.TinkerConst.CustomFields_Position
   fullName: TrinketTinker.Wheels.TinkerConst.CustomFields_Position
   nameWithType: TinkerConst.CustomFields_Position
 - uid: TrinketTinker.Wheels.TinkerConst.CustomFields_Trinket
   name: CustomFields_Trinket
   href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_CustomFields_Trinket
-  commentId: P:TrinketTinker.Wheels.TinkerConst.CustomFields_Trinket
-  fullName: TrinketTinker.Wheels.TinkerConst.CustomFields_Trinket
-  nameWithType: TinkerConst.CustomFields_Trinket
-- uid: TrinketTinker.Wheels.TinkerConst.CustomFields_Trinket*
-  name: CustomFields_Trinket
-  href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_CustomFields_Trinket_
-  commentId: Overload:TrinketTinker.Wheels.TinkerConst.CustomFields_Trinket
-  isSpec: "True"
+  commentId: F:TrinketTinker.Wheels.TinkerConst.CustomFields_Trinket
   fullName: TrinketTinker.Wheels.TinkerConst.CustomFields_Trinket
   nameWithType: TinkerConst.CustomFields_Trinket
 - uid: TrinketTinker.Wheels.TinkerConst.ModData_HiddenEquip
   name: ModData_HiddenEquip
   href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_ModData_HiddenEquip
-  commentId: P:TrinketTinker.Wheels.TinkerConst.ModData_HiddenEquip
-  fullName: TrinketTinker.Wheels.TinkerConst.ModData_HiddenEquip
-  nameWithType: TinkerConst.ModData_HiddenEquip
-- uid: TrinketTinker.Wheels.TinkerConst.ModData_HiddenEquip*
-  name: ModData_HiddenEquip
-  href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_ModData_HiddenEquip_
-  commentId: Overload:TrinketTinker.Wheels.TinkerConst.ModData_HiddenEquip
-  isSpec: "True"
+  commentId: F:TrinketTinker.Wheels.TinkerConst.ModData_HiddenEquip
   fullName: TrinketTinker.Wheels.TinkerConst.ModData_HiddenEquip
   nameWithType: TinkerConst.ModData_HiddenEquip
 - uid: TrinketTinker.Wheels.TinkerConst.ModData_IndirectEquip
   name: ModData_IndirectEquip
   href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_ModData_IndirectEquip
-  commentId: P:TrinketTinker.Wheels.TinkerConst.ModData_IndirectEquip
+  commentId: F:TrinketTinker.Wheels.TinkerConst.ModData_IndirectEquip
   fullName: TrinketTinker.Wheels.TinkerConst.ModData_IndirectEquip
   nameWithType: TinkerConst.ModData_IndirectEquip
-- uid: TrinketTinker.Wheels.TinkerConst.ModData_IndirectEquip*
-  name: ModData_IndirectEquip
-  href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_ModData_IndirectEquip_
-  commentId: Overload:TrinketTinker.Wheels.TinkerConst.ModData_IndirectEquip
-  isSpec: "True"
-  fullName: TrinketTinker.Wheels.TinkerConst.ModData_IndirectEquip
-  nameWithType: TinkerConst.ModData_IndirectEquip
+- uid: TrinketTinker.Wheels.TinkerConst.ModData_IndirectEquipFromAPI
+  name: ModData_IndirectEquipFromAPI
+  href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_ModData_IndirectEquipFromAPI
+  commentId: F:TrinketTinker.Wheels.TinkerConst.ModData_IndirectEquipFromAPI
+  fullName: TrinketTinker.Wheels.TinkerConst.ModData_IndirectEquipFromAPI
+  nameWithType: TinkerConst.ModData_IndirectEquipFromAPI
 - uid: TrinketTinker.Wheels.TinkerConst.ONE_FRAME
   name: ONE_FRAME
   href: api/TrinketTinker.Wheels.TinkerConst.html#TrinketTinker_Wheels_TinkerConst_ONE_FRAME

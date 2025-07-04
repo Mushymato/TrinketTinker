@@ -276,6 +276,29 @@
 </tr>
 </tbody>
 </table>
+<h3 id="trinketspriteindex-and-trinketnamearguments">TrinketSpriteIndex and TrinketNameArguments</h3>
+<p>These two fields are used to allow variants to have different name and icons.</p>
+<p><em>TrinketSpriteIndex</em>: Changes the sprite index along with variant, meaning that if your trinket's texture is a sprite sheet with multiple item icon sprites, this can be used to point to a specific one. To make this work, put every icon associated with the variants of 1 trinket on 1 texture. You cannot change to a completely different texture, or use color masks.</p>
+<p><em>TrinketNameArguments</em>: Adds substitute strings for use with <code>{0}</code> in <code>DisplayName</code>, for example:</p>
+<pre><code class="lang-json">// Data/Trinkets
+&quot;DisplayName&quot;: &quot;My Trinket {0} {1}&quot;,
+// mushymato.TrinketTinker/Tinker
+&quot;Variants&quot;: [
+  {
+    &quot;Texture&quot;: &quot;{{ModId}}/trinkets/red/water&quot;,
+    &quot;TrinketNameArguments&quot;: [&quot;Red&quot;, &quot;Water&quot;],
+  },
+  {
+    &quot;Texture&quot;: &quot;{{ModId}}/trinkets/blue/fire&quot;,
+    &quot;TrinketNameArguments&quot;: [&quot;Blue&quot;, &quot;Fire&quot;],
+  }
+]
+</code></pre>
+<p>The resulting trinket can have these names:</p>
+<ul>
+<li><code>&quot;My Trinket Red Water&quot;</code>, for the first Variant</li>
+<li><code>&quot;My Trinket Blue Fire&quot;</code>, for the second Variant</li>
+</ul>
 <h3 id="alt-variant-only">Alt Variant Only</h3>
 <p>The alt variant in <code>AltVariants</code> can have all shared fields, as well as:</p>
 <table>

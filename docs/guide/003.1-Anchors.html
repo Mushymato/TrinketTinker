@@ -173,13 +173,15 @@ When no targets are found, fallback to <code>Owner</code>.</p>
 </table>
 <h3 id="monster">Monster</h3>
 <p>Anchor to nearest monster.</p>
-<p><strong>Filters</strong>: list of monsters to avoid targeting, based on their key in Data/Monsters.</p>
+<p><strong>Filters</strong>: list of monsters to avoid targeting, based on their key in <code>Data/Monsters</code>.
+By setting the first item to <code>!</code>, you can invert this filter and ONLY anchor to the listed monsters.</p>
 <p><strong>RequiredAbilities</strong>: Default <code>&quot;Hitscan&quot;</code>, <code>&quot;Projectile&quot;</code>.</p>
 <h3 id="farmanimal">FarmAnimal</h3>
 <p>Anchor to nearest farm animal that has not been pet today.</p>
 <h3 id="npc">NPC</h3>
 <p>Anchor to NPC.</p>
-<p><strong>Filters</strong>: list of NPCs to avoid targeting, based on their key in Data/Characters.</p>
+<p><strong>Filters</strong>: list of NPCs to avoid targeting, based on their key in <code>Data/Characters</code>.
+By setting the first item to <code>!</code>, you can invert this filter and ONLY anchor to the listed NPCs.</p>
 <h3 id="forage">Forage</h3>
 <p>Anchor to nearest forageable item.</p>
 <p><strong>Filters</strong>: list of <a href="https://stardewvalleywiki.com/Modding:Common_data_field_types#Context_tag">context tags</a> to avoid harvesting, e.g. <code>&quot;category_flowers&quot;</code> (exclude flower category) or <code>&quot;color_orange season_summer&quot;</code> (exclude orange and summer). Each space separated sub list of tags act as AND while the overall list act as OR.</p>

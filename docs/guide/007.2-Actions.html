@@ -94,7 +94,7 @@
 </code></pre>
 <p>Equips a hidden trinket to the player. This trinket does not occupy the trinket slot, and does not require combat mastery.
 Just like <a href="004.z.200-EquipTrinket.html">EquipTrinket</a>, the custom field <code>mushymato.TrinketTinker/DirectEquipOnly</code> can be used to exclude your trinket from being equipped by this action.</p>
-<p>Level and Variant default to 0 and can be specified, randomize (&quot;R&quot;) is not supported yet.</p>
+<p>Level and Variant default to 0 and can be specified, randomize (&quot;R&quot;) is not supported.</p>
 <p>By default, daysDuration is 1, meaning the hidden trinket is removed automatically after sleeping once.
 They can be made permanent with -1, and will stay until explicitly removed with the following action.</p>
 <h2 id="mushymatotrinkettinker_unequiphiddentrinket">mushymato.TrinketTinker_UnequipHiddenTrinket</h2>
@@ -107,6 +107,10 @@ If the player has multiple copies of a trinket that matches ID (and level/varian
 </code></pre>
 <p>Activates all abilities with <a href="004.0-Proc.html">Proc=Trigger</a>, filtered to only trinkets of matching ID if it is specified.
 This is a niche case, primarily for bespoke logic implemented in SMAPI mods.</p>
+<h2 id="mushymatotrinkettinker_togglecompanion">mushymato.TrinketTinker_ToggleCompanion</h2>
+<pre><code>mushymato.TrinketTinker_ToggleCompanion &lt;trinket id&gt; [level] [variant]
+</code></pre>
+<p>Toggles the companion's visibility between visible and invisible. This is purely visual and does not prevent the abilities from activating.</p>
 
 </article>
 

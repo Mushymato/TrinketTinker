@@ -1132,6 +1132,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Models.RequiredFuelData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Models.RequiredFuelData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Models.SpeechBubbleData.yml",
       "output": {
         ".html": {
