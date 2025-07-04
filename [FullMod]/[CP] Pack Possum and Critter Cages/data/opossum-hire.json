@@ -50,7 +50,17 @@
           "ActionsOnPurchase": [
             "mushymato.TrinketTinker_EquipHiddenTrinket {{ModId}}_Opossum 0 0 28"
           ]
-        }
+        },
+        "{{ModId}}_Opossum_Dismiss": {
+          "Id": "{{ModId}}_Opossum_Dismiss",
+          "ItemId": "mushymato.TrinketTinker_HIRE_TRINKET {{ModId}}_Opossum",
+          "Price": 0,
+          "ObjectDisplayName": "[LocalizedText Strings/UI:Cancel]",
+          "Condition": "PLAYER_HAS_TRINKET Current {{ModId}}_Opossum",
+          "ActionsOnPurchase": [
+            "mushymato.TrinketTinker_UnequipHiddenTrinket {{ModId}}_Opossum 0 0"
+          ]
+        },
       }
     }
   ]

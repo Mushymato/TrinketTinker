@@ -53,6 +53,7 @@
             "MotionClass": "Lerp",
             "DirectionMode": "DRUL",
             "FrameLength": 4,
+            "Collision": "Line",
             "AnimClips": {
               "Idle.4": {
                 "FrameStart": 0,

@@ -10,8 +10,6 @@
   "Opossum.DisplayName.OneWeek": " (1 Week)",
   "Opossum.DisplayName.OneSeason": " (1 Season)",
   "Opossum.Description": "Marlon introduced me to a skilled and resourceful opossum, she's working hard for her 36 children.",
-  "BagOfHolding.DisplayName": "Graviton Storage Device",
-  "BagOfHolding.Description": "A device that opens up a little hole in reality which sucks in any dropped items (up to 70).",
   // Chatter
   "Opossum.Chatter.0.0": "Hello! I'm the Pack Possum. I'll shake trees and bushes, collect forage, and carry your stuff.",
   "Opossum.Chatter.0.1": "You can open my pack with the \"Open Tinker Inventory\" key. (default RightAlt & OemPeriod, or LeftStick & ControllerX, set via TrinketTinker's GMCM)",
