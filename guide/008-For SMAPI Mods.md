@@ -87,16 +87,16 @@ The following Condition fields get the trinket item as both the Input and Target
 
 - [Ability](004-Ability.md)
     - `Condition`
-- [Chatter](004.z.201-Chatter.md)
+- [Chatter](005.1-Chatter.md)
     - `Condition`
-- [Inventory](005-Inventory.md)
+- [Inventory](005.0-Inventory.md)
     - `OpenCondition`
 - [TinkerData](001-Tinker.md)
     - `EnableCondition`
     - `AbilityUnlockConditions`
     - `VariantUnlockConditions`
 
-Other cases of Condition either do not provide this, or only use something else for Input and Target items (e.g. [Inventory.RequiredItemCondition](005-Inventory.md))
+Other cases of Condition either do not provide this, or only use something else for Input and Target items (e.g. [Inventory.RequiredItemCondition](005.0-Inventory.md))
 
 ## Implementing Entirely new Motions/Abilities
 

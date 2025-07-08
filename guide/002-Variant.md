@@ -44,7 +44,7 @@ Variants can have alternate variants, which are automatically rechecked whenever
         "AttachedTAS": [
           "<tas id>",
           //...
-        ]
+        ],
         "AltVariants": {
           // These blocks are AltVariant
           "<alt variant key>": {
@@ -83,9 +83,9 @@ These fields are valid for both variant and alt variant.
 | `Height` | int | 16 | Height of 1 sprite on the sprite sheet. |
 | `TextureScale` | float | 4 | Texture draw scale, default is 4 like most things in the game. |
 | `ShadowScale` | float | 3 | Size of the shadow to draw, 0 to disable shadow. |
-| `Portrait` | string | _null_ | A portrait texture for the [Chatter ability](004.z.201-Chatter.md), required to display a portrait and a name. |
-| `NPC` | string | _null_ | An NPC name (key of `Data/Characters`) to associate this variant with, used for the [Chatter ability](004.z.201-Chatter.md). |
-| `Name` | string | _null_ | A display name for the [Chatter ability](004.z.201-Chatter.md), used if there's no real `NPC`. |
+| `Portrait` | string | _null_ | A portrait texture for the [Chatter ability](005.1-Chatter.md), required to display a portrait and a name. |
+| `NPC` | string | _null_ | An NPC name (key of `Data/Characters`) to associate this variant with, used for the [Chatter ability](005.1-Chatter.md). |
+| `Name` | string | _null_ | A display name for the [Chatter ability](005.1-Chatter.md), used if there's no real `NPC`. |
 | `ShowBreathing` | bool | _null_ (true) | If the NPC name is set and they have `Breather=true` along with a sprite size less than 16x32, apply the NPC "breathing" effect on this trinket companion. |
 
 ### Top Level Variant
@@ -97,7 +97,7 @@ The top level variant can have all shared fields, as well as:
 | `LightSource` | `LightSourceData` | _null_ | If set, display a light source. This light source is only visible to the owner. |
 | `TrinketSpriteIndex` | int | -1 | If set, alters the trinket item's sprite index to this. This is used to give the trinket different icon depending on the variant. |
 | `TrinketNameArguments` | List\<string\> | _null_ | If set, use these strings as the argument to the item name. |
-| `AttachedTAS` | List\<string\> | _null_ | If set, show [temporary animated sprites](006-Temporary%20Animated%20Sprite.md) associated with this companion that follow them around. |
+| `AttachedTAS` | List\<string\> | _null_ | If set, show [temporary animated sprites](006-Temporary%20Animated%20Sprite.md) associated with this companion that follow them around. Note: at the moment sync only works properly for respawning temporary animated sprites. |
 | `AltVariants` | Dictionary\<string, AltVariantData\> | _null_ | A dictionary of alternate variants. |
 
 ### TrinketSpriteIndex and TrinketNameArguments

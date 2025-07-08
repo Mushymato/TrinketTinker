@@ -81,8 +81,8 @@ Unlike base game trinkets, TrinketTinker trinkets always spawn with the first va
 | `Abilities` | [List\<List\<AbilityData\>\>](004-Ability.md) | _null_ | Defines what effects are activated, and when. Each list in the list of lists represents 1 ability level. |
 | `VariantUnlockConditions` | List\<string\> | _null_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many variants are unlocked. |
 | `AbilityUnlockConditions` | List\<string\> | _null_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many abilities are unlocked. 
-| `Inventory` | [TinkerInventoryData](005-Inventory.md) | _null_ | Gives the trinket an inventory that can be opened by the "use" button (RightClick/X) over the trinket item. |
-| `Chatter` | [Dictionary\<string, ChatterLinesData\>](004.z.201-Chatter.md) | _null_ | Gives the trinket dialogue for use with the [Chatter ability](004.z.201-Chatter.md). |
+| `Inventory` | [TinkerInventoryData](005.0-Inventory.md) | _null_ | Gives the trinket an inventory that can be opened by the "use" button (RightClick/X) over the trinket item. |
+| `Chatter` | [Dictionary\<string, ChatterLinesData\>](005.1-Chatter.md) | _null_ | Gives the trinket dialogue for use with the [Chatter ability](005.1-Chatter.md). |
 
 ### DEPRECATED
 - `Motions`, previously a list of `MotionData` that is unused except for the first element. It has been removed since 1.5.0, please use only `Motion` from now on

@@ -70,8 +70,12 @@
       name: Chatter
     name: Ability Classes
   name: Ability
-- href: 005-Inventory.md
-  name: Inventory
+- items:
+  - href: 005.0-Inventory.md
+    name: Inventory
+  - href: 005.1-Chatter.md
+    name: Chatter
+  name: Specialized
 - href: 006-Temporary Animated Sprite.md
   name: Temporary Animated Sprite
 - href: 007-Utility.md
