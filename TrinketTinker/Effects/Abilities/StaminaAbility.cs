@@ -30,6 +30,6 @@ public sealed class StaminaAbility(TrinketTinkerEffect effect, AbilityData data,
             proc.Farmer.currentLocation.debris.Add(
                 new Debris((int)healed, proc.Farmer.getStandingPosition(), Color.SeaGreen, 1f, proc.Farmer)
             );
-        return healed > 0 && base.ApplyEffect(proc);
+        return base.ApplyEffect(proc);
     }
 }
