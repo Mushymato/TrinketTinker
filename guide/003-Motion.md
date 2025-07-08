@@ -85,6 +85,7 @@ The term "anchor" refers to a position that the companion derives it's own posit
 | `FrameLength` | int | 4 | Length of each cycle for directional animations. |
 | `Interval` | float | 100 | Milisecond Interval between animation frames. |
 | `Offset` | Vector2 | 0, 0 | Constant offset to apply to the companion, on top of the motion. |
+| `Flip` | SpriteEffects | None | Sprite draw effect, one of `None`, `FlipHorizontally`, `FlipVertically`. This changes how the sprite is drawn for all animation. |
 | `LayerDepth` | [LayerDepth](~/api/TrinketTinker.Models.LayerDepth.yml) | Position | Changes draw layer relative to player. <ul><li>Position: Calculate layer based on Y position</li><li>Behind: Always behind the player.</li><li>InFront: Always infront of the player</li></ul> |
 | `HideDuringEvents` | bool | false | Hide the companion during events. |
 | `RepeatCount` | int | 0 | Number of additional repeat draws to do, to make 1 companion appear to be multiple. |
