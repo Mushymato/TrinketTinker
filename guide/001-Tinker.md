@@ -85,7 +85,7 @@ Unlike base game trinkets, TrinketTinker trinkets always spawn with the first va
 | `Chatter` | [Dictionary\<string, ChatterLinesData\>](005.1-Chatter.md) | _null_ | Gives the trinket dialogue for use with the [Chatter ability](005.1-Chatter.md). |
 
 ### DEPRECATED
-- `Motions`, previously a list of `MotionData` that is unused except for the first element. It has been removed since 1.5.0, please use only `Motion` from now on
+- `Motions`, previously a list of `MotionData` that is unused except for the first element. It has been removed since 1.5.0, please use only `Motion` from now on.
 
 ### Unlock Conditions
 
@@ -117,7 +117,7 @@ Example usage with 4 abilities (lv1 to lv4):
 
 ## Integrating Trinket Tinker
 
-As a custom asset based framework, you can put all trinket related edits in a json separate from the rest of the mod like so. This helps turn trinkets into an optional feature for your mod.
+As a custom asset based framework, you can put all trinket related edits in a json separate from the rest of the mod like example below. This helps turn trinkets into an optional feature for your mod.
 
 ```json
 {
@@ -129,4 +129,4 @@ As a custom asset based framework, you can put all trinket related edits in a js
 }
 ```
 
-Special behavior as an equipment aside, trinkets are items with qualified item id like `(TR){{ModId}}_Sample`. Besides the base game random drops after combat mastery (if `DropsNaturally` is set to true), you can grant a trinket to the player via any usual means of granting an item via their qualified item id. This includes shops, events, machine output, Farm Type Manager/Spacecore monster drops, and so on. There are also [means of using a trinket without having a real item the player must obtain](007.2-Actions.md) which allows you to utilize Trinket Tinker's system to create followers.
+Special behavior as an equipment aside, trinkets are items with qualified item id like `(TR){{ModId}}_Sample`. Besides the base game random drops after combat mastery (if `DropsNaturally` is set to true for the trinket), you can grant a trinket to the player via any usual means of granting an item through qualified item id. This includes shops, events, machine output, Farm Type Manager/Spacecore monster drops, and so on. There are also [means of using a trinket without having a real player obtainable item](007.2-Actions.md) which allows you to utilize Trinket Tinker's system to create special powers and/or followers without taking up the trinket slot.
