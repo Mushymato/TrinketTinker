@@ -229,6 +229,58 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
     internal event EventHandler<ProcEventArgs>? EventPlayerWarped;
     internal event EventHandler<ProcEventArgs>? EventInteract;
 
+    /// <summary>Setup a single ability</summary>
+    /// <param name="ab"></param>
+    /// <param name="initAblities"></param>
+    /// <param name="idx"></param>
+    /// <param name="foundEquipTrinketAbility"></param>
+    private void SetupAbility(
+        AbilityData ab,
+        ref List<IAbility> initAblities,
+        ref int idx,
+        ref bool foundEquipTrinketAbility
+    )
+    {
+        if (Reflect.TryGetType(ab.AbilityClass, out Type? abilityType, TinkerConst.ABILITY_CLS))
+        {
+            if (abilityType == typeof(EquipTrinketAbility))
+            {
+                if (foundEquipTrinketAbility)
+                {
+                    ModEntry.LogOnce(
+                        $"Skip extra EquipTrinket abilities ({ab.AbilityClass}-{GeneralStat}:{idx}, from {Trinket.QualifiedItemId})",
+                        LogLevel.Warn
+                    );
+                    return;
+                }
+                foundEquipTrinketAbility = true;
+            }
+            IAbility? ability = (IAbility?)Activator.CreateInstance(abilityType, this, ab, idx);
+            if (ability != null && ability.Valid)
+            {
+                ModEntry.LogOnce(
+                    $"Add valid ability ({ab.AbilityClass}-{GeneralStat}:{idx}, from {Trinket.QualifiedItemId})"
+                );
+                initAblities.Add(ability);
+            }
+            else
+            {
+                ModEntry.LogOnce(
+                    $"Skip invalid ability ({ab.AbilityClass}-{GeneralStat}:{idx}, from {Trinket.QualifiedItemId})",
+                    LogLevel.Warn
+                );
+            }
+        }
+        else
+        {
+            ModEntry.LogOnce(
+                $"Failed to get type for ability ({ab.AbilityClass}-{GeneralStat}:{idx}, from {Trinket.QualifiedItemId})",
+                LogLevel.Warn
+            );
+        }
+        idx++;
+    }
+
     /// <summary>
     /// Lazy init of abilities, which depend on <see cref="GeneralStat"/> being set
     /// </summary>
@@ -255,31 +307,15 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
             bool foundEquipTrinketAbility = false;
             foreach (AbilityData ab in levelAbilities)
             {
-                if (Reflect.TryGetType(ab.AbilityClass, out Type? abilityType, TinkerConst.ABILITY_CLS))
-                {
-                    if (abilityType == typeof(EquipTrinketAbility))
-                    {
-                        if (foundEquipTrinketAbility)
-                            continue;
-                        foundEquipTrinketAbility = true;
-                    }
-                    IAbility? ability = (IAbility?)Activator.CreateInstance(abilityType, this, ab, idx);
-                    if (ability != null && ability.Valid)
-                        initAblities.Add(ability);
-                    else
-                        ModEntry.LogOnce(
-                            $"Skip invalid ability ({ab.AbilityClass}-{GeneralStat}:{idx}, from {Trinket.QualifiedItemId})",
-                            LogLevel.Warn
-                        );
-                }
-                else
-                {
-                    ModEntry.LogOnce(
-                        $"Failed to get type for ability ({ab.AbilityClass}-{GeneralStat}:{idx}, from {Trinket.QualifiedItemId})",
-                        LogLevel.Warn
-                    );
-                }
+                SetupAbility(ab, ref initAblities, ref idx, ref foundEquipTrinketAbility);
+            }
+            if (Data.AbilitiesShared != null)
+            {
                 idx++;
+                foreach (AbilityData ab in Data.AbilitiesShared)
+                {
+                    SetupAbility(ab, ref initAblities, ref idx, ref foundEquipTrinketAbility);
+                }
             }
         }
         IsDirty.Value = false;

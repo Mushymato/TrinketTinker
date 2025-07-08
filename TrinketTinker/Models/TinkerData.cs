@@ -49,8 +49,11 @@ public sealed class TinkerData
     /// <summary>List of variants</summary>
     public List<VariantData> Variants { get; set; } = [];
 
-    /// <summary>List of abilities</summary>
+    /// <summary>List of list of abilities for each level</summary>
     public List<List<AbilityData>> Abilities { get; set; } = [];
+
+    /// <summary>Abilities that are shared and active for all levels</summary>
+    public List<AbilityData>? AbilitiesShared { get; set; } = null;
 
     /// <summary>GSQ conditions for locking variants.</summary>
     public List<string?> VariantUnlockConditions = [];

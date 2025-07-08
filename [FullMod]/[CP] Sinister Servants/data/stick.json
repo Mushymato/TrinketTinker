@@ -100,16 +100,6 @@
                   "Min": 44
                 }
               },
-              {
-                "AbilityClass": "HarvestShakeable",
-                "Proc": "Timer",
-                "ProcTimer": 1000,
-                "ProcSound": "harvest",
-                "ProcSpeechBubble": "Exclaim",
-                "Args": {
-                  "Range": 0,
-                },
-              }
             ],
             // level 2
             [
@@ -132,16 +122,6 @@
                   "Min": 44
                 }
               },
-              {
-                "AbilityClass": "HarvestShakeable",
-                "Proc": "Timer",
-                "ProcTimer": 1000,
-                "ProcSound": "harvest",
-                "ProcSpeechBubble": "Exclaim",
-                "Args": {
-                  "Range": 0,
-                },
-              }
             ],
             // level 3
             [
@@ -183,17 +163,19 @@
                   "Min": 44
                 }
               },
-              {
-                "AbilityClass": "HarvestShakeable",
-                "Proc": "Timer",
-                "ProcTimer": 1000,
-                "ProcSound": "harvest",
-                "ProcSpeechBubble": "Exclaim",
-                "Args": {
-                  "Range": 0,
-                },
-              }
             ],
+          ],
+          "AbilitiesShared": [
+            {
+              "AbilityClass": "HarvestShakeable",
+              "Proc": "Timer",
+              "ProcTimer": 1000,
+              "ProcSound": "harvest",
+              "ProcSpeechBubble": "Exclaim",
+              "Args": {
+                "Range": 0,
+              },
+            }
           ]
         },
       }

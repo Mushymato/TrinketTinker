@@ -78,7 +78,8 @@ Unlike base game trinkets, TrinketTinker trinkets always spawn with the first va
 | `MinLevel` | int | 1 | Changes the level value that will replace `{0}` in `DisplayName`. |
 | `Variants` | [List\<VariantData\>](002-Variant.md) | _null_ | Defines the sprites of the companion. |
 | `Motion` | [MotionData](003-Motion.md) | _null_ | Defines how the companion moves. |
-| `Abilities` | [List\<List\<AbilityData\>\>](004-Ability.md) | _null_ | Defines what effects are activated, and when. Each list in the list of lists represents 1 ability level. |
+| `Abilities` | [List\<List\<AbilityData\>\>](004-Ability.md) | _null_ | Defines what abilities (i.e. trinket effects) are activated and when. Each list in the list of lists represents 1 ability level. |
+| `AbilitiesShared` | [List\<AbilityData\>](004-Ability.md) | _null_ | A list of abilities that are automatically appended to every level. |
 | `VariantUnlockConditions` | List\<string\> | _null_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many variants are unlocked. |
 | `AbilityUnlockConditions` | List\<string\> | _null_ | List of [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) that determine how many abilities are unlocked. 
 | `Inventory` | [TinkerInventoryData](005.0-Inventory.md) | _null_ | Gives the trinket an inventory that can be opened by the "use" button (RightClick/X) over the trinket item. |
