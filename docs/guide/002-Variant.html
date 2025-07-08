@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -127,7 +127,7 @@
         &quot;AttachedTAS&quot;: [
           &quot;&lt;tas id&gt;&quot;,
           //...
-        ]
+        ],
         &quot;AltVariants&quot;: {
           // These blocks are AltVariant
           &quot;&lt;alt variant key&gt;&quot;: {
@@ -210,19 +210,19 @@
 <td><code>Portrait</code></td>
 <td>string</td>
 <td><em>null</em></td>
-<td>A portrait texture for the <a href="004.z.201-Chatter.html">Chatter ability</a>, required to display a portrait and a name.</td>
+<td>A portrait texture for the <a href="005.1-Chatter.html">Chatter ability</a>, required to display a portrait and a name.</td>
 </tr>
 <tr>
 <td><code>NPC</code></td>
 <td>string</td>
 <td><em>null</em></td>
-<td>An NPC name (key of <code>Data/Characters</code>) to associate this variant with, used for the <a href="004.z.201-Chatter.html">Chatter ability</a>.</td>
+<td>An NPC name (key of <code>Data/Characters</code>) to associate this variant with, used for the <a href="005.1-Chatter.html">Chatter ability</a>.</td>
 </tr>
 <tr>
 <td><code>Name</code></td>
 <td>string</td>
 <td><em>null</em></td>
-<td>A display name for the <a href="004.z.201-Chatter.html">Chatter ability</a>, used if there's no real <code>NPC</code>.</td>
+<td>A display name for the <a href="005.1-Chatter.html">Chatter ability</a>, used if there's no real <code>NPC</code>.</td>
 </tr>
 <tr>
 <td><code>ShowBreathing</code></td>
@@ -266,7 +266,7 @@
 <td><code>AttachedTAS</code></td>
 <td>List&lt;string&gt;</td>
 <td><em>null</em></td>
-<td>If set, show <a href="006-Temporary%20Animated%20Sprite.html">temporary animated sprites</a> associated with this companion that follow them around.</td>
+<td>If set, show <a href="006-Temporary%20Animated%20Sprite.html">temporary animated sprites</a> associated with this companion that follow them around. Note: at the moment sync only works properly for respawning temporary animated sprites.</td>
 </tr>
 <tr>
 <td><code>AltVariants</code></td>

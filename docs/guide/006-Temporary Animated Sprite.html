@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -87,8 +87,8 @@
         <article data-uid="">
 <h1 id="temporary-animated-sprites">Temporary Animated Sprites</h1>
 
-<p>Temporary animated sprites are ways to show animated effects on screen temporarily. They existed prior to 1.6, but was given a proper data model to use in <a href="https://wiki.stardewvalley.net/Modding:Machines#Audio_.26_visuals">Data/Machines</a>. Trinket Tinker uses an extended version of the game's TemporaryAnimatedSprites model, with more options. (This is the same model used in MMAP).</p>
-<p>For Trinket Tinker, any field that calls for temporary animated sprites takes string id(s) corresponding to an entry in <code>mushymato.TrinketTinker/TAS</code> rather than the full definition. This let you reuse the same TAS in multiple places, and generally have an easier time defining the fields.</p>
+<p>Temporary animated sprites are ways to show animated effects on screen temporarily. They existed prior to 1.6, but was given a proper data model to use in <a href="https://wiki.stardewvalley.net/Modding:Machines#Audio_.26_visuals">Data/Machines</a>. Trinket Tinker uses an extended version of the game's TemporaryAnimatedSprites model with more options available. This is the <a href="https://github.com/Mushymato/MiscMapActionsProperties/blob/main/docs/temporary-animated-sprites.md">same temporary animated sprites model used in MMAP</a>, but some fields don't actually come into play when used in trinket tinker.</p>
+<p>Any field that calls for temporary animated sprites takes string id(s) corresponding to an entry in <code>mushymato.TrinketTinker/TAS</code> rather than the full definition. This let you reuse the same TAS in multiple places.</p>
 <h2 id="structure">Structure</h2>
 <table>
 <thead>
@@ -179,10 +179,10 @@
 <td>If this is set to a non-zero value, do an offset on layer depth relative to the Y position of the sprite + SortOffset, useful when using this TAS at various different positions.</td>
 </tr>
 <tr>
-<td><code>AlphaFade</code></td>
-<td>float</td>
-<td>0f</td>
-<td>Amount of additional transparency every frame. Set this to make the sprite fade away over time.</td>
+<td><code>DrawAboveAlwaysFront</code></td>
+<td>bool</td>
+<td>false</td>
+<td>If true, draw sprite above always front layer of map.</td>
 </tr>
 <tr>
 <td><code>Scale</code></td>
@@ -245,6 +245,18 @@
 <td>Multiplier on Color, i.e. 0 is transparent.</td>
 </tr>
 <tr>
+<td><code>AlphaFade</code></td>
+<td>float</td>
+<td>0f</td>
+<td>Change in alpha each tick.</td>
+</tr>
+<tr>
+<td><code>AlphaFadeFade</code></td>
+<td>float</td>
+<td>0f</td>
+<td>Change in alpha fade each tick.</td>
+</tr>
+<tr>
 <td><code>PingPong</code></td>
 <td>bool</td>
 <td>false</td>
@@ -256,11 +268,16 @@
 <td><em>null</em></td>
 <td>List of string <a href="https://stardewvalleywiki.com/Modding:Trigger_actions">trigger actions</a> to run when the TAS finishes. For things with <code>SpawnInterval</code> defined, these actions will run multiple every time the TAS spawns and ends.</td>
 </tr>
+<tr>
+<td><code>SpawnInterval</code></td>
+<td>double</td>
+<td>-1</td>
+<td>How many miliseconds before a new copy of this TAS should be spawned, ideally used with some randomization.</td>
+</tr>
 </tbody>
 </table>
 <!-- These don't matter right now in Trinket Tinker -->
 <!-- | `ApplyEndActionsOnForceRemove` | bool | false | `EndActions` only fire for natural ending of TAS, setting this to true also makes it fire on manual removals. | -->
-<!-- | `SpawnInterval` | double | -1 | How many miliseconds before a new copy of this TAS should be spawned, ideally used with some randomization. | -->
 <!-- | `SpawnDelay` | double | -1 | How many miliseconds before the first copy of this TAS should be spawned, `SpawnInterval` begins counting after `SpawnDelay` elapses. | -->
 <p>| <code>RandMin</code> | TASExtRand | <em>null</em> | Model used for randomizing certain fields. |
 | <code>RandMax</code> | TASExtRand | <em>null</em> | Model used for randomizing certain fields. |</p>

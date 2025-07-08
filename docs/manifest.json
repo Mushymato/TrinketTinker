@@ -1,5 +1,5 @@
 {
-  "source_base_path": "/home/mush/Spaget/sv/TrinketTinker",
+  "source_base_path": "/home/michelle/Spaget/sv/TrinketTinker",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -502,10 +502,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Effects.Support.EquipTrinket.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Effects.Support.EquipTrinket.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Effects.Support.ProcEventArgs.yml",
       "output": {
         ".html": {
           "relative_path": "api/TrinketTinker.Effects.Support.ProcEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TrinketTinker.Effects.Support.TinkerInventoryMenu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TrinketTinker.Effects.Support.TinkerInventoryMenu.html"
         }
       },
       "version": ""
@@ -1234,11 +1254,11 @@
       "type": "Toc",
       "source_relative_path": "api/toc.yml",
       "output": {
-        ".html": {
-          "relative_path": "api/toc.html"
-        },
         ".json": {
           "relative_path": "api/toc.json"
+        },
+        ".html": {
+          "relative_path": "api/toc.html"
         }
       },
       "version": ""
@@ -1595,10 +1615,30 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "guide/005-Inventory.md",
+      "source_relative_path": "guide/005-Specialized.md",
       "output": {
         ".html": {
-          "relative_path": "guide/005-Inventory.html"
+          "relative_path": "guide/005-Specialized.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/005.0-Inventory.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/005.0-Inventory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guide/005.1-Chatter.md",
+      "output": {
+        ".html": {
+          "relative_path": "guide/005.1-Chatter.html"
         }
       },
       "version": ""
@@ -1697,11 +1737,11 @@
       "type": "Toc",
       "source_relative_path": "guide/toc.yml",
       "output": {
-        ".html": {
-          "relative_path": "guide/toc.html"
-        },
         ".json": {
           "relative_path": "guide/toc.json"
+        },
+        ".html": {
+          "relative_path": "guide/toc.html"
         }
       },
       "version": ""
@@ -1800,11 +1840,11 @@
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
-        ".html": {
-          "relative_path": "toc.html"
-        },
         ".json": {
           "relative_path": "toc.json"
+        },
+        ".html": {
+          "relative_path": "toc.html"
         }
       },
       "version": ""

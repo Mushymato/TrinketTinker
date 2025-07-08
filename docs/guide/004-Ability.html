@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,9 @@
   ],
   &quot;Entries&quot;: {
     &quot;Abilities&quot;: [
+      // lvl 1 abilities
       [
+        // 1st ability for lvl 1
         {
           &quot;Id&quot;: &quot;&lt;string ability id&gt;&quot;,
           &quot;AbilityClass&quot;: &quot;&lt;string ability class&gt;&quot;,
@@ -131,7 +133,10 @@
               /* AbilityClass dependent arguments */
           }
         },
-      ]
+        { /* another lvl 1 ability */}
+      ],
+      [ /* lvl 2 abilities */ ],
+      //and so on...
     ]
   }
 }
@@ -199,7 +204,7 @@
 <td><code>ProcFuel</code></td>
 <td>RequiredFuelData</td>
 <td><em>null</em></td>
-<td>A model defining what items will be consumed by each activation of this ability. The fule item comes from a <a href="005-Inventory.html">trinket inventory</a>.</td>
+<td>A model defining what items will be consumed by each activation of this ability. The fule item comes from a <a href="005.0-Inventory.html">trinket inventory</a>.</td>
 </tr>
 <tr>
 <td><code>ProcSound</code></td>
@@ -235,7 +240,7 @@
 <td><code>ProcChatterKey</code></td>
 <td>string</td>
 <td><em>null</em></td>
-<td>On the next activation of a <a href="004.z.201-Chatter.html">Chatter ability</a>, use this key instead of the normal conditional key.</td>
+<td>On the next activation of a <a href="005.1-Chatter.html">Chatter ability</a>, use this key instead of the normal conditional key.</td>
 </tr>
 <tr>
 <td><code>Condition</code></td>

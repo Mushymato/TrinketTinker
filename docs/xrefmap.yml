@@ -4380,6 +4380,70 @@ references:
   commentId: N:TrinketTinker.Effects.Support
   fullName: TrinketTinker.Effects.Support
   nameWithType: TrinketTinker.Effects.Support
+- uid: TrinketTinker.Effects.Support.EquipTrinket
+  name: EquipTrinket
+  href: api/TrinketTinker.Effects.Support.EquipTrinket.html
+  commentId: T:TrinketTinker.Effects.Support.EquipTrinket
+  fullName: TrinketTinker.Effects.Support.EquipTrinket
+  nameWithType: EquipTrinket
+- uid: TrinketTinker.Effects.Support.EquipTrinket.Action_EquipHiddenTrinket
+  name: Action_EquipHiddenTrinket
+  href: api/TrinketTinker.Effects.Support.EquipTrinket.html#TrinketTinker_Effects_Support_EquipTrinket_Action_EquipHiddenTrinket
+  commentId: P:TrinketTinker.Effects.Support.EquipTrinket.Action_EquipHiddenTrinket
+  fullName: TrinketTinker.Effects.Support.EquipTrinket.Action_EquipHiddenTrinket
+  nameWithType: EquipTrinket.Action_EquipHiddenTrinket
+- uid: TrinketTinker.Effects.Support.EquipTrinket.Action_EquipHiddenTrinket*
+  name: Action_EquipHiddenTrinket
+  href: api/TrinketTinker.Effects.Support.EquipTrinket.html#TrinketTinker_Effects_Support_EquipTrinket_Action_EquipHiddenTrinket_
+  commentId: Overload:TrinketTinker.Effects.Support.EquipTrinket.Action_EquipHiddenTrinket
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Support.EquipTrinket.Action_EquipHiddenTrinket
+  nameWithType: EquipTrinket.Action_EquipHiddenTrinket
+- uid: TrinketTinker.Effects.Support.EquipTrinket.Action_UnequipHiddenTrinket
+  name: Action_UnequipHiddenTrinket
+  href: api/TrinketTinker.Effects.Support.EquipTrinket.html#TrinketTinker_Effects_Support_EquipTrinket_Action_UnequipHiddenTrinket
+  commentId: P:TrinketTinker.Effects.Support.EquipTrinket.Action_UnequipHiddenTrinket
+  fullName: TrinketTinker.Effects.Support.EquipTrinket.Action_UnequipHiddenTrinket
+  nameWithType: EquipTrinket.Action_UnequipHiddenTrinket
+- uid: TrinketTinker.Effects.Support.EquipTrinket.Action_UnequipHiddenTrinket*
+  name: Action_UnequipHiddenTrinket
+  href: api/TrinketTinker.Effects.Support.EquipTrinket.html#TrinketTinker_Effects_Support_EquipTrinket_Action_UnequipHiddenTrinket_
+  commentId: Overload:TrinketTinker.Effects.Support.EquipTrinket.Action_UnequipHiddenTrinket
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Support.EquipTrinket.Action_UnequipHiddenTrinket
+  nameWithType: EquipTrinket.Action_UnequipHiddenTrinket
+- uid: TrinketTinker.Effects.Support.EquipTrinket.EquipHiddenTrinket(System.String[],StardewValley.Delegates.TriggerActionContext,System.String@)
+  name: EquipHiddenTrinket(string[], TriggerActionContext, out string)
+  href: api/TrinketTinker.Effects.Support.EquipTrinket.html#TrinketTinker_Effects_Support_EquipTrinket_EquipHiddenTrinket_System_String___StardewValley_Delegates_TriggerActionContext_System_String__
+  commentId: M:TrinketTinker.Effects.Support.EquipTrinket.EquipHiddenTrinket(System.String[],StardewValley.Delegates.TriggerActionContext,System.String@)
+  name.vb: EquipHiddenTrinket(String(), TriggerActionContext, String)
+  fullName: TrinketTinker.Effects.Support.EquipTrinket.EquipHiddenTrinket(string[], StardewValley.Delegates.TriggerActionContext, out string)
+  fullName.vb: TrinketTinker.Effects.Support.EquipTrinket.EquipHiddenTrinket(String(), StardewValley.Delegates.TriggerActionContext, String)
+  nameWithType: EquipTrinket.EquipHiddenTrinket(string[], TriggerActionContext, out string)
+  nameWithType.vb: EquipTrinket.EquipHiddenTrinket(String(), TriggerActionContext, String)
+- uid: TrinketTinker.Effects.Support.EquipTrinket.EquipHiddenTrinket*
+  name: EquipHiddenTrinket
+  href: api/TrinketTinker.Effects.Support.EquipTrinket.html#TrinketTinker_Effects_Support_EquipTrinket_EquipHiddenTrinket_
+  commentId: Overload:TrinketTinker.Effects.Support.EquipTrinket.EquipHiddenTrinket
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Support.EquipTrinket.EquipHiddenTrinket
+  nameWithType: EquipTrinket.EquipHiddenTrinket
+- uid: TrinketTinker.Effects.Support.EquipTrinket.UnequipHiddenTrinket(System.String[],StardewValley.Delegates.TriggerActionContext,System.String@)
+  name: UnequipHiddenTrinket(string[], TriggerActionContext, out string)
+  href: api/TrinketTinker.Effects.Support.EquipTrinket.html#TrinketTinker_Effects_Support_EquipTrinket_UnequipHiddenTrinket_System_String___StardewValley_Delegates_TriggerActionContext_System_String__
+  commentId: M:TrinketTinker.Effects.Support.EquipTrinket.UnequipHiddenTrinket(System.String[],StardewValley.Delegates.TriggerActionContext,System.String@)
+  name.vb: UnequipHiddenTrinket(String(), TriggerActionContext, String)
+  fullName: TrinketTinker.Effects.Support.EquipTrinket.UnequipHiddenTrinket(string[], StardewValley.Delegates.TriggerActionContext, out string)
+  fullName.vb: TrinketTinker.Effects.Support.EquipTrinket.UnequipHiddenTrinket(String(), StardewValley.Delegates.TriggerActionContext, String)
+  nameWithType: EquipTrinket.UnequipHiddenTrinket(string[], TriggerActionContext, out string)
+  nameWithType.vb: EquipTrinket.UnequipHiddenTrinket(String(), TriggerActionContext, String)
+- uid: TrinketTinker.Effects.Support.EquipTrinket.UnequipHiddenTrinket*
+  name: UnequipHiddenTrinket
+  href: api/TrinketTinker.Effects.Support.EquipTrinket.html#TrinketTinker_Effects_Support_EquipTrinket_UnequipHiddenTrinket_
+  commentId: Overload:TrinketTinker.Effects.Support.EquipTrinket.UnequipHiddenTrinket
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Support.EquipTrinket.UnequipHiddenTrinket
+  nameWithType: EquipTrinket.UnequipHiddenTrinket
 - uid: TrinketTinker.Effects.Support.ProcEventArgs
   name: ProcEventArgs
   href: api/TrinketTinker.Effects.Support.ProcEventArgs.html
@@ -4554,6 +4618,44 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.Support.ProcEventArgs.TriggerContext
   nameWithType: ProcEventArgs.TriggerContext
+- uid: TrinketTinker.Effects.Support.TinkerInventoryMenu
+  name: TinkerInventoryMenu
+  href: api/TrinketTinker.Effects.Support.TinkerInventoryMenu.html
+  commentId: T:TrinketTinker.Effects.Support.TinkerInventoryMenu
+  fullName: TrinketTinker.Effects.Support.TinkerInventoryMenu
+  nameWithType: TinkerInventoryMenu
+- uid: TrinketTinker.Effects.Support.TinkerInventoryMenu.#ctor(System.Int32,System.Collections.Generic.IList{StardewValley.Item},System.Boolean,System.Boolean,StardewValley.Menus.InventoryMenu.highlightThisItem,StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect,System.String,StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32,StardewValley.Item,System.Int32,System.Object,StardewValley.Menus.ItemExitBehavior,System.Boolean)
+  name: TinkerInventoryMenu(int, IList<Item>, bool, bool, highlightThisItem, behaviorOnItemSelect, string, behaviorOnItemSelect?, bool, bool, bool, bool, bool, int, Item?, int, object?, ItemExitBehavior, bool)
+  href: api/TrinketTinker.Effects.Support.TinkerInventoryMenu.html#TrinketTinker_Effects_Support_TinkerInventoryMenu__ctor_System_Int32_System_Collections_Generic_IList_StardewValley_Item__System_Boolean_System_Boolean_StardewValley_Menus_InventoryMenu_highlightThisItem_StardewValley_Menus_ItemGrabMenu_behaviorOnItemSelect_System_String_StardewValley_Menus_ItemGrabMenu_behaviorOnItemSelect_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Int32_StardewValley_Item_System_Int32_System_Object_StardewValley_Menus_ItemExitBehavior_System_Boolean_
+  commentId: M:TrinketTinker.Effects.Support.TinkerInventoryMenu.#ctor(System.Int32,System.Collections.Generic.IList{StardewValley.Item},System.Boolean,System.Boolean,StardewValley.Menus.InventoryMenu.highlightThisItem,StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect,System.String,StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32,StardewValley.Item,System.Int32,System.Object,StardewValley.Menus.ItemExitBehavior,System.Boolean)
+  name.vb: New(Integer, IList(Of Item), Boolean, Boolean, highlightThisItem, behaviorOnItemSelect, String, behaviorOnItemSelect, Boolean, Boolean, Boolean, Boolean, Boolean, Integer, Item, Integer, Object, ItemExitBehavior, Boolean)
+  fullName: TrinketTinker.Effects.Support.TinkerInventoryMenu.TinkerInventoryMenu(int, System.Collections.Generic.IList<StardewValley.Item>, bool, bool, StardewValley.Menus.InventoryMenu.highlightThisItem, StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect, string, StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect?, bool, bool, bool, bool, bool, int, StardewValley.Item?, int, object?, StardewValley.Menus.ItemExitBehavior, bool)
+  fullName.vb: TrinketTinker.Effects.Support.TinkerInventoryMenu.New(Integer, System.Collections.Generic.IList(Of StardewValley.Item), Boolean, Boolean, StardewValley.Menus.InventoryMenu.highlightThisItem, StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect, String, StardewValley.Menus.ItemGrabMenu.behaviorOnItemSelect, Boolean, Boolean, Boolean, Boolean, Boolean, Integer, StardewValley.Item, Integer, Object, StardewValley.Menus.ItemExitBehavior, Boolean)
+  nameWithType: TinkerInventoryMenu.TinkerInventoryMenu(int, IList<Item>, bool, bool, InventoryMenu.highlightThisItem, ItemGrabMenu.behaviorOnItemSelect, string, ItemGrabMenu.behaviorOnItemSelect?, bool, bool, bool, bool, bool, int, Item?, int, object?, ItemExitBehavior, bool)
+  nameWithType.vb: TinkerInventoryMenu.New(Integer, IList(Of Item), Boolean, Boolean, InventoryMenu.highlightThisItem, ItemGrabMenu.behaviorOnItemSelect, String, ItemGrabMenu.behaviorOnItemSelect, Boolean, Boolean, Boolean, Boolean, Boolean, Integer, Item, Integer, Object, ItemExitBehavior, Boolean)
+- uid: TrinketTinker.Effects.Support.TinkerInventoryMenu.#ctor*
+  name: TinkerInventoryMenu
+  href: api/TrinketTinker.Effects.Support.TinkerInventoryMenu.html#TrinketTinker_Effects_Support_TinkerInventoryMenu__ctor_
+  commentId: Overload:TrinketTinker.Effects.Support.TinkerInventoryMenu.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: TrinketTinker.Effects.Support.TinkerInventoryMenu.TinkerInventoryMenu
+  fullName.vb: TrinketTinker.Effects.Support.TinkerInventoryMenu.New
+  nameWithType: TinkerInventoryMenu.TinkerInventoryMenu
+  nameWithType.vb: TinkerInventoryMenu.New
+- uid: TrinketTinker.Effects.Support.TinkerInventoryMenu.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  name: draw(SpriteBatch)
+  href: api/TrinketTinker.Effects.Support.TinkerInventoryMenu.html#TrinketTinker_Effects_Support_TinkerInventoryMenu_draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_
+  commentId: M:TrinketTinker.Effects.Support.TinkerInventoryMenu.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  fullName: TrinketTinker.Effects.Support.TinkerInventoryMenu.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  nameWithType: TinkerInventoryMenu.draw(SpriteBatch)
+- uid: TrinketTinker.Effects.Support.TinkerInventoryMenu.draw*
+  name: draw
+  href: api/TrinketTinker.Effects.Support.TinkerInventoryMenu.html#TrinketTinker_Effects_Support_TinkerInventoryMenu_draw_
+  commentId: Overload:TrinketTinker.Effects.Support.TinkerInventoryMenu.draw
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Support.TinkerInventoryMenu.draw
+  nameWithType: TinkerInventoryMenu.draw
 - uid: TrinketTinker.Effects.Support.TinkerProjectile
   name: TinkerProjectile
   href: api/TrinketTinker.Effects.Support.TinkerProjectile.html
