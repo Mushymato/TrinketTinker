@@ -48,14 +48,15 @@
           "Abilities": [
             // level 0
             [
-              // {
-              //   "AbilityClass": "Buff",
-              //   "Proc": "Footstep",
-              //   "ProcOneshotAnim": "AbilityProc",
-              //   "Args": {
-              //     "BuffId": 22
-              //   }
-              // }
+              {
+                "AbilityClass": "Buff",
+                "Proc": "Footstep",
+                "ProcOneshotAnim": "AbilityProc",
+                "Args": {
+                  "BuffId": "22,18",
+                  "Mode": "Random"
+                }
+              },
               {
                 "AbilityClass": "Stamina",
                 "Proc": "Timer",
