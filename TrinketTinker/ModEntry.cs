@@ -26,6 +26,7 @@ internal sealed class ModEntry : Mod
 
     private static IMonitor? mon;
     public const string ModId = "mushymato.TrinketTinker";
+    public const string TinkerDayStarted = $"{ModId}_DayStarted";
 
     public static ModConfig Config { get; set; } = null!;
     internal static IModHelper Help { get; set; } = null!;
@@ -89,6 +90,7 @@ internal sealed class ModEntry : Mod
     {
         // Add trigger & action
         TriggerActionManager.RegisterTrigger(RaiseTriggerAbility.TriggerEventName);
+        TriggerActionManager.RegisterTrigger(TinkerDayStarted);
         TriggerActionManager.RegisterAction(ProcTrinket.TriggerActionNameOld, ProcTrinket.Action);
         TriggerActionManager.RegisterAction(ProcTrinket.TriggerActionName, ProcTrinket.Action);
         TriggerActionManager.RegisterAction(EquipTrinket.Action_EquipHiddenTrinket, EquipTrinket.EquipHiddenTrinket);
@@ -191,6 +193,8 @@ internal sealed class ModEntry : Mod
         EquipTrinket.ReequipHiddenTrinkets();
         EquipTrinket.FixVanillaDupeCompanions();
         GlobalInventoryHandler.UnreachableInventoryCleanup();
+
+        TriggerActionManager.Raise(TinkerDayStarted);
     }
 
     private void OnModMessageReceived(object? sender, ModMessageReceivedEventArgs e)
