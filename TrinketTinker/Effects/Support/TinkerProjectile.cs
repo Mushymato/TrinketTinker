@@ -3,12 +3,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Netcode;
 using StardewValley;
 using StardewValley.Delegates;
-using StardewValley.GameData;
 using StardewValley.Monsters;
 using StardewValley.Projectiles;
 using StardewValley.TerrainFeatures;
 using TrinketTinker.Models.AbilityArgs;
-using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Effects.Support;
 
@@ -22,19 +20,6 @@ public sealed class TinkerProjectile : Projectile
     private Texture2D? loadedProjectileTexture = null;
     internal readonly NetInt projectileSpriteWidth = new(16);
     internal readonly NetInt projectileSpriteHeight = new(16);
-
-    // internal readonly NetInt minDamage = new(0);
-    // internal readonly NetInt maxDamage = new(0);
-    // internal readonly NetFloat knockBackModifier = new(0f);
-    // internal readonly NetInt addedPrecision = new(0);
-    // internal readonly NetFloat critChance = new(0f);
-    // internal readonly NetFloat critMultiplier = new(0f);
-    // internal readonly NetInt stunTime = new(0);
-    // internal readonly NetInt hits = new(0);
-    // internal readonly NetInt hitsDelay = new(0);
-    // internal readonly NetInt explodeRadius = new(0);
-    // internal readonly NetString stunTAS = new(null);
-    // internal readonly NetString hitTAS = new(null);
     internal readonly NetBool rotateToTarget = new(false);
     internal readonly NetInt homingRange = new(0);
     internal readonly NetStringList filters = new();
@@ -67,19 +52,6 @@ public sealed class TinkerProjectile : Projectile
         theOneWhoFiredMe.Set(proc.Location, proc.Farmer);
         context = proc.GSQContext;
 
-        // minDamage.Value = args.Min;
-        // maxDamage.Value = args.Max;
-        // knockBackModifier.Value = args.Knockback;
-        // addedPrecision.Value = args.Precision;
-        // critChance.Value = args.CritChance;
-        // critMultiplier.Value = args.CritDamage;
-        // stunTime.Value = args.StunTime;
-        // stunTAS.Value = args.StunTAS;
-        // hitTAS.Value = args.HitTAS;
-        // hits.Value = args.Hits;
-        // hitsDelay.Value = args.HitsDelay;
-        // explodeRadius.Value = args.ExplodeRadius;
-
         if (args.Homing)
         {
             homingRange.Value = args.Range;
@@ -100,18 +72,6 @@ public sealed class TinkerProjectile : Projectile
             .AddField(projectileTexture, "projectileTexture")
             .AddField(projectileSpriteWidth, "projectileSpriteWidth")
             .AddField(projectileSpriteHeight, "projectileSpriteHeight")
-            // .AddField(minDamage, "minDamage")
-            // .AddField(maxDamage, "maxDamage")
-            // .AddField(knockBackModifier, "knockBackModifier")
-            // .AddField(addedPrecision, "addedPrecision")
-            // .AddField(critChance, "critChance")
-            // .AddField(critMultiplier, "critMultiplier")
-            // .AddField(stunTime, "stunTime")
-            // .AddField(stunTAS, "stunTAS")
-            // .AddField(hitTAS, "hitTAS")
-            // .AddField(hits, "hits")
-            // .AddField(hitsDelay, "hitsDelay")
-            // .AddField(explodeRadius, "explodeRadius")
             .AddField(homingRange, "homingRange")
             .AddField(rotateToTarget, "rotateToTarget")
             .AddField(filters, "filters");

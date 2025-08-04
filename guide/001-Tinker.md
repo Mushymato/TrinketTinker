@@ -38,6 +38,11 @@ When a `Data/Trinkets` entry has a matching `mushymato.TrinketTinker/Tinker` ent
         ],
         //...
       ],
+      "AbilitiesShared": [
+        // shared abilities common to all levels
+        { /* ability data */ },
+        { /* more ability data */ }
+      ],
       "VariantUnlockConditions": [
         null,
         "<game state query>",
