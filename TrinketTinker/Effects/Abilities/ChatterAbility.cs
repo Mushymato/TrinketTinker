@@ -20,11 +20,11 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
     private Dictionary<string, ChatterLinesData> chatter = null!;
     private NPC speakerNPC = null!;
     private Dialogue? chosenDialogue = null;
-    private readonly FieldInfo dialogueField = typeof(NPC).GetField(
+    private static readonly FieldInfo dialogueField = typeof(NPC).GetField(
         "dialogue",
         BindingFlags.NonPublic | BindingFlags.Instance
     )!;
-    private readonly FieldInfo portraitField = typeof(NPC).GetField(
+    private static readonly FieldInfo portraitField = typeof(NPC).GetField(
         "portrait",
         BindingFlags.NonPublic | BindingFlags.Instance
     )!;
@@ -73,19 +73,26 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
         {
             if (
                 chatter
-                    .OrderByDescending((kv) => kv.Value?.Priority ?? 0)
                     .Where(
                         (kv) =>
                             (args.ChatterPrefix == null || kv.Key.StartsWith(args.ChatterPrefix ?? ""))
                             && GameStateQuery.CheckConditions(kv.Value.Condition, proc.GSQContext)
                             && kv.Value.Lines != null
                     )
-                    is IEnumerable<KeyValuePair<string, ChatterLinesData>> foundLinesKV
-                && foundLinesKV.Any()
+                    .ToList()
+                    is List<KeyValuePair<string, ChatterLinesData>> foundLinesKV
+                && foundLinesKV.Count > 0
             )
-                foundLines = Random.Shared.ChooseFrom(foundLinesKV.ToList()).Value;
+            {
+                int minPriority = foundLinesKV.Min(kv => kv.Value?.Priority ?? 0);
+                foundLines = Random
+                    .Shared.ChooseFrom(foundLinesKV.Where(kv => (kv.Value?.Priority ?? 0) == minPriority).ToList())
+                    .Value;
+            }
             else
+            {
                 return false;
+            }
         }
         e.NextChatterKey = null;
         if (foundLines == null)
