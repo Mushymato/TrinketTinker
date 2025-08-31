@@ -27,6 +27,8 @@ Any field that calls for temporary animated sprites takes string id(s) correspon
 | `Rotation` | float | 0f | Amount of rotation on the sprite. |
 | `RotationChange` | float | 0f | Amount of additional rotation every frame. Set this to make the sprite spin. |
 | `Color` | string | _null_ | Color to apply on draw, for use with grayscale sprites.<br>Aside from RGB and hex values, monogame accepts [named colors](https://docs.monogame.net/api/Microsoft.Xna.Framework.Color.html). |
+| `LightRadius` | float | Spawn a light source on this TAS with this radius. |
+| `LightColor` | float | Color to apply on the light. |
 | `ScaleChangeChange` | float | 0 | A change upon `ScaleChange`, i.e. acceleration but for scale. |
 | `Motion` | Vector2 | 0,0 | Amount of movement in pixels to do on X and Y axis each tick. |
 | `Acceleration` | Vector2 | 0,0 | Amount of increase in motion on X and Y axis each tick. |
