@@ -111,6 +111,16 @@ This is a niche case, primarily for bespoke logic implemented in SMAPI mods.</p>
 <pre><code>mushymato.TrinketTinker_ToggleCompanion &lt;trinket id&gt; [level] [variant]
 </code></pre>
 <p>Toggles the companion's visibility between visible and invisible. This is purely visual and does not prevent the abilities from activating.</p>
+<h1 id="triggers">[Triggers]</h1>
+<h2 id="mushymatotrinkettinkertrinketproc">mushymato.TrinketTinker/TrinketProc</h2>
+<ul>
+<li>Raised when using <a href="004.z.102-RaiseTrigger.html">RaiseTrigger</a> ability.</li>
+</ul>
+<h2 id="mushymatotrinkettinker_daystarted">mushymato.TrinketTinker_DayStarted</h2>
+<ul>
+<li>Raised right after TrinketTinker finishes it's day started processing, which a specific time later than the vanilla DayStarted.</li>
+<li>Use this if you need to check trinket related conditions in your trigger action.</li>
+</ul>
 
 </article>
 

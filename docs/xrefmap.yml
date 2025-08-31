@@ -67,6 +67,18 @@ references:
   commentId: F:Mushymato.ExtendedTAS.TASExt.LayerDepth
   fullName: Mushymato.ExtendedTAS.TASExt.LayerDepth
   nameWithType: TASExt.LayerDepth
+- uid: Mushymato.ExtendedTAS.TASExt.LightColor
+  name: LightColor
+  href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_LightColor
+  commentId: F:Mushymato.ExtendedTAS.TASExt.LightColor
+  fullName: Mushymato.ExtendedTAS.TASExt.LightColor
+  nameWithType: TASExt.LightColor
+- uid: Mushymato.ExtendedTAS.TASExt.LightRadius
+  name: LightRadius
+  href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_LightRadius
+  commentId: F:Mushymato.ExtendedTAS.TASExt.LightRadius
+  fullName: Mushymato.ExtendedTAS.TASExt.LightRadius
+  nameWithType: TASExt.LightRadius
 - uid: Mushymato.ExtendedTAS.TASExt.Motion
   name: Motion
   href: api/Mushymato.ExtendedTAS.TASExt.html#Mushymato_ExtendedTAS_TASExt_Motion
