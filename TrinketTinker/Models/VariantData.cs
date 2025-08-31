@@ -138,6 +138,12 @@ public sealed class VariantData : IVariantData
     /// <summary>If set, add a light with given radius. Note that the light is only visible to local player.</summary>
     public LightSourceData? LightSource { get; set; } = null;
 
+    /// <summary>全局X轴偏移，用于调整所有帧的SourceRect.X坐标</summary>
+    public int SourceRectOffsetX { get; set; } = 0;
+
+    /// <summary>全局Y轴偏移，用于调整所有帧的SourceRect.Y坐标</summary>
+    public int SourceRectOffsetY { get; set; } = 0;
+
     /// <summary>Sprite index of the item icon.</summary>
     public int TrinketSpriteIndex { get; set; } = -1;
 
