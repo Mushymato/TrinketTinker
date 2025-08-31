@@ -4,6 +4,20 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.6.2
+
+#### Added
+- AbilitiesShared: put abilities that are common for all levels in 1 list
+- es translation by nexus/minatorous20
+- TT specific day started
+- Support for multiple buffs and random pick one buff
+
+#### Changed
+- Lines choose now randoms between same Priority level
+
+#### Fixed
+- Stamina proc check not accounting for negatives properly
+
 ### 1.6.1
 
 #### Added
