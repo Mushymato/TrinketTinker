@@ -122,6 +122,11 @@ The key used must match the <strong>unqualified ID</strong> of the trinket, e.g.
         ],
         //...
       ],
+      &quot;AbilitiesShared&quot;: [
+        // shared abilities common to all levels
+        { /* ability data */ },
+        { /* more ability data */ }
+      ],
       &quot;VariantUnlockConditions&quot;: [
         null,
         &quot;&lt;game state query&gt;&quot;,
@@ -192,7 +197,13 @@ The key used must match the <strong>unqualified ID</strong> of the trinket, e.g.
 <td><code>Abilities</code></td>
 <td><a href="004-Ability.html">List&lt;List&lt;AbilityData&gt;&gt;</a></td>
 <td><em>null</em></td>
-<td>Defines what effects are activated, and when. Each list in the list of lists represents 1 ability level.</td>
+<td>Defines what abilities (i.e. trinket effects) are activated and when. Each list in the list of lists represents 1 ability level.</td>
+</tr>
+<tr>
+<td><code>AbilitiesShared</code></td>
+<td><a href="004-Ability.html">List&lt;AbilityData&gt;</a></td>
+<td><em>null</em></td>
+<td>A list of abilities that are automatically appended to every level.</td>
 </tr>
 <tr>
 <td><code>VariantUnlockConditions</code></td>
@@ -222,7 +233,7 @@ The key used must match the <strong>unqualified ID</strong> of the trinket, e.g.
 </table>
 <h3 id="deprecated">DEPRECATED</h3>
 <ul>
-<li><code>Motions</code>, previously a list of <code>MotionData</code> that is unused except for the first element. It has been removed since 1.5.0, please use only <code>Motion</code> from now on</li>
+<li><code>Motions</code>, previously a list of <code>MotionData</code> that is unused except for the first element. It has been removed since 1.5.0, please use only <code>Motion</code> from now on.</li>
 </ul>
 <h3 id="unlock-conditions">Unlock Conditions</h3>
 <p><code>VariantUnlockConditions</code> and <code>AbilityUnlockConditions</code> can prevent the player from rolling variants or abilities above a certain level using <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state queries</a>. This only affects rerolling level and variants on the <a href="https://stardewvalleywiki.com/Anvil">anvil</a> and <a href="007-Utility.html">colorizer</a>.</p>
@@ -248,7 +259,7 @@ The key used must match the <strong>unqualified ID</strong> of the trinket, e.g.
 }
 </code></pre>
 <h2 id="integrating-trinket-tinker">Integrating Trinket Tinker</h2>
-<p>As a custom asset based framework, you can put all trinket related edits in a json separate from the rest of the mod like so. This helps turn trinkets into an optional feature for your mod.</p>
+<p>As a custom asset based framework, you can put all trinket related edits in a json separate from the rest of the mod like example below. This helps turn trinkets into an optional feature for your mod.</p>
 <pre><code class="lang-json">{
   &quot;Action&quot;: &quot;Include&quot;,
   &quot;FromFile&quot;: &quot;data/trinkets.json&quot;,
@@ -257,7 +268,7 @@ The key used must match the <strong>unqualified ID</strong> of the trinket, e.g.
   }
 }
 </code></pre>
-<p>Special behavior as an equipment aside, trinkets are items with qualified item id like <code>(TR){{ModId}}_Sample</code>. Besides the base game random drops after combat mastery (if <code>DropsNaturally</code> is set to true), you can grant a trinket to the player via any usual means of granting an item via their qualified item id. This includes shops, events, machine output, Farm Type Manager/Spacecore monster drops, and so on. There are also <a href="007.2-Actions.html">means of using a trinket without having a real item the player must obtain</a> which allows you to utilize Trinket Tinker's system to create followers.</p>
+<p>Special behavior as an equipment aside, trinkets are items with qualified item id like <code>(TR){{ModId}}_Sample</code>. Besides the base game random drops after combat mastery (if <code>DropsNaturally</code> is set to true for the trinket), you can grant a trinket to the player via any usual means of granting an item through qualified item id. This includes shops, events, machine output, Farm Type Manager/Spacecore monster drops, and so on. There are also <a href="007.2-Actions.html">means of using a trinket without having a real player obtainable item</a> which allows you to utilize Trinket Tinker's system to create special powers and/or followers without taking up the trinket slot.</p>
 
 </article>
 

@@ -6059,6 +6059,24 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AbilityArgs.BroadcastActionArgs.Validate
   nameWithType: BroadcastActionArgs.Validate
+- uid: TrinketTinker.Models.AbilityArgs.BuffApplyMode
+  name: BuffApplyMode
+  href: api/TrinketTinker.Models.AbilityArgs.BuffApplyMode.html
+  commentId: T:TrinketTinker.Models.AbilityArgs.BuffApplyMode
+  fullName: TrinketTinker.Models.AbilityArgs.BuffApplyMode
+  nameWithType: BuffApplyMode
+- uid: TrinketTinker.Models.AbilityArgs.BuffApplyMode.All
+  name: All
+  href: api/TrinketTinker.Models.AbilityArgs.BuffApplyMode.html#TrinketTinker_Models_AbilityArgs_BuffApplyMode_All
+  commentId: F:TrinketTinker.Models.AbilityArgs.BuffApplyMode.All
+  fullName: TrinketTinker.Models.AbilityArgs.BuffApplyMode.All
+  nameWithType: BuffApplyMode.All
+- uid: TrinketTinker.Models.AbilityArgs.BuffApplyMode.Random
+  name: Random
+  href: api/TrinketTinker.Models.AbilityArgs.BuffApplyMode.html#TrinketTinker_Models_AbilityArgs_BuffApplyMode_Random
+  commentId: F:TrinketTinker.Models.AbilityArgs.BuffApplyMode.Random
+  fullName: TrinketTinker.Models.AbilityArgs.BuffApplyMode.Random
+  nameWithType: BuffApplyMode.Random
 - uid: TrinketTinker.Models.AbilityArgs.BuffArgs
   name: BuffArgs
   href: api/TrinketTinker.Models.AbilityArgs.BuffArgs.html
@@ -6078,6 +6096,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AbilityArgs.BuffArgs.BuffId
   nameWithType: BuffArgs.BuffId
+- uid: TrinketTinker.Models.AbilityArgs.BuffArgs.Mode
+  name: Mode
+  href: api/TrinketTinker.Models.AbilityArgs.BuffArgs.html#TrinketTinker_Models_AbilityArgs_BuffArgs_Mode
+  commentId: P:TrinketTinker.Models.AbilityArgs.BuffArgs.Mode
+  fullName: TrinketTinker.Models.AbilityArgs.BuffArgs.Mode
+  nameWithType: BuffArgs.Mode
+- uid: TrinketTinker.Models.AbilityArgs.BuffArgs.Mode*
+  name: Mode
+  href: api/TrinketTinker.Models.AbilityArgs.BuffArgs.html#TrinketTinker_Models_AbilityArgs_BuffArgs_Mode_
+  commentId: Overload:TrinketTinker.Models.AbilityArgs.BuffArgs.Mode
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityArgs.BuffArgs.Mode
+  nameWithType: BuffArgs.Mode
 - uid: TrinketTinker.Models.AbilityArgs.BuffArgs.Validate
   name: Validate()
   href: api/TrinketTinker.Models.AbilityArgs.BuffArgs.html#TrinketTinker_Models_AbilityArgs_BuffArgs_Validate
@@ -9464,6 +9495,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.TinkerData.Abilities
   nameWithType: TinkerData.Abilities
+- uid: TrinketTinker.Models.TinkerData.AbilitiesShared
+  name: AbilitiesShared
+  href: api/TrinketTinker.Models.TinkerData.html#TrinketTinker_Models_TinkerData_AbilitiesShared
+  commentId: P:TrinketTinker.Models.TinkerData.AbilitiesShared
+  fullName: TrinketTinker.Models.TinkerData.AbilitiesShared
+  nameWithType: TinkerData.AbilitiesShared
+- uid: TrinketTinker.Models.TinkerData.AbilitiesShared*
+  name: AbilitiesShared
+  href: api/TrinketTinker.Models.TinkerData.html#TrinketTinker_Models_TinkerData_AbilitiesShared_
+  commentId: Overload:TrinketTinker.Models.TinkerData.AbilitiesShared
+  isSpec: "True"
+  fullName: TrinketTinker.Models.TinkerData.AbilitiesShared
+  nameWithType: TinkerData.AbilitiesShared
 - uid: TrinketTinker.Models.TinkerData.AbilityUnlockConditions
   name: AbilityUnlockConditions
   href: api/TrinketTinker.Models.TinkerData.html#TrinketTinker_Models_TinkerData_AbilityUnlockConditions
