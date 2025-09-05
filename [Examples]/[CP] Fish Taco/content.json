@@ -1,0 +1,76 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Format": "2.8.0",
+  "Changes": [
+    {
+      "Action": "Load",
+      "Target": "{{ModId}}/fishtaco",
+      "FromFile": "assets/fishtaco.png"
+    },
+    // Edit Data/Trinkets 
+    {
+      "Action": "EditData",
+      "Target": "Data/Trinkets",
+      "Entries": {
+        "{{ModId}}_FishTaco": {
+          "Id": "{{ModId}}_FishTaco",
+          "DisplayName": "Fish taco",
+          "Description": "You are what you eat.",
+          "Texture": "{{ModId}}/fishtaco",
+          "SheetIndex": 1,
+          "DropsNaturally": false,
+          "CanBeReforged": false,
+        }
+      }
+    },
+    // Edit Mods/mushymato.TrinketTinker
+    {
+      "Action": "EditData",
+      "Target": "mushymato.TrinketTinker/Tinker",
+      "Entries": {
+        // ID must match trinket
+        "{{ModId}}_FishTaco": {
+          "Variants": [
+            {
+              "Texture": "{{ModId}}/fishtaco",
+              "Width": 16,
+              "Height": 16,
+              "TextureScale": 4
+            },
+          ],
+          // Orbit around the player in a ellipse
+          "Motion": {
+            "MotionClass": "Bounce",
+            "DirectionMode": "Single",
+            "FrameLength": 1,
+            "Interval": 100,
+            "RepeatInterval": 500,
+            "RepeatFrameSets": 3,
+            "AlwaysMoving": true,
+            "Args": {
+              "Squash": 2,
+              "Jitter": 64,
+              "MoveSync": false,
+              "NoOverlap": false
+            }
+          },
+        },
+      }
+    },
+    // trigger for hidden trinket
+    {
+      "Action": "EditData",
+      "Target": "Data/TriggerActions",
+      "Entries": {
+        "{{ModId}}_FishTacoActivation": {
+          "Id": "{{ModId}}_FishTacoActivation",
+          "Trigger": "spacechase0.SpaceCore_OnItemEaten",
+          "Condition": "ITEM_ID Input (O)213",
+          "HostOnly": false,
+          "Action": "mushymato.TrinketTinker_EquipHiddenTrinket {{ModId}}_FishTaco 0 0 1",
+          "MarkActionApplied": false
+        }
+      }
+    }
+  ]
+}
