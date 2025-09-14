@@ -225,7 +225,14 @@ public sealed class TinkerAnimSprite
     /// <returns></returns>
     public Rectangle GetSourceRect(int frame)
     {
-        return new Rectangle(frame * Width % Texture.Width, frame * Width / Texture.Width * Height, Width, Height);
+        int x = frame * Width % Texture.Width;
+        int y = frame * Width / Texture.Width * Height;
+        
+        // 应用全局偏移
+        x += fullVd.SourceRectOffsetX;
+        y += fullVd.SourceRectOffsetY;
+        
+        return new Rectangle(x, y, Width, Height);
     }
 
     /// <summary>
@@ -417,6 +424,19 @@ public sealed class TinkerAnimSprite
         if (timer > interval)
         {
             currentFrame += step;
+            timer = 0f;
+            if (currentFrame == lastFrame)
+            {
+                UpdateSourceRect();
+                isReverse = !isReverse;
+                return isReverse ? TinkerAnimState.InProgress : TinkerAnimState.Complete;
+            }
+        }
+        UpdateSourceRect();
+        return TinkerAnimState.InProgress;
+    }
+}
+tFrame += step;
             timer = 0f;
             if (currentFrame == lastFrame)
             {
