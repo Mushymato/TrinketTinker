@@ -25,7 +25,10 @@ public interface IVariantData
     /// <summary>Variant texture content path.</summary>
     public string? Texture { get; set; }
 
-    /// <summary>Additional textures.</summary>
+    /// <summary>Which section of <see cref="Texture"/> and <see cref="TextureExtra"/> to use, defaults to entire texture</summary>
+    public Rectangle TextureSourceRect { get; set; }
+
+    /// <summary>Additional textures used in anim clips only, this should generally have the same layout as <see cref="Texture"/>.</summary>
     public string? TextureExtra { get; set; }
 
     /// <summary>Draw color mask, can use color name from <see cref="Color"/>, hex value, or <see cref="TinkerConst.COLOR_PRISMATIC"/> for animated prismatic effect.</summary>
@@ -36,6 +39,9 @@ public interface IVariantData
 
     /// <summary>Sprite height</summary>
     public int Height { get; set; }
+
+    /// <summary>Adjusts the bounding box</summary>
+    public Rectangle Bounding { get; set; }
 
     /// <summary>Base scale to draw texture at.</summary>
     public float TextureScale { get; set; }
@@ -63,6 +69,9 @@ public class AltVariantData : IVariantData
     public string? Texture { get; set; } = null;
 
     /// <inheritdoc/>
+    public Rectangle TextureSourceRect { get; set; } = Rectangle.Empty;
+
+    /// <inheritdoc/>
     public string? TextureExtra { get; set; } = null;
 
     /// <inheritdoc/>
@@ -73,6 +82,9 @@ public class AltVariantData : IVariantData
 
     /// <inheritdoc/>
     public int Height { get; set; } = -1;
+
+    /// <inheritdoc/>
+    public Rectangle Bounding { get; set; } = Rectangle.Empty;
 
     /// <inheritdoc/>
     public float TextureScale { get; set; } = -1;
@@ -106,6 +118,9 @@ public sealed class VariantData : IVariantData
     public string? Texture { get; set; } = null;
 
     /// <inheritdoc/>
+    public Rectangle TextureSourceRect { get; set; } = Rectangle.Empty;
+
+    /// <inheritdoc/>
     public string? TextureExtra { get; set; } = null;
 
     /// <inheritdoc/>
@@ -116,6 +131,9 @@ public sealed class VariantData : IVariantData
 
     /// <inheritdoc/>
     public int Height { get; set; } = 16;
+
+    /// <inheritdoc/>
+    public Rectangle Bounding { get; set; } = Rectangle.Empty;
 
     /// <inheritdoc/>
     public float TextureScale { get; set; } = 4f;

@@ -65,6 +65,8 @@ public sealed class TinkerAnimSprite
     internal Texture2D Texture => UseExtra ? TextureExtra ?? TextureBase : TextureBase;
     internal Texture2D TextureBase;
     internal Texture2D? TextureExtra = null;
+    private Rectangle TextureSourceRect = Rectangle.Empty;
+    private Point BoundingBoxSize = Point.Zero;
     private bool useExtra = false;
     internal bool UseExtra
     {
@@ -75,6 +77,7 @@ public sealed class TinkerAnimSprite
     internal int Height;
     internal float TextureScale;
     internal float ShadowScale;
+    internal Rectangle Bounding;
     internal BreatherPositionAndRectangle? Breather;
     internal Rectangle SourceRect { get; private set; } = Rectangle.Empty;
     internal bool Hidden => currentFrame == -1;
@@ -195,6 +198,10 @@ public sealed class TinkerAnimSprite
     {
         Width = vd.Width >= 0 ? vd.Width : fullVd.Width;
         Height = vd.Height >= 0 ? vd.Height : fullVd.Height;
+        Bounding =
+            !vd.Bounding.IsEmpty ? vd.Bounding
+            : !fullVd.Bounding.IsEmpty ? fullVd.Bounding
+            : new(0, 0, Width, Height);
         TextureScale = vd.TextureScale >= 0 ? vd.TextureScale : fullVd.TextureScale;
         ShadowScale = vd.ShadowScale >= 0 ? vd.ShadowScale : fullVd.ShadowScale;
         Origin = new Vector2(Width / 2, Height / 2);
@@ -202,6 +209,10 @@ public sealed class TinkerAnimSprite
         drawColorIsConstant = false;
         TextureBase = LoadTexture(vd.Texture) ?? LoadTexture(fullVd.Texture) ?? LoadTexture("Animals/Error")!;
         TextureExtra = LoadTexture(vd.TextureExtra) ?? LoadTexture(fullVd.TextureExtra) ?? null;
+        TextureSourceRect =
+            !vd.TextureSourceRect.IsEmpty ? vd.TextureSourceRect
+            : !fullVd.TextureSourceRect.IsEmpty ? fullVd.TextureSourceRect
+            : TextureBase.Bounds;
         Breather =
             (vd.ShowBreathing ?? fullVd.ShowBreathing ?? false)
                 ? GetBreatherPositionAndRectangle(Width, Height, vd.NPC ?? fullVd.NPC)
@@ -230,10 +241,10 @@ public sealed class TinkerAnimSprite
     {
         Rectangle textureBox =
             new(
-                (int)(drawPos.X - Origin.X * drawScale.X),
-                (int)(drawPos.Y - Origin.Y * drawScale.Y),
-                (int)(SourceRect.Width * drawScale.X),
-                (int)(SourceRect.Height * drawScale.Y)
+                (int)(drawPos.X - Origin.X * drawScale.X + Bounding.X * drawScale.X),
+                (int)(drawPos.Y - Origin.Y * drawScale.Y + Bounding.Y * drawScale.Y),
+                (int)(Bounding.Width * drawScale.X),
+                (int)(Bounding.Height * drawScale.Y)
             );
         if (shadowScale.X <= 0 && shadowScale.Y <= 0)
             return textureBox;
