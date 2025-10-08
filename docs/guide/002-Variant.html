@@ -101,10 +101,13 @@
       // This block is the top level Variant
       {
         &quot;Texture&quot;: &quot;&lt;texture asset name&gt;&quot;,
+        &quot;TextureSourceRect&quot;: {&quot;X&quot;: &lt;int X&gt;, &quot;Y&quot;: &lt;int Y&gt;, &quot;Width&quot;: &lt;int Width&gt;, &quot;Height&quot;: &lt;int Height&gt;, },
         &quot;TextureExtra&quot;: &quot;&lt;additional texture asset name&gt;&quot;,
+        &quot;TextureExtraSourceRect&quot;: {&quot;X&quot;: &lt;int X&gt;, &quot;Y&quot;: &lt;int Y&gt;, &quot;Width&quot;: &lt;int Width&gt;, &quot;Height&quot;: &lt;int Height&gt;, },
         &quot;ColorMask&quot;: &quot;&lt;hex color or monogame color name&gt;&quot;,
         &quot;Width&quot;: &lt;int width&gt;,
         &quot;Height&quot;: &lt;int height&gt;,
+        &quot;Bounding&quot;: {&quot;X&quot;: &lt;int X&gt;, &quot;Y&quot;: &lt;int Y&gt;, &quot;Width&quot;: &lt;int Width&gt;, &quot;Height&quot;: &lt;int Height&gt;, },
         &quot;TextureScale&quot;: &lt;int scale&gt;,
         &quot;ShadowScale&quot;: &lt;int sclae&gt;,
         &quot;NPC&quot;: &quot;{{ModId}}_SampleNPC&quot;,
@@ -132,10 +135,13 @@
           // These blocks are AltVariant
           &quot;&lt;alt variant key&gt;&quot;: {
             &quot;Texture&quot;: &quot;&lt;texture asset name&gt;&quot;,
+            &quot;TextureSourceRect&quot;: {&quot;X&quot;: &lt;int X&gt;, &quot;Y&quot;: &lt;int Y&gt;, &quot;Width&quot;: &lt;int Width&gt;, &quot;Height&quot;: &lt;int Height&gt; },
             &quot;TextureExtra&quot;: &quot;&lt;additional texture asset name&gt;&quot;,
+            &quot;TextureExtraSourceRect&quot;: {&quot;X&quot;: &lt;int X&gt;, &quot;Y&quot;: &lt;int Y&gt;, &quot;Width&quot;: &lt;int Width&gt;, &quot;Height&quot;: &lt;int Height&gt; },
             &quot;ColorMask&quot;: &quot;&lt;hex color or monogame color name&gt;&quot;,
             &quot;Width&quot;: &lt;int width&gt;,
             &quot;Height&quot;: &lt;int height&gt;,
+            &quot;Bounding&quot;: {&quot;X&quot;: &lt;int X&gt;, &quot;Y&quot;: &lt;int Y&gt;, &quot;Width&quot;: &lt;int Width&gt;, &quot;Height&quot;: &lt;int Height&gt;, },
             &quot;TextureScale&quot;: &lt;float scale&gt;,
             &quot;ShadowScale&quot;: &lt;float scale&gt;,
             &quot;NPC&quot;: &quot;{{ModId}}_SampleNPC&quot;,
@@ -171,10 +177,22 @@
 <td>Asset target of the loaded texture, should be a sprite sheet and needs to contain the relevant <a href="003.0-Direction.html">directional animation frames</a> for the motion.</td>
 </tr>
 <tr>
+<td><code>TextureSourceRect</code></td>
+<td>Rectangle</td>
+<td><em>empty</em></td>
+<td>Optional source rectangle for <code>Texture</code>, if only part of the texture should be used.</td>
+</tr>
+<tr>
 <td><code>TextureExtra</code></td>
 <td>string</td>
 <td><em>null</em></td>
 <td>Texture holding additional sprites for use in <a href="003.2-Animation%20Clips.html">AnimClip</a>. This allows you to keep trinket specific sprites on a separate asset, but conversely you cannot put basic directional animation sprites on this sheet, only anim clips.</td>
+</tr>
+<tr>
+<td><code>TextureExtraSourceRect</code></td>
+<td>Rectangle</td>
+<td><em>empty</em></td>
+<td>Optional source rectangle for <code>TextureExtra</code>, if only part of the texture should be used.</td>
 </tr>
 <tr>
 <td><code>ColorMask</code></td>
@@ -193,6 +211,12 @@
 <td>int</td>
 <td>16</td>
 <td>Height of 1 sprite on the sprite sheet.</td>
+</tr>
+<tr>
+<td><code>Bounding</code></td>
+<td>Rectangle</td>
+<td><em>empty</em></td>
+<td>Override the default bounding box calculated from texture bounds.</td>
 </tr>
 <tr>
 <td><code>TextureScale</code></td>

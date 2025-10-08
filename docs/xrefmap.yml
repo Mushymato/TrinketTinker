@@ -6160,12 +6160,15 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.CritDamage
   nameWithType: DamageArgs.CritDamage
-- uid: TrinketTinker.Models.AbilityArgs.DamageArgs.DamageMonster(StardewValley.Delegates.GameStateQueryContext,StardewValley.Monsters.Monster)
-  name: DamageMonster(GameStateQueryContext, Monster)
-  href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_DamageMonster_StardewValley_Delegates_GameStateQueryContext_StardewValley_Monsters_Monster_
-  commentId: M:TrinketTinker.Models.AbilityArgs.DamageArgs.DamageMonster(StardewValley.Delegates.GameStateQueryContext,StardewValley.Monsters.Monster)
-  fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.DamageMonster(StardewValley.Delegates.GameStateQueryContext, StardewValley.Monsters.Monster)
-  nameWithType: DamageArgs.DamageMonster(GameStateQueryContext, Monster)
+- uid: TrinketTinker.Models.AbilityArgs.DamageArgs.DamageMonster(StardewValley.Delegates.GameStateQueryContext,StardewValley.Monsters.Monster,System.Boolean)
+  name: DamageMonster(GameStateQueryContext, Monster, bool)
+  href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_DamageMonster_StardewValley_Delegates_GameStateQueryContext_StardewValley_Monsters_Monster_System_Boolean_
+  commentId: M:TrinketTinker.Models.AbilityArgs.DamageArgs.DamageMonster(StardewValley.Delegates.GameStateQueryContext,StardewValley.Monsters.Monster,System.Boolean)
+  name.vb: DamageMonster(GameStateQueryContext, Monster, Boolean)
+  fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.DamageMonster(StardewValley.Delegates.GameStateQueryContext, StardewValley.Monsters.Monster, bool)
+  fullName.vb: TrinketTinker.Models.AbilityArgs.DamageArgs.DamageMonster(StardewValley.Delegates.GameStateQueryContext, StardewValley.Monsters.Monster, Boolean)
+  nameWithType: DamageArgs.DamageMonster(GameStateQueryContext, Monster, bool)
+  nameWithType.vb: DamageArgs.DamageMonster(GameStateQueryContext, Monster, Boolean)
 - uid: TrinketTinker.Models.AbilityArgs.DamageArgs.DamageMonster*
   name: DamageMonster
   href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_DamageMonster_
@@ -7196,6 +7199,19 @@ references:
   commentId: T:TrinketTinker.Models.AltVariantData
   fullName: TrinketTinker.Models.AltVariantData
   nameWithType: AltVariantData
+- uid: TrinketTinker.Models.AltVariantData.Bounding
+  name: Bounding
+  href: api/TrinketTinker.Models.AltVariantData.html#TrinketTinker_Models_AltVariantData_Bounding
+  commentId: P:TrinketTinker.Models.AltVariantData.Bounding
+  fullName: TrinketTinker.Models.AltVariantData.Bounding
+  nameWithType: AltVariantData.Bounding
+- uid: TrinketTinker.Models.AltVariantData.Bounding*
+  name: Bounding
+  href: api/TrinketTinker.Models.AltVariantData.html#TrinketTinker_Models_AltVariantData_Bounding_
+  commentId: Overload:TrinketTinker.Models.AltVariantData.Bounding
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AltVariantData.Bounding
+  nameWithType: AltVariantData.Bounding
 - uid: TrinketTinker.Models.AltVariantData.ColorMask
   name: ColorMask
   href: api/TrinketTinker.Models.AltVariantData.html#TrinketTinker_Models_AltVariantData_ColorMask
@@ -7339,6 +7355,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AltVariantData.TextureExtra
   nameWithType: AltVariantData.TextureExtra
+- uid: TrinketTinker.Models.AltVariantData.TextureExtraSourceRect
+  name: TextureExtraSourceRect
+  href: api/TrinketTinker.Models.AltVariantData.html#TrinketTinker_Models_AltVariantData_TextureExtraSourceRect
+  commentId: P:TrinketTinker.Models.AltVariantData.TextureExtraSourceRect
+  fullName: TrinketTinker.Models.AltVariantData.TextureExtraSourceRect
+  nameWithType: AltVariantData.TextureExtraSourceRect
+- uid: TrinketTinker.Models.AltVariantData.TextureExtraSourceRect*
+  name: TextureExtraSourceRect
+  href: api/TrinketTinker.Models.AltVariantData.html#TrinketTinker_Models_AltVariantData_TextureExtraSourceRect_
+  commentId: Overload:TrinketTinker.Models.AltVariantData.TextureExtraSourceRect
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AltVariantData.TextureExtraSourceRect
+  nameWithType: AltVariantData.TextureExtraSourceRect
 - uid: TrinketTinker.Models.AltVariantData.TextureScale
   name: TextureScale
   href: api/TrinketTinker.Models.AltVariantData.html#TrinketTinker_Models_AltVariantData_TextureScale
@@ -7352,6 +7381,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AltVariantData.TextureScale
   nameWithType: AltVariantData.TextureScale
+- uid: TrinketTinker.Models.AltVariantData.TextureSourceRect
+  name: TextureSourceRect
+  href: api/TrinketTinker.Models.AltVariantData.html#TrinketTinker_Models_AltVariantData_TextureSourceRect
+  commentId: P:TrinketTinker.Models.AltVariantData.TextureSourceRect
+  fullName: TrinketTinker.Models.AltVariantData.TextureSourceRect
+  nameWithType: AltVariantData.TextureSourceRect
+- uid: TrinketTinker.Models.AltVariantData.TextureSourceRect*
+  name: TextureSourceRect
+  href: api/TrinketTinker.Models.AltVariantData.html#TrinketTinker_Models_AltVariantData_TextureSourceRect_
+  commentId: Overload:TrinketTinker.Models.AltVariantData.TextureSourceRect
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AltVariantData.TextureSourceRect
+  nameWithType: AltVariantData.TextureSourceRect
 - uid: TrinketTinker.Models.AltVariantData.Width
   name: Width
   href: api/TrinketTinker.Models.AltVariantData.html#TrinketTinker_Models_AltVariantData_Width
@@ -7869,6 +7911,19 @@ references:
   commentId: T:TrinketTinker.Models.IVariantData
   fullName: TrinketTinker.Models.IVariantData
   nameWithType: IVariantData
+- uid: TrinketTinker.Models.IVariantData.Bounding
+  name: Bounding
+  href: api/TrinketTinker.Models.IVariantData.html#TrinketTinker_Models_IVariantData_Bounding
+  commentId: P:TrinketTinker.Models.IVariantData.Bounding
+  fullName: TrinketTinker.Models.IVariantData.Bounding
+  nameWithType: IVariantData.Bounding
+- uid: TrinketTinker.Models.IVariantData.Bounding*
+  name: Bounding
+  href: api/TrinketTinker.Models.IVariantData.html#TrinketTinker_Models_IVariantData_Bounding_
+  commentId: Overload:TrinketTinker.Models.IVariantData.Bounding
+  isSpec: "True"
+  fullName: TrinketTinker.Models.IVariantData.Bounding
+  nameWithType: IVariantData.Bounding
 - uid: TrinketTinker.Models.IVariantData.ColorMask
   name: ColorMask
   href: api/TrinketTinker.Models.IVariantData.html#TrinketTinker_Models_IVariantData_ColorMask
@@ -7986,6 +8041,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.IVariantData.TextureExtra
   nameWithType: IVariantData.TextureExtra
+- uid: TrinketTinker.Models.IVariantData.TextureExtraSourceRect
+  name: TextureExtraSourceRect
+  href: api/TrinketTinker.Models.IVariantData.html#TrinketTinker_Models_IVariantData_TextureExtraSourceRect
+  commentId: P:TrinketTinker.Models.IVariantData.TextureExtraSourceRect
+  fullName: TrinketTinker.Models.IVariantData.TextureExtraSourceRect
+  nameWithType: IVariantData.TextureExtraSourceRect
+- uid: TrinketTinker.Models.IVariantData.TextureExtraSourceRect*
+  name: TextureExtraSourceRect
+  href: api/TrinketTinker.Models.IVariantData.html#TrinketTinker_Models_IVariantData_TextureExtraSourceRect_
+  commentId: Overload:TrinketTinker.Models.IVariantData.TextureExtraSourceRect
+  isSpec: "True"
+  fullName: TrinketTinker.Models.IVariantData.TextureExtraSourceRect
+  nameWithType: IVariantData.TextureExtraSourceRect
 - uid: TrinketTinker.Models.IVariantData.TextureScale
   name: TextureScale
   href: api/TrinketTinker.Models.IVariantData.html#TrinketTinker_Models_IVariantData_TextureScale
@@ -7999,6 +8067,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.IVariantData.TextureScale
   nameWithType: IVariantData.TextureScale
+- uid: TrinketTinker.Models.IVariantData.TextureSourceRect
+  name: TextureSourceRect
+  href: api/TrinketTinker.Models.IVariantData.html#TrinketTinker_Models_IVariantData_TextureSourceRect
+  commentId: P:TrinketTinker.Models.IVariantData.TextureSourceRect
+  fullName: TrinketTinker.Models.IVariantData.TextureSourceRect
+  nameWithType: IVariantData.TextureSourceRect
+- uid: TrinketTinker.Models.IVariantData.TextureSourceRect*
+  name: TextureSourceRect
+  href: api/TrinketTinker.Models.IVariantData.html#TrinketTinker_Models_IVariantData_TextureSourceRect_
+  commentId: Overload:TrinketTinker.Models.IVariantData.TextureSourceRect
+  isSpec: "True"
+  fullName: TrinketTinker.Models.IVariantData.TextureSourceRect
+  nameWithType: IVariantData.TextureSourceRect
 - uid: TrinketTinker.Models.IVariantData.Width
   name: Width
   href: api/TrinketTinker.Models.IVariantData.html#TrinketTinker_Models_IVariantData_Width
@@ -9569,6 +9650,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.VariantData.AttachedTAS
   nameWithType: VariantData.AttachedTAS
+- uid: TrinketTinker.Models.VariantData.Bounding
+  name: Bounding
+  href: api/TrinketTinker.Models.VariantData.html#TrinketTinker_Models_VariantData_Bounding
+  commentId: P:TrinketTinker.Models.VariantData.Bounding
+  fullName: TrinketTinker.Models.VariantData.Bounding
+  nameWithType: VariantData.Bounding
+- uid: TrinketTinker.Models.VariantData.Bounding*
+  name: Bounding
+  href: api/TrinketTinker.Models.VariantData.html#TrinketTinker_Models_VariantData_Bounding_
+  commentId: Overload:TrinketTinker.Models.VariantData.Bounding
+  isSpec: "True"
+  fullName: TrinketTinker.Models.VariantData.Bounding
+  nameWithType: VariantData.Bounding
 - uid: TrinketTinker.Models.VariantData.ColorMask
   name: ColorMask
   href: api/TrinketTinker.Models.VariantData.html#TrinketTinker_Models_VariantData_ColorMask
@@ -9699,6 +9793,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.VariantData.TextureExtra
   nameWithType: VariantData.TextureExtra
+- uid: TrinketTinker.Models.VariantData.TextureExtraSourceRect
+  name: TextureExtraSourceRect
+  href: api/TrinketTinker.Models.VariantData.html#TrinketTinker_Models_VariantData_TextureExtraSourceRect
+  commentId: P:TrinketTinker.Models.VariantData.TextureExtraSourceRect
+  fullName: TrinketTinker.Models.VariantData.TextureExtraSourceRect
+  nameWithType: VariantData.TextureExtraSourceRect
+- uid: TrinketTinker.Models.VariantData.TextureExtraSourceRect*
+  name: TextureExtraSourceRect
+  href: api/TrinketTinker.Models.VariantData.html#TrinketTinker_Models_VariantData_TextureExtraSourceRect_
+  commentId: Overload:TrinketTinker.Models.VariantData.TextureExtraSourceRect
+  isSpec: "True"
+  fullName: TrinketTinker.Models.VariantData.TextureExtraSourceRect
+  nameWithType: VariantData.TextureExtraSourceRect
 - uid: TrinketTinker.Models.VariantData.TextureScale
   name: TextureScale
   href: api/TrinketTinker.Models.VariantData.html#TrinketTinker_Models_VariantData_TextureScale
@@ -9712,6 +9819,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.VariantData.TextureScale
   nameWithType: VariantData.TextureScale
+- uid: TrinketTinker.Models.VariantData.TextureSourceRect
+  name: TextureSourceRect
+  href: api/TrinketTinker.Models.VariantData.html#TrinketTinker_Models_VariantData_TextureSourceRect
+  commentId: P:TrinketTinker.Models.VariantData.TextureSourceRect
+  fullName: TrinketTinker.Models.VariantData.TextureSourceRect
+  nameWithType: VariantData.TextureSourceRect
+- uid: TrinketTinker.Models.VariantData.TextureSourceRect*
+  name: TextureSourceRect
+  href: api/TrinketTinker.Models.VariantData.html#TrinketTinker_Models_VariantData_TextureSourceRect_
+  commentId: Overload:TrinketTinker.Models.VariantData.TextureSourceRect
+  isSpec: "True"
+  fullName: TrinketTinker.Models.VariantData.TextureSourceRect
+  nameWithType: VariantData.TextureSourceRect
 - uid: TrinketTinker.Models.VariantData.TrinketNameArguments
   name: TrinketNameArguments
   href: api/TrinketTinker.Models.VariantData.html#TrinketTinker_Models_VariantData_TrinketNameArguments
