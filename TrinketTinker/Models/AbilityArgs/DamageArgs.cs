@@ -83,7 +83,7 @@ public class DamageArgs : IArgs
     /// <summary>Do damage and debuff on monster.</summary>
     /// <param name="proc"></param>
     /// <param name="target"></param>
-    public void DamageMonster(GameStateQueryContext context, Monster target)
+    public void DamageMonster(GameStateQueryContext context, Monster target, bool isProjectile)
     {
         Vector2 pos = target.GetBoundingBox().Center.ToVector2();
         float drawLayer = pos.Y / 10000f + Visuals.LAYER_OFFSET;
@@ -92,19 +92,7 @@ public class DamageArgs : IArgs
             if (HitsDelay == 0)
                 for (int i = 1; i < Hits; i++)
                 {
-                    context.Location.damageMonster(
-                        areaOfEffect: target.GetBoundingBox(),
-                        minDamage: Min,
-                        maxDamage: Max,
-                        isBomb: false,
-                        knockBackModifier: Knockback,
-                        addedPrecision: Precision,
-                        critChance: CritChance,
-                        critMultiplier: CritDamage,
-                        triggerMonsterInvincibleTimer: false,
-                        who: context.Player,
-                        isProjectile: false
-                    );
+                    WrappedDamageMonster(context, target, isProjectile, false);
                 }
             else
             {
@@ -113,37 +101,13 @@ public class DamageArgs : IArgs
                     DelayedAction.functionAfterDelay(
                         () =>
                         {
-                            context.Location.damageMonster(
-                                areaOfEffect: target.GetBoundingBox(),
-                                minDamage: Min,
-                                maxDamage: Max,
-                                isBomb: false,
-                                knockBackModifier: Knockback,
-                                addedPrecision: Precision,
-                                critChance: CritChance,
-                                critMultiplier: CritDamage,
-                                triggerMonsterInvincibleTimer: false,
-                                who: context.Player,
-                                isProjectile: false
-                            );
+                            WrappedDamageMonster(context, target, isProjectile, false);
                         },
                         i * HitsDelay
                     );
                 }
             }
-            context.Location.damageMonster(
-                areaOfEffect: target.GetBoundingBox(),
-                minDamage: Min,
-                maxDamage: Max,
-                isBomb: false,
-                knockBackModifier: Knockback,
-                addedPrecision: Precision,
-                critChance: CritChance,
-                critMultiplier: CritDamage,
-                triggerMonsterInvincibleTimer: true,
-                who: context.Player,
-                isProjectile: false
-            );
+            WrappedDamageMonster(context, target, isProjectile, false);
             if (HitTAS != null)
             {
                 Visuals.BroadcastTASList(HitTAS.Split('|'), pos, drawLayer, context);
@@ -162,5 +126,27 @@ public class DamageArgs : IArgs
         {
             context.Location.explode(target.TilePoint.ToVector2(), ExplodeRadius, context.Player, damage_amount: Min);
         }
+    }
+
+    private void WrappedDamageMonster(
+        GameStateQueryContext context,
+        Monster target,
+        bool isProjectile,
+        bool triggerMonsterInvincibleTimer
+    )
+    {
+        context.Location.damageMonster(
+            areaOfEffect: target.GetBoundingBox(),
+            minDamage: Min,
+            maxDamage: Max,
+            isBomb: false,
+            knockBackModifier: Knockback,
+            addedPrecision: Precision,
+            critChance: CritChance,
+            critMultiplier: CritDamage,
+            triggerMonsterInvincibleTimer: triggerMonsterInvincibleTimer,
+            who: context.Player,
+            isProjectile: isProjectile
+        );
     }
 }

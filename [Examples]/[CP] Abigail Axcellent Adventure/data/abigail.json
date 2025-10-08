@@ -39,6 +39,12 @@
               "TextureExtra": "{{ModId}}/sord",
               "Width": 16,
               "Height": 32,
+              "TextureSourceRect": {
+                "X": 16, // offset X
+                "Y": 32, // offset Y
+                "Width": 48, // new width, used to determine frame numbers
+                "Height": 1, // unused
+              },
               "AltVariants": {
                 // "BIG": {
                 //   "TextureScale": 16

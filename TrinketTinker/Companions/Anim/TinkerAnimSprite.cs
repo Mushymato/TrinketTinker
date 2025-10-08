@@ -66,7 +66,6 @@ public sealed class TinkerAnimSprite
     internal Texture2D TextureBase;
     internal Texture2D? TextureExtra = null;
     private Rectangle TextureSourceRect = Rectangle.Empty;
-    private Point BoundingBoxSize = Point.Zero;
     private bool useExtra = false;
     internal bool UseExtra
     {
@@ -225,7 +224,12 @@ public sealed class TinkerAnimSprite
     /// <returns></returns>
     public Rectangle GetSourceRect(int frame)
     {
-        return new Rectangle(frame * Width % Texture.Width, frame * Width / Texture.Width * Height, Width, Height);
+        return new Rectangle(
+            TextureSourceRect.X + frame * Width % TextureSourceRect.Width,
+            TextureSourceRect.Y + frame * Width / TextureSourceRect.Width * Height,
+            Width,
+            Height
+        );
     }
 
     /// <summary>

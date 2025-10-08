@@ -204,7 +204,7 @@ public sealed class TinkerProjectile : Projectile
                 UpdatePiercesLeft(location);
             if (!playerWhoFiredMe.IsLocalPlayer)
                 return;
-            args?.DamageMonster(context, monster);
+            args?.DamageMonster(context, monster, true);
         }
     }
 

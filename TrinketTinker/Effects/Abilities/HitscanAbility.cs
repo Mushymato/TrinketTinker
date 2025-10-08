@@ -1,4 +1,3 @@
-using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Monsters;
 using TrinketTinker.Effects.Support;
@@ -34,7 +33,7 @@ public sealed class HitscanAbility(TrinketTinkerEffect effect, AbilityData data,
         if (target == null)
             return false;
         proc.Monster = target;
-        args.DamageMonster(proc.GSQContext, target);
+        args.DamageMonster(proc.GSQContext, target, false);
         return base.ApplyEffect(proc);
     }
 }
