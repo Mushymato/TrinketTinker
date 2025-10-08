@@ -64,8 +64,9 @@ public sealed class TinkerAnimSprite
     /// <summary>Current texture</summary>
     internal Texture2D Texture => UseExtra ? TextureExtra ?? TextureBase : TextureBase;
     internal Texture2D TextureBase;
-    internal Texture2D? TextureExtra = null;
     private Rectangle TextureSourceRect = Rectangle.Empty;
+    internal Texture2D? TextureExtra = null;
+    private Rectangle TextureExtraSourceRect = Rectangle.Empty;
     private bool useExtra = false;
     internal bool UseExtra
     {
@@ -207,11 +208,15 @@ public sealed class TinkerAnimSprite
         drawColor = null;
         drawColorIsConstant = false;
         TextureBase = LoadTexture(vd.Texture) ?? LoadTexture(fullVd.Texture) ?? LoadTexture("Animals/Error")!;
-        TextureExtra = LoadTexture(vd.TextureExtra) ?? LoadTexture(fullVd.TextureExtra) ?? null;
         TextureSourceRect =
             !vd.TextureSourceRect.IsEmpty ? vd.TextureSourceRect
             : !fullVd.TextureSourceRect.IsEmpty ? fullVd.TextureSourceRect
             : TextureBase.Bounds;
+        TextureExtra = LoadTexture(vd.TextureExtra) ?? LoadTexture(fullVd.TextureExtra) ?? null;
+        TextureExtraSourceRect =
+            !vd.TextureExtraSourceRect.IsEmpty ? vd.TextureExtraSourceRect
+            : !fullVd.TextureExtraSourceRect.IsEmpty ? fullVd.TextureExtraSourceRect
+            : (TextureExtra?.Bounds ?? Rectangle.Empty);
         Breather =
             (vd.ShowBreathing ?? fullVd.ShowBreathing ?? false)
                 ? GetBreatherPositionAndRectangle(Width, Height, vd.NPC ?? fullVd.NPC)
@@ -224,9 +229,10 @@ public sealed class TinkerAnimSprite
     /// <returns></returns>
     public Rectangle GetSourceRect(int frame)
     {
+        Rectangle txSourceRect = UseExtra ? TextureExtraSourceRect : TextureSourceRect;
         return new Rectangle(
-            TextureSourceRect.X + frame * Width % TextureSourceRect.Width,
-            TextureSourceRect.Y + frame * Width / TextureSourceRect.Width * Height,
+            txSourceRect.X + frame * Width % txSourceRect.Width,
+            txSourceRect.Y + frame * Width / txSourceRect.Width * Height,
             Width,
             Height
         );

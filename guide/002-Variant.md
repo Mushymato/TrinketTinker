@@ -18,10 +18,13 @@ Variants can have alternate variants, which are automatically rechecked whenever
       // This block is the top level Variant
       {
         "Texture": "<texture asset name>",
+        "TextureSourceRect": {"X": <int X>, "Y": <int Y>, "Width": <int Width>, "Height": <int Height>, },
         "TextureExtra": "<additional texture asset name>",
+        "TextureExtraSourceRect": {"X": <int X>, "Y": <int Y>, "Width": <int Width>, "Height": <int Height>, },
         "ColorMask": "<hex color or monogame color name>",
         "Width": <int width>,
         "Height": <int height>,
+        "Bounding": {"X": <int X>, "Y": <int Y>, "Width": <int Width>, "Height": <int Height>, },
         "TextureScale": <int scale>,
         "ShadowScale": <int sclae>,
         "NPC": "{{ModId}}_SampleNPC",
@@ -49,10 +52,13 @@ Variants can have alternate variants, which are automatically rechecked whenever
           // These blocks are AltVariant
           "<alt variant key>": {
             "Texture": "<texture asset name>",
+            "TextureSourceRect": {"X": <int X>, "Y": <int Y>, "Width": <int Width>, "Height": <int Height> },
             "TextureExtra": "<additional texture asset name>",
+            "TextureExtraSourceRect": {"X": <int X>, "Y": <int Y>, "Width": <int Width>, "Height": <int Height> },
             "ColorMask": "<hex color or monogame color name>",
             "Width": <int width>,
             "Height": <int height>,
+            "Bounding": {"X": <int X>, "Y": <int Y>, "Width": <int Width>, "Height": <int Height>, },
             "TextureScale": <float scale>,
             "ShadowScale": <float scale>,
             "NPC": "{{ModId}}_SampleNPC",
@@ -77,10 +83,13 @@ These fields are valid for both variant and alt variant.
 | Property | Type | Default | Notes |
 | -------- | ---- | ------- | ----- |
 | `Texture` | string | **required** | Asset target of the loaded texture, should be a sprite sheet and needs to contain the relevant [directional animation frames](003.0-Direction.md) for the motion. |
+| `TextureSourceRect` | Rectangle | _empty_ | Optional source rectangle for `Texture`, if only part of the texture should be used. |
 | `TextureExtra` | string | _null_ | Texture holding additional sprites for use in [AnimClip](003.2-Animation%20Clips.md). This allows you to keep trinket specific sprites on a separate asset, but conversely you cannot put basic directional animation sprites on this sheet, only anim clips. |
+| `TextureExtraSourceRect` | Rectangle | _empty_ | Optional source rectangle for `TextureExtra`, if only part of the texture should be used. |
 | `ColorMask` | string | _null_ | Color to apply on draw, for use with grayscale sprites.<br>Aside from RGB and hex values, monogame accepts [named colors](https://docs.monogame.net/api/Microsoft.Xna.Framework.Color.html) and this mod accepts special value `"Prismatic"` for an animated color cycle. |
 | `Width` | int | 16 | Width of 1 sprite on the sprite sheet. |
 | `Height` | int | 16 | Height of 1 sprite on the sprite sheet. |
+| `Bounding` | Rectangle | _empty_ | Override the default bounding box calculated from texture bounds. |
 | `TextureScale` | float | 4 | Texture draw scale, default is 4 like most things in the game. |
 | `ShadowScale` | float | 3 | Size of the shadow to draw, 0 to disable shadow. |
 | `Portrait` | string | _null_ | A portrait texture for the [Chatter ability](005.1-Chatter.md), required to display a portrait and a name. |

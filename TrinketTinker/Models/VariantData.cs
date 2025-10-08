@@ -25,11 +25,14 @@ public interface IVariantData
     /// <summary>Variant texture content path.</summary>
     public string? Texture { get; set; }
 
-    /// <summary>Which section of <see cref="Texture"/> and <see cref="TextureExtra"/> to use, defaults to entire texture</summary>
+    /// <summary>Which section of <see cref="Texture"/> to use, defaults to entire texture</summary>
     public Rectangle TextureSourceRect { get; set; }
 
     /// <summary>Additional textures used in anim clips only, this should generally have the same layout as <see cref="Texture"/>.</summary>
     public string? TextureExtra { get; set; }
+
+    /// <summary>Which section of <see cref="TextureExtra"/> to use, defaults to entire texture</summary>
+    public Rectangle TextureExtraSourceRect { get; set; }
 
     /// <summary>Draw color mask, can use color name from <see cref="Color"/>, hex value, or <see cref="TinkerConst.COLOR_PRISMATIC"/> for animated prismatic effect.</summary>
     public string? ColorMask { get; set; }
@@ -73,6 +76,9 @@ public class AltVariantData : IVariantData
 
     /// <inheritdoc/>
     public string? TextureExtra { get; set; } = null;
+
+    /// <inheritdoc/>
+    public Rectangle TextureExtraSourceRect { get; set; } = Rectangle.Empty;
 
     /// <inheritdoc/>
     public string? ColorMask { get; set; } = null;
@@ -122,6 +128,9 @@ public sealed class VariantData : IVariantData
 
     /// <inheritdoc/>
     public string? TextureExtra { get; set; } = null;
+
+    /// <inheritdoc/>
+    public Rectangle TextureExtraSourceRect { get; set; } = Rectangle.Empty;
 
     /// <inheritdoc/>
     public string? ColorMask { get; set; } = null;
