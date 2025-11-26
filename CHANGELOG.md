@@ -4,6 +4,16 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.6.4
+
+#### Added
+- New field `TreatAsProjectile` on hitscan and projectile abilities to explicitly define if they can bypass barriers.
+- There are now buttons for switching between equipped trinket inventories.
+
+#### Fixed
+- Hopefully fix the dupe vanilla companion problem (again).
+- Android fallback to hopefully make the menu at least not die.
+
 ### 1.6.3
 
 #### Added
