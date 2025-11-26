@@ -5694,6 +5694,18 @@ references:
   fullName.vb: TrinketTinker.Extras.TinkerInventoryMenu.New
   nameWithType: TinkerInventoryMenu.TinkerInventoryMenu
   nameWithType.vb: TinkerInventoryMenu.New
+- uid: TrinketTinker.Extras.TinkerInventoryMenu.Btn_L
+  name: Btn_L
+  href: api/TrinketTinker.Extras.TinkerInventoryMenu.html#TrinketTinker_Extras_TinkerInventoryMenu_Btn_L
+  commentId: F:TrinketTinker.Extras.TinkerInventoryMenu.Btn_L
+  fullName: TrinketTinker.Extras.TinkerInventoryMenu.Btn_L
+  nameWithType: TinkerInventoryMenu.Btn_L
+- uid: TrinketTinker.Extras.TinkerInventoryMenu.Btn_R
+  name: Btn_R
+  href: api/TrinketTinker.Extras.TinkerInventoryMenu.html#TrinketTinker_Extras_TinkerInventoryMenu_Btn_R
+  commentId: F:TrinketTinker.Extras.TinkerInventoryMenu.Btn_R
+  fullName: TrinketTinker.Extras.TinkerInventoryMenu.Btn_R
+  nameWithType: TinkerInventoryMenu.Btn_R
 - uid: TrinketTinker.Extras.TinkerInventoryMenu.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
   name: draw(SpriteBatch)
   href: api/TrinketTinker.Extras.TinkerInventoryMenu.html#TrinketTinker_Extras_TinkerInventoryMenu_draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_
@@ -6338,6 +6350,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.StunTime
   nameWithType: DamageArgs.StunTime
+- uid: TrinketTinker.Models.AbilityArgs.DamageArgs.TreatAsProjectile
+  name: TreatAsProjectile
+  href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_TreatAsProjectile
+  commentId: P:TrinketTinker.Models.AbilityArgs.DamageArgs.TreatAsProjectile
+  fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.TreatAsProjectile
+  nameWithType: DamageArgs.TreatAsProjectile
+- uid: TrinketTinker.Models.AbilityArgs.DamageArgs.TreatAsProjectile*
+  name: TreatAsProjectile
+  href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_TreatAsProjectile_
+  commentId: Overload:TrinketTinker.Models.AbilityArgs.DamageArgs.TreatAsProjectile
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.TreatAsProjectile
+  nameWithType: DamageArgs.TreatAsProjectile
 - uid: TrinketTinker.Models.AbilityArgs.DamageArgs.Validate
   name: Validate()
   href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_Validate

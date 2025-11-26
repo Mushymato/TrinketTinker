@@ -168,7 +168,7 @@ Class DamageArgs  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="TrinketTinker_Models_AbilityArgs_DamageArgs_Filters" data-uid="TrinketTinker.Models.AbilityArgs.DamageArgs.Filters">
   Filters
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/DamageArgs.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/DamageArgs.cs/#L73"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>List of monster types to avoid targeting.</p>
@@ -653,6 +653,39 @@ Rotation will be overwritten if this is used for a projectile.</p>
 
 
 
+  <a id="TrinketTinker_Models_AbilityArgs_DamageArgs_TreatAsProjectile_" data-uid="TrinketTinker.Models.AbilityArgs.DamageArgs.TreatAsProjectile*"></a>
+
+  <h3 id="TrinketTinker_Models_AbilityArgs_DamageArgs_TreatAsProjectile" data-uid="TrinketTinker.Models.AbilityArgs.DamageArgs.TreatAsProjectile">
+  TreatAsProjectile
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/DamageArgs.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>If this is set, override whether the damage incurred by this is projectile and bypasses barriers.
+Otherwise, default to the damage type dependent value (false for HitscanAbility, true for ProjectileAbility)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? TreatAsProjectile { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -661,7 +694,7 @@ Rotation will be overwritten if this is used for a projectile.</p>
 
   <h3 id="TrinketTinker_Models_AbilityArgs_DamageArgs_DamageMonster_StardewValley_Delegates_GameStateQueryContext_StardewValley_Monsters_Monster_System_Boolean_" data-uid="TrinketTinker.Models.AbilityArgs.DamageArgs.DamageMonster(StardewValley.Delegates.GameStateQueryContext,StardewValley.Monsters.Monster,System.Boolean)">
   DamageMonster(GameStateQueryContext, Monster, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/DamageArgs.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/DamageArgs.cs/#L92"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Do damage and debuff on monster.</p>
@@ -697,7 +730,7 @@ Rotation will be overwritten if this is used for a projectile.</p>
 
   <h3 id="TrinketTinker_Models_AbilityArgs_DamageArgs_Validate" data-uid="TrinketTinker.Models.AbilityArgs.DamageArgs.Validate">
   Validate()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/DamageArgs.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Models/AbilityArgs/DamageArgs.cs/#L76"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if the given arguments are valid, potentially modify arguments to ensure they are valid</p>
