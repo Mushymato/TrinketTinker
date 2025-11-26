@@ -112,6 +112,7 @@
                 "ProcSpeechBubble": "Exclaim",
                 "Args": {
                   "Range": 0,
+                  "Filters": "category_flowers"
                 },
               },
               {
@@ -144,6 +145,7 @@
                 "ProcSpeechBubble": "Exclaim",
                 "Args": {
                   "Range": 0,
+                  "Filters": "category_flowers"
                 },
               },
               {

@@ -239,6 +239,7 @@ public static class EquipTrinket
                 Equip(Game1.player, trinket);
             }
         }
+        FixVanillaDupeCompanions();
     }
 
     internal static void FixVanillaDupeCompanions()

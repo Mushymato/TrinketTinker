@@ -49,8 +49,10 @@ internal sealed class ModEntry : Mod
         helper.Events.Player.Warped += OnPlayerWarped;
         helper.Events.Input.ButtonsChanged += OnButtonsChanged;
         helper.Events.GameLoop.Saving += OnSaving;
-        helper.Events.GameLoop.ReturnedToTitle += OnReturnedToTitle;
+        helper.Events.GameLoop.Saved += OnSaved;
+        helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
         helper.Events.GameLoop.DayStarted += OnDayStarted;
+        helper.Events.GameLoop.ReturnedToTitle += OnReturnedToTitle;
         helper.Events.Multiplayer.ModMessageReceived += OnModMessageReceived;
 
         AssetManager.TAS = new(helper, $"{ModId}/TAS");
@@ -187,12 +189,19 @@ internal sealed class ModEntry : Mod
         EquipTrinket.UnequipHiddenTrinkets(decrement: false);
     }
 
-    private void OnDayStarted(object? sender, DayStartedEventArgs e)
+    private void OnSaved(object? sender, SavedEventArgs e)
     {
         EquipTrinket.ReequipHiddenTrinkets();
-        EquipTrinket.FixVanillaDupeCompanions();
-        GlobalInventoryHandler.UnreachableInventoryCleanup();
+    }
 
+    private void OnSaveLoaded(object? sender, SaveLoadedEventArgs e)
+    {
+        EquipTrinket.ReequipHiddenTrinkets();
+    }
+
+    private void OnDayStarted(object? sender, DayStartedEventArgs e)
+    {
+        GlobalInventoryHandler.UnreachableInventoryCleanup();
         TriggerActionManager.Raise(TinkerDayStarted);
     }
 
@@ -259,11 +268,10 @@ internal sealed class ModEntry : Mod
 
         for (int i = 0; i < 30; i++)
         {
-            Vector2 tilePos =
-                new(
-                    Random.Shared.Next(Game1.currentLocation.map.DisplayWidth / 64),
-                    Random.Shared.Next(Game1.currentLocation.map.DisplayHeight / 64)
-                );
+            Vector2 tilePos = new(
+                Random.Shared.Next(Game1.currentLocation.map.DisplayWidth / 64),
+                Random.Shared.Next(Game1.currentLocation.map.DisplayHeight / 64)
+            );
             Log($"Spawn? {tilePos}");
             SObject forage = (SObject)ItemRegistry.Create("(O)16");
             if (Game1.currentLocation.dropObject(forage, tilePos * 64f, Game1.viewport, initialPlacement: true))
@@ -303,10 +311,14 @@ internal sealed class ModEntry : Mod
             Log(error, LogLevel.Info);
             return;
         }
-        Vector2 currentV =
-            new(current.X * Game1.tileSize + Game1.tileSize / 2, current.Y * Game1.tileSize + Game1.tileSize / 2);
-        Vector2 targetV =
-            new(target.X * Game1.tileSize + Game1.tileSize / 2, target.Y * Game1.tileSize + Game1.tileSize / 2);
+        Vector2 currentV = new(
+            current.X * Game1.tileSize + Game1.tileSize / 2,
+            current.Y * Game1.tileSize + Game1.tileSize / 2
+        );
+        Vector2 targetV = new(
+            target.X * Game1.tileSize + Game1.tileSize / 2,
+            target.Y * Game1.tileSize + Game1.tileSize / 2
+        );
         bool canReach = LerpMotion.CanReachTarget(Game1.currentLocation, currentV, targetV);
         Log($"{currentV} -> {targetV} ({step}): {canReach}");
     }
@@ -343,7 +355,6 @@ internal sealed class ModEntry : Mod
     }
 
     /// Static helper functions
-
     /// <summary>Static SMAPI logger</summary>
     /// <param name="msg"></param>
     /// <param name="level"></param>

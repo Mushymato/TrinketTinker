@@ -57,14 +57,13 @@ internal static class Visuals
     {
         if (AssetManager.TAS.TryGetTASExt(tasId, out TASExt? tasExt))
         {
-            TASContext tasCtx =
-                new(tasExt)
-                {
-                    Pos = position,
-                    OverrideDrawLayer = drawLayer,
-                    OverrideLoops = duration != null ? (int)(duration / (tasExt.Frames * tasExt.Interval)) : null,
-                    OverrideRotation = rotation,
-                };
+            TASContext tasCtx = new(tasExt)
+            {
+                Pos = position,
+                OverrideDrawLayer = drawLayer,
+                OverrideLoops = duration != null ? (int)(duration / (tasExt.Frames * tasExt.Interval)) : null,
+                OverrideRotation = rotation,
+            };
             tasCtx.TryCreate(context, (tas) => Game1.Multiplayer.broadcastSprites(context.Location, tas));
             return true;
         }
@@ -116,24 +115,23 @@ internal static class Visuals
         if (item == null)
             return;
         Vector2 startPos = position + offset;
-        TemporaryAnimatedSprite temporaryAnimatedSprite =
-            new(
-                null,
-                Rectangle.Empty,
-                750f,
-                1,
-                0,
-                startPos,
-                flicker: false,
-                flipped: false,
-                position.Y / 10000f,
-                0.005f,
-                Color.White,
-                1f,
-                -0.005f,
-                0f,
-                0f
-            );
+        TemporaryAnimatedSprite temporaryAnimatedSprite = new(
+            null,
+            Rectangle.Empty,
+            750f,
+            1,
+            0,
+            startPos,
+            flicker: false,
+            flipped: false,
+            position.Y / 10000f,
+            0.005f,
+            Color.White,
+            1f,
+            -0.005f,
+            0f,
+            0f
+        );
         temporaryAnimatedSprite.CopyAppearanceFromItemId(item?.QualifiedItemId);
         temporaryAnimatedSprite.motion.Y = -1f;
         temporaryAnimatedSprite.layerDepth = 1f - Game1.random.Next(100) / 10000f;

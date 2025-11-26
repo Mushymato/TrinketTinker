@@ -1,6 +1,6 @@
 {
   "$schema": "https://smapi.io/schemas/content-patcher.json",
-  "Format": "2.3.0",
+  "Format": "2.8.0",
   "Changes": [
     // trinkets
     {

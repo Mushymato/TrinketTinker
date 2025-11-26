@@ -249,22 +249,20 @@ public sealed class TinkerAnimSprite
     /// <returns></returns>
     public Rectangle GetBoundingBox(Vector2 drawPos, Vector2 drawScale, Vector2 shadowDrawPos, Vector2 shadowScale)
     {
-        Rectangle textureBox =
-            new(
-                (int)(drawPos.X - Origin.X * drawScale.X + Bounding.X * drawScale.X),
-                (int)(drawPos.Y - Origin.Y * drawScale.Y + Bounding.Y * drawScale.Y),
-                (int)(Bounding.Width * drawScale.X),
-                (int)(Bounding.Height * drawScale.Y)
-            );
+        Rectangle textureBox = new(
+            (int)(drawPos.X - Origin.X * drawScale.X + Bounding.X * drawScale.X),
+            (int)(drawPos.Y - Origin.Y * drawScale.Y + Bounding.Y * drawScale.Y),
+            (int)(Bounding.Width * drawScale.X),
+            (int)(Bounding.Height * drawScale.Y)
+        );
         if (shadowScale.X <= 0 && shadowScale.Y <= 0)
             return textureBox;
-        Rectangle shadowBox =
-            new(
-                (int)(shadowDrawPos.X - Game1.shadowTexture.Bounds.Center.X * shadowScale.X),
-                (int)(shadowDrawPos.Y - Game1.shadowTexture.Bounds.Center.Y * shadowScale.Y),
-                (int)(Game1.shadowTexture.Width * shadowScale.X),
-                (int)(Game1.shadowTexture.Height * shadowScale.Y)
-            );
+        Rectangle shadowBox = new(
+            (int)(shadowDrawPos.X - Game1.shadowTexture.Bounds.Center.X * shadowScale.X),
+            (int)(shadowDrawPos.Y - Game1.shadowTexture.Bounds.Center.Y * shadowScale.Y),
+            (int)(Game1.shadowTexture.Width * shadowScale.X),
+            (int)(Game1.shadowTexture.Height * shadowScale.Y)
+        );
         return Rectangle.Union(textureBox, shadowBox);
     }
 

@@ -696,19 +696,18 @@ public abstract class Motion<TArgs> : IMotion
 
         Vector2 drawPos = c.Position + c.Owner.drawOffset + offset;
         Vector2 scale = GetTextureScale();
-        DrawSnapshot snapshot =
-            new(
-                cs.Texture,
-                drawPos,
-                cs.SourceRect,
-                cs.DrawColor,
-                GetRotation(),
-                cs.Origin,
-                scale,
-                cs.Flip ^ ((c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None),
-                layerDepth,
-                CurrentFrame: cs.currentFrame
-            );
+        DrawSnapshot snapshot = new(
+            cs.Texture,
+            drawPos,
+            cs.SourceRect,
+            cs.DrawColor,
+            GetRotation(),
+            cs.Origin,
+            scale,
+            cs.Flip ^ ((c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None),
+            layerDepth,
+            CurrentFrame: cs.currentFrame
+        );
         DrawCompanion(b, snapshot);
         if (cs.Breather != null)
         {
@@ -721,23 +720,22 @@ public abstract class Motion<TArgs> : IMotion
                         )
                     ) / 4f
             );
-            DrawSnapshot breatherSnapshot =
+            DrawSnapshot breatherSnapshot = new(
+                cs.Texture,
+                drawPos + cs.Breather.Pos,
                 new(
-                    cs.Texture,
-                    drawPos + cs.Breather.Pos,
-                    new(
-                        cs.SourceRect.X + cs.Breather.Rect.X,
-                        cs.SourceRect.Y + cs.Breather.Rect.Y,
-                        cs.Breather.Rect.Width,
-                        cs.Breather.Rect.Height
-                    ),
-                    cs.DrawColor,
-                    GetRotation(),
-                    new(cs.Breather.Rect.Width / 2, cs.Breather.Rect.Height / 2 + 1),
-                    new(scale.X + breathing, scale.Y + breathing),
-                    cs.Flip ^ ((c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None),
-                    layerDepth + Visuals.LAYER_OFFSET / 2
-                );
+                    cs.SourceRect.X + cs.Breather.Rect.X,
+                    cs.SourceRect.Y + cs.Breather.Rect.Y,
+                    cs.Breather.Rect.Width,
+                    cs.Breather.Rect.Height
+                ),
+                cs.DrawColor,
+                GetRotation(),
+                new(cs.Breather.Rect.Width / 2, cs.Breather.Rect.Height / 2 + 1),
+                new(scale.X + breathing, scale.Y + breathing),
+                cs.Flip ^ ((c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None),
+                layerDepth + Visuals.LAYER_OFFSET / 2
+            );
             DrawCompanionBreathing(b, breatherSnapshot);
         }
 
@@ -746,18 +744,17 @@ public abstract class Motion<TArgs> : IMotion
         if (shadowScale.X > 0 || shadowScale.Y > 0)
         {
             shadowDrawPos = c.Position + c.Owner.drawOffset + GetShadowOffset(offset);
-            DrawSnapshot shadowSnapshot =
-                new(
-                    Game1.shadowTexture,
-                    shadowDrawPos,
-                    Game1.shadowTexture.Bounds,
-                    Color.White,
-                    0f,
-                    new Vector2(Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y),
-                    shadowScale,
-                    SpriteEffects.None,
-                    layerDepth - Visuals.LAYER_OFFSET
-                );
+            DrawSnapshot shadowSnapshot = new(
+                Game1.shadowTexture,
+                shadowDrawPos,
+                Game1.shadowTexture.Bounds,
+                Color.White,
+                0f,
+                new Vector2(Game1.shadowTexture.Bounds.Center.X, Game1.shadowTexture.Bounds.Center.Y),
+                shadowScale,
+                SpriteEffects.None,
+                layerDepth - Visuals.LAYER_OFFSET
+            );
             DrawShadow(b, shadowSnapshot);
         }
 

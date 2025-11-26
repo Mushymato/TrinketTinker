@@ -143,13 +143,12 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
 public sealed class HarvestStoneAbility(TrinketTinkerEffect effect, AbilityData data, int level)
     : BaseHarvestAbility<HarvestArgs>(effect, data, level)
 {
-    private static readonly Lazy<Pickaxe> fakeTool =
-        new(() =>
-        {
-            Pickaxe tool = new() { UpgradeLevel = UPGRADE_LEVEL };
-            tool.isEfficient.Value = true;
-            return tool;
-        });
+    private static readonly Lazy<Pickaxe> fakeTool = new(() =>
+    {
+        Pickaxe tool = new() { UpgradeLevel = UPGRADE_LEVEL };
+        tool.isEfficient.Value = true;
+        return tool;
+    });
 
     /// <inheritdocs/>
     protected override bool ProbeTile(GameLocation location, Vector2 tile)
@@ -181,13 +180,12 @@ public sealed class HarvestStoneAbility(TrinketTinkerEffect effect, AbilityData 
 public sealed class HarvestTwigAbility(TrinketTinkerEffect effect, AbilityData data, int level)
     : BaseHarvestAbility<HarvestArgs>(effect, data, level)
 {
-    private static readonly Lazy<Axe> fakeTool =
-        new(() =>
-        {
-            Axe tool = new() { UpgradeLevel = UPGRADE_LEVEL };
-            tool.isEfficient.Value = true;
-            return tool;
-        });
+    private static readonly Lazy<Axe> fakeTool = new(() =>
+    {
+        Axe tool = new() { UpgradeLevel = UPGRADE_LEVEL };
+        tool.isEfficient.Value = true;
+        return tool;
+    });
 
     /// <inheritdocs/>
     protected override bool ProbeTile(GameLocation location, Vector2 tile)
@@ -252,12 +250,11 @@ public sealed class HarvestWeedAbility(TrinketTinkerEffect effect, AbilityData d
 public sealed class HarvestDigSpotAbility(TrinketTinkerEffect effect, AbilityData data, int level)
     : BaseHarvestAbility<HarvestArgs>(effect, data, level)
 {
-    private static readonly Lazy<Hoe> fakeTool =
-        new(() =>
-        {
-            Hoe tool = new() { UpgradeLevel = UPGRADE_LEVEL };
-            return tool;
-        });
+    private static readonly Lazy<Hoe> fakeTool = new(() =>
+    {
+        Hoe tool = new() { UpgradeLevel = UPGRADE_LEVEL };
+        return tool;
+    });
 
     /// <inheritdocs/>
     protected override bool ProbeTile(GameLocation location, Vector2 tile)

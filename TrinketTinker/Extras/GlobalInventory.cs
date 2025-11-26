@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewValley;
+using StardewValley.GameData.HomeRenovations;
 using StardewValley.Inventories;
 using StardewValley.Menus;
 using StardewValley.Objects.Trinkets;
@@ -18,6 +19,9 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
     private const int TITLE_TM = 20;
 
     public Action<int>? pageMethod;
+
+    public ClickableTextureComponent Btn_L;
+    public ClickableTextureComponent Btn_R;
 
     public TinkerInventoryMenu(
         int actualCapacity,
@@ -135,15 +139,34 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
             is ClickableComponent clickableComponent
         )
         {
-            if (organizeButton != null)
-            {
-                organizeButton.leftNeighborID = clickableComponent.myID;
-            }
-            if (fillStacksButton != null)
-            {
-                fillStacksButton.leftNeighborID = clickableComponent.myID;
-            }
+            organizeButton?.leftNeighborID = clickableComponent.myID;
+            fillStacksButton?.leftNeighborID = clickableComponent.myID;
         }
+
+        Btn_L = new(
+            new Rectangle(
+                ItemsToGrabMenu.xPositionOnScreen - borderWidth - spaceToClearSideBorder - 64,
+                ItemsToGrabMenu.yPositionOnScreen,
+                64,
+                64
+            ),
+            Game1.mouseCursors,
+            new Rectangle(0, 256, 64, 64),
+            1f,
+            drawShadow: false
+        );
+        Btn_R = new(
+            new Rectangle(
+                ItemsToGrabMenu.xPositionOnScreen + ItemsToGrabMenu.width + borderWidth + spaceToClearSideBorder,
+                ItemsToGrabMenu.yPositionOnScreen,
+                64,
+                64
+            ),
+            Game1.mouseCursors,
+            new Rectangle(0, 192, 64, 64),
+            1f,
+            drawShadow: false
+        );
     }
 
     /// <summary>Render the UI, draw the trinket item that spawned this menu</summary>
@@ -200,6 +223,12 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
             1f
         );
 
+        if (pageMethod != null && !Game1.options.snappyMenus)
+        {
+            Btn_L.draw(b);
+            Btn_R.draw(b);
+        }
+
         bool drawBGOrig = drawBG;
         drawBG = false;
         drawMethod(b);
@@ -212,6 +241,17 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
         {
             organizeItemsInList(ItemsToGrabMenu.actualInventory);
             Game1.playSound("Ship");
+        }
+        else if (pageMethod != null)
+        {
+            if (Btn_L.containsPoint(x, y))
+            {
+                pageMethod(-1);
+            }
+            else if (Btn_R.containsPoint(x, y))
+            {
+                pageMethod(1);
+            }
         }
         else
         {
@@ -270,20 +310,37 @@ internal sealed class GlobalInventoryHandler
         page = pagedInfo.Count > 0 ? 0 : -1;
     }
 
-    internal TinkerInventoryMenu? GetMenu()
+    internal ItemGrabMenu? GetMenu()
     {
         if (page >= pagedInfo.Count)
             return null;
-        return new TinkerInventoryMenu(
-            Data.Capacity,
-            TrinketInv,
-            CanPage ? MovePage : null,
-            HighlightFunction,
-            BehaviorOnItemSelectFunction,
-            FullInventoryId,
-            BehaviorOnItemGrab,
-            sourceItem: Effect.Trinket
-        );
+        if (Constants.TargetPlatform == GamePlatform.Android)
+        {
+            return new ItemGrabMenu(
+                inventory: TrinketInv,
+                reverseGrab: false,
+                showReceivingMenu: true,
+                highlightFunction: HighlightFunction,
+                behaviorOnItemSelectFunction: BehaviorOnItemSelectFunction,
+                message: FullInventoryId,
+                behaviorOnItemGrab: BehaviorOnItemGrab,
+                canBeExitedWithKey: true,
+                sourceItem: Effect.Trinket
+            );
+        }
+        else
+        {
+            return new TinkerInventoryMenu(
+                Data.Capacity,
+                TrinketInv,
+                CanPage ? MovePage : null,
+                HighlightFunction,
+                BehaviorOnItemSelectFunction,
+                FullInventoryId,
+                BehaviorOnItemGrab,
+                sourceItem: Effect.Trinket
+            );
+        }
     }
 
     private void MovePage(int count = 1)
@@ -295,7 +352,7 @@ internal sealed class GlobalInventoryHandler
             page = 0;
         else
             page = newPage;
-        TinkerInventoryMenu menu = GetMenu()!;
+        ItemGrabMenu menu = GetMenu()!;
         Game1.activeClickableMenu = menu;
     }
 
@@ -375,7 +432,7 @@ internal sealed class GlobalInventoryHandler
             (Game1.activeClickableMenu.currentlySnappedComponent != null)
                 ? Game1.activeClickableMenu.currentlySnappedComponent.myID
                 : (-1);
-        TinkerInventoryMenu menu = GetMenu()!;
+        ItemGrabMenu menu = GetMenu()!;
         Game1.activeClickableMenu = menu;
         menu.heldItem = item2;
         if (num != -1)

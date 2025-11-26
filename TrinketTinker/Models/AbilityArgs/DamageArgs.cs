@@ -63,6 +63,12 @@ public class DamageArgs : IArgs
     /// </summary>
     public int ExplodeRadius { get; set; } = 0;
 
+    /// <summary>
+    /// If this is set, override whether the damage incurred by this is projectile and bypasses barriers.
+    /// Otherwise, default to the damage type dependent value (false for HitscanAbility, true for ProjectileAbility)
+    /// </summary>
+    public bool? TreatAsProjectile { get; set; } = null;
+
     /// <summary>List of monster types to avoid targeting.</summary>
     public List<string>? Filters = null;
 
@@ -85,6 +91,7 @@ public class DamageArgs : IArgs
     /// <param name="target"></param>
     public void DamageMonster(GameStateQueryContext context, Monster target, bool isProjectile)
     {
+        isProjectile = TreatAsProjectile ?? isProjectile;
         Vector2 pos = target.GetBoundingBox().Center.ToVector2();
         float drawLayer = pos.Y / 10000f + Visuals.LAYER_OFFSET;
         if (Min > 0)

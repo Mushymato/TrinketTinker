@@ -46,11 +46,6 @@
       "LocalTokens": {
         "L@TinkerTarget": "{{ModId}}_Krobus",
       }
-    },
-    // test
-    {
-      "Action": "Include",
-      "FromFile": "data/xavier.json"
     }
   ]
 }
