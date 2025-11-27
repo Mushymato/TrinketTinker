@@ -98,6 +98,7 @@ public sealed class TinkerAnimSprite
             }
         }
     }
+    internal HatPositionData? HatPosition;
 
     private double timer = 0f;
     internal int currentFrame = 0;
@@ -221,6 +222,7 @@ public sealed class TinkerAnimSprite
             (vd.ShowBreathing ?? fullVd.ShowBreathing ?? false)
                 ? GetBreatherPositionAndRectangle(Width, Height, vd.NPC ?? fullVd.NPC)
                 : null;
+        HatPosition = vd.HatPosition ?? fullVd.HatPosition;
         return TextureBase;
     }
 

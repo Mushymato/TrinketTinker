@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
-using StardewModdingAPI;
+using Netcode;
 using StardewValley;
 using StardewValley.Menus;
 
@@ -46,19 +46,8 @@ internal static class Reflect
 
     /// Android Compat Nonsense
     /// Broken code in TrinketTinker.dll:
-    //      reference to StardewValley.ISoundBank.Exists (no such method)
     //      reference to StardewValley.Menus.InventoryMenu.SetPosition (no such method)
     //      reference to StardewValley.Menus.ItemGrabMenu.storageSpaceTopBorderOffset (no such field).
-
-    internal static readonly MethodInfo? SoundBank_Exists = typeof(ISoundBank).GetMethod(
-        "Exists",
-        BindingFlags.Public | BindingFlags.Instance
-    );
-
-    internal static bool Try_SoundBank_Exists(ISoundBank soundBank, string CueName)
-    {
-        return (bool?)SoundBank_Exists?.Invoke(soundBank, [CueName]) ?? true;
-    }
 
     internal static readonly MethodInfo? InventoryMenu_SetPosition = typeof(InventoryMenu).GetMethod(
         "SetPosition",
@@ -87,5 +76,19 @@ internal static class Reflect
     internal static void Try_ItemGrabMenu_storageSpaceTopBorderOffset_Set(ItemGrabMenu itemGrabMenu, int newValue)
     {
         ItemGrabMenu_storageSpaceTopBorderOffset?.SetValue(itemGrabMenu, newValue);
+    }
+
+    internal static readonly FieldInfo? Farmer_currentToolIndex = typeof(Farmer).GetField(
+        "currentToolIndex",
+        BindingFlags.NonPublic | BindingFlags.Instance
+    );
+
+    internal static NetInt? Try_Farmer_currentToolIndex(Farmer farmer)
+    {
+        if (Farmer_currentToolIndex?.GetValue(farmer) is NetInt currentToolIndex)
+        {
+            return currentToolIndex;
+        }
+        return null;
     }
 }

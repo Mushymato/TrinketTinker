@@ -1,5 +1,6 @@
 using System.Collections.Immutable;
 using Microsoft.Xna.Framework;
+using Netcode;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewModdingAPI.Utilities;
@@ -228,6 +229,7 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
     internal event EventHandler<ProcEventArgs>? EventTrigger;
     internal event EventHandler<ProcEventArgs>? EventPlayerWarped;
     internal event EventHandler<ProcEventArgs>? EventInteract;
+    internal event EventHandler<ProcEventArgs>? EventToolChange;
 
     /// <summary>Setup a single ability</summary>
     /// <param name="ab"></param>
@@ -379,6 +381,13 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
         // Only activate ability for local player
         if (Game1.player != farmer)
             return;
+
+        // Hook tool changed
+        if (Reflect.Try_Farmer_currentToolIndex(farmer) is NetInt currentToolIndex)
+        {
+            currentToolIndex.fieldChangeVisibleEvent += OnCurrentToolIndexChange;
+        }
+
         abilities = InitAbilities();
         IsDirty.Value = false;
         ApplyAbilities(farmer);
@@ -412,6 +421,13 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
 
         if (farmer != Game1.player)
             return;
+
+        // Unhook tool changed
+        if (Reflect.Try_Farmer_currentToolIndex(farmer) is NetInt currentToolIndex)
+        {
+            currentToolIndex.fieldChangeVisibleEvent -= OnCurrentToolIndexChange;
+        }
+
         UnapplyAbilities(farmer);
         abilities = null;
     }
@@ -505,6 +521,12 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
         EventTrigger?.Invoke(this, new(ProcOn.Trigger, farmer) { TriggerArgs = args, TriggerContext = context });
     }
 
+    /// <summary>
+    /// Handle player warping using SMAPI events
+    /// </summary>
+    /// <param name="farmer"></param>
+    /// <param name="oldLocation"></param>
+    /// <param name="newLocation"></param>
     public virtual void OnPlayerWarped(Farmer farmer, GameLocation oldLocation, GameLocation newLocation)
     {
         if (!Enabled)
@@ -514,6 +536,10 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
         inCombatTimer = 0;
     }
 
+    /// <summary>
+    /// Handle player interaction
+    /// </summary>
+    /// <param name="farmer"></param>
     public virtual void OnInteract(Farmer farmer)
     {
         if (!Enabled || Game1.activeClickableMenu != null || farmer.UsingTool || farmer.usingSlingshot)
@@ -522,6 +548,17 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
         {
             EventInteract?.Invoke(this, new(ProcOn.Interact, farmer));
         }
+    }
+
+    /// <summary>
+    /// Handle current tool index change
+    /// </summary>
+    /// <param name="field"></param>
+    /// <param name="oldValue"></param>
+    /// <param name="newValue"></param>
+    private void OnCurrentToolIndexChange(NetInt field, int oldValue, int newValue)
+    {
+        EventToolChange?.Invoke(this, new(ProcOn.ToolChange, Game1.player));
     }
 
     /// <summary>Update every tick. Not an event because this happens for every ability regardless of <see cref="ProcOn"/>.</summary>
@@ -690,7 +727,6 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
                 variantData.TrinketNameArguments.Select((txt) => TokenParser.ParseText(txt) ?? txt).ToArray()
             );
         }
-
         return true;
     }
 

@@ -2,7 +2,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StardewValley.BellsAndWhistles;
+using StardewValley.ItemTypeDefinitions;
 using StardewValley.Monsters;
+using StardewValley.Objects;
 using StardewValley.Objects.Trinkets;
 using StardewValley.TerrainFeatures;
 using StardewValley.TokenizableStrings;
@@ -696,15 +698,18 @@ public abstract class Motion<TArgs> : IMotion
 
         Vector2 drawPos = c.Position + c.Owner.drawOffset + offset;
         Vector2 scale = GetTextureScale();
+        float rotation = GetRotation();
+        SpriteEffects spriteEffects =
+            cs.Flip ^ ((c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
         DrawSnapshot snapshot = new(
             cs.Texture,
             drawPos,
             cs.SourceRect,
             cs.DrawColor,
-            GetRotation(),
+            rotation,
             cs.Origin,
             scale,
-            cs.Flip ^ ((c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None),
+            spriteEffects,
             layerDepth,
             CurrentFrame: cs.currentFrame
         );
@@ -730,13 +735,41 @@ public abstract class Motion<TArgs> : IMotion
                     cs.Breather.Rect.Height
                 ),
                 cs.DrawColor,
-                GetRotation(),
+                rotation,
                 new(cs.Breather.Rect.Width / 2, cs.Breather.Rect.Height / 2 + 1),
                 new(scale.X + breathing, scale.Y + breathing),
-                cs.Flip ^ ((c.direction.Value < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None),
+                spriteEffects,
                 layerDepth + Visuals.LAYER_OFFSET / 2
             );
             DrawCompanionBreathing(b, breatherSnapshot);
+        }
+
+        if (cs.HatPosition != null && c.Owner.hat.Value is Hat srcHat)
+        {
+            ParsedItemData dataOrErrorItem = ItemRegistry.GetDataOrErrorItem(srcHat.QualifiedItemId);
+            Texture2D hatTexture = dataOrErrorItem.GetTexture();
+            int hatIndex = dataOrErrorItem.SpriteIndex;
+            int hatDirection = HatDirection();
+            DrawSnapshot hatDrawSnapshot = new(
+                dataOrErrorItem.GetTexture(),
+                drawPos + GetHatOffset(cs.HatPosition),
+                (!dataOrErrorItem.IsErrorItem)
+                    ? new Rectangle(
+                        hatIndex * 20 % hatTexture.Width,
+                        hatIndex * 20 / hatTexture.Width * 20 * 4 + hatDirection * 20,
+                        20,
+                        20
+                    )
+                    : dataOrErrorItem.GetSourceRect(),
+                srcHat.isPrismatic.Value ? Utility.GetPrismaticColor() : Color.White,
+                rotation,
+                cs.Origin,
+                scale,
+                spriteEffects,
+                layerDepth + Visuals.LAYER_OFFSET / 2
+            );
+            hatDrawSnapshot.Draw(b);
+            EnqueueRepeatDraws(hatDrawSnapshot, false);
         }
 
         Vector2 shadowScale = GetShadowScale();
@@ -758,7 +791,7 @@ public abstract class Motion<TArgs> : IMotion
             DrawShadow(b, shadowSnapshot);
         }
 
-        // bounding box
+        // debug bounding box
         BoundingBox = cs.GetBoundingBox(drawPos, scale, shadowDrawPos, shadowScale);
         if (ModEntry.Config.DrawDebugMode)
         {
@@ -956,10 +989,78 @@ public abstract class Motion<TArgs> : IMotion
                         return posDirection.X < 0;
                 }
                 break;
-            default:
-                return false;
         }
         return false;
+    }
+
+    public int HatDirection()
+    {
+        int direction = c.direction.Value;
+        switch (md.DirectionMode)
+        {
+            case DirectionMode.DRUL:
+                switch (direction)
+                {
+                    case 1:
+                        return 0;
+                    case 2:
+                        return 1;
+                    case 3:
+                        return 3;
+                    case 4:
+                        return 2;
+                }
+                break;
+            case DirectionMode.DRU:
+                switch (direction)
+                {
+                    case 1:
+                        return 0;
+                    case 2:
+                        return 1;
+                    case 3:
+                        return 3;
+                    case -2:
+                        return 2;
+                }
+                break;
+            case DirectionMode.RL:
+                switch (direction)
+                {
+                    case 1:
+                        return 2;
+                    case 2:
+                        return 3;
+                }
+                break;
+            case DirectionMode.R:
+                switch (direction)
+                {
+                    case 1:
+                        return 2;
+                    case -1:
+                        return 3;
+                }
+                break;
+        }
+        return 1;
+    }
+
+    public Vector2 GetHatOffset(HatPositionData hatPosition)
+    {
+        if (hatPosition.Frame?.TryGetValue(cs.currentFrame, out Vector2 offset) ?? false)
+        {
+            return offset;
+        }
+        if (currentClipKey != null && (hatPosition.AnimClip?.TryGetValue(currentClipKey, out offset) ?? false))
+        {
+            return offset;
+        }
+        if (hatPosition.Direction?.TryGetValue(c.direction.Value, out offset) ?? false)
+        {
+            return offset;
+        }
+        return hatPosition.Default;
     }
 
     /// <summary>First frame of animation, depending on direction.</summary>

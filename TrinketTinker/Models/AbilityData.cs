@@ -32,11 +32,14 @@ public enum ProcOn
     /// <summary>Proc on trigger action.</summary>
     Trigger,
 
-    /// <summary>Proc on when player changes map.</summary>
+    /// <summary>Proc on player changes map.</summary>
     Warped,
 
-    /// <summary>Proc on when player interacts.</summary>
+    /// <summary>Proc on player interacts.</summary>
     Interact,
+
+    /// <summary>Proc on tool index change.</summary>
+    ToolChange,
 }
 
 /// <summary>Proc sound data</summary>
@@ -54,7 +57,7 @@ public sealed class ProcSoundData
     {
         if (!string.IsNullOrEmpty(CueName))
         {
-            if (Reflect.Try_SoundBank_Exists(Game1.soundBank, CueName))
+            if (Game1.soundBank.Exists(CueName))
             {
                 Game1.playSound(CueName, 0, out ICue sound);
                 // weird Pitch nonsense

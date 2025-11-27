@@ -75,7 +75,15 @@ public sealed class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
             )
                 return false;
         }
-        GSQContext = new(LocationOrCurrent, Farmer, e.Trinket, e.Trinket, null, null, []);
+        GSQContext = new(
+            LocationOrCurrent,
+            Farmer,
+            (Proc == ProcOn.ToolChange ? farmer.ActiveItem : null) ?? e.Trinket,
+            e.Trinket,
+            null,
+            null,
+            []
+        );
         GSQContext.CustomFields[TinkerConst.CustomFields_Data] = data;
         GSQContext.CustomFields[TinkerConst.CustomFields_Position] = e.CompanionPosition;
         GSQContext.CustomFields[TinkerConst.CustomFields_PosOff] = e.CompanionPosOff;

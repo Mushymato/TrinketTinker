@@ -20,6 +20,33 @@ public class LightSourceData
     public string? Color { get; set; } = null;
 }
 
+public enum HatSourceMode
+{
+    MatchOwner = 0,
+}
+
+/// <summary>Data for defining the position of the companion's head, for hat purposes.</summary>
+public class HatPositionData
+{
+    /// <summary>The default hat offset.</summary>
+    public Vector2 Default { get; set; } = Vector2.Zero;
+
+    /// <summary>
+    /// Overrides on hat position for particular frames.
+    /// The key can accept these formats and will check the current frame for fulfillment.
+    /// - literal frame number, like 29
+    /// - an anim clip key
+    /// - a direction, d1 d2 d3 d4 d-1 and so on
+    /// </summary>
+    public Dictionary<int, Vector2>? Frame { get; set; } = null;
+
+    public Dictionary<string, Vector2>? AnimClip { get; set; } = null;
+
+    public Dictionary<int, Vector2>? Direction { get; set; } = null;
+
+    public HatSourceMode Source { get; set; } = HatSourceMode.MatchOwner;
+}
+
 public interface IVariantData
 {
     /// <summary>Variant texture content path.</summary>
@@ -63,6 +90,9 @@ public interface IVariantData
 
     /// <summary>Show NPC breathing, only usable if NPC is a real NPC with standard 16x32 or smaller sprite.</summary>
     public bool? ShowBreathing { get; set; }
+
+    /// <summary>Hat position data, for giving the companion hats.</summary>
+    public HatPositionData? HatPosition { get; set; }
 }
 
 /// <summary>Additional variant data, kind of like NPC appearance</summary>
@@ -109,6 +139,9 @@ public class AltVariantData : IVariantData
 
     /// <inheritdoc/>
     public bool? ShowBreathing { get; set; } = null;
+
+    /// <inheritdoc/>
+    public HatPositionData? HatPosition { get; set; } = null;
 
     /// <summary>Game state query condition</summary>
     public string? Condition { get; set; } = null;
@@ -161,6 +194,9 @@ public sealed class VariantData : IVariantData
 
     /// <inheritdoc/>
     public bool? ShowBreathing { get; set; } = true;
+
+    /// <inheritdoc/>
+    public HatPositionData? HatPosition { get; set; } = null;
 
     /// <summary>If set, add a light with given radius. Note that the light is only visible to local player.</summary>
     public LightSourceData? LightSource { get; set; } = null;
