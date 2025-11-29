@@ -58,7 +58,16 @@
             {
               "Texture": "Mods/{{ModId}}/dustspirit_1",
               "Width": 16,
-              "Height": 16
+              "Height": 16,
+              "HatPosition": {
+                "OffsetDefault": "-8,-20",
+                "DirectionToHatFrame": {
+                  "1": 0,
+                  "-1": 0
+                },
+                "ModifyScale": 0.8,
+                "Source": "Given"
+              }
             },
           ],
           "Motion": {

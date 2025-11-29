@@ -744,32 +744,46 @@ public abstract class Motion<TArgs> : IMotion
             DrawCompanionBreathing(b, breatherSnapshot);
         }
 
-        if (cs.HatPosition != null && c.Owner.hat.Value is Hat srcHat)
+        if (cs.HatPosition != null)
         {
-            ParsedItemData dataOrErrorItem = ItemRegistry.GetDataOrErrorItem(srcHat.QualifiedItemId);
-            Texture2D hatTexture = dataOrErrorItem.GetTexture();
-            int hatIndex = dataOrErrorItem.SpriteIndex;
-            int hatDirection = HatDirection();
-            DrawSnapshot hatDrawSnapshot = new(
-                dataOrErrorItem.GetTexture(),
-                drawPos + GetHatOffset(cs.HatPosition),
-                (!dataOrErrorItem.IsErrorItem)
-                    ? new Rectangle(
-                        hatIndex * 20 % hatTexture.Width,
-                        hatIndex * 20 / hatTexture.Width * 20 * 4 + hatDirection * 20,
-                        20,
-                        20
-                    )
-                    : dataOrErrorItem.GetSourceRect(),
-                srcHat.isPrismatic.Value ? Utility.GetPrismaticColor() : Color.White,
-                rotation,
-                cs.Origin,
-                scale,
-                spriteEffects,
-                layerDepth + Visuals.LAYER_OFFSET / 2
-            );
-            hatDrawSnapshot.Draw(b);
-            EnqueueRepeatDraws(hatDrawSnapshot, false);
+            bool isPrismatic = false;
+            ParsedItemData? hatData = null;
+            if (cs.HatPosition.Source == HatSourceMode.Owner && c.Owner.hat.Value is Hat ownerHat)
+            {
+                hatData = ItemRegistry.GetData(ownerHat.QualifiedItemId);
+                isPrismatic = ownerHat.isPrismatic.Value;
+            }
+            else if (cs.HatPosition.Source == HatSourceMode.Given && c.GivenHat is Hat givenHat)
+            {
+                hatData = ItemRegistry.GetData(givenHat.QualifiedItemId);
+                isPrismatic = givenHat.isPrismatic.Value;
+            }
+            if (hatData != null)
+            {
+                Texture2D hatTexture = hatData.GetTexture();
+                int hatIndex = hatData.SpriteIndex;
+                int hatFrame = HatFrame();
+                DrawSnapshot hatDrawSnapshot = new(
+                    hatData.GetTexture(),
+                    drawPos + GetHatOffset(cs.HatPosition),
+                    (!hatData.IsErrorItem)
+                        ? new Rectangle(
+                            hatIndex * 20 % hatTexture.Width,
+                            hatIndex * 20 / hatTexture.Width * 20 * 4 + hatFrame * 20,
+                            20,
+                            20
+                        )
+                        : hatData.GetSourceRect(),
+                    isPrismatic ? Utility.GetPrismaticColor() : Color.White,
+                    rotation,
+                    cs.Origin,
+                    scale * cs.HatPosition.ModifyScale,
+                    spriteEffects,
+                    layerDepth + Visuals.LAYER_OFFSET / 2
+                );
+                hatDrawSnapshot.Draw(b);
+                EnqueueRepeatDraws(hatDrawSnapshot, false);
+            }
         }
 
         Vector2 shadowScale = GetShadowScale();
@@ -993,8 +1007,12 @@ public abstract class Motion<TArgs> : IMotion
         return false;
     }
 
-    public int HatDirection()
+    public int HatFrame()
     {
+        if (cs.HatPosition?.DirectionToHatFrame?.TryGetValue(c.direction.Value, out int hatFrame) ?? false)
+        {
+            return hatFrame;
+        }
         int direction = c.direction.Value;
         switch (md.DirectionMode)
         {
@@ -1048,19 +1066,15 @@ public abstract class Motion<TArgs> : IMotion
 
     public Vector2 GetHatOffset(HatPositionData hatPosition)
     {
-        if (hatPosition.Frame?.TryGetValue(cs.currentFrame, out Vector2 offset) ?? false)
+        if (hatPosition.OffsetOnFrame?.TryGetValue(cs.currentFrame, out Vector2 offset) ?? false)
         {
             return offset;
         }
-        if (currentClipKey != null && (hatPosition.AnimClip?.TryGetValue(currentClipKey, out offset) ?? false))
+        if (hatPosition.OffsetOnDirection?.TryGetValue(c.direction.Value, out offset) ?? false)
         {
             return offset;
         }
-        if (hatPosition.Direction?.TryGetValue(c.direction.Value, out offset) ?? false)
-        {
-            return offset;
-        }
-        return hatPosition.Default;
+        return hatPosition.OffsetDefault;
     }
 
     /// <summary>First frame of animation, depending on direction.</summary>

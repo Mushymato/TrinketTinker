@@ -22,29 +22,30 @@ public class LightSourceData
 
 public enum HatSourceMode
 {
-    MatchOwner = 0,
+    Owner = 0,
+    Given = 1,
 }
 
 /// <summary>Data for defining the position of the companion's head, for hat purposes.</summary>
 public class HatPositionData
 {
     /// <summary>The default hat offset.</summary>
-    public Vector2 Default { get; set; } = Vector2.Zero;
+    public Vector2 OffsetDefault { get; set; } = Vector2.Zero;
 
-    /// <summary>
-    /// Overrides on hat position for particular frames.
-    /// The key can accept these formats and will check the current frame for fulfillment.
-    /// - literal frame number, like 29
-    /// - an anim clip key
-    /// - a direction, d1 d2 d3 d4 d-1 and so on
-    /// </summary>
-    public Dictionary<int, Vector2>? Frame { get; set; } = null;
+    /// <summary>Offset on hat position for particular frames.</summary>
+    public Dictionary<int, Vector2>? OffsetOnFrame { get; set; } = null;
 
-    public Dictionary<string, Vector2>? AnimClip { get; set; } = null;
+    /// <summary>Offset on hat position for particular companion direction.</summary>
+    public Dictionary<int, Vector2>? OffsetOnDirection { get; set; } = null;
 
-    public Dictionary<int, Vector2>? Direction { get; set; } = null;
+    /// <summary>Set which hat frame (0 1 2 3) should match the trinket companion direction.</summary>
+    public Dictionary<int, int>? DirectionToHatFrame { get; set; } = null;
 
-    public HatSourceMode Source { get; set; } = HatSourceMode.MatchOwner;
+    /// <summary>Modifies the hat's draw scale</summary>
+    public float ModifyScale { get; set; } = 1f;
+
+    /// <summary>Where does the hat come from?</summary>
+    public HatSourceMode Source { get; set; } = HatSourceMode.Owner;
 }
 
 public interface IVariantData

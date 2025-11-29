@@ -40,7 +40,7 @@
                 "{{i18n:Skull.DisplayName.Arg.0}}",
               ],
               "HatPosition": {
-                "Direction": {
+                "OffsetOnDirection": {
                   "1": "-10,-23",
                   "2": "-8,-20",
                   "3": "-10,-23",
@@ -55,7 +55,15 @@
               "TrinketSpriteIndex": 1,
               "TrinketNameArguments": [
                 "{{i18n:Skull.DisplayName.Arg.1}}",
-              ]
+              ],
+              "HatPosition": {
+                "OffsetOnDirection": {
+                  "1": "-10,-23",
+                  "2": "-8,-20",
+                  "3": "-10,-23",
+                  "4": "-8,-20",
+                }
+              }
             },
           ],
           "Motion": {

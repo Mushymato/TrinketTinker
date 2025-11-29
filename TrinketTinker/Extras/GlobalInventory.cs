@@ -5,7 +5,10 @@ using StardewValley;
 using StardewValley.GameData.HomeRenovations;
 using StardewValley.Inventories;
 using StardewValley.Menus;
+using StardewValley.Network;
+using StardewValley.Objects;
 using StardewValley.Objects.Trinkets;
+using TrinketTinker.Companions;
 using TrinketTinker.Effects;
 using TrinketTinker.Models;
 using TrinketTinker.Wheels;
@@ -263,6 +266,12 @@ public sealed class TinkerInventoryMenu : ItemGrabMenu
 /// <summary>Handler for inventory, does not use mutext (yet) because each trinket has a unique global inventory</summary>
 internal sealed class GlobalInventoryHandler
 {
+    /// <summary>Hat global inventory</summary>
+    public const string GlobalHatInventory = $"{ModEntry.ModId}@Hats";
+
+    /// <summary>Hat global inventory</summary>
+    public const string ModData_HatGivenTo = $"{ModEntry.ModId}/GivenTo";
+
     /// <summary>
     /// Holds info about the current inventory
     /// </summary>
@@ -453,6 +462,69 @@ internal sealed class GlobalInventoryHandler
         }
     }
 
+    internal static bool SwapHat(Farmer farmer, TrinketTinkerCompanion companion, string invId)
+    {
+        if (farmer.Items.Count <= farmer.CurrentToolIndex || farmer.Items[farmer.CurrentToolIndex] is not Hat newHat)
+            return false;
+
+        Game1
+            .player.team.GetOrCreateGlobalInventoryMutex(GlobalHatInventory)
+            .RequestLock(() =>
+            {
+                Inventory hatInv = Game1.player.team.GetOrCreateGlobalInventory(GlobalHatInventory);
+                if (companion.GivenHat != null)
+                {
+                    hatInv.Remove(companion.GivenHat);
+                    companion.GivenHat.modData.Remove(ModData_HatGivenTo);
+                    Game1.createItemDebris(companion.GivenHat, companion.Position, -1, farmer.currentLocation);
+                    companion.GivenHat = null;
+                    return;
+                }
+                newHat.modData[ModData_HatGivenTo] = invId;
+                hatInv.Add(newHat);
+                companion.GivenHat = newHat;
+                farmer.Items[farmer.CurrentToolIndex] = null;
+            });
+        return true;
+    }
+
+    internal static void RestoreHat(TrinketTinkerCompanion companion, string invId)
+    {
+        Game1
+            .player.team.GetOrCreateGlobalInventoryMutex(GlobalHatInventory)
+            .RequestLock(() =>
+            {
+                Inventory hatInv = Game1.player.team.GetOrCreateGlobalInventory(GlobalHatInventory);
+                bool hasGivenedHat = false;
+                for (int i = 0; i < hatInv.Count; i++)
+                {
+                    if (
+                        hatInv[i] is Hat currHat
+                        && currHat.modData.TryGetValue(ModData_HatGivenTo, out string? hatGivenTo)
+                        && hatGivenTo == invId
+                    )
+                    {
+                        if (hasGivenedHat || !companion.CanBeGivenHat)
+                        {
+                            currHat.modData.Remove(ModData_HatGivenTo);
+                            hatInv[i] = null;
+                            Game1.player.team.returnedDonationsMutex.RequestLock(() =>
+                            {
+                                Game1.player.team.returnedDonations.Add(currHat);
+                                Game1.player.team.newLostAndFoundItems.Value = true;
+                            });
+                        }
+                        else
+                        {
+                            companion.GivenHat = currHat;
+                            hasGivenedHat = true;
+                        }
+                    }
+                }
+                hatInv.RemoveEmptySlots();
+            });
+    }
+
     /// <summary>
     /// Ensure empty inventories are deleted, and inaccessable inventories have their contents put into lost and found
     /// Also do a check for trinketSlots and make sure people don't end up with a trinket in slot 1/2 and trinketSlots=0
@@ -493,42 +565,66 @@ internal sealed class GlobalInventoryHandler
             var value = team.globalInventories[key];
             if (value == null)
                 continue;
-            value.RemoveEmptySlots();
             if (key.StartsWith(string.Concat(ModEntry.ModId, "/")))
             {
+                value.RemoveEmptySlots();
                 if (value.Count == 0)
                     team.globalInventories.Remove(key);
                 else
                     missingTrinketInvs.Add(key);
             }
         }
-        if (!missingTrinketInvs.Any())
+
+        // check for missing given hats
+        Inventory hatInv = Game1.player.team.GetOrCreateGlobalInventory(GlobalHatInventory);
+        Dictionary<string, int> missingGivenHat = [];
+        for (int i = 0; i < hatInv.Count; i++)
+        {
+            if (hatInv[i] is Hat currHat && currHat.modData.TryGetValue(ModData_HatGivenTo, out string? hatGivenTo))
+            {
+                missingGivenHat[hatGivenTo] = i;
+            }
+        }
+
+        if (!missingTrinketInvs.Any() && !missingGivenHat.Any())
             return;
+
+        static void UpdateMissing(
+            Item item,
+            HashSet<string> missingTrinketInvs,
+            Dictionary<string, int> missingGivenHat
+        )
+        {
+            if (item is Trinket trinket && trinket.GetEffect() is TrinketTinkerEffect effect)
+            {
+                if (effect.FullInventoryId != null)
+                {
+                    missingTrinketInvs.Remove(effect.FullInventoryId!);
+                }
+                if (effect.InventoryId != null)
+                {
+                    missingGivenHat.Remove(effect.InventoryId);
+                }
+            }
+        }
+
         Utility.ForEachItem(
             (item) =>
             {
-                if (
-                    item is Trinket trinket
-                    && trinket.GetEffect() is TrinketTinkerEffect effect
-                    && effect.InventoryId != null
-                )
-                    missingTrinketInvs.Remove(effect.FullInventoryId!);
-                return missingTrinketInvs.Any();
+                UpdateMissing(item, missingTrinketInvs, missingGivenHat);
+                return missingTrinketInvs.Any() || missingGivenHat.Any();
             }
         );
         foreach (Farmer farmer in Game1.getAllFarmers())
         {
             foreach (Trinket trinketItem in farmer.trinketItems.Skip(toSkip))
             {
-                if (
-                    trinketItem != null
-                    && trinketItem.GetEffect() is TrinketTinkerEffect effect
-                    && effect.InventoryId != null
-                )
-                    missingTrinketInvs.Remove(effect.FullInventoryId!);
+                UpdateMissing(trinketItem, missingTrinketInvs, missingGivenHat);
             }
         }
-        newLostAndFoundItems = newLostAndFoundItems || missingTrinketInvs.Any();
+
+        newLostAndFoundItems = newLostAndFoundItems || missingTrinketInvs.Any() || missingGivenHat.Any();
+
         foreach (string key in missingTrinketInvs)
         {
             ModEntry.Log(
@@ -540,6 +636,18 @@ internal sealed class GlobalInventoryHandler
                 team.returnedDonations.Add(item);
             team.globalInventories.Remove(key);
         }
+        foreach ((string givenTo, int idx) in missingGivenHat)
+        {
+            ModEntry.Log(
+                $"Remove orphaned hat '{hatInv[idx].QualifiedItemId}', items will be sent to lost and found",
+                LogLevel.Debug
+            );
+            hatInv[idx].modData.Remove(ModData_HatGivenTo);
+            team.returnedDonations.Add(hatInv[idx]);
+            hatInv[idx] = null;
+        }
+        hatInv.RemoveEmptySlots();
+
         if (newLostAndFoundItems && team.newLostAndFoundItems.Value != newLostAndFoundItems)
         {
             Game1.showGlobalMessage(Game1.content.LoadString("Strings\\StringsFromCSFiles:NewLostAndFoundItems"));

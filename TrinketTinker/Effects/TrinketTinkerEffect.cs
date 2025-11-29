@@ -9,6 +9,7 @@ using StardewValley.Companions;
 using StardewValley.Delegates;
 using StardewValley.Inventories;
 using StardewValley.Monsters;
+using StardewValley.Objects;
 using StardewValley.Objects.Trinkets;
 using StardewValley.TokenizableStrings;
 using TrinketTinker.Companions;
@@ -162,12 +163,10 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
     private string? inventoryId;
 
     /// <summary>Inventory Id, for use in <see cref="GlobalInventoryHandler"/></summary>
-    public string? InventoryId
+    public string InventoryId
     {
         get
         {
-            if (Data?.Inventory == null)
-                return null;
             if (inventoryId != null)
                 return inventoryId;
             if (Trinket.modData.TryGetValue(ModData_Inventory, out inventoryId))
@@ -179,7 +178,8 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
     }
 
     /// <summary>Full ID, including mod id item id and guid</summary>
-    public string? FullInventoryId => InventoryId == null ? null : $"{ModEntry.ModId}/{Trinket.ItemId}/{InventoryId}";
+    public string? FullInventoryId =>
+        Data?.Inventory == null ? null : $"{ModEntry.ModId}/{Trinket.ItemId}/{InventoryId}";
 
     /// <summary>Track if this trinket is enabled (for local player)</summary>
     internal bool? enabledLocal = null;
@@ -370,7 +370,10 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
         // Companion
         if (Data.Variants.Count > 0 && Data.Motion != null)
         {
-            Companion ??= new TrinketTinkerCompanion(Trinket, variant);
+            TrinketTinkerCompanion ttCmp = new(Trinket, variant);
+            if (ttCmp.CanBeGivenHat)
+                GlobalInventoryHandler.RestoreHat(ttCmp, InventoryId);
+            Companion = ttCmp;
             farmer.AddCompanion(Companion);
         }
         else
@@ -415,6 +418,7 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
 
         if (Companion is TrinketTinkerCompanion myTTCmp)
         {
+            myTTCmp.GivenHat = null;
             farmer.RemoveCompanion(myTTCmp);
             Companion = null;
         }
@@ -546,6 +550,14 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
             return;
         if (Companion == null || farmer.GetBoundingBox().Intersects(CompanionBoundingBox))
         {
+            if (
+                Companion is TrinketTinkerCompanion cmp
+                && cmp.CanBeGivenHat
+                && GlobalInventoryHandler.SwapHat(farmer, cmp, InventoryId)
+            )
+            {
+                return;
+            }
             EventInteract?.Invoke(this, new(ProcOn.Interact, farmer));
         }
     }

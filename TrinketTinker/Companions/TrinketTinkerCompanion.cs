@@ -8,6 +8,7 @@ using StardewValley;
 using StardewValley.Companions;
 using StardewValley.Delegates;
 using StardewValley.Network;
+using StardewValley.Objects;
 using StardewValley.Objects.Trinkets;
 using TrinketTinker.Companions.Motions;
 using TrinketTinker.Models;
@@ -125,6 +126,16 @@ public class TrinketTinkerCompanion : Companion
         set => _currAnchorTarget.Value = (int)value;
     }
 
+    /// <summary>Hat id given to companion (not the real hat)</summary>
+    private readonly NetRef<Hat?> _givenHat = new(null);
+
+    /// <summary>Hat id property</summary>
+    internal Hat? GivenHat
+    {
+        get => _givenHat.Value;
+        set => _givenHat.Value = value;
+    }
+
     /// <summary>Bounding box of companion</summary>
     public Rectangle BoundingBox => Motion?.BoundingBox ?? Rectangle.Empty;
 
@@ -134,7 +145,21 @@ public class TrinketTinkerCompanion : Companion
     /// <summary>A TAS associated with the companion and will move alongside it.</summary>
     internal List<TASContext>? AttachedTAS { get; set; } = null;
 
+    /// <summary>Reference to the trinket</summary>
     internal readonly Trinket? trinketItem = null;
+
+    /// <summary>Whether companion can be given hat</summary>
+    internal bool CanBeGivenHat
+    {
+        get
+        {
+            if (Motion?.CompanionAnimSprite.HatPosition is HatPositionData hatPos)
+            {
+                return hatPos.Source == HatSourceMode.Given;
+            }
+            return false;
+        }
+    }
 
     /// <summary>Argumentless constructor for netcode deserialization.</summary>
     public TrinketTinkerCompanion()
@@ -212,7 +237,8 @@ public class TrinketTinkerCompanion : Companion
             .AddField(_disableCompanion, "_disableCompanion")
             .AddField(_netRandSeed, "_netRandSeed")
             .AddField(_speechSeed, "_speechSeed")
-            .AddField(_currAnchorTarget, "_currAnchorTarget");
+            .AddField(_currAnchorTarget, "_currAnchorTarget")
+            .AddField(_givenHat, "_givenHat");
         _id.fieldChangeVisibleEvent += InitCompanionData;
         _oneshotKey.fieldChangeVisibleEvent += (field, oldValue, newValue) => Motion?.SetOneshotClip(newValue);
         _overrideKey.fieldChangeVisibleEvent += (field, oldValue, newValue) => Motion?.SetOverrideClip(newValue);
