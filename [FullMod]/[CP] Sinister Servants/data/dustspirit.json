@@ -60,7 +60,7 @@
               "Width": 16,
               "Height": 16,
               "HatPosition": {
-                "OffsetDefault": "-8,-20",
+                "OffsetDefault": "0,-14",
                 "DirectionToHatFrame": {
                   "1": 0,
                   "-1": 0

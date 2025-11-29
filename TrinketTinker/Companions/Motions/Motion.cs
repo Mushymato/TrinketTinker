@@ -744,7 +744,7 @@ public abstract class Motion<TArgs> : IMotion
             DrawCompanionBreathing(b, breatherSnapshot);
         }
 
-        if (cs.HatPosition != null)
+        if (cs.HatPosition != null && GetHatOffset(cs.HatPosition) is Vector2 hatOffset)
         {
             bool isPrismatic = false;
             ParsedItemData? hatData = null;
@@ -762,21 +762,20 @@ public abstract class Motion<TArgs> : IMotion
             {
                 Texture2D hatTexture = hatData.GetTexture();
                 int hatIndex = hatData.SpriteIndex;
-                int hatFrame = HatFrame();
                 DrawSnapshot hatDrawSnapshot = new(
                     hatData.GetTexture(),
-                    drawPos + GetHatOffset(cs.HatPosition),
+                    drawPos + hatOffset,
                     (!hatData.IsErrorItem)
                         ? new Rectangle(
                             hatIndex * 20 % hatTexture.Width,
-                            hatIndex * 20 / hatTexture.Width * 20 * 4 + hatFrame * 20,
+                            hatIndex * 20 / hatTexture.Width * 20 * 4 + GetHatFrame() * 20,
                             20,
                             20
                         )
                         : hatData.GetSourceRect(),
                     isPrismatic ? Utility.GetPrismaticColor() : Color.White,
                     rotation,
-                    cs.Origin,
+                    new Vector2(10, 10),
                     scale * cs.HatPosition.ModifyScale,
                     spriteEffects,
                     layerDepth + Visuals.LAYER_OFFSET / 2
@@ -820,6 +819,17 @@ public abstract class Motion<TArgs> : IMotion
                 Game1.GlobalToLocal(Game1.viewport, c.Owner.GetBoundingBox()),
                 0,
                 backgroundColor: Color.Cyan
+            );
+            b.DrawString(
+                Game1.tinyFont,
+                c.direction.Value.ToString(),
+                Game1.GlobalToLocal(Game1.viewport, new Vector2(BoundingBox.X, BoundingBox.Y)),
+                Color.Green,
+                0,
+                Vector2.Zero,
+                4f,
+                SpriteEffects.None,
+                1f
             );
         }
 
@@ -1007,7 +1017,7 @@ public abstract class Motion<TArgs> : IMotion
         return false;
     }
 
-    public int HatFrame()
+    public int GetHatFrame()
     {
         if (cs.HatPosition?.DirectionToHatFrame?.TryGetValue(c.direction.Value, out int hatFrame) ?? false)
         {
@@ -1064,9 +1074,14 @@ public abstract class Motion<TArgs> : IMotion
         return 1;
     }
 
-    public Vector2 GetHatOffset(HatPositionData hatPosition)
+    public Vector2? GetHatOffset(HatPositionData hatPosition)
     {
-        if (hatPosition.OffsetOnFrame?.TryGetValue(cs.currentFrame, out Vector2 offset) ?? false)
+        if (
+            (cs.UseExtra ? hatPosition.OffsetOnFrameExtra : hatPosition.OffsetOnFrame)?.TryGetValue(
+                cs.currentFrame,
+                out Vector2? offset
+            ) ?? false
+        )
         {
             return offset;
         }

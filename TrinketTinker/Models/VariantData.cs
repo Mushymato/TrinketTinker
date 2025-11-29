@@ -32,11 +32,14 @@ public class HatPositionData
     /// <summary>The default hat offset.</summary>
     public Vector2 OffsetDefault { get; set; } = Vector2.Zero;
 
-    /// <summary>Offset on hat position for particular frames.</summary>
-    public Dictionary<int, Vector2>? OffsetOnFrame { get; set; } = null;
+    /// <summary>Offset on hat position for particular frames on the base sprite sheet.</summary>
+    public Dictionary<int, Vector2?>? OffsetOnFrame { get; set; } = null;
+
+    /// <summary>Offset on hat position for particular frames on the extra sprite sheet.</summary>
+    public Dictionary<int, Vector2?>? OffsetOnFrameExtra { get; set; } = null;
 
     /// <summary>Offset on hat position for particular companion direction.</summary>
-    public Dictionary<int, Vector2>? OffsetOnDirection { get; set; } = null;
+    public Dictionary<int, Vector2?>? OffsetOnDirection { get; set; } = null;
 
     /// <summary>Set which hat frame (0 1 2 3) should match the trinket companion direction.</summary>
     public Dictionary<int, int>? DirectionToHatFrame { get; set; } = null;
