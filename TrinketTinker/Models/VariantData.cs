@@ -25,10 +25,11 @@ public enum HatSourceMode
     Hatless = 0,
     Given = 1,
     Owner = 2,
+    Temporary = 3,
 }
 
 /// <summary>Data for defining the position of the companion's head, for hat purposes.</summary>
-public class HatPositionData
+public class HatEquipData
 {
     /// <summary>The default hat offset.</summary>
     public Vector2? OffsetDefault { get; set; } = null;
@@ -97,7 +98,7 @@ public interface IVariantData
     public bool? ShowBreathing { get; set; }
 
     /// <summary>Hat position data, for giving the companion hats.</summary>
-    public HatPositionData? HatPosition { get; set; }
+    public HatEquipData? HatEquip { get; set; }
 }
 
 /// <summary>Additional variant data, kind of like NPC appearance</summary>
@@ -146,7 +147,7 @@ public class AltVariantData : IVariantData
     public bool? ShowBreathing { get; set; } = null;
 
     /// <inheritdoc/>
-    public HatPositionData? HatPosition { get; set; } = null;
+    public HatEquipData? HatEquip { get; set; } = null;
 
     /// <summary>Game state query condition</summary>
     public string? Condition { get; set; } = null;
@@ -201,7 +202,7 @@ public sealed class VariantData : IVariantData
     public bool? ShowBreathing { get; set; } = true;
 
     /// <inheritdoc/>
-    public HatPositionData? HatPosition { get; set; } = null;
+    public HatEquipData? HatEquip { get; set; } = null;
 
     /// <summary>If set, add a light with given radius. Note that the light is only visible to local player.</summary>
     public LightSourceData? LightSource { get; set; } = null;

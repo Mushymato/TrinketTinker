@@ -473,23 +473,38 @@ internal sealed class GlobalInventoryHandler
         });
     }
 
-    internal static bool SwapHat(Farmer farmer, TrinketTinkerCompanion companion, string invId)
+    internal static bool SwapHat(Farmer farmer, TrinketTinkerCompanion companion, string invId, bool isTemporary)
     {
         if (farmer.Items.Count <= farmer.CurrentToolIndex || farmer.Items[farmer.CurrentToolIndex] is not Hat newHat)
             return false;
 
+        DoSwapHat(farmer, companion, invId, newHat, isTemporary);
+        return true;
+    }
+
+    internal static void DoSwapHat(
+        Farmer farmer,
+        TrinketTinkerCompanion companion,
+        string invId,
+        Hat newHat,
+        bool isTemporary
+    )
+    {
         DoLockedHatInvOperation(
             (hatInv) =>
             {
                 if (companion.GivenHat is Hat currHat)
                 {
-                    currHat.onDetachedFromParent();
-                    hatInv.Remove(currHat);
+                    if (currHat.modData.ContainsKey(ModData_HatGivenTo))
+                    {
+                        currHat.onDetachedFromParent();
+                        hatInv.Remove(currHat);
+                        currHat.modData.Remove(ModData_HatGivenTo);
+                        Game1.createItemDebris(currHat, companion.Position, -1, farmer.currentLocation);
+                    }
                     companion.GivenHat = null;
-                    currHat.modData.Remove(ModData_HatGivenTo);
-                    Game1.createItemDebris(currHat, companion.Position, -1, farmer.currentLocation);
                 }
-                else
+                else if (!isTemporary)
                 {
                     newHat.onDetachedFromParent();
                     farmer.Items[farmer.CurrentToolIndex] = null;
@@ -497,9 +512,13 @@ internal sealed class GlobalInventoryHandler
                     newHat.modData[ModData_HatGivenTo] = invId;
                     companion.GivenHat = newHat;
                 }
+                if (isTemporary)
+                {
+                    companion.GivenHat = newHat;
+                }
             }
         );
-        return true;
+        return;
     }
 
     internal static void ApplyHat(TrinketTinkerCompanion companion, string invId)
@@ -516,7 +535,7 @@ internal sealed class GlobalInventoryHandler
                         && hatGivenTo == invId
                     )
                     {
-                        if (hasGivenedHat || !companion.CanBeGivenHat)
+                        if (hasGivenedHat || !companion.CanBeGivenHat())
                         {
                             currHat.modData.Remove(ModData_HatGivenTo);
                             currHat.onDetachedFromParent();
@@ -571,15 +590,7 @@ internal sealed class GlobalInventoryHandler
 
     internal static void UnapplyHat(TrinketTinkerCompanion companion)
     {
-        if (companion.GivenHat == null)
-            return;
-        DoLockedHatInvOperation(
-            (hatInv) =>
-            {
-                hatInv.Add(companion.GivenHat);
-                companion.GivenHat = null;
-            }
-        );
+        companion.GivenHat = null;
     }
 
     internal static Hat? FindHat(string invId)

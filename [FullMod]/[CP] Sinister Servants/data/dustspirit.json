@@ -59,7 +59,7 @@
               "Texture": "Mods/{{ModId}}/dustspirit_1",
               "Width": 16,
               "Height": 16,
-              "HatPosition": {
+              "HatEquip": {
                 "OffsetDefault": "0,-14",
                 "DirectionToHatFrame": {
                   "1": 0,

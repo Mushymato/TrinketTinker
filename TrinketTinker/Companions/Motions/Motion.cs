@@ -744,16 +744,16 @@ public abstract class Motion<TArgs> : IMotion
             DrawCompanionBreathing(b, breatherSnapshot);
         }
 
-        if (cs.HatPosition != null && GetHatOffset(cs.HatPosition) is Vector2 hatOffset)
+        if (cs.HatEquip != null && GetHatOffset(cs.HatEquip) is Vector2 hatOffset)
         {
             bool isPrismatic = false;
             ParsedItemData? hatData = null;
-            if (cs.HatPosition.Source == HatSourceMode.Owner && c.Owner.hat.Value is Hat ownerHat)
+            if (cs.HatEquip.Source == HatSourceMode.Owner && c.Owner.hat.Value is Hat ownerHat)
             {
                 hatData = ItemRegistry.GetData(ownerHat.QualifiedItemId);
                 isPrismatic = ownerHat.isPrismatic.Value;
             }
-            else if (cs.HatPosition.Source == HatSourceMode.Given && c.GivenHat is Hat givenHat)
+            else if (cs.HatEquip.Source != HatSourceMode.Hatless && c.GivenHat is Hat givenHat)
             {
                 hatData = ItemRegistry.GetData(givenHat.QualifiedItemId);
                 isPrismatic = givenHat.isPrismatic.Value;
@@ -776,7 +776,7 @@ public abstract class Motion<TArgs> : IMotion
                     isPrismatic ? Utility.GetPrismaticColor() : Color.White,
                     rotation,
                     new Vector2(10, 10),
-                    scale * cs.HatPosition.ModifyScale,
+                    scale * cs.HatEquip.ModifyScale,
                     spriteEffects,
                     layerDepth + Visuals.LAYER_OFFSET / 2
                 );
@@ -1019,7 +1019,7 @@ public abstract class Motion<TArgs> : IMotion
 
     public int GetHatFrame()
     {
-        if (cs.HatPosition?.DirectionToHatFrame?.TryGetValue(c.direction.Value, out int hatFrame) ?? false)
+        if (cs.HatEquip?.DirectionToHatFrame?.TryGetValue(c.direction.Value, out int hatFrame) ?? false)
         {
             return hatFrame;
         }
@@ -1074,7 +1074,7 @@ public abstract class Motion<TArgs> : IMotion
         return 1;
     }
 
-    public Vector2? GetHatOffset(HatPositionData hatPosition)
+    public Vector2? GetHatOffset(HatEquipData hatPosition)
     {
         if (
             (cs.UseExtra ? hatPosition.OffsetOnFrameExtra : hatPosition.OffsetOnFrame)?.TryGetValue(

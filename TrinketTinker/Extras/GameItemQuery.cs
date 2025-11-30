@@ -5,11 +5,13 @@ using StardewValley;
 using StardewValley.Delegates;
 using StardewValley.Internal;
 using StardewValley.Inventories;
+using StardewValley.Objects;
 using StardewValley.Objects.Trinkets;
 using StardewValley.TokenizableStrings;
 using StardewValley.Triggers;
 using TrinketTinker.Companions;
 using TrinketTinker.Effects;
+using TrinketTinker.Models;
 using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Extras;
@@ -43,6 +45,8 @@ public static class GameItemQuery
     public const string GameStateQuery_TRINKET_HAS_ITEM = $"{ModEntry.ModId}_TRINKET_HAS_ITEM";
     public const string GameStateQuery_TRINKET_HAS_HAT = $"{ModEntry.ModId}_TRINKET_HAS_HAT";
     public const string TriggerAction_ToggleCompanion = $"{ModEntry.ModId}_ToggleCompanion";
+    public const string TriggerAction_GiveHat = $"{ModEntry.ModId}_GiveHat";
+    public const string TriggerAction_PutHatOnCompanion = $"{ModEntry.ModId}_PutHatOnCompanion";
 
     private const string RANDOM = "R";
     private const string MAX = "M";
@@ -66,8 +70,9 @@ public static class GameItemQuery
         GameStateQuery.Register(GameStateQuery_TRINKET_HAS_ITEM, GSQ_TRINKET_HAS_ITEM);
         GameStateQuery.Register(GameStateQuery_TRINKET_HAS_HAT, GSQ_TRINKET_HAS_HAT);
 
-        // Add trigger action to hide trinket, mainly for usage in events
+        // Add trigger actions
         TriggerActionManager.RegisterAction(TriggerAction_ToggleCompanion, TA_ToggleCompanion);
+        TriggerActionManager.RegisterAction(TriggerAction_PutHatOnCompanion, TA_PutHatOnCompanion);
     }
 
     /// <summary>
@@ -489,7 +494,6 @@ public static class GameItemQuery
             || !ArgUtility.TryGetOptionalInt(args, 3, out int variant, out error, defaultValue: -1, name: "int variant")
         )
         {
-            ModEntry.Log(error, LogLevel.Error);
             return false;
         }
 
@@ -498,13 +502,61 @@ public static class GameItemQuery
             if (
                 trinketItem?.ItemId == trinketId
                 && trinketItem.GetEffect() is TrinketTinkerEffect effect
-                && ((level != -1 && effect.Level != level) || (variant != -1 && effect.Variant != variant))
+                && (level == -1 || effect.Level == level)
+                && (variant == -1 || effect.Variant == variant)
                 && effect.Companion is TrinketTinkerCompanion companion
             )
             {
                 companion.ToggleDisableCompanion(2);
             }
         }
-        return false;
+        return true;
+    }
+
+    /// <summary>Put a hat on the companion, must be currently equipped</summary>
+    /// <param name="args"></param>
+    /// <param name="context"></param>
+    /// <param name="error"></param>
+    /// <returns></returns>
+    /// <exception cref="NotImplementedException"></exception>
+    private static bool TA_PutHatOnCompanion(string[] args, TriggerActionContext context, out string error)
+    {
+        if (
+            !ArgUtility.TryGet(args, 1, out string trinketId, out error, allowBlank: false, "string trinketId")
+            || !ArgUtility.TryGet(args, 2, out string hatId, out error, name: "string hatId")
+            || !ArgUtility.TryGetOptionalInt(args, 3, out int level, out error, defaultValue: -1, name: "int level")
+            || !ArgUtility.TryGetOptionalInt(args, 4, out int variant, out error, defaultValue: -1, name: "int variant")
+        )
+        {
+            return false;
+        }
+
+        if (ItemRegistry.Create<Hat>(hatId, allowNull: true) is not Hat newHat)
+        {
+            error = $"'{hatId}' is not a hat";
+            return false;
+        }
+
+        foreach (Trinket trinketItem in Game1.player.trinketItems)
+        {
+            if (
+                trinketItem?.ItemId == trinketId
+                && trinketItem.GetEffect() is TrinketTinkerEffect effect
+                && (level == -1 || effect.Level == level)
+                && (variant == -1 || effect.Variant == variant)
+                && effect.Companion is TrinketTinkerCompanion companion
+                && companion.HatSource() is HatSourceMode hatSource
+            )
+            {
+                GlobalInventoryHandler.DoSwapHat(
+                    Game1.player,
+                    companion,
+                    effect.InventoryId,
+                    newHat,
+                    hatSource.HasFlag(HatSourceMode.Temporary)
+                );
+            }
+        }
+        return true;
     }
 }

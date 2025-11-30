@@ -39,7 +39,7 @@
               "TrinketNameArguments": [
                 "{{i18n:Skull.DisplayName.Arg.0}}",
               ],
-              "HatPosition": {
+              "HatEquip": {
                 "OffsetOnDirection": {
                   "1": "-1.5,-16",
                   "2": "0,-12",
@@ -56,7 +56,7 @@
               "TrinketNameArguments": [
                 "{{i18n:Skull.DisplayName.Arg.1}}",
               ],
-              "HatPosition": {
+              "HatEquip": {
                 "OffsetOnDirection": {
                   "1": "-10,-23",
                   "2": "-8,-20",

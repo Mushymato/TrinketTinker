@@ -371,7 +371,7 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
         if (Data.Variants.Count > 0 && Data.Motion != null)
         {
             TrinketTinkerCompanion ttCmp = new(Trinket, variant, InventoryId);
-            if (ttCmp.CanBeGivenHat)
+            if (ttCmp.CanBeGivenHat())
             {
                 GlobalInventoryHandler.ApplyHat(ttCmp, InventoryId);
             }
@@ -554,8 +554,8 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
         {
             if (
                 Companion is TrinketTinkerCompanion cmp
-                && cmp.CanBeGivenHat
-                && GlobalInventoryHandler.SwapHat(farmer, cmp, InventoryId)
+                && cmp.HatSource() is HatSourceMode hatSource
+                && GlobalInventoryHandler.SwapHat(farmer, cmp, InventoryId, hatSource.HasFlag(HatSourceMode.Temporary))
             )
             {
                 return;

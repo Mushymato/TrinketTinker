@@ -154,17 +154,20 @@ public class TrinketTinkerCompanion : Companion
     /// <summary>Reference to the trinket</summary>
     internal readonly Trinket? trinketItem = null;
 
-    /// <summary>Whether companion can be given hat</summary>
-    internal bool CanBeGivenHat
+    /// <summary>The hat source mode of companion</summary>
+    internal HatSourceMode? HatSource()
     {
-        get
+        if (Motion?.CompanionAnimSprite.HatEquip is HatEquipData hatPos)
         {
-            if (Motion?.CompanionAnimSprite.HatPosition is HatPositionData hatPos)
-            {
-                return hatPos.Source == HatSourceMode.Given;
-            }
-            return false;
+            return hatPos.Source;
         }
+        return null;
+    }
+
+    /// <summary>Whether companion can be given hat</summary>
+    internal bool CanBeGivenHat(HatSourceMode source = HatSourceMode.Given | HatSourceMode.Temporary)
+    {
+        return HatSource() is HatSourceMode hatSource && source.HasFlag(hatSource);
     }
 
     /// <summary>Argumentless constructor for netcode deserialization.</summary>
