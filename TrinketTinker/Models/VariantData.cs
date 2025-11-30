@@ -22,15 +22,16 @@ public class LightSourceData
 
 public enum HatSourceMode
 {
-    Owner = 0,
+    Hatless = 0,
     Given = 1,
+    Owner = 2,
 }
 
 /// <summary>Data for defining the position of the companion's head, for hat purposes.</summary>
 public class HatPositionData
 {
     /// <summary>The default hat offset.</summary>
-    public Vector2 OffsetDefault { get; set; } = Vector2.Zero;
+    public Vector2? OffsetDefault { get; set; } = null;
 
     /// <summary>Offset on hat position for particular frames on the base sprite sheet.</summary>
     public Dictionary<int, Vector2?>? OffsetOnFrame { get; set; } = null;
@@ -48,7 +49,7 @@ public class HatPositionData
     public float ModifyScale { get; set; } = 1f;
 
     /// <summary>Where does the hat come from?</summary>
-    public HatSourceMode Source { get; set; } = HatSourceMode.Owner;
+    public HatSourceMode Source { get; set; } = HatSourceMode.Given;
 }
 
 public interface IVariantData

@@ -525,6 +525,15 @@ internal sealed class GlobalInventoryHandler
             });
     }
 
+    internal static Hat? FindHat(string invId)
+    {
+        Inventory hatInv = Game1.player.team.GetOrCreateGlobalInventory(GlobalHatInventory);
+        return (Hat?)
+            hatInv.FirstOrDefault(hat =>
+                hat is Hat && hat.modData.TryGetValue(ModData_HatGivenTo, out string? hatGivenTo) && hatGivenTo == invId
+            );
+    }
+
     /// <summary>
     /// Ensure empty inventories are deleted, and inaccessable inventories have their contents put into lost and found
     /// Also do a check for trinketSlots and make sure people don't end up with a trinket in slot 1/2 and trinketSlots=0

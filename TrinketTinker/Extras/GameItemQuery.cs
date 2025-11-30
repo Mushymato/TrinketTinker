@@ -41,6 +41,7 @@ public static class GameItemQuery
     public const string GameStateQuery_ENABLED_TRINKET_COUNT = $"{ModEntry.ModId}_ENABLED_TRINKET_COUNT";
     public const string GameStateQuery_IN_ALT_VARIANT = $"{ModEntry.ModId}_IN_ALT_VARIANT";
     public const string GameStateQuery_TRINKET_HAS_ITEM = $"{ModEntry.ModId}_TRINKET_HAS_ITEM";
+    public const string GameStateQuery_TRINKET_HAS_HAT = $"{ModEntry.ModId}_TRINKET_HAS_HAT";
     public const string TriggerAction_ToggleCompanion = $"{ModEntry.ModId}_ToggleCompanion";
 
     private const string RANDOM = "R";
@@ -63,6 +64,7 @@ public static class GameItemQuery
         GameStateQuery.Register(GameStateQuery_ENABLED_TRINKET_COUNT, GSQ_ENABLED_TRINKET_COUNT);
         GameStateQuery.Register(GameStateQuery_IN_ALT_VARIANT, GSQ_IN_ALT_VARIANT);
         GameStateQuery.Register(GameStateQuery_TRINKET_HAS_ITEM, GSQ_TRINKET_HAS_ITEM);
+        GameStateQuery.Register(GameStateQuery_TRINKET_HAS_HAT, GSQ_TRINKET_HAS_HAT);
 
         // Add trigger action to hide trinket, mainly for usage in events
         TriggerActionManager.RegisterAction(TriggerAction_ToggleCompanion, TA_ToggleCompanion);
@@ -433,6 +435,26 @@ public static class GameItemQuery
                 else
                     return cmp._altVariantKey.Value == altVariantKey;
             }
+        }
+        return false;
+    }
+
+    /// <summary>Check if the trinket has a hat of particular id, only affects Given mode hatters</summary>
+    /// <param name="query"></param>
+    /// <param name="context"></param>
+    /// <returns></returns>
+    private static bool GSQ_TRINKET_HAS_HAT(string[] query, GameStateQueryContext context)
+    {
+        if (
+            TryGetTinkerTrinket(query, context, 1, out Trinket? _, out TrinketTinkerEffect? effect, createFromId: false)
+            && ArgUtility.TryGetOptional(query, 2, out string itemId, out string _, "string hatId")
+        )
+        {
+            if (effect.Companion is TrinketTinkerCompanion cmp)
+            {
+                return cmp.GivenHat?.ItemId == itemId;
+            }
+            return GlobalInventoryHandler.FindHat(effect.InventoryId) != null;
         }
         return false;
     }
