@@ -11,6 +11,7 @@ using StardewValley.Network;
 using StardewValley.Objects;
 using StardewValley.Objects.Trinkets;
 using TrinketTinker.Companions.Motions;
+using TrinketTinker.Extras;
 using TrinketTinker.Models;
 using TrinketTinker.Models.AbilityArgs;
 using TrinketTinker.Wheels;
@@ -126,14 +127,19 @@ public class TrinketTinkerCompanion : Companion
         set => _currAnchorTarget.Value = (int)value;
     }
 
-    /// <summary>Hat id given to companion (not the real hat)</summary>
-    private readonly NetRef<Hat?> _givenHat = new(null);
+    /// <summary>Whether companion has a hat</summary>
+    private readonly NetBool _hasGivenHat = new(false);
+    private readonly NetString _invId = new(null);
 
-    /// <summary>Hat id property</summary>
+    /// <summary>Hat property</summary>
     internal Hat? GivenHat
     {
-        get => _givenHat.Value;
-        set => _givenHat.Value = value;
+        get => field;
+        set
+        {
+            field = value;
+            _hasGivenHat.Value = field != null;
+        }
     }
 
     /// <summary>Bounding box of companion</summary>
@@ -166,11 +172,12 @@ public class TrinketTinkerCompanion : Companion
         : base() { }
 
     /// <summary>Construct new companion using companion ID.</summary>
-    public TrinketTinkerCompanion(Trinket trinketItem, int variant)
+    public TrinketTinkerCompanion(Trinket trinketItem, int variant, string inventoryId)
     {
         // _moving.Value = false;
         whichVariant.Value = variant;
         _id.Value = trinketItem.ItemId;
+        _invId.Value = inventoryId;
         this.trinketItem = trinketItem;
     }
 
@@ -238,7 +245,8 @@ public class TrinketTinkerCompanion : Companion
             .AddField(_netRandSeed, "_netRandSeed")
             .AddField(_speechSeed, "_speechSeed")
             .AddField(_currAnchorTarget, "_currAnchorTarget")
-            .AddField(_givenHat, "_givenHat");
+            .AddField(_hasGivenHat, "_hasGivenHat")
+            .AddField(_invId, "_invId");
         _id.fieldChangeVisibleEvent += InitCompanionData;
         _oneshotKey.fieldChangeVisibleEvent += (field, oldValue, newValue) => Motion?.SetOneshotClip(newValue);
         _overrideKey.fieldChangeVisibleEvent += (field, oldValue, newValue) => Motion?.SetOverrideClip(newValue);
@@ -402,6 +410,14 @@ public class TrinketTinkerCompanion : Companion
     {
         if (IsDirty.Value)
             ReloadCompanionData();
+
+        if (
+            _invId.Value != null
+            && ((_hasGivenHat.Value && GivenHat == null) || (!_hasGivenHat.Value && GivenHat != null))
+        )
+        {
+            GlobalInventoryHandler.SyncHat(this, _invId.Value, _hasGivenHat.Value);
+        }
 
         ownerMoving = prevOwnerPosition != OwnerPosition;
         CompanionMoving = prevPosition != Position;

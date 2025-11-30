@@ -462,39 +462,51 @@ internal sealed class GlobalInventoryHandler
         }
     }
 
+    internal static void DoLockedHatInvOperation(Action<Inventory> callback)
+    {
+        NetMutex hatMutex = Game1.player.team.GetOrCreateGlobalInventoryMutex(GlobalHatInventory);
+        hatMutex.RequestLock(() =>
+        {
+            Inventory hatInv = Game1.player.team.GetOrCreateGlobalInventory(GlobalHatInventory);
+            callback(hatInv);
+            hatMutex.ReleaseLock();
+        });
+    }
+
     internal static bool SwapHat(Farmer farmer, TrinketTinkerCompanion companion, string invId)
     {
         if (farmer.Items.Count <= farmer.CurrentToolIndex || farmer.Items[farmer.CurrentToolIndex] is not Hat newHat)
             return false;
 
-        Game1
-            .player.team.GetOrCreateGlobalInventoryMutex(GlobalHatInventory)
-            .RequestLock(() =>
+        DoLockedHatInvOperation(
+            (hatInv) =>
             {
-                Inventory hatInv = Game1.player.team.GetOrCreateGlobalInventory(GlobalHatInventory);
-                if (companion.GivenHat != null)
+                if (companion.GivenHat is Hat currHat)
                 {
-                    hatInv.Remove(companion.GivenHat);
-                    companion.GivenHat.modData.Remove(ModData_HatGivenTo);
-                    Game1.createItemDebris(companion.GivenHat, companion.Position, -1, farmer.currentLocation);
+                    currHat.onDetachedFromParent();
+                    hatInv.Remove(currHat);
                     companion.GivenHat = null;
-                    return;
+                    currHat.modData.Remove(ModData_HatGivenTo);
+                    Game1.createItemDebris(currHat, companion.Position, -1, farmer.currentLocation);
                 }
-                newHat.modData[ModData_HatGivenTo] = invId;
-                hatInv.Add(newHat);
-                companion.GivenHat = newHat;
-                farmer.Items[farmer.CurrentToolIndex] = null;
-            });
+                else
+                {
+                    newHat.onDetachedFromParent();
+                    farmer.Items[farmer.CurrentToolIndex] = null;
+                    hatInv.Add(newHat);
+                    newHat.modData[ModData_HatGivenTo] = invId;
+                    companion.GivenHat = newHat;
+                }
+            }
+        );
         return true;
     }
 
-    internal static void RestoreHat(TrinketTinkerCompanion companion, string invId)
+    internal static void ApplyHat(TrinketTinkerCompanion companion, string invId)
     {
-        Game1
-            .player.team.GetOrCreateGlobalInventoryMutex(GlobalHatInventory)
-            .RequestLock(() =>
+        DoLockedHatInvOperation(
+            (hatInv) =>
             {
-                Inventory hatInv = Game1.player.team.GetOrCreateGlobalInventory(GlobalHatInventory);
                 bool hasGivenedHat = false;
                 for (int i = 0; i < hatInv.Count; i++)
                 {
@@ -507,11 +519,14 @@ internal sealed class GlobalInventoryHandler
                         if (hasGivenedHat || !companion.CanBeGivenHat)
                         {
                             currHat.modData.Remove(ModData_HatGivenTo);
+                            currHat.onDetachedFromParent();
                             hatInv[i] = null;
+
                             Game1.player.team.returnedDonationsMutex.RequestLock(() =>
                             {
                                 Game1.player.team.returnedDonations.Add(currHat);
                                 Game1.player.team.newLostAndFoundItems.Value = true;
+                                Game1.player.team.returnedDonationsMutex.ReleaseLock();
                             });
                         }
                         else
@@ -522,7 +537,49 @@ internal sealed class GlobalInventoryHandler
                     }
                 }
                 hatInv.RemoveEmptySlots();
-            });
+            }
+        );
+    }
+
+    internal static void SyncHat(TrinketTinkerCompanion companion, string invId, bool hasHat)
+    {
+        if (hasHat)
+        {
+            DoLockedHatInvOperation(
+                (hatInv) =>
+                {
+                    for (int i = 0; i < hatInv.Count; i++)
+                    {
+                        if (
+                            hatInv[i] is Hat currHat
+                            && currHat.modData.TryGetValue(ModData_HatGivenTo, out string? hatGivenTo)
+                            && hatGivenTo == invId
+                        )
+                        {
+                            companion.GivenHat = currHat;
+                            return;
+                        }
+                    }
+                }
+            );
+        }
+        else
+        {
+            companion.GivenHat = null;
+        }
+    }
+
+    internal static void UnapplyHat(TrinketTinkerCompanion companion)
+    {
+        if (companion.GivenHat == null)
+            return;
+        DoLockedHatInvOperation(
+            (hatInv) =>
+            {
+                hatInv.Add(companion.GivenHat);
+                companion.GivenHat = null;
+            }
+        );
     }
 
     internal static Hat? FindHat(string invId)

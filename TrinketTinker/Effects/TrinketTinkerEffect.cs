@@ -370,9 +370,11 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
         // Companion
         if (Data.Variants.Count > 0 && Data.Motion != null)
         {
-            TrinketTinkerCompanion ttCmp = new(Trinket, variant);
+            TrinketTinkerCompanion ttCmp = new(Trinket, variant, InventoryId);
             if (ttCmp.CanBeGivenHat)
-                GlobalInventoryHandler.RestoreHat(ttCmp, InventoryId);
+            {
+                GlobalInventoryHandler.ApplyHat(ttCmp, InventoryId);
+            }
             Companion = ttCmp;
             farmer.AddCompanion(Companion);
         }
@@ -416,10 +418,10 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
             return;
         Enabled = false;
 
-        if (Companion is TrinketTinkerCompanion myTTCmp)
+        if (Companion is TrinketTinkerCompanion ttCmp)
         {
-            myTTCmp.GivenHat = null;
-            farmer.RemoveCompanion(myTTCmp);
+            GlobalInventoryHandler.UnapplyHat(ttCmp);
+            farmer.RemoveCompanion(ttCmp);
             Companion = null;
         }
 
