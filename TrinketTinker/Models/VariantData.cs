@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using Microsoft.Xna.Framework;
 using StardewValley;
 using TrinketTinker.Wheels;
@@ -20,37 +21,76 @@ public class LightSourceData
     public string? Color { get; set; } = null;
 }
 
+/// <summary>How does the companion acquire hat?</summary>
 public enum HatSourceMode
 {
+    /// <summary>Cannot hat</summary>
     Hatless = 0,
+
+    /// <summary>Companion can be given hat by interact, the item is truly given to companion</summary>
     Given = 1,
-    Owner = 2,
-    Temporary = 3,
+
+    /// <summary>Companion can be given hat by interact, the item is not given to companion and simply "copied" temporarily until companion is reset by anything, e.g. end of day.</summary>
+    Temporary = 2,
+
+    /// <summary>Companion shares the owner's hat</summary>
+    Owner = 3,
+}
+
+/// <summary>Hat offset and frame record</summary>
+/// <param name="Offset">Vector2 offset or null for hidden</param>
+/// <param name="Frame"></param>
+public sealed record HatEquipAttr(Vector2? Offset, int? Frame)
+{
+    /// <summary>String to HatEquipAttr pattern</summary>
+    private static readonly Regex equipAttrRE = new(@"((-?[0-9]+\.?[0-9]*)\s*,\s*(-?[0-9]+\.?[0-9]*))?\s*(f([0-3]))?");
+
+    /// <summary>Try and convert a short form string to HatEquipAttr</summary>
+    /// <param name="equipAttrString"></param>
+    public static implicit operator HatEquipAttr?(string equipAttrString)
+    {
+        if (equipAttrRE.Match(equipAttrString) is not Match match || !match.Success || match.Length == 0)
+        {
+            return null;
+        }
+        Vector2? hatOffset = null;
+        int? hatFrame = null;
+        if (match.Groups[1].ValueSpan.Length > 0)
+        {
+            hatOffset = new(float.Parse(match.Groups[2].ValueSpan), float.Parse(match.Groups[3].ValueSpan));
+        }
+        if (match.Groups[4].ValueSpan.Length > 0)
+        {
+            hatFrame = int.Parse(match.Groups[5].ValueSpan);
+        }
+        if (hatOffset == null && hatFrame == null)
+        {
+            return null;
+        }
+        return new(hatOffset, hatFrame);
+    }
 }
 
 /// <summary>Data for defining the position of the companion's head, for hat purposes.</summary>
 public class HatEquipData
 {
     /// <summary>The default hat offset.</summary>
-    public Vector2? OffsetDefault { get; set; } = null;
+    public HatEquipAttr? AdjustDefault { get; set; } = null;
 
-    /// <summary>Offset on hat position for particular frames on the base sprite sheet.</summary>
-    public Dictionary<int, Vector2?>? OffsetOnFrame { get; set; } = null;
+    /// <summary>Offset on hat position and optionally hat frame (0 1 2 3) for particular frames on the base sprite sheet.</summary>
+    public Dictionary<int, HatEquipAttr?>? AdjustOnFrame { get; set; } = null;
 
-    /// <summary>Offset on hat position for particular frames on the extra sprite sheet.</summary>
-    public Dictionary<int, Vector2?>? OffsetOnFrameExtra { get; set; } = null;
+    /// <summary>Offset on hat position and optionally hat frame (0 1 2 3) for particular frames on the extra sprite sheet.</summary>
+    public Dictionary<int, HatEquipAttr?>? AdjustOnFrameExtra { get; set; } = null;
 
-    /// <summary>Offset on hat position for particular companion direction.</summary>
-    public Dictionary<int, Vector2?>? OffsetOnDirection { get; set; } = null;
-
-    /// <summary>Set which hat frame (0 1 2 3) should match the trinket companion direction.</summary>
-    public Dictionary<int, int>? DirectionToHatFrame { get; set; } = null;
+    /// <summary>Offset on hat position and optionally hat frame (0 1 2 3) for particular companion direction.</summary>
+    public Dictionary<int, HatEquipAttr?>? AdjustOnDirection { get; set; } = null;
 
     /// <summary>Modifies the hat's draw scale</summary>
-    public float ModifyScale { get; set; } = 1f;
+    public float ScaleModifier { get; set; } = 1f;
 
     /// <summary>Where does the hat come from?</summary>
-    public HatSourceMode Source { get; set; } = HatSourceMode.Given;
+    public HatSourceMode Source { get; set; } = HatSourceMode.Temporary;
 }
 
 public interface IVariantData
@@ -97,7 +137,7 @@ public interface IVariantData
     /// <summary>Show NPC breathing, only usable if NPC is a real NPC with standard 16x32 or smaller sprite.</summary>
     public bool? ShowBreathing { get; set; }
 
-    /// <summary>Hat position data, for giving the companion hats.</summary>
+    /// <summary>Hat equip data, for giving the companion hats.</summary>
     public HatEquipData? HatEquip { get; set; }
 }
 

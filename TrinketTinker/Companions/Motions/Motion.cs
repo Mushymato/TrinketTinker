@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
@@ -744,7 +745,7 @@ public abstract class Motion<TArgs> : IMotion
             DrawCompanionBreathing(b, breatherSnapshot);
         }
 
-        if (cs.HatEquip != null && GetHatOffset(cs.HatEquip) is Vector2 hatOffset)
+        if (cs.HatEquip != null && TryGetHatOffsetAndFrame(cs.HatEquip, out Vector2? hatOffset, out int hatFrame))
         {
             bool isPrismatic = false;
             ParsedItemData? hatData = null;
@@ -764,11 +765,11 @@ public abstract class Motion<TArgs> : IMotion
                 int hatIndex = hatData.SpriteIndex;
                 DrawSnapshot hatDrawSnapshot = new(
                     hatData.GetTexture(),
-                    drawPos + hatOffset,
+                    drawPos + hatOffset.Value,
                     (!hatData.IsErrorItem)
                         ? new Rectangle(
                             hatIndex * 20 % hatTexture.Width,
-                            hatIndex * 20 / hatTexture.Width * 20 * 4 + GetHatFrame() * 20,
+                            hatIndex * 20 / hatTexture.Width * 20 * 4 + hatFrame * 20,
                             20,
                             20
                         )
@@ -776,7 +777,7 @@ public abstract class Motion<TArgs> : IMotion
                     isPrismatic ? Utility.GetPrismaticColor() : Color.White,
                     rotation,
                     new Vector2(10, 10),
-                    scale * cs.HatEquip.ModifyScale,
+                    scale * cs.HatEquip.ScaleModifier,
                     spriteEffects,
                     layerDepth + Visuals.LAYER_OFFSET / 2
                 );
@@ -1017,12 +1018,8 @@ public abstract class Motion<TArgs> : IMotion
         return false;
     }
 
-    public int GetHatFrame()
+    public int GetHatFrameDefault()
     {
-        if (cs.HatEquip?.DirectionToHatFrame?.TryGetValue(c.direction.Value, out int hatFrame) ?? false)
-        {
-            return hatFrame;
-        }
         int direction = c.direction.Value;
         switch (md.DirectionMode)
         {
@@ -1074,22 +1071,33 @@ public abstract class Motion<TArgs> : IMotion
         return 1;
     }
 
-    public Vector2? GetHatOffset(HatEquipData hatPosition)
+    public bool TryGetHatOffsetAndFrame(
+        HatEquipData hatEquip,
+        [NotNullWhen(true)] out Vector2? hatOffset,
+        out int hatFrame
+    )
     {
+        hatOffset = null;
+        hatFrame = -1;
         if (
-            (cs.UseExtra ? hatPosition.OffsetOnFrameExtra : hatPosition.OffsetOnFrame)?.TryGetValue(
-                cs.currentFrame,
-                out Vector2? offset
-            ) ?? false
+            (
+                (cs.UseExtra ? hatEquip.AdjustOnFrameExtra : hatEquip.AdjustOnFrame)?.TryGetValue(
+                    cs.currentFrame,
+                    out HatEquipAttr? hatAttr
+                ) ?? false
+            ) || (hatEquip.AdjustOnDirection?.TryGetValue(c.direction.Value, out hatAttr) ?? false)
         )
         {
-            return offset;
+            if (hatAttr == null)
+                return false;
+            hatOffset = hatAttr.Offset ?? hatOffset;
+            hatFrame = hatAttr.Frame ?? hatFrame;
         }
-        if (hatPosition.OffsetOnDirection?.TryGetValue(c.direction.Value, out offset) ?? false)
-        {
-            return offset;
-        }
-        return hatPosition.OffsetDefault;
+        hatOffset ??= hatEquip.AdjustDefault?.Offset;
+        if (hatOffset == null)
+            return false;
+        hatFrame = hatFrame != -1 ? hatFrame : GetHatFrameDefault();
+        return true;
     }
 
     /// <summary>First frame of animation, depending on direction.</summary>

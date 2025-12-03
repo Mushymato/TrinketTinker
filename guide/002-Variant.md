@@ -96,6 +96,7 @@ These fields are valid for both variant and alt variant.
 | `NPC` | string | _null_ | An NPC name (key of `Data/Characters`) to associate this variant with, used for the [Chatter ability](005.1-Chatter.md). |
 | `Name` | string | _null_ | A display name for the [Chatter ability](005.1-Chatter.md), used if there's no real `NPC`. |
 | `ShowBreathing` | bool | _null_ (true) | If the NPC name is set and they have `Breather=true` along with a sprite size less than 16x32, apply the NPC "breathing" effect on this trinket companion. |
+| `HatEquip` | HatEquipData | _null_ | A data model defining how companion may wear hats. |
 
 ### Top Level Variant
 
@@ -179,6 +180,15 @@ An example: Change the companion's appearance during winter.
 | `Index` | int | 1 | Base game light source texture index. |
 | `Texture` | string | 1 | Custom light map, must be loaded into game content. |
 | `Color` | string | _null_ | Light color name, accepts same values as `ColorMask`. |
+
+This model defines how lights on the companion behaves.
+
+### HatEquipData
+
+| Property | Type | Default | Notes |
+| -------- | ---- | ------- | ----- |
+| `OffsetDefault` | Vector2? | _null_ | The default hat position offset. |
+| `OffsetOnFrame` | int | 1 | Base game light source texture index. |
 
 ## Notes
 
