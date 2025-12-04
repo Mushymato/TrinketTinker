@@ -64,7 +64,7 @@ internal sealed class ModEntry : Mod
         );
         helper.ConsoleCommands.Add(
             "tt.unequip_trinket",
-            "Debug unequip all trinkets of current player and send the trinkets to lost and found.",
+            "Debug unequip all trinkets of current player and return the trinkets to player.",
             ConsoleUnequipTrinkets
         );
 #if DEBUG
@@ -338,20 +338,21 @@ internal sealed class ModEntry : Mod
     {
         if (!Context.IsWorldReady)
             return;
+        List<Item> returnedItems = [];
         foreach (Trinket trinketItem in Game1.player.trinketItems)
         {
             if (trinketItem == null)
                 continue;
             if (!trinketItem.modData.ContainsKey(TinkerConst.ModData_IndirectEquip))
             {
-                Game1.player.team.returnedDonations.Add(trinketItem);
+                returnedItems.Add(trinketItem);
                 Log($"UnequipTrinket: {trinketItem.QualifiedItemId}", LogLevel.Info);
             }
-            Game1.player.team.newLostAndFoundItems.Value = true;
         }
         Game1.player.trinketItems.Clear();
         Game1.player.companions.Clear();
         EquipTrinket.ClearHiddenInventory();
+        Game1.player.addItemsByMenuIfNecessary(returnedItems);
     }
 
     /// Static helper functions

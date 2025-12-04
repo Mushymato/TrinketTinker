@@ -467,7 +467,7 @@ internal sealed class GlobalInventoryHandler
         NetMutex hatMutex = Game1.player.team.GetOrCreateGlobalInventoryMutex(GlobalHatInventory);
         hatMutex.RequestLock(() =>
         {
-            Inventory hatInv = Game1.player.team.GetOrCreateGlobalInventory(GlobalHatInventory);
+            Inventory hatInv = GetHatInv();
             callback(hatInv);
             hatMutex.ReleaseLock();
         });
@@ -595,7 +595,7 @@ internal sealed class GlobalInventoryHandler
 
     internal static Hat? FindHat(string invId)
     {
-        Inventory hatInv = Game1.player.team.GetOrCreateGlobalInventory(GlobalHatInventory);
+        Inventory hatInv = GetHatInv();
         return (Hat?)
             hatInv.FirstOrDefault(hat =>
                 hat is Hat && hat.modData.TryGetValue(ModData_HatGivenTo, out string? hatGivenTo) && hatGivenTo == invId
@@ -653,7 +653,7 @@ internal sealed class GlobalInventoryHandler
         }
 
         // check for missing given hats
-        Inventory hatInv = Game1.player.team.GetOrCreateGlobalInventory(GlobalHatInventory);
+        Inventory hatInv = GetHatInv();
         Dictionary<string, int> missingGivenHat = [];
         for (int i = 0; i < hatInv.Count; i++)
         {
@@ -730,6 +730,11 @@ internal sealed class GlobalInventoryHandler
             Game1.showGlobalMessage(Game1.content.LoadString("Strings\\StringsFromCSFiles:NewLostAndFoundItems"));
         }
         team.newLostAndFoundItems.Value = newLostAndFoundItems;
+    }
+
+    private static Inventory GetHatInv()
+    {
+        return Game1.player.team.GetOrCreateGlobalInventory(GlobalHatInventory);
     }
 
     internal static bool ValidForInventory(Item item, TinkerInventoryData? data)
