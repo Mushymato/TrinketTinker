@@ -44,6 +44,15 @@
               "TrinketSpriteIndex": 1,
             },
           ],
+          "VariantsBase": {
+            "Width": 16,
+            "Height": 16,
+            "HatEquip": {
+              "AdjustDefault": "0,0 f0 r1.57",
+              "Source": "Given",
+              "ScaleModifier": 0.8
+            }
+          },
           "Motion": {
             "MotionClass": "Serpent",
             "DirectionMode": "Single",

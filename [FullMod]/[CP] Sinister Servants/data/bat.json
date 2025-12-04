@@ -57,6 +57,22 @@
               "TrinketSpriteIndex": 5,
             },
           ],
+          "VariantsBase": {
+            "Width": 16,
+            "Height": 16,
+            "HatEquip": {
+              "AdjustDefault": "f0",
+              "AdjustOnFrame": {
+                "0": "0,-8",
+                "1": "0,-12",
+                "2": "0,-16",
+                "3": "0,-12",
+                "4": "0,-8",
+              },
+              "Source": "Given",
+              "ScaleModifier": 0.6
+            }
+          },
           "Motion": {
             "MotionClass": "Hover",
             "AlwaysMoving": true,

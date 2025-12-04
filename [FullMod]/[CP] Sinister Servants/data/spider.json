@@ -32,9 +32,6 @@
           "MinLevel": 3,
           "Variants": [
             {
-              // "Texture": "Mods/{{ModId}}/spider_1",
-              // "Width": 20,
-              // "Height": 16
               "Texture": "Characters/Monsters/Spider",
               "Width": 32,
               "Height": 32,
@@ -44,7 +41,16 @@
                 "Width": 20,
                 "Height": 16
               },
-              "ShadowScale": 0
+              "ShadowScale": 0,
+              "HatEquip": {
+                "AdjustDefault": "f0",
+                "AdjustOnFrame": {
+                  "0": "0,24",
+                  "1": "0,16",
+                  "2": "0,24"
+                },
+                "Source": "Given"
+              }
             },
           ],
           "Motion": {

@@ -34,7 +34,16 @@
               "Texture": "Mods/{{ModId}}/stick_1",
               "Width": 16,
               "Height": 19,
-              "ShadowScale": 0
+              "ShadowScale": 0,
+              "HatEquip": {
+                "AdjustOnFrame": {
+                  "0": "0,-12",
+                  "1": "0,-20",
+                  "2": "0,-20",
+                  "3": "0,-4"
+                },
+                "Source": "Given"
+              }
             },
           ],
           "Motion": {

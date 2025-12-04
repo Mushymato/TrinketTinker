@@ -745,7 +745,10 @@ public abstract class Motion<TArgs> : IMotion
             DrawCompanionBreathing(b, breatherSnapshot);
         }
 
-        if (cs.HatEquip != null && TryGetHatOffsetAndFrame(cs.HatEquip, out Vector2? hatOffset, out int hatFrame))
+        if (
+            cs.HatEquip != null
+            && TryGetHatOffsetAndFrame(cs.HatEquip, out Vector2? hatOffset, out int hatFrame, out float hatRotate)
+        )
         {
             bool isPrismatic = false;
             ParsedItemData? hatData = null;
@@ -775,7 +778,7 @@ public abstract class Motion<TArgs> : IMotion
                         )
                         : hatData.GetSourceRect(),
                     isPrismatic ? Utility.GetPrismaticColor() : Color.White,
-                    rotation,
+                    rotation + hatRotate,
                     new Vector2(10, 10),
                     scale * cs.HatEquip.ScaleModifier,
                     spriteEffects,
@@ -1053,18 +1056,9 @@ public abstract class Motion<TArgs> : IMotion
                 switch (direction)
                 {
                     case 1:
-                        return 2;
+                        return 1;
                     case 2:
-                        return 3;
-                }
-                break;
-            case DirectionMode.R:
-                switch (direction)
-                {
-                    case 1:
                         return 2;
-                    case -1:
-                        return 3;
                 }
                 break;
         }
@@ -1074,11 +1068,13 @@ public abstract class Motion<TArgs> : IMotion
     public bool TryGetHatOffsetAndFrame(
         HatEquipData hatEquip,
         [NotNullWhen(true)] out Vector2? hatOffset,
-        out int hatFrame
+        out int hatFrame,
+        out float hatRotate
     )
     {
         hatOffset = null;
         hatFrame = -1;
+        hatRotate = 0;
         if (
             (
                 (cs.UseExtra ? hatEquip.AdjustOnFrameExtra : hatEquip.AdjustOnFrame)?.TryGetValue(
@@ -1092,11 +1088,13 @@ public abstract class Motion<TArgs> : IMotion
                 return false;
             hatOffset = hatAttr.Offset ?? hatOffset;
             hatFrame = hatAttr.Frame ?? hatFrame;
+            hatRotate = hatAttr.Rotate ?? hatRotate;
         }
         hatOffset ??= hatEquip.AdjustDefault?.Offset;
         if (hatOffset == null)
             return false;
-        hatFrame = hatFrame != -1 ? hatFrame : GetHatFrameDefault();
+        hatFrame = hatFrame != -1 ? hatFrame : hatEquip.AdjustDefault?.Frame ?? GetHatFrameDefault();
+        hatRotate = hatEquip.AdjustDefault?.Rotate ?? hatRotate;
         return true;
     }
 

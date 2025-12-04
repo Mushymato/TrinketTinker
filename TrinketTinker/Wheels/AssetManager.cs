@@ -57,10 +57,6 @@ internal static class AssetManager
                                 vdata.ShowBreathing ??= vbase.ShowBreathing ?? true;
                                 vdata.HatEquip ??= vbase.HatEquip;
                                 vdata.LightSource ??= vbase.LightSource;
-                                vdata.TrinketSpriteIndex =
-                                    vdata.TrinketSpriteIndex == -1
-                                        ? vbase.TrinketSpriteIndex
-                                        : vdata.TrinketSpriteIndex;
                                 vdata.TrinketNameArguments ??= vbase.TrinketNameArguments;
                                 vdata.AttachedTAS ??= vbase.AttachedTAS;
                                 vdata.AltVariants ??= vbase.AltVariants;

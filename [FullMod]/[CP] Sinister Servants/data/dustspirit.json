@@ -60,11 +60,7 @@
               "Width": 16,
               "Height": 16,
               "HatEquip": {
-                "OffsetDefault": "0,-14",
-                "DirectionToHatFrame": {
-                  "1": 0,
-                  "-1": 0
-                },
+                "AdjustDefault": "0,-14 f0",
                 "ModifyScale": 0.8,
                 "Source": "Given"
               }

@@ -40,10 +40,12 @@ public enum HatSourceMode
 /// <summary>Hat offset and frame record</summary>
 /// <param name="Offset">Vector2 offset or null for hidden</param>
 /// <param name="Frame"></param>
-public sealed record HatEquipAttr(Vector2? Offset, int? Frame)
+public sealed record HatEquipAttr(Vector2? Offset, int? Frame, float? Rotate)
 {
     /// <summary>String to HatEquipAttr pattern</summary>
-    private static readonly Regex equipAttrRE = new(@"((-?[0-9]+\.?[0-9]*)\s*,\s*(-?[0-9]+\.?[0-9]*))?\s*(f([0-3]))?");
+    private static readonly Regex equipAttrRE = new(
+        @"((-?[0-9]+\.?[0-9]*)\s*,\s*(-?[0-9]+\.?[0-9]*))?\s*(f([0-3]))?\s*(r(-?[0-9]+\.?[0-9]*))?"
+    );
 
     /// <summary>Try and convert a short form string to HatEquipAttr</summary>
     /// <param name="equipAttrString"></param>
@@ -55,6 +57,7 @@ public sealed record HatEquipAttr(Vector2? Offset, int? Frame)
         }
         Vector2? hatOffset = null;
         int? hatFrame = null;
+        float? Rotation = null;
         if (match.Groups[1].ValueSpan.Length > 0)
         {
             hatOffset = new(float.Parse(match.Groups[2].ValueSpan), float.Parse(match.Groups[3].ValueSpan));
@@ -63,11 +66,15 @@ public sealed record HatEquipAttr(Vector2? Offset, int? Frame)
         {
             hatFrame = int.Parse(match.Groups[5].ValueSpan);
         }
-        if (hatOffset == null && hatFrame == null)
+        if (match.Groups[6].ValueSpan.Length > 0)
+        {
+            Rotation = float.Parse(match.Groups[7].ValueSpan);
+        }
+        if (hatOffset == null && hatFrame == null && Rotation == null)
         {
             return null;
         }
-        return new(hatOffset, hatFrame);
+        return new(hatOffset, hatFrame, Rotation);
     }
 }
 
@@ -90,7 +97,7 @@ public class HatEquipData
     public float ScaleModifier { get; set; } = 1f;
 
     /// <summary>Where does the hat come from?</summary>
-    public HatSourceMode Source { get; set; } = HatSourceMode.Temporary;
+    public HatSourceMode Source { get; set; } = HatSourceMode.Owner;
 }
 
 public interface IVariantData
