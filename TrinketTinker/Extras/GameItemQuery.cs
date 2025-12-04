@@ -553,7 +553,8 @@ public static class GameItemQuery
                     companion,
                     effect.InventoryId,
                     newHat,
-                    hatSource.HasFlag(HatSourceMode.Temporary)
+                    hatSource,
+                    fromAction: true
                 );
             }
         }

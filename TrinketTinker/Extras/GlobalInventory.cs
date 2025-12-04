@@ -473,12 +473,12 @@ internal sealed class GlobalInventoryHandler
         });
     }
 
-    internal static bool SwapHat(Farmer farmer, TrinketTinkerCompanion companion, string invId, bool isTemporary)
+    internal static bool SwapHat(Farmer farmer, TrinketTinkerCompanion companion, string invId, HatSourceMode hatSource)
     {
         if (farmer.Items.Count <= farmer.CurrentToolIndex || farmer.Items[farmer.CurrentToolIndex] is not Hat newHat)
             return false;
 
-        DoSwapHat(farmer, companion, invId, newHat, isTemporary);
+        DoSwapHat(farmer, companion, invId, newHat, hatSource);
         return true;
     }
 
@@ -487,12 +487,16 @@ internal sealed class GlobalInventoryHandler
         TrinketTinkerCompanion companion,
         string invId,
         Hat newHat,
-        bool isTemporary
+        HatSourceMode hatSource,
+        bool fromAction = false
     )
     {
+        if (!(HatSourceMode.Given | HatSourceMode.Temporary).HasFlag(hatSource))
+            return;
         DoLockedHatInvOperation(
             (hatInv) =>
             {
+                bool justRemovedHat = false;
                 if (companion.GivenHat is Hat currHat)
                 {
                     if (currHat.modData.ContainsKey(ModData_HatGivenTo))
@@ -503,18 +507,22 @@ internal sealed class GlobalInventoryHandler
                         Game1.createItemDebris(currHat, companion.Position, -1, farmer.currentLocation);
                     }
                     companion.GivenHat = null;
+                    justRemovedHat = true;
                 }
-                else if (!isTemporary)
+                if (!justRemovedHat || fromAction)
                 {
-                    newHat.onDetachedFromParent();
-                    farmer.Items[farmer.CurrentToolIndex] = null;
-                    hatInv.Add(newHat);
-                    newHat.modData[ModData_HatGivenTo] = invId;
-                    companion.GivenHat = newHat;
-                }
-                if (isTemporary)
-                {
-                    companion.GivenHat = newHat;
+                    if (hatSource.HasFlag(HatSourceMode.Temporary))
+                    {
+                        companion.GivenHat = newHat;
+                    }
+                    else
+                    {
+                        newHat.onDetachedFromParent();
+                        farmer.Items[farmer.CurrentToolIndex] = null;
+                        hatInv.Add(newHat);
+                        newHat.modData[ModData_HatGivenTo] = invId;
+                        companion.GivenHat = newHat;
+                    }
                 }
             }
         );

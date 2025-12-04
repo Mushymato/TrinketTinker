@@ -165,9 +165,10 @@ public class TrinketTinkerCompanion : Companion
     }
 
     /// <summary>Whether companion can be given hat</summary>
-    internal bool CanBeGivenHat(HatSourceMode source = HatSourceMode.Given | HatSourceMode.Temporary)
+    internal bool CanBeGivenHat()
     {
-        return HatSource() is HatSourceMode hatSource && source.HasFlag(hatSource);
+        return HatSource() is HatSourceMode hatSource
+            && (HatSourceMode.Given | HatSourceMode.Temporary).HasFlag(hatSource);
     }
 
     /// <summary>Argumentless constructor for netcode deserialization.</summary>

@@ -547,7 +547,7 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
             if (
                 Companion is TrinketTinkerCompanion cmp
                 && cmp.HatSource() is HatSourceMode hatSource
-                && GlobalInventoryHandler.SwapHat(farmer, cmp, InventoryId, hatSource.HasFlag(HatSourceMode.Temporary))
+                && GlobalInventoryHandler.SwapHat(farmer, cmp, InventoryId, hatSource)
             )
             {
                 return;
