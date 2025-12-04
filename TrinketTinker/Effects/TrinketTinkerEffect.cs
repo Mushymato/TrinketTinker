@@ -311,14 +311,6 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
             {
                 SetupAbility(ab, ref initAblities, ref idx, ref foundEquipTrinketAbility);
             }
-            if (Data.AbilitiesShared != null)
-            {
-                idx++;
-                foreach (AbilityData ab in Data.AbilitiesShared)
-                {
-                    SetupAbility(ab, ref initAblities, ref idx, ref foundEquipTrinketAbility);
-                }
-            }
         }
         IsDirty.Value = false;
         return initAblities;

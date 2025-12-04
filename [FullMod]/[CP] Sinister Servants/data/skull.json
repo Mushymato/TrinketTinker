@@ -33,40 +33,32 @@
           "Variants": [
             {
               "Texture": "Mods/{{ModId}}/skull_1",
-              "Width": 16,
-              "Height": 16,
               "TrinketSpriteIndex": 0,
               "TrinketNameArguments": [
                 "{{i18n:Skull.DisplayName.Arg.0}}",
               ],
-              "HatEquip": {
-                "AdjustOnDirection": {
-                  "1": "-1.5,-16",
-                  "2": "0,-12",
-                  "3": "-1.5,-16",
-                  "4": "0,-12",
-                },
-                "Source": "Owner"
-              }
             },
             {
               "Texture": "Mods/{{ModId}}/skull_2",
-              "Width": 16,
-              "Height": 16,
               "TrinketSpriteIndex": 1,
               "TrinketNameArguments": [
                 "{{i18n:Skull.DisplayName.Arg.1}}",
               ],
-              "HatEquip": {
-                "AdjustOnDirection": {
-                  "1": "-1.5,-16",
-                  "2": "0,-12",
-                  "3": "-1.5,-16",
-                  "4": "0,-12",
-                }
-              }
             },
           ],
+          "VariantsBase": {
+            "Width": 16,
+            "Height": 16,
+            "HatEquip": {
+              "AdjustOnDirection": {
+                "1": "-1.5,-16",
+                "2": "0,-12",
+                "3": "-1.5,-16",
+                "4": "0,-12",
+              },
+              "Source": "Owner"
+            }
+          },
           "Motion": {
             "MotionClass": "Orbit",
             "AlwaysMoving": true,

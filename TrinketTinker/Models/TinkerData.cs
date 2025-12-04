@@ -49,6 +49,9 @@ public sealed class TinkerData
     /// <summary>List of variants</summary>
     public List<VariantData> Variants { get; set; } = [];
 
+    /// <summary>Shared base data for variants</summary>
+    public VariantData? VariantsBase { get; set; } = null;
+
     /// <summary>List of list of abilities for each level</summary>
     public List<List<AbilityData>> Abilities { get; set; } = [];
 
@@ -56,14 +59,14 @@ public sealed class TinkerData
     public List<AbilityData>? AbilitiesShared { get; set; } = null;
 
     /// <summary>GSQ conditions for locking variants.</summary>
-    public List<string?> VariantUnlockConditions = [];
+    public List<string?> VariantUnlockConditions { get; set; } = [];
 
     /// <summary>GSQ conditions for locking abilities.</summary>
-    public List<string?> AbilityUnlockConditions = [];
+    public List<string?> AbilityUnlockConditions { get; set; } = [];
 
     /// <summary>Definition for inventory, tied to level</summary>
-    public TinkerInventoryData? Inventory = null;
+    public TinkerInventoryData? Inventory { get; set; } = null;
 
     /// <summary>Data for <see cref="Effects.Abilities.ChatterAbility"/></summary>
-    public Dictionary<string, ChatterLinesData>? Chatter = null;
+    public Dictionary<string, ChatterLinesData>? Chatter { get; set; } = null;
 }

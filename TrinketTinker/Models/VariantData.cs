@@ -215,10 +215,10 @@ public sealed class VariantData : IVariantData
     public string? ColorMask { get; set; } = null;
 
     /// <inheritdoc/>
-    public int Width { get; set; } = 16;
+    public int Width { get; set; } = -1;
 
     /// <inheritdoc/>
-    public int Height { get; set; } = 16;
+    public int Height { get; set; } = -1;
 
     /// <inheritdoc/>
     public Rectangle Bounding { get; set; } = Rectangle.Empty;
@@ -239,7 +239,7 @@ public sealed class VariantData : IVariantData
     public string? Portrait { get; set; } = null;
 
     /// <inheritdoc/>
-    public bool? ShowBreathing { get; set; } = true;
+    public bool? ShowBreathing { get; set; } = null;
 
     /// <inheritdoc/>
     public HatEquipData? HatEquip { get; set; } = null;

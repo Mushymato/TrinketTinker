@@ -28,7 +28,52 @@ internal static class AssetManager
     {
         get
         {
-            _tinkerData ??= ModEntry.Help.GameContent.Load<Dictionary<string, TinkerData>>(TinkerAsset);
+            if (_tinkerData == null)
+            {
+                _tinkerData = ModEntry.Help.GameContent.Load<Dictionary<string, TinkerData>>(TinkerAsset);
+                foreach (TinkerData data in _tinkerData.Values)
+                {
+                    if ((data.Abilities?.Any() ?? false) && (data.AbilitiesShared?.Any() ?? false))
+                    {
+                        foreach (List<AbilityData> abList in data.Abilities)
+                        {
+                            abList.AddRange(data.AbilitiesShared);
+                        }
+                        data.AbilitiesShared = null;
+                    }
+                    if (data.VariantsBase is VariantData vbase)
+                    {
+                        if (data.Variants?.Any() ?? false)
+                        {
+                            foreach (VariantData vdata in data.Variants)
+                            {
+                                vdata.Width = vdata.Width == -1 ? (vbase.Width == -1 ? 16 : vbase.Width) : vdata.Width;
+                                vdata.Height =
+                                    vdata.Height == -1 ? (vbase.Height == -1 ? 16 : vbase.Height) : vdata.Height;
+                                vdata.Bounding = vdata.Bounding.IsEmpty ? vbase.Bounding : vdata.Bounding;
+                                vdata.NPC ??= vbase.NPC;
+                                vdata.Name ??= vbase.Name;
+                                vdata.Portrait ??= vbase.Portrait;
+                                vdata.ShowBreathing ??= vbase.ShowBreathing ?? true;
+                                vdata.HatEquip ??= vbase.HatEquip;
+                                vdata.LightSource ??= vbase.LightSource;
+                                vdata.TrinketSpriteIndex =
+                                    vdata.TrinketSpriteIndex == -1
+                                        ? vbase.TrinketSpriteIndex
+                                        : vdata.TrinketSpriteIndex;
+                                vdata.TrinketNameArguments ??= vbase.TrinketNameArguments;
+                                vdata.AttachedTAS ??= vbase.AttachedTAS;
+                                vdata.AltVariants ??= vbase.AltVariants;
+                            }
+                        }
+                        else
+                        {
+                            data.Variants = [data.VariantsBase];
+                        }
+                        data.VariantsBase = null;
+                    }
+                }
+            }
             return _tinkerData;
         }
     }
