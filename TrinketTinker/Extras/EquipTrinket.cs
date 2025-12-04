@@ -20,6 +20,10 @@ public static class EquipTrinket
     private static Inventory GetHiddenTrinketsInv(Farmer player) =>
         Game1.player.team.GetOrCreateGlobalInventory($"{ModEntry.ModId}+{player.UniqueMultiplayerID}/HiddenTrinkets");
 
+    /// <summary>Global inventory for holding all hidden trinkets that had been created previously</summary>
+    private static Inventory GetStoredTrinketsInv(Farmer player) =>
+        Game1.player.team.GetOrCreateGlobalInventory($"{ModEntry.ModId}+{player.UniqueMultiplayerID}/StoredTrinkets");
+
     /// <summary>Equip hidden trinket action name</summary>
     public const string Action_EquipHiddenTrinket = $"{ModEntry.ModId}_EquipHiddenTrinket";
 
@@ -82,6 +86,61 @@ public static class EquipTrinket
         return false;
     }
 
+    internal static void RemoveFromHiddenInventory(
+        Inventory hiddenTrinketsInv,
+        Inventory storedTrinketsInv,
+        Trinket trinket
+    )
+    {
+        trinket.modData.Remove(TinkerConst.ModData_HiddenEquip);
+        hiddenTrinketsInv.Remove(trinket);
+        hiddenTrinketsInv.RemoveEmptySlots();
+        var team = Game1.player.team;
+        if (trinket.GetEffect() is TrinketTinkerEffect effect2 && effect2.GetInventory() is Inventory trinketInv)
+        {
+            trinketInv.RemoveEmptySlots();
+            foreach (var item2 in trinketInv)
+                team.returnedDonations.Add(item2);
+            team.globalInventories.Remove(effect2.FullInventoryId);
+        }
+        if (!trinket.modData.ContainsKey(TinkerConst.ModData_NoPersistEquip))
+        {
+            storedTrinketsInv.Add(trinket);
+        }
+    }
+
+    private static Trinket? Acquire(Farmer farmer, string trinketId, bool createNew)
+    {
+        if (!trinketId.StartsWith(ItemRegistry.type_trinket))
+        {
+            trinketId = string.Concat(ItemRegistry.type_trinket, trinketId);
+        }
+
+        if (!createNew)
+        {
+            Inventory store = GetStoredTrinketsInv(farmer);
+            foreach (Item item in store.Reverse())
+            {
+                if (item is Trinket storedTrinket && item.QualifiedItemId == trinketId)
+                {
+                    store.Remove(storedTrinket);
+                    store.RemoveEmptySlots();
+                    return storedTrinket;
+                }
+            }
+        }
+
+        if (ItemRegistry.Create(trinketId, allowNull: false) is Trinket trinket)
+        {
+            if (createNew)
+            {
+                trinket.modData[TinkerConst.ModData_NoPersistEquip] = "T";
+            }
+            return trinket;
+        }
+        return null;
+    }
+
     public static bool EquipHiddenTrinket(string[] args, TriggerActionContext context, out string error)
     {
         if (
@@ -96,6 +155,14 @@ public static class EquipTrinket
                 defaultValue: 1,
                 name: "int daysDuration"
             )
+            || !ArgUtility.TryGetOptionalBool(
+                args,
+                5,
+                out bool createNew,
+                out error,
+                defaultValue: false,
+                name: "bool createNew"
+            )
         )
         {
             ModEntry.Log(error, LogLevel.Error);
@@ -105,7 +172,7 @@ public static class EquipTrinket
         if (daysDuration < 1)
             daysDuration = -1;
 
-        if (ItemRegistry.Create(trinketId, allowNull: false) is Trinket trinket)
+        if (Acquire(Game1.player, trinketId, createNew) is Trinket trinket)
         {
             if (trinket.GetEffect() is TrinketTinkerEffect effect)
             {
@@ -141,6 +208,7 @@ public static class EquipTrinket
             return false;
         }
 
+        Inventory storedTrinketsInv = GetStoredTrinketsInv(Game1.player);
         foreach (Item item in hiddenTrinketsInv.Reverse())
         {
             if (item is Trinket trinket && (trinket.QualifiedItemId == trinketId || trinket.ItemId == trinketId))
@@ -152,20 +220,7 @@ public static class EquipTrinket
                     continue;
                 if (Unequip(Game1.player, trinket))
                 {
-                    trinket.modData.Remove(TinkerConst.ModData_HiddenEquip);
-                    hiddenTrinketsInv.Remove(trinket);
-                    hiddenTrinketsInv.RemoveEmptySlots();
-                    var team = Game1.player.team;
-                    if (
-                        trinket.GetEffect() is TrinketTinkerEffect effect2
-                        && effect2.GetInventory() is Inventory trinketInv
-                    )
-                    {
-                        trinketInv.RemoveEmptySlots();
-                        foreach (var item2 in trinketInv)
-                            team.returnedDonations.Add(item2);
-                        team.globalInventories.Remove(effect2.FullInventoryId);
-                    }
+                    RemoveFromHiddenInventory(hiddenTrinketsInv, storedTrinketsInv, trinket);
                     return true;
                 }
             }
@@ -196,6 +251,7 @@ public static class EquipTrinket
     /// <param name="decrement">indicates that this is called from day ending, decrement count by 1</param>
     internal static void UnequipHiddenTrinkets(bool decrement = true)
     {
+        Inventory storedTrinketsInv = GetStoredTrinketsInv(Game1.player);
         Inventory hiddenTrinketsInv = GetHiddenTrinketsInv(Game1.player);
         // hidden trinkets
         foreach (Item item in hiddenTrinketsInv.Reverse())
@@ -210,8 +266,7 @@ public static class EquipTrinket
                     {
                         if (daysDuration == 0)
                         {
-                            trinket.modData.Remove(TinkerConst.ModData_HiddenEquip);
-                            hiddenTrinketsInv.Remove(trinket);
+                            RemoveFromHiddenInventory(hiddenTrinketsInv, storedTrinketsInv, trinket);
                             ModEntry.Log($"{trinket.QualifiedItemId} expired");
                         }
                         else
