@@ -40,7 +40,7 @@ public enum HatSourceMode
 /// <summary>Hat offset and frame record</summary>
 /// <param name="Offset">Vector2 offset or null for hidden</param>
 /// <param name="Frame"></param>
-public sealed record HatEquipAttr(Vector2? Offset, int? Frame, float? Rotate)
+public sealed record HatEquipAdj(Vector2? Offset, int? Frame, float? Rotate)
 {
     /// <summary>String to HatEquipAttr pattern</summary>
     private static readonly Regex equipAttrRE = new(
@@ -49,7 +49,7 @@ public sealed record HatEquipAttr(Vector2? Offset, int? Frame, float? Rotate)
 
     /// <summary>Try and convert a short form string to HatEquipAttr</summary>
     /// <param name="equipAttrString"></param>
-    public static implicit operator HatEquipAttr?(string equipAttrString)
+    public static implicit operator HatEquipAdj?(string equipAttrString)
     {
         if (equipAttrRE.Match(equipAttrString) is not Match match || !match.Success || match.Length == 0)
         {
@@ -82,16 +82,16 @@ public sealed record HatEquipAttr(Vector2? Offset, int? Frame, float? Rotate)
 public class HatEquipData
 {
     /// <summary>The default hat offset.</summary>
-    public HatEquipAttr? AdjustDefault { get; set; } = null;
-
-    /// <summary>Offset on hat position and optionally hat frame (0 1 2 3) for particular frames on the base sprite sheet.</summary>
-    public Dictionary<int, HatEquipAttr?>? AdjustOnFrame { get; set; } = null;
-
-    /// <summary>Offset on hat position and optionally hat frame (0 1 2 3) for particular frames on the extra sprite sheet.</summary>
-    public Dictionary<int, HatEquipAttr?>? AdjustOnFrameExtra { get; set; } = null;
+    public HatEquipAdj? AdjustDefault { get; set; } = null;
 
     /// <summary>Offset on hat position and optionally hat frame (0 1 2 3) for particular companion direction.</summary>
-    public Dictionary<int, HatEquipAttr?>? AdjustOnDirection { get; set; } = null;
+    public Dictionary<int, HatEquipAdj?>? AdjustOnDirection { get; set; } = null;
+
+    /// <summary>Offset on hat position and optionally hat frame (0 1 2 3) for particular frames on the base sprite sheet.</summary>
+    public Dictionary<int, HatEquipAdj?>? AdjustOnFrame { get; set; } = null;
+
+    /// <summary>Offset on hat position and optionally hat frame (0 1 2 3) for particular frames on the extra sprite sheet.</summary>
+    public Dictionary<int, HatEquipAdj?>? AdjustOnFrameExtra { get; set; } = null;
 
     /// <summary>Modifies the hat's draw scale</summary>
     public float ScaleModifier { get; set; } = 1f;

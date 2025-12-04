@@ -1079,7 +1079,7 @@ public abstract class Motion<TArgs> : IMotion
             (
                 (cs.UseExtra ? hatEquip.AdjustOnFrameExtra : hatEquip.AdjustOnFrame)?.TryGetValue(
                     cs.currentFrame,
-                    out HatEquipAttr? hatAttr
+                    out HatEquipAdj? hatAttr
                 ) ?? false
             ) || (hatEquip.AdjustOnDirection?.TryGetValue(c.direction.Value, out hatAttr) ?? false)
         )

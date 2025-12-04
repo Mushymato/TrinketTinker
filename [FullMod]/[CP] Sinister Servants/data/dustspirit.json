@@ -4,7 +4,7 @@
     {
       "LogName": "DustSpirit: Sprites",
       "Action": "Load",
-      "Target": "Mods/{{ModId}}/dustspirit_1, Mods/{{ModId}}/dustspirit_t",
+      "Target": "Mods/{{ModId}}/dustspirit_t",
       "FromFile": "assets/{{TargetWithoutPath}}.png"
     },
     {
@@ -54,21 +54,26 @@
       "Target": "mushymato.TrinketTinker/Tinker",
       "Entries": {
         "{{ModId}}_DustSpirit": {
-          "Variants": [
-            {
-              "Texture": "Mods/{{ModId}}/dustspirit_1",
-              "Width": 16,
-              "Height": 16,
-              "HatEquip": {
-                "AdjustDefault": "0,-14 f0",
-                "ModifyScale": 0.8,
-                "Source": "Given"
-              }
+          "VariantsBase": {
+            "Texture": "Characters/Monsters/Dust Spirit",
+            "TextureSourceRect": {
+              "X": 0,
+              "Y": 8,
+              "Width": 64,
+              "Height": 1,
             },
-          ],
+            "Width": 16,
+            "Height": 16,
+            "HatEquip": {
+              "AdjustDefault": "0,-14 f0",
+              "ModifyScale": 0.8,
+              "Source": "Given"
+            }
+          },
           "Motion": {
             "MotionClass": "Bounce",
             "DirectionMode": "R",
+            "Flip": "FlipHorizontally",
             "FrameLength": 4,
             "RepeatCount": 2,
             "RepeatInterval": 500,

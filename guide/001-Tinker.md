@@ -24,6 +24,9 @@ When a `Data/Trinkets` entry has a matching `mushymato.TrinketTinker/Tinker` ent
         { /* more variant data */ },
         //...
       ],
+      "VariantsBase": {
+        /* variant data shared between all variants */
+      },
       "Motion": { /* motion data */ },
       "Abilities": [
         [
@@ -82,6 +85,7 @@ Unlike base game trinkets, TrinketTinker trinkets always spawn with the first va
 | `EnableFailMessage` | string | _null_ | When `EnableCondition` is false, this message will be displayed upon equipping the trinket. Supports tokenized text.<br/>Default message: ` "You are not worthy of {{trinketName}}..."` |
 | `MinLevel` | int | 1 | Changes the level value that will replace `{0}` in `DisplayName`. |
 | `Variants` | [List\<VariantData\>](002-Variant.md) | _null_ | Defines the sprites of the companion. |
+| `VariantsBase` | [VariantData](002-Variant.md) | _null_ | Defines some default values shared across all variants. |
 | `Motion` | [MotionData](003-Motion.md) | _null_ | Defines how the companion moves. |
 | `Abilities` | [List\<List\<AbilityData\>\>](004-Ability.md) | _null_ | Defines what abilities (i.e. trinket effects) are activated and when. Each list in the list of lists represents 1 ability level. |
 | `AbilitiesShared` | [List\<AbilityData\>](004-Ability.md) | _null_ | A list of abilities that are automatically appended to every level. |
@@ -91,7 +95,7 @@ Unlike base game trinkets, TrinketTinker trinkets always spawn with the first va
 | `Chatter` | [Dictionary\<string, ChatterLinesData\>](005.1-Chatter.md) | _null_ | Gives the trinket dialogue for use with the [Chatter ability](005.1-Chatter.md). |
 
 ### DEPRECATED
-- `Motions`, previously a list of `MotionData` that is unused except for the first element. It has been removed since 1.5.0, please use only `Motion` from now on.
+- `Motions`, previously a list of `MotionData` that is unused except for the first element. It has been removed since TrinketTinker 1.5.0, please use only `Motion` from now on.
 
 ### Unlock Conditions
 
@@ -120,6 +124,26 @@ Example usage with 4 abilities (lv1 to lv4):
   }
 }
 ```
+
+### VariantsBase
+
+This serves as a way to define default data for all variants, but not all fields work here.
+
+[VariantData](002-Variant.md) fields that support using `VariantsBase` as default:
+- `Width`
+- `Height`
+- `Bounding`
+- `NPC`
+- `Name`
+- `Portrait`
+- `ShowBreathing`
+- `HatEquip`
+- `LightSource`
+- `TrinketNameArguments`
+- `AttachedTAS`
+- `AltVariants`
+
+A special case happens if there are no `Variants` but there is a `VariantsBase`. In this situation `VariantsBase` becomes Variant 0. Trinkets that only have 1 variant can use this to shortcut the definition.
 
 ## Integrating Trinket Tinker
 

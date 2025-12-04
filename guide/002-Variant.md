@@ -31,6 +31,14 @@ Variants can have alternate variants, which are automatically rechecked whenever
         "Name": "[LocalizedText Strings/NPCNames:{{ModId}}_SampleNPC]",
         "Portrait": "Portrait/{{ModId}}_SampleNPC",
         "ShowBreathing": true|false,
+        "HatEquip": {
+          "AdjustDefault": <default hat adjust>,
+          "AdjustOnDirection": <per direction adjust>,
+          "AdjustOnFrame": <per frame hat adjust>,
+          "AdjustOnFrameExtra": <per frame on extra sheet hat adjust>,
+          "ScaleModifier": <scale modifier>,
+          "Source": "Given"|"Temporary"|"Owner"
+        },
         "LightSource": {
           // This block is LightSourceData
           "Radius": <float radius(size)>,
@@ -65,6 +73,7 @@ Variants can have alternate variants, which are automatically rechecked whenever
             "Name": "[LocalizedText Strings/NPCNames:{{ModId}}_SampleNPC]",
             "Portrait": "Portrait/{{ModId}}_SampleNPC",
             "ShowBreathing": true|false,
+            "HatEquip": <hat equip model>,
             "Condition": "<game state query>",
             "Priority": <int priority>
           },
@@ -187,8 +196,30 @@ This model defines how lights on the companion behaves.
 
 | Property | Type | Default | Notes |
 | -------- | ---- | ------- | ----- |
-| `OffsetDefault` | Vector2? | _null_ | The default hat position offset. |
-| `OffsetOnFrame` | int | 1 | Base game light source texture index. |
+| `AdjustDefault` | HatEquipAdj | _null_ | The default hat adjustment. |
+| `AdjustOnFrame` | Dictionary<int, HatEquipAdj> | _null_ | Hat adjustment for a specific frame. |
+| `AdjustOnFrameExtra` | Dictionary<int, HatEquipAdj> | _null_ | Hat adjustment for a specific frame, on `TextureExtra`. |
+| `AdjustOnDirection` | Dictionary<int, HatEquipAdj> | _null_ | Hat adjustment for a direction. |
+| `ScaleModifier` | float | A modifier to the scale of hat, on top of the companion's scale. |
+| `Source` | HatSourceMode | How the companion can obtain hat:<ul><li><b>Given</b>: You can give companion a hat via interact button while holding a hat, they will hold the hat until you swap it with another hat.</li><li><b>Temporary</b>: You can give companion a hat via interact button while holding a hat, they will get a copy of the hat, and it expires once unequiped/day ends.</li><li><b>Owner</b>: The companion will wear the same hat as you.</li></ul> |
+
+#### HatEquipAdj
+
+This is a record with 3 fields:
+- `Offset`: Pixel offset of the hat, calculate between the hat's center and the companion's center.
+- `Frame`: Which hat frame to use (0 1 2 3) if not default.
+- `Rotate`: Float rotation of hat.
+
+Instead of specifying the fields in model you can use a string like this: `"12,12 f1 r0:` which is converted to `Offset={12,12}`, `Frame=1`, `Rotate=0`. Order is important, but it is fine to skip fields that you don't need (e.g. `"12,12"` is enough if you only want offset, `"f1"` enough if only you only need frame.).
+
+The hat adjustment is checked in this order:
+- `AdjustOnFrame` or `AdjustOnFrameExtra` value for current frame
+- `AdjustOnDirection` for current direction
+- `AdjustDefault` is the default value
+
+If all 3 values have null for offset, then the hat will not be drawn that frame.
+
+`Offset`/`Frame`/`Rotate` are considered independently when it comes to inheritance. E.g. if there is an `AdjustOnFrame` entry with an `Offset` defined but no `Frame`, then the `Frame` from `AdjustOnDirection` is used.
 
 ## Notes
 
