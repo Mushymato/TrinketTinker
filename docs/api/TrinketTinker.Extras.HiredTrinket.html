@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class HiredTrinket | TrinketTinker </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class HiredTrinket | TrinketTinker ">
+      
+      
+      <link rel="icon" href="../images/favicon.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      <meta name="searchOption" content="noindex">
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/new/main/apiSpec/new?filename=TrinketTinker_Extras_HiredTrinket.md&amp;value=---%0Auid%3A%20TrinketTinker.Extras.HiredTrinket%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/favicon.png" alt="TrinketTinker">
+            TrinketTinker
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="TrinketTinker.Extras.HiredTrinket">
+
+
+
+  <h1 id="TrinketTinker_Extras_HiredTrinket" data-uid="TrinketTinker.Extras.HiredTrinket" class="text-break">
+Class HiredTrinket  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Extras/GameItemQuery.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="TrinketTinker.html">TrinketTinker</a>.<a class="xref" href="TrinketTinker.Extras.html">Extras</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>TrinketTinker.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class HiredTrinket : Trinket, IComparable, INetObject&lt;NetFields&gt;, ISalable, IHaveItemTypeId, IHaveModData</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Item</span></div>
+      <div><span class="xref">Object</span></div>
+      <div><span class="xref">Trinket</span></div>
+      <div><span class="xref">HiredTrinket</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable">IComparable</a></div>
+      <div><span class="xref">INetObject</span>&lt;<span class="xref">NetFields</span>&gt;</div>
+      <div><span class="xref">ISalable</span></div>
+      <div><span class="xref">IHaveItemTypeId</span></div>
+      <div><span class="xref">IHaveModData</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <span class="xref">Trinket._description</span>
+    </div>
+    <div>
+      <span class="xref">Trinket._data</span>
+    </div>
+    <div>
+      <span class="xref">Trinket._trinketEffect</span>
+    </div>
+    <div>
+      <span class="xref">Trinket._trinketEffectClassName</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.displayNameOverride</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.displayNameOverrideTemplate</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.descriptionSubstitutionTemplates</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.trinketMetadata</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.generationSeed</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.CanSpawnTrinket(Farmer)</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.SpawnTrinket(GameLocation, Vector2)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Trinket.RerollStats(int)</a>
+    </div>
+    <div>
+      <span class="xref">Trinket.canBeShipped()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">Trinket.sellToStorePrice(long)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Trinket.TrySpawnTrinket(GameLocation, Monster, Vector2, double)</a>
+    </div>
+    <div>
+      <span class="xref">Trinket.GetRandomTrinket()</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.canBeGivenAsGift()</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.reloadSprite()</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.initNetFields()</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.GetTrinketData()</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.GetEffect()</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.maximumStackSize()</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.getDescription()</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.getCategoryName()</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.getCategoryColor()</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.isPlaceable()</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.performUseAction(GameLocation)</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.performToolAction(Tool)</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.GetOneNew()</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.GetOneCopyFrom(Item)</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.IsHeldOverHead()</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.Apply(Farmer)</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.Unapply(Farmer)</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.Update(Farmer, GameTime, GameLocation)</span>
+    </div>
+    <div>
+      <span class="xref">Trinket.OnFootstep(Farmer)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Trinket.OnReceiveDamage(Farmer, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Trinket.OnDamageMonster(Farmer, Monster, int, bool, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Trinket.TypeDefinitionId</span>
+    </div>
+    <div>
+      <span class="xref">Object.wood</span>
+    </div>
+    <div>
+      <span class="xref">Object.stone</span>
+    </div>
+    <div>
+      <span class="xref">Object.copper</span>
+    </div>
+    <div>
+      <span class="xref">Object.iron</span>
+    </div>
+    <div>
+      <span class="xref">Object.coal</span>
+    </div>
+    <div>
+      <span class="xref">Object.gold</span>
+    </div>
+    <div>
+      <span class="xref">Object.iridium</span>
+    </div>
+    <div>
+      <span class="xref">Object.artifactSpotID</span>
+    </div>
+    <div>
+      <span class="xref">Object.hayID</span>
+    </div>
+    <div>
+      <span class="xref">Object.iridiumBarID</span>
+    </div>
+    <div>
+      <span class="xref">Object.woodID</span>
+    </div>
+    <div>
+      <span class="xref">Object.stoneID</span>
+    </div>
+    <div>
+      <span class="xref">Object.copperID</span>
+    </div>
+    <div>
+      <span class="xref">Object.ironID</span>
+    </div>
+    <div>
+      <span class="xref">Object.coalID</span>
+    </div>
+    <div>
+      <span class="xref">Object.goldID</span>
+    </div>
+    <div>
+      <span class="xref">Object.iridiumID</span>
+    </div>
+    <div>
+      <span class="xref">Object.amethystClusterID</span>
+    </div>
+    <div>
+      <span class="xref">Object.aquamarineID</span>
+    </div>
+    <div>
+      <span class="xref">Object.bobberID</span>
+    </div>
+    <div>
+      <span class="xref">Object.caveCarrotID</span>
+    </div>
+    <div>
+      <span class="xref">Object.diamondID</span>
+    </div>
+    <div>
+      <span class="xref">Object.emeraldID</span>
+    </div>
+    <div>
+      <span class="xref">Object.prismaticShardID</span>
+    </div>
+    <div>
+      <span class="xref">Object.quartzID</span>
+    </div>
+    <div>
+      <span class="xref">Object.rubyID</span>
+    </div>
+    <div>
+      <span class="xref">Object.sapphireID</span>
+    </div>
+    <div>
+      <span class="xref">Object.stardropID</span>
+    </div>
+    <div>
+      <span class="xref">Object.topazID</span>
+    </div>
+    <div>
+      <span class="xref">Object.artifactSpotQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.hayQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.copperBarQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.ironBarQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.goldBarQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.iridiumBarQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.woodQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.stoneQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.copperQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.ironQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.coalQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.goldQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.iridiumQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.amethystClusterQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.aquamarineQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.caveCarrotQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.diamondQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.emeraldQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.prismaticShardQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.rubyQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.sapphireQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.stardropQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.topazQID</span>
+    </div>
+    <div>
+      <span class="xref">Object.inedible</span>
+    </div>
+    <div>
+      <span class="xref">Object.GreensCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.GemCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.VegetableCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.FishCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.EggCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.MilkCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.CookingCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.CraftingCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.BigCraftableCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.FruitsCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.SeedsCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.mineralsCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.flowersCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.meatCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.metalResources</span>
+    </div>
+    <div>
+      <span class="xref">Object.buildingResources</span>
+    </div>
+    <div>
+      <span class="xref">Object.sellAtPierres</span>
+    </div>
+    <div>
+      <span class="xref">Object.sellAtPierresAndMarnies</span>
+    </div>
+    <div>
+      <span class="xref">Object.fertilizerCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.junkCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.baitCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.tackleCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.sellAtFishShopCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.furnitureCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.ingredientsCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.artisanGoodsCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.syrupCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.monsterLootCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.equipmentCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.clothingCategorySortValue</span>
+    </div>
+    <div>
+      <span class="xref">Object.hatCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.ringCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.weaponCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.bootsCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.toolCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.clothingCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.trinketCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.booksCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.skillBooksCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.litterCategory</span>
+    </div>
+    <div>
+      <span class="xref">Object.WildHorseradishIndex</span>
+    </div>
+    <div>
+      <span class="xref">Object.LeekIndex</span>
+    </div>
+    <div>
+      <span class="xref">Object.DandelionIndex</span>
+    </div>
+    <div>
+      <span class="xref">Object.HandCursorIndex</span>
+    </div>
+    <div>
+      <span class="xref">Object.WaterAnimationIndex</span>
+    </div>
+    <div>
+      <span class="xref">Object.LumberIndex</span>
+    </div>
+    <div>
+      <span class="xref">Object.mineStoneGrey1Index</span>
+    </div>
+    <div>
+      <span class="xref">Object.mineStoneBlue1Index</span>
+    </div>
+    <div>
+      <span class="xref">Object.mineStoneBlue2Index</span>
+    </div>
+    <div>
+      <span class="xref">Object.mineStoneGrey2Index</span>
+    </div>
+    <div>
+      <span class="xref">Object.mineStoneBrown1Index</span>
+    </div>
+    <div>
+      <span class="xref">Object.mineStoneBrown2Index</span>
+    </div>
+    <div>
+      <span class="xref">Object.mineStonePurpleIndex</span>
+    </div>
+    <div>
+      <span class="xref">Object.mineStoneMysticIndex</span>
+    </div>
+    <div>
+      <span class="xref">Object.mineStoneSnow1</span>
+    </div>
+    <div>
+      <span class="xref">Object.mineStoneSnow3</span>
+    </div>
+    <div>
+      <span class="xref">Object.mineStoneRed1Index</span>
+    </div>
+    <div>
+      <span class="xref">Object.mineStoneRed2Index</span>
+    </div>
+    <div>
+      <span class="xref">Object.emeraldIndex</span>
+    </div>
+    <div>
+      <span class="xref">Object.aquamarineIndex</span>
+    </div>
+    <div>
+      <span class="xref">Object.rubyIndex</span>
+    </div>
+    <div>
+      <span class="xref">Object.amethystClusterIndex</span>
+    </div>
+    <div>
+      <span class="xref">Object.topazIndex</span>
+    </div>
+    <div>
+      <span class="xref">Object.sapphireIndex</span>
+    </div>
+    <div>
+      <span class="xref">Object.diamondIndex</span>
+    </div>
+    <div>
+      <span class="xref">Object.prismaticShardIndex</span>
+    </div>
+    <div>
+      <span class="xref">Object.stardrop</span>
+    </div>
+    <div>
+      <span class="xref">Object.WildHoneyPreservedId</span>
+    </div>
+    <div>
+      <span class="xref">Object.lowQuality</span>
+    </div>
+    <div>
+      <span class="xref">Object.medQuality</span>
+    </div>
+    <div>
+      <span class="xref">Object.highQuality</span>
+    </div>
+    <div>
+      <span class="xref">Object.bestQuality</span>
+    </div>
+    <div>
+      <span class="xref">Object.fragility_Removable</span>
+    </div>
+    <div>
+      <span class="xref">Object.fragility_Delicate</span>
+    </div>
+    <div>
+      <span class="xref">Object.fragility_Indestructable</span>
+    </div>
+    <div>
+      <span class="xref">Object.spriteSheetTileSize</span>
+    </div>
+    <div>
+      <span class="xref">Object.wobbleAmountWhenWorking</span>
+    </div>
+    <div>
+      <span class="xref">Object.RecipeNameSuffix</span>
+    </div>
+    <div>
+      <span class="xref">Object.tileLocation</span>
+    </div>
+    <div>
+      <span class="xref">Object.owner</span>
+    </div>
+    <div>
+      <span class="xref">Object.type</span>
+    </div>
+    <div>
+      <span class="xref">Object.canBeSetDown</span>
+    </div>
+    <div>
+      <span class="xref">Object.canBeGrabbed</span>
+    </div>
+    <div>
+      <span class="xref">Object.isSpawnedObject</span>
+    </div>
+    <div>
+      <span class="xref">Object.questItem</span>
+    </div>
+    <div>
+      <span class="xref">Object.questId</span>
+    </div>
+    <div>
+      <span class="xref">Object.isOn</span>
+    </div>
+    <div>
+      <span class="xref">Object.fragility</span>
+    </div>
+    <div>
+      <span class="xref">Object.price</span>
+    </div>
+    <div>
+      <span class="xref">Object.edibility</span>
+    </div>
+    <div>
+      <span class="xref">Object.bigCraftable</span>
+    </div>
+    <div>
+      <span class="xref">Object.setOutdoors</span>
+    </div>
+    <div>
+      <span class="xref">Object.setIndoors</span>
+    </div>
+    <div>
+      <span class="xref">Object.readyForHarvest</span>
+    </div>
+    <div>
+      <span class="xref">Object.showNextIndex</span>
+    </div>
+    <div>
+      <span class="xref">Object.flipped</span>
+    </div>
+    <div>
+      <span class="xref">Object.isLamp</span>
+    </div>
+    <div>
+      <span class="xref">Object.heldObject</span>
+    </div>
+    <div>
+      <span class="xref">Object.lastOutputRuleId</span>
+    </div>
+    <div>
+      <span class="xref">Object.lastInputItem</span>
+    </div>
+    <div>
+      <span class="xref">Object.minutesUntilReady</span>
+    </div>
+    <div>
+      <span class="xref">Object.boundingBox</span>
+    </div>
+    <div>
+      <span class="xref">Object.scale</span>
+    </div>
+    <div>
+      <span class="xref">Object.uses</span>
+    </div>
+    <div>
+      <span class="xref">Object.netDisplayNameFormat</span>
+    </div>
+    <div>
+      <span class="xref">Object.isTemporarilyInvisible</span>
+    </div>
+    <div>
+      <span class="xref">Object._destroyOvernight</span>
+    </div>
+    <div>
+      <span class="xref">Object.shouldShowSign</span>
+    </div>
+    <div>
+      <span class="xref">Object.customBuff</span>
+    </div>
+    <div>
+      <span class="xref">Object.signText</span>
+    </div>
+    <div>
+      <span class="xref">Object._machineAnimation</span>
+    </div>
+    <div>
+      <span class="xref">Object._machineAnimationLoop</span>
+    </div>
+    <div>
+      <span class="xref">Object._machineAnimationIndex</span>
+    </div>
+    <div>
+      <span class="xref">Object._machineAnimationFrame</span>
+    </div>
+    <div>
+      <span class="xref">Object._machineAnimationInterval</span>
+    </div>
+    <div>
+      <span class="xref">Object.orderData</span>
+    </div>
+    <div>
+      <span class="xref">Object.autoLoadFrom</span>
+    </div>
+    <div>
+      <span class="xref">Object.shakeTimer</span>
+    </div>
+    <div>
+      <span class="xref">Object.lastNoteBlockSoundTime</span>
+    </div>
+    <div>
+      <span class="xref">Object.internalSound</span>
+    </div>
+    <div>
+      <span class="xref">Object.preserve</span>
+    </div>
+    <div>
+      <span class="xref">Object.preservedParentSheetIndex</span>
+    </div>
+    <div>
+      <span class="xref">Object.obsolete_honeyType</span>
+    </div>
+    <div>
+      <span class="xref">Object.displayName</span>
+    </div>
+    <div>
+      <span class="xref">Object._hasHeldObject</span>
+    </div>
+    <div>
+      <span class="xref">Object._hasLightSource</span>
+    </div>
+    <div>
+      <span class="xref">Object.CurrentParsedItemCount</span>
+    </div>
+    <div>
+      <span class="xref">Object.health</span>
+    </div>
+    <div>
+      <span class="xref">Object.hovering</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.SetIdAndSprite(int)</a>
+    </div>
+    <div>
+      <span class="xref">Object.RecalculateBoundingBox()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.hashset-1">Object._PopulateContextTags(HashSet&lt;string&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Object.GetObjectDisplayName(string, Object.PreserveType?, string, string, string)</a>
+    </div>
+    <div>
+      <span class="xref">Object.getLocalPosition(Rectangle)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.getSourceRectForBigCraftable(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.getSourceRectForBigCraftable(Texture2D, int)</a>
+    </div>
+    <div>
+      <span class="xref">Object.cutWeed(Farmer)</span>
+    </div>
+    <div>
+      <span class="xref">Object.isAnimalProduct()</span>
+    </div>
+    <div>
+      <span class="xref">Object.onExplosion(Farmer)</span>
+    </div>
+    <div>
+      <span class="xref">Object.ApplySprinkler(Vector2)</span>
+    </div>
+    <div>
+      <span class="xref">Object.ApplySprinklerAnimation()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetSprinklerTiles()</span>
+    </div>
+    <div>
+      <span class="xref">Object.IsInSprinklerRangeBroadphase(Vector2)</span>
+    </div>
+    <div>
+      <span class="xref">Object.DayUpdate()</span>
+    </div>
+    <div>
+      <span class="xref">Object.rot()</span>
+    </div>
+    <div>
+      <span class="xref">Object.actionWhenBeingHeld(Farmer)</span>
+    </div>
+    <div>
+      <span class="xref">Object.actionWhenStopBeingHeld(Farmer)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.ConsumeInventoryItem(Farmer, Item, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.performObjectDropInAction(Item, bool, Farmer, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.TryApplyFairyDust(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.OutputSolarPanel(Object, Item, bool, MachineItemOutput, Farmer, out int?)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.OutputStatueOfEndlessFortune(Object, Item, bool, MachineItemOutput, Farmer, out int?)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.OutputDeconstructor(Object, Item, bool, MachineItemOutput, Farmer, out int?)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.OutputAnvil(Object, Item, bool, MachineItemOutput, Farmer, out int?)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.OutputGeodeCrusher(Object, Item, bool, MachineItemOutput, Farmer, out int?)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.OutputIncubator(Object, Item, bool, MachineItemOutput, Farmer, out int?)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.OutputSeedMaker(Object, Item, bool, MachineItemOutput, Farmer, out int?)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.OutputMushroomLog(Object, Item, bool, MachineItemOutput, Farmer, out int?)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Object.ParseItemCount(string[], out string, Random, Farmer)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.PlaceInMachine(MachineData, Item, bool, Farmer, bool, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.OutputMachine(MachineData, MachineOutputRule, Item, Farmer, GameLocation, bool, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.PlayMachineEffect(MachineEffects, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.updateWhenCurrentLocation(GameTime)</span>
+    </div>
+    <div>
+      <span class="xref">Object.actionOnPlayerEntry()</span>
+    </div>
+    <div>
+      <span class="xref">Object.canBeTrashed()</span>
+    </div>
+    <div>
+      <span class="xref">Object.isForage()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.initializeLightSource(Vector2, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.performRemoveAction()</span>
+    </div>
+    <div>
+      <span class="xref">Object.dropItem(GameLocation, Vector2, Vector2)</span>
+    </div>
+    <div>
+      <span class="xref">Object.isPassable()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetBoundingBox()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.GetBoundingBoxAt(int, int)</a>
+    </div>
+    <div>
+      <span class="xref">Object.performDropDownAction(Farmer)</span>
+    </div>
+    <div>
+      <span class="xref">Object.MonsterMusk(Farmer)</span>
+    </div>
+    <div>
+      <span class="xref">Object.ModifyItemBuffs(BuffEffects)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.GetCategoryDisplayName(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.GetCategoryColor(int)</a>
+    </div>
+    <div>
+      <span class="xref">Object.isActionable(Farmer)</span>
+    </div>
+    <div>
+      <span class="xref">Object.getHealth()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.setHealth(int)</a>
+    </div>
+    <div>
+      <span class="xref">Object.grabItemFromAutoGrabber(Item, Farmer)</span>
+    </div>
+    <div>
+      <span class="xref">Object.HighlightFertilizers(Item)</span>
+    </div>
+    <div>
+      <span class="xref">Object.healthRecoveredOnConsumption()</span>
+    </div>
+    <div>
+      <span class="xref">Object.staminaRecoveredOnConsumption()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.checkForAction(Farmer, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.CheckForActionOnSewingMachine(Farmer, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.CheckForActionOnAutoGrabber(Farmer, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.CheckForActionOnFarmComputer(Farmer, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.ShowFarmComputerReport(Farmer)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.CheckForActionOnMiniObelisk(Farmer, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.CheckForActionOnPrairieKingArcadeSystem(Farmer, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.CheckForActionOnJunimoKartArcadeSystem(Farmer, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.CheckForActionOnStaircase(Farmer, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.CheckForActionOnSlimeBall(Farmer, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.CheckForActionOnBlessedStatue(Farmer, GameLocation, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.CheckForActionOnHousePlant(Farmer, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.CheckForActionOnFluteBlock(Farmer, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.CheckForActionOnDrumBlock(Farmer, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.CheckForActionOnSprinkler(Farmer, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.CheckForActionOnScarecrow(Farmer, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.CheckForActionOnSingingStone(Farmer, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.CheckForActionOnTextSign(Farmer, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.CheckForActionOnFeedHopper(Farmer, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.CheckForActionOnMachine(Farmer, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Object.playNearbySoundLocal(string, int?, SoundContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Object.playNearbySoundAll(string, int?, SoundContext)</a>
+    </div>
+    <div>
+      <span class="xref">Object.IsScarecrow()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetRadiusForScarecrow()</span>
+    </div>
+    <div>
+      <span class="xref">Object.AttemptAutoLoad(Farmer)</span>
+    </div>
+    <div>
+      <span class="xref">Object.AttemptAutoLoad(IInventory, Farmer)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.farmerAdjacentAction(Farmer, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.addWorkingAnimation()</span>
+    </div>
+    <div>
+      <span class="xref">Object.onReadyForHarvest()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.minutesElapsed(int)</a>
+    </div>
+    <div>
+      <span class="xref">Object.ShouldTimePassForMachine()</span>
+    </div>
+    <div>
+      <span class="xref">Object.checkForSpecialItemHoldUpMeessage()</span>
+    </div>
+    <div>
+      <span class="xref">Object.countsForShippedCollection()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Object.isPotentialBasicShipped(string, int, string)</a>
+    </div>
+    <div>
+      <span class="xref">Object.GetFoodOrDrinkBuffs()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Object.TryCreateBuffsFromData(ObjectData, string, string, float, Action&lt;BuffEffects&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">Object.ShouldWobble()</span>
+    </div>
+    <div>
+      <span class="xref">Object.getScale()</span>
+    </div>
+    <div>
+      <span class="xref">Object.drawWhenHeld(SpriteBatch, Vector2, Farmer)</span>
+    </div>
+    <div>
+      <span class="xref">Object.drawPlacementBounds(SpriteBatch, GameLocation)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Object.drawInMenu(SpriteBatch, Vector2, float, float, float, StackDrawType, Color, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Object.DrawShadow(SpriteBatch, Vector2, Color, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Object.DrawIconBar(SpriteBatch, Vector2, float, float, float, StackDrawType, Color)</a>
+    </div>
+    <div>
+      <span class="xref">Object.drawAsProp(SpriteBatch)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.drawAboveFrontLayer(SpriteBatch, int, int, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.draw(SpriteBatch, int, int, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.draw(SpriteBatch, int, int, float, float)</a>
+    </div>
+    <div>
+      <span class="xref">Object.hoverAction()</span>
+    </div>
+    <div>
+      <span class="xref">Object.clicked(Farmer)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.canBePlacedHere(GameLocation, Vector2, CollisionMask, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.IsConsideredReadyMachineForComputer()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetMachineData()</span>
+    </div>
+    <div>
+      <span class="xref">Object.isSapling()</span>
+    </div>
+    <div>
+      <span class="xref">Object.IsTeaSapling()</span>
+    </div>
+    <div>
+      <span class="xref">Object.IsFruitTreeSapling()</span>
+    </div>
+    <div>
+      <span class="xref">Object.IsWildTreeSapling()</span>
+    </div>
+    <div>
+      <span class="xref">Object.IsFloorPathItem()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Object.IsFloorPathItem(string)</a>
+    </div>
+    <div>
+      <span class="xref">Object.IsFenceItem()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Object.isWildTreeSeed(string)</a>
+    </div>
+    <div>
+      <span class="xref">Object.IsSprinkler()</span>
+    </div>
+    <div>
+      <span class="xref">Object.IsBreakableStone()</span>
+    </div>
+    <div>
+      <span class="xref">Object.IsTextSign()</span>
+    </div>
+    <div>
+      <span class="xref">Object.IsTwig()</span>
+    </div>
+    <div>
+      <span class="xref">Object.isDebrisOrForage()</span>
+    </div>
+    <div>
+      <span class="xref">Object.IsWeeds()</span>
+    </div>
+    <div>
+      <span class="xref">Object.IsTapper()</span>
+    </div>
+    <div>
+      <span class="xref">Object.IsBar()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetPreservedItemId()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Object.GetPreservedItemId(Object.PreserveType?, string)</a>
+    </div>
+    <div>
+      <span class="xref">Object.GetModifiedRadiusForSprinkler()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetBaseRadiusForSprinkler()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.placementAction(GameLocation, int, int, Farmer)</a>
+    </div>
+    <div>
+      <span class="xref">Object.MigrateLegacyItemId()</span>
+    </div>
+    <div>
+      <span class="xref">Object.needsToBeDonated()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GenerateLightSourceId(Vector2)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.salePrice(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.appliesProfitMargins()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Object.getPriceAfterMultipliers(float, long)</a>
+    </div>
+    <div>
+      <span class="xref">Object.ForEachItem(ForEachItemDelegate, GetForEachItemPathDelegate)</span>
+    </div>
+    <div>
+      <span class="xref">Object.destroyOvernight</span>
+    </div>
+    <div>
+      <span class="xref">Object.lightSource</span>
+    </div>
+    <div>
+      <span class="xref">Object.Location</span>
+    </div>
+    <div>
+      <span class="xref">Object.TileLocation</span>
+    </div>
+    <div>
+      <span class="xref">Object.name</span>
+    </div>
+    <div>
+      <span class="xref">Object.displayNameFormat</span>
+    </div>
+    <div>
+      <span class="xref">Object.DisplayName</span>
+    </div>
+    <div>
+      <span class="xref">Object.Name</span>
+    </div>
+    <div>
+      <span class="xref">Object.BaseName</span>
+    </div>
+    <div>
+      <span class="xref">Object.Type</span>
+    </div>
+    <div>
+      <span class="xref">Object.CanBeSetDown</span>
+    </div>
+    <div>
+      <span class="xref">Object.CanBeGrabbed</span>
+    </div>
+    <div>
+      <span class="xref">Object.IsOn</span>
+    </div>
+    <div>
+      <span class="xref">Object.IsSpawnedObject</span>
+    </div>
+    <div>
+      <span class="xref">Object.Flipped</span>
+    </div>
+    <div>
+      <span class="xref">Object.Price</span>
+    </div>
+    <div>
+      <span class="xref">Object.Edibility</span>
+    </div>
+    <div>
+      <span class="xref">Object.Fragility</span>
+    </div>
+    <div>
+      <span class="xref">Object.Scale</span>
+    </div>
+    <div>
+      <span class="xref">Object.MinutesUntilReady</span>
+    </div>
+    <div>
+      <span class="xref">Object.SignText</span>
+    </div>
+    <div>
+      <span class="xref">Item.ErrorItemName</span>
+    </div>
+    <div>
+      <span class="xref">Item.isLostItem</span>
+    </div>
+    <div>
+      <span class="xref">Item.category</span>
+    </div>
+    <div>
+      <span class="xref">Item.hasbeenInInventory</span>
+    </div>
+    <div>
+      <span class="xref">Item._contextTagsDirty</span>
+    </div>
+    <div>
+      <span class="xref">Item.tempData</span>
+    </div>
+    <div>
+      <span class="xref">Item.SetFlagOnPickup</span>
+    </div>
+    <div>
+      <span class="xref">Item.netName</span>
+    </div>
+    <div>
+      <span class="xref">Item.parentSheetIndex</span>
+    </div>
+    <div>
+      <span class="xref">Item.itemId</span>
+    </div>
+    <div>
+      <span class="xref">Item._qualifiedItemId</span>
+    </div>
+    <div>
+      <span class="xref">Item.specialItem</span>
+    </div>
+    <div>
+      <span class="xref">Item.isRecipe</span>
+    </div>
+    <div>
+      <span class="xref">Item.quality</span>
+    </div>
+    <div>
+      <span class="xref">Item.stack</span>
+    </div>
+    <div>
+      <span class="xref">Item.IsInfiniteStock()</span>
+    </div>
+    <div>
+      <span class="xref">Item.MarkContextTagsDirty()</span>
+    </div>
+    <div>
+      <span class="xref">Item.GetContextTags()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Item.HasContextTag(string)</a>
+    </div>
+    <div>
+      <span class="xref">Item._GenerateContextTags()</span>
+    </div>
+    <div>
+      <span class="xref">Item.ShouldSerializeparentSheetIndex()</span>
+    </div>
+    <div>
+      <span class="xref">Item.ResetParentSheetIndex()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Item.ValidateUnqualifiedItemId(string)</a>
+    </div>
+    <div>
+      <span class="xref">Item.GetItemTypeId()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Item.drawTooltip(SpriteBatch, ref int, ref int, SpriteFont, float, StringBuilder)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Item.getExtraSpaceNeededForTooltipSpecialIcons(SpriteFont, int, int, int, StringBuilder, string, int)</a>
+    </div>
+    <div>
+      <span class="xref">Item.ShouldDrawIcon()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Item.drawInMenu(SpriteBatch, Vector2, float, float, float, StackDrawType)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Item.drawInMenu(SpriteBatch, Vector2, float, float, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Item.drawInMenu(SpriteBatch, Vector2, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Item.AdjustMenuDrawForRecipes(ref float, ref float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Item.DrawMenuIcons(SpriteBatch, Vector2, float, float, float, StackDrawType, Color)</a>
+    </div>
+    <div>
+      <span class="xref">Item.addToStack(Item)</span>
+    </div>
+    <div>
+      <span class="xref">Item.CanBeLostOnDeath()</span>
+    </div>
+    <div>
+      <span class="xref">Item.LearnRecipe(Farmer)</span>
+    </div>
+    <div>
+      <span class="xref">Item.CanBuyItem(Farmer)</span>
+    </div>
+    <div>
+      <span class="xref">Item.canBeDropped()</span>
+    </div>
+    <div>
+      <span class="xref">Item.onDetachedFromParent()</span>
+    </div>
+    <div>
+      <span class="xref">Item.onEquip(Farmer)</span>
+    </div>
+    <div>
+      <span class="xref">Item.onUnequip(Farmer)</span>
+    </div>
+    <div>
+      <span class="xref">Item.getRemainingStackSpace()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Item.ConsumeStack(int)</a>
+    </div>
+    <div>
+      <span class="xref">Item.getHoverBoxText(Item)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Item.drawAttachments(SpriteBatch, int, int)</a>
+    </div>
+    <div>
+      <span class="xref">Item.attachmentSlots()</span>
+    </div>
+    <div>
+      <span class="xref">Item.canStackWith(ISalable)</span>
+    </div>
+    <div>
+      <span class="xref">Item.getOne()</span>
+    </div>
+    <div>
+      <span class="xref">Item.CopyFieldsFrom(Item)</span>
+    </div>
+    <div>
+      <span class="xref">Item.GetSalableInstance()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Item.CompareTo(object)</a>
+    </div>
+    <div>
+      <span class="xref">Item.getCategorySortValue()</span>
+    </div>
+    <div>
+      <span class="xref">Item.getDescriptionWidth()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Item.SetTempData&lt;T&gt;(string, T)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Item.TryGetTempData&lt;T&gt;(string, out T)</a>
+    </div>
+    <div>
+      <span class="xref">Item.FixStackSize()</span>
+    </div>
+    <div>
+      <span class="xref">Item.FixQuality()</span>
+    </div>
+    <div>
+      <span class="xref">Item.resetState()</span>
+    </div>
+    <div>
+      <span class="xref">Item.HasEquipmentBuffs()</span>
+    </div>
+    <div>
+      <span class="xref">Item.AddEquipmentEffects(BuffEffects)</span>
+    </div>
+    <div>
+      <span class="xref">Item.GenerateLightSourceId(Farmer)</span>
+    </div>
+    <div>
+      <span class="xref">Item.modData</span>
+    </div>
+    <div>
+      <span class="xref">Item.modDataForSerialization</span>
+    </div>
+    <div>
+      <span class="xref">Item.SpecialVariable</span>
+    </div>
+    <div>
+      <span class="xref">Item.Category</span>
+    </div>
+    <div>
+      <span class="xref">Item.HasBeenInInventory</span>
+    </div>
+    <div>
+      <span class="xref">Item.NetFields</span>
+    </div>
+    <div>
+      <span class="xref">Item.ParentSheetIndex</span>
+    </div>
+    <div>
+      <span class="xref">Item.ItemId</span>
+    </div>
+    <div>
+      <span class="xref">Item.QualifiedItemId</span>
+    </div>
+    <div>
+      <span class="xref">Item.Stack</span>
+    </div>
+    <div>
+      <span class="xref">Item.Quality</span>
+    </div>
+    <div>
+      <span class="xref">Item.IsRecipe</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="TrinketTinker_Extras_HiredTrinket__ctor_" data-uid="TrinketTinker.Extras.HiredTrinket.#ctor*"></a>
+
+  <h3 id="TrinketTinker_Extras_HiredTrinket__ctor_System_String_System_Int32_" data-uid="TrinketTinker.Extras.HiredTrinket.#ctor(System.String,System.Int32)">
+  HiredTrinket(string, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Extras/GameItemQuery.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HiredTrinket(string itemId, int generationSeed)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>itemId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>generationSeed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="TrinketTinker_Extras_HiredTrinket_actionWhenPurchased_" data-uid="TrinketTinker.Extras.HiredTrinket.actionWhenPurchased*"></a>
+
+  <h3 id="TrinketTinker_Extras_HiredTrinket_actionWhenPurchased_System_String_" data-uid="TrinketTinker.Extras.HiredTrinket.actionWhenPurchased(System.String)">
+  actionWhenPurchased(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Extras/GameItemQuery.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The action to perform when this item is purchased from a shop.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool actionWhenPurchased(string shopId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>shopId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique ID for the shop it was purchased from.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns <code>true</code> if the item should be discarded (e.g. because it's a learn-type item like a recipe), or <code>false</code> if it should be added to the player's inventory.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TrinketTinker_Extras_HiredTrinket_loadDisplayName_" data-uid="TrinketTinker.Extras.HiredTrinket.loadDisplayName*"></a>
+
+  <h3 id="TrinketTinker_Extras_HiredTrinket_loadDisplayName" data-uid="TrinketTinker.Extras.HiredTrinket.loadDisplayName">
+  loadDisplayName()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Extras/GameItemQuery.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the translated display name for the item, excluding metadata like &quot;(Recipe)&quot;.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override string loadDisplayName()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="TrinketTinker_Extras_HiredTrinket_loadDisplayName_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Most code should use <span class="xref">StardewValley.Object.DisplayName</span> instead, which caches the value.</p>
+</div>
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <a href="https://github.com/Mushymato/TrinketTinker">Source</a>   <a href="https://www.nexusmods.com/stardewvalley/mods/29073">Nexus</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
