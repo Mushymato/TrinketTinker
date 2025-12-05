@@ -1,7 +1,7 @@
 {
   "Name": "[CP] Sinister Servants",
   "Author": "mushymato",
-  "Version": "1.2.0",
+  "Version": "1.3.0",
   "Description": "Adds 6 monster trinkets",
   "UniqueID": "mushymato.SinisterServants",
   "MinimumApiVersion": "4.0.0",
@@ -14,7 +14,7 @@
   "Dependencies": [
     {
       "UniqueID": "mushymato.TrinketTinker",
-      "MinimumVersion": "1.4.3"
+      "MinimumVersion": "1.7.0"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "Name": "[CP] Pack Possum and Critter Cages",
   "Author": "mushymato",
-  "Version": "1.2.0",
+  "Version": "1.3.0",
   "Description": "Adds 3 trinkets that let you equip more trinkets, and 1 hireable possum.",
   "UniqueID": "mushymato.PackPossumAndCritterCages",
   "MinimumApiVersion": "4.1.0",
@@ -14,7 +14,7 @@
   "Dependencies": [
     {
       "UniqueID": "mushymato.TrinketTinker",
-      "MinimumVersion": "1.5.0"
+      "MinimumVersion": "1.7.0"
     }
   ]
 }

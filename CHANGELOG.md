@@ -4,6 +4,18 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.7.0
+
+#### Added
+- New field `HatEquip` to let companions wear hats and new trigger action `mushymato.TrinketTinker_PutHatOnCompanion`.
+- New field `VariantsBase` for setting some common fields across variants.
+
+#### Changed
+- `mushymato.TrinketTinker_EquipHiddenTrinket` now reuse a previously created trinket if possible, so that they can keep hats too
+
+#### Fixed
+- Maybe fix a weird spawned item quality problem???
+
 ### 1.6.4
 
 #### Added
