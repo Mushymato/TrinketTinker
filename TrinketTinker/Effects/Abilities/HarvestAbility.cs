@@ -327,7 +327,14 @@ public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData
         )
         {
             bool isForage = obj.isForage();
-            obj.Quality = location.GetHarvestSpawnedObjectQuality(farmer, isForage, obj.TileLocation, Random.Shared);
+            // unclear why this is needed since GetHarvestSpawnedObjectQuality ought to do the same thing?
+            if (isForage)
+                obj.Quality = location.GetHarvestSpawnedObjectQuality(
+                    farmer,
+                    isForage,
+                    obj.TileLocation,
+                    Random.Shared
+                );
 
             if (args.HarvestTo != HarvestDestination.None)
             {
