@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Tinker | TrinketTinker </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Tinker | TrinketTinker ">
+      
+      
+      <link rel="icon" href="../images/favicon.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/001-Tinker.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/favicon.png" alt="TrinketTinker">
+            TrinketTinker
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="tinker">Tinker</h1>
+
+<p>To make a trinket use TrinketTinker features, add a new entry to the custom asset <code>mushymato.TrinketTinker/Tinker</code>.
+The key used must match the <strong>unqualified ID</strong> of the trinket, e.g. <code>{{ModId}}_Trinket</code> instead of <code>(TR){{ModId}}_Trinket</code>.</p>
+<p>When a <code>Data/Trinkets</code> entry has a matching <code>mushymato.TrinketTinker/Tinker</code> entry, the <code>TrinketEffectClass</code> field on <code>Data/Trinkets</code> will be set to <code>TrinketTinker.Effects.TrinketTinkerEffect</code> from this mod.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Trinkets can be reloaded with <code>patch reload &lt;your content mod id&gt;</code>.</p>
+</div>
+<h2 id="sample">Sample</h2>
+<pre><code class="lang-json">{
+  &quot;Action&quot;: &quot;EditData&quot;,
+  &quot;Target&quot;: &quot;mushymato.TrinketTinker/Tinker&quot;,
+  &quot;Entries&quot;: {
+    &quot;{{ModId}}_Sample&quot;: {
+      &quot;EnableCondition&quot;: &quot;&lt;game state query&gt;&quot;,
+      &quot;EnableFailMessage&quot;: &quot;&lt;message&gt;&quot;,
+      &quot;MinLevel&quot;: &lt;number level&gt;,
+      &quot;Variants&quot;: [
+        { /* variant data */ },
+        { /* more variant data */ },
+        //...
+      ],
+      &quot;VariantsBase&quot;: {
+        /* variant data shared between all variants */
+      },
+      &quot;Motion&quot;: { /* motion data */ },
+      &quot;Abilities&quot;: [
+        [
+          // first level abilities
+          { /* ability data */ },
+          { /* more ability data */ }
+        ],
+        [
+          // second level abilities
+          { /* ability data */ },
+          { /* more ability data */ }
+        ],
+        //...
+      ],
+      &quot;AbilitiesShared&quot;: [
+        // shared abilities common to all levels
+        { /* ability data */ },
+        { /* more ability data */ }
+      ],
+      &quot;VariantUnlockConditions&quot;: [
+        null,
+        &quot;&lt;game state query&gt;&quot;,
+        // ...
+      ],
+      &quot;AbilityUnlockConditions&quot;: [
+        null,
+        &quot;&lt;game state query&gt;&quot;,
+        // ...
+      ],
+      &quot;Inventory&quot;: { /* inventory data */ },
+      &quot;Chatter&quot;: {
+        &quot;&lt;chatter key 1&gt;&quot;: { /* chatter data */ },
+        &quot;&lt;chatter key 2&gt;&quot;: { /* chatter data */ },
+        //...
+      },
+    }
+  }
+}
+</code></pre>
+<h3 id="this-is-a-lot-of-stuff-what-do-i-actually-need-to-have">This is a lot of stuff, what do I actually need to have?</h3>
+<p>Trinket Tinker data fields are optional unless explictly marked as <strong>required</strong> in the tables that describe what each field does. This applies even to the top level TinkerData, but skipping every field means there's little point to using this framework at all.</p>
+<p>To display a companion, you need a <code>Motion</code> and at least 1 entry in <code>Variants</code>.</p>
+<p>To have the trinket do things after being equipped, at least 1 list of <code>Abilities</code> must be defined. <code>Inventory</code> and <code>Chatter</code> abilities also require the top level <code>Inventory</code> and <code>Chatter</code> data, refer to their subpages for details.</p>
+<p>Unlike base game trinkets, TrinketTinker trinkets always spawn with the first variant and at minimum level. The item query <a href="007-Utility.html">mushymato.TrinketTinker_CREATE_TRINKET</a> is needed to create trinket at other variants/levels.</p>
+<h2 id="structure">Structure</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EnableCondition</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>A <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state query</a> used to check if the trinket should be enabled. This is checked on equip, it can only be rechecked by reequipping the trinket. The check also happens every night, when the trinket is unequipped/reequipped by the game.</td>
+</tr>
+<tr>
+<td><code>EnableFailMessage</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>When <code>EnableCondition</code> is false, this message will be displayed upon equipping the trinket. Supports tokenized text.<br>Default message: <code> &quot;You are not worthy of {{trinketName}}...&quot;</code></td>
+</tr>
+<tr>
+<td><code>MinLevel</code></td>
+<td>int</td>
+<td>1</td>
+<td>Changes the level value that will replace <code>{0}</code> in <code>DisplayName</code>.</td>
+</tr>
+<tr>
+<td><code>Variants</code></td>
+<td><a href="002-Variant.html">List&lt;VariantData&gt;</a></td>
+<td><em>null</em></td>
+<td>Defines the sprites of the companion.</td>
+</tr>
+<tr>
+<td><code>VariantsBase</code></td>
+<td><a href="002-Variant.html">VariantData</a></td>
+<td><em>null</em></td>
+<td>Defines some default values shared across all variants.</td>
+</tr>
+<tr>
+<td><code>Motion</code></td>
+<td><a href="003-Motion.html">MotionData</a></td>
+<td><em>null</em></td>
+<td>Defines how the companion moves.</td>
+</tr>
+<tr>
+<td><code>Abilities</code></td>
+<td><a href="004-Ability.html">List&lt;List&lt;AbilityData&gt;&gt;</a></td>
+<td><em>null</em></td>
+<td>Defines what abilities (i.e. trinket effects) are activated and when. Each list in the list of lists represents 1 ability level.</td>
+</tr>
+<tr>
+<td><code>AbilitiesShared</code></td>
+<td><a href="004-Ability.html">List&lt;AbilityData&gt;</a></td>
+<td><em>null</em></td>
+<td>A list of abilities that are automatically appended to every level.</td>
+</tr>
+<tr>
+<td><code>VariantUnlockConditions</code></td>
+<td>List&lt;string&gt;</td>
+<td><em>null</em></td>
+<td>List of <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state queries</a> that determine how many variants are unlocked.</td>
+</tr>
+<tr>
+<td><code>AbilityUnlockConditions</code></td>
+<td>List&lt;string&gt;</td>
+<td><em>null</em></td>
+<td>List of <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state queries</a> that determine how many abilities are unlocked.</td>
+</tr>
+<tr>
+<td><code>Inventory</code></td>
+<td><a href="005.0-Inventory.html">TinkerInventoryData</a></td>
+<td><em>null</em></td>
+<td>Gives the trinket an inventory that can be opened by the &quot;use&quot; button (RightClick/X) over the trinket item.</td>
+</tr>
+<tr>
+<td><code>Chatter</code></td>
+<td><a href="005.1-Chatter.html">Dictionary&lt;string, ChatterLinesData&gt;</a></td>
+<td><em>null</em></td>
+<td>Gives the trinket dialogue for use with the <a href="005.1-Chatter.html">Chatter ability</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="deprecated">DEPRECATED</h3>
+<ul>
+<li><code>Motions</code>, previously a list of <code>MotionData</code> that is unused except for the first element. It has been removed since TrinketTinker 1.5.0, please use only <code>Motion</code> from now on.</li>
+</ul>
+<h3 id="unlock-conditions">Unlock Conditions</h3>
+<p><code>VariantUnlockConditions</code> and <code>AbilityUnlockConditions</code> can prevent the player from rolling variants or abilities above a certain level using <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state queries</a>. This only affects rerolling level and variants on the <a href="https://stardewvalleywiki.com/Anvil">anvil</a> and <a href="007-Utility.html">colorizer</a>.</p>
+<p>Example usage with 4 abilities (lv1 to lv4):</p>
+<pre><code class="lang-json">{
+  &quot;Action&quot;: &quot;EditData&quot;,
+  &quot;Target&quot;: &quot;mushymato.TrinketTinker/Tinker&quot;,
+  &quot;Fields&quot;: {
+    &quot;{{ModId}}_Sample&quot;: {
+      &quot;AbilityUnlockConditions&quot;: [
+          // level 1 is always unlocked
+          // level 2 is unconditionally unlocked
+          null,
+          // level 3 unlocked if player has a gold ore in inventory
+          &quot;PLAYER_HAS_ITEM Current (O)384&quot;,
+          // level 4 is also unconditionally unlocked once 3 is unlocked
+          null,
+          // there is no level 5, so this value is meaningless
+          &quot;FALSE&quot;,
+      ],
+    }
+  }
+}
+</code></pre>
+<h3 id="variantsbase">VariantsBase</h3>
+<p>This serves as a way to define default data for all variants, but not all fields work here.</p>
+<p><a href="002-Variant.html">VariantData</a> fields that support using <code>VariantsBase</code> as default:</p>
+<ul>
+<li><code>Width</code></li>
+<li><code>Height</code></li>
+<li><code>Bounding</code></li>
+<li><code>NPC</code></li>
+<li><code>Name</code></li>
+<li><code>Portrait</code></li>
+<li><code>ShowBreathing</code></li>
+<li><code>HatEquip</code></li>
+<li><code>LightSource</code></li>
+<li><code>TrinketNameArguments</code></li>
+<li><code>AttachedTAS</code></li>
+<li><code>AltVariants</code></li>
+</ul>
+<p>A special case happens if there are no <code>Variants</code> but there is a <code>VariantsBase</code>. In this situation <code>VariantsBase</code> becomes Variant 0. Trinkets that only have 1 variant can use this to shortcut the definition.</p>
+<h2 id="integrating-trinket-tinker">Integrating Trinket Tinker</h2>
+<p>As a custom asset based framework, you can put all trinket related edits in a json separate from the rest of the mod like example below. This helps turn trinkets into an optional feature for your mod.</p>
+<pre><code class="lang-json">{
+  &quot;Action&quot;: &quot;Include&quot;,
+  &quot;FromFile&quot;: &quot;data/trinkets.json&quot;,
+  &quot;When&quot;: {
+    &quot;HasMod&quot;: &quot;mushymato.TrinketTinker&quot;
+  }
+}
+</code></pre>
+<p>Special behavior as an equipment aside, trinkets are items with qualified item id like <code>(TR){{ModId}}_Sample</code>. Besides the base game random drops after combat mastery (if <code>DropsNaturally</code> is set to true for the trinket), you can grant a trinket to the player via any usual means of granting an item through qualified item id. This includes shops, events, machine output, Farm Type Manager/Spacecore monster drops, and so on. There are also <a href="007.2-Actions.html">means of using a trinket without having a real player obtainable item</a> which allows you to utilize Trinket Tinker's system to create special powers and/or followers without taking up the trinket slot.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <a href="https://github.com/Mushymato/TrinketTinker">Source</a>   <a href="https://www.nexusmods.com/stardewvalley/mods/29073">Nexus</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

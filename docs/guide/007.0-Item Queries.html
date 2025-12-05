@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Item Queries | TrinketTinker </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Item Queries | TrinketTinker ">
+      
+      
+      <link rel="icon" href="../images/favicon.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Mushymato/TrinketTinker/blob/main/guide/007.0-Item Queries.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/favicon.png" alt="TrinketTinker">
+            TrinketTinker
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="item-queries"><a href="https://stardewvalleywiki.com/Modding:Game_state_queries">Item Queries</a></h1>
+
+<p>Item queries produce new item(s), they are most commonly used in shops and machine output rules (but are valid in many more places).</p>
+<h2 id="mushymatotrinkettinker_create_trinket">mushymato.TrinketTinker_CREATE_TRINKET</h2>
+<pre><code>mushymato.TrinketTinker_CREATE_TRINKET &lt;trinket id&gt; [level] [variant]
+</code></pre>
+<p>Create a new trinket item. If the trinket has tinker data, set level and variant. Useful for producing a trinket at specified level/variant.</p>
+<p>Setting level or variant to &quot;R&quot; will randomize the level or variant.</p>
+<h2 id="mushymatotrinkettinker_create_trinket_all_variants">mushymato.TrinketTinker_CREATE_TRINKET_ALL_VARIANTS</h2>
+<pre><code>mushymato.TrinketTinker_CREATE_TRINKET_ALL_VARIANTS &lt;trinket id&gt; [level]
+</code></pre>
+<p>Create all variants of a trinket (with tinker data). Useful for making a shop sell all variants of a trinket instead of making the player roll for them.</p>
+<p>Setting level to &quot;R&quot; will randomize the level once, and then set trinkets created by this query to that level.</p>
+<h2 id="mushymatotrinkettinker_hire_trinket">mushymato.TrinketTinker_HIRE_TRINKET</h2>
+<pre><code>mushymato.TrinketTinker_HIRE_TRINKET &lt;trinket id&gt;
+</code></pre>
+<p>This is a special item query for use in shops only, it creates a placeholder trinket and serves as a base for <a href="007.2-Actions.html">mushymato.TrinketTinker_EquipHiddenTrinket</a>.</p>
+<p>Example:</p>
+<pre><code class="lang-json">// &quot;Target&quot;: &quot;Data/Shops&quot;, &quot;TargetField&quot;: [ &quot;AdventureShop&quot;, &quot;Items&quot; ]
+&quot;{{ModId}}_TrinketForHire&quot;: {
+  &quot;Id&quot;: &quot;{{ModId}}_TrinketForHire&quot;,
+  &quot;ItemId&quot;: &quot;mushymato.TrinketTinker_HIRE_TRINKET {{ModId}}_TrinketForHire&quot;,
+  &quot;Price&quot;: 6000,
+  &quot;ObjectDisplayName&quot;: &quot;Hire this merc for 1 day!&quot;,
+  &quot;Condition&quot;: &quot;!PLAYER_HAS_TRINKET Current {{ModId}}_TrinketForHire&quot;,
+  &quot;ActionsOnPurchase&quot;: [
+    &quot;mushymato.TrinketTinker_EquipHiddenTrinket {{ModId}}_TrinketForHire 0 0 1&quot;
+  ]
+},
+</code></pre>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <a href="https://github.com/Mushymato/TrinketTinker">Source</a>   <a href="https://www.nexusmods.com/stardewvalley/mods/29073">Nexus</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
