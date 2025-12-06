@@ -11,7 +11,7 @@
   "config.HideAllCompanionsDuringEvents.description": "Hide all trinket companions during events. Only affects trinkets added via Trinket Tinker.",
   "config.section.keybindings": "Keybindings",
   "config.DoInteractKey.name": "Do Companion Interaction",
-  "config.DoInteractKey.description": "Press this key to activate any interact abilities on your companion, while you are close enough.",
+  "config.DoInteractKey.description": "Press this key to interact with your companion, while you are close enough. This is used for activating certain abilities on the trinket and to give companion hats.",
   "config.OpenTinkerInventoryKey.name": "Open Tinker Inventory",
   "config.OpenTinkerInventoryKey.description": "Press this key to open the inventory of your equipped trinket(s).",
   "config.TinkerInventoryNextKey.name": "Next Tinker Inventory",

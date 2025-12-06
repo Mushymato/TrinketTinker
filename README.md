@@ -26,7 +26,7 @@ This mod is licensed under MIT, contributions are welcome.
 
 These keybinds are shared across mods using this framework, for the user to set to their liking.
 
-- `Do Interact Key`: Press this key to interact with your companion, while you are close enough.
+- `Do Interact Key`: Press this key to interact with your companion, while you are close enough. This is used for activating certain abilities on the trinket and to give companions hats.
 - `Open Tinker Inventory Key`: Press this key to open the inventory of your equipped trinket(s).
 - `Tinker Inventory Next Key`: While a Tinker Inventory is open and multiple trinkets with inventory are equipped, press this to go to the next inventory.
 - `Tinker Inventory Prev Key`: While a Tinker Inventory is open and multiple trinkets with inventory are equipped, press this to go to the previous inventory.
