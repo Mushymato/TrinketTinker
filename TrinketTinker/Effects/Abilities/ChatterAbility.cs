@@ -84,9 +84,9 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
                 && foundLinesKV.Count > 0
             )
             {
-                int minPriority = foundLinesKV.Min(kv => kv.Value?.Priority ?? 0);
+                int minPrecedence = foundLinesKV.Min(kv => kv.Value?.Precedence ?? 0);
                 foundLines = Random
-                    .Shared.ChooseFrom(foundLinesKV.Where(kv => (kv.Value?.Priority ?? 0) == minPriority).ToList())
+                    .Shared.ChooseFrom(foundLinesKV.Where(kv => (kv.Value?.Precedence ?? 0) == minPrecedence).ToList())
                     .Value;
             }
             else

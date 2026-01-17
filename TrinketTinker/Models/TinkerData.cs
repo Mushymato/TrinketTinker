@@ -21,8 +21,15 @@ public sealed class ChatterLinesData
     /// <summary>Game state query condition</summary>
     public string? Condition { get; set; } = null;
 
-    /// <summary>Priority of this chatter line, higher is earlier</summary>
-    public int Priority { get; set; } = 0;
+    /// <summary>Precedence of this chatter line, lower is earlier</summary>
+    public int Precedence { get; set; } = 0;
+
+    /// <summary>This is an alias for Precedence, setting this is like setting negative precedence</summary>
+    public int Priority
+    {
+        get => -Precedence;
+        set => Precedence = -value;
+    }
 
     /// <summary>Ordered dialogue lines, one will be picked at random. Supports translation keys.</summary>
     public List<string>? Lines { get; set; } = null;

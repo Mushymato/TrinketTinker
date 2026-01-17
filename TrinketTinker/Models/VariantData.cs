@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
 using Microsoft.Xna.Framework;
 using StardewValley;
+using StardewValley.Extensions;
 using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Models;
@@ -199,8 +200,15 @@ public class AltVariantData : IVariantData
     /// <summary>Game state query condition</summary>
     public string? Condition { get; set; } = null;
 
-    /// <summary>Priority of this alt variant, higher </summary>
-    public int Priority { get; set; } = 0;
+    /// <summary>Precedence of this alt variant line, lower is earlier</summary>
+    public int Precedence { get; set; } = 0;
+
+    /// <summary>This is an alias for Precedence, setting this is like setting negative precedence</summary>
+    public int Priority
+    {
+        get => -Precedence;
+        set => Precedence = -value;
+    }
 }
 
 /// <summary>Data for <see cref="Companions.Anim.TinkerAnimSprite"/>, holds sprite variations.</summary>
@@ -279,22 +287,28 @@ public sealed class VariantData : IVariantData
     )
     {
         nextKey = null;
-        if (
-            AltVariants
-                ?.OrderByDescending((kv) => kv.Value.Priority)
-                .FirstOrDefault(
-                    (kv) =>
-                        GameStateQuery.CheckConditions(
-                            kv.Value.Condition,
-                            player: farmer,
-                            targetItem: trinketItem,
-                            inputItem: trinketItem
-                        )
-                )
-                is KeyValuePair<string, AltVariantData> foundAltVariant
-            && !string.IsNullOrEmpty(foundAltVariant.Key)
-        )
+        if (AltVariants == null)
         {
+            return prevKey != null;
+        }
+        nextKey = null;
+        List<KeyValuePair<string, AltVariantData>> foundAltVariants = AltVariants
+            .Where(
+                (kv) =>
+                    GameStateQuery.CheckConditions(
+                        kv.Value.Condition,
+                        player: farmer,
+                        targetItem: trinketItem,
+                        inputItem: trinketItem
+                    )
+            )
+            .ToList();
+        if (foundAltVariants.Any())
+        {
+            int minPrecedence = foundAltVariants.Min(kv => kv.Value?.Precedence ?? 0);
+            KeyValuePair<string, AltVariantData> foundAltVariant = Random.Shared.ChooseFrom(
+                foundAltVariants.Where(kv => (kv.Value?.Precedence ?? 0) == minPrecedence).ToList()
+            );
             nextKey = foundAltVariant.Key;
             return true;
         }
