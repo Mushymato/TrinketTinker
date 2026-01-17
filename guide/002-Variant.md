@@ -75,7 +75,7 @@ Variants can have alternate variants, which are automatically rechecked whenever
             "ShowBreathing": true|false,
             "HatEquip": <hat equip model>,
             "Condition": "<game state query>",
-            "Priority": <int priority>
+            "Precedence": <int precedence>
           },
           // more alt variants...
         }
@@ -155,7 +155,7 @@ The alt variant in `AltVariants` can have all shared fields, as well as:
 | Property | Type | Default | Notes |
 | -------- | ---- | ------- | ----- |
 | `Condition` | string | `"FALSE"` | A [game state query](https://stardewvalleywiki.com/Modding:Game_state_queries) used to check if this alt variant should be selected. If you want to have an alt variant exclusively activate through [ability](004-Ability.md) with `ProcAltVariant`, use `"FALSE"`. |
-| `Priority` | int | 0 | Sort priority of this variant, higher number have their conditions checked first. |
+| `Precedence` | int | 0 | Sort precedence of this variant, lower number have their conditions checked first, then one variant is chosen randomly from items of same precedence.<br/> _This field used to be called `Priority` and functioned the other way around (highest first)._ |
 
 Note that not all shared fields are required in alt variant, and any not set field will simply fall back to the value found in top level.
 

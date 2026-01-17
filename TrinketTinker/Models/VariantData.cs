@@ -203,10 +203,9 @@ public class AltVariantData : IVariantData
     /// <summary>Precedence of this alt variant line, lower is earlier</summary>
     public int Precedence { get; set; } = 0;
 
-    /// <summary>This is an alias for Precedence, setting this is like setting negative precedence</summary>
+    /// <summary>Setting priority means setting a negative precedence</summary>
     public int Priority
     {
-        get => -Precedence;
         set => Precedence = -value;
     }
 }
