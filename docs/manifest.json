@@ -502,30 +502,10 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TrinketTinker.Effects.Support.EquipTrinket.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TrinketTinker.Effects.Support.EquipTrinket.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Effects.Support.ProcEventArgs.yml",
       "output": {
         ".html": {
           "relative_path": "api/TrinketTinker.Effects.Support.ProcEventArgs.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TrinketTinker.Effects.Support.TinkerInventoryMenu.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TrinketTinker.Effects.Support.TinkerInventoryMenu.html"
         }
       },
       "version": ""
@@ -772,16 +752,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TrinketTinker.Models.AbilityArgs.RangeArgs.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TrinketTinker.Models.AbilityArgs.RangeArgs.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/TrinketTinker.Models.AbilityArgs.SpawnItemArgs.yml",
       "output": {
         ".html": {
@@ -996,16 +966,6 @@
       "output": {
         ".html": {
           "relative_path": "api/TrinketTinker.Models.LoopMode.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TrinketTinker.Models.Mixin.ArgsDict.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TrinketTinker.Models.Mixin.ArgsDict.html"
         }
       },
       "version": ""
