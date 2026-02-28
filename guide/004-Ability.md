@@ -13,9 +13,9 @@ An ability is primarily defined by `AbilityClass` (what it does) and `Proc` (whe
   ],
   "Entries": {
     "Abilities": [
-      // lvl 1 abilities
+      // level 0 abilities
       [
-        // 1st ability for lvl 1
+        // 1st ability for level 0
         {
           "Id": "<string ability id>",
           "AbilityClass": "<string ability class>",
@@ -49,9 +49,9 @@ An ability is primarily defined by `AbilityClass` (what it does) and `Proc` (whe
               /* AbilityClass dependent arguments */
           }
         },
-        { /* another lvl 1 ability */}
+        { /* another level 0 ability */}
       ],
-      [ /* lvl 2 abilities */ ],
+      [ /* level 1 abilities */ ],
       //and so on...
     ]
   }

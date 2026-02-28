@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Delegates;
+using StardewValley.GameData.Shops;
 using StardewValley.Internal;
 using StardewValley.Inventories;
 using StardewValley.Objects;
@@ -21,7 +22,19 @@ public class HiredTrinket(string itemId, int generationSeed) : Trinket(itemId, g
     public override bool actionWhenPurchased(string shopId)
     {
         Game1.exitActiveMenu();
-        Game1.playSound("purchaseClick", null);
+        string soundCue = "purchaseClick";
+        if (AssetManager.TinkerData.TryGetValue(ItemId, out TinkerData? data) && data.HiredSound != null)
+        {
+            soundCue = data.HiredSound;
+        }
+        else if (
+            DataLoader.Shops(Game1.content).TryGetValue(shopId, out ShopData? shopData)
+            && shopData.PurchaseSound != null
+        )
+        {
+            soundCue = shopData.PurchaseSound;
+        }
+        Game1.playSound(soundCue);
         return true;
     }
 

@@ -49,6 +49,9 @@ public sealed class TinkerData
     /// <summary>Trinket stat minimum level, this added to the internal level value that is based on size of <see cref="Abilities"/></summary>
     public int MinLevel { get; set; } = 1;
 
+    /// <summary>Sound to play when hired.</summary>
+    public string? HiredSound { get; set; } = null;
+
     /// <summary>Motion of the companion</summary>
     public MotionData? Motion { get; set; } = null;
 

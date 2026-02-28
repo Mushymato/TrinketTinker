@@ -11,6 +11,7 @@ TrinketTinker/manifest.json
 workfiles/
 .config
 
+_releases/
 _site/
 docs/
 guide/toc.yml

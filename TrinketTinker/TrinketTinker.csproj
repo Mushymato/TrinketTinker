@@ -10,9 +10,10 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <LangVersion>preview</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <LangVersion>default</LangVersion>
+    <ModZipPath>$(MSBuildThisFileDirectory)/../_releases</ModZipPath>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -21,7 +22,8 @@
     <Description>Trinket &amp; Companion framework.</Description>
     <UniqueId>mushymato.TrinketTinker</UniqueId>
     <UpdateKeys>Nexus:29073;GitHub:Mushymato/TrinketTinker</UpdateKeys>
-    <Version>1.7.1</Version>
+    <Version>1.7.2-wip.0</Version>
+    <BaseManifest>new</BaseManifest>
     <MinimumApiVersion_Behavior>Update</MinimumApiVersion_Behavior>
     <MinimumGameVersion_Behavior>UpdateFull</MinimumGameVersion_Behavior>
     <Dependencies_VersionBehavior>UpdateFull</Dependencies_VersionBehavior>
