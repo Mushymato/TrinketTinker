@@ -486,7 +486,7 @@ internal sealed class GlobalInventoryHandler
         Farmer farmer,
         TrinketTinkerCompanion companion,
         string invId,
-        Hat newHat,
+        Hat? newHat,
         HatSourceMode hatSource,
         bool fromAction = false
     )
@@ -504,7 +504,10 @@ internal sealed class GlobalInventoryHandler
                         currHat.onDetachedFromParent();
                         hatInv.Remove(currHat);
                         currHat.modData.Remove(ModData_HatGivenTo);
-                        Game1.createItemDebris(currHat, companion.Position, -1, farmer.currentLocation);
+                        if (!fromAction)
+                        {
+                            Game1.createItemDebris(currHat, companion.Position, -1, farmer.currentLocation);
+                        }
                     }
                     companion.GivenHat = null;
                     justRemovedHat = true;
@@ -515,10 +518,11 @@ internal sealed class GlobalInventoryHandler
                     {
                         companion.GivenHat = newHat;
                     }
-                    else
+                    else if (newHat != null)
                     {
                         newHat.onDetachedFromParent();
-                        farmer.Items[farmer.CurrentToolIndex] = null;
+                        if (!fromAction)
+                            farmer.Items[farmer.CurrentToolIndex] = null;
                         hatInv.Add(newHat);
                         newHat.modData[ModData_HatGivenTo] = invId;
                         companion.GivenHat = newHat;

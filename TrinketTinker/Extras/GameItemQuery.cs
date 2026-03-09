@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Delegates;
+using StardewValley.Extensions;
 using StardewValley.GameData.Shops;
 using StardewValley.Internal;
 using StardewValley.Inventories;
@@ -58,7 +59,6 @@ public static class GameItemQuery
     public const string GameStateQuery_TRINKET_HAS_ITEM = $"{ModEntry.ModId}_TRINKET_HAS_ITEM";
     public const string GameStateQuery_TRINKET_HAS_HAT = $"{ModEntry.ModId}_TRINKET_HAS_HAT";
     public const string TriggerAction_ToggleCompanion = $"{ModEntry.ModId}_ToggleCompanion";
-    public const string TriggerAction_GiveHat = $"{ModEntry.ModId}_GiveHat";
     public const string TriggerAction_PutHatOnCompanion = $"{ModEntry.ModId}_PutHatOnCompanion";
 
     private const string RANDOM = "R";
@@ -494,7 +494,29 @@ public static class GameItemQuery
         return false;
     }
 
-    /// <summary></summary>
+    /// <summary>Get either a This trinket provided by TriggerActionContext or all trinket of given id</summary>
+    /// <param name="trinketId"></param>
+    /// <param name="context"></param>
+    /// <returns></returns>
+    private static IEnumerable<Trinket> IterateMatchingTrinket(string trinketId, TriggerActionContext context)
+    {
+        if (trinketId.EqualsIgnoreCase("This"))
+        {
+            if (
+                context.CustomFields.TryGetValue(TinkerConst.CustomFields_Trinket, out object? trinketObj)
+                && trinketObj is Trinket trinket
+            )
+                yield return trinket;
+            yield break;
+        }
+        foreach (Trinket trinketItem in Game1.player.trinketItems)
+        {
+            if (trinketItem?.ItemId == trinketId)
+                yield return trinketItem;
+        }
+    }
+
+    /// <summary>toggle trinket companion visibility</summary>
     /// <param name="args"></param>
     /// <param name="context"></param>
     /// <param name="error"></param>
@@ -510,11 +532,10 @@ public static class GameItemQuery
             return false;
         }
 
-        foreach (Trinket trinketItem in Game1.player.trinketItems)
+        foreach (Trinket trinketItem in IterateMatchingTrinket(trinketId, context))
         {
             if (
-                trinketItem?.ItemId == trinketId
-                && trinketItem.GetEffect() is TrinketTinkerEffect effect
+                trinketItem.GetEffect() is TrinketTinkerEffect effect
                 && (level == -1 || effect.Level == level)
                 && (variant == -1 || effect.Variant == variant)
                 && effect.Companion is TrinketTinkerCompanion companion
@@ -544,21 +565,22 @@ public static class GameItemQuery
             return false;
         }
 
-        if (ItemRegistry.Create<Hat>(hatId, allowNull: true) is not Hat newHat)
+        Hat? newHat = null;
+        if (hatId != "REMOVE" && (newHat = ItemRegistry.Create<Hat>(hatId, allowNull: true)) == null)
         {
             error = $"'{hatId}' is not a hat";
             return false;
         }
 
-        foreach (Trinket trinketItem in Game1.player.trinketItems)
+        foreach (Trinket trinketItem in IterateMatchingTrinket(trinketId, context))
         {
             if (
-                trinketItem?.ItemId == trinketId
-                && trinketItem.GetEffect() is TrinketTinkerEffect effect
+                trinketItem.GetEffect() is TrinketTinkerEffect effect
                 && (level == -1 || effect.Level == level)
                 && (variant == -1 || effect.Variant == variant)
                 && effect.Companion is TrinketTinkerCompanion companion
                 && companion.HatSource() is HatSourceMode hatSource
+                && (companion.GivenHat != null) != (newHat != null)
             )
             {
                 GlobalInventoryHandler.DoSwapHat(

@@ -163,7 +163,7 @@
                 "AbilityClass": "Action",
                 "Proc": "Always",
                 "Args": {
-                  "Action": "mushymato.TrinketTinker_PutHatOnCompanion {{ModId}}_Opossum (H)55"
+                  "Action": "mushymato.TrinketTinker_PutHatOnCompanion This (H)55"
                 }
               },
             ]

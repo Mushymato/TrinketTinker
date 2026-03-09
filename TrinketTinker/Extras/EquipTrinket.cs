@@ -62,8 +62,7 @@ public static class EquipTrinket
     {
         if (GameItemQuery.IsDirectEquipOnly(trinket))
             return false;
-        var trinketItems = owner.trinketItems;
-        if (trinketItems.Contains(trinket))
+        if (owner.trinketItems.Contains(trinket))
             return false;
         else if (trinket.GetEffect() is TrinketEffect effect2 && effect2.Companion != null)
         {
@@ -71,7 +70,7 @@ public static class EquipTrinket
             effect2.Companion = null;
         }
 
-        AddTrinket(trinketItems, trinket);
+        AddTrinket(owner.trinketItems, trinket);
         trinket.modData[TinkerConst.ModData_IndirectEquip] = "T";
         return true;
     }
