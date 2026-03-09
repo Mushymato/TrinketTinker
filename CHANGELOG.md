@@ -8,6 +8,7 @@
 
 ### Added
 - You can now add `HiredSound` to trinkets, this plays when they are purchased via `mushymato.TrinketTinker_HIRE_TRINKET`
+- You can now prevent explosions from damaging the farmer by setting `ExplodeDamagesFarmer` in Hitscan/Projectile
 
 ### Fixed
 - Anim clip now clamps currentFrame to valid range for the clip on set to prevent the single frame of incorrect rect

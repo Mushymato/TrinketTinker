@@ -55,7 +55,8 @@ internal static class Places
         GameLocation location,
         Vector2 originPoint,
         int range,
-        Func<NPC, bool>? match
+        Func<NPC, bool>? match,
+        int minRange = 0
     )
     {
         NPC? result = null;

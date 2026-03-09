@@ -63,6 +63,9 @@ public class DamageArgs : IArgs
     /// </summary>
     public int ExplodeRadius { get; set; } = 0;
 
+    /// <summary>Change if explosion should damange farmer</summary>
+    public bool ExplodeDamagesFarmer { get; set; } = true;
+
     /// <summary>
     /// If this is set, override whether the damage incurred by this is projectile and bypasses barriers.
     /// Otherwise, default to the damage type dependent value (false for HitscanAbility, true for ProjectileAbility)
@@ -131,7 +134,13 @@ public class DamageArgs : IArgs
         }
         if (ExplodeRadius > 0)
         {
-            context.Location.explode(target.TilePoint.ToVector2(), ExplodeRadius, context.Player, damage_amount: Min);
+            context.Location.explode(
+                target.TilePoint.ToVector2(),
+                ExplodeRadius,
+                context.Player,
+                damageFarmers: ExplodeDamagesFarmer,
+                damage_amount: Min
+            );
         }
     }
 

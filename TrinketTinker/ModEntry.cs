@@ -1,6 +1,7 @@
 ﻿global using SObject = StardewValley.Object;
 using System.Reflection;
 using Microsoft.Xna.Framework;
+using Mushymato.ExtendedTAS;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
@@ -55,7 +56,7 @@ internal sealed class ModEntry : Mod
         helper.Events.GameLoop.ReturnedToTitle += OnReturnedToTitle;
         helper.Events.Multiplayer.ModMessageReceived += OnModMessageReceived;
 
-        AssetManager.TAS = new(helper, $"{ModId}/TAS");
+        AssetManager.TAS = TASAssetManager.Make(helper, $"{ModId}/TAS");
 
         helper.ConsoleCommands.Add(
             "tt.draw_debug",
