@@ -596,8 +596,10 @@ public abstract class Motion<TArgs> : IMotion
             // cs.CurrentClip = null;
             cs.UseExtra = false;
             if (md.FrameLength > 0)
+            {
                 // Default: Use first frame of the current direction as fallback
                 cs.SetCurrentFrame(DirectionFrameStart());
+            }
             else
                 cs.SetCurrentFrame(-1);
         }

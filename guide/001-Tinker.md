@@ -18,6 +18,7 @@ When a `Data/Trinkets` entry has a matching `mushymato.TrinketTinker/Tinker` ent
     "{{ModId}}_Sample": {
       "EnableCondition": "<game state query>",
       "EnableFailMessage": "<message>",
+      "HiredSound": "<sound cue>",
       "MinLevel": <number level>,
       "Variants": [
         { /* variant data */ },
@@ -83,6 +84,7 @@ Unlike base game trinkets, TrinketTinker trinkets always spawn with the first va
 | -------- | ---- | ------- | ----- |
 | `EnableCondition` | string | _null_ | A [game state query](https://stardewvalleywiki.com/Modding:Game_state_queries) used to check if the trinket should be enabled. This is checked on equip, it can only be rechecked by reequipping the trinket. The check also happens every night, when the trinket is unequipped/reequipped by the game. |
 | `EnableFailMessage` | string | _null_ | When `EnableCondition` is false, this message will be displayed upon equipping the trinket. Supports tokenized text.<br/>Default message: ` "You are not worthy of {{trinketName}}..."` |
+| `HiredSound` | string | When this trinket is purchased via `mushymato.TrinketTinker_HIRE_TRINKET`, this sound will play. |
 | `MinLevel` | int | 1 | Changes the level value that will replace `{0}` in `DisplayName`. |
 | `Variants` | [List\<VariantData\>](002-Variant.md) | _null_ | Defines the sprites of the companion. |
 | `VariantsBase` | [VariantData](002-Variant.md) | _null_ | Defines some default values shared across all variants. |

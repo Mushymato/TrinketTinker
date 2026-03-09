@@ -4,6 +4,15 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.7.2
+
+### Added
+- You can now add `HiredSound` to trinkets, this plays when they are purchased via `mushymato.TrinketTinker_HIRE_TRINKET`
+
+### Fixed
+- Anim clip now clamps currentFrame to valid range for the clip on set to prevent the single frame of incorrect rect
+- `mushymato.TrinketTinker_PutHatOnCompanion` no longer removes active item
+
 ### 1.7.1
 
 ### Changed

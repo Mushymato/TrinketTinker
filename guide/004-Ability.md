@@ -71,7 +71,7 @@ An ability is primarily defined by `AbilityClass` (what it does) and `Proc` (whe
 | `ProcSyncIndex`| int | 0 | For use with [Proc.Sync](004.0-Proc.md), makes this ability proc after another ability in the same level, by their order in the list of abilities. |
 | `ProcSyncDelay`| int | 0 | For use with other abilities with [Proc.Sync](004.0-Proc.md), add a delay between the proc of this ability and any sync ability listening to this one. |
 | `ProcFuel` | RequiredFuelData | _null_ | A model defining what items will be consumed by each activation of this ability. The fule item comes from a [trinket inventory](005.0-Inventory.md). |
-| `ProcSound` | string | _null_ | Play a sound cue when ability procs ([details](https://stardewvalleywiki.com/Modding:Audio)) |
+| `ProcSound` | string | _null_ | Play a sound cue when ability procs ([details](https://stardewvalleywiki.com/Modding:Audio)). Besides just the string, you specify a random list of pitch: `{"CueName": "flute", "Pitch": [...]}`. |
 | `ProcTAS` | List\<string\> | _null_ | String Ids of [temporary animated sprites](006-Temporary%20Animated%20Sprite.md) to show when the ability activates. For most abilities, this TAS is drawn shown relative to the farmer. For Hitscan/Projectile, this TAS is shown on the targeted monster instead. |
 | `ProcOneshotAnim` | string | _null_ | Play the matching [anim clip](003.2-Animation%20Clips.md) on proc, return to normal animation after 1 cycle. |
 | `ProcSpeechBubble` | string | _null_ | Show the matching [speech bubble](003.3-Speech%20Bubbles.md) on proc. |

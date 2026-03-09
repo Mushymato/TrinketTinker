@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
@@ -94,6 +95,8 @@ public sealed class TinkerAnimSprite
             {
                 UseExtra = value?.UseExtra ?? false;
                 currentClip = value;
+                if (value != null)
+                    currentFrame = Math.Clamp(currentFrame, value.FrameStart, value.FrameStart + value.FrameLength);
                 UpdateSourceRect();
             }
         }
@@ -377,6 +380,7 @@ public sealed class TinkerAnimSprite
     /// <returns>True if animation reached last frame</returns>
     internal TinkerAnimState AnimateStandard(GameTime time, int startFrame, int numberOfFrames, double interval)
     {
+        int prevFrame = currentFrame;
         if (currentFrame >= startFrame + numberOfFrames || currentFrame < startFrame)
             currentFrame = startFrame + currentFrame % numberOfFrames;
         timer += time.ElapsedGameTime.TotalMilliseconds;
@@ -391,7 +395,8 @@ public sealed class TinkerAnimSprite
                 return TinkerAnimState.Complete;
             }
         }
-        UpdateSourceRect();
+        if (prevFrame != currentFrame)
+            UpdateSourceRect();
         return TinkerAnimState.InProgress;
     }
 
@@ -408,6 +413,7 @@ public sealed class TinkerAnimSprite
     {
         int lastFrame;
         int step;
+        int prevFrame = currentFrame;
         if (isReverse)
         {
             lastFrame = startFrame;
@@ -435,7 +441,8 @@ public sealed class TinkerAnimSprite
                 return isReverse ? TinkerAnimState.InProgress : TinkerAnimState.Complete;
             }
         }
-        UpdateSourceRect();
+        if (prevFrame != currentFrame)
+            UpdateSourceRect();
         return TinkerAnimState.InProgress;
     }
 }
