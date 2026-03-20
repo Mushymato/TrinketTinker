@@ -55,6 +55,7 @@ public static class EquipTrinket
         {
             ResizeTrinketItems(trinketItems, trinketItems.Capacity * 2);
         }
+        trinket.onDetachedFromParent();
         trinketItems.Add(trinket);
     }
 

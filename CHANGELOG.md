@@ -4,19 +4,25 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.7.3
+
+### Fixed
+- Me vs EquipTrinket part 1090894303: local co-op edition
+- `tt.unequip_trinket` now removes trinkets from all players in local co-op
+
 ### 1.7.2
 
-### Added
+#### Added
 - You can now add `HiredSound` to trinkets, this plays when they are purchased via `mushymato.TrinketTinker_HIRE_TRINKET`
 - You can now prevent explosions from damaging the farmer by setting `ExplodeDamagesFarmer` to false in Hitscan/Projectile
 
-### Fixed
+#### Fixed
 - Anim clip now clamps currentFrame to valid range for the clip on set to prevent the single frame of incorrect rect
 - `mushymato.TrinketTinker_PutHatOnCompanion` no longer removes active item
 
 ### 1.7.1
 
-### Changed
+#### Changed
 - `Priority` on alt variants and chatter is deprecated in favor of `Precedence` for consistency with vanilla. They still work for any existing mods using them.
 
 ### 1.7.0

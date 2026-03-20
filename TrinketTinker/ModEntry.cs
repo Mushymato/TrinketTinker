@@ -65,7 +65,7 @@ internal sealed class ModEntry : Mod
         );
         helper.ConsoleCommands.Add(
             "tt.unequip_trinket",
-            "Debug unequip all trinkets of current player and return the trinkets to player.",
+            "Debug unequip all trinkets of all local players and return the trinkets to player. Use 'tt.unequip_trinket all' to unequip trinkets on all players.",
             ConsoleUnequipTrinkets
         );
 #if DEBUG
@@ -183,16 +183,30 @@ internal sealed class ModEntry : Mod
     private void OnSaving(object? sender, SavingEventArgs e)
     {
         EquipTrinket.UnequipHiddenTrinkets();
+        for (int i = 0; i < Game1.player.trinketItems.Count; i++)
+        {
+            Game1.player.UnapplyAllTrinketEffects();
+            Log(
+                $"OnSaving {Game1.player.displayName} trinketItems[{i}] is {Game1.player.trinketItems[i]?.QualifiedItemId ?? "NULL"}"
+            );
+        }
+    }
+
+    private void OnSaved(object? sender, SavedEventArgs e)
+    {
+        for (int i = 0; i < Game1.player.trinketItems.Count; i++)
+        {
+            Game1.player.resetAllTrinketEffects();
+            Log(
+                $"OnSaved {Game1.player.displayName} trinketItems[{i}] is {Game1.player.trinketItems[i]?.QualifiedItemId ?? "NULL"}"
+            );
+        }
+        EquipTrinket.ReequipHiddenTrinkets();
     }
 
     private void OnReturnedToTitle(object? sender, ReturnedToTitleEventArgs e)
     {
         EquipTrinket.UnequipHiddenTrinkets(decrement: false);
-    }
-
-    private void OnSaved(object? sender, SavedEventArgs e)
-    {
-        EquipTrinket.ReequipHiddenTrinkets();
     }
 
     private void OnSaveLoaded(object? sender, SaveLoadedEventArgs e)
@@ -339,7 +353,23 @@ internal sealed class ModEntry : Mod
     {
         if (!Context.IsWorldReady)
             return;
+
+        List<Farmer> farmers = [];
+        if (Context.IsSplitScreen)
+        {
+            GameRunner.instance.ExecuteForInstances((game) => FarmerUnequipTrinkets(Game1.player));
+        }
+        else
+        {
+            FarmerUnequipTrinkets(Game1.player);
+        }
+    }
+
+    private static void FarmerUnequipTrinkets(Farmer farmer)
+    {
         List<Item> returnedItems = [];
+        Log($"UnequipTrinket on {farmer.displayName}");
+        farmer.UnapplyAllTrinketEffects();
         foreach (Trinket trinketItem in Game1.player.trinketItems)
         {
             if (trinketItem == null)
@@ -350,8 +380,8 @@ internal sealed class ModEntry : Mod
                 Log($"UnequipTrinket: {trinketItem.QualifiedItemId}", LogLevel.Info);
             }
         }
-        Game1.player.trinketItems.Clear();
-        Game1.player.companions.Clear();
+        farmer.trinketItems.Clear();
+        farmer.companions.Clear();
         EquipTrinket.ClearHiddenInventory();
         Game1.player.addItemsByMenuIfNecessary(returnedItems);
     }
