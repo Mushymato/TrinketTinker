@@ -141,10 +141,10 @@ public static class EquipTrinket
         return null;
     }
 
-    public static bool EquipHiddenTrinket(string[] args, TriggerActionContext context, out string error)
+    public static bool EquipHiddenTrinket(string[] args, TriggerActionContext context, out string? error)
     {
         if (
-            !ArgUtility.TryGet(args, 1, out string trinketId, out error, allowBlank: false, name: "string trinketId")
+            !ArgUtility.TryGet(args, 1, out string? trinketId, out error, allowBlank: false, name: "string trinketId")
             || !ArgUtility.TryGetOptionalInt(args, 2, out int level, out error, name: "int level")
             || !ArgUtility.TryGetOptionalInt(args, 3, out int variant, out error, name: "int variant")
             || !ArgUtility.TryGetOptionalInt(
@@ -190,7 +190,7 @@ public static class EquipTrinket
         return true;
     }
 
-    public static bool UnequipHiddenTrinket(string[] args, TriggerActionContext context, out string error)
+    public static bool UnequipHiddenTrinket(string[] args, TriggerActionContext context, out string? error)
     {
         Inventory hiddenTrinketsInv = GetHiddenTrinketsInv(Game1.player);
         if (hiddenTrinketsInv.Count == 0)
@@ -199,7 +199,7 @@ public static class EquipTrinket
             return true;
         }
         if (
-            !ArgUtility.TryGet(args, 1, out string trinketId, out error, allowBlank: false, "string trinketId")
+            !ArgUtility.TryGet(args, 1, out string? trinketId, out error, allowBlank: false, "string trinketId")
             || !ArgUtility.TryGetOptionalInt(args, 2, out int level, out error, defaultValue: -1, name: "int level")
             || !ArgUtility.TryGetOptionalInt(args, 3, out int variant, out error, defaultValue: -1, name: "int variant")
         )

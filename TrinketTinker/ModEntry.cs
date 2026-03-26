@@ -318,7 +318,7 @@ internal sealed class ModEntry : Mod
             return;
 
         if (
-            !ArgUtility.TryGetPoint(arg2, 0, out Point current, out string error, name: "Point current")
+            !ArgUtility.TryGetPoint(arg2, 0, out Point current, out string? error, name: "Point current")
             || !ArgUtility.TryGetPoint(arg2, 2, out Point target, out error, name: "Point current")
             || !ArgUtility.TryGetInt(arg2, 4, out int step, out error, "int step")
         )

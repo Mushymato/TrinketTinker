@@ -26,7 +26,7 @@ public static class ProcTrinket
     public const string TriggerActionName = $"{ModEntry.ModId}_ProcTrinket";
 
     /// <summary>Trigger action, proc trinkets that use <see cref="ProcOn.Trigger"/>.</summary>
-    public static bool Action(string[] args, TriggerActionContext context, out string error)
+    public static bool Action(string[] args, TriggerActionContext context, out string? error)
     {
         if (!ArgUtility.TryGetOptional(args, 1, out string trinketId, out error))
             return false;
@@ -65,7 +65,7 @@ public static class ProcTrinket
         {
             foreach (string actionStr in broadcasted.Actions)
             {
-                if (!TriggerActionManager.TryRunAction(actionStr, out string error, out Exception _))
+                if (!TriggerActionManager.TryRunAction(actionStr, out string? error, out _))
                 {
                     ModEntry.LogOnce($"Couldn't apply action '{actionStr}': {error}", LogLevel.Error);
                 }

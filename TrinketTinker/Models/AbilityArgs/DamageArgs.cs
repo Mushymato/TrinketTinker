@@ -134,7 +134,7 @@ public class DamageArgs : IArgs
         }
         if (ExplodeRadius > 0)
         {
-            context.Location.explode(
+            context.Location?.explode(
                 target.TilePoint.ToVector2(),
                 ExplodeRadius,
                 context.Player,
@@ -151,7 +151,7 @@ public class DamageArgs : IArgs
         bool triggerMonsterInvincibleTimer
     )
     {
-        context.Location.damageMonster(
+        context.Location?.damageMonster(
             areaOfEffect: target.GetBoundingBox(),
             minDamage: Min,
             maxDamage: Max,

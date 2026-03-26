@@ -182,14 +182,14 @@ public static class GameItemQuery
                 idx,
                 context.TargetItem,
                 context.InputItem,
-                out Item item,
+                out Item? item,
                 out var error
             )
         )
         {
             if (!createFromId)
                 return false;
-            if (!ArgUtility.TryGet(query, idx, out string itemId, out string _, allowBlank: true, "string itemId"))
+            if (!ArgUtility.TryGet(query, idx, out string? itemId, out string? _, allowBlank: true, "string itemId"))
             {
                 ModEntry.Log(
                     $"Failed parsing condition '{string.Join(" ", query)}': {error}.",
@@ -232,13 +232,20 @@ public static class GameItemQuery
         string arguments,
         ItemQueryContext context,
         bool avoidRepeat,
-        HashSet<string> avoidItemIds,
+        HashSet<string>? avoidItemIds,
         Action<string, string> logError
     )
     {
         string[] array = ItemQueryResolver.Helpers.SplitArguments(arguments);
         if (
-            !ArgUtility.TryGet(array, 0, out string trinketId, out string error1, allowBlank: false, "string trinketId")
+            !ArgUtility.TryGet(
+                array,
+                0,
+                out string? trinketId,
+                out string? error1,
+                allowBlank: false,
+                "string trinketId"
+            )
         )
             return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, error1);
 
@@ -282,13 +289,20 @@ public static class GameItemQuery
         string arguments,
         ItemQueryContext context,
         bool avoidRepeat,
-        HashSet<string> avoidItemIds,
+        HashSet<string>? avoidItemIds,
         Action<string, string> logError
     )
     {
         string[] array = ItemQueryResolver.Helpers.SplitArguments(arguments);
         if (
-            !ArgUtility.TryGet(array, 0, out string trinketId, out string error1, allowBlank: false, "string trinketId")
+            !ArgUtility.TryGet(
+                array,
+                0,
+                out string? trinketId,
+                out string? error1,
+                allowBlank: false,
+                "string trinketId"
+            )
         )
             return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, error1);
 
@@ -318,15 +332,15 @@ public static class GameItemQuery
         string arguments,
         ItemQueryContext context,
         bool avoidRepeat,
-        HashSet<string> avoidItemIds,
+        HashSet<string>? avoidItemIds,
         Action<string, string> logError
     )
     {
         string[] array = ItemQueryResolver.Helpers.SplitArguments(arguments);
-        if (!ArgUtility.TryGet(array, 0, out string trinketId, out string error1, allowBlank: false, "string itemId"))
+        if (!ArgUtility.TryGet(array, 0, out string? trinketId, out string? error1, allowBlank: false, "string itemId"))
             return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, error1);
 
-        return [new ItemQueryResult(new HiredTrinket(trinketId, context.Random.Next()))];
+        return [new ItemQueryResult(new HiredTrinket(trinketId, (context.Random ?? Random.Shared).Next()))];
     }
 
     /// <summary>
@@ -406,7 +420,7 @@ public static class GameItemQuery
     {
         if (!TryGetTinkerTrinket(query, context, 1, out Trinket? trinket, out TrinketTinkerEffect? effect))
             return false;
-        if (!ArgUtility.TryGet(query, 2, out var playerKey, out string error, allowBlank: true, "string playerKey"))
+        if (!ArgUtility.TryGet(query, 2, out var playerKey, out string? error, allowBlank: true, "string playerKey"))
         {
             ModEntry.Log($"Failed parsing condition '{string.Join(" ", query)}': {error}.", LogLevel.Warn);
             return false;
@@ -443,7 +457,7 @@ public static class GameItemQuery
     {
         if (
             TryGetTinkerTrinket(query, context, 1, out Trinket? _, out TrinketTinkerEffect? effect, createFromId: false)
-            && ArgUtility.TryGetOptional(query, 2, out string altVariantKey, out string _, "string altVariantKey")
+            && ArgUtility.TryGetOptional(query, 2, out string? altVariantKey, out string? _, "string altVariantKey")
         )
         {
             if (effect.Companion is TrinketTinkerCompanion cmp)
@@ -465,7 +479,7 @@ public static class GameItemQuery
     {
         if (
             TryGetTinkerTrinket(query, context, 1, out Trinket? _, out TrinketTinkerEffect? effect, createFromId: false)
-            && ArgUtility.TryGetOptional(query, 2, out string itemId, out string _, "string hatId")
+            && ArgUtility.TryGetOptional(query, 2, out string? itemId, out string? _, "string hatId")
         )
         {
             if (effect.Companion is TrinketTinkerCompanion cmp)
@@ -485,7 +499,7 @@ public static class GameItemQuery
     {
         if (
             TryGetTinkerTrinket(query, context, 1, out Trinket? _, out TrinketTinkerEffect? effect, createFromId: false)
-            && ArgUtility.TryGetOptional(query, 2, out string itemId, out string _, "string itemId")
+            && ArgUtility.TryGetOptional(query, 2, out string? itemId, out string? _, "string itemId")
             && effect.GetInventory() is Inventory trinketInv
         )
         {
@@ -521,10 +535,10 @@ public static class GameItemQuery
     /// <param name="context"></param>
     /// <param name="error"></param>
     /// <returns></returns>
-    private static bool TA_ToggleCompanion(string[] args, TriggerActionContext context, out string error)
+    private static bool TA_ToggleCompanion(string[] args, TriggerActionContext context, out string? error)
     {
         if (
-            !ArgUtility.TryGet(args, 1, out string trinketId, out error, allowBlank: false, "string trinketId")
+            !ArgUtility.TryGet(args, 1, out string? trinketId, out error, allowBlank: false, "string trinketId")
             || !ArgUtility.TryGetOptionalInt(args, 2, out int level, out error, defaultValue: -1, name: "int level")
             || !ArgUtility.TryGetOptionalInt(args, 3, out int variant, out error, defaultValue: -1, name: "int variant")
         )
@@ -553,11 +567,11 @@ public static class GameItemQuery
     /// <param name="error"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    private static bool TA_PutHatOnCompanion(string[] args, TriggerActionContext context, out string error)
+    private static bool TA_PutHatOnCompanion(string[] args, TriggerActionContext context, out string? error)
     {
         if (
-            !ArgUtility.TryGet(args, 1, out string trinketId, out error, allowBlank: false, "string trinketId")
-            || !ArgUtility.TryGet(args, 2, out string hatId, out error, name: "string hatId")
+            !ArgUtility.TryGet(args, 1, out string? trinketId, out error, allowBlank: false, "string trinketId")
+            || !ArgUtility.TryGet(args, 2, out string? hatId, out error, name: "string hatId")
             || !ArgUtility.TryGetOptionalInt(args, 3, out int level, out error, defaultValue: -1, name: "int level")
             || !ArgUtility.TryGetOptionalInt(args, 4, out int variant, out error, defaultValue: -1, name: "int variant")
         )

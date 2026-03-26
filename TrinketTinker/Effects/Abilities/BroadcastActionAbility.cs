@@ -26,7 +26,7 @@ public sealed class BroadcastActionAbility(TrinketTinkerEffect effect, AbilityDa
             {
                 foreach (string actionStr in Actions)
                 {
-                    if (!TriggerActionManager.TryRunAction(actionStr, out string error, out Exception _))
+                    if (!TriggerActionManager.TryRunAction(actionStr, out string? error, out _))
                     {
                         ModEntry.LogOnce($"Couldn't apply action '{actionStr}': {error}", LogLevel.Error);
                     }

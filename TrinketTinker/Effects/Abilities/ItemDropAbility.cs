@@ -31,7 +31,7 @@ public sealed class ItemDropAbility(TrinketTinkerEffect effect, AbilityData data
                 switch (args.HarvestTo)
                 {
                     case HarvestDestination.Player:
-                        if (context.Player.addItemToInventoryBool(item))
+                        if ((item = context.Player.addItemToInventory(item)) == null)
                         {
                             spawned = true;
                             break;

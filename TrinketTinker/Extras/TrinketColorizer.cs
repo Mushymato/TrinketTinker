@@ -202,7 +202,7 @@ public static class TrinketColorizer
         overrideMinutesUntilReady = null;
         if (inputItem is not Trinket t)
             return null;
-        if (!t.GetTrinketData().CanBeReforged)
+        if (!(t.GetTrinketData()?.CanBeReforged ?? false))
         {
             if (!probe)
                 Game1.showRedMessage(Game1.content.LoadString(I18n.BC_TrinketColorizer_NoRecolor()));
@@ -259,7 +259,7 @@ public static class TrinketColorizer
         overrideMinutesUntilReady = null;
         if (inputItem is not Trinket t)
             return null;
-        if (!t.GetTrinketData().CanBeReforged)
+        if (!(t.GetTrinketData()?.CanBeReforged ?? false))
         {
             if (!probe)
                 Game1.showRedMessage(Game1.content.LoadString("Strings/1_6_Strings:Anvil_wrongtrinket"));

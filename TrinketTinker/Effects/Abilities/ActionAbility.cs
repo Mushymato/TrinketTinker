@@ -42,7 +42,7 @@ public sealed class ActionAbility(TrinketTinkerEffect effect, AbilityData data, 
 
         foreach (CachedAction action in actions)
         {
-            if (!TriggerActionManager.TryRunAction(action, context, out string error, out Exception _))
+            if (!TriggerActionManager.TryRunAction(action, context, out string? error, out _))
             {
                 ModEntry.LogOnce(
                     "Couldn't apply action '" + string.Join(' ', action.Args) + "': " + error,
