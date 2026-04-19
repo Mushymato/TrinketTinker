@@ -66,6 +66,15 @@ public class DamageArgs : IArgs
     /// <summary>Change if explosion should damange farmer</summary>
     public bool ExplodeDamagesFarmer { get; set; } = true;
 
+    /// <summary>Pixel radius for splash damage around the impacted target.</summary>
+    public int AoERadius { get; set; } = 0;
+
+    /// <summary>
+    /// When true, AoE is centered on the companion position instead of an impact location.
+    /// Intended for hitscan pulse / aura style attacks.
+    /// </summary>
+    public bool AoEFromCompanion { get; set; } = false;
+
     /// <summary>
     /// If this is set, override whether the damage incurred by this is projectile and bypasses barriers.
     /// Otherwise, default to the damage type dependent value (false for HitscanAbility, true for ProjectileAbility)
@@ -80,58 +89,64 @@ public class DamageArgs : IArgs
     {
         if (Range < 1)
             return false;
+        if (AoERadius < 0) //no negative values
+            return false;
+
         if (Min > Max)
         {
             if (Min == 0 && StunTime == 0)
                 return false;
             Max = Min;
         }
+
         return true;
     }
 
     /// <summary>Do damage and debuff on monster.</summary>
-    /// <param name="proc"></param>
-    /// <param name="target"></param>
     public void DamageMonster(GameStateQueryContext context, Monster target, bool isProjectile)
     {
         isProjectile = TreatAsProjectile ?? isProjectile;
-        Vector2 pos = target.GetBoundingBox().Center.ToVector2();
-        float drawLayer = pos.Y / 10000f + Visuals.LAYER_OFFSET;
+        Vector2 impactCenter = target.GetBoundingBox().Center.ToVector2();
+
+        void DoHit() //turning impact point damage into impact point AoE
+        {
+            foreach (Monster hitTarget in GetAoETargets(context, target, impactCenter))
+            {
+                WrappedDamageMonster(context, hitTarget, isProjectile, false);
+            }
+        }
+
         if (Min > 0)
         {
             if (HitsDelay == 0)
+            {
                 for (int i = 1; i < Hits; i++)
-                {
-                    WrappedDamageMonster(context, target, isProjectile, false);
-                }
+                    DoHit();
+            }
             else
             {
                 for (int i = 1; i < Hits; i++)
-                {
-                    DelayedAction.functionAfterDelay(
-                        () =>
-                        {
-                            WrappedDamageMonster(context, target, isProjectile, false);
-                        },
-                        i * HitsDelay
-                    );
-                }
+                    DelayedAction.functionAfterDelay(DoHit, i * HitsDelay);
             }
-            WrappedDamageMonster(context, target, isProjectile, false);
+
+            DoHit();
+
             if (HitTAS != null)
             {
-                Visuals.BroadcastTASList(HitTAS.Split('|'), pos, drawLayer, context);
+                foreach (Monster hitTarget in GetAoETargets(context, target, impactCenter))
+                    BroadcastHitTAS(context, hitTarget);
             }
         }
+
         if (StunTime > 0)
         {
-            target.stunTime.Value = StunTime;
-            if (StunTAS != null)
+            foreach (Monster hitTarget in GetAoETargets(context, target, impactCenter))
             {
-                if (!Visuals.BroadcastTAS(StunTAS, pos, drawLayer, context, duration: StunTime))
-                    StunTAS = null;
+                hitTarget.stunTime.Value = StunTime;
+                BroadcastStunTAS(context, hitTarget);
             }
         }
+
         if (ExplodeRadius > 0)
         {
             context.Location?.explode(
@@ -142,6 +157,131 @@ public class DamageArgs : IArgs
                 damage_amount: Min
             );
         }
+    }
+
+    /// <summary>
+    /// Do one AoE pulse around a point.
+    /// Take a point in space, find monsters in radius around that point, apply damage/stun etc.
+    /// </summary>
+    public bool DamageAtPoint(
+        GameStateQueryContext context,
+        Vector2 center,
+        bool isProjectile,
+        Func<Monster, bool>? match = null
+    )
+    {
+        isProjectile = TreatAsProjectile ?? isProjectile;
+        List<Monster> targets = GetAoETargetsAtPoint(context, center, match).ToList();
+
+        if (targets.Count == 0)
+            return false;
+
+        if (Min > 0)
+        {
+            foreach (Monster hitTarget in targets)
+            {
+                WrappedDamageMonster(context, hitTarget, isProjectile, false);
+            }
+
+            if (HitTAS != null)
+            {
+                foreach (Monster hitTarget in targets)
+                    BroadcastHitTAS(context, hitTarget);
+            }
+        }
+
+        if (StunTime > 0)
+        {
+            foreach (Monster hitTarget in targets)
+            {
+                hitTarget.stunTime.Value = StunTime;
+                BroadcastStunTAS(context, hitTarget);
+            }
+        }
+
+        return true;
+    }
+
+    private IEnumerable<Monster> GetAoETargets(GameStateQueryContext context, Monster primaryTarget, Vector2 impactCenter)
+    {
+        if (context.Location == null || AoERadius <= 0)
+        {
+            yield return primaryTarget;
+            yield break;
+        }
+
+        bool foundPrimary = false;
+
+        foreach (Monster monster in context.Location.characters.OfType<Monster>())
+        {
+            if (monster.IsInvisible)
+                continue;
+
+            // Keep existing behavior for the primary target, but let Filters exclude secondary splash targets.
+            if (monster != primaryTarget && (Filters?.Contains(monster.Name) ?? false))
+                continue;
+
+            if (Vector2.Distance(monster.GetBoundingBox().Center.ToVector2(), impactCenter) > AoERadius)
+                continue;
+
+            if (monster == primaryTarget)
+                foundPrimary = true;
+
+            yield return monster;
+        }
+
+        if (!foundPrimary)
+            yield return primaryTarget;
+    }
+
+    /// <summary>Needed helper method to find monsters around an arbitrary point.</summary>
+    private IEnumerable<Monster> GetAoETargetsAtPoint( 
+        GameStateQueryContext context,
+        Vector2 center,
+        Func<Monster, bool>? match = null
+    )
+    {
+        if (context.Location == null || AoERadius <= 0)
+            yield break;
+
+        foreach (Monster monster in context.Location.characters.OfType<Monster>())
+        {
+            if (monster.IsInvisible)
+                continue;
+
+            if ((Filters?.Contains(monster.Name) ?? false))
+                continue;
+
+            if (match != null && !match(monster))
+                continue;
+
+            if (Vector2.Distance(monster.GetBoundingBox().Center.ToVector2(), center) > AoERadius)
+                continue;
+
+            yield return monster;
+        }
+    }
+
+    private void BroadcastHitTAS(GameStateQueryContext context, Monster target)
+    {
+        if (HitTAS == null)
+            return;
+
+        Vector2 pos = target.GetBoundingBox().Center.ToVector2();
+        float drawLayer = pos.Y / 10000f + Visuals.LAYER_OFFSET;
+        Visuals.BroadcastTASList(HitTAS.Split('|'), pos, drawLayer, context);
+    }
+
+    private void BroadcastStunTAS(GameStateQueryContext context, Monster target)
+    {
+        if (StunTAS == null)
+            return;
+
+        Vector2 pos = target.GetBoundingBox().Center.ToVector2();
+        float drawLayer = pos.Y / 10000f + Visuals.LAYER_OFFSET;
+
+        if (!Visuals.BroadcastTAS(StunTAS, pos, drawLayer, context, duration: StunTime))
+            StunTAS = null;
     }
 
     private void WrappedDamageMonster(
