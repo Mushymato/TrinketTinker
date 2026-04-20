@@ -1,9 +1,9 @@
 using Microsoft.Xna.Framework;
-using StardewValley;
 using StardewValley.Monsters;
 using TrinketTinker.Effects.Support;
 using TrinketTinker.Models;
 using TrinketTinker.Models.AbilityArgs;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Effects.Abilities;
 
@@ -22,18 +22,27 @@ public sealed class ProjectileAbility(TrinketTinkerEffect effect, AbilityData da
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
         Vector2 sourcePosition = e.CompanionPosition ?? proc.Farmer.Position;
-        Monster? target =
-            proc.Monster
-            ?? Utility.findClosestMonsterWithinRange(
-                proc.LocationOrCurrent,
-                sourcePosition,
-                args.Range,
-                ignoreUntargetables: true,
-                match: FilterMonster
-            );
-        if (target == null)
+
+        List<Monster> targets = Places.SelectMatchingMonsters(
+            proc.LocationOrCurrent,
+            sourcePosition,
+            args.Range,
+            args.MaxTargetCount,
+            args.TargetMode,
+            proc.Monster,
+            FilterMonster
+        );
+
+        if (targets.Count == 0)
             return false;
-        proc.LocationOrCurrent.projectiles.Add(new TinkerProjectile(args, proc, target, sourcePosition));
+
+        proc.Monster = targets[0];
+
+        foreach (Monster target in targets)
+        {
+            proc.LocationOrCurrent.projectiles.Add(new TinkerProjectile(args, proc, target, sourcePosition));
+        }
+
         return base.ApplyEffect(proc);
     }
 }
