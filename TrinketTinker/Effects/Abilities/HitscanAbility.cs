@@ -1,3 +1,4 @@
+using StardewValley;
 using StardewValley.Monsters;
 using TrinketTinker.Effects.Support;
 using TrinketTinker.Models;
