@@ -2,7 +2,10 @@ using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Extensions;
 using StardewValley.GameData.Locations;
+using StardewValley.Monsters;
 using StardewValley.TerrainFeatures;
+using TrinketTinker.Models.AbilityArgs;
+using StardewModdingAPI;
 
 namespace TrinketTinker.Wheels;
 
@@ -12,6 +15,37 @@ internal static class Places
     /// <summary>Custom</summary>
     public const string Field_DisableTrinketAbilities = $"{ModEntry.ModId}/disableAbilities";
     public const string Field_DisableTrinketCompanions = $"{ModEntry.ModId}/disableCompanions";
+
+        private const bool DebugTargetSelection = true;
+
+    private static void LogTargetSelection(string message)
+    {
+        if (DebugTargetSelection)
+            ModEntry.Log(message, LogLevel.Info);
+    }
+
+    private static string DescribeMonster(Monster monster, Vector2 originPoint)
+    {
+        float distance = Vector2.Distance(originPoint, monster.getStandingPosition());
+        return $"{monster.Name}@{distance:0.0}";
+    }
+
+    private static string DescribeMonsterList(List<Monster> monsters, Vector2 originPoint)
+    {
+        if (monsters.Count == 0)
+            return "[]";
+
+        System.Text.StringBuilder sb = new();
+        sb.Append('[');
+        for (int i = 0; i < monsters.Count; i++)
+        {
+            if (i > 0)
+                sb.Append(", ");
+            sb.Append(DescribeMonster(monsters[i], originPoint));
+        }
+        sb.Append(']');
+        return sb.ToString();
+    }
 
     /// <summary>Find closest matching farm animal within range</summary>
     /// <param name="location"></param>
@@ -74,6 +108,122 @@ internal static class Places
             }
         }
         return result;
+    }
+
+    /// <summary>Get all matching monsters within range.</summary>
+    /// <param name="location"></param>
+    /// <param name="originPoint"></param>
+    /// <param name="range"></param>
+    /// <param name="match"></param>
+    /// <returns></returns>
+    public static List<Monster> MatchingMonsters(
+        GameLocation location,
+        Vector2 originPoint,
+        int range,
+        Func<Monster, bool>? match = null
+    )
+    {
+        List<Monster> result = new();
+        foreach (NPC character in location.characters)
+        {
+            if (character is not Monster monster || monster.IsInvisible)
+                continue;
+
+            float distance = Vector2.Distance(originPoint, monster.getStandingPosition());
+            if (distance > range)
+                continue;
+
+            if (match == null || match(monster))
+                result.Add(monster);
+        }
+        return result;
+    }
+
+    /// <summary>Select matching monsters within range according to target mode and max target count.</summary>
+    /// <param name="location"></param>
+    /// <param name="originPoint"></param>
+    /// <param name="range"></param>
+    /// <param name="maxTargetCount"></param>
+    /// <param name="targetMode"></param>
+    /// <param name="guaranteedTarget"></param>
+    /// <param name="match"></param>
+    /// <returns></returns>
+        public static List<Monster> SelectMatchingMonsters(
+        GameLocation location,
+        Vector2 originPoint,
+        int range,
+        int maxTargetCount,
+        TargetSelectionMode targetMode,
+        Monster? guaranteedTarget = null,
+        Func<Monster, bool>? match = null
+    )
+    {
+        List<Monster> candidates = MatchingMonsters(location, originPoint, range, match);
+        List<Monster> originalCandidates = new(candidates);
+        List<Monster> result = new();
+
+        bool guaranteedValid = false;
+        if (guaranteedTarget != null)
+        {
+            float guaranteedDistance = Vector2.Distance(originPoint, guaranteedTarget.getStandingPosition());
+            guaranteedValid =
+                !guaranteedTarget.IsInvisible
+                && guaranteedDistance <= range
+                && (match == null || match(guaranteedTarget));
+
+            if (guaranteedValid)
+            {
+                result.Add(guaranteedTarget);
+                candidates.RemoveAll(monster => ReferenceEquals(monster, guaranteedTarget));
+            }
+        }
+
+        int remainingCount = Math.Max(0, maxTargetCount - result.Count);
+
+        switch (targetMode)
+        {
+            case TargetSelectionMode.Closest:
+                candidates.Sort((a, b) =>
+                    Vector2.Distance(originPoint, a.getStandingPosition())
+                        .CompareTo(Vector2.Distance(originPoint, b.getStandingPosition()))
+                );
+                break;
+
+            case TargetSelectionMode.Random:
+                ShuffleInPlace(Game1.random, candidates);
+                break;
+        }
+
+        if (remainingCount > 0)
+            result.AddRange(candidates.Take(remainingCount));
+
+        string guaranteedText = guaranteedTarget == null
+            ? "null"
+            : DescribeMonster(guaranteedTarget, originPoint);
+
+        LogTargetSelection(
+            $"[TargetSelection] Mode={targetMode}, Max={maxTargetCount}, Range={range}, " +
+            $"Guaranteed={guaranteedText}, GuaranteedValid={guaranteedValid}, " +
+            $"Pool={DescribeMonsterList(originalCandidates, originPoint)}, " +
+            $"RemainingPool={DescribeMonsterList(candidates, originPoint)}, " +
+            $"Result={DescribeMonsterList(result, originPoint)}"
+        );
+
+        return result;
+    }
+
+    /// <summary>Shuffle a list in place using Fisher-Yates shuffle.</summary>
+    /// <param name="rand"></param>
+    /// <param name="listToShuffle"></param>
+    private static void ShuffleInPlace<T>(Random rand, List<T> listToShuffle)
+    {
+        int n = listToShuffle.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rand.Next(n + 1);
+            (listToShuffle[n], listToShuffle[k]) = (listToShuffle[k], listToShuffle[n]);
+        }
     }
 
     /// <summary>Find nearest placed object within range.</summary>

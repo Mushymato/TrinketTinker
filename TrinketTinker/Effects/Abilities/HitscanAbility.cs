@@ -3,6 +3,7 @@ using StardewValley.Monsters;
 using TrinketTinker.Effects.Support;
 using TrinketTinker.Models;
 using TrinketTinker.Models.AbilityArgs;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Effects.Abilities;
 
@@ -21,19 +22,26 @@ public sealed class HitscanAbility(TrinketTinkerEffect effect, AbilityData data,
     /// <inheritdoc/>
     protected override bool ApplyEffect(ProcEventArgs proc)
     {
-        Monster? target =
-            proc.Monster
-            ?? Utility.findClosestMonsterWithinRange(
-                proc.LocationOrCurrent,
-                e.CompanionPosOff ?? proc.Farmer.Position,
-                args.Range,
-                ignoreUntargetables: true,
-                match: FilterMonster
-            );
-        if (target == null)
+        List<Monster> targets = Places.SelectMatchingMonsters(
+            proc.LocationOrCurrent,
+            e.CompanionPosOff ?? proc.Farmer.Position,
+            args.Range,
+            args.MaxTargetCount,
+            args.TargetMode,
+            proc.Monster,
+            FilterMonster
+        );
+
+        if (targets.Count == 0)
             return false;
-        proc.Monster = target;
-        args.DamageMonster(proc.GSQContext, target, false);
+
+        proc.Monster = targets[0];
+
+        foreach (Monster target in targets)
+        {
+            args.DamageMonster(proc.GSQContext, target, false);
+        }
+
         return base.ApplyEffect(proc);
     }
 }

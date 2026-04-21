@@ -7,6 +7,12 @@ using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Models.AbilityArgs;
 
+public enum TargetSelectionMode
+{
+    Closest,
+    Random,
+}
+
 /// <summary>Damage to monster argument</summary>
 public class DamageArgs : IArgs
 {
@@ -21,6 +27,12 @@ public class DamageArgs : IArgs
 
     /// <summary>Restrict monster picks to facing direction only</summary>
     public bool FacingDirectionOnly { get; set; } = false;
+
+    /// <summary>Maximum number of monsters to target.</summary>
+    public int MaxTargetCount { get; set; } = 1;
+
+    /// <summary>How targets should be selected from valid monsters in range.</summary>
+    public TargetSelectionMode TargetMode { get; set; } = TargetSelectionMode.Closest;
 
     /// <summary>Knockback modifier</summary>
     public float Knockback { get; set; } = 0f;
@@ -79,6 +91,8 @@ public class DamageArgs : IArgs
     public bool Validate()
     {
         if (Range < 1)
+            return false;
+        if (MaxTargetCount < 1)
             return false;
         if (Min > Max)
         {
