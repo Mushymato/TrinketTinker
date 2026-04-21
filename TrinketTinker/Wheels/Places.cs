@@ -170,7 +170,7 @@ internal static class Places
     /// <summary>Shuffle a list in place using Fisher-Yates shuffle.</summary>
     /// <param name="rand"></param>
     /// <param name="listToShuffle"></param>
-    private static void ShuffleInPlace<T>(Random rand, List<T> listToShuffle)
+    public static void ShuffleInPlace<T>(Random rand, List<T> listToShuffle)
     {
         int n = listToShuffle.Count;
         while (n > 1)

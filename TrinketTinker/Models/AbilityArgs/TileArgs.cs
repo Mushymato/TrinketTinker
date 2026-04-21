@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
 using TrinketTinker.Models.Mixin;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Models.AbilityArgs;
 
@@ -42,16 +43,12 @@ public class TileArgs : IArgs
     )
     {
         List<Vector2> tiles = GetTilesInRange(location, position);
+        Places.ShuffleInPlace(Random.Shared, tiles);
         if (tiles.Count > 0)
         {
             int count = Count > tiles.Count ? tiles.Count : Count;
-            List<int> dedupe = Enumerable.Range(0, tiles.Count).ToList();
-            while (dedupe.Count > 0 && count > 0)
+            foreach (Vector2 tile in tiles)
             {
-                int randIdx = Random.Shared.Next(dedupe.Count);
-                int rand = dedupe[randIdx];
-                dedupe.RemoveAt(randIdx);
-                var tile = tiles.ElementAt(rand);
                 if (match != null && !match(location, tile))
                     continue;
                 yield return tile;
