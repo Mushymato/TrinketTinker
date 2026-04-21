@@ -1,4 +1,3 @@
-using StardewValley;
 using StardewValley.Monsters;
 using TrinketTinker.Effects.Support;
 using TrinketTinker.Models;
@@ -26,7 +25,7 @@ public sealed class HitscanAbility(TrinketTinkerEffect effect, AbilityData data,
             proc.LocationOrCurrent,
             e.CompanionPosOff ?? proc.Farmer.Position,
             args.Range,
-            args.MaxTargetCount,
+            args.TargetCount,
             args.TargetMode,
             proc.Monster,
             FilterMonster

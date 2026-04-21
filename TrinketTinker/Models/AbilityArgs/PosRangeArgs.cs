@@ -1,4 +1,3 @@
-using StardewValley;
 using TrinketTinker.Models.Mixin;
 
 namespace TrinketTinker.Models.AbilityArgs;

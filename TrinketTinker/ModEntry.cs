@@ -1,4 +1,5 @@
 ﻿global using SObject = StardewValley.Object;
+using System.Diagnostics;
 using System.Reflection;
 using Microsoft.Xna.Framework;
 using Mushymato.ExtendedTAS;

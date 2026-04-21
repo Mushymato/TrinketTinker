@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using StardewValley;
 using StardewValley.Monsters;
 using TrinketTinker.Effects.Support;
 using TrinketTinker.Models;
@@ -28,7 +27,7 @@ public sealed class ProjectileAbility(TrinketTinkerEffect effect, AbilityData da
             proc.LocationOrCurrent,
             sourcePosition,
             args.Range,
-            args.MaxTargetCount,
+            args.TargetCount,
             args.TargetMode,
             proc.Monster,
             FilterMonster

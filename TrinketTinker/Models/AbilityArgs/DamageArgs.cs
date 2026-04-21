@@ -28,8 +28,13 @@ public class DamageArgs : IArgs
     /// <summary>Restrict monster picks to facing direction only</summary>
     public bool FacingDirectionOnly { get; set; } = false;
 
+    /// <summary>Minimum number of monsters to target.</summary>
+    public int MinTargetCount { get; set; } = 1;
+
     /// <summary>Maximum number of monsters to target.</summary>
     public int MaxTargetCount { get; set; } = 1;
+
+    internal int TargetCount => Random.Shared.Next(MinTargetCount, MaxTargetCount);
 
     /// <summary>How targets should be selected from valid monsters in range.</summary>
     public TargetSelectionMode TargetMode { get; set; } = TargetSelectionMode.Closest;
@@ -92,11 +97,15 @@ public class DamageArgs : IArgs
     {
         if (Range < 1)
             return false;
-        if (MaxTargetCount < 1)
-            return false;
+        if (MinTargetCount > MaxTargetCount)
+        {
+            if (MinTargetCount <= 0)
+                return false;
+            MaxTargetCount = MinTargetCount;
+        }
         if (Min > Max)
         {
-            if (Min == 0 && StunTime == 0)
+            if (Min <= 0 && StunTime == 0)
                 return false;
             Max = Min;
         }
