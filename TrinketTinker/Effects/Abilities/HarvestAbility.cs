@@ -128,7 +128,7 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
     {
         bool harvested = false;
         foreach (
-            Vector2 tile in args.IterateRandomTiles(
+            Vector2 tile in args.GetTiles(
                 proc.LocationOrCurrent,
                 e.CompanionPosition ?? proc.Farmer.Position,
                 ProbeTile

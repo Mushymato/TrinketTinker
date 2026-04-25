@@ -6,6 +6,7 @@ using StardewValley.GameData.Locations;
 using StardewValley.Monsters;
 using StardewValley.TerrainFeatures;
 using TrinketTinker.Models.AbilityArgs;
+using TrinketTinker.Models.Mixin;
 
 namespace TrinketTinker.Wheels;
 
@@ -360,5 +361,46 @@ internal static class Places
         if (debris.debrisType.Value != 0 || debris.chunkType.Value != 8)
             return ItemRegistry.Create(debris.itemId.Value, 1, debris.itemQuality, allowNull: true);
         return null;
+    }
+
+    /// <summary>Get tiles as defined by args</summary>
+    /// <param name="location"></param>
+    /// <param name="position"></param>
+    /// <returns></returns>
+    internal static IList<Vector2> GetTiles(
+        this ITileArgs args,
+        GameLocation location,
+        Vector2 position,
+        Func<GameLocation, Vector2, bool>? match = null
+    )
+    {
+        int range = args.Range;
+        int count = args.Count;
+
+        int x = (int)(position.X / Game1.tileSize);
+        int y = (int)(position.Y / Game1.tileSize);
+
+        if (range == 0)
+            return [new(x, y)];
+        List<Vector2> tiles = [];
+        int collideIdx = -1;
+        for (int i = -range; i <= range; ++i)
+        {
+            for (int j = -range; j <= range; ++j)
+            {
+                if (!args.IsCollide(++collideIdx))
+                    continue;
+                Vector2 tile = new(x + j, y + i);
+                if (match != null && !match(location, tile))
+                    continue;
+                tiles.Add(tile);
+            }
+        }
+        if (args.CollisionMap == null && tiles.Count > 0 && !(count <= -1 || count >= tiles.Count))
+        {
+            ShuffleInPlace(Random.Shared, tiles);
+            return tiles.GetRange(0, Math.Min(count, tiles.Count));
+        }
+        return tiles;
     }
 }

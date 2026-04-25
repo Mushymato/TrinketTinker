@@ -83,82 +83,96 @@
           },
           "Abilities": [
             [
+              // {
+              //   "AbilityClass": "BroadcastAction",
+              //   "Proc": "Always",
+              //   "Args": {
+              //     "Action": "SetNpcInvisible Leah 1",
+              //     "ActionEnd": "SetNpcVisible Leah",
+              //     "PlayerKey": "Host"
+              //   },
+              // },
+              // {
+              //   "AbilityClass": "HarvestStone",
+              //   "Proc": "Timer",
+              //   "ProcTimer": 1000,
+              //   "Args": {
+              //     "Range": 0,
+              //     "HarvestTo": "{{L@HarvestTo}}"
+              //   },
+              // },
+              // {
+              //   "AbilityClass": "HarvestTwig",
+              //   "Proc": "Timer",
+              //   "ProcTimer": 1000,
+              //   "Args": {
+              //     "Range": 0,
+              //     "HarvestTo": "{{L@HarvestTo}}"
+              //   },
+              // },
+              // {
+              //   "AbilityClass": "HarvestWeed",
+              //   "Proc": "Timer",
+              //   "ProcTimer": 1000,
+              //   "Args": {
+              //     "Range": 0,
+              //     "HarvestTo": "{{L@HarvestTo}}"
+              //   },
+              // },
+              // {
+              //   "AbilityClass": "HarvestDigSpot",
+              //   "Proc": "Timer",
+              //   "ProcTimer": 1000,
+              //   "Args": {
+              //     "Range": 0,
+              //     "HarvestTo": "{{L@HarvestTo}}"
+              //   },
+              // },
+              // {
+              //   "AbilityClass": "HarvestForage",
+              //   "Proc": "Timer",
+              //   "ProcTimer": 1000,
+              //   "Args": {
+              //     "Range": 1,
+              //     "HarvestTo": "{{L@HarvestTo}}"
+              //   },
+              // },
+              // {
+              //   "AbilityClass": "HarvestCrop",
+              //   "Proc": "Timer",
+              //   "ProcTimer": 1000,
+              //   "Args": {
+              //     "Range": 1,
+              //     "HarvestTo": "{{L@HarvestTo}}"
+              //   },
+              // },
+              // {
+              //   "AbilityClass": "HarvestShakeable",
+              //   "Proc": "Timer",
+              //   "ProcTimer": 1000,
+              //   "Args": {
+              //     "Range": 1,
+              //     "HarvestTo": "{{L@HarvestTo}}"
+              //   },
+              // },
+              // {
+              //   "AbilityClass": "PetFarmAnimal",
+              //   "Proc": "Timer",
+              //   "ProcTimer": 1000
+              // },
               {
-                "AbilityClass": "BroadcastAction",
-                "Proc": "Always",
-                "Args": {
-                  "Action": "SetNpcInvisible Leah 1",
-                  "ActionEnd": "SetNpcVisible Leah",
-                  "PlayerKey": "Host"
-                },
-              },
-              {
-                "AbilityClass": "HarvestStone",
+                "AbilityClass": "PlaceObject",
                 "Proc": "Timer",
-                "ProcTimer": 1000,
+                "ProcTimer": 3000,
                 "Args": {
-                  "Range": 0,
-                  "HarvestTo": "{{L@HarvestTo}}"
-                },
-              },
-              {
-                "AbilityClass": "HarvestTwig",
-                "Proc": "Timer",
-                "ProcTimer": 1000,
-                "Args": {
-                  "Range": 0,
-                  "HarvestTo": "{{L@HarvestTo}}"
-                },
-              },
-              {
-                "AbilityClass": "HarvestWeed",
-                "Proc": "Timer",
-                "ProcTimer": 1000,
-                "Args": {
-                  "Range": 0,
-                  "HarvestTo": "{{L@HarvestTo}}"
-                },
-              },
-              {
-                "AbilityClass": "HarvestDigSpot",
-                "Proc": "Timer",
-                "ProcTimer": 1000,
-                "Args": {
-                  "Range": 0,
-                  "HarvestTo": "{{L@HarvestTo}}"
-                },
-              },
-              {
-                "AbilityClass": "HarvestForage",
-                "Proc": "Timer",
-                "ProcTimer": 1000,
-                "Args": {
-                  "Range": 1,
-                  "HarvestTo": "{{L@HarvestTo}}"
-                },
-              },
-              {
-                "AbilityClass": "HarvestCrop",
-                "Proc": "Timer",
-                "ProcTimer": 1000,
-                "Args": {
-                  "Range": 1,
-                  "HarvestTo": "{{L@HarvestTo}}"
-                },
-              },
-              {
-                "AbilityClass": "HarvestShakeable",
-                "Proc": "Timer",
-                "ProcTimer": 1000,
-                "Args": {
-                  "Range": 1,
-                  "HarvestTo": "{{L@HarvestTo}}"
-                },
-              },
-              {
-                "AbilityClass": "PetFarmAnimal",
-                "Proc": "Timer",
-                "ProcTimer": 1000
+                  "Range": 2,
+                  "CollisionMap": "OXXXO\nXOOOX\nXOOOX\nXOOOX\nOXXXO",
+                  "Interval": 100,
+                  "RandomItemId": [
+                    "(O)297",
+                    "(O)BlueGrassStarter"
+                  ]
+                }
               }
             ]
           ]

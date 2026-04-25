@@ -5,7 +5,7 @@ using TrinketTinker.Models.Mixin;
 namespace TrinketTinker.Models.AbilityArgs;
 
 /// <summary>Item arguments, accepts everything in SDV item spawn data</summary>
-public sealed class SpawnItemArgs : GenericSpawnItemData, IArgs
+public class SpawnItemArgs : GenericSpawnItemData, IArgs
 {
     /// <summary>Where to put the item that spawned</summary>
     public HarvestDestination HarvestTo { get; set; } = HarvestDestination.Debris;

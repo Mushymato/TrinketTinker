@@ -4,6 +4,7 @@ using StardewValley.TerrainFeatures;
 using TrinketTinker.Effects.Support;
 using TrinketTinker.Models;
 using TrinketTinker.Models.AbilityArgs;
+using TrinketTinker.Wheels;
 
 namespace TrinketTinker.Effects.Abilities;
 
@@ -27,30 +28,47 @@ public sealed class HoeDirtAbility(TrinketTinkerEffect effect, AbilityData data,
                 return false;
             };
         }
-        foreach (
-            var tile in args.IterateRandomTiles(proc.LocationOrCurrent, e.CompanionPosition ?? proc.Farmer.Position)
-        )
+        IList<Vector2> tileList = args.GetTiles(proc.LocationOrCurrent, e.CompanionPosition ?? proc.Farmer.Position);
+        for (int i = 0; i < tileList.Count; ++i)
         {
-            if (
-                !proc.LocationOrCurrent.terrainFeatures.TryGetValue(tile, out TerrainFeature feature)
-                || feature is not HoeDirt dirt
-            )
+            Vector2 tile = tileList[i];
+            int timeout = args.Interval * i;
+            if (timeout <= 0)
             {
-                if (args.NewDirt && proc.LocationOrCurrent.makeHoeDirt(tile))
+                if (MakeHoeDirt(proc, tile))
                 {
                     madeDirt++;
-                    dirt = proc.LocationOrCurrent.GetHoeDirtAtTile(tile);
-                }
-                else
-                {
-                    continue;
                 }
             }
-            if (args.Watering && dirt.state.Value == 0)
+            else
             {
-                dirt.state.Value = 1;
+                DelayedAction.functionAfterDelay(() => MakeHoeDirt(proc, tile), timeout);
+                madeDirt++;
             }
         }
         return madeDirt > 0 && base.ApplyEffect(proc);
+    }
+
+    private bool MakeHoeDirt(ProcEventArgs proc, Vector2 tile)
+    {
+        if (
+            !proc.LocationOrCurrent.terrainFeatures.TryGetValue(tile, out TerrainFeature feature)
+            || feature is not HoeDirt dirt
+        )
+        {
+            if (args.NewDirt && proc.LocationOrCurrent.makeHoeDirt(tile))
+            {
+                dirt = proc.LocationOrCurrent.GetHoeDirtAtTile(tile);
+            }
+            else
+            {
+                return false;
+            }
+        }
+        if (args.Watering && dirt.state.Value == 0)
+        {
+            dirt.state.Value = 1;
+        }
+        return true;
     }
 }
