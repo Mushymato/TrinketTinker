@@ -290,7 +290,11 @@ internal static class Places
     /// <returns></returns>
     public static bool CheckCropFilter(Crop crop, IList<string> filters)
     {
-        if (ItemRegistry.Create(crop.indexOfHarvest.Value, allowNull: true) is Item item)
+        if (ItemRegistry.Create(crop.indexOfHarvest.Value
+#if !SDV17
+                , allowNull: false
+#endif
+            ) is Item item)
         {
             return CheckContextTagFilter(item, filters);
         }
@@ -359,7 +363,11 @@ internal static class Places
         if (debris.item != null)
             return debris.item;
         if (debris.debrisType.Value != 0 || debris.chunkType.Value != 8)
-            return ItemRegistry.Create(debris.itemId.Value, 1, debris.itemQuality, allowNull: true);
+            return ItemRegistry.Create(debris.itemId.Value, 1, debris.itemQuality
+#if !SDV17
+                , allowNull: false
+#endif
+            );
         return null;
     }
 

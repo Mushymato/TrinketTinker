@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
@@ -26,9 +27,9 @@ public static class ProcTrinket
     public const string TriggerActionName = $"{ModEntry.ModId}_ProcTrinket";
 
     /// <summary>Trigger action, proc trinkets that use <see cref="ProcOn.Trigger"/>.</summary>
-    public static bool Action(string[] args, TriggerActionContext context, out string? error)
+    public static bool Action(string[] args, TriggerActionContext context, [NotNullWhen(false)] out string? error)
     {
-        if (!ArgUtility.TryGetOptional(args, 1, out string trinketId, out error))
+        if (!ArgUtility.TryGetOptional(args, 1, out string? trinketId, out error))
             return false;
 
         foreach (Trinket trinketItem in Game1.player.trinketItems)

@@ -29,8 +29,10 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
         BindingFlags.NonPublic | BindingFlags.Instance
     )!;
 
-    private static string GetText(string text)
+    private static string GetText(string? text)
     {
+        if (text == null)
+            return "CHATTER ERROR";
         if (Game1.content.IsValidTranslationKey(text))
             return Game1.content.LoadString(text);
         return TokenParser.ParseText(text) ?? "CHATTER ERROR";
@@ -98,7 +100,7 @@ public sealed class ChatterAbility(TrinketTinkerEffect effect, AbilityData data,
         if (foundLines == null)
             return false;
 
-        string chosen = Random.Shared.ChooseFrom(foundLines.Lines);
+        string? chosen = Random.Shared.ChooseFrom(foundLines.Lines);
         // draw the dialogue
         ChatterSpeaker? speaker = e.CompanionSpeaker;
         if (speaker != null && speaker.PortraitTx2D.Value != null)

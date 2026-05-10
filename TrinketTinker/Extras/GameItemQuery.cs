@@ -197,7 +197,12 @@ public static class GameItemQuery
                 );
                 return false;
             }
-            if (ItemRegistry.Create(itemId, allowNull: false) is not Item item2)
+            if (ItemRegistry.Create(itemId
+#if !SDV17
+                    , allowNull: false
+#endif
+
+                ) is not Item item2)
             {
                 ModEntry.Log($"Invalid item ID '{itemId}': {error}.", StardewModdingAPI.LogLevel.Warn);
                 return false;
@@ -249,7 +254,11 @@ public static class GameItemQuery
         )
             return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, error1);
 
-        if (ItemRegistry.Create(trinketId, allowNull: false) is Trinket trinket)
+        if (ItemRegistry.Create(trinketId
+#if !SDV17
+                , allowNull: false
+#endif
+            ) is Trinket trinket)
         {
             if (trinket.GetEffect() is TrinketTinkerEffect effect)
             {
@@ -306,7 +315,11 @@ public static class GameItemQuery
         )
             return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, error1);
 
-        if (ItemRegistry.Create(trinketId, allowNull: false) is not Trinket trinket)
+        if (ItemRegistry.Create(trinketId
+#if !SDV17
+                , allowNull: false
+#endif
+            ) is not Trinket trinket)
             return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, $"No trinket with id {trinketId}.");
         if (trinket.GetEffect() is not TrinketTinkerEffect effect)
             return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, $"Not a TrinketTinker trinket.");
@@ -517,7 +530,7 @@ public static class GameItemQuery
         if (trinketId.EqualsIgnoreCase("This"))
         {
             if (
-                context.CustomFields.TryGetValue(TinkerConst.CustomFields_Trinket, out object? trinketObj)
+                (context.CustomFields?.TryGetValue(TinkerConst.CustomFields_Trinket, out object? trinketObj) ?? false)
                 && trinketObj is Trinket trinket
             )
                 yield return trinket;
@@ -535,7 +548,11 @@ public static class GameItemQuery
     /// <param name="context"></param>
     /// <param name="error"></param>
     /// <returns></returns>
-    private static bool TA_ToggleCompanion(string[] args, TriggerActionContext context, out string? error)
+    private static bool TA_ToggleCompanion(
+        string[] args,
+        TriggerActionContext context,
+        [NotNullWhen(false)] out string? error
+    )
     {
         if (
             !ArgUtility.TryGet(args, 1, out string? trinketId, out error, allowBlank: false, "string trinketId")
@@ -567,7 +584,11 @@ public static class GameItemQuery
     /// <param name="error"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    private static bool TA_PutHatOnCompanion(string[] args, TriggerActionContext context, out string? error)
+    private static bool TA_PutHatOnCompanion(
+        string[] args,
+        TriggerActionContext context,
+        [NotNullWhen(false)] out string? error
+    )
     {
         if (
             !ArgUtility.TryGet(args, 1, out string? trinketId, out error, allowBlank: false, "string trinketId")
@@ -580,7 +601,11 @@ public static class GameItemQuery
         }
 
         Hat? newHat = null;
-        if (hatId != "REMOVE" && (newHat = ItemRegistry.Create<Hat>(hatId, allowNull: true)) == null)
+        if (hatId != "REMOVE" && (newHat = ItemRegistry.Create<Hat>(hatId
+#if !SDV17
+                    , allowNull: false
+#endif
+                )) == null)
         {
             error = $"'{hatId}' is not a hat";
             return false;

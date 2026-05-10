@@ -84,9 +84,9 @@ public sealed class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
             null,
             []
         );
-        GSQContext.CustomFields[TinkerConst.CustomFields_Data] = data;
-        GSQContext.CustomFields[TinkerConst.CustomFields_Position] = e.CompanionPosition;
-        GSQContext.CustomFields[TinkerConst.CustomFields_PosOff] = e.CompanionPosOff;
+        GSQContext.CustomFields![TinkerConst.CustomFields_Data] = data;
+        GSQContext.CustomFields[TinkerConst.CustomFields_Position] = e.CompanionPosition!;
+        GSQContext.CustomFields[TinkerConst.CustomFields_PosOff] = e.CompanionPosOff!;
         if (data.Condition != null)
         {
             return GameStateQuery.CheckConditions(data.Condition, GSQContext);

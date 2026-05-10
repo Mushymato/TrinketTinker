@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using StardewModdingAPI;
 using StardewValley;
@@ -130,7 +131,11 @@ public static class EquipTrinket
             }
         }
 
-        if (ItemRegistry.Create(trinketId, allowNull: false) is Trinket trinket)
+        if (ItemRegistry.Create(trinketId
+#if !SDV17
+                , allowNull: false
+#endif
+            ) is Trinket trinket)
         {
             if (createNew)
             {
@@ -141,7 +146,11 @@ public static class EquipTrinket
         return null;
     }
 
-    public static bool EquipHiddenTrinket(string[] args, TriggerActionContext context, out string? error)
+    public static bool EquipHiddenTrinket(
+        string[] args,
+        TriggerActionContext context,
+        [NotNullWhen(false)] out string? error
+    )
     {
         if (
             !ArgUtility.TryGet(args, 1, out string? trinketId, out error, allowBlank: false, name: "string trinketId")
@@ -190,7 +199,11 @@ public static class EquipTrinket
         return true;
     }
 
-    public static bool UnequipHiddenTrinket(string[] args, TriggerActionContext context, out string? error)
+    public static bool UnequipHiddenTrinket(
+        string[] args,
+        TriggerActionContext context,
+        [NotNullWhen(false)] out string? error
+    )
     {
         Inventory hiddenTrinketsInv = GetHiddenTrinketsInv(Game1.player);
         if (hiddenTrinketsInv.Count == 0)
@@ -225,7 +238,7 @@ public static class EquipTrinket
                 }
             }
         }
-        return false;
+        return true;
     }
 
     /// <summary>Get days left of a trigger equipped trinket</summary>
