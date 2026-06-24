@@ -46,6 +46,12 @@ public sealed class TinkerData
     /// <summary>Show this message when the trinket is not allowed</summary>
     public string? EnableFailMessage { get; set; } = null;
 
+    /// <summary>This condition applies for every ability on this trinket. If it is false then the ability is disabled.</summary>
+    public string? EnableAbilityCondition { get; set; } = null;
+
+    /// <summary>This condition is rechecked on location change. It determines if the companion should be displayed or hidden.</summary>
+    public string? EnableCompanionCondition { get; set; } = null;
+
     /// <summary>Trinket stat minimum level, this added to the internal level value that is based on size of <see cref="Abilities"/></summary>
     public int MinLevel { get; set; } = 1;
 

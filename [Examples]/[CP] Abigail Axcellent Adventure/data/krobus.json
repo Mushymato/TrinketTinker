@@ -27,6 +27,7 @@
       "Entries": {
         "{{ModId}}_Krobus": {
           "EnableCondition": "mushymato.TrinketTinker_ENABLED_TRINKET_COUNT Target All <1",
+          "EnableCompanionCondition": "!LOCATION_NAME Here Farm",
           "Variants": [
             {
               "Texture": "Characters/Krobus",

@@ -154,6 +154,8 @@ public class TrinketTinkerCompanion : Companion
     /// <summary>Reference to the trinket</summary>
     internal readonly Trinket? trinketItem = null;
 
+    internal string? EnableCompanionCondition = null;
+
     /// <summary>The hat source mode of companion</summary>
     internal HatSourceMode? HatSource()
     {
@@ -213,7 +215,10 @@ public class TrinketTinkerCompanion : Companion
     public override void InitializeCompanion(Farmer farmer)
     {
         base.InitializeCompanion(farmer);
-        SetDisableCompanion(Places.LocationDisableTrinketCompanions(Owner.currentLocation), 1);
+        SetDisableCompanion(
+            Places.LocationDisableTrinketCompanions(EnableCompanionCondition, Owner.currentLocation, Owner),
+            1
+        );
         Anchor = Utility.PointToVector2(farmer.GetBoundingBox().Center);
         Motion?.Initialize(farmer);
         if (
@@ -287,6 +292,7 @@ public class TrinketTinkerCompanion : Companion
         VariantData vdata = Data.Variants[whichVariant.Value];
         MotionData mdata = Data.Motion;
         Motion = CreateMotionInstance(mdata, vdata);
+        EnableCompanionCondition = Data.EnableCompanionCondition;
     }
 
     private void ReloadCompanionData()
@@ -469,7 +475,10 @@ public class TrinketTinkerCompanion : Companion
         base.OnOwnerWarp();
         _position.Value = _owner.Value.Position;
         Motion?.OnOwnerWarp();
-        SetDisableCompanion(Places.LocationDisableTrinketCompanions(Owner.currentLocation), 1);
+        SetDisableCompanion(
+            Places.LocationDisableTrinketCompanions(EnableCompanionCondition, Owner.currentLocation, Owner),
+            1
+        );
     }
 
     /// <summary>Set speech bubble key</summary>

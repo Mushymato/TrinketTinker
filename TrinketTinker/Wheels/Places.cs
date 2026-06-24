@@ -325,9 +325,15 @@ internal static class Places
     /// <summary>Hide all trinket companions in certain locations</summary>
     /// <param name="location"></param>
     /// <returns></returns>
-    public static bool LocationDisableTrinketCompanions(GameLocation? location)
+    public static bool LocationDisableTrinketCompanions(
+        string? enableCompanionCondition,
+        GameLocation? location,
+        Farmer owner
+    )
     {
         if (location == null || (location.DisplayName == "Temp" && !Game1.isFestival()))
+            return true;
+        if (!GameStateQuery.CheckConditions(enableCompanionCondition, location: location, owner))
             return true;
         if (location.GetData() is not LocationData data)
             return false;
