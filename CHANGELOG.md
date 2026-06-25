@@ -4,9 +4,16 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.7.4-wip.0
+
+#### Added
+- New field `EnableAbilityCondition`, a GSQ set at trinket level that will enable/disable ability activation.
+- New field `EnableCompanionCondition`, a GSQ set at trinket level that will show/hide companions.
+- New ability `PetPet` and corresponding anchor mode `Pet`, go to nearest pet and pet them (english is a language of all time).
+
 ### 1.7.3
 
-### Fixed
+#### Fixed
 - Me vs EquipTrinket part 1090894303: local co-op edition
 - `tt.unequip_trinket` now removes trinkets from all players in local co-op
 

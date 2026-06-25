@@ -27,7 +27,6 @@
       "Entries": {
         "{{ModId}}_Krobus": {
           "EnableCondition": "mushymato.TrinketTinker_ENABLED_TRINKET_COUNT Target All <1",
-          "EnableCompanionCondition": "!LOCATION_NAME Here Farm",
           "Variants": [
             {
               "Texture": "Characters/Krobus",
@@ -78,6 +77,10 @@
             "FrameLength": 4,
             "Interval": 175,
             "Anchors": [
+              {
+                "Mode": "Pet",
+                "Range": 320
+              },
               {
                 "Mode": "Forage",
                 "Range": 320
@@ -181,6 +184,11 @@
                   "HarvestTo": "None"
                 },
               },
+              {
+                "AbilityClass": "PetPet",
+                "Proc": "Timer",
+                "ProcTimer": 250,
+              }
             ],
             [
               {

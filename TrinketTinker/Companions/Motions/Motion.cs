@@ -368,6 +368,21 @@ public abstract class Motion<TArgs> : IMotion
                             return anchor.Mode;
                     }
                     break;
+                case AnchorTarget.Pet:
+                    {
+                        if (
+                            Places.ClosestMatchingCharacter(
+                                location,
+                                originPoint,
+                                anchor.Range,
+                                PetPetAbility.IsPetInNeedOfPetting
+                            )
+                                is Character closest
+                            && SetAnchor(anchor, location, Utility.PointToVector2(closest.GetBoundingBox().Center))
+                        )
+                            return anchor.Mode;
+                    }
+                    break;
                 case AnchorTarget.NPC:
                     {
                         if (
