@@ -39,6 +39,13 @@ Variants can have alternate variants, which are automatically rechecked whenever
           "ScaleModifier": <scale modifier>,
           "Source": "Given"|"Temporary"|"Owner"
         },
+        "Tether": {
+          "CompanionOffset": <X Y offset for start point (companion)>,
+          "OwnerOffset": <X Y offset for end point (owner)>,
+          "Thickness": <int thickness>,
+          "Color": "<hex color or monogame color name>",
+          "Curve": <{"A": <x y>, "B": <x y>} or {} or null>
+        },
         "LightSource": {
           // This block is LightSourceData
           "Radius": <float radius(size)>,
@@ -74,6 +81,7 @@ Variants can have alternate variants, which are automatically rechecked whenever
             "Portrait": "Portrait/{{ModId}}_SampleNPC",
             "ShowBreathing": true|false,
             "HatEquip": <hat equip model>,
+            "Tether": <tether model>,
             "Condition": "<game state query>",
             "Precedence": <int precedence>
           },
@@ -106,6 +114,7 @@ These fields are valid for both variant and alt variant.
 | `Name` | string | _null_ | A display name for the [Chatter ability](005.1-Chatter.md), used if there's no real `NPC`. |
 | `ShowBreathing` | bool | _null_ (true) | If the NPC name is set and they have `Breather=true` along with a sprite size less than 16x32, apply the NPC "breathing" effect on this trinket companion. |
 | `HatEquip` | HatEquipData | _null_ | A data model defining how companion may wear hats. |
+| `Tether` | TetherData | _null_ | A data model defining how companion may wear hats. |
 
 ### Top Level Variant
 
@@ -220,6 +229,27 @@ The hat adjustment is checked in this order:
 If all 3 values have null for offset, then the hat will not be drawn that frame.
 
 `Offset`/`Frame`/`Rotate` are considered independently when it comes to inheritance. E.g. if there is an `AdjustOnFrame` entry with an `Offset` defined but no `Frame`, then the `Frame` from `AdjustOnDirection` is used.
+
+#### TetherData
+
+| Property | Type | Default | Notes |
+| -------- | ---- | ------- | ----- |
+| `CompanionOffset` | Vector2 | 0,0 | Tether start point (companion) offset. |
+| `OwnerOffset` | Vector2 | 0,0 | Tether end point (owner) offset. |
+| `Thickness` | int | 1 | Tether line thickness. |
+| `Color` | string | _null_ | Tether line color name, accepts same values as `ColorMask`. |
+| `Curve` | TetherCurveData | _null_ | If not null, draw the tether as a curve. Adjust the curve's points with `A` and `B`. Use `{}` to get a curve with default values. |
+
+##### Default Curve Value
+
+Writing `"Curve": {}` is the same as writing:
+
+```cs
+"Curve": {
+  "A": "0.33333334, 0.6666667",
+  "B": "0.6666667, 0.4"
+}
+```
 
 ## Notes
 

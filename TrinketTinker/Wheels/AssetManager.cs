@@ -56,6 +56,7 @@ internal static class AssetManager
                                 vdata.Portrait ??= vbase.Portrait;
                                 vdata.ShowBreathing ??= vbase.ShowBreathing ?? true;
                                 vdata.HatEquip ??= vbase.HatEquip;
+                                vdata.Tether ??= vbase.Tether;
                                 vdata.LightSource ??= vbase.LightSource;
                                 vdata.TrinketNameArguments ??= vbase.TrinketNameArguments;
                                 vdata.AttachedTAS ??= vbase.AttachedTAS;
