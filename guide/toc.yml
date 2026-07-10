@@ -58,6 +58,8 @@
       name: Harvest
     - href: 004.z.009-PetFarmAnimal.md
       name: PetFarmAnimal
+    - href: 004.z.010-PetPet.md
+      name: PetPet
     - href: 004.z.100-Action.md
       name: Action
     - href: 004.z.101-BroadcastAction.md
