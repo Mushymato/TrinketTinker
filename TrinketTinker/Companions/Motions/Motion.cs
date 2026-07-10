@@ -731,7 +731,55 @@ public abstract class Motion<TArgs> : IMotion
             layerDepth,
             CurrentFrame: cs.currentFrame
         );
+
+        if (cs.Tether != null)
+        {
+            Vector2 p1 = Game1.GlobalToLocal(drawPos + cs.Tether.CompanionOffset);
+            Vector2 p4 = Game1.GlobalToLocal(c.Owner.StandingPixel.ToVector2() + cs.Tether.OwnerOffset);
+            float drawLayer = Math.Min(c.Owner.getDrawLayer(), layerDepth) - Visuals.LAYER_OFFSET;
+            const float STEP = 0.025f;
+            Color clr = cs.Tether.CachedColor ?? Color.White;
+            int thickness = cs.Tether.Thickness;
+            if (cs.Tether.Curve is TetherCurveData curve)
+            {
+                Vector2 delta = p4 - p1;
+                Vector2 p2 = new(p1.X + delta.X * curve.A.X, p1.Y + delta.Y * curve.A.Y);
+                Vector2 p3 = new(p1.X + delta.X * curve.B.Y, p1.Y + delta.Y * curve.B.Y);
+                Vector2 p = p1;
+                Vector2 substep = thickness > 2 ? new(delta.X / (0.5f / STEP), delta.Y / (0.5f / STEP)) : Vector2.Zero;
+                for (float prog = 0f; prog < 1f; prog += STEP)
+                {
+                    Vector2 curvePoint = Utility.GetCurvePoint(prog, p1, p2, p3, p4);
+                    Utility.drawLineWithScreenCoordinates(
+                        (int)(p.X - substep.X),
+                        (int)(p.Y - substep.Y),
+                        (int)(curvePoint.X + substep.X),
+                        (int)(curvePoint.Y + substep.Y),
+                        b,
+                        clr,
+                        drawLayer,
+                        thickness
+                    );
+                    p = curvePoint;
+                }
+            }
+            else
+            {
+                Utility.drawLineWithScreenCoordinates(
+                    (int)p1.X,
+                    (int)p1.Y,
+                    (int)p4.X,
+                    (int)p4.Y,
+                    b,
+                    clr,
+                    drawLayer,
+                    thickness
+                );
+            }
+        }
+
         DrawCompanion(b, snapshot);
+
         if (cs.Breather != null)
         {
             float breathing = Math.Max(

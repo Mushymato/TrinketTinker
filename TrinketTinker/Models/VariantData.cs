@@ -22,6 +22,47 @@ public class LightSourceData
     public string? Color { get; set; } = null;
 }
 
+public class TetherCurveData
+{
+    /// <summary>Tether curve point A</summary>
+    public Vector2 A { get; set; } = new(1 / 3f, 2 / 3f);
+
+    /// <summary>Tether curve point B</summary>
+    public Vector2 B { get; set; } = new(2 / 3f, 2 / 5f);
+}
+
+/// <summary>Data for drawing a line from companion to owner.</summary>
+public class TetherData
+{
+    /// <summary>Tether start point (companion) offset</summary>
+    public Vector2 CompanionOffset { get; set; } = Vector2.Zero;
+
+    /// <summary>Tether end point (owner) offset</summary>
+    public Vector2 OwnerOffset { get; set; } = Vector2.Zero;
+
+    /// <summary>Tether line thickness</summary>
+    public int Thickness { get; set; } = 1;
+
+    /// <summary>Tether line color</summary>
+    public string? Color { get; set; } = null;
+
+    /// <summary>Tether line curve info</summary>
+    public TetherCurveData? Curve { get; set; } = null;
+
+    internal Color? CachedColor
+    {
+        get
+        {
+            if (field != null)
+                return field;
+            Color clr = Visuals.GetSDVColor(Color, out bool drawColorIsConstant);
+            if (drawColorIsConstant)
+                field = clr;
+            return clr;
+        }
+    }
+}
+
 /// <summary>How does the companion acquire hat?</summary>
 public enum HatSourceMode
 {
@@ -147,6 +188,9 @@ public interface IVariantData
 
     /// <summary>Hat equip data, for giving the companion hats.</summary>
     public HatEquipData? HatEquip { get; set; }
+
+    /// <summary>Tether data, controls the drawing of a line tether between the companion and the player</summary>
+    public TetherData? Tether { get; set; }
 }
 
 /// <summary>Additional variant data, kind of like NPC appearance</summary>
@@ -196,6 +240,9 @@ public class AltVariantData : IVariantData
 
     /// <inheritdoc/>
     public HatEquipData? HatEquip { get; set; } = null;
+
+    /// <inheritdoc/>
+    public TetherData? Tether { get; set; } = null;
 
     /// <summary>Game state query condition</summary>
     public string? Condition { get; set; } = null;
@@ -257,6 +304,9 @@ public sealed class VariantData : IVariantData
 
     /// <inheritdoc/>
     public HatEquipData? HatEquip { get; set; } = null;
+
+    /// <inheritdoc/>
+    public TetherData? Tether { get; set; } = null;
 
     /// <summary>If set, add a light with given radius. Note that the light is only visible to local player.</summary>
     public LightSourceData? LightSource { get; set; } = null;

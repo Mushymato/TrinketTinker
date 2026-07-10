@@ -33,6 +33,12 @@
             {
               "Texture": "Mods/{{ModId}}/bat_1",
               "TrinketSpriteIndex": 0,
+              "Tether": {
+                "OwnerOffset": "0,-24",
+                "Thickness": 5,
+                "Color": "Prismatic",
+                "Curve": {}
+              }
             },
             {
               "Texture": "Mods/{{ModId}}/bat_2",

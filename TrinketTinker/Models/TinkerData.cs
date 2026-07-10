@@ -35,6 +35,8 @@ public sealed class ChatterLinesData
 
     /// <summary>Response dialogue lines, used for $q and other cross dialogue key things. Supports translation keys.</summary>
     public Dictionary<string, string>? Responses { get; set; } = null;
+
+    public static implicit operator ChatterLinesData(string value) => new() { Lines = [value] };
 }
 
 /// <summary>Top level data class for Tinker.</summary>

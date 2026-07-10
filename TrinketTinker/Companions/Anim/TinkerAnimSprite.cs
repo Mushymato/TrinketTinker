@@ -101,6 +101,7 @@ public sealed class TinkerAnimSprite
         }
     }
     internal HatEquipData? HatEquip;
+    internal TetherData? Tether;
 
     private double timer = 0f;
     internal int currentFrame = 0;
@@ -225,6 +226,7 @@ public sealed class TinkerAnimSprite
                 ? GetBreatherPositionAndRectangle(Width, Height, vd.NPC ?? fullVd.NPC)
                 : null;
         HatEquip = vd.HatEquip ?? fullVd.HatEquip;
+        Tether = vd.Tether ?? fullVd.Tether;
         return TextureBase;
     }
 
