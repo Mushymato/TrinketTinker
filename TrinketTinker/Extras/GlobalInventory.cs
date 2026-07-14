@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewValley;
-using StardewValley.GameData.HomeRenovations;
 using StardewValley.Inventories;
 using StardewValley.Menus;
 using StardewValley.Network;

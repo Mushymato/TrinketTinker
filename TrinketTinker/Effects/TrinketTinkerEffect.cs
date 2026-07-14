@@ -561,22 +561,28 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
     /// Handle player interaction
     /// </summary>
     /// <param name="farmer"></param>
-    public virtual void OnInteract(Farmer farmer)
+    public virtual bool CheckInteraction(Farmer farmer)
     {
         if (!Enabled || Game1.activeClickableMenu != null || farmer.UsingTool || farmer.usingSlingshot)
-            return;
-        if (Companion == null || farmer.GetBoundingBox().Intersects(CompanionBoundingBox))
+            return false;
+        if (Companion != null && !farmer.GetBoundingBox().Intersects(CompanionBoundingBox))
         {
-            if (
-                Companion is TrinketTinkerCompanion cmp
-                && cmp.HatSource() is HatSourceMode hatSource
-                && GlobalInventoryHandler.SwapHat(farmer, cmp, InventoryId, hatSource)
-            )
-            {
-                return;
-            }
-            EventInteract?.Invoke(this, new(ProcOn.Interact, farmer));
+            return false;
         }
+        if (
+            Companion is TrinketTinkerCompanion cmp
+            && cmp.HatSource() is HatSourceMode hatSource
+            && GlobalInventoryHandler.SwapHat(farmer, cmp, InventoryId, hatSource)
+        )
+        {
+            return false;
+        }
+        return EventInteract?.GetInvocationList().Any() ?? false;
+    }
+
+    public virtual void DoInteraction(Farmer farmer)
+    {
+        EventInteract?.Invoke(this, new(ProcOn.Interact, farmer));
     }
 
     /// <summary>

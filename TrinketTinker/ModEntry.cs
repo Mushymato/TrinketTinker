@@ -8,6 +8,7 @@ using StardewModdingAPI.Events;
 using StardewModdingAPI.Utilities;
 using StardewValley;
 using StardewValley.Objects.Trinkets;
+using StardewValley.TokenizableStrings;
 using StardewValley.Triggers;
 using TrinketTinker.Companions;
 using TrinketTinker.Companions.Motions;
@@ -175,12 +176,41 @@ internal sealed class ModEntry : Mod
 
     private static void DoInteract()
     {
+        List<TrinketTinkerEffect> canInteract = [];
         foreach (Trinket trinketItem in Game1.player.trinketItems)
         {
             if (trinketItem != null && trinketItem.GetEffect() is TrinketTinkerEffect effect)
             {
-                effect.OnInteract(Game1.player);
+                if (effect.CheckInteraction(Game1.player))
+                    canInteract.Add(effect);
             }
+        }
+        if (canInteract.Count == 0)
+            return;
+        if (canInteract.Count == 1 || Game1.currentLocation == null)
+        {
+            canInteract[0].DoInteraction(Game1.player);
+        }
+        else
+        {
+            List<KeyValuePair<string, string>> keyValuePairs = [];
+            for (int i = 0; i < canInteract.Count; i++)
+            {
+                keyValuePairs.Add(new(i.ToString(), canInteract[i].Trinket.DisplayName));
+            }
+            Game1.currentLocation.ShowPagedResponses(
+                string.Empty,
+                keyValuePairs,
+                (response) =>
+                {
+                    DelayedAction delay = DelayedAction.functionAfterDelay(
+                        () => canInteract[int.Parse(response)].DoInteraction(Game1.player),
+                        1
+                    );
+                    delay.waitUntilMenusGone = true;
+                },
+                addCancel: true
+            );
         }
     }
 
