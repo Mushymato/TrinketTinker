@@ -41,8 +41,8 @@ These settings are global across all trinkets created using this framework, but 
 - English [default.json](https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/i18n/default.json)
 - Simplified Chinese [zh.json](https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/i18n/zh.json)
 - French [fr.json](https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/i18n/fr.json) (by [Caranud](https://next.nexusmods.com/profile/Caranud))
-- Espaniol [ru.json](https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/i18n/ru.json) (by [ellatuk](https://www.nexusmods.com/profile/ellatuk))
-- Espaniol [es.json](https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/i18n/es.json) (by [minatorous20](https://www.nexusmods.com/profile/minatorous20))
+- Russian [ru.json](https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/i18n/ru.json) (by [ellatuk](https://www.nexusmods.com/profile/ellatuk))
+- Español [es.json](https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/i18n/es.json) (by [minatorous20](https://www.nexusmods.com/profile/minatorous20))
 
 ## Credits
 
