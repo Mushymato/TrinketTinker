@@ -410,8 +410,10 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
             return;
         Enabled = false;
 
+        Vector2 companionPos = Game1.player.Position;
         if (Companion is TrinketTinkerCompanion ttCmp)
         {
+            companionPos = ttCmp.Position;
             GlobalInventoryHandler.UnapplyHat(ttCmp);
             farmer.RemoveCompanion(ttCmp);
             Companion = null;
@@ -428,6 +430,27 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
 
         UnapplyAbilities(farmer);
         abilities = null;
+
+        if (!ModEntry.IsSaving.Value && Game1.currentLocation != null && GetInventory() is Inventory inventory)
+        {
+            if (
+                GameStateQuery.CheckConditions(
+                    Data?.Inventory?.DropContentsAsDebrisCondition,
+                    player: farmer,
+                    targetItem: Trinket,
+                    inputItem: Trinket
+                )
+            )
+            {
+                foreach (Item? item in inventory)
+                {
+                    if (item == null)
+                        continue;
+                    Game1.createItemDebris(item, companionPos, Random.Shared.Next(4), Game1.currentLocation);
+                }
+                inventory.Clear();
+            }
+        }
     }
 
     private void UnapplyAbilities(Farmer farmer)

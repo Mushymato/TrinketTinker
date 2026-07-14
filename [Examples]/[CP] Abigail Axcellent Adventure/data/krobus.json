@@ -209,7 +209,8 @@
             ]
           ],
           "Inventory": {
-            "Capacity": 70
+            "Capacity": 70,
+            "DropContentsAsDebrisCondition": "TRUE"
           }
         },
       },

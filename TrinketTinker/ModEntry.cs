@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Mushymato.ExtendedTAS;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
+using StardewModdingAPI.Utilities;
 using StardewValley;
 using StardewValley.Objects.Trinkets;
 using StardewValley.Triggers;
@@ -33,6 +34,8 @@ internal sealed class ModEntry : Mod
     internal static IModHelper Help { get; set; } = null!;
 
     internal static bool HasWearMoreRings = false;
+
+    internal static PerScreen<bool> IsSaving = new(() => false);
 
     public override void Entry(IModHelper helper)
     {
@@ -183,6 +186,7 @@ internal sealed class ModEntry : Mod
 
     private void OnSaving(object? sender, SavingEventArgs e)
     {
+        IsSaving.Value = true;
         EquipTrinket.UnequipHiddenTrinkets();
         for (int i = 0; i < Game1.player.trinketItems.Count; i++)
         {
@@ -203,6 +207,7 @@ internal sealed class ModEntry : Mod
             );
         }
         EquipTrinket.ReequipHiddenTrinkets();
+        IsSaving.Value = false;
     }
 
     private void OnReturnedToTitle(object? sender, ReturnedToTitleEventArgs e)
