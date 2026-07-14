@@ -395,7 +395,13 @@ internal static class Places
         int y = (int)(position.Y / Game1.tileSize);
 
         if (range == 0)
-            return [new(x, y)];
+        {
+            Vector2 myTile = new(x, y);
+            if (match != null && !match(location, myTile))
+                return [];
+            return [myTile];
+        }
+
         List<Vector2> tiles = [];
         int collideIdx = -1;
         for (int i = -range; i <= range; ++i)
