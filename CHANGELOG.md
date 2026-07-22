@@ -4,6 +4,15 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.8.1-wip.0
+
+#### Added
+- Show a multiple choice menu when multiple trinket interactions are possible
+
+#### Fixed
+- Range 0 tile args should still check if the tile is valid for the ability
+- Changed default behavior of hidden equip createNew to true and add sprite reset logic
+
 ### 1.8.0
 
 #### Added
