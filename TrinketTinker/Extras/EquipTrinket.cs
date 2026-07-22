@@ -126,6 +126,11 @@ public static class EquipTrinket
                 {
                     store.Remove(storedTrinket);
                     store.RemoveEmptySlots();
+                    storedTrinket.reloadSprite();
+                    if (storedTrinket.GetEffect() is TrinketTinkerEffect effect)
+                    {
+                        effect.ResetVariant(storedTrinket);
+                    }
                     return storedTrinket;
                 }
             }
@@ -169,7 +174,7 @@ public static class EquipTrinket
                 5,
                 out bool createNew,
                 out error,
-                defaultValue: false,
+                defaultValue: true,
                 name: "bool createNew"
             )
         )
