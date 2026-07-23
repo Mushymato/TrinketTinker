@@ -5031,6 +5031,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.TrinketTinkerEffect.CanAcceptThisItem
   nameWithType: TrinketTinkerEffect.CanAcceptThisItem
+- uid: TrinketTinker.Effects.TrinketTinkerEffect.CheckInteraction(StardewValley.Farmer)
+  name: CheckInteraction(Farmer)
+  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_CheckInteraction_StardewValley_Farmer_
+  commentId: M:TrinketTinker.Effects.TrinketTinkerEffect.CheckInteraction(StardewValley.Farmer)
+  fullName: TrinketTinker.Effects.TrinketTinkerEffect.CheckInteraction(StardewValley.Farmer)
+  nameWithType: TrinketTinkerEffect.CheckInteraction(Farmer)
+- uid: TrinketTinker.Effects.TrinketTinkerEffect.CheckInteraction*
+  name: CheckInteraction
+  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_CheckInteraction_
+  commentId: Overload:TrinketTinker.Effects.TrinketTinkerEffect.CheckInteraction
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.TrinketTinkerEffect.CheckInteraction
+  nameWithType: TrinketTinkerEffect.CheckInteraction
 - uid: TrinketTinker.Effects.TrinketTinkerEffect.CompanionAnchor
   name: CompanionAnchor
   href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_CompanionAnchor
@@ -5122,6 +5135,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.TrinketTinkerEffect.CompanionSpeaker
   nameWithType: TrinketTinkerEffect.CompanionSpeaker
+- uid: TrinketTinker.Effects.TrinketTinkerEffect.DoInteraction(StardewValley.Farmer)
+  name: DoInteraction(Farmer)
+  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_DoInteraction_StardewValley_Farmer_
+  commentId: M:TrinketTinker.Effects.TrinketTinkerEffect.DoInteraction(StardewValley.Farmer)
+  fullName: TrinketTinker.Effects.TrinketTinkerEffect.DoInteraction(StardewValley.Farmer)
+  nameWithType: TrinketTinkerEffect.DoInteraction(Farmer)
+- uid: TrinketTinker.Effects.TrinketTinkerEffect.DoInteraction*
+  name: DoInteraction
+  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_DoInteraction_
+  commentId: Overload:TrinketTinker.Effects.TrinketTinkerEffect.DoInteraction
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.TrinketTinkerEffect.DoInteraction
+  nameWithType: TrinketTinkerEffect.DoInteraction
 - uid: TrinketTinker.Effects.TrinketTinkerEffect.FullInventoryId
   name: FullInventoryId
   href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_FullInventoryId
@@ -5298,19 +5324,6 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.TrinketTinkerEffect.OnFootstep
   nameWithType: TrinketTinkerEffect.OnFootstep
-- uid: TrinketTinker.Effects.TrinketTinkerEffect.OnInteract(StardewValley.Farmer)
-  name: OnInteract(Farmer)
-  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_OnInteract_StardewValley_Farmer_
-  commentId: M:TrinketTinker.Effects.TrinketTinkerEffect.OnInteract(StardewValley.Farmer)
-  fullName: TrinketTinker.Effects.TrinketTinkerEffect.OnInteract(StardewValley.Farmer)
-  nameWithType: TrinketTinkerEffect.OnInteract(Farmer)
-- uid: TrinketTinker.Effects.TrinketTinkerEffect.OnInteract*
-  name: OnInteract
-  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_OnInteract_
-  commentId: Overload:TrinketTinker.Effects.TrinketTinkerEffect.OnInteract
-  isSpec: "True"
-  fullName: TrinketTinker.Effects.TrinketTinkerEffect.OnInteract
-  nameWithType: TrinketTinkerEffect.OnInteract
 - uid: TrinketTinker.Effects.TrinketTinkerEffect.OnPlayerWarped(StardewValley.Farmer,StardewValley.GameLocation,StardewValley.GameLocation)
   name: OnPlayerWarped(Farmer, GameLocation, GameLocation)
   href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_OnPlayerWarped_StardewValley_Farmer_StardewValley_GameLocation_StardewValley_GameLocation_
@@ -10640,25 +10653,66 @@ references:
 - uid: TrinketTinker.Models.TinkerInventoryData.Capacity
   name: Capacity
   href: api/TrinketTinker.Models.TinkerInventoryData.html#TrinketTinker_Models_TinkerInventoryData_Capacity
-  commentId: F:TrinketTinker.Models.TinkerInventoryData.Capacity
+  commentId: P:TrinketTinker.Models.TinkerInventoryData.Capacity
   fullName: TrinketTinker.Models.TinkerInventoryData.Capacity
   nameWithType: TinkerInventoryData.Capacity
+- uid: TrinketTinker.Models.TinkerInventoryData.Capacity*
+  name: Capacity
+  href: api/TrinketTinker.Models.TinkerInventoryData.html#TrinketTinker_Models_TinkerInventoryData_Capacity_
+  commentId: Overload:TrinketTinker.Models.TinkerInventoryData.Capacity
+  isSpec: "True"
+  fullName: TrinketTinker.Models.TinkerInventoryData.Capacity
+  nameWithType: TinkerInventoryData.Capacity
+- uid: TrinketTinker.Models.TinkerInventoryData.DropContentsAsDebrisCondition
+  name: DropContentsAsDebrisCondition
+  href: api/TrinketTinker.Models.TinkerInventoryData.html#TrinketTinker_Models_TinkerInventoryData_DropContentsAsDebrisCondition
+  commentId: P:TrinketTinker.Models.TinkerInventoryData.DropContentsAsDebrisCondition
+  fullName: TrinketTinker.Models.TinkerInventoryData.DropContentsAsDebrisCondition
+  nameWithType: TinkerInventoryData.DropContentsAsDebrisCondition
+- uid: TrinketTinker.Models.TinkerInventoryData.DropContentsAsDebrisCondition*
+  name: DropContentsAsDebrisCondition
+  href: api/TrinketTinker.Models.TinkerInventoryData.html#TrinketTinker_Models_TinkerInventoryData_DropContentsAsDebrisCondition_
+  commentId: Overload:TrinketTinker.Models.TinkerInventoryData.DropContentsAsDebrisCondition
+  isSpec: "True"
+  fullName: TrinketTinker.Models.TinkerInventoryData.DropContentsAsDebrisCondition
+  nameWithType: TinkerInventoryData.DropContentsAsDebrisCondition
 - uid: TrinketTinker.Models.TinkerInventoryData.OpenCondition
   name: OpenCondition
   href: api/TrinketTinker.Models.TinkerInventoryData.html#TrinketTinker_Models_TinkerInventoryData_OpenCondition
-  commentId: F:TrinketTinker.Models.TinkerInventoryData.OpenCondition
+  commentId: P:TrinketTinker.Models.TinkerInventoryData.OpenCondition
+  fullName: TrinketTinker.Models.TinkerInventoryData.OpenCondition
+  nameWithType: TinkerInventoryData.OpenCondition
+- uid: TrinketTinker.Models.TinkerInventoryData.OpenCondition*
+  name: OpenCondition
+  href: api/TrinketTinker.Models.TinkerInventoryData.html#TrinketTinker_Models_TinkerInventoryData_OpenCondition_
+  commentId: Overload:TrinketTinker.Models.TinkerInventoryData.OpenCondition
+  isSpec: "True"
   fullName: TrinketTinker.Models.TinkerInventoryData.OpenCondition
   nameWithType: TinkerInventoryData.OpenCondition
 - uid: TrinketTinker.Models.TinkerInventoryData.RequiredItemCondition
   name: RequiredItemCondition
   href: api/TrinketTinker.Models.TinkerInventoryData.html#TrinketTinker_Models_TinkerInventoryData_RequiredItemCondition
-  commentId: F:TrinketTinker.Models.TinkerInventoryData.RequiredItemCondition
+  commentId: P:TrinketTinker.Models.TinkerInventoryData.RequiredItemCondition
+  fullName: TrinketTinker.Models.TinkerInventoryData.RequiredItemCondition
+  nameWithType: TinkerInventoryData.RequiredItemCondition
+- uid: TrinketTinker.Models.TinkerInventoryData.RequiredItemCondition*
+  name: RequiredItemCondition
+  href: api/TrinketTinker.Models.TinkerInventoryData.html#TrinketTinker_Models_TinkerInventoryData_RequiredItemCondition_
+  commentId: Overload:TrinketTinker.Models.TinkerInventoryData.RequiredItemCondition
+  isSpec: "True"
   fullName: TrinketTinker.Models.TinkerInventoryData.RequiredItemCondition
   nameWithType: TinkerInventoryData.RequiredItemCondition
 - uid: TrinketTinker.Models.TinkerInventoryData.RequiredTags
   name: RequiredTags
   href: api/TrinketTinker.Models.TinkerInventoryData.html#TrinketTinker_Models_TinkerInventoryData_RequiredTags
-  commentId: F:TrinketTinker.Models.TinkerInventoryData.RequiredTags
+  commentId: P:TrinketTinker.Models.TinkerInventoryData.RequiredTags
+  fullName: TrinketTinker.Models.TinkerInventoryData.RequiredTags
+  nameWithType: TinkerInventoryData.RequiredTags
+- uid: TrinketTinker.Models.TinkerInventoryData.RequiredTags*
+  name: RequiredTags
+  href: api/TrinketTinker.Models.TinkerInventoryData.html#TrinketTinker_Models_TinkerInventoryData_RequiredTags_
+  commentId: Overload:TrinketTinker.Models.TinkerInventoryData.RequiredTags
+  isSpec: "True"
   fullName: TrinketTinker.Models.TinkerInventoryData.RequiredTags
   nameWithType: TinkerInventoryData.RequiredTags
 - uid: TrinketTinker.Models.VariantData
