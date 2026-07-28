@@ -23,10 +23,10 @@ public abstract class Ability<TArgs> : IAbility
     public readonly string Name;
 
     /// <inheritdoc/>
-    public string AbilityClass => d.AbilityClass;
+    public AbilityData Data => d;
 
     /// <inheritdoc/>
-    public string AbilityId => d.Id;
+    public string AbilityClass => d.AbilityClass;
 
     /// <inheritdoc/>
     public bool Valid { get; protected set; } = false;
@@ -92,7 +92,7 @@ public abstract class Ability<TArgs> : IAbility
             int foundCount = 0;
             foreach (var ab in e.Abilities)
             {
-                if (d.ProcSyncId == ab.AbilityId)
+                if (d.ProcSyncId == ab.Data.Id)
                 {
                     if (foundIdx == -1)
                         foundIdx = idx;
@@ -184,9 +184,6 @@ public abstract class Ability<TArgs> : IAbility
                 case ProcOn.Warped:
                     e.EventPlayerWarped += HandleProc;
                     break;
-                case ProcOn.Interact:
-                    e.EventInteract += HandleProc;
-                    break;
                 // remember to add to Deactivate too
             }
         }
@@ -226,9 +223,6 @@ public abstract class Ability<TArgs> : IAbility
                     break;
                 case ProcOn.Warped:
                     e.EventPlayerWarped -= HandleProc;
-                    break;
-                case ProcOn.Interact:
-                    e.EventInteract -= HandleProc;
                     break;
                 // remember to add to Activate too
             }
@@ -273,10 +267,21 @@ public abstract class Ability<TArgs> : IAbility
         return true;
     }
 
+    /// <inheritdoc/>
+    public bool InteractProc(object? sender, ProcEventArgs proc)
+    {
+        return DoProc(sender, proc);
+    }
+
     /// <summary>Handle proc of ability</summary>
     /// <param name="sender"></param>
     /// <param name="proc"></param>
     protected virtual void HandleProc(object? sender, ProcEventArgs proc)
+    {
+        DoProc(sender, proc);
+    }
+
+    private bool DoProc(object? sender, ProcEventArgs proc)
     {
         if (Active && Allowed && proc.Check(d, e) && ConsumeFuel() && ApplyEffect(proc))
         {
@@ -296,7 +301,9 @@ public abstract class Ability<TArgs> : IAbility
                 DelayedAction.functionAfterDelay(() => EventAbilityProc?.Invoke(sender, proc), d.ProcSyncDelay);
             else
                 EventAbilityProc?.Invoke(sender, proc);
+            return true;
         }
+        return false;
     }
 
     /// <summary>Get where the on proc <see cref="TemporaryAnimatedSprite"/> should be drawn from.</summary>

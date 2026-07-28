@@ -6,6 +6,7 @@
   "b-c.trinket-colorizer.no-recolor": "This trinket cannot be re-colored.",
   "effect.not-allowed": "You are not worthy of {{trinketName}}...",
   "effect.days-left": "{{trinketName}} ({{daysLeft}} days left)",
+  "ui.interact-gift": "Give {{itemName}} to {{trinketName}}",
   "config.section.general": "General",
   "config.HideAllCompanionsDuringEvents.name": "Hide During Events",
   "config.HideAllCompanionsDuringEvents.description": "Hide all trinket companions during events. Only affects trinkets added via Trinket Tinker.",

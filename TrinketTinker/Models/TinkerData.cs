@@ -1,7 +1,9 @@
+using TrinketTinker.Models.Mixin;
+
 namespace TrinketTinker.Models;
 
 /// <summary>Tinker inventory definition</summary>
-public sealed class TinkerInventoryData
+public sealed class TinkerInventoryData : RequiredItemData
 {
     /// <summary>Inventory size</summary>
     public int Capacity { get; set; } = 9;
@@ -9,11 +11,15 @@ public sealed class TinkerInventoryData
     /// <summary>Game state query condition, if false the inventory cannot be opened</summary>
     public string? OpenCondition { get; set; } = null;
 
-    /// <summary>Item must have these context tags (OR), can use "tag1 tag2" for AND</summary>
-    public List<string>? RequiredTags { get; set; } = null;
-
-    /// <summary>Game state query condition, if false the item cannot be put inside</summary>
-    public string? RequiredItemCondition { get; set; } = null;
+    /// <summary>
+    /// This is now an alias for <see cref="RequiredItemData.Condition"/>
+    /// <inheritdoc cref="RequiredItemData.Condition"/>
+    /// </summary>
+    public string? RequiredItemCondition
+    {
+        get => Condition;
+        set => Condition = value;
+    }
 
     /// <summary>Game state query condition, if true the contents of the companion's inventory will be dropped as debris on unequip</summary>
     public string? DropContentsAsDebrisCondition { get; set; } = null;

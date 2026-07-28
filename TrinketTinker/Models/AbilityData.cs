@@ -80,31 +80,10 @@ public sealed class ProcSoundData
 }
 
 /// <summary>Data for fuel required to activate an ability.</summary>
-public sealed class RequiredFuelData
+public sealed class RequiredFuelData : RequiredItemData
 {
-    /// <summary>Specific item id required</summary>
-    public string? RequiredItemId { get; set; } = null;
-
-    /// <summary>Tags required (all tags must be on item)</summary>
-    public List<string>? RequiredTags { get; set; } = null;
-
-    /// <summary>GSQ check on item</summary>
-    public string? Condition { get; set; } = null;
-
     /// <summary>Amount to consume on proc</summary>
     public int RequiredCount { get; set; } = 1;
-
-    /// <summary>Amount to consume on proc</summary>
-    internal bool CheckItem(Item item)
-    {
-        if (item.QualifiedItemId == RequiredItemId)
-            return true;
-        if (RequiredTags?.All(item.HasContextTag) ?? false)
-            return true;
-        if (GameStateQuery.CheckConditions(Condition, new(Game1.currentLocation, Game1.player, item, item, null)))
-            return true;
-        return false;
-    }
 }
 
 /// <summary>Data for <see cref="Effects.Abilities"/>, defines game effect that a trinket can provide.</summary>
@@ -164,6 +143,12 @@ public sealed class AbilityData : IHaveArgs
 
     /// <summary>Make the next invocation of "Chatter" use this key.</summary>
     public string? ProcChatterKey { get; set; } = null;
+
+    /// <summary>
+    /// For <see cref="ProcOn.Interact"/> require the player to hold up particular item
+    /// which will be consumed (gifted) to the companion.
+    /// </summary>
+    public RequiredItemData? ProcInteractGift { get; set; } = null;
 
     /// <summary>Condition, see <see cref="GameStateQuery"/></summary>
     public string? Condition { get; set; } = null;

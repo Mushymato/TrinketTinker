@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using Netcode;
 using StardewModdingAPI;
@@ -228,7 +229,6 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
     internal event EventHandler<ProcEventArgs>? EventSlayMonster;
     internal event EventHandler<ProcEventArgs>? EventTrigger;
     internal event EventHandler<ProcEventArgs>? EventPlayerWarped;
-    internal event EventHandler<ProcEventArgs>? EventInteract;
     internal event EventHandler<ProcEventArgs>? EventToolChange;
 
     /// <summary>Setup a single ability</summary>
@@ -398,7 +398,7 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
         }
         if (Companion is TrinketTinkerCompanion ttCompanion)
         {
-            ttCompanion.SetActiveAnchors(Abilities.Select((ab) => ab.AbilityClass));
+            ttCompanion.SetActiveAnchors(Abilities.Select((ab) => ab.Data.AbilityClass));
         }
     }
 
@@ -558,11 +558,17 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
     }
 
     /// <summary>
-    /// Handle player interaction
+    /// Check that interaction could happen
     /// </summary>
     /// <param name="farmer"></param>
-    public virtual bool CheckInteraction(Farmer farmer)
+    public virtual bool CheckInteraction(
+        Farmer farmer,
+        [NotNullWhen(true)] out IReadOnlyList<IAbility>? interactAbilities,
+        out bool shouldTakeGift
+    )
     {
+        interactAbilities = null;
+        shouldTakeGift = false;
         if (!Enabled || Game1.activeClickableMenu != null || farmer.UsingTool || farmer.usingSlingshot)
             return false;
         if (Companion != null && !farmer.GetBoundingBox().Intersects(CompanionBoundingBox))
@@ -577,12 +583,56 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
         {
             return false;
         }
-        return EventInteract?.GetInvocationList().Any() ?? false;
+        // return EventInteract?.GetInvocationList().Any() ?? false;
+        List<IAbility> potentialInteractAbilities = [];
+        Item? activeItem = farmer.ActiveItem;
+        foreach (IAbility ability in Abilities)
+        {
+            if (ability.Data.Proc == ProcOn.Interact)
+            {
+                if (ability.Data.ProcInteractGift == null)
+                {
+                    // no gift path: all interactions get added as long as we have not found
+                    if (!shouldTakeGift)
+                    {
+                        potentialInteractAbilities.Add(ability);
+                    }
+                }
+                else
+                {
+                    // gift path: only interactions that accept player's held item as a gift is added
+                    if (ability.Data.ProcInteractGift.CheckItem(activeItem))
+                    {
+                        if (!shouldTakeGift)
+                        {
+                            shouldTakeGift = true;
+                            potentialInteractAbilities.Clear();
+                        }
+                        potentialInteractAbilities.Add(ability);
+                    }
+                }
+            }
+        }
+        if (potentialInteractAbilities.Any())
+        {
+            interactAbilities = potentialInteractAbilities;
+            return true;
+        }
+        return false;
     }
 
-    public virtual void DoInteraction(Farmer farmer)
+    public virtual void DoInteraction(Farmer farmer, IReadOnlyList<IAbility> interactAbilities, bool shouldTakeGift)
     {
-        EventInteract?.Invoke(this, new(ProcOn.Interact, farmer));
+        ProcEventArgs procEventArgs = new(ProcOn.Interact, farmer);
+        bool hasProcced = false;
+        foreach (IAbility ability in interactAbilities)
+        {
+            hasProcced = ability.InteractProc(this, procEventArgs) || hasProcced;
+        }
+        if (hasProcced && shouldTakeGift)
+        {
+            farmer.ActiveItem?.ConsumeStack(1);
+        }
     }
 
     /// <summary>

@@ -750,16 +750,7 @@ internal sealed class GlobalInventoryHandler
 
     internal static bool ValidForInventory(Item item, TinkerInventoryData? data)
     {
-        if (data == null)
-            return true;
-        if (data.RequiredTags != null && !Places.CheckContextTagFilter(item, data.RequiredTags))
-            return false;
-        if (
-            data.RequiredItemCondition != null
-            && !GameStateQuery.CheckConditions(data.RequiredItemCondition, inputItem: item, targetItem: item)
-        )
-            return false;
-        return true;
+        return data?.CheckItem(item) ?? true;
     }
 
     internal static bool CanAcceptThisItem(Inventory trinketInv, int capacity, Item item)

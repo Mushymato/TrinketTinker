@@ -176,27 +176,47 @@ internal sealed class ModEntry : Mod
 
     private static void DoInteract()
     {
-        List<TrinketTinkerEffect> canInteract = [];
-        foreach (Trinket trinketItem in Game1.player.trinketItems)
+        Farmer who = Game1.player;
+        List<(TrinketTinkerEffect, IReadOnlyList<IAbility>, bool)> canInteract = [];
+        foreach (Trinket trinketItem in who.trinketItems)
         {
             if (trinketItem != null && trinketItem.GetEffect() is TrinketTinkerEffect effect)
             {
-                if (effect.CheckInteraction(Game1.player))
-                    canInteract.Add(effect);
+                if (
+                    effect.CheckInteraction(
+                        who,
+                        out IReadOnlyList<IAbility>? interactAbilities,
+                        out bool shouldTakeGift
+                    )
+                )
+                    canInteract.Add((effect, interactAbilities, shouldTakeGift));
             }
         }
         if (canInteract.Count == 0)
             return;
         if (canInteract.Count == 1 || Game1.currentLocation == null)
         {
-            canInteract[0].DoInteraction(Game1.player);
+            (TrinketTinkerEffect effect, IReadOnlyList<IAbility> interactAbilities, bool shouldTakeGift) = canInteract[
+                0
+            ];
+            effect.DoInteraction(who, interactAbilities, shouldTakeGift);
         }
         else
         {
+            Item? activeItem = who.ActiveItem;
             List<KeyValuePair<string, string>> keyValuePairs = [];
             for (int i = 0; i < canInteract.Count; i++)
             {
-                keyValuePairs.Add(new(i.ToString(), canInteract[i].Trinket.DisplayName));
+                (TrinketTinkerEffect effect, IReadOnlyList<IAbility> interactAbilities, bool shouldTakeGift) =
+                    canInteract[i];
+                keyValuePairs.Add(
+                    new(
+                        i.ToString(),
+                        shouldTakeGift && activeItem != null
+                            ? I18n.Ui_InteractGift(activeItem.DisplayName, effect.Trinket.DisplayName)
+                            : effect.Trinket.DisplayName
+                    )
+                );
             }
             Game1.currentLocation.ShowPagedResponses(
                 string.Empty,
@@ -204,7 +224,15 @@ internal sealed class ModEntry : Mod
                 (response) =>
                 {
                     DelayedAction delay = DelayedAction.functionAfterDelay(
-                        () => canInteract[int.Parse(response)].DoInteraction(Game1.player),
+                        () =>
+                        {
+                            (
+                                TrinketTinkerEffect effect,
+                                IReadOnlyList<IAbility> interactAbilities,
+                                bool shouldTakeGift
+                            ) = canInteract[int.Parse(response)];
+                            effect.DoInteraction(who, interactAbilities, shouldTakeGift);
+                        },
                         1
                     );
                     delay.waitUntilMenusGone = true;
