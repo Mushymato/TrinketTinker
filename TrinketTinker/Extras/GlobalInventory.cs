@@ -783,4 +783,38 @@ internal sealed class GlobalInventoryHandler
                 return false;
         }
     }
+
+    /// <summary>Check object against list of context tags, return true if matched</summary>
+    /// <param name="obj"></param>
+    /// <param name="filters"></param>
+    /// <returns></returns>
+    public static bool CheckContextTagList(Item item, IList<string> filters)
+    {
+        if (item == null)
+            return false;
+        foreach (string tagLst in filters)
+        {
+            if (tagLst.Split(' ').All(item.HasContextTag))
+                return true;
+        }
+        return false;
+    }
+
+    internal static int CountTotal(Inventory trinketInv)
+    {
+        return trinketInv.Sum(item => item?.Stack ?? 0);
+    }
+
+    internal static int CountByContextTag(Inventory trinketInv, IList<string> contextTags)
+    {
+        int total = 0;
+        foreach (Item item in trinketInv)
+        {
+            if (CheckContextTagList(item, contextTags))
+            {
+                total += item.Stack;
+            }
+        }
+        return total;
+    }
 }

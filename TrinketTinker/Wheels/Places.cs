@@ -5,6 +5,7 @@ using StardewValley.Extensions;
 using StardewValley.GameData.Locations;
 using StardewValley.Monsters;
 using StardewValley.TerrainFeatures;
+using TrinketTinker.Extras;
 using TrinketTinker.Models.AbilityArgs;
 using TrinketTinker.Models.Mixin;
 
@@ -270,20 +271,6 @@ internal static class Places
             && (!crop.fullyGrown.Value || crop.dayOfCurrentPhase.Value <= 0);
     }
 
-    /// <summary>Check object against filters (list of context tags), return false if matched</summary>
-    /// <param name="obj"></param>
-    /// <param name="filters"></param>
-    /// <returns></returns>
-    public static bool CheckContextTagFilter(Item item, IList<string> filters)
-    {
-        foreach (string tagLst in filters)
-        {
-            if (tagLst.Split(' ').All(item.HasContextTag))
-                return false;
-        }
-        return true;
-    }
-
     /// <summary>Check crop harvest object against filters (list of context tags), return false if matched</summary>
     /// <param name="obj"></param>
     /// <param name="filters"></param>
@@ -296,7 +283,7 @@ internal static class Places
 #endif
             ) is Item item)
         {
-            return CheckContextTagFilter(item, filters);
+            return !GlobalInventoryHandler.CheckContextTagList(item, filters);
         }
         return true;
     }

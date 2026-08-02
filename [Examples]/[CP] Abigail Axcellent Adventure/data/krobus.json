@@ -26,7 +26,7 @@
       "Target": "mushymato.TrinketTinker/Tinker",
       "Entries": {
         "{{ModId}}_Krobus": {
-          "EnableCondition": "mushymato.TrinketTinker_ENABLED_TRINKET_COUNT Target All <1",
+          // "EnableCondition": "mushymato.TrinketTinker_ENABLED_TRINKET_COUNT Target All <1",
           "Variants": [
             {
               "Texture": "Characters/Krobus",
@@ -116,6 +116,9 @@
               },
               "GaveMeStone": {
                 "Text": "You gave me a (O)390!"
+              },
+              "IHaveThreeThings": {
+                "Text": "I have three things!"
               }
             }
           },
@@ -131,7 +134,7 @@
                 },
               },
               {
-                "AbilityClass": "Nop",
+                "AbilityClass": "Chatter",
                 "Proc": "Interact",
                 "ProcSpeechBubble": "GaveMeStone",
                 // Takes a stone from you
@@ -139,14 +142,14 @@
                   "RequiredItemId": "(O)390"
                 }
               },
-              {
-                "AbilityClass": "Chatter",
-                "Proc": "Interact",
-                "ProcTimer": 1000,
-                // "Args": {
-                //   "ChatterPrefix": "Qte"
-                // }
-              },
+              // {
+              //   "AbilityClass": "Chatter",
+              //   "Proc": "Interact",
+              //   "ProcTimer": 1000,
+              //   // "Args": {
+              //   //   "ChatterPrefix": "Qte"
+              //   // }
+              // },
               {
                 "AbilityClass": "Nop",
                 "Proc": "Footstep",
@@ -166,6 +169,16 @@
                 },
                 "InCombat": false,
                 "Condition": "mushymato.TrinketTinker_TRINKET_HAS_ITEM Target (O)390 >0",
+              },
+              // 
+              {
+                "AbilityClass": "Nop",
+                "Proc": "Footstep",
+                "ProcTimer": 5000,
+                "ProcSpeechBubble": "IHaveThreeThings",
+                // tells you he has 3 things if he has three things
+                "InCombat": false,
+                "Condition": "mushymato.TrinketTinker_TRINKET_HAS_COUNT_ITEMS Target =3",
               },
               {
                 "AbilityClass": "HarvestForage",

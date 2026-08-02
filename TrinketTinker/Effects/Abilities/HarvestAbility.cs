@@ -4,6 +4,7 @@ using StardewValley;
 using StardewValley.TerrainFeatures;
 using StardewValley.Tools;
 using TrinketTinker.Effects.Support;
+using TrinketTinker.Extras;
 using TrinketTinker.Models;
 using TrinketTinker.Models.AbilityArgs;
 using TrinketTinker.Wheels;
@@ -299,7 +300,7 @@ public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData
     /// <returns></returns>
     public static bool IsSpawnedItem(SObject obj, IList<string>? filters)
     {
-        return obj.IsSpawnedObject && (filters == null || Places.CheckContextTagFilter(obj, filters));
+        return obj.IsSpawnedObject && (filters == null || !GlobalInventoryHandler.CheckContextTagList(obj, filters));
     }
 
     /// <summary>Check if farmer has room in inventory</summary>

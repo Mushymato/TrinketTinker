@@ -57,6 +57,8 @@ public static class GameItemQuery
     public const string GameStateQuery_ENABLED_TRINKET_COUNT = $"{ModEntry.ModId}_ENABLED_TRINKET_COUNT";
     public const string GameStateQuery_IN_ALT_VARIANT = $"{ModEntry.ModId}_IN_ALT_VARIANT";
     public const string GameStateQuery_TRINKET_HAS_ITEM = $"{ModEntry.ModId}_TRINKET_HAS_ITEM";
+    public const string GameStateQuery_TRINKET_HAS_ITEM_CONTEXT_TAG = $"{ModEntry.ModId}_TRINKET_HAS_ITEM_CONTEXT_TAG";
+    public const string GameStateQuery_TRINKET_HAS_COUNT_ITEMS = $"{ModEntry.ModId}_TRINKET_HAS_COUNT_ITEMS";
     public const string GameStateQuery_TRINKET_HAS_HAT = $"{ModEntry.ModId}_TRINKET_HAS_HAT";
     public const string TriggerAction_ToggleCompanion = $"{ModEntry.ModId}_ToggleCompanion";
     public const string TriggerAction_PutHatOnCompanion = $"{ModEntry.ModId}_PutHatOnCompanion";
@@ -81,6 +83,8 @@ public static class GameItemQuery
         GameStateQuery.Register(GameStateQuery_ENABLED_TRINKET_COUNT, GSQ_ENABLED_TRINKET_COUNT);
         GameStateQuery.Register(GameStateQuery_IN_ALT_VARIANT, GSQ_IN_ALT_VARIANT);
         GameStateQuery.Register(GameStateQuery_TRINKET_HAS_ITEM, GSQ_TRINKET_HAS_ITEM);
+        GameStateQuery.Register(GameStateQuery_TRINKET_HAS_ITEM_CONTEXT_TAG, GSQ_TRINKET_HAS_ITEM_CONTEXT_TAG);
+        GameStateQuery.Register(GameStateQuery_TRINKET_HAS_COUNT_ITEMS, GSQ_TRINKET_HAS_COUNT_ITEMS);
         GameStateQuery.Register(GameStateQuery_TRINKET_HAS_HAT, GSQ_TRINKET_HAS_HAT);
 
         // Add trigger actions
@@ -484,6 +488,60 @@ public static class GameItemQuery
         return false;
     }
 
+    /// <summary>Check if the trinket's inventory has a specific item</summary>
+    /// <param name="query"></param>
+    /// <param name="context"></param>
+    /// <returns></returns>
+    private static bool GSQ_TRINKET_HAS_ITEM(string[] query, GameStateQueryContext context)
+    {
+        if (
+            TryGetTinkerTrinket(query, context, 1, out Trinket? _, out TrinketTinkerEffect? effect, createFromId: false)
+            && ArgUtility.TryGetOptional(query, 2, out string? itemId, out string? _, "string itemId")
+            && effect.GetInventory() is Inventory trinketInv
+        )
+        {
+            return CompareIntegerQ(query, 3, trinketInv.CountId(itemId));
+        }
+        return false;
+    }
+
+    /// <summary>Check if the trinket's inventory has total of x items</summary>
+    /// <param name="query"></param>
+    /// <param name="context"></param>
+    /// <returns></returns>
+    private static bool GSQ_TRINKET_HAS_COUNT_ITEMS(string[] query, GameStateQueryContext context)
+    {
+        if (
+            TryGetTinkerTrinket(query, context, 1, out Trinket? _, out TrinketTinkerEffect? effect, createFromId: false)
+            && effect.GetInventory() is Inventory trinketInv
+        )
+        {
+            return CompareIntegerQ(query, 2, GlobalInventoryHandler.CountTotal(trinketInv));
+        }
+        return false;
+    }
+
+    /// <summary>Check if the trinket's inventory has this many items which matches particular context tag</summary>
+    /// <param name="query"></param>
+    /// <param name="context"></param>
+    /// <returns></returns>
+    private static bool GSQ_TRINKET_HAS_ITEM_CONTEXT_TAG(string[] query, GameStateQueryContext context)
+    {
+        if (
+            TryGetTinkerTrinket(query, context, 1, out Trinket? _, out TrinketTinkerEffect? effect, createFromId: false)
+            && query.Length >= 2
+            && effect.GetInventory() is Inventory trinketInv
+        )
+        {
+            return CompareIntegerQ(
+                query,
+                query.Length - 1,
+                GlobalInventoryHandler.CountByContextTag(trinketInv, query[2..^1])
+            );
+        }
+        return false;
+    }
+
     /// <summary>Check if the trinket has a hat of particular id, only affects Given mode hatters</summary>
     /// <param name="query"></param>
     /// <param name="context"></param>
@@ -500,23 +558,6 @@ public static class GameItemQuery
                 return cmp.GivenHat?.ItemId == itemId;
             }
             return GlobalInventoryHandler.FindHat(effect.InventoryId) != null;
-        }
-        return false;
-    }
-
-    /// <summary>Check if the trinket's inventory has a specific item</summary>
-    /// <param name="query"></param>
-    /// <param name="context"></param>
-    /// <returns></returns>
-    private static bool GSQ_TRINKET_HAS_ITEM(string[] query, GameStateQueryContext context)
-    {
-        if (
-            TryGetTinkerTrinket(query, context, 1, out Trinket? _, out TrinketTinkerEffect? effect, createFromId: false)
-            && ArgUtility.TryGetOptional(query, 2, out string? itemId, out string? _, "string itemId")
-            && effect.GetInventory() is Inventory trinketInv
-        )
-        {
-            return CompareIntegerQ(query, 3, trinketInv.CountId(itemId));
         }
         return false;
     }
