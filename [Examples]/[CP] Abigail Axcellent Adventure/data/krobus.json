@@ -173,8 +173,7 @@
               // 
               {
                 "AbilityClass": "Nop",
-                "Proc": "Footstep",
-                "ProcTimer": 5000,
+                "Proc": "TinkerInventoryChange",
                 "ProcSpeechBubble": "IHaveThreeThings",
                 // tells you he has 3 things if he has three things
                 "InCombat": false,

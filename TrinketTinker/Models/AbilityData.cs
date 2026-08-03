@@ -40,6 +40,9 @@ public enum ProcOn
 
     /// <summary>Proc on tool index change.</summary>
     ToolChange,
+
+    /// <summary>Proc when tinker inventory changes</summary>
+    TinkerInventoryChange,
 }
 
 /// <summary>Proc sound data</summary>

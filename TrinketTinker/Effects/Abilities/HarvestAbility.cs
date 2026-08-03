@@ -57,7 +57,7 @@ public abstract class BaseHarvestAbility<TArgs>(TrinketTinkerEffect effect, Abil
     {
         if (Places.GetDebrisItem(debris) is Item item)
         {
-            debris.item = e.AddItemToInventory(item);
+            debris.item = e.AddItemToInventory(item, farmer);
             if (debris.item == null)
             {
                 location.debris.Remove(debris);
@@ -346,7 +346,7 @@ public sealed class HarvestForageAbility(TrinketTinkerEffect effect, AbilityData
                 else if (args.HarvestTo == HarvestDestination.TinkerInventory)
                     harvestMethod = () =>
                     {
-                        if (e.AddItemToInventory(obj.getOne()) is Item item)
+                        if (e.AddItemToInventory(obj.getOne(), farmer) is Item item)
                         {
                             Game1.createItemDebris(item, new Vector2(tile.X * 64f + 32f, tile.Y * 64f + 32f), -1);
                         }

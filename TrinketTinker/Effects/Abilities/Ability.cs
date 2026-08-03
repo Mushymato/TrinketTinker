@@ -184,6 +184,12 @@ public abstract class Ability<TArgs> : IAbility
                 case ProcOn.Warped:
                     e.EventPlayerWarped += HandleProc;
                     break;
+                case ProcOn.ToolChange:
+                    e.EventToolChange += HandleProc;
+                    break;
+                case ProcOn.TinkerInventoryChange:
+                    e.EventTinkerInventoryChange += HandleProc;
+                    break;
                 // remember to add to Deactivate too
             }
         }
@@ -223,6 +229,12 @@ public abstract class Ability<TArgs> : IAbility
                     break;
                 case ProcOn.Warped:
                     e.EventPlayerWarped -= HandleProc;
+                    break;
+                case ProcOn.ToolChange:
+                    e.EventToolChange -= HandleProc;
+                    break;
+                case ProcOn.TinkerInventoryChange:
+                    e.EventTinkerInventoryChange -= HandleProc;
                     break;
                 // remember to add to Activate too
             }

@@ -230,6 +230,7 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
     internal event EventHandler<ProcEventArgs>? EventTrigger;
     internal event EventHandler<ProcEventArgs>? EventPlayerWarped;
     internal event EventHandler<ProcEventArgs>? EventToolChange;
+    internal event EventHandler<ProcEventArgs>? EventTinkerInventoryChange;
 
     /// <summary>Setup a single ability</summary>
     /// <param name="ab"></param>
@@ -850,7 +851,7 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
         return false;
     }
 
-    public Item? AddItemToInventory(Item item)
+    public Item? AddItemToInventory(Item item, Farmer who)
     {
         int capacity;
         if (
@@ -858,7 +859,17 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
             && FullInventoryId != null
             && Game1.player.team.GetOrCreateGlobalInventory(FullInventoryId) is Inventory trinketInv
         )
-            return GlobalInventoryHandler.AddItem(trinketInv, capacity, item);
+        {
+            Item? result = GlobalInventoryHandler.AddItem(trinketInv, capacity, item);
+            OnTrinketInventoryChanged(who);
+            return result;
+        }
         return null;
+    }
+
+    public void OnTrinketInventoryChanged(Farmer who)
+    {
+        if (Enabled)
+            EventTinkerInventoryChange?.Invoke(this, new(ProcOn.TinkerInventoryChange, who));
     }
 }

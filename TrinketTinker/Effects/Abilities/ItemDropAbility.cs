@@ -38,7 +38,7 @@ public sealed class ItemDropAbility(TrinketTinkerEffect effect, AbilityData data
                         }
                         goto case HarvestDestination.Debris;
                     case HarvestDestination.TinkerInventory:
-                        if ((item = e.AddItemToInventory(item)!) == null)
+                        if ((item = e.AddItemToInventory(item, context.Player)!) == null)
                         {
                             spawned = true;
                             break;

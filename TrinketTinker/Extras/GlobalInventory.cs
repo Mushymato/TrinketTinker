@@ -448,6 +448,7 @@ internal sealed class GlobalInventoryHandler
             Game1.activeClickableMenu.currentlySnappedComponent = Game1.activeClickableMenu.getComponentWithID(num);
             Game1.activeClickableMenu.snapCursorToCurrentSnappedComponent();
         }
+        Effect.OnTrinketInventoryChanged(who);
         return;
     }
 
@@ -458,6 +459,7 @@ internal sealed class GlobalInventoryHandler
             TrinketInv.Remove(item);
             TrinketInv.RemoveEmptySlots();
             Game1.activeClickableMenu = GetMenu();
+            Effect.OnTrinketInventoryChanged(who);
         }
     }
 
