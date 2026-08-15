@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Delegates;
 using StardewValley.Monsters;
@@ -75,15 +76,8 @@ public sealed class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
             )
                 return false;
         }
-        GSQContext = new(
-            LocationOrCurrent,
-            Farmer,
-            (Proc == ProcOn.ToolChange ? farmer.ActiveItem : null) ?? e.Trinket,
-            e.Trinket,
-            null,
-            null,
-            []
-        );
+        Item targetItem = Proc == ProcOn.ActiveItemChange ? farmer.ActiveItem : e.Trinket;
+        GSQContext = new(LocationOrCurrent, Farmer, targetItem, e.Trinket, null, null, []);
         GSQContext.CustomFields![TinkerConst.CustomFields_Data] = data;
         GSQContext.CustomFields[TinkerConst.CustomFields_Position] = e.CompanionPosition!;
         GSQContext.CustomFields[TinkerConst.CustomFields_PosOff] = e.CompanionPosOff!;

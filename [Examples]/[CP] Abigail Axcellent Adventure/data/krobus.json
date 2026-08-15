@@ -119,6 +119,9 @@
               },
               "IHaveThreeThings": {
                 "Text": "I have three things!"
+              },
+              "Wow": {
+                "Text": "Wow"
               }
             }
           },
@@ -156,6 +159,12 @@
                 "ProcTimer": 15000,
                 "ProcSpeechBubble": "ItsScary",
                 "InCombat": true
+              },
+              {
+                "AbilityClass": "Nop",
+                "Proc": "ActiveItemChange",
+                "Condition": "ITEM_ID Target (O)16",
+                "ProcSpeechBubble": "Wow"
               },
               {
                 "AbilityClass": "Nop",

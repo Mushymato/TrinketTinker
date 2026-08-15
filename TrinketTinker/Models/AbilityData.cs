@@ -38,8 +38,8 @@ public enum ProcOn
     /// <summary>Proc on player interacts.</summary>
     Interact,
 
-    /// <summary>Proc on tool index change.</summary>
-    ToolChange,
+    /// <summary>Proc on farmer active item change.</summary>
+    ActiveItemChange,
 
     /// <summary>Proc when tinker inventory changes</summary>
     TinkerInventoryChange,

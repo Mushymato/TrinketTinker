@@ -28,6 +28,8 @@ namespace TrinketTinker.Effects;
 /// <param name="trinket"></param>
 public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
 {
+    private bool toolJustChanged = false;
+
     /// <summary>Miliseconds</summary>
     public const double IN_COMBAT_CD = 10000;
 
@@ -644,7 +646,7 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
     /// <param name="newValue"></param>
     private void OnCurrentToolIndexChange(NetInt field, int oldValue, int newValue)
     {
-        EventToolChange?.Invoke(this, new(ProcOn.ToolChange, Game1.player));
+        toolJustChanged = true;
     }
 
     /// <summary>Update every tick. Not an event because this happens for every ability regardless of <see cref="ProcOn"/>.</summary>
@@ -662,6 +664,12 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
             UnapplyAbilities(farmer);
             abilities = InitAbilities();
             ApplyAbilities(farmer);
+        }
+
+        if (toolJustChanged)
+        {
+            EventToolChange?.Invoke(this, new(ProcOn.ActiveItemChange, Game1.player));
+            toolJustChanged = false;
         }
 
         foreach (IAbility ability in Abilities)
