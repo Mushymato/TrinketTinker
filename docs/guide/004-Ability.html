@@ -237,6 +237,12 @@
 <td>Switch the companion to the matching <a href="002-Variant.html">alt variant</a> on proc. Use <code>&quot;RECHECK&quot;</code> to switch</td>
 </tr>
 <tr>
+<td><code>ProcInteractGift</code></td>
+<td>RequiredItemData</td>
+<td><em>null</em></td>
+<td>When used with <a href="004.0-Proc.html">Interact</a> proc and the player is holding a valid item, .</td>
+</tr>
+<tr>
 <td><code>ProcChatterKey</code></td>
 <td>string</td>
 <td><em>null</em></td>
@@ -313,7 +319,7 @@ second ability B
 first ability C
 second ability D
 </code></pre>
-<h2 id="fuel-item">Fuel Item</h2>
+<h2 id="procfuel-fuel-item">ProcFuel: Fuel Item</h2>
 <table>
 <thead>
 <tr>
@@ -352,6 +358,40 @@ second ability D
 </table>
 <p>An item must qualify for at least one of <code>RequiredItemId</code>, <code>RequiredTags</code>, and <code>Condition</code> to be considered fuel to be consumed.
 If not enough fuel items, nothing is consumed and the ability does not activate.</p>
+<h2 id="procinteractgift-gift-item">ProcInteractGift: Gift Item</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RequiredItemId</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>Required item id, to target a specific item.</td>
+</tr>
+<tr>
+<td><code>RequiredTags</code></td>
+<td>List<string></string></td>
+<td><em>null</em></td>
+<td>Required item context tag, target all items that have all of these tags.</td>
+</tr>
+<tr>
+<td><code>Condition</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>Required item <a href="https://stardewvalleywiki.com/Modding:Game_state_queries">game state queries</a> condition.</td>
+</tr>
+</tbody>
+</table>
+<p>The item being checked is the active item, i.e. whatever held over head.
+It must qualify for at least one of <code>RequiredItemId</code>, <code>RequiredTags</code>, and <code>Condition</code> to be considered a gift.
+This only applies when the proc is <strong>Interact</strong>.</p>
 
 </article>
 

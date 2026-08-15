@@ -121,7 +121,18 @@ Only works in context where the Input/Target item is a trinket with tinker data,
 <h2 id="mushymatotrinkettinker_trinket_has_item">mushymato.TrinketTinker_TRINKET_HAS_ITEM</h2>
 <pre><code>mushymato.TrinketTinker_TRINKET_HAS_ITEM &lt;Input|Target&gt; &lt;itemId&gt; &lt;item count compare&gt;
 </code></pre>
-<p>Check if the trinket item has an inventory and the inventory has a certain number of the given item.
+<p>Check if the trinket item with an inventory has a certain number of the given item.
+Only works in context where the Input/Target item is a trinket with tinker data, does not support string trinket Id.</p>
+<h2 id="mushymatotrinkettinker_trinket_has_item_context_tag">mushymato.TrinketTinker_TRINKET_HAS_ITEM_CONTEXT_TAG</h2>
+<pre><code>mushymato.TrinketTinker_TRINKET_HAS_ITEM_CONTEXT_TAG &lt;Input|Target&gt; &lt;context_tags+&gt; &lt;item count compare&gt;
+</code></pre>
+<p>Check if the trinket item with an inventory has a certain number items matching the given context tag(s).
+Context tags are ANY for the top list, but each individual tag can be a space separated list of tags that will be evaluated with AND.
+Only works in context where the Input/Target item is a trinket with tinker data, does not support string trinket Id.</p>
+<h2 id="mushymatotrinkettinker_trinket_has_count_items">mushymato.TrinketTinker_TRINKET_HAS_COUNT_ITEMS</h2>
+<pre><code>mushymato.TrinketTinker_TRINKET_HAS_COUNT_ITEMS &lt;Input|Target&gt; &lt;item count compare&gt;
+</code></pre>
+<p>Check if the trinket item with an inventory has a certain number of the given item.
 Only works in context where the Input/Target item is a trinket with tinker data, does not support string trinket Id.</p>
 <h2 id="mushymatotrinkettinker_has_levels">mushymato.TrinketTinker_HAS_LEVELS</h2>
 <pre><code>mushymato.TrinketTinker_HAS_LEVELS &lt;Input|Target|ItemId&gt;

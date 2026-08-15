@@ -89,7 +89,7 @@
 
 
   <h1 id="TrinketTinker_Effects_Abilities_IAbility" data-uid="TrinketTinker.Effects.Abilities.IAbility" class="text-break">
-Interface IAbility  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L7"><i class="bi bi-code-slash"></i></a>
+Interface IAbility  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L8"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -120,18 +120,19 @@ Interface IAbility  <a class="header-action link-secondary" title="View source" 
 </h2>
 
 
-  <a id="TrinketTinker_Effects_Abilities_IAbility_AbilityClass_" data-uid="TrinketTinker.Effects.Abilities.IAbility.AbilityClass*"></a>
+  <a id="TrinketTinker_Effects_Abilities_IAbility_Data_" data-uid="TrinketTinker.Effects.Abilities.IAbility.Data*"></a>
 
-  <h3 id="TrinketTinker_Effects_Abilities_IAbility_AbilityClass" data-uid="TrinketTinker.Effects.Abilities.IAbility.AbilityClass">
-  AbilityClass
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TrinketTinker_Effects_Abilities_IAbility_Data" data-uid="TrinketTinker.Effects.Abilities.IAbility.Data">
+  Data
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The data associated with this ability</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string AbilityClass { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AbilityData Data { get; }</code></pre>
   </div>
 
 
@@ -140,38 +141,7 @@ Interface IAbility  <a class="header-action link-secondary" title="View source" 
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="TrinketTinker_Effects_Abilities_IAbility_AbilityId_" data-uid="TrinketTinker.Effects.Abilities.IAbility.AbilityId*"></a>
-
-  <h3 id="TrinketTinker_Effects_Abilities_IAbility_AbilityId" data-uid="TrinketTinker.Effects.Abilities.IAbility.AbilityId">
-  AbilityId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L16"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string AbilityId { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dt><a class="xref" href="TrinketTinker.Models.AbilityData.html">AbilityData</a></dt>
     <dd></dd>
   </dl>
 
@@ -186,7 +156,7 @@ Interface IAbility  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="TrinketTinker_Effects_Abilities_IAbility_ProcSyncIndex" data-uid="TrinketTinker.Effects.Abilities.IAbility.ProcSyncIndex">
   ProcSyncIndex
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The resolved ProcSyncIndex for <a class="xref" href="TrinketTinker.Models.ProcOn.html#TrinketTinker_Models_ProcOn_Sync">Sync</a>, only set to &gt;0 if the ability is enabled</p>
@@ -218,7 +188,7 @@ Interface IAbility  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="TrinketTinker_Effects_Abilities_IAbility_Valid" data-uid="TrinketTinker.Effects.Abilities.IAbility.Valid">
   Valid
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Mark the new ability as valid, if this is false after constructor, the ability is discarded</p>
@@ -254,7 +224,7 @@ Interface IAbility  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="TrinketTinker_Effects_Abilities_IAbility_Activate_StardewValley_Farmer_" data-uid="TrinketTinker.Effects.Abilities.IAbility.Activate(StardewValley.Farmer)">
   Activate(Farmer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Activate the ability by registering events.</p>
@@ -291,7 +261,7 @@ Interface IAbility  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="TrinketTinker_Effects_Abilities_IAbility_Deactivate_StardewValley_Farmer_" data-uid="TrinketTinker.Effects.Abilities.IAbility.Deactivate(StardewValley.Farmer)">
   Deactivate(Farmer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Deactivate the ability by unregistering events.</p>
@@ -324,11 +294,50 @@ Interface IAbility  <a class="header-action link-secondary" title="View source" 
 
 
 
+  <a id="TrinketTinker_Effects_Abilities_IAbility_InteractProc_" data-uid="TrinketTinker.Effects.Abilities.IAbility.InteractProc*"></a>
+
+  <h3 id="TrinketTinker_Effects_Abilities_IAbility_InteractProc_System_Object_TrinketTinker_Effects_Support_ProcEventArgs_" data-uid="TrinketTinker.Effects.Abilities.IAbility.InteractProc(System.Object,TrinketTinker.Effects.Support.ProcEventArgs)">
+  InteractProc(object?, ProcEventArgs)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Manually proc this ability for <a class="xref" href="TrinketTinker.Models.ProcOn.html#TrinketTinker_Models_ProcOn_Interact">Interact</a> which has special handling and does not use events.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool InteractProc(object? sender, ProcEventArgs proc)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sender</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+    <dt><code>proc</code> <a class="xref" href="TrinketTinker.Effects.Support.ProcEventArgs.html">ProcEventArgs</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="TrinketTinker_Effects_Abilities_IAbility_Update_" data-uid="TrinketTinker.Effects.Abilities.IAbility.Update*"></a>
 
   <h3 id="TrinketTinker_Effects_Abilities_IAbility_Update_StardewValley_Farmer_Microsoft_Xna_Framework_GameTime_StardewValley_GameLocation_" data-uid="TrinketTinker.Effects.Abilities.IAbility.Update(StardewValley.Farmer,Microsoft.Xna.Framework.GameTime,StardewValley.GameLocation)">
   Update(Farmer, GameTime, GameLocation)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Perform update every tick.</p>
@@ -367,7 +376,7 @@ Interface IAbility  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="TrinketTinker_Effects_Abilities_IAbility_EventAbilityProc" data-uid="TrinketTinker.Effects.Abilities.IAbility.EventAbilityProc">
   EventAbilityProc
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Mushymato/TrinketTinker/blob/main/TrinketTinker/Effects/Abilities/IAbility.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Proc event for use with sync procs</p>

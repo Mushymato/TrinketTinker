@@ -3003,23 +3003,6 @@ references:
   fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).AbilityClass
   nameWithType: Ability<TArgs>.AbilityClass
   nameWithType.vb: Ability(Of TArgs).AbilityClass
-- uid: TrinketTinker.Effects.Abilities.Ability`1.AbilityId
-  name: AbilityId
-  href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_AbilityId
-  commentId: P:TrinketTinker.Effects.Abilities.Ability`1.AbilityId
-  fullName: TrinketTinker.Effects.Abilities.Ability<TArgs>.AbilityId
-  fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).AbilityId
-  nameWithType: Ability<TArgs>.AbilityId
-  nameWithType.vb: Ability(Of TArgs).AbilityId
-- uid: TrinketTinker.Effects.Abilities.Ability`1.AbilityId*
-  name: AbilityId
-  href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_AbilityId_
-  commentId: Overload:TrinketTinker.Effects.Abilities.Ability`1.AbilityId
-  isSpec: "True"
-  fullName: TrinketTinker.Effects.Abilities.Ability<TArgs>.AbilityId
-  fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).AbilityId
-  nameWithType: Ability<TArgs>.AbilityId
-  nameWithType.vb: Ability(Of TArgs).AbilityId
 - uid: TrinketTinker.Effects.Abilities.Ability`1.Activate(StardewValley.Farmer)
   name: Activate(Farmer)
   href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Activate_StardewValley_Farmer_
@@ -3122,6 +3105,23 @@ references:
   fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).ConsumeFuel
   nameWithType: Ability<TArgs>.ConsumeFuel
   nameWithType.vb: Ability(Of TArgs).ConsumeFuel
+- uid: TrinketTinker.Effects.Abilities.Ability`1.Data
+  name: Data
+  href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Data
+  commentId: P:TrinketTinker.Effects.Abilities.Ability`1.Data
+  fullName: TrinketTinker.Effects.Abilities.Ability<TArgs>.Data
+  fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).Data
+  nameWithType: Ability<TArgs>.Data
+  nameWithType.vb: Ability(Of TArgs).Data
+- uid: TrinketTinker.Effects.Abilities.Ability`1.Data*
+  name: Data
+  href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Data_
+  commentId: Overload:TrinketTinker.Effects.Abilities.Ability`1.Data
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.Ability<TArgs>.Data
+  fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).Data
+  nameWithType: Ability<TArgs>.Data
+  nameWithType.vb: Ability(Of TArgs).Data
 - uid: TrinketTinker.Effects.Abilities.Ability`1.Deactivate(StardewValley.Farmer)
   name: Deactivate(Farmer)
   href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Deactivate_StardewValley_Farmer_
@@ -3182,6 +3182,24 @@ references:
   fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).HandleProc
   nameWithType: Ability<TArgs>.HandleProc
   nameWithType.vb: Ability(Of TArgs).HandleProc
+- uid: TrinketTinker.Effects.Abilities.Ability`1.InteractProc(System.Object,TrinketTinker.Effects.Support.ProcEventArgs)
+  name: InteractProc(object?, ProcEventArgs)
+  href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_InteractProc_System_Object_TrinketTinker_Effects_Support_ProcEventArgs_
+  commentId: M:TrinketTinker.Effects.Abilities.Ability`1.InteractProc(System.Object,TrinketTinker.Effects.Support.ProcEventArgs)
+  name.vb: InteractProc(Object, ProcEventArgs)
+  fullName: TrinketTinker.Effects.Abilities.Ability<TArgs>.InteractProc(object?, TrinketTinker.Effects.Support.ProcEventArgs)
+  fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).InteractProc(Object, TrinketTinker.Effects.Support.ProcEventArgs)
+  nameWithType: Ability<TArgs>.InteractProc(object?, ProcEventArgs)
+  nameWithType.vb: Ability(Of TArgs).InteractProc(Object, ProcEventArgs)
+- uid: TrinketTinker.Effects.Abilities.Ability`1.InteractProc*
+  name: InteractProc
+  href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_InteractProc_
+  commentId: Overload:TrinketTinker.Effects.Abilities.Ability`1.InteractProc
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.Ability<TArgs>.InteractProc
+  fullName.vb: TrinketTinker.Effects.Abilities.Ability(Of TArgs).InteractProc
+  nameWithType: Ability<TArgs>.InteractProc
+  nameWithType.vb: Ability(Of TArgs).InteractProc
 - uid: TrinketTinker.Effects.Abilities.Ability`1.Name
   name: Name
   href: api/TrinketTinker.Effects.Abilities.Ability-1.html#TrinketTinker_Effects_Abilities_Ability_1_Name
@@ -4216,32 +4234,6 @@ references:
   commentId: T:TrinketTinker.Effects.Abilities.IAbility
   fullName: TrinketTinker.Effects.Abilities.IAbility
   nameWithType: IAbility
-- uid: TrinketTinker.Effects.Abilities.IAbility.AbilityClass
-  name: AbilityClass
-  href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_AbilityClass
-  commentId: P:TrinketTinker.Effects.Abilities.IAbility.AbilityClass
-  fullName: TrinketTinker.Effects.Abilities.IAbility.AbilityClass
-  nameWithType: IAbility.AbilityClass
-- uid: TrinketTinker.Effects.Abilities.IAbility.AbilityClass*
-  name: AbilityClass
-  href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_AbilityClass_
-  commentId: Overload:TrinketTinker.Effects.Abilities.IAbility.AbilityClass
-  isSpec: "True"
-  fullName: TrinketTinker.Effects.Abilities.IAbility.AbilityClass
-  nameWithType: IAbility.AbilityClass
-- uid: TrinketTinker.Effects.Abilities.IAbility.AbilityId
-  name: AbilityId
-  href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_AbilityId
-  commentId: P:TrinketTinker.Effects.Abilities.IAbility.AbilityId
-  fullName: TrinketTinker.Effects.Abilities.IAbility.AbilityId
-  nameWithType: IAbility.AbilityId
-- uid: TrinketTinker.Effects.Abilities.IAbility.AbilityId*
-  name: AbilityId
-  href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_AbilityId_
-  commentId: Overload:TrinketTinker.Effects.Abilities.IAbility.AbilityId
-  isSpec: "True"
-  fullName: TrinketTinker.Effects.Abilities.IAbility.AbilityId
-  nameWithType: IAbility.AbilityId
 - uid: TrinketTinker.Effects.Abilities.IAbility.Activate(StardewValley.Farmer)
   name: Activate(Farmer)
   href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_Activate_StardewValley_Farmer_
@@ -4255,6 +4247,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.Abilities.IAbility.Activate
   nameWithType: IAbility.Activate
+- uid: TrinketTinker.Effects.Abilities.IAbility.Data
+  name: Data
+  href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_Data
+  commentId: P:TrinketTinker.Effects.Abilities.IAbility.Data
+  fullName: TrinketTinker.Effects.Abilities.IAbility.Data
+  nameWithType: IAbility.Data
+- uid: TrinketTinker.Effects.Abilities.IAbility.Data*
+  name: Data
+  href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_Data_
+  commentId: Overload:TrinketTinker.Effects.Abilities.IAbility.Data
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.IAbility.Data
+  nameWithType: IAbility.Data
 - uid: TrinketTinker.Effects.Abilities.IAbility.Deactivate(StardewValley.Farmer)
   name: Deactivate(Farmer)
   href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_Deactivate_StardewValley_Farmer_
@@ -4274,6 +4279,22 @@ references:
   commentId: E:TrinketTinker.Effects.Abilities.IAbility.EventAbilityProc
   fullName: TrinketTinker.Effects.Abilities.IAbility.EventAbilityProc
   nameWithType: IAbility.EventAbilityProc
+- uid: TrinketTinker.Effects.Abilities.IAbility.InteractProc(System.Object,TrinketTinker.Effects.Support.ProcEventArgs)
+  name: InteractProc(object?, ProcEventArgs)
+  href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_InteractProc_System_Object_TrinketTinker_Effects_Support_ProcEventArgs_
+  commentId: M:TrinketTinker.Effects.Abilities.IAbility.InteractProc(System.Object,TrinketTinker.Effects.Support.ProcEventArgs)
+  name.vb: InteractProc(Object, ProcEventArgs)
+  fullName: TrinketTinker.Effects.Abilities.IAbility.InteractProc(object?, TrinketTinker.Effects.Support.ProcEventArgs)
+  fullName.vb: TrinketTinker.Effects.Abilities.IAbility.InteractProc(Object, TrinketTinker.Effects.Support.ProcEventArgs)
+  nameWithType: IAbility.InteractProc(object?, ProcEventArgs)
+  nameWithType.vb: IAbility.InteractProc(Object, ProcEventArgs)
+- uid: TrinketTinker.Effects.Abilities.IAbility.InteractProc*
+  name: InteractProc
+  href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_InteractProc_
+  commentId: Overload:TrinketTinker.Effects.Abilities.IAbility.InteractProc
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.Abilities.IAbility.InteractProc
+  nameWithType: IAbility.InteractProc
 - uid: TrinketTinker.Effects.Abilities.IAbility.ProcSyncIndex
   name: ProcSyncIndex
   href: api/TrinketTinker.Effects.Abilities.IAbility.html#TrinketTinker_Effects_Abilities_IAbility_ProcSyncIndex
@@ -4992,12 +5013,12 @@ references:
   fullName.vb: TrinketTinker.Effects.TrinketTinkerEffect.New
   nameWithType: TrinketTinkerEffect.TrinketTinkerEffect
   nameWithType.vb: TrinketTinkerEffect.New
-- uid: TrinketTinker.Effects.TrinketTinkerEffect.AddItemToInventory(StardewValley.Item)
-  name: AddItemToInventory(Item)
-  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_AddItemToInventory_StardewValley_Item_
-  commentId: M:TrinketTinker.Effects.TrinketTinkerEffect.AddItemToInventory(StardewValley.Item)
-  fullName: TrinketTinker.Effects.TrinketTinkerEffect.AddItemToInventory(StardewValley.Item)
-  nameWithType: TrinketTinkerEffect.AddItemToInventory(Item)
+- uid: TrinketTinker.Effects.TrinketTinkerEffect.AddItemToInventory(StardewValley.Item,StardewValley.Farmer)
+  name: AddItemToInventory(Item, Farmer)
+  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_AddItemToInventory_StardewValley_Item_StardewValley_Farmer_
+  commentId: M:TrinketTinker.Effects.TrinketTinkerEffect.AddItemToInventory(StardewValley.Item,StardewValley.Farmer)
+  fullName: TrinketTinker.Effects.TrinketTinkerEffect.AddItemToInventory(StardewValley.Item, StardewValley.Farmer)
+  nameWithType: TrinketTinkerEffect.AddItemToInventory(Item, Farmer)
 - uid: TrinketTinker.Effects.TrinketTinkerEffect.AddItemToInventory*
   name: AddItemToInventory
   href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_AddItemToInventory_
@@ -5031,12 +5052,15 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.TrinketTinkerEffect.CanAcceptThisItem
   nameWithType: TrinketTinkerEffect.CanAcceptThisItem
-- uid: TrinketTinker.Effects.TrinketTinkerEffect.CheckInteraction(StardewValley.Farmer)
-  name: CheckInteraction(Farmer)
-  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_CheckInteraction_StardewValley_Farmer_
-  commentId: M:TrinketTinker.Effects.TrinketTinkerEffect.CheckInteraction(StardewValley.Farmer)
-  fullName: TrinketTinker.Effects.TrinketTinkerEffect.CheckInteraction(StardewValley.Farmer)
-  nameWithType: TrinketTinkerEffect.CheckInteraction(Farmer)
+- uid: TrinketTinker.Effects.TrinketTinkerEffect.CheckInteraction(StardewValley.Farmer,System.Collections.Generic.IReadOnlyList{TrinketTinker.Effects.Abilities.IAbility}@,System.Boolean@)
+  name: CheckInteraction(Farmer, out IReadOnlyList<IAbility>?, out bool)
+  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_CheckInteraction_StardewValley_Farmer_System_Collections_Generic_IReadOnlyList_TrinketTinker_Effects_Abilities_IAbility___System_Boolean__
+  commentId: M:TrinketTinker.Effects.TrinketTinkerEffect.CheckInteraction(StardewValley.Farmer,System.Collections.Generic.IReadOnlyList{TrinketTinker.Effects.Abilities.IAbility}@,System.Boolean@)
+  name.vb: CheckInteraction(Farmer, IReadOnlyList(Of IAbility), Boolean)
+  fullName: TrinketTinker.Effects.TrinketTinkerEffect.CheckInteraction(StardewValley.Farmer, out System.Collections.Generic.IReadOnlyList<TrinketTinker.Effects.Abilities.IAbility>?, out bool)
+  fullName.vb: TrinketTinker.Effects.TrinketTinkerEffect.CheckInteraction(StardewValley.Farmer, System.Collections.Generic.IReadOnlyList(Of TrinketTinker.Effects.Abilities.IAbility), Boolean)
+  nameWithType: TrinketTinkerEffect.CheckInteraction(Farmer, out IReadOnlyList<IAbility>?, out bool)
+  nameWithType.vb: TrinketTinkerEffect.CheckInteraction(Farmer, IReadOnlyList(Of IAbility), Boolean)
 - uid: TrinketTinker.Effects.TrinketTinkerEffect.CheckInteraction*
   name: CheckInteraction
   href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_CheckInteraction_
@@ -5135,12 +5159,15 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.TrinketTinkerEffect.CompanionSpeaker
   nameWithType: TrinketTinkerEffect.CompanionSpeaker
-- uid: TrinketTinker.Effects.TrinketTinkerEffect.DoInteraction(StardewValley.Farmer)
-  name: DoInteraction(Farmer)
-  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_DoInteraction_StardewValley_Farmer_
-  commentId: M:TrinketTinker.Effects.TrinketTinkerEffect.DoInteraction(StardewValley.Farmer)
-  fullName: TrinketTinker.Effects.TrinketTinkerEffect.DoInteraction(StardewValley.Farmer)
-  nameWithType: TrinketTinkerEffect.DoInteraction(Farmer)
+- uid: TrinketTinker.Effects.TrinketTinkerEffect.DoInteraction(StardewValley.Farmer,System.Collections.Generic.IReadOnlyList{TrinketTinker.Effects.Abilities.IAbility},System.Boolean)
+  name: DoInteraction(Farmer, IReadOnlyList<IAbility>, bool)
+  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_DoInteraction_StardewValley_Farmer_System_Collections_Generic_IReadOnlyList_TrinketTinker_Effects_Abilities_IAbility__System_Boolean_
+  commentId: M:TrinketTinker.Effects.TrinketTinkerEffect.DoInteraction(StardewValley.Farmer,System.Collections.Generic.IReadOnlyList{TrinketTinker.Effects.Abilities.IAbility},System.Boolean)
+  name.vb: DoInteraction(Farmer, IReadOnlyList(Of IAbility), Boolean)
+  fullName: TrinketTinker.Effects.TrinketTinkerEffect.DoInteraction(StardewValley.Farmer, System.Collections.Generic.IReadOnlyList<TrinketTinker.Effects.Abilities.IAbility>, bool)
+  fullName.vb: TrinketTinker.Effects.TrinketTinkerEffect.DoInteraction(StardewValley.Farmer, System.Collections.Generic.IReadOnlyList(Of TrinketTinker.Effects.Abilities.IAbility), Boolean)
+  nameWithType: TrinketTinkerEffect.DoInteraction(Farmer, IReadOnlyList<IAbility>, bool)
+  nameWithType.vb: TrinketTinkerEffect.DoInteraction(Farmer, IReadOnlyList(Of IAbility), Boolean)
 - uid: TrinketTinker.Effects.TrinketTinkerEffect.DoInteraction*
   name: DoInteraction
   href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_DoInteraction_
@@ -5369,6 +5396,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Effects.TrinketTinkerEffect.OnTrigger
   nameWithType: TrinketTinkerEffect.OnTrigger
+- uid: TrinketTinker.Effects.TrinketTinkerEffect.OnTrinketInventoryChanged(StardewValley.Farmer)
+  name: OnTrinketInventoryChanged(Farmer)
+  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_OnTrinketInventoryChanged_StardewValley_Farmer_
+  commentId: M:TrinketTinker.Effects.TrinketTinkerEffect.OnTrinketInventoryChanged(StardewValley.Farmer)
+  fullName: TrinketTinker.Effects.TrinketTinkerEffect.OnTrinketInventoryChanged(StardewValley.Farmer)
+  nameWithType: TrinketTinkerEffect.OnTrinketInventoryChanged(Farmer)
+- uid: TrinketTinker.Effects.TrinketTinkerEffect.OnTrinketInventoryChanged*
+  name: OnTrinketInventoryChanged
+  href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_OnTrinketInventoryChanged_
+  commentId: Overload:TrinketTinker.Effects.TrinketTinkerEffect.OnTrinketInventoryChanged
+  isSpec: "True"
+  fullName: TrinketTinker.Effects.TrinketTinkerEffect.OnTrinketInventoryChanged
+  nameWithType: TrinketTinkerEffect.OnTrinketInventoryChanged
 - uid: TrinketTinker.Effects.TrinketTinkerEffect.OnUse(StardewValley.Farmer)
   name: OnUse(Farmer)
   href: api/TrinketTinker.Effects.TrinketTinkerEffect.html#TrinketTinker_Effects_TrinketTinkerEffect_OnUse_StardewValley_Farmer_
@@ -5740,6 +5780,12 @@ references:
   commentId: F:TrinketTinker.Extras.GameItemQuery.GameStateQuery_IS_TINKER
   fullName: TrinketTinker.Extras.GameItemQuery.GameStateQuery_IS_TINKER
   nameWithType: GameItemQuery.GameStateQuery_IS_TINKER
+- uid: TrinketTinker.Extras.GameItemQuery.GameStateQuery_TRINKET_HAS_COUNT_ITEMS
+  name: GameStateQuery_TRINKET_HAS_COUNT_ITEMS
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GameStateQuery_TRINKET_HAS_COUNT_ITEMS
+  commentId: F:TrinketTinker.Extras.GameItemQuery.GameStateQuery_TRINKET_HAS_COUNT_ITEMS
+  fullName: TrinketTinker.Extras.GameItemQuery.GameStateQuery_TRINKET_HAS_COUNT_ITEMS
+  nameWithType: GameItemQuery.GameStateQuery_TRINKET_HAS_COUNT_ITEMS
 - uid: TrinketTinker.Extras.GameItemQuery.GameStateQuery_TRINKET_HAS_HAT
   name: GameStateQuery_TRINKET_HAS_HAT
   href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GameStateQuery_TRINKET_HAS_HAT
@@ -5752,6 +5798,12 @@ references:
   commentId: F:TrinketTinker.Extras.GameItemQuery.GameStateQuery_TRINKET_HAS_ITEM
   fullName: TrinketTinker.Extras.GameItemQuery.GameStateQuery_TRINKET_HAS_ITEM
   nameWithType: GameItemQuery.GameStateQuery_TRINKET_HAS_ITEM
+- uid: TrinketTinker.Extras.GameItemQuery.GameStateQuery_TRINKET_HAS_ITEM_CONTEXT_TAG
+  name: GameStateQuery_TRINKET_HAS_ITEM_CONTEXT_TAG
+  href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_GameStateQuery_TRINKET_HAS_ITEM_CONTEXT_TAG
+  commentId: F:TrinketTinker.Extras.GameItemQuery.GameStateQuery_TRINKET_HAS_ITEM_CONTEXT_TAG
+  fullName: TrinketTinker.Extras.GameItemQuery.GameStateQuery_TRINKET_HAS_ITEM_CONTEXT_TAG
+  nameWithType: GameItemQuery.GameStateQuery_TRINKET_HAS_ITEM_CONTEXT_TAG
 - uid: TrinketTinker.Extras.GameItemQuery.IQ_CREATE_TRINKET(System.String,System.String,StardewValley.Internal.ItemQueryContext,System.Boolean,System.Collections.Generic.HashSet{System.String},System.Action{System.String,System.String})
   name: IQ_CREATE_TRINKET(string, string, ItemQueryContext, bool, HashSet<string>?, Action<string, string>)
   href: api/TrinketTinker.Extras.GameItemQuery.html#TrinketTinker_Extras_GameItemQuery_IQ_CREATE_TRINKET_System_String_System_String_StardewValley_Internal_ItemQueryContext_System_Boolean_System_Collections_Generic_HashSet_System_String__System_Action_System_String_System_String__
@@ -7656,6 +7708,19 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.AbilityData.ProcFuel
   nameWithType: AbilityData.ProcFuel
+- uid: TrinketTinker.Models.AbilityData.ProcInteractGift
+  name: ProcInteractGift
+  href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcInteractGift
+  commentId: P:TrinketTinker.Models.AbilityData.ProcInteractGift
+  fullName: TrinketTinker.Models.AbilityData.ProcInteractGift
+  nameWithType: AbilityData.ProcInteractGift
+- uid: TrinketTinker.Models.AbilityData.ProcInteractGift*
+  name: ProcInteractGift
+  href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcInteractGift_
+  commentId: Overload:TrinketTinker.Models.AbilityData.ProcInteractGift
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityData.ProcInteractGift
+  nameWithType: AbilityData.ProcInteractGift
 - uid: TrinketTinker.Models.AbilityData.ProcOneshotAnim
   name: ProcOneshotAnim
   href: api/TrinketTinker.Models.AbilityData.html#TrinketTinker_Models_AbilityData_ProcOneshotAnim
@@ -9121,6 +9186,51 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.Mixin.NoArgs.Validate
   nameWithType: NoArgs.Validate
+- uid: TrinketTinker.Models.Mixin.RequiredItemData
+  name: RequiredItemData
+  href: api/TrinketTinker.Models.Mixin.RequiredItemData.html
+  commentId: T:TrinketTinker.Models.Mixin.RequiredItemData
+  fullName: TrinketTinker.Models.Mixin.RequiredItemData
+  nameWithType: RequiredItemData
+- uid: TrinketTinker.Models.Mixin.RequiredItemData.Condition
+  name: Condition
+  href: api/TrinketTinker.Models.Mixin.RequiredItemData.html#TrinketTinker_Models_Mixin_RequiredItemData_Condition
+  commentId: P:TrinketTinker.Models.Mixin.RequiredItemData.Condition
+  fullName: TrinketTinker.Models.Mixin.RequiredItemData.Condition
+  nameWithType: RequiredItemData.Condition
+- uid: TrinketTinker.Models.Mixin.RequiredItemData.Condition*
+  name: Condition
+  href: api/TrinketTinker.Models.Mixin.RequiredItemData.html#TrinketTinker_Models_Mixin_RequiredItemData_Condition_
+  commentId: Overload:TrinketTinker.Models.Mixin.RequiredItemData.Condition
+  isSpec: "True"
+  fullName: TrinketTinker.Models.Mixin.RequiredItemData.Condition
+  nameWithType: RequiredItemData.Condition
+- uid: TrinketTinker.Models.Mixin.RequiredItemData.RequiredItemId
+  name: RequiredItemId
+  href: api/TrinketTinker.Models.Mixin.RequiredItemData.html#TrinketTinker_Models_Mixin_RequiredItemData_RequiredItemId
+  commentId: P:TrinketTinker.Models.Mixin.RequiredItemData.RequiredItemId
+  fullName: TrinketTinker.Models.Mixin.RequiredItemData.RequiredItemId
+  nameWithType: RequiredItemData.RequiredItemId
+- uid: TrinketTinker.Models.Mixin.RequiredItemData.RequiredItemId*
+  name: RequiredItemId
+  href: api/TrinketTinker.Models.Mixin.RequiredItemData.html#TrinketTinker_Models_Mixin_RequiredItemData_RequiredItemId_
+  commentId: Overload:TrinketTinker.Models.Mixin.RequiredItemData.RequiredItemId
+  isSpec: "True"
+  fullName: TrinketTinker.Models.Mixin.RequiredItemData.RequiredItemId
+  nameWithType: RequiredItemData.RequiredItemId
+- uid: TrinketTinker.Models.Mixin.RequiredItemData.RequiredTags
+  name: RequiredTags
+  href: api/TrinketTinker.Models.Mixin.RequiredItemData.html#TrinketTinker_Models_Mixin_RequiredItemData_RequiredTags
+  commentId: P:TrinketTinker.Models.Mixin.RequiredItemData.RequiredTags
+  fullName: TrinketTinker.Models.Mixin.RequiredItemData.RequiredTags
+  nameWithType: RequiredItemData.RequiredTags
+- uid: TrinketTinker.Models.Mixin.RequiredItemData.RequiredTags*
+  name: RequiredTags
+  href: api/TrinketTinker.Models.Mixin.RequiredItemData.html#TrinketTinker_Models_Mixin_RequiredItemData_RequiredTags_
+  commentId: Overload:TrinketTinker.Models.Mixin.RequiredItemData.RequiredTags
+  isSpec: "True"
+  fullName: TrinketTinker.Models.Mixin.RequiredItemData.RequiredTags
+  nameWithType: RequiredItemData.RequiredTags
 - uid: TrinketTinker.Models.Mixin.WeightedRandData
   name: WeightedRandData
   href: api/TrinketTinker.Models.Mixin.WeightedRandData.html
@@ -9998,6 +10108,12 @@ references:
   commentId: T:TrinketTinker.Models.ProcOn
   fullName: TrinketTinker.Models.ProcOn
   nameWithType: ProcOn
+- uid: TrinketTinker.Models.ProcOn.ActiveItemChange
+  name: ActiveItemChange
+  href: api/TrinketTinker.Models.ProcOn.html#TrinketTinker_Models_ProcOn_ActiveItemChange
+  commentId: F:TrinketTinker.Models.ProcOn.ActiveItemChange
+  fullName: TrinketTinker.Models.ProcOn.ActiveItemChange
+  nameWithType: ProcOn.ActiveItemChange
 - uid: TrinketTinker.Models.ProcOn.Always
   name: Always
   href: api/TrinketTinker.Models.ProcOn.html#TrinketTinker_Models_ProcOn_Always
@@ -10046,12 +10162,12 @@ references:
   commentId: F:TrinketTinker.Models.ProcOn.Timer
   fullName: TrinketTinker.Models.ProcOn.Timer
   nameWithType: ProcOn.Timer
-- uid: TrinketTinker.Models.ProcOn.ToolChange
-  name: ToolChange
-  href: api/TrinketTinker.Models.ProcOn.html#TrinketTinker_Models_ProcOn_ToolChange
-  commentId: F:TrinketTinker.Models.ProcOn.ToolChange
-  fullName: TrinketTinker.Models.ProcOn.ToolChange
-  nameWithType: ProcOn.ToolChange
+- uid: TrinketTinker.Models.ProcOn.TinkerInventoryChange
+  name: TinkerInventoryChange
+  href: api/TrinketTinker.Models.ProcOn.html#TrinketTinker_Models_ProcOn_TinkerInventoryChange
+  commentId: F:TrinketTinker.Models.ProcOn.TinkerInventoryChange
+  fullName: TrinketTinker.Models.ProcOn.TinkerInventoryChange
+  nameWithType: ProcOn.TinkerInventoryChange
 - uid: TrinketTinker.Models.ProcOn.Trigger
   name: Trigger
   href: api/TrinketTinker.Models.ProcOn.html#TrinketTinker_Models_ProcOn_Trigger
@@ -10123,19 +10239,6 @@ references:
   commentId: T:TrinketTinker.Models.RequiredFuelData
   fullName: TrinketTinker.Models.RequiredFuelData
   nameWithType: RequiredFuelData
-- uid: TrinketTinker.Models.RequiredFuelData.Condition
-  name: Condition
-  href: api/TrinketTinker.Models.RequiredFuelData.html#TrinketTinker_Models_RequiredFuelData_Condition
-  commentId: P:TrinketTinker.Models.RequiredFuelData.Condition
-  fullName: TrinketTinker.Models.RequiredFuelData.Condition
-  nameWithType: RequiredFuelData.Condition
-- uid: TrinketTinker.Models.RequiredFuelData.Condition*
-  name: Condition
-  href: api/TrinketTinker.Models.RequiredFuelData.html#TrinketTinker_Models_RequiredFuelData_Condition_
-  commentId: Overload:TrinketTinker.Models.RequiredFuelData.Condition
-  isSpec: "True"
-  fullName: TrinketTinker.Models.RequiredFuelData.Condition
-  nameWithType: RequiredFuelData.Condition
 - uid: TrinketTinker.Models.RequiredFuelData.RequiredCount
   name: RequiredCount
   href: api/TrinketTinker.Models.RequiredFuelData.html#TrinketTinker_Models_RequiredFuelData_RequiredCount
@@ -10149,32 +10252,6 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.RequiredFuelData.RequiredCount
   nameWithType: RequiredFuelData.RequiredCount
-- uid: TrinketTinker.Models.RequiredFuelData.RequiredItemId
-  name: RequiredItemId
-  href: api/TrinketTinker.Models.RequiredFuelData.html#TrinketTinker_Models_RequiredFuelData_RequiredItemId
-  commentId: P:TrinketTinker.Models.RequiredFuelData.RequiredItemId
-  fullName: TrinketTinker.Models.RequiredFuelData.RequiredItemId
-  nameWithType: RequiredFuelData.RequiredItemId
-- uid: TrinketTinker.Models.RequiredFuelData.RequiredItemId*
-  name: RequiredItemId
-  href: api/TrinketTinker.Models.RequiredFuelData.html#TrinketTinker_Models_RequiredFuelData_RequiredItemId_
-  commentId: Overload:TrinketTinker.Models.RequiredFuelData.RequiredItemId
-  isSpec: "True"
-  fullName: TrinketTinker.Models.RequiredFuelData.RequiredItemId
-  nameWithType: RequiredFuelData.RequiredItemId
-- uid: TrinketTinker.Models.RequiredFuelData.RequiredTags
-  name: RequiredTags
-  href: api/TrinketTinker.Models.RequiredFuelData.html#TrinketTinker_Models_RequiredFuelData_RequiredTags
-  commentId: P:TrinketTinker.Models.RequiredFuelData.RequiredTags
-  fullName: TrinketTinker.Models.RequiredFuelData.RequiredTags
-  nameWithType: RequiredFuelData.RequiredTags
-- uid: TrinketTinker.Models.RequiredFuelData.RequiredTags*
-  name: RequiredTags
-  href: api/TrinketTinker.Models.RequiredFuelData.html#TrinketTinker_Models_RequiredFuelData_RequiredTags_
-  commentId: Overload:TrinketTinker.Models.RequiredFuelData.RequiredTags
-  isSpec: "True"
-  fullName: TrinketTinker.Models.RequiredFuelData.RequiredTags
-  nameWithType: RequiredFuelData.RequiredTags
 - uid: TrinketTinker.Models.SpeechBubbleData
   name: SpeechBubbleData
   href: api/TrinketTinker.Models.SpeechBubbleData.html
@@ -10702,19 +10779,6 @@ references:
   isSpec: "True"
   fullName: TrinketTinker.Models.TinkerInventoryData.RequiredItemCondition
   nameWithType: TinkerInventoryData.RequiredItemCondition
-- uid: TrinketTinker.Models.TinkerInventoryData.RequiredTags
-  name: RequiredTags
-  href: api/TrinketTinker.Models.TinkerInventoryData.html#TrinketTinker_Models_TinkerInventoryData_RequiredTags
-  commentId: P:TrinketTinker.Models.TinkerInventoryData.RequiredTags
-  fullName: TrinketTinker.Models.TinkerInventoryData.RequiredTags
-  nameWithType: TinkerInventoryData.RequiredTags
-- uid: TrinketTinker.Models.TinkerInventoryData.RequiredTags*
-  name: RequiredTags
-  href: api/TrinketTinker.Models.TinkerInventoryData.html#TrinketTinker_Models_TinkerInventoryData_RequiredTags_
-  commentId: Overload:TrinketTinker.Models.TinkerInventoryData.RequiredTags
-  isSpec: "True"
-  fullName: TrinketTinker.Models.TinkerInventoryData.RequiredTags
-  nameWithType: TinkerInventoryData.RequiredTags
 - uid: TrinketTinker.Models.VariantData
   name: VariantData
   href: api/TrinketTinker.Models.VariantData.html
