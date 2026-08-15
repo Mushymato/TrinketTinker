@@ -76,6 +76,7 @@ An ability is primarily defined by `AbilityClass` (what it does) and `Proc` (whe
 | `ProcOneshotAnim` | string | _null_ | Play the matching [anim clip](003.2-Animation%20Clips.md) on proc, return to normal animation after 1 cycle. |
 | `ProcSpeechBubble` | string | _null_ | Show the matching [speech bubble](003.3-Speech%20Bubbles.md) on proc. |
 | `ProcAltVariant` | string | _null_ | Switch the companion to the matching [alt variant](002-Variant.md) on proc. Use `"RECHECK"` to switch |
+| `ProcInteractGift` | RequiredItemData | _null_ | When used with [Interact](004.0-Proc.md) proc and the player is holding a valid item, . |
 | `ProcChatterKey` | string | _null_ | On the next activation of a [Chatter ability](005.1-Chatter.md), use this key instead of the normal conditional key. |
 | `Condition` | string | _null_ | A [game state query](https://stardewvalleywiki.com/Modding:Game_state_queries) that must pass before proc. |
 | `DamageThreshold` | int | -1 | Must receive or deal this much damage before proc.<br>For ReceiveDamage & DamageMonster |
@@ -127,7 +128,7 @@ first ability C
 second ability D
 ```
 
-## Fuel Item
+## ProcFuel: Fuel Item
 
 | Property | Type | Default | Notes |
 | -------- | ---- | ------- | ----- |
@@ -138,3 +139,15 @@ second ability D
 
 An item must qualify for at least one of `RequiredItemId`, `RequiredTags`, and `Condition` to be considered fuel to be consumed.
 If not enough fuel items, nothing is consumed and the ability does not activate.
+
+## ProcInteractGift: Gift Item
+
+| Property | Type | Default | Notes |
+| -------- | ---- | ------- | ----- |
+| `RequiredItemId` | string | _null_ | Required item id, to target a specific item. |
+| `RequiredTags` | List<string> | _null_ | Required item context tag, target all items that have all of these tags. |
+| `Condition` | string | _null_ | Required item [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) condition. |
+
+The item being checked is the active item, i.e. whatever held over head.
+It must qualify for at least one of `RequiredItemId`, `RequiredTags`, and `Condition` to be considered a gift.
+This only applies when the proc is **Interact**.

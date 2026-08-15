@@ -7,7 +7,8 @@
 ### 1.9.0
 
 ### Added
-- New proc for tinker inventory change
+- New proc ActiveItemChange: proc when the player moves to a different item on their toolbar
+- New proc TinkerInventoryChange: proc when the trinket's inventory acquires new items
 - Can now give things to the companion via interaction using ProcInteractGift.
 - New GSQs
     - `mushymato.TrinketTinker_TRINKET_HAS_ITEM_CONTEXT_TAG` check if the trinket's inventory contains items matching the given context tags
@@ -15,9 +16,6 @@
 
 ### Changed
 - When multiple interactions are possible, a menu is shown and user can pick which trinket to interact with.
-
-### Fixed
-- Tool proc now do things yay
 
 ### 1.8.1
 
