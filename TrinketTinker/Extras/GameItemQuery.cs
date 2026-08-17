@@ -195,10 +195,7 @@ public static class GameItemQuery
                 return false;
             if (!ArgUtility.TryGet(query, idx, out string? itemId, out string? _, allowBlank: true, "string itemId"))
             {
-                ModEntry.Log(
-                    $"Failed parsing condition '{string.Join(" ", query)}': {error}.",
-                    StardewModdingAPI.LogLevel.Warn
-                );
+                ModEntry.Log($"Failed parsing condition '{string.Join(" ", query)}': {error}.", LogLevel.Warn);
                 return false;
             }
             if (ItemRegistry.Create(itemId
