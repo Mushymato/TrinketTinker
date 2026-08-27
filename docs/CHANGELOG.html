@@ -77,6 +77,17 @@
 <p>All notable changes to this project will be documented here.</p>
 <p>The format is based on <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</a>, and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 </blockquote>
+<h3 id="192">1.9.2</h3>
+<h4 id="fixed">Fixed</h4>
+<ul>
+<li>Inventory <code>DropContentsAsDebrisCondition</code> should default to <code>FALSE</code></li>
+<li>Unify RequiredTags logic to use list OR space sep AND</li>
+</ul>
+<h3 id="191">1.9.1</h3>
+<h4 id="fixed-1">Fixed</h4>
+<ul>
+<li>Fixed some more NRE</li>
+</ul>
 <h3 id="190">1.9.0</h3>
 <h3 id="added">Added</h3>
 <ul>
@@ -99,7 +110,7 @@
 <ul>
 <li>Show a multiple choice menu when multiple trinket interactions are possible</li>
 </ul>
-<h4 id="fixed">Fixed</h4>
+<h4 id="fixed-2">Fixed</h4>
 <ul>
 <li>Range 0 tile args should still check if the tile is valid for the ability</li>
 <li>Changed default behavior of hidden equip createNew to true and add sprite reset logic</li>
@@ -113,7 +124,7 @@
 <li>New field <code>Tether</code>, draw a (possibly curved) line between the companion and the player.</li>
 </ul>
 <h3 id="173">1.7.3</h3>
-<h4 id="fixed-1">Fixed</h4>
+<h4 id="fixed-3">Fixed</h4>
 <ul>
 <li>Me vs EquipTrinket part 1090894303: local co-op edition</li>
 <li><code>tt.unequip_trinket</code> now removes trinkets from all players in local co-op</li>
@@ -124,7 +135,7 @@
 <li>You can now add <code>HiredSound</code> to trinkets, this plays when they are purchased via <code>mushymato.TrinketTinker_HIRE_TRINKET</code></li>
 <li>You can now prevent explosions from damaging the farmer by setting <code>ExplodeDamagesFarmer</code> to false in Hitscan/Projectile</li>
 </ul>
-<h4 id="fixed-2">Fixed</h4>
+<h4 id="fixed-4">Fixed</h4>
 <ul>
 <li>Anim clip now clamps currentFrame to valid range for the clip on set to prevent the single frame of incorrect rect</li>
 <li><code>mushymato.TrinketTinker_PutHatOnCompanion</code> no longer removes active item</li>
@@ -144,7 +155,7 @@
 <ul>
 <li><code>mushymato.TrinketTinker_EquipHiddenTrinket</code> now reuse a previously created trinket if possible, so that they can keep hats too</li>
 </ul>
-<h4 id="fixed-3">Fixed</h4>
+<h4 id="fixed-5">Fixed</h4>
 <ul>
 <li>Maybe fix a weird spawned item quality problem???</li>
 </ul>
@@ -154,7 +165,7 @@
 <li>New field <code>TreatAsProjectile</code> on hitscan and projectile abilities to explicitly define if they can bypass barriers.</li>
 <li>There are now buttons for switching between equipped trinket inventories.</li>
 </ul>
-<h4 id="fixed-4">Fixed</h4>
+<h4 id="fixed-6">Fixed</h4>
 <ul>
 <li>Hopefully fix the dupe vanilla companion problem (again).</li>
 <li>Android fallback to hopefully make the menu at least not die.</li>
@@ -164,7 +175,7 @@
 <ul>
 <li>New variant data fields <code>TextureSourceRect</code> and <code>Bounding</code></li>
 </ul>
-<h4 id="fixed-5">Fixed</h4>
+<h4 id="fixed-7">Fixed</h4>
 <ul>
 <li>Projectile failing to damage monsters across ignored barriers</li>
 </ul>
@@ -180,7 +191,7 @@
 <ul>
 <li>Lines choose now randoms between same Priority level</li>
 </ul>
-<h4 id="fixed-6">Fixed</h4>
+<h4 id="fixed-8">Fixed</h4>
 <ul>
 <li>Stamina proc check not accounting for negatives properly</li>
 </ul>
@@ -218,7 +229,7 @@
 <ul>
 <li>New user config setting, global disable showing companions in events.</li>
 </ul>
-<h4 id="fixed-7">Fixed</h4>
+<h4 id="fixed-9">Fixed</h4>
 <ul>
 <li>Trinket global inventory cleaning being incorrectly ran on farmhands as well.</li>
 </ul>
@@ -227,7 +238,7 @@
 <ul>
 <li>Hitscan and Projectile can now have FacingDirectionOnly which makes them only attack monsters in the direction the companion is facing.</li>
 </ul>
-<h4 id="fixed-8">Fixed</h4>
+<h4 id="fixed-10">Fixed</h4>
 <ul>
 <li>Alt variants swapping between 2 most valid alt variants rather than keeping 1.</li>
 </ul>
@@ -242,7 +253,7 @@
 <ul>
 <li>HarvestForage now also harvest spawned items like quartz in the mines.</li>
 </ul>
-<h4 id="fixed-9">Fixed</h4>
+<h4 id="fixed-11">Fixed</h4>
 <ul>
 <li>Hidden trinkets disappearing for 1 day when returning to menu and loading save again.</li>
 <li>Android sorta compatible-ish now, except for backpack related stuff which I can't fix at all.</li>
@@ -254,7 +265,7 @@
 <li>MoveSync now only sync movement with owner when anchor mode is owner, use MoveSyncAll for old behavior.</li>
 <li>Serpent alt segment layer depth changes to make them consistent, this is entirely by vibes and implementation detail subject to change</li>
 </ul>
-<h4 id="fixed-10">Fixed</h4>
+<h4 id="fixed-12">Fixed</h4>
 <ul>
 <li>HarvestTo TrinketInventory not harvesting custom bush drops properly</li>
 <li>Temporary Animated Sprite now checks Condition, if given</li>
@@ -270,7 +281,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="fixed-11">Fixed</h4>
+<h4 id="fixed-13">Fixed</h4>
 <ul>
 <li>Separated position from offset to make companions better at harvesting things at Range=0</li>
 <li>HarvestCrop only harvesting to player inventory</li>
@@ -282,13 +293,13 @@
 <ul>
 <li>Ability ProcSyncId is like ProcSyncIndex, but uses the Id to find what to Sync.</li>
 </ul>
-<h4 id="fixed-12">Fixed</h4>
+<h4 id="fixed-14">Fixed</h4>
 <ul>
 <li>Null handling on add item to tinker inventory</li>
 <li>Nop ignoring timer</li>
 <li>Regression on global inventory cleanup</li>
 </ul>
-<h4 id="fixed-13">Fixed</h4>
+<h4 id="fixed-15">Fixed</h4>
 <ul>
 <li>Crash on saving with more than 10 trinkets equipped</li>
 <li>Duplicating base game trinket companions 2</li>
@@ -299,7 +310,7 @@
 <li>HitTAS for Hitscan/Projectile, apply a TAS at the target on hit.</li>
 <li>HitsDelay for Hitscan/Projectile, adds a delay between hits.</li>
 </ul>
-<h4 id="fixed-14">Fixed</h4>
+<h4 id="fixed-16">Fixed</h4>
 <ul>
 <li>Crash on saving with more than 10 trinkets equipped</li>
 <li>Duplicating base game trinket companions</li>
@@ -309,7 +320,7 @@
 <li>Hitscan ProcTAS now fires at the companion's position, instead of the target position, this is because HitTAS was added</li>
 </ul>
 <h3 id="151">1.5.1</h3>
-<h4 id="fixed-15">Fixed</h4>
+<h4 id="fixed-17">Fixed</h4>
 <ul>
 <li>Crash on day ending</li>
 </ul>
@@ -359,7 +370,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="fixed-16">Fixed</h4>
+<h4 id="fixed-18">Fixed</h4>
 <ul>
 <li>Made a bunch of lists in the data model nullable</li>
 <li>Deprecated Motions</li>
@@ -426,12 +437,12 @@
 </ul>
 </li>
 </ul>
-<h4 id="fixed-17">Fixed</h4>
+<h4 id="fixed-19">Fixed</h4>
 <ul>
 <li>Some abilities did not apply due to an incorrect check for max level</li>
 </ul>
 <h3 id="145">1.4.5</h3>
-<h4 id="fixed-18">Fixed</h4>
+<h4 id="fixed-20">Fixed</h4>
 <ul>
 <li>Error with filtering for certain types of crops (ginger?).</li>
 </ul>
@@ -440,7 +451,7 @@
 <ul>
 <li>Draw debug mode that shows the sprite index of the companion on screen. Toggle with command tt_draw_debug.</li>
 </ul>
-<h4 id="fixed-19">Fixed</h4>
+<h4 id="fixed-21">Fixed</h4>
 <ul>
 <li>Companions not appearing in volcano and farm buildings.</li>
 </ul>
@@ -457,7 +468,7 @@
 <li>fr.json by by <a href="https://next.nexusmods.com/profile/Caranud">Caranud</a></li>
 </ul>
 <h3 id="142">1.4.2</h3>
-<h4 id="fixed-20">Fixed</h4>
+<h4 id="fixed-22">Fixed</h4>
 <ul>
 <li>Hopefully fix a crash after some events, very strange.</li>
 </ul>
@@ -467,7 +478,7 @@
 <li>Add support for randomized speech bubbles.</li>
 <li>Add &quot;Swim&quot; anim clip key for when the player is swimming.</li>
 </ul>
-<h4 id="fixed-21">Fixed</h4>
+<h4 id="fixed-23">Fixed</h4>
 <ul>
 <li>Companions duplicating when farmhand is exiting an event.</li>
 </ul>
@@ -479,7 +490,7 @@
 <li>Allow one shot clips to pause movement.</li>
 <li>Changed perching clip to behave by static motion rules (check against player facing direction), rather than lerp motion rules (check against companion facing).</li>
 </ul>
-<h4 id="fixed-22">Fixed</h4>
+<h4 id="fixed-24">Fixed</h4>
 <ul>
 <li>AbilityProc clips not playing in multiplayer.</li>
 </ul>
@@ -489,12 +500,12 @@
 <li>Additional HarvestTo field for Harvest type abilities to determine where the harvested item go (inventory, debris, none).</li>
 <li>New field Filter on Anchors and on Hitscan/Projectile ability. If set, the enemy types listed will not be targeted.</li>
 </ul>
-<h4 id="fixed-23">Fixed</h4>
+<h4 id="fixed-25">Fixed</h4>
 <ul>
 <li>Lerp MoveSync companions moving when a weapon is swung. They are now prevented from moving while a tool is being used. Also applies to check for perching.</li>
 </ul>
 <h3 id="121">1.2.1</h3>
-<h4 id="fixed-24">Fixed</h4>
+<h4 id="fixed-26">Fixed</h4>
 <ul>
 <li>Prevent Trinket Tinker anvil output method from affecting non Trinket Tinker items.</li>
 </ul>
@@ -503,22 +514,22 @@
 <ul>
 <li>New &quot;Homing&quot; argument on projectile to make projectile recheck target midflight.</li>
 </ul>
-<h4 id="fixed-25">Fixed</h4>
+<h4 id="fixed-27">Fixed</h4>
 <ul>
 <li>Projectile used wrong target point, change to bounding box center.</li>
 </ul>
 <h3 id="110">1.1.0</h3>
-<h4 id="fixed-26">Fixed</h4>
+<h4 id="fixed-28">Fixed</h4>
 <ul>
 <li>Update for SDV 1.6.14, add new &quot;sourceChange&quot; argument in ItemQueryContext.</li>
 </ul>
 <h3 id="102">1.0.2</h3>
-<h4 id="fixed-27">Fixed</h4>
+<h4 id="fixed-29">Fixed</h4>
 <ul>
 <li>Correctly invalidate Data/Trinkets whenever the Tinker asset gets invalidated.</li>
 </ul>
 <h3 id="101">1.0.1</h3>
-<h4 id="fixed-28">Fixed</h4>
+<h4 id="fixed-30">Fixed</h4>
 <ul>
 <li>Add workaround for issue where <code>TrinketEffectClass</code> ends up being null.</li>
 </ul>
