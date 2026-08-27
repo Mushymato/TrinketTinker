@@ -1,4 +1,5 @@
 using StardewValley;
+using TrinketTinker.Extras;
 
 namespace TrinketTinker.Models.Mixin;
 
@@ -21,7 +22,7 @@ public class RequiredItemData
             return false;
         if (item.QualifiedItemId == RequiredItemId)
             return true;
-        if (RequiredTags?.All(item.HasContextTag) ?? false)
+        if (RequiredTags != null && !GlobalInventoryHandler.CheckContextTagList(item, RequiredTags))
             return true;
         if (GameStateQuery.CheckConditions(Condition, new(Game1.currentLocation, Game1.player, item, item, null)))
             return true;

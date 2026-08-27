@@ -133,7 +133,7 @@ second ability D
 | Property | Type | Default | Notes |
 | -------- | ---- | ------- | ----- |
 | `RequiredItemId` | string | _null_ | Required item id, to target a specific item. |
-| `RequiredTags` | List<string> | _null_ | Required item context tag, target all items that have all of these tags. |
+| `RequiredTags` | List<string> | _null_ | List of [context tags](https://stardewvalleywiki.com/Modding:Common_data_field_types#Context_tag) that are accepted, e.g. `"category_flowers"` (exclude flower category) or `"color_orange season_summer"` (exclude orange and summer). Each space separated sub list of tags act as AND while the overall list act as OR. |
 | `Condition` | string | _null_ | Required item [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) condition. |
 | `RequiredCount` | int | Total required fuel item count. |
 
@@ -145,7 +145,7 @@ If not enough fuel items, nothing is consumed and the ability does not activate.
 | Property | Type | Default | Notes |
 | -------- | ---- | ------- | ----- |
 | `RequiredItemId` | string | _null_ | Required item id, to target a specific item. |
-| `RequiredTags` | List<string> | _null_ | Required item context tag, target all items that have all of these tags. |
+| `RequiredTags` | List<string> | _null_ | List of [context tags](https://stardewvalleywiki.com/Modding:Common_data_field_types#Context_tag) that arge accepted, e.g. `"category_flowers"` (exclude flower category) or `"color_orange season_summer"` (exclude orange and summer). Each space separated sub list of tags act as AND while the overall list act as OR. |
 | `Condition` | string | _null_ | Required item [game state queries](https://stardewvalleywiki.com/Modding:Game_state_queries) condition. |
 
 The item being checked is the active item, i.e. whatever held over head.

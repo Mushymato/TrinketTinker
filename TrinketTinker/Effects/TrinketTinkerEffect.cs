@@ -437,12 +437,8 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
         if (!ModEntry.IsSaving.Value && Game1.currentLocation != null && GetInventory() is Inventory inventory)
         {
             if (
-                GameStateQuery.CheckConditions(
-                    Data?.Inventory?.DropContentsAsDebrisCondition,
-                    player: farmer,
-                    targetItem: Trinket,
-                    inputItem: Trinket
-                )
+                Data?.Inventory?.DropContentsAsDebrisCondition is string cond
+                && GameStateQuery.CheckConditions(cond, player: farmer, targetItem: Trinket, inputItem: Trinket)
             )
             {
                 foreach (Item? item in inventory)
