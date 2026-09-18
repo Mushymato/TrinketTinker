@@ -89,6 +89,11 @@ public class DamageArgs : IArgs
     /// </summary>
     public bool? TreatAsProjectile { get; set; } = null;
 
+    /// <summary>
+    /// If this is set, bypass armored bug invincibility.
+    /// </summary>
+    public bool BugKiller { get; set; } = false;
+
     /// <summary>List of monster types to avoid targeting.</summary>
     public List<string>? Filters = null;
 
@@ -174,6 +179,10 @@ public class DamageArgs : IArgs
         bool triggerMonsterInvincibleTimer
     )
     {
+        Bug? bug = target as Bug;
+        bool isArmoredBug = bug?.isArmoredBug.Value ?? false;
+        if (BugKiller && isArmoredBug)
+            bug?.isArmoredBug.Value = false;
         context.Location?.damageMonster(
             areaOfEffect: target.GetBoundingBox(),
             minDamage: Min,
@@ -187,5 +196,7 @@ public class DamageArgs : IArgs
             who: context.Player,
             isProjectile: isProjectile
         );
+        if (BugKiller && isArmoredBug)
+            bug?.isArmoredBug.Value = true;
     }
 }
