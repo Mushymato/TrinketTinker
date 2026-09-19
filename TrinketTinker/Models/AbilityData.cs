@@ -50,6 +50,7 @@ public sealed class ProcSoundData
 {
     public string? CueName = null;
     public List<int>? Pitch = null;
+    public double Chance = 1d;
 
     public static implicit operator ProcSoundData(string cueName)
     {
@@ -62,6 +63,9 @@ public sealed class ProcSoundData
         {
             if (Game1.soundBank.Exists(CueName))
             {
+				if (Chance < 1d && Random.Shared.NextDouble() >= Chance)
+					return;
+				
                 Game1.playSound(CueName, 0, out ICue sound);
                 // weird Pitch nonsense
                 if (Pitch != null)
