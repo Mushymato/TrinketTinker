@@ -118,6 +118,7 @@
           &quot;ProcSound&quot;: {
             &quot;CueName&quot;: &quot;&lt;string sound cue&gt;&quot;,
             &quot;Pitch&quot;: [/* int pitch values */],
+            &quot;Chance&quot;: &lt;double 0-1, default 1&gt;,
           }, // OR just &quot;&lt;string sound cue&gt;&quot;
           &quot;ProcTAS&quot;: [/* TemporaryAnimatedSprite ids */],
           &quot;ProcOneshotAnim&quot;: &quot;&lt;string anim clip key&gt;&quot;,
@@ -210,7 +211,7 @@
 <td><code>ProcSound</code></td>
 <td>string</td>
 <td><em>null</em></td>
-<td>Play a sound cue when ability procs (<a href="https://stardewvalleywiki.com/Modding:Audio">details</a>). Besides just the string, you specify a random list of pitch: <code>{&quot;CueName&quot;: &quot;flute&quot;, &quot;Pitch&quot;: [...]}</code>.</td>
+<td>Play a sound cue when ability procs (<a href="https://stardewvalleywiki.com/Modding:Audio">details</a>). Besides just the string, you can specify a random list of pitch and/or a play chance: <code>{&quot;CueName&quot;: &quot;flute&quot;, &quot;Pitch&quot;: [...], &quot;Chance&quot;: 0.3}</code>. <code>Chance</code> is rolled fresh on every proc; defaults to 1 (always plays).</td>
 </tr>
 <tr>
 <td><code>ProcTAS</code></td>

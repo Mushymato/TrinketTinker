@@ -6460,6 +6460,19 @@ references:
   commentId: T:TrinketTinker.Models.AbilityArgs.DamageArgs
   fullName: TrinketTinker.Models.AbilityArgs.DamageArgs
   nameWithType: DamageArgs
+- uid: TrinketTinker.Models.AbilityArgs.DamageArgs.BugKiller
+  name: BugKiller
+  href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_BugKiller
+  commentId: P:TrinketTinker.Models.AbilityArgs.DamageArgs.BugKiller
+  fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.BugKiller
+  nameWithType: DamageArgs.BugKiller
+- uid: TrinketTinker.Models.AbilityArgs.DamageArgs.BugKiller*
+  name: BugKiller
+  href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_BugKiller_
+  commentId: Overload:TrinketTinker.Models.AbilityArgs.DamageArgs.BugKiller
+  isSpec: "True"
+  fullName: TrinketTinker.Models.AbilityArgs.DamageArgs.BugKiller
+  nameWithType: DamageArgs.BugKiller
 - uid: TrinketTinker.Models.AbilityArgs.DamageArgs.CritChance
   name: CritChance
   href: api/TrinketTinker.Models.AbilityArgs.DamageArgs.html#TrinketTinker_Models_AbilityArgs_DamageArgs_CritChance
@@ -10186,6 +10199,12 @@ references:
   commentId: T:TrinketTinker.Models.ProcSoundData
   fullName: TrinketTinker.Models.ProcSoundData
   nameWithType: ProcSoundData
+- uid: TrinketTinker.Models.ProcSoundData.Chance
+  name: Chance
+  href: api/TrinketTinker.Models.ProcSoundData.html#TrinketTinker_Models_ProcSoundData_Chance
+  commentId: F:TrinketTinker.Models.ProcSoundData.Chance
+  fullName: TrinketTinker.Models.ProcSoundData.Chance
+  nameWithType: ProcSoundData.Chance
 - uid: TrinketTinker.Models.ProcSoundData.CueName
   name: CueName
   href: api/TrinketTinker.Models.ProcSoundData.html#TrinketTinker_Models_ProcSoundData_CueName
