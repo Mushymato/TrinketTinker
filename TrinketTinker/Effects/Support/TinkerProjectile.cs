@@ -15,7 +15,7 @@ namespace TrinketTinker.Effects.Support;
 /// </summary>
 public sealed class TinkerProjectile : Projectile
 {
-    private ProjectileArgs? args = null;
+    private readonly ProjectileArgs? args = null;
     internal readonly NetString projectileTexture = new("");
     private Texture2D? loadedProjectileTexture = null;
     internal readonly NetInt projectileSpriteWidth = new(16);
@@ -130,7 +130,7 @@ public sealed class TinkerProjectile : Projectile
             SpriteEffects.None,
             (value.Y + 96f) / 10000f
         );
-        if (projectileSpriteHeight.Value > 0f)
+        if (height.Value > 0f)
         {
             b.Draw(
                 Game1.shadowTexture,

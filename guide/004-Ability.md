@@ -34,7 +34,7 @@ An ability is primarily defined by `AbilityClass` (what it does) and `Proc` (whe
           "ProcSound": {
             "CueName": "<string sound cue>",
             "Pitch": [/* int pitch values */],
-			"Chance": <double 0-1, default 1>,
+            "Chance": <double 0-1, default 1>,
           }, // OR just "<string sound cue>"
           "ProcTAS": [/* TemporaryAnimatedSprite ids */],
           "ProcOneshotAnim": "<string anim clip key>",

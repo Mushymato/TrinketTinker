@@ -4,6 +4,16 @@
 >
 > The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 1.9.3
+
+#### Added
+- ProcSound now has a Chance field ([PR#9 Lintharr](https://github.com/Mushymato/TrinketTinker/pull/9))
+- Updated ru and es ([PR#8 ellatuk](https://github.com/Mushymato/TrinketTinker/pull/8))
+- Added BugKiller to damage args which kills the bug
+
+#### Fixed
+- Height field on projectile was not being checked for shadow logic.
+
 ### 1.9.2
 
 #### Fixed
