@@ -538,7 +538,7 @@ public class TrinketTinkerEffect(Trinket trinket) : TrinketEffect(trinket)
         if (!Enabled)
             return;
 
-        EventTrigger?.Invoke(this, new(ProcOn.Trigger, farmer) { TriggerArgs = args, TriggerContext = context });
+        EventTrigger?.Invoke(this, new(ProcOn.Trigger, farmer) { TriggerAbilityIds = args.Skip(2), TriggerContext = context });
     }
 
     /// <summary>

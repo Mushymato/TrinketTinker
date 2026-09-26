@@ -39,7 +39,7 @@ public sealed class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
     public bool? IsCriticalHit { get; set; } = null;
 
     /// <summary>Arguments given to trigger action handler.</summary>
-    public string[]? TriggerArgs { get; set; } = null;
+    public IEnumerable<string>? TriggerAbilityIds { get; set; } = null;
 
     /// <summary>Trigger action context</summary>
     public TriggerActionContext? TriggerContext { get; set; } = null;
@@ -76,6 +76,8 @@ public sealed class ProcEventArgs(ProcOn procOn, Farmer farmer) : EventArgs
             )
                 return false;
         }
+        if ((TriggerAbilityIds?.Any() ?? false) && !TriggerAbilityIds.Contains(data.Id))
+            return false;
         Item targetItem = Proc == ProcOn.ActiveItemChange ? farmer.ActiveItem : e.Trinket;
         GSQContext = new(LocationOrCurrent, Farmer, targetItem, e.Trinket, null, null, []);
         GSQContext.CustomFields![TinkerConst.CustomFields_Data] = data;
